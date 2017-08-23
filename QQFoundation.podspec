@@ -1,3 +1,4 @@
+# podspec
 Pod::Spec.new do |s|
 
 s.name         = "QQFoundation"
