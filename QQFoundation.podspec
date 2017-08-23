@@ -25,7 +25,8 @@ s.dependency 'FLAnimatedImage',  '~> 1.0.12'
 s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag => "1.0"}
 
 
-s.source_files  = 'QQFoundation/QQFoundation/QQKit.h'
+s.source_files  = 'QQFoundation/QQFoundation'
+s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
 
 s.subspec 'Base' do |ss|
 ss.source_files = 'QQFoundation/QQFoundation/Base/**/*.{h,m,c,mm}'
