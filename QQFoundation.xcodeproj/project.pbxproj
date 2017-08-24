@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5295D3461F4EA47200C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D3431F4EA47200C6B5F4 /* NSMutableAttributedString+Manage.m */; };
 		5295D3471F4EA47200C6B5F4 /* NSString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D3451F4EA47200C6B5F4 /* NSString+Manage.m */; };
+		5295D3BE1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D3BB1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.m */; };
+		5295D3BF1F4EB5CA00C6B5F4 /* NSString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D3BD1F4EB5CA00C6B5F4 /* NSString+Manage.m */; };
 		52D8D10E1F4D775500EA413B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D10D1F4D775500EA413B /* main.m */; };
 		52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1101F4D775500EA413B /* AppDelegate.m */; };
 		52D8D1141F4D775500EA413B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1131F4D775500EA413B /* ViewController.m */; };
@@ -64,6 +66,10 @@
 		5295D3431F4EA47200C6B5F4 /* NSMutableAttributedString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Manage.m"; sourceTree = "<group>"; };
 		5295D3441F4EA47200C6B5F4 /* NSString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Manage.h"; sourceTree = "<group>"; };
 		5295D3451F4EA47200C6B5F4 /* NSString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Manage.m"; sourceTree = "<group>"; };
+		5295D3BA1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Manage.h"; sourceTree = "<group>"; };
+		5295D3BB1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Manage.m"; sourceTree = "<group>"; };
+		5295D3BC1F4EB5CA00C6B5F4 /* NSString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Manage.h"; sourceTree = "<group>"; };
+		5295D3BD1F4EB5CA00C6B5F4 /* NSString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Manage.m"; sourceTree = "<group>"; };
 		52D8D1091F4D775500EA413B /* QQFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D8D10D1F4D775500EA413B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		52D8D10F1F4D775500EA413B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -182,6 +188,25 @@
 			path = ManageAttributedString;
 			sourceTree = "<group>";
 		};
+		5295D3B81F4EB5CA00C6B5F4 /* QQCategory */ = {
+			isa = PBXGroup;
+			children = (
+				5295D3B91F4EB5CA00C6B5F4 /* ManageAttributedString */,
+			);
+			path = QQCategory;
+			sourceTree = "<group>";
+		};
+		5295D3B91F4EB5CA00C6B5F4 /* ManageAttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				5295D3BA1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.h */,
+				5295D3BB1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.m */,
+				5295D3BC1F4EB5CA00C6B5F4 /* NSString+Manage.h */,
+				5295D3BD1F4EB5CA00C6B5F4 /* NSString+Manage.m */,
+			);
+			path = ManageAttributedString;
+			sourceTree = "<group>";
+		};
 		52D8D1001F4D775500EA413B = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +251,7 @@
 		52D8D1231F4D77EE00EA413B /* QQFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				5295D3B81F4EB5CA00C6B5F4 /* QQCategory */,
 				52D8D14F1F4D77EF00EA413B /* QQKit.h */,
 				52D8D1241F4D77EE00EA413B /* Base */,
 				52D8D12F1F4D77EE00EA413B /* Category */,
@@ -478,6 +504,7 @@
 				52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */,
 				52D8D18A1F4D77EF00EA413B /* NSDictionary+AvoidCrash.m in Sources */,
 				52D8D18B1F4D77EF00EA413B /* NSString+QQCalculate.m in Sources */,
+				5295D3BF1F4EB5CA00C6B5F4 /* NSString+Manage.m in Sources */,
 				52D8D1A41F4D77EF00EA413B /* QQNetManager.m in Sources */,
 				52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */,
 				5295D3461F4EA47200C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
@@ -494,6 +521,7 @@
 				52D8D1871F4D77EF00EA413B /* MyAttributedStringBuilder.m in Sources */,
 				52D8D1851F4D77EF00EA413B /* AvoidCrash.m in Sources */,
 				52D8D1821F4D77EF00EA413B /* QQNavigationController.m in Sources */,
+				5295D3BE1F4EB5CA00C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
 				52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */,
