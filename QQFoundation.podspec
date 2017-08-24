@@ -37,7 +37,8 @@ ss.source_files = 'QQFoundation/QQFoundation/Category/**/*.{h,m,c,mm}'
 end
 
 s.subspec 'QQCategory' do |ss|
- ss.source_files = 'QQFoundation/QQFoundation/QQCategory/**/*.{h,m,c,mm}'
+ss.subspec 'ManageAttributedString' do |sss|
+ss.source_files = 'QQFoundation/QQFoundation/QQCategory/ManageAttributedString/**/*.{h,m,c,mm}'
 end
 
 s.subspec 'Successor' do |ss|
