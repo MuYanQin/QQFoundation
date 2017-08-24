@@ -58,4 +58,3 @@ ss.subspec 'QQTool' do |sss|
 sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTool/**/*.{h,m,c,mm}'
 end
 
-end
