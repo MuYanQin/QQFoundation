@@ -40,6 +40,11 @@ s.subspec 'Successor' do |ss|
 ss.source_files = 'QQFoundation/QQFoundation/Successor/**/*.{h,m,c,mm}'
 end
 
+
+
+
+
+
 s.subspec 'Tool' do |ss|
 
 ss.subspec 'QQNetWork' do |sss|
