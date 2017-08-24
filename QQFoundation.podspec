@@ -41,7 +41,21 @@ ss.source_files = 'QQFoundation/QQFoundation/Successor/**/*.{h,m,c,mm}'
 end
 
 s.subspec 'Tool' do |ss|
-ss.source_files = 'QQFoundation/QQFoundation/Tool/**/*.{h,m,c,mm}'
+
+ss.subspec 'QQNetWork' do |sss|
+sss.source_files = 'QQFoundation/QQFoundation/Tool/QQNetWork/**/*.{h,m,c,mm}'
+end
+
+ss.subspec 'QQSingleImagePicker' do |sss|
+sss.source_files = 'QQFoundation/QQFoundation/Tool/QQSingleImagePicker/**/*.{h,m,c,mm}'
+end
+
+ss.subspec 'QQTableView' do |sss|
+sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTableView/**/*.{h,m,c,mm}'
+end
+
+ss.subspec 'QQTool' do |sss|
+sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTool/**/*.{h,m,c,mm}'
 end
 
 end
