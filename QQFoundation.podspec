@@ -34,12 +34,14 @@ end
 
 s.subspec 'Category' do |ss|
 ss.source_files = 'QQFoundation/QQFoundation/Category/**/*.{h,m,c,mm}'
-end
 
 ss.subspec 'ManageAttributedString' do |ss|
 sss.source_files = 'QQFoundation/QQFoundation/Category/ManageAttributedString/**/*.{h,m,c,mm}'
 sss.dependency 'QQFoundation/Category'
 end
+
+end
+
 
 s.subspec 'Successor' do |ss|
 ss.source_files = 'QQFoundation/QQFoundation/Successor/**/*.{h,m,c,mm}'
