@@ -10,6 +10,7 @@
 		5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */; };
 		5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4091F4EBB6000C6B5F4 /* NSString+Manage.m */; };
 		5295D4D71F4EC0C500C6B5F4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5295D4D61F4EC0C500C6B5F4 /* libsqlite3.tbd */; };
+		52ACF7201F51282500CFA470 /* QQScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACF71F1F51282500CFA470 /* QQScanVC.m */; };
 		52C1154A1F4EC5CE005471CB /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C114D91F4EC5CE005471CB /* AFHTTPSessionManager.m */; };
 		52C1154B1F4EC5CE005471CB /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C114DC1F4EC5CE005471CB /* AFNetworkReachabilityManager.m */; };
 		52C1154C1F4EC5CE005471CB /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C114DE1F4EC5CE005471CB /* AFSecurityPolicy.m */; };
@@ -117,6 +118,8 @@
 		5295D4081F4EBB6000C6B5F4 /* NSString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Manage.h"; sourceTree = "<group>"; };
 		5295D4091F4EBB6000C6B5F4 /* NSString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Manage.m"; sourceTree = "<group>"; };
 		5295D4D61F4EC0C500C6B5F4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		52ACF71E1F51282500CFA470 /* QQScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQScanVC.h; sourceTree = "<group>"; };
+		52ACF71F1F51282500CFA470 /* QQScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQScanVC.m; sourceTree = "<group>"; };
 		52C114D81F4EC5CE005471CB /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		52C114D91F4EC5CE005471CB /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		52C114DA1F4EC5CE005471CB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -335,6 +338,15 @@
 				5295D4D61F4EC0C500C6B5F4 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52ACF71D1F5127FC00CFA470 /* QQScanQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				52ACF71E1F51282500CFA470 /* QQScanVC.h */,
+				52ACF71F1F51282500CFA470 /* QQScanVC.m */,
+			);
+			path = QQScanQRCode;
 			sourceTree = "<group>";
 		};
 		52C114D71F4EC5CE005471CB /* AFNetworking */ = {
@@ -674,6 +686,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
 				52D8D1681F4D77EF00EA413B /* QQNetWork */,
 				52D8D1741F4D77EF00EA413B /* QQSingleImagePicker */,
 				52D8D1791F4D77EF00EA413B /* QQTableView */,
@@ -818,6 +831,7 @@
 				52D8D1931F4D77EF00EA413B /* UIView+SuperViewController.m in Sources */,
 				52C1156F1F4EC5CE005471CB /* SDWebImageManager.m in Sources */,
 				52C115761F4EC5CE005471CB /* UIImageView+WebCache.m in Sources */,
+				52ACF7201F51282500CFA470 /* QQScanVC.m in Sources */,
 				52C115541F4EC5CE005471CB /* MJRefreshHeader.m in Sources */,
 				52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */,
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
