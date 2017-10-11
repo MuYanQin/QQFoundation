@@ -43,6 +43,10 @@ end
 
 s.subspec 'Tool' do |ss|
 
+    ss.subspec 'PayUtil' do |sss|
+        sss.source_files = 'QQFoundation/QQFoundation/Tool/PayUtil/**/*.{h,m,c,mm}'
+    end
+
     ss.subspec 'QQNetWork' do |sss|
         sss.source_files = 'QQFoundation/QQFoundation/Tool/QQNetWork/**/*.{h,m,c,mm}'
     end

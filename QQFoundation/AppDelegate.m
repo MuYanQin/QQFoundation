@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "QQNavigationController.h"
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    QQNavigationController *nav = [[QQNavigationController alloc]initWithRootViewController:[[ViewController alloc]init]];
+    self.window.rootViewController = nav;
     return YES;
 }
 

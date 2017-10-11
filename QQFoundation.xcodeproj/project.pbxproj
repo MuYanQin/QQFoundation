@@ -113,6 +113,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
+		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
+		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
+		523DF3C41F8DBD67000C1A51 /* WXApi+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WXApi+XWAdd.m"; sourceTree = "<group>"; };
 		5295D4061F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Manage.h"; sourceTree = "<group>"; };
 		5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Manage.m"; sourceTree = "<group>"; };
 		5295D4081F4EBB6000C6B5F4 /* NSString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Manage.h"; sourceTree = "<group>"; };
@@ -332,6 +336,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
+			isa = PBXGroup;
+			children = (
+				523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */,
+				523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */,
+				523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */,
+				523DF3C41F8DBD67000C1A51 /* WXApi+XWAdd.m */,
+			);
+			path = PayUtil;
+			sourceTree = "<group>";
+		};
 		5295D4D51F4EC0C500C6B5F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +701,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				523DF3C01F8DBD67000C1A51 /* PayUtil */,
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
 				52D8D1681F4D77EF00EA413B /* QQNetWork */,
 				52D8D1741F4D77EF00EA413B /* QQSingleImagePicker */,
