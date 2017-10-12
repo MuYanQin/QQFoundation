@@ -41,4 +41,9 @@
  @param page       page description
  */
 - (void)lazyLaunchWithString:(NSString *)url  Paramerters:(NSDictionary *)paramters FromController:(UIViewController *)controller isPaging:(BOOL)page;
+
+/**
+ 手动更新
+ */
+- (void)UpDate;
 @end

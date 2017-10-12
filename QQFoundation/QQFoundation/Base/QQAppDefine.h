@@ -9,5 +9,5 @@
 #ifndef QQAppDefine_h
 #define QQAppDefine_h
 
-
+#define VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 #endif /* QQAppDefine_h */

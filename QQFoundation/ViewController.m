@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "QQScanVC.h"
+#import "fristViewController.h"
 @interface ViewController ()
 
 @end
@@ -18,14 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"我的时机";
+    
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self presentViewController:[QQScanVC new] animated:YES completion:^{
-        
-    }];
+    [self.navigationController pushViewController:[fristViewController new] animated:YES];
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

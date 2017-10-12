@@ -11,6 +11,7 @@
 #import "uiview+MB.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "QQLoadView.h"
+#import "QQAppDefine.h"
 @interface QQtableView ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 {
     NSInteger _pageNumber;///<纪录当前处于哪个
@@ -52,6 +53,12 @@
 //        
 //        // 设置尾部
 //        self.mj_footer = footer;
+        if (VERSION >=11) {
+            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            self.estimatedRowHeight  = 0;
+            self.estimatedSectionFooterHeight  = 0;
+            self.estimatedSectionFooterHeight = 0;
+        }
         _footerView  = [[UIView alloc]init];
         [self setTableFooterView:_footerView];
 //        _spaceView = [[QQSpaceView alloc]init];
@@ -211,7 +218,10 @@
     [self.mj_header beginRefreshing];
 }
 
-
+- (void)UpDate
+{
+    [self.mj_header beginRefreshing];
+}
 
 
 #pragma mark - DZNEmptyDataSetSource Methods

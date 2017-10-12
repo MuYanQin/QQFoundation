@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "QQAppDefine.h"
 #import "MJRefresh.h"
 //按比例获取高度
 #define  WGiveHeight(HEIGHT) HEIGHT * [UIScreen mainScreen].bounds.size.height/568.0
@@ -34,7 +35,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //关闭透明度
     self.navigationController.navigationBar.translucent = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //iOS11中舍弃了automaticallyAdjustsScrollViewInsets  "Use UIScrollView's contentInsetAdjustmentBehavior instead
+    if (VERSION <11) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 //这里的色值与 Nav的色值相同
     self.BaseNavBarColor = self.navigationController.view.backgroundColor;
     [self.view addSubview:self.navBar];
@@ -147,6 +151,9 @@
         _BaseTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
         _BaseTableView.delegate = self;
         _BaseTableView.dataSource = self;
+        _BaseTableView.estimatedRowHeight  = 0;
+        _BaseTableView.estimatedSectionFooterHeight  = 0;
+        _BaseTableView.estimatedSectionFooterHeight = 0;
         _BaseTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(TableViewPullRefresh)];
     }
     return _BaseTableView;

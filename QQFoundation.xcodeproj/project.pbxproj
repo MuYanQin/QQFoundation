@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274E9F01F8F45D20018E93C /* fristViewController.m */; };
+		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
 		5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */; };
 		5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4091F4EBB6000C6B5F4 /* NSString+Manage.m */; };
 		5295D4D71F4EC0C500C6B5F4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5295D4D61F4EC0C500C6B5F4 /* libsqlite3.tbd */; };
@@ -118,6 +120,9 @@
 		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
 		523DF3C41F8DBD67000C1A51 /* WXApi+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WXApi+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C51F8DBDE6000C1A51 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		5274E9EF1F8F45D20018E93C /* fristViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fristViewController.h; sourceTree = "<group>"; };
+		5274E9F01F8F45D20018E93C /* fristViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fristViewController.m; sourceTree = "<group>"; };
+		5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonicon_back@2x.png"; sourceTree = "<group>"; };
 		5295D4061F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Manage.h"; sourceTree = "<group>"; };
 		5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Manage.m"; sourceTree = "<group>"; };
 		5295D4081F4EBB6000C6B5F4 /* NSString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Manage.h"; sourceTree = "<group>"; };
@@ -582,6 +587,9 @@
 				52D8D1101F4D775500EA413B /* AppDelegate.m */,
 				52D8D1121F4D775500EA413B /* ViewController.h */,
 				52D8D1131F4D775500EA413B /* ViewController.m */,
+				5274E9EF1F8F45D20018E93C /* fristViewController.h */,
+				5274E9F01F8F45D20018E93C /* fristViewController.m */,
+				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
 				523DF3C51F8DBDE6000C1A51 /* Podfile */,
 				52D8D1151F4D775500EA413B /* Main.storyboard */,
 				52D8D1181F4D775500EA413B /* Assets.xcassets */,
@@ -828,6 +836,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */,
 				52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */,
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
 				52C1155E1F4EC5CE005471CB /* MJRefresh.bundle in Resources */,
@@ -893,6 +902,7 @@
 				52C115501F4EC5CE005471CB /* MJRefreshAutoFooter.m in Sources */,
 				52C1155D1F4EC5CE005471CB /* MJRefreshStateHeader.m in Sources */,
 				52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */,
+				5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				52D8D1A11F4D77EF00EA413B /* MBProgressHUD+Category.m in Sources */,
@@ -1061,6 +1071,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GSS4BRRX4;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1073,6 +1084,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GSS4BRRX4;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
