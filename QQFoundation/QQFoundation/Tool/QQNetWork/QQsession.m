@@ -25,6 +25,7 @@ static AFHTTPSessionManager *manager;
         manager = [AFHTTPSessionManager manager];
         manager.requestSerializer.timeoutInterval = 30.f;
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//        [manager setSecurityPolicy:self.customSecurityPolicy];//是否开启ssl验证
         //设置请求头
 //        [[WSUtils getRequestHeaderDict] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 //            [manager.requestSerializer setValue:[WSLUtil strRelay:obj] forHTTPHeaderField:[WSLUtil strRelay:key]];
@@ -33,7 +34,14 @@ static AFHTTPSessionManager *manager;
     });
     return manager;
 }
-
+//设置证书的时候 后台验证
+- (AFSecurityPolicy*)customSecurityPolicy
+{
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    return securityPolicy;
+}
 + (void)initialize
 {
     HttpCache = [YYCache cacheWithName:QQCacheName];
