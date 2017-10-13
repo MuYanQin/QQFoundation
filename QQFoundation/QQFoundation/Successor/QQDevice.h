@@ -16,4 +16,32 @@
  @return 返回系统版本号
  */
 + (CGFloat)GetSystemVersion;
+
+/**
+ 获取app名称
+ 
+ @return app名称
+ */
++ (NSString *)AppName;
+
+/**
+ 获取Bundleid
+ 
+ @return Bundleid
+ */
++ (NSString *)APPBundleID;
+
+/**
+ appbuild几次
+ 
+ @return 次数
+ */
++ (NSString *)APPBuild;
+
+/**
+ app当前版本号
+ 
+ @return 版本号
+ */
++ (NSString *)APPVersion;
 @end

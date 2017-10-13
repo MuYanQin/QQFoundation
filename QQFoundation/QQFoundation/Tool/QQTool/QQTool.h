@@ -42,39 +42,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-
-
-@interface QQItemManager : NSObject
-
-/**
- 获取app名称
-
- @return app名称
- */
-+ (NSString *)AppName;
-
-/**
- 获取Bundleid
-
- @return Bundleid
- */
-+ (NSString *)APPBundleID;
-
-/**
- appbuild几次
-
- @return 次数
- */
-+ (NSString *)APPBuild;
-
-/**
- app当前版本号
-
- @return 版本号
- */
-+ (NSString *)APPVersion;
-@end
 @interface QQTool : NSObject
+
 
 
 /**
@@ -108,13 +77,11 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector);
 + (NSString*)dictionaryToJson:(NSDictionary *)dic;
 
 /**
- 获取设备的IP
+ 系统级别的复制
 
- @return IP
+ @param content 需要复制的内容
  */
-+ (NSString *)getIPAddress;
-
-
++ (void)SystemPaste:(NSString *)content;
 
 /*
  返回100k以内大小的图片
@@ -191,31 +158,5 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector);
  * 是否为车牌
  */
 +(BOOL) isValidateCarNo:(NSString*)carNo;
-/**
- * MD5
- */
-//+ (NSString *) md5:(NSString *)str;
-
-
-/**
- * sha1
- */
-+(NSString*) sha1:(NSString*)str;
-
-
-/**
- * Encode Chinese to ISO8859-1 in URL
- */
-+ (NSString *) utf8StringWithChinese:(NSString *)chinese;
-
-/**
- * Encode Chinese to GB2312 in URL
- */
-+ (NSString *) gb2312StringWithChinese:(NSString *)chinese;
-
-/**
- * URL encode
- */
-+(NSString*) urlEncodeWithString:(NSString *)string;
 
 @end

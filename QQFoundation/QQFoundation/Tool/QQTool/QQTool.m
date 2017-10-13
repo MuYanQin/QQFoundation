@@ -12,25 +12,6 @@
 #import <arpa/inet.h>
 #import <objc/runtime.h>
 #import "NSString+QQCalculate.h"
-@implementation QQItemManager
-
-+ (NSString *)AppName
-{
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];    //获取App名称
-}
-+ (NSString *)APPBundleID
-{
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-}
-+ (NSString *)APPBuild
-{
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-}
-+ (NSString *)APPVersion
-{
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-}
-@end
 
 @implementation QQTool
 
@@ -95,31 +76,20 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
         return nil;
     }
 }
-
-+ (NSString *)getIPAddress {
-    NSString *address = @"error";
-    struct ifaddrs *interfaces = NULL;
-    struct ifaddrs *temp_addr = NULL;
-    int success = 0;
-    // retrieve the current interfaces - returns 0 on success
-    success = getifaddrs(&interfaces);
-    if (success == 0) {
-        // Loop through linked list of interfaces
-        temp_addr = interfaces;
-        while(temp_addr != NULL) {
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
-                    // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-                }
-            }
-            temp_addr = temp_addr->ifa_next;
-        }
+/**
+ 系统级别的复制
+ 
+ @param content 需要复制的内容
+ */
++ (void)SystemPaste:(NSString *)content{
+    if ([self isBlank:content]) {
+        NSLog(@"粘贴内容不能为空！");
+        return;
     }
-    // Free memory
-    freeifaddrs(interfaces);
-    return address;
+    //系统级别
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = content;
+    NSLog(@"\r\n====>输入框内容为:%@\r\n====>剪切板内容为:%@",content,pasteboard.string);
 }
 /*
  返回100k以内大小的图片
@@ -352,75 +322,5 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
     NSString *carRegex = @"^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$";
     NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
     return [carTest evaluateWithObject:carNo];
-}
-/**
- * sha1
- */
-+(NSString*) sha1:(NSString*)str
-{
-    const char *ptr = [str UTF8String];
-    
-    NSInteger i =0;
-    NSInteger len = strlen(ptr);
-    Byte byteArray[len];
-    while (i!=len)
-    {
-        unsigned eachChar = *(ptr + i);
-        unsigned low8Bits = eachChar & 0xFF;
-        
-        byteArray[i] = low8Bits;
-        i++;
-    }
-    
-    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
-    
-    CC_SHA1(byteArray, (int)len, digest);
-    
-    NSMutableString *hex = [NSMutableString string];
-    for (int i=0; i<20; i++)
-        [hex appendFormat:@"%02x", digest[i]];
-    
-    NSString *immutableHex = [NSString stringWithString:hex];
-    
-    return immutableHex;
-}
-
-
-/**
- * Encode Chinese to ISO8859-1 in URL
- */
-+ (NSString *) utf8StringWithChinese:(NSString *)chinese
-{
-    CFStringRef nonAlphaNumValidChars = CFSTR("![        DISCUZ_CODE_1        ]’()*+,-./:;=?@_~");
-    NSString *preprocessedString = (NSString *)CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault, (CFStringRef)chinese, CFSTR(""), kCFStringEncodingUTF8));
-    
-    
-    NSString *newStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)preprocessedString,NULL,nonAlphaNumValidChars,kCFStringEncodingUTF8));
-    return newStr;
-    
-}
-
-
-/**
- * Encode Chinese to GB2312 in URL
- */
-+ (NSString *) gb2312StringWithChinese:(NSString *)chinese
-{
-    CFStringRef nonAlphaNumValidChars = CFSTR("![        DISCUZ_CODE_1        ]’()*+,-./:;=?@_~");
-    NSString *preprocessedString = (NSString *)CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault, (CFStringRef)chinese, CFSTR(""), kCFStringEncodingGB_18030_2000));
-    NSString *newStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)preprocessedString,NULL,nonAlphaNumValidChars,kCFStringEncodingGB_18030_2000));
-    return newStr;
-}
-
-
-/**
- * URL encode
- */
-+ (NSString*)urlEncodeWithString:(NSString *)string
-{
-    
-    NSString *newString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)string, nil, (CFStringRef)@"!*'&=();:@+$,/?%#[]", kCFStringEncodingUTF8));
-    
-    return newString;
 }
 @end
