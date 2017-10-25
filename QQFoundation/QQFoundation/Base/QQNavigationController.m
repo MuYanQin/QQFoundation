@@ -45,9 +45,9 @@
         self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
         //设置view的位置
         self.modalPresentationCapturesStatusBarAppearance = NO;
-//        [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
-//                                          forBarPosition:UIBarPositionTop
-//                                              barMetrics:UIBarMetricsDefault];
+       /* [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
+                                          forBarPosition:UIBarPositionTop
+                                              barMetrics:UIBarMetricsDefault];*/
         //设置navi透明需要translucent = yes,设置图片，barMetrics（更改类型得到不同的效果）
     }
     //nav下面的横线消失

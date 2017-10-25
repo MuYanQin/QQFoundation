@@ -66,24 +66,18 @@ static CGFloat standOutHeight = 12;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (UIImageView *)drawTabbarBgImageView
 {
-    //    NSLog(@"tabBarHeight：  %f" , tabBarHeight);// 设备tabBar高度 一般49
     CGFloat radius = 25;// 圆半径
     CGFloat allFloat= (pow(radius, 2)-pow((radius-standOutHeight), 2));// standOutHeight 突出高度 12
     CGFloat ww = sqrtf(allFloat);
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -standOutHeight,[UIScreen mainScreen].bounds.size.width , 49 +standOutHeight)];// ScreenW设备的宽
-    //    imageView.backgroundColor = [UIColor redColor];
     CGSize size = imageView.frame.size;
     CAShapeLayer *layer = [CAShapeLayer layer];
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(size.width/2 - ww, standOutHeight)];
-//    NSLog(@"ww: %f", ww);
-//    NSLog(@"ww11: %f", 0.5*((radius-ww)/radius));
     CGFloat angleH = 0.5*((radius-standOutHeight)/radius);
-//    NSLog(@"angleH：%f", angleH);
     CGFloat startAngle = (1+angleH)*((float)M_PI); // 开始弧度
     CGFloat endAngle = (2-angleH)*((float)M_PI);//结束弧度
     // 开始画弧：CGPointMake：弧的圆心  radius：弧半径 startAngle：开始弧度 endAngle：介绍弧度 clockwise：YES为顺时针，No为逆时针
@@ -103,14 +97,6 @@ static CGFloat standOutHeight = 12;
     [imageView.layer addSublayer:layer];
     return imageView;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
