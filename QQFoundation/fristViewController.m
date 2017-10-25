@@ -19,22 +19,11 @@
     // Do any additional setup after loading the view.
     self.title = @"UIActivityViewController";
 
-    QQButton *button = [QQButton buttonWithFrame:CGRectMake(100, 100, 50, 40) title:@"click" andBlock:^(UIButton *myButton) {
+    QQButton *button = [QQButton buttonWithFrame:CGRectMake(0, 0, 100, 100) title:@"click" andBlock:^(UIButton *myButton) {
         
-        NSMutableArray *items = [[NSMutableArray alloc] init];
-        [items addObject:@"我的"];
-//        [items addObject:[UIImage imageNamed:@"1"]];
-        [items addObject:@"https://www.baidu.com"];
-        
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
-        NSMutableArray *excludedActivityTypes =  [NSMutableArray arrayWithArray:@[UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeMail, UIActivityTypePostToTencentWeibo, UIActivityTypeSaveToCameraRoll, UIActivityTypeMessage, UIActivityTypePostToTwitter]];//不展示内容
-        activityViewController.excludedActivityTypes = excludedActivityTypes;
-        [self presentViewController:activityViewController animated:YES completion:nil];
-        activityViewController.completionWithItemsHandler = ^(UIActivityType __nullable activityType, BOOL completed, NSArray * __nullable returnedItems, NSError * __nullable activityError){
-            NSLog(@"%@  ----   %@", activityType, returnedItems);
-        };
 
     }];
+    button.backgroundColor = [UIColor redColor];
     [self.view addSubview:button];
 
 }

@@ -30,19 +30,18 @@
     }
 
     self.view.backgroundColor = [UIColor whiteColor];
-    //设置透明度  相差64像素
+   //设置透明度  相差64像素  YES会有蒙层
     self.navigationBar.translucent = YES;
     //设置颜色
     self.navigationBar.barTintColor =[UIColor colorWithR:0 G:122 B:255 A:1];
-    //处理ScrollViewInsets的自动下沉
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
+
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){
         //如应用中出现seachbar的跳动，视图位置出现问题，有可能是这里引起的
         self.edgesForExtendedLayout = UIRectEdgeNone;//视图控制器，四条边不指定
-        
+
         self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
         //设置view的位置
         self.modalPresentationCapturesStatusBarAppearance = NO;
@@ -50,9 +49,6 @@
 //                                          forBarPosition:UIBarPositionTop
 //                                              barMetrics:UIBarMetricsDefault];
         //设置navi透明需要translucent = yes,设置图片，barMetrics（更改类型得到不同的效果）
-    }else{
-//        [self.navigationBar setBackgroundImage:[UIImage new]
-//                                 forBarMetrics:UIBarMetricsDefault];
     }
     //nav下面的横线消失
     self.navigationBar.shadowImage = [UIImage new];
@@ -80,7 +76,11 @@
     if (navigationController.viewControllers.count == 1){
         navigationController.interactivePopGestureRecognizer.enabled = NO;
     }else{
-        navigationController.interactivePopGestureRecognizer.enabled = YES;
+        if(self.CanSlider ){
+            navigationController.interactivePopGestureRecognizer.enabled = YES;
+        }else{
+            navigationController.interactivePopGestureRecognizer.enabled = NO;
+        }
     }
     //获取栈顶的Vc
     tempVC = navigationController.viewControllers.lastObject;

@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     //关闭透明度
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = YES ;
     //iOS11中舍弃了automaticallyAdjustsScrollViewInsets  "Use UIScrollView's contentInsetAdjustmentBehavior instead
     if (VERSION <11) {
         self.automaticallyAdjustsScrollViewInsets = NO;

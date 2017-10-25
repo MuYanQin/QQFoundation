@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface QQNavigationController : UINavigationController
+@property (nonatomic,assign) BOOL CanSlider;//是否可以滑动
 @end
