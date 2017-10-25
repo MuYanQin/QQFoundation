@@ -1,33 +1,22 @@
 //
-//  fristViewController.m
+//  twoViewController.m
 //  QQFoundation
 //
-//  Created by ZhangQun on 2017/10/12.
+//  Created by ZhangQun on 2017/10/25.
 //  Copyright © 2017年 ZhangQun. All rights reserved.
 //
 
-#import "fristViewController.h"
-#import "QQButton.h"
-#import "threeViewController.h"
+#import "twoViewController.h"
 
-@interface fristViewController ()
+@interface twoViewController ()
 
 @end
 
-@implementation fristViewController
+@implementation twoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"副书记肯定会反馈撒";
-
-    QQButton *button = [QQButton buttonWithFrame:CGRectMake(0, 64, 100, 100) title:@"click" andBlock:^(UIButton *myButton) {
-        [self.navigationController pushViewController:[threeViewController new] animated:YES];
-
-    }];
-    button.backgroundColor = [UIColor redColor];
-    [self.view addSubview:button];
-
 }
 
 - (void)didReceiveMemoryWarning {

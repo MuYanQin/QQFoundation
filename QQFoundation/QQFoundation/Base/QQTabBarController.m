@@ -7,8 +7,9 @@
 //
 
 #import "QQTabBarController.h"
+#import "QQNavigationController.h"
 #import "fristViewController.h"
-#import "ViewController.h"
+#import "twoViewController.h"
 static CGFloat standOutHeight = 12;
 
 @interface QQTabBarController ()<UITabBarControllerDelegate>
@@ -18,17 +19,17 @@ static CGFloat standOutHeight = 12;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     self.delegate = self;
+    
+    fristViewController   * frist = [[fristViewController alloc]init];
+    twoViewController *two = [twoViewController new];
 
-    ViewController   * CircleClass = [[ViewController alloc]init];
-    CircleClass.title = @"班级圈";
-    fristViewController *CircleSchool = [fristViewController new];
-    CircleSchool.title = @"校园圈";
     [[UITabBar appearance] setShadowImage:[[UIImage alloc]init]];
     [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
     self.viewControllers = @[
-                            [self AddVC:CircleClass Title:@"通讯录" Image:[UIImage imageNamed:@"tabbar_contacts"] andSelectImage:[self removeRendering:[UIImage imageNamed:@"tabbar_contactsHL"]]],
-                             [self AddVC:CircleSchool Title:@"我" Image:[UIImage imageNamed:@"tabbar_mine"] andSelectImage:[self removeRendering:[UIImage imageNamed:@"tabbar_mineHL"]]]
+                            [self AddVC:frist Title:@"11111" Image:[UIImage imageNamed:@"tabbar_contacts"] andSelectImage:[self removeRendering:[UIImage imageNamed:@"tabbar_contactsHL"]]],
+                             [self AddVC:two Title:@"2222" Image:[UIImage imageNamed:@"tabbar_mine"] andSelectImage:[self removeRendering:[UIImage imageNamed:@"tabbar_mineHL"]]],
                             ];
     self.tabBar.tintColor = [UIColor colorWithRed:86.0/255.0 green:141.0/255.0 blue:216.0/255.0 alpha:1];///<如果图片不变只是改个颜色 就用着直接改。
 
@@ -38,7 +39,7 @@ static CGFloat standOutHeight = 12;
 //    //第几个Item器偏移
 //    UITabBarItem *tabBarItem = (UITabBarItem *)self.tabBar.items[2];
 //    [tabBarItem setImageInsets:UIEdgeInsetsMake(-5, 0, 5, 0)];
-      /** 设置默认状态 中间的字体大小 颜色 */
+//    /** 设置默认状态 中间的字体大小 颜色 */
 //    NSMutableDictionary *norDict = @{}.mutableCopy;
 //    norDict[NSFontAttributeName] = [UIFont systemFontOfSize:10];
 //    [tabBarItem setTitleTextAttributes:norDict forState:UIControlStateNormal];
@@ -56,11 +57,12 @@ static CGFloat standOutHeight = 12;
 - (UIViewController *)AddVC:(UIViewController *)VC  Title:(NSString *)title Image:(UIImage *)image  andSelectImage:(UIImage *)selectImage
 {
     
+    QQNavigationController *nav = [[QQNavigationController alloc]initWithRootViewController:VC];
     VC.title = title;
     VC.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[self removeRendering:image] selectedImage:selectImage ];
     //调整文字与图片的距离
     VC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0,-3);
-    return VC;
+    return nav;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,6 +70,7 @@ static CGFloat standOutHeight = 12;
 }
 - (UIImageView *)drawTabbarBgImageView
 {
+    //    NSLog(@"tabBarHeight：  %f" , tabBarHeight);// 设备tabBar高度 一般49
     CGFloat radius = 25;// 圆半径
     CGFloat allFloat= (pow(radius, 2)-pow((radius-standOutHeight), 2));// standOutHeight 突出高度 12
     CGFloat ww = sqrtf(allFloat);
@@ -77,7 +80,10 @@ static CGFloat standOutHeight = 12;
     CAShapeLayer *layer = [CAShapeLayer layer];
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(size.width/2 - ww, standOutHeight)];
+//    NSLog(@"ww: %f", ww);
+//    NSLog(@"ww11: %f", 0.5*((radius-ww)/radius));
     CGFloat angleH = 0.5*((radius-standOutHeight)/radius);
+//    NSLog(@"angleH：%f", angleH);
     CGFloat startAngle = (1+angleH)*((float)M_PI); // 开始弧度
     CGFloat endAngle = (2-angleH)*((float)M_PI);//结束弧度
     // 开始画弧：CGPointMake：弧的圆心  radius：弧半径 startAngle：开始弧度 endAngle：介绍弧度 clockwise：YES为顺时针，No为逆时针
@@ -97,4 +103,14 @@ static CGFloat standOutHeight = 12;
     [imageView.layer addSublayer:layer];
     return imageView;
 }
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
 @end
