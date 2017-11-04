@@ -25,7 +25,7 @@
         [self.navigationController pushViewController:[threeViewController new] animated:YES];
 
     }];
-    button.backgroundColor = [UIColor redColor];
+    button.backgroundColor = [UIColor redColor];//回复客户撒地方看
     [self.view addSubview:button];
 
 }
