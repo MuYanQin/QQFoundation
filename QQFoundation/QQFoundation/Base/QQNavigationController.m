@@ -130,12 +130,10 @@
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.enabled = NO;
     }
-    if (animated) {
-        if (self.isSwitching) {
-            return; // 1. 如果是动画，并且正在切换，直接忽略
-        }
-        self.isSwitching = YES; // 2. 否则修改状态
+    if (self.isSwitching) {
+        return; // 1. 如果是动画，并且正在切换，直接忽略
     }
+    self.isSwitching = YES; // 2. 否则修改状态
     
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
