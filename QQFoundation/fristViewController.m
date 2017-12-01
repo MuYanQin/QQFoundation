@@ -20,14 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"副书记肯定会反馈撒";
-
-    QQButton *button = [QQButton buttonWithFrame:CGRectMake(0, 64, 100, 100) title:@"click" andBlock:^(UIButton *myButton) {
-        [self.navigationController pushViewController:[threeViewController new] animated:YES];
-
-    }];
-    button.backgroundColor = [UIColor redColor];//回复客户撒地方看
-    [self.view addSubview:button];
-
 }
 
 - (void)didReceiveMemoryWarning {

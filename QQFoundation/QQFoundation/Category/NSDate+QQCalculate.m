@@ -33,7 +33,7 @@
     NSDate *date = [NSDate date];
     NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
     NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date];
-    return [weekdays objectAtIndex:theComponents.weekday];
+    return [weekdays objectAtIndex:theComponents.weekday - 1];
 }
 
 /*计算这个月有多少天*/

@@ -9,7 +9,7 @@
 #import "MBProgressHUD+Category.h"
 //#import "UIImage+EMGIF.h"
 //#import "UIColor+YFCategory.h"
-#import "UIColor+Hexadecimal.h"
+//#import "UIColor+Hexadecimal.h"
 static MBProgressHUD *load_hud = nil;
 
 @implementation MBProgressHUD (Category)
@@ -43,7 +43,7 @@ static MBProgressHUD *load_hud = nil;
     load_hud.minSize = CGSizeMake(80, 80);
     load_hud.labelColor = [UIColor darkGrayColor];
     load_hud.labelFont = [UIFont systemFontOfSize:12];
-    load_hud.color = [UIColor colorWithHexString:@"e8e8e8"];
+//    load_hud.color = [UIColor colorWithHexString:@"e8e8e8"];
     //有无灰色的遮罩视图
     load_hud.dimBackground = NO;
 
@@ -75,7 +75,7 @@ static MBProgressHUD *load_hud = nil;
     }
     MBProgressHUD *text_hud = [MBProgressHUD showHUDAddedTo:superView animated:YES];
     text_hud.mode = MBProgressHUDModeText;
-    text_hud.color = [UIColor colorWithHexString:@"e8e8e8"];
+//    text_hud.color = [UIColor colorWithHexString:@"e8e8e8"];
     text_hud.cornerRadius = 4;
     text_hud.alpha = 0.9;
     text_hud.margin = 15;
