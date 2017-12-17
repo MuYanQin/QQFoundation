@@ -12,6 +12,7 @@
 #import "NSDate+QQCalculate.h"
 #import "YYCache.h"
 #import "uiview+MB.h"
+#define QQBaseUrl @""
 @interface QQsession ()
 @end
 
@@ -56,7 +57,11 @@ static AFHTTPSessionManager *manager;
 //        [[QQNetManager defaultManager] showProgressHUDWithType:0];
 //        return nil;
 //    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",@"",url];//域名和接口拼接起来的
+    if (controller == nil || controller == NULL) {
+        controller =[self getCurrentVC];
+    }
+    
+    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];//域名和接口拼接起来的
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];//方便加请求参数
     [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view Loading_0314];
@@ -82,7 +87,10 @@ static AFHTTPSessionManager *manager;
 //        [[QQNetManager defaultManager] showProgressHUDWithType:0];
 //        return nil;
 //    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",@"域名",url];
+    if (controller == nil || controller == NULL) {
+        controller =[self getCurrentVC];
+    }
+    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view Loading_0314];
@@ -102,7 +110,7 @@ static AFHTTPSessionManager *manager;
 //get with cache
 - (NSURLSessionDataTask *)TXDGetCacheWithUrl:(NSString *)url Dic:(NSDictionary *)dic from:(UIViewController *)controller success:(void (^)(id))success False:(void (^)(NSError *))False
 {
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",@"域名",url];
+    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     //没网络的情况时 判断有没有缓存 有就直接拿出来
     NSString *keyStr =[self cacheKeyWithURL:TrueUrl parameters:dic];
     if ([HttpCache containsObjectForKey:keyStr]) {// is have cache
@@ -115,6 +123,9 @@ static AFHTTPSessionManager *manager;
 //        False(nil);
 //        return nil;
 //    }
+    if (controller == nil || controller == NULL) {
+        controller =[self getCurrentVC];
+    }
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     
     [[QQNetManager defaultManager] insertQQConnection:self];///<
@@ -147,7 +158,10 @@ static AFHTTPSessionManager *manager;
 //        False(error);//没有网络 但是tableview的刷新等操作时要 结束得熬的所以单拿出
 //        return nil;
 //    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",@"域名",url];
+    if (controller == nil || controller == NULL) {
+        controller =[self getCurrentVC];
+    }
+    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view Loading_0314];
@@ -180,7 +194,10 @@ static AFHTTPSessionManager *manager;
 //        [[QQNetManager defaultManager] showProgressHUDWithType:0];
 //        return nil;
 //    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",@"域名",urlStr];
+    if (controller == nil || controller == NULL) {
+        controller =[self getCurrentVC];
+    }
+    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     //    [TrueDic setObject:[UserInfo defaultManager].Token  forKey:@"token"];
     [[QQNetManager defaultManager] insertQQConnection:self];
@@ -283,6 +300,36 @@ static AFHTTPSessionManager *manager;
         [UIApplication sharedApplication].networkActivityIndicatorVisible =isNetworkEnable;/*  网络指示器的状态： 有网络 ： 开  没有网络： 关  */
     });
     return isNetworkEnable;
+}
+
+//获取当前屏幕显示的viewcontroller
+- (UIViewController *)getCurrentVC
+{
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *currentVC = [self getCurrentVCFrom:rootViewController];
+    return currentVC;
+}
+
+- (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC
+{
+    UIViewController *currentVC;
+    
+    if ([rootVC presentedViewController]) {
+        // 视图是被presented出来的
+        rootVC = [rootVC presentedViewController];
+    }
+    
+    if ([rootVC isKindOfClass:[UITabBarController class]]) {
+        // 根视图为UITabBarController
+        currentVC = [self getCurrentVCFrom:[(UITabBarController *)rootVC selectedViewController]];
+    } else if ([rootVC isKindOfClass:[UINavigationController class]]){
+        // 根视图为UINavigationController
+        currentVC = [self getCurrentVCFrom:[(UINavigationController *)rootVC visibleViewController]];
+    } else {
+        // 根视图为非导航类
+        currentVC = rootVC;
+    }
+    return currentVC;
 }
 @end
 
