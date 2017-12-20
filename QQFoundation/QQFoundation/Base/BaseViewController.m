@@ -197,6 +197,8 @@
 {
 
 }
+
+
 #pragma mark - navbar添加button
 - (void)addRightBtnWithStr:(NSString *)str andSelector:(SEL)sel
 {
@@ -207,21 +209,19 @@
 }
 
 -(void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andSelector:(SEL)sel {
-    UIBarButtonItem *fixedItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedItem.width = 3;
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:str style:UIBarButtonItemStylePlain target:self action:sel];
-    item.tintColor = tintColor;
-    self.navigationItem.rightBarButtonItems = @[fixedItem,item];
+    
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightitem;
+    
 }
 
 -(void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andFontSize:(CGFloat)size andSelector:(SEL)sel {
-    UIBarButtonItem *fixedItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedItem.width = 3;
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:str style:UIBarButtonItemStylePlain target:self action:sel];
-    item.tintColor = tintColor;
-    [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:size],NSFontAttributeName, nil] forState:UIControlStateNormal];
-    
-    self.navigationItem.rightBarButtonItems = @[fixedItem,item];
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightitem;
 }
 
 - (void)addLeftBtnWithStr:(NSString *)str andSelector:(SEL)sel
