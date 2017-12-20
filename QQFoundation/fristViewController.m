@@ -20,11 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"副书记肯定会反馈撒";
-//    [self addRightBtnWithStr:@"完成" andSelector:@selector(Deon)];
-//    [self addNaviRightBtnWithStr:@"馈撒" andTintColor:[UIColor redColor] andSelector:@selector(Deon)];
-//    [self addNaviRightBtnWithStr:@"馈撒" andTintColor:[UIColor purpleColor] andFontSize:14 andSelector:@selector(Deon)];
-//    [self addRightBtnWithStr:@"@2x" andSelector:@selector(Deon)];
-    [self addRightBtnWithImgName:@"barbuttonicon_back" andSelector:@selector(Deon)];
+
 }
 - (void)Deon
 {

@@ -6,33 +6,32 @@
 //  Copyright © 2017年 ZhangQun. All rights reserved.
 //
 
-#import "BaseViewController.h"
-
-@interface QQBarItemViewController : BaseViewController
+#import <UIKit/UIKit.h>
+@interface QQBarItemViewController : UIViewController
 
 /**
  *  添加nav上右按钮，图片
  */
-- (void)addRightBtnWithImgName:(NSString *)imgName andSelector:(SEL)sel;
+- (void)nav_RightItemWithImg:(NSString *)imgName Selector:(SEL)sel;
 
 /**
  *  添加nav上右按钮，字符串
  */
-- (void)addRightBtnWithStr:(NSString *)str andSelector:(SEL)sel;
+- (void)nav_RightItemWithStr:(NSString *)str Selector:(SEL)sel;
 
 /**
  *  添加nav上右按钮，字符串, 字体颜色
  */
-- (void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andSelector:(SEL)sel;
+- (void)nav_RightItemWithStr:(NSString *)str TintColor:(UIColor *)tintColor Selector:(SEL)sel;
 
 /**
  *  添加nav上右按钮，字符串, 字体颜色, 字体大小
  */
--(void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andFontSize:(CGFloat)size andSelector:(SEL)sel;
+-(void)nav_RightItemWithStr:(NSString *)str TintColor:(UIColor *)tintColor FontSize:(CGFloat)size Selector:(SEL)sel;
 
 /**
  *  添加nav上左按钮，字符串
  */
-- (void)addLeftBtnWithStr:(NSString *)str andSelector:(SEL)sel;
+- (void)nav_LeftItemWithStr:(NSString *)str Selector:(SEL)sel;
 
 @end

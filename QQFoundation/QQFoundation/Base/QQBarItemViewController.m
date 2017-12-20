@@ -22,42 +22,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
 #pragma mark - navbar添加button
-- (void)addRightBtnWithStr:(NSString *)str andSelector:(SEL)sel
-{
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:str style:UIBarButtonItemStylePlain target:self action:sel];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName, nil] forState:UIControlStateNormal];
-    [self.navigationItem.rightBarButtonItem setImageInsets:UIEdgeInsetsMake(0, WGiveWidth(-6), 0, WGiveWidth(6))];
-}
-
--(void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andSelector:(SEL)sel {
-    
-    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
-    NSDictionary *dic = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
-    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = rightitem;
-    
-}
-
--(void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andFontSize:(CGFloat)size andSelector:(SEL)sel {
-    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
-    NSDictionary *dic = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
-    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = rightitem;
-}
-
-- (void)addLeftBtnWithStr:(NSString *)str andSelector:(SEL)sel
-{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem new]initWithTitle:str style:UIBarButtonItemStylePlain target:self action:sel];
-    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
-    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:12], NSFontAttributeName, nil] forState:UIControlStateNormal];
-}
-
-- (void)addRightBtnWithImgName:(NSString *)imgName andSelector:(SEL)sel
-{
-    //iOS 9
+/**
+ *  添加nav上右按钮，图片
+ */
+- (void)nav_RightItemWithImg:(NSString *)imgName Selector:(SEL)sel{
     UIButton *leftCustomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [leftCustomButton.widthAnchor constraintEqualToConstant:20].active = YES;
     [leftCustomButton.heightAnchor constraintEqualToConstant:20].active = YES;
@@ -65,7 +34,46 @@
     [leftCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
     UIBarButtonItem * leftButtonItem =[[UIBarButtonItem alloc] initWithCustomView:leftCustomButton];
     self.navigationItem.rightBarButtonItem = leftButtonItem;
-    
+}
+
+/**
+ *  添加nav上右按钮，字符串
+ */
+- (void)nav_RightItemWithStr:(NSString *)str Selector:(SEL)sel{
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightitem;
+}
+
+
+/**
+ *  添加nav上右按钮，字符串, 字体颜色
+ */
+- (void)nav_RightItemWithStr:(NSString *)str TintColor:(UIColor *)tintColor Selector:(SEL)sel{
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightitem;
+}
+
+/**
+ *  添加nav上右按钮，字符串, 字体颜色, 字体大小
+ */
+-(void)nav_RightItemWithStr:(NSString *)str TintColor:(UIColor *)tintColor FontSize:(CGFloat)size Selector:(SEL)sel{
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightitem;
+}
+
+/**
+ *  添加nav上左按钮，字符串
+ */
+- (void)nav_LeftItemWithStr:(NSString *)str Selector:(SEL)sel{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem new]initWithTitle:str style:UIBarButtonItemStylePlain target:self action:sel];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:12], NSFontAttributeName, nil] forState:UIControlStateNormal];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

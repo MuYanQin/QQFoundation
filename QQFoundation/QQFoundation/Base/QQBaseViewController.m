@@ -1,12 +1,12 @@
 //
-//  BaseViewController.m
-//  WWeChat
+//  QQBaseViewController.m
+//  QQFoundation
 //
-//  Created by wordoor－z on 16/1/28.
-//  Copyright © 2016年 wzx. All rights reserved.
+//  Created by Maybe on 2017/12/20.
+//  Copyright © 2017年 ZhangQun. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "QQBaseViewController.h"
 #import "QQAppDefine.h"
 #import "MJRefresh.h"
 //按比例获取高度
@@ -14,12 +14,11 @@
 //按比例获取宽度
 #define  WGiveWidth(WIDTH) WIDTH * [UIScreen mainScreen].bounds.size.width/320.0
 #define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-
-@interface BaseViewController ()
+@interface QQBaseViewController ()
 @property (nonatomic,strong)UIView *navBar;
 @end
 
-@implementation BaseViewController
+@implementation QQBaseViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -39,7 +38,7 @@
     if (VERSION <11) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-//这里的色值与 Nav的色值相同
+    //这里的色值与 Nav的色值相同
     self.BaseNavBarColor = self.navigationController.view.backgroundColor;
     [self.view addSubview:self.navBar];
     [self.view addSubview:self.BaseLoadView];
@@ -116,7 +115,7 @@
 #pragma mark - 最终获取到数据的内容
 
 - (void)getResponseObject:(id)response TagURL:(NSString *)URL {
-
+    
 }
 - (void)getError:(NSError *)err TagURL:(NSString *)URL {
     
@@ -128,7 +127,7 @@
     if (!_BaseScrollView) {
         _BaseScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
         _BaseScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(ScrollViewPullRefresh)];
-
+        
     }
     return _BaseScrollView;
 }
@@ -188,12 +187,12 @@
 //传统tableview的下啦刷新方法
 - (void)TableViewPullRefresh
 {
-
+    
 }
 //空白页的下拉刷新方法
 - (void)QQLoadViewPullRefresh
 {
-
+    
 }
 /**
  *  修改状态颜色 需要在自定义的nav里同时修改
@@ -211,5 +210,6 @@
     UIImage * image = [UIImage imageNamed:imageName];
     return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
+
 
 @end

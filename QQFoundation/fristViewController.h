@@ -6,8 +6,8 @@
 //  Copyright © 2017年 ZhangQun. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "QQBaseViewController.h"
 
-@interface fristViewController : BaseViewController
+@interface fristViewController : QQBaseViewController
 
 @end
