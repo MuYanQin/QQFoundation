@@ -813,7 +813,7 @@
 				TargetAttributes = {
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = X28XY5WWB7;
+						DevelopmentTeam = A8XTC7F62D;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1078,7 +1078,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X28XY5WWB7;
+				DEVELOPMENT_TEAM = A8XTC7F62D;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1095,7 +1095,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X28XY5WWB7;
+				DEVELOPMENT_TEAM = A8XTC7F62D;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

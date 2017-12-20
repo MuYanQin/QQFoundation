@@ -19,6 +19,8 @@
     QQController 用如下代码设置Nav透明   [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
  */
 @property (nonatomic,strong)UIColor           *BaseNavBarColor;
+
+
 @property (strong, nonatomic)UIScrollView     *BaseScrollView;///<基ScrollView
 @property (strong, nonatomic)QQtableView      *BaseQQTableView;///<基QQTableView
 @property (strong, nonatomic)UITableView      *BaseTableView;///<基TableView

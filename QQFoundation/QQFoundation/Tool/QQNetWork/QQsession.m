@@ -12,6 +12,7 @@
 #import "NSDate+QQCalculate.h"
 #import "YYCache.h"
 #import "uiview+MB.h"
+#import "QQTool.h"
 #define QQBaseUrl @""
 @interface QQsession ()
 @end
@@ -60,7 +61,6 @@ static AFHTTPSessionManager *manager;
     if (controller == nil || controller == NULL) {
         controller =[self getCurrentVC];
     }
-    
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];//域名和接口拼接起来的
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];//方便加请求参数
     [[QQNetManager defaultManager] insertQQConnection:self];
@@ -69,7 +69,7 @@ static AFHTTPSessionManager *manager;
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        [self handleResponseObject:responseObject IsCache:NO key:nil Controller:controller Success:success];
+        [self handleResponseObject:responseObject IsCache:NO key:nil Controller:controller Success:success failure:False];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self handleResponseObject:error Controller:controller failure:False];
@@ -98,7 +98,7 @@ static AFHTTPSessionManager *manager;
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handleResponseObject:responseObject IsCache:NO key:nil Controller:controller Success:success];
+        [self handleResponseObject:responseObject IsCache:NO key:nil Controller:controller Success:success failure:False];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self handleResponseObject:error Controller:controller failure:False];
     }];
@@ -135,7 +135,7 @@ static AFHTTPSessionManager *manager;
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        [self handleResponseObject:responseObject IsCache:YES key:keyStr Controller:controller Success:success];
+        [self handleResponseObject:responseObject IsCache:YES key:keyStr Controller:controller Success:success failure:False];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self handleResponseObject:error Controller:controller failure:False];
@@ -199,7 +199,6 @@ static AFHTTPSessionManager *manager;
     }
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    //    [TrueDic setObject:[UserInfo defaultManager].Token  forKey:@"token"];
     [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view Loading_0314];
     
@@ -215,7 +214,7 @@ static AFHTTPSessionManager *manager;
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         Progress(uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handleResponseObject:responseObject IsCache:NO key:TrueUrl Controller:controller Success:success];
+        [self handleResponseObject:responseObject IsCache:NO key:TrueUrl Controller:controller Success:success failure:False];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self handleResponseObject:error Controller:controller failure:False];
     }];
@@ -223,17 +222,20 @@ static AFHTTPSessionManager *manager;
     return operation;
 }
 #pragma mark - 统一处理下载返回的数据
-- (void)handleResponseObject:(id)responseObject  IsCache:(BOOL)Cache key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock;
+- (void)handleResponseObject:(id)responseObject  IsCache:(BOOL)Cache key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
 {
     if (Cache) {
         [HttpCache setObject:responseObject forKey:key withBlock:nil];//需要缓存则
     }
     //MB延时处理  不做延时处理的话 直接就因为hidden 导致提示出不来  也可以在下面单独区分隐藏
-    if ([responseObject[@"code"] isEqualToString:@"1"]) {
+    if ([responseObject[@"code"] isEqualToString:@"200"]) {
         [controller.view Hidden];
         successBlock(responseObject);
     }else{
-        [controller.view Message:responseObject[@"msg"]  HiddenAfterDelay:2];
+        [controller.view Message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
+        NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[@"msg"]], NSLocalizedDescriptionKey,nil];
+        NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:8003 userInfo:userInfo1];
+        failureBlock(error);
     }
     [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;
     [[QQNetManager defaultManager] deleteQQConnection:self];
