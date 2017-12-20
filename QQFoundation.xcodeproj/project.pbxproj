@@ -113,6 +113,7 @@
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1A91F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17D1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
+		ACE3ADF51FEA9AFC0034B1FE /* QQBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3ADF41FEA9AFC0034B1FE /* QQBarItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -331,6 +332,8 @@
 		52D8D17D1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		ACE3ADF31FEA9AFC0034B1FE /* QQBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQBarItemViewController.h; sourceTree = "<group>"; };
+		ACE3ADF41FEA9AFC0034B1FE /* QQBarItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQBarItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -630,6 +633,8 @@
 			children = (
 				52D8D1251F4D77EE00EA413B /* BaseViewController.h */,
 				52D8D1261F4D77EE00EA413B /* BaseViewController.m */,
+				ACE3ADF31FEA9AFC0034B1FE /* QQBarItemViewController.h */,
+				ACE3ADF41FEA9AFC0034B1FE /* QQBarItemViewController.m */,
 				52D8D1271F4D77EE00EA413B /* QQAppDefine.h */,
 				52D8D1281F4D77EE00EA413B /* QQBaseURL.h */,
 				52D8D1291F4D77EE00EA413B /* QQNavigationController.h */,
@@ -887,6 +892,7 @@
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,
 				52D8D1811F4D77EF00EA413B /* BaseViewController.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
+				ACE3ADF51FEA9AFC0034B1FE /* QQBarItemViewController.m in Sources */,
 				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
 				52C1154E1F4EC5CE005471CB /* AFURLResponseSerialization.m in Sources */,

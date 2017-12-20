@@ -103,31 +103,4 @@
  基TableView View的下啦刷新
  */
 - (void)TableViewPullRefresh;
-
-
-/**
- *  添加nav上右按钮，图片
- */
-- (void)addRightBtnWithImgName:(NSString *)imgName andSelector:(SEL)sel;
-
-/**
- *  添加nav上右按钮，字符串
- */
-- (void)addRightBtnWithStr:(NSString *)str andSelector:(SEL)sel;
-
-/**
- *  添加nav上右按钮，字符串, 字体颜色
- */
-- (void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andSelector:(SEL)sel;
-
-/**
- *  添加nav上右按钮，字符串, 字体颜色, 字体大小
- */
--(void)addNaviRightBtnWithStr:(NSString *)str andTintColor:(UIColor *)tintColor andFontSize:(CGFloat)size andSelector:(SEL)sel;
-
-/**
- *  添加nav上左按钮，字符串
- */
-- (void)addLeftBtnWithStr:(NSString *)str andSelector:(SEL)sel;
-
 @end
