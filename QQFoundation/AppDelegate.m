@@ -22,7 +22,6 @@
     self.window.rootViewController = [[QQTabBarController alloc]init];
     
     [self.window makeKeyAndVisible];
-    [NSThread sleepForTimeInterval:1];
     return YES;
 }
 

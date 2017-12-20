@@ -233,10 +233,15 @@
 
 - (void)addRightBtnWithImgName:(NSString *)imgName andSelector:(SEL)sel
 {
-     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[self removeRendering:imgName] style:UIBarButtonItemStylePlain target:self action:sel];
+//iOS 9
+    UIButton *leftCustomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [leftCustomButton.widthAnchor constraintEqualToConstant:20].active = YES;
+    [leftCustomButton.heightAnchor constraintEqualToConstant:20].active = YES;
+    [leftCustomButton addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+    [leftCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    UIBarButtonItem * leftButtonItem =[[UIBarButtonItem alloc] initWithCustomView:leftCustomButton];
+    self.navigationItem.rightBarButtonItem = leftButtonItem;
     
-    //微调一下图片的位置
-    [self.navigationItem.rightBarButtonItem setImageInsets:UIEdgeInsetsMake(0, WGiveWidth(-6), 0, WGiveWidth(6))];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
