@@ -9,7 +9,7 @@
 #import "fristViewController.h"
 #import "QQButton.h"
 #import "fiveViewController.h"
-#import "QQTabbarViewController.h"
+#import "QQTabBarController.h"
 @interface fristViewController ()
 
 @end
@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-    QQTabbarViewController *tab = (QQTabbarViewController *)self.tabBarController;
+    QQTabBarController *tab = (QQTabBarController *)self.tabBarController;
     tab.item0.Badge = 12;
     tab.item2.Badge = 12;
 

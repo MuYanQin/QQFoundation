@@ -7,7 +7,6 @@
 //
 
 #import "twoViewController.h"
-#import "QQTabbarViewController.h"
 @interface twoViewController ()
 
 @end

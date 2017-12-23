@@ -31,5 +31,12 @@
 /**第四个item*/
 @property (nonatomic,strong) TabarItem *item3;
 
+/**
+ 修改徐阿中的下标
+
+ @param index 下标
+ */
+- (void)setTabIndex:(NSInteger)index;
+
 @end
 
