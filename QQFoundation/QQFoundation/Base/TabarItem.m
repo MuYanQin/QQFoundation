@@ -42,6 +42,10 @@
 - (void)setBadge:(NSInteger)Badge
 {
     _Badge = Badge;
+    if(Badge < 0){
+        self.BadgeLb.hidden = YES;
+        return;
+    }
     NSString *badge = [NSString string];
     if (Badge > 999) {
         badge = @"999+";

@@ -9,6 +9,7 @@
 #import "QQTabBarController.h"
 #define width          [UIScreen mainScreen].bounds.size.width
 #define height        [UIScreen mainScreen].bounds.size.height
+#define ButtonTag  100
 #define tabbarHeight  44 //目前还不支持自定义高度   用的是系统的高度 这样不用刻意去适配Phone X了
 @interface QQTabBarController ()
 @property (nonatomic,strong) TabarItem *lastItem;
@@ -55,7 +56,7 @@
         NSString *heightImage = heightBackground[i];
         TabarItem *item = items[i];
         item.frame = CGRectMake(i*TabWidth, 0, TabWidth, tabbarHeight);
-        item.tag = 100+i;
+        item.tag = ButtonTag + i;
         item.titleLabel.font = [UIFont systemFontOfSize:11];
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
         [item setTitle:VCname[i] forState:UIControlStateNormal];
@@ -78,7 +79,7 @@
     if (self.lastItem) {
         self.lastItem.selected = NO;
     }
-    self.selectedIndex = item.tag - 100;
+    self.selectedIndex = item.tag - ButtonTag;
     self.SelectIndex = self.selectedIndex;
     item.selected = YES;
     self.lastItem = item;
@@ -93,7 +94,7 @@
 //设置选中的下标
 - (void)setTabIndex:(NSInteger)index
 {
-    TabarItem *item = [self.tabBarView viewWithTag:index + 100];
+    TabarItem *item = [self.tabBarView viewWithTag:index + ButtonTag];
     [self selectedTab:item];
 }
 - (UIView *)tabBarView
