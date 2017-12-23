@@ -1,102 +1,114 @@
 //
-//  QQTabBarController.m
-//  Teacher
+//  QQTabbarViewController.m
+//  tabbarTest
 //
-//  Created by tlt on 16/7/25.
-//  Copyright © 2016年 tlt. All rights reserved.
+//  Created by Maybe on 2017/12/21.
+//  Copyright © 2017年 JJBangKeJi. All rights reserved.
 //
 
 #import "QQTabBarController.h"
-#import "QQNavigationController.h"
-#import "fristViewController.h"
-#import "twoViewController.h"
-static CGFloat standOutHeight = 12;
-
-@interface QQTabBarController ()<UITabBarControllerDelegate>
+#define width          [UIScreen mainScreen].bounds.size.width
+#define height        [UIScreen mainScreen].bounds.size.height
+#define tabbarHeight  44
+@interface QQTabBarController ()
+@property (nonatomic,strong) TabarItem *lastItem;
 @end
 
 @implementation QQTabBarController
-
+- (instancetype)init
+{
+    if (self = [super init]) {
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.delegate = self;
+    [self initVC];
+    [self createVc];
+    [self.tabBar  addSubview:self.tabBarView];
     
-    fristViewController   * frist = [[fristViewController alloc]init];
-    twoViewController *two = [twoViewController new];
-
-    [[UITabBar appearance] setShadowImage:[[UIImage alloc]init]];
-    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
-    self.viewControllers = @[
-                            [self AddVC:frist Title:@"11111" Image:[UIImage imageNamed:@"tabbar_contacts"] andSelectImage:[self removeRendering:[UIImage imageNamed:@"tabbar_contactsHL"]]],
-                             [self AddVC:two Title:@"2222" Image:[UIImage imageNamed:@"tabbar_mine"] andSelectImage:[self removeRendering:[UIImage imageNamed:@"tabbar_mineHL"]]],
-                            ];
-    self.tabBar.tintColor = [UIColor colorWithRed:86.0/255.0 green:141.0/255.0 blue:216.0/255.0 alpha:1];///<如果图片不变只是改个颜色 就用着直接改。
-
-    //在tabbar 上加一个绘线的imageview
-//    [self.tabBar insertSubview:[self drawTabbarBgImageView] atIndex:0];
-//    self.tabBar.opaque = YES;
-//    //第几个Item器偏移
-//    UITabBarItem *tabBarItem = (UITabBarItem *)self.tabBar.items[2];
-//    [tabBarItem setImageInsets:UIEdgeInsetsMake(-5, 0, 5, 0)];
-//    /** 设置默认状态 中间的字体大小 颜色 */
-//    NSMutableDictionary *norDict = @{}.mutableCopy;
-//    norDict[NSFontAttributeName] = [UIFont systemFontOfSize:10];
-//    [tabBarItem setTitleTextAttributes:norDict forState:UIControlStateNormal];
-//    [self.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:86/255.0 green:141/255.0 blue:216/255.0 alpha:1]} forState:UIControlStateSelected];
-}
-- (UIImage *)removeRendering:(UIImage *)image
-{
-    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-}
-- (UIImage *)addRendering:(UIImage *)image
-{
-    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
-- (UIViewController *)AddVC:(UIViewController *)VC  Title:(NSString *)title Image:(UIImage *)image  andSelectImage:(UIImage *)selectImage
+- (void)initVC{
+    self.one = [fristViewController new];
+    self.two = [twoViewController new];
+    self.three = [threeViewController new];
+    self.four = [fourViewController new];
+    self.viewControllers = @[[[QQNavigationController alloc]initWithRootViewController:self.one],
+                             [[QQNavigationController alloc]initWithRootViewController:self.two],
+                             [[QQNavigationController alloc]initWithRootViewController:self.three],
+                             [[QQNavigationController alloc]initWithRootViewController:self.four]];
+}
+- (void)createVc
 {
+    NSArray *heightBackground = @[@"square-hight",@"friendly-light",@"message-light",@"mine-light"];
+    NSArray *backgroud = @[@"square",@"friendly",@"message",@"mine"];
+    NSArray *VCname = @[@"首页",@"接单大厅",@"订单",@"消息"];
+    self.item0 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    self.item1 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    self.item2 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    self.item3 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    NSArray *items = @[self.item0,self.item1,self.item2,self.item3];
+    float TabWidth = width/backgroud.count;
+    for (int i=0; i<backgroud.count; i++) {
+        NSString *backImage = backgroud[i];
+        NSString *heightImage = heightBackground[i];
+        TabarItem *item = items[i];
+        item.frame = CGRectMake(i*TabWidth, 0, TabWidth, tabbarHeight);
+        item.tag = 100+i;
+        item.titleLabel.font = [UIFont systemFontOfSize:11];
+        item.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [item setTitle:VCname[i] forState:UIControlStateNormal];
+        [item setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
+        [item setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        if (i == 0) {
+            item.selected  = YES;
+            self.lastItem = item;
+            self.SelectIndex = 0;
+        }
+        [item setImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
+        [item setImage:[UIImage imageNamed:heightImage] forState:UIControlStateSelected];
+        [item addTarget:self action:@selector(selectedTab:)
+       forControlEvents:UIControlEventTouchUpInside];
+        [self.tabBarView addSubview:item];
+    }
+}
+- (void)selectedTab:(TabarItem *)item
+{
+    if (self.lastItem) {
+        self.lastItem.selected = NO;
+    }
+    self.selectedIndex = item.tag - 100;
+    self.SelectIndex = self.selectedIndex;
+    item.selected = YES;
+    self.lastItem = item;
+    [self.tabBar  addSubview:self.tabBarView];//每次点击的时候加一次  不然响应事件会被覆盖
     
-    QQNavigationController *nav = [[QQNavigationController alloc]initWithRootViewController:VC];
-    VC.title = title;
-    VC.tabBarItem = [[UITabBarItem alloc]initWithTitle:title image:[self removeRendering:image] selectedImage:selectImage ];
-    //调整文字与图片的距离
-    VC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0,-3);
-    return nav;
+    [self QQTabBarController:self didSelect:self.viewControllers[self.selectedIndex]];
 }
+- (void)QQTabBarController:(QQTabBarController *)TabBarController  didSelect:(UIViewController *)viewcontroller
+{
+    NSLog(@"%ld",(long)TabBarController.SelectIndex);
+}
+- (void)setTabIndex:(NSInteger)index
+{
+    TabarItem *item = [self.tabBarView viewWithTag:index + 100];
+    [self selectedTab:item];
+}
+- (UIView *)tabBarView
+{
+    if (!_tabBarView) {
+        CGRect rect = self.tabBar.bounds;
+        _tabBarView = [[UIView alloc]initWithFrame:rect];
+        _tabBarView.backgroundColor = [UIColor whiteColor];
+        
+    }
+    return _tabBarView;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-- (UIImageView *)drawTabbarBgImageView
-{
-    CGFloat radius = 25;// 圆半径
-    CGFloat allFloat= (pow(radius, 2)-pow((radius-standOutHeight), 2));// standOutHeight 突出高度 12
-    CGFloat ww = sqrtf(allFloat);
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -standOutHeight,[UIScreen mainScreen].bounds.size.width , 49 +standOutHeight)];// ScreenW设备的宽
-    CGSize size = imageView.frame.size;
-    CAShapeLayer *layer = [CAShapeLayer layer];
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(size.width/2 - ww, standOutHeight)];
-    CGFloat angleH = 0.5*((radius-standOutHeight)/radius);
-    CGFloat startAngle = (1+angleH)*((float)M_PI); // 开始弧度
-    CGFloat endAngle = (2-angleH)*((float)M_PI);//结束弧度
-    // 开始画弧：CGPointMake：弧的圆心  radius：弧半径 startAngle：开始弧度 endAngle：介绍弧度 clockwise：YES为顺时针，No为逆时针
-    [path addArcWithCenter:CGPointMake((size.width)/2, radius) radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-    // 开始画弧以外的部分
-    [path addLineToPoint:CGPointMake(size.width/2+ww, standOutHeight)];
-    [path addLineToPoint:CGPointMake(size.width, standOutHeight)];
-    [path addLineToPoint:CGPointMake(size.width,size.height)];
-    [path addLineToPoint:CGPointMake(0,size.height)];
-    [path addLineToPoint:CGPointMake(0,standOutHeight)];
-    [path addLineToPoint:CGPointMake(size.width/2-ww, standOutHeight)];
-    layer.path = path.CGPath;
-    layer.fillColor = [UIColor whiteColor].CGColor;// 整个背景的颜色
-    layer.strokeColor = [UIColor colorWithWhite:0.765 alpha:1.000].CGColor;//边框线条的颜色
-    layer.lineWidth = 0.7;//边框线条的宽
-    // 在要画背景的view上 addSublayer:
-    [imageView.layer addSublayer:layer];
-    return imageView;
-}
-
-
 @end
+

@@ -1,24 +1,23 @@
 //
-//  threeViewController.m
+//  fourViewController.m
 //  QQFoundation
 //
-//  Created by ZhangQun on 2017/10/25.
+//  Created by Maybe on 2017/12/21.
 //  Copyright © 2017年 ZhangQun. All rights reserved.
 //
 
-#import "threeViewController.h"
+#import "fourViewController.h"
 
-@interface threeViewController ()
+@interface fourViewController ()
 
 @end
 
-@implementation threeViewController
+@implementation fourViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.title = @"3333";
-    self.navigationItem.title  = @"three";
+    self.navigationItem.title  = @"four";
 
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

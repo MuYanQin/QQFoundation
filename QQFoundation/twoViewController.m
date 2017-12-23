@@ -7,7 +7,7 @@
 //
 
 #import "twoViewController.h"
-
+#import "QQTabbarViewController.h"
 @interface twoViewController ()
 
 @end
@@ -17,8 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title  = @"two";
 }
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"%lu",self.tabBarController.selectedIndex);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

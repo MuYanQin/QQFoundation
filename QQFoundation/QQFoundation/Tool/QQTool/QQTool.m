@@ -159,6 +159,7 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
     }
     return [str TrimStringHAT];
 }
+
 + (NSString *)strRelayPrice:(id)str
 {
     if([self isBlank:str]){

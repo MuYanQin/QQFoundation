@@ -8,8 +8,8 @@
 
 #import "fristViewController.h"
 #import "QQButton.h"
-#import "threeViewController.h"
-
+#import "fiveViewController.h"
+#import "QQTabbarViewController.h"
 @interface fristViewController ()
 
 @end
@@ -19,12 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"副书记肯定会反馈撒";
+    self.navigationItem.title  = @"one";
+    QQTabbarViewController *tab = (QQTabbarViewController *)self.tabBarController;
+    tab.item0.Badge = 12;
+    tab.item2.Badge = 12;
 
 }
-- (void)Deon
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    
+    [self.navigationController pushViewController:[fiveViewController new] animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

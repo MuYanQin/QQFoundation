@@ -78,8 +78,6 @@
  @param err 返回的数据
  @param URL 请求的网址
  */
-
-
 - (void)getError:(NSError *)err TagURL:(NSString *)URL;
 
 
@@ -92,8 +90,6 @@
 /**
  基BaseScroll View的下啦刷新
  */
-
-
 - (void)ScrollViewPullRefresh;
 
 

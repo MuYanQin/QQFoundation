@@ -1,30 +1,25 @@
 //
-//  threeViewController.m
+//  fiveViewController.m
 //  QQFoundation
 //
-//  Created by ZhangQun on 2017/10/25.
+//  Created by Maybe on 2017/12/22.
 //  Copyright © 2017年 ZhangQun. All rights reserved.
 //
 
-#import "threeViewController.h"
+#import "fiveViewController.h"
 
-@interface threeViewController ()
+@interface fiveViewController ()
 
 @end
 
-@implementation threeViewController
+@implementation fiveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.title = @"3333";
-    self.navigationItem.title  = @"three";
+    self.title = @"Five";
+}
 
-}
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"%lu",self.tabBarController.selectedIndex);
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
