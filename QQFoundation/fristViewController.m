@@ -10,6 +10,8 @@
 #import "QQButton.h"
 #import "fiveViewController.h"
 #import "QQTabBarController.h"
+#import "QQButton.h"
+#import "QQImagePicker.h"
 @interface fristViewController ()
 
 @end
@@ -20,10 +22,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-    QQTabBarController *tab = (QQTabBarController *)self.tabBarController;
-    tab.item0.Badge = 12;
-    tab.item2.Badge = 12;
+        QQButton *btn = [QQButton buttonWithFrame:CGRectMake(0, 64, 100, 100) title:@"123" andBlock:^(UIButton *myButton) {
+        QQImagePicker *impicker = [QQImagePicker ShareInstance];
+        [impicker initwithCropRect:CGRectMake(0, 0, 300, 300) ChoosePicType:QQChoosePicLibray];
 
+        }];
+    [self.view addSubview:btn];
+    
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {

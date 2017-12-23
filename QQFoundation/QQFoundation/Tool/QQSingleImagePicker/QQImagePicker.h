@@ -22,8 +22,10 @@ typedef NS_ENUM(NSUInteger, QQChoosePicType){
     QQChoosePicLibray
 };
 @interface QQImagePicker : NSObject
+@property (nonatomic,weak) id<QQImagePickerDelegate> delegate;
+
 + (instancetype)ShareInstance;
 - (void)initwithCropRect:(CGRect)CropRect ChoosePicType:(QQChoosePicType)ChoosePicType;
-@property (nonatomic,weak) id<QQImagePickerDelegate> delegate;
+
 
 @end

@@ -78,7 +78,6 @@ s.subspec 'Tool' do |ss|
         sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTool/**/*.{h,m,c,mm}'
     end
 
-
     ss.subspec 'QQScanQRCode' do |sss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/QQScanQRCode/**/*.{h,m,c,mm}'
     end

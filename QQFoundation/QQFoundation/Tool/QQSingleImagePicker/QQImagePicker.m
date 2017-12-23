@@ -7,6 +7,7 @@
 //
 
 #import "QQImagePicker.h"
+#import <AVFoundation/AVFoundation.h>
 #import "QQCropperViewController.h"
 #if TARGET_IPHONE_SIMULATOR
 #define SIMULATOR 1
@@ -35,7 +36,7 @@
         if (SIMULATOR) {
             NSLog(@"模拟器无法打开相机");
             return;
-        }else{
+        }else{            
             self.ImagePickerController.sourceType =UIImagePickerControllerSourceTypeCamera;
         }
     }else{

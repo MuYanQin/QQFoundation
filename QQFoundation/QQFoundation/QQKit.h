@@ -8,14 +8,6 @@
 
 #ifndef QQKit_h
 #define QQKit_h
-#define QQWeakSelf(type) __weak  typeof(type)  WeakSelf = type
-
-#if DEBUG
-#define QQLog(...) NSLog(__VA_ARGS__)
-#else
-#define QQLog(...)
-#endif
-
 ///***********************************************************************************
 /// Base
 ///***********************************************************************************
