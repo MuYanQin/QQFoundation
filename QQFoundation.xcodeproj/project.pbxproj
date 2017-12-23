@@ -71,9 +71,6 @@
 		52D8D1171F4D775500EA413B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1151F4D775500EA413B /* Main.storyboard */; };
 		52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1181F4D775500EA413B /* Assets.xcassets */; };
 		52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D11A1F4D775500EA413B /* LaunchScreen.storyboard */; };
-		52D8D1821F4D77EF00EA413B /* QQNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D12A1F4D77EE00EA413B /* QQNavigationController.m */; };
-		52D8D1831F4D77EF00EA413B /* QQTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D12C1F4D77EE00EA413B /* QQTabBarController.m */; };
-		52D8D1841F4D77EF00EA413B /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D12E1F4D77EE00EA413B /* UINavigationController+FDFullscreenPopGesture.m */; };
 		52D8D1851F4D77EF00EA413B /* AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1311F4D77EE00EA413B /* AvoidCrash.m */; };
 		52D8D1861F4D77EF00EA413B /* Foundation+HDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1321F4D77EE00EA413B /* Foundation+HDLog.m */; };
 		52D8D1871F4D77EF00EA413B /* MyAttributedStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1341F4D77EE00EA413B /* MyAttributedStringBuilder.m */; };
@@ -138,9 +135,12 @@
 		ACB0F3E21FEBEBB900FC9ADB /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3CA1FEBEBB900FC9ADB /* message@2x.png */; };
 		ACB0F3E31FEBEBB900FC9ADB /* mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3CB1FEBEBB900FC9ADB /* mine@3x.png */; };
 		ACB0F3E61FEBEDD900FC9ADB /* fourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F3E51FEBEDD900FC9ADB /* fourViewController.m */; };
-		ACE3ADF51FEA9AFC0034B1FE /* QQBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3ADF41FEA9AFC0034B1FE /* QQBarItemViewController.m */; };
-		ACE3ADF81FEA9BBF0034B1FE /* QQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3ADF71FEA9BBF0034B1FE /* QQBaseViewController.m */; };
-		ACE4A39C1FEDF2E20082CE02 /* TabarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE4A39B1FEDF2E20082CE02 /* TabarItem.m */; };
+		ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0511FEE546200668126 /* QQBarItemViewController.m */; };
+		ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0541FEE546200668126 /* QQBaseViewController.m */; };
+		ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0581FEE546200668126 /* QQNavigationController.m */; };
+		ACF4B0651FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */; };
+		ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0601FEE546200668126 /* QQTabBarController.m */; };
+		ACF4B0671FEE546200668126 /* TabarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0611FEE546200668126 /* TabarItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -275,14 +275,6 @@
 		52D8D1181F4D775500EA413B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52D8D11B1F4D775500EA413B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52D8D11D1F4D775500EA413B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52D8D1271F4D77EE00EA413B /* QQAppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQAppDefine.h; sourceTree = "<group>"; };
-		52D8D1281F4D77EE00EA413B /* QQBaseURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBaseURL.h; sourceTree = "<group>"; };
-		52D8D1291F4D77EE00EA413B /* QQNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQNavigationController.h; sourceTree = "<group>"; };
-		52D8D12A1F4D77EE00EA413B /* QQNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQNavigationController.m; sourceTree = "<group>"; };
-		52D8D12B1F4D77EE00EA413B /* QQTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTabBarController.h; sourceTree = "<group>"; };
-		52D8D12C1F4D77EE00EA413B /* QQTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTabBarController.m; sourceTree = "<group>"; };
-		52D8D12D1F4D77EE00EA413B /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
-		52D8D12E1F4D77EE00EA413B /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		52D8D1301F4D77EE00EA413B /* AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvoidCrash.h; sourceTree = "<group>"; };
 		52D8D1311F4D77EE00EA413B /* AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvoidCrash.m; sourceTree = "<group>"; };
 		52D8D1321F4D77EE00EA413B /* Foundation+HDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+HDLog.m"; sourceTree = "<group>"; };
@@ -385,12 +377,20 @@
 		ACB0F3CB1FEBEBB900FC9ADB /* mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine@3x.png"; sourceTree = "<group>"; };
 		ACB0F3E41FEBEDD900FC9ADB /* fourViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fourViewController.h; sourceTree = "<group>"; };
 		ACB0F3E51FEBEDD900FC9ADB /* fourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fourViewController.m; sourceTree = "<group>"; };
-		ACE3ADF31FEA9AFC0034B1FE /* QQBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQBarItemViewController.h; sourceTree = "<group>"; };
-		ACE3ADF41FEA9AFC0034B1FE /* QQBarItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQBarItemViewController.m; sourceTree = "<group>"; };
-		ACE3ADF61FEA9BBF0034B1FE /* QQBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQBaseViewController.h; sourceTree = "<group>"; };
-		ACE3ADF71FEA9BBF0034B1FE /* QQBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQBaseViewController.m; sourceTree = "<group>"; };
-		ACE4A39A1FEDF2E20082CE02 /* TabarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabarItem.h; sourceTree = "<group>"; };
-		ACE4A39B1FEDF2E20082CE02 /* TabarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabarItem.m; sourceTree = "<group>"; };
+		ACF4B0511FEE546200668126 /* QQBarItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBarItemViewController.m; sourceTree = "<group>"; };
+		ACF4B0521FEE546200668126 /* QQBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBaseViewController.h; sourceTree = "<group>"; };
+		ACF4B0531FEE546200668126 /* QQBarItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBarItemViewController.h; sourceTree = "<group>"; };
+		ACF4B0541FEE546200668126 /* QQBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBaseViewController.m; sourceTree = "<group>"; };
+		ACF4B0561FEE546200668126 /* QQNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQNavigationController.h; sourceTree = "<group>"; };
+		ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		ACF4B0581FEE546200668126 /* QQNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQNavigationController.m; sourceTree = "<group>"; };
+		ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		ACF4B05B1FEE546200668126 /* QQAppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQAppDefine.h; sourceTree = "<group>"; };
+		ACF4B05C1FEE546200668126 /* QQBaseURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBaseURL.h; sourceTree = "<group>"; };
+		ACF4B05E1FEE546200668126 /* QQTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTabBarController.h; sourceTree = "<group>"; };
+		ACF4B05F1FEE546200668126 /* TabarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabarItem.h; sourceTree = "<group>"; };
+		ACF4B0601FEE546200668126 /* QQTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTabBarController.m; sourceTree = "<group>"; };
+		ACF4B0611FEE546200668126 /* TabarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabarItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -693,20 +693,10 @@
 		52D8D1241F4D77EE00EA413B /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				ACE3ADF31FEA9AFC0034B1FE /* QQBarItemViewController.h */,
-				ACE3ADF41FEA9AFC0034B1FE /* QQBarItemViewController.m */,
-				ACE3ADF61FEA9BBF0034B1FE /* QQBaseViewController.h */,
-				ACE3ADF71FEA9BBF0034B1FE /* QQBaseViewController.m */,
-				52D8D1271F4D77EE00EA413B /* QQAppDefine.h */,
-				52D8D1281F4D77EE00EA413B /* QQBaseURL.h */,
-				52D8D1291F4D77EE00EA413B /* QQNavigationController.h */,
-				52D8D12A1F4D77EE00EA413B /* QQNavigationController.m */,
-				52D8D12B1F4D77EE00EA413B /* QQTabBarController.h */,
-				52D8D12C1F4D77EE00EA413B /* QQTabBarController.m */,
-				ACE4A39A1FEDF2E20082CE02 /* TabarItem.h */,
-				ACE4A39B1FEDF2E20082CE02 /* TabarItem.m */,
-				52D8D12D1F4D77EE00EA413B /* UINavigationController+FDFullscreenPopGesture.h */,
-				52D8D12E1F4D77EE00EA413B /* UINavigationController+FDFullscreenPopGesture.m */,
+				ACF4B0501FEE546200668126 /* BaseController */,
+				ACF4B05A1FEE546200668126 /* BaseDefine */,
+				ACF4B0551FEE546200668126 /* BaseNavigatioinController */,
+				ACF4B05D1FEE546200668126 /* BaseTabBarController */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -882,6 +872,48 @@
 			path = "图标_ios";
 			sourceTree = "<group>";
 		};
+		ACF4B0501FEE546200668126 /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				ACF4B0511FEE546200668126 /* QQBarItemViewController.m */,
+				ACF4B0521FEE546200668126 /* QQBaseViewController.h */,
+				ACF4B0531FEE546200668126 /* QQBarItemViewController.h */,
+				ACF4B0541FEE546200668126 /* QQBaseViewController.m */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		ACF4B0551FEE546200668126 /* BaseNavigatioinController */ = {
+			isa = PBXGroup;
+			children = (
+				ACF4B0561FEE546200668126 /* QQNavigationController.h */,
+				ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */,
+				ACF4B0581FEE546200668126 /* QQNavigationController.m */,
+				ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = BaseNavigatioinController;
+			sourceTree = "<group>";
+		};
+		ACF4B05A1FEE546200668126 /* BaseDefine */ = {
+			isa = PBXGroup;
+			children = (
+				ACF4B05B1FEE546200668126 /* QQAppDefine.h */,
+				ACF4B05C1FEE546200668126 /* QQBaseURL.h */,
+			);
+			path = BaseDefine;
+			sourceTree = "<group>";
+		};
+		ACF4B05D1FEE546200668126 /* BaseTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				ACF4B05E1FEE546200668126 /* QQTabBarController.h */,
+				ACF4B05F1FEE546200668126 /* TabarItem.h */,
+				ACF4B0601FEE546200668126 /* QQTabBarController.m */,
+				ACF4B0611FEE546200668126 /* TabarItem.m */,
+			);
+			path = BaseTabBarController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -908,8 +940,9 @@
 		52D8D1011F4D775500EA413B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = QQ;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = ZhangQun;
+				ORGANIZATIONNAME = MuYanQin;
 				TargetAttributes = {
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -984,11 +1017,13 @@
 			files = (
 				52C1154F1F4EC5CE005471CB /* AFURLSessionManager.m in Sources */,
 				52D8D1881F4D77EF00EA413B /* NSAttributedString+Easy.m in Sources */,
+				ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */,
 				52D8D1931F4D77EF00EA413B /* UIView+SuperViewController.m in Sources */,
 				52C1156F1F4EC5CE005471CB /* SDWebImageManager.m in Sources */,
 				52C115761F4EC5CE005471CB /* UIImageView+WebCache.m in Sources */,
 				52ACF7201F51282500CFA470 /* QQScanVC.m in Sources */,
 				52C115541F4EC5CE005471CB /* MJRefreshHeader.m in Sources */,
+				ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */,
 				52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */,
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
 				52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */,
@@ -1003,7 +1038,6 @@
 				52D8D1981F4D77EF00EA413B /* QQAlertcontroller.m in Sources */,
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
 				52C1157A1F4EC5CE005471CB /* YYDiskCache.m in Sources */,
-				ACE3ADF81FEA9BBF0034B1FE /* QQBaseViewController.m in Sources */,
 				5289010E1FA08F3000C29479 /* twoViewController.m in Sources */,
 				52D8D19D1F4D77EF00EA413B /* QQLoadView.m in Sources */,
 				52C115701F4EC5CE005471CB /* SDWebImagePrefetcher.m in Sources */,
@@ -1011,8 +1045,8 @@
 				ACB0F3E61FEBEDD900FC9ADB /* fourViewController.m in Sources */,
 				52D8D1A31F4D77EF00EA413B /* uiview+MB.m in Sources */,
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,
+				ACF4B0651FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
-				ACE3ADF51FEA9AFC0034B1FE /* QQBarItemViewController.m in Sources */,
 				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
 				52C1154E1F4EC5CE005471CB /* AFURLResponseSerialization.m in Sources */,
@@ -1024,8 +1058,8 @@
 				52C115641F4EC5CE005471CB /* FLAnimatedImage.m in Sources */,
 				52C115721F4EC5CE005471CB /* UIImage+GIF.m in Sources */,
 				52C115741F4EC5CE005471CB /* UIImage+WebP.m in Sources */,
+				ACF4B0671FEE546200668126 /* TabarItem.m in Sources */,
 				52C1155B1F4EC5CE005471CB /* MJRefreshGifHeader.m in Sources */,
-				ACE4A39C1FEDF2E20082CE02 /* TabarItem.m in Sources */,
 				52C115601F4EC5CE005471CB /* NSBundle+MJRefresh.m in Sources */,
 				52C1155A1F4EC5CE005471CB /* MJRefreshBackStateFooter.m in Sources */,
 				52D8D18B1F4D77EF00EA413B /* NSString+QQCalculate.m in Sources */,
@@ -1037,6 +1071,7 @@
 				5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
+				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
 				52D8D1A11F4D77EF00EA413B /* MBProgressHUD+Category.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
 				ACAD54521FEC7AE600F3E395 /* fiveViewController.m in Sources */,
@@ -1045,6 +1080,7 @@
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				52D8D1911F4D77EF00EA413B /* UIView+AlertMessage.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
+				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
 				52C115621F4EC5CE005471CB /* UIScrollView+MJRefresh.m in Sources */,
@@ -1058,7 +1094,6 @@
 				52D8D1871F4D77EF00EA413B /* MyAttributedStringBuilder.m in Sources */,
 				52D8D1851F4D77EF00EA413B /* AvoidCrash.m in Sources */,
 				52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */,
-				52D8D1821F4D77EF00EA413B /* QQNavigationController.m in Sources */,
 				52C115581F4EC5CE005471CB /* MJRefreshBackGifFooter.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
@@ -1071,8 +1106,6 @@
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
-				52D8D1841F4D77EF00EA413B /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
-				52D8D1831F4D77EF00EA413B /* QQTabBarController.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,
 				52C115661F4EC5CE005471CB /* MKAnnotationView+WebCache.m in Sources */,
 				52C115691F4EC5CE005471CB /* SDImageCache.m in Sources */,

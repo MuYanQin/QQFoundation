@@ -29,7 +29,22 @@ s.source_files  = 'QQFoundation/QQFoundation'
 s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
 
 s.subspec 'Base' do |ss|
-ss.source_files = 'QQFoundation/QQFoundation/Base/**/*.{h,m,c,mm}'
+
+    ss.subspec 'BaseController' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseController/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'BaseDefine' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseDefine/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'BaseNavigatioinController' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseNavigatioinController/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'BaseTabBarController' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseTabBarController/**/*.{h,m,c,mm}'
+    end
 end
 
 s.subspec 'Category' do |ss|
