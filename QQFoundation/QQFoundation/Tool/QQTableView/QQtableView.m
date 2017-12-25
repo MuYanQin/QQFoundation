@@ -121,9 +121,9 @@
             //非主动取消链接
 //            [[QQNetManager defaultManager] showProgressHUDWithType:0];
             [_TempController.view addSubview:self.myLoadView];
-            self.myLoadView.LoadViewType = QQLoadViewErrornetwork;
+            self.myLoadView.LoadType = QQLoadViewErrornetwork;
             __weak  typeof(self)  WeakSelf = self;
-            self.myLoadView.clickblock = ^(){
+            self.myLoadView.ImageClick = ^(){
                 [WeakSelf headerRefresh];
             };
         }
@@ -171,7 +171,6 @@
         }else  if (error.code != -999) {
             [self.TempController.view Hidden];
             //非主动取消链接
-            [[QQNetManager defaultManager] showProgressHUDWithType:0];
         }
     }];
 }

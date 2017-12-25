@@ -106,8 +106,6 @@
 
 - (void)insertQQConnection:(QQsession *)hc;///<插入对象
 - (void)deleteQQConnection:(QQsession *)hc;///<删除对象
-
-- (void)showProgressHUDWithType:(NSInteger)type;///<显示提示
 //控制器用
 - (void)insertConnectionVC:(UIViewController *)VC
               QQConnection:(QQsession *)hc

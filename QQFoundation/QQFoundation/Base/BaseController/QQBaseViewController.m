@@ -101,7 +101,7 @@
 - (void)getTempError:(NSError *)error TagURL:(NSString *)URL{
     
     [self.view addSubview:self.BaseLoadView];
-    self.BaseLoadView.LoadViewType = QQLoadViewErrornetwork;
+    self.BaseLoadView.LoadType = QQLoadViewErrornetwork;
     
     //    error.code == -1009;///<offline 断网
     [self getError:error TagURL:URL];
@@ -170,10 +170,10 @@
     if (! _BaseLoadView) {
         _BaseLoadView = [[QQLoadView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
         _BaseLoadView.backgroundColor = [UIColor whiteColor];
-        _BaseLoadView.LoadViewType = QQLoadViewNone;
+        _BaseLoadView.LoadType = QQLoadViewNone;
         __block QQLoadView *QQL = _BaseLoadView;
         _BaseLoadView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(QQLoadViewPullRefresh)];
-        _BaseLoadView.clickblock = ^{
+        _BaseLoadView.ImageClick  = ^{
             [QQL.mj_header beginRefreshing];
         };
     }

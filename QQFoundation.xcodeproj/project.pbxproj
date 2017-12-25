@@ -875,9 +875,9 @@
 		ACF4B0501FEE546200668126 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
+				ACF4B0531FEE546200668126 /* QQBarItemViewController.h */,
 				ACF4B0511FEE546200668126 /* QQBarItemViewController.m */,
 				ACF4B0521FEE546200668126 /* QQBaseViewController.h */,
-				ACF4B0531FEE546200668126 /* QQBarItemViewController.h */,
 				ACF4B0541FEE546200668126 /* QQBaseViewController.m */,
 			);
 			path = BaseController;
