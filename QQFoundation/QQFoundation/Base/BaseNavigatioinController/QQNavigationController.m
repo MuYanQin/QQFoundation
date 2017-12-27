@@ -39,11 +39,11 @@
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){
-        //如应用中出现seachbar的跳动，视图位置出现问题，有可能是这里引起的
         self.edgesForExtendedLayout = UIRectEdgeNone;//视图控制器，四条边不指定
-
+        
+        //如应用中出现seachbar的跳动，视图位置出现问题，有可能是这里引起的
         self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
-        //设置view的位置
+        //设置状态栏的不隐藏
         self.modalPresentationCapturesStatusBarAppearance = NO;
        /* [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
                                           forBarPosition:UIBarPositionTop

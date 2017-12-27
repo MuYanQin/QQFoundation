@@ -9,10 +9,8 @@
 #import "QQNetManager.h"
 #import "MJRefresh.h"
 #import "uiview+MB.h"
-#import "UIScrollView+EmptyDataSet.h"
-#import "QQLoadView.h"
 #import "QQAppDefine.h"
-@interface QQtableView ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface QQtableView ()
 {
     NSInteger _pageNumber;///<纪录当前处于哪个
     NSString *_url;///<下载的网址
@@ -22,8 +20,6 @@
     
 }
 @property (nonatomic, getter=isLoading) BOOL loading;
-@property (nonatomic,strong)     QQLoadView * myLoadView;
-
 @end
 @implementation QQtableView
 
@@ -61,8 +57,6 @@
         }
         _footerView  = [[UIView alloc]init];
         [self setTableFooterView:_footerView];
-//        _spaceView = [[QQSpaceView alloc]init];
-        //注册通知取消刷新状态
     }
     return self;
 }
@@ -74,10 +68,6 @@
         [self setTableFooterView:_footerView];
     }
     return self;
-}
-- (void)setIsOpenEmptyDataSet:(BOOL)IsOpenEmptyDataSet
-{
-    _IsOpenEmptyDataSet = IsOpenEmptyDataSet;
 }
 
 - (void)headerRefresh
@@ -93,50 +83,7 @@
         _pageNumber  = 1;
         [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
     }
-    [[QQNetManager defaultManager]RTSTableWith:_url Parameters:_parameters From:_TempController Successs:^(id responseObject) {
-        if ([responseObject[@"code"] isEqualToString:@"1"]) {
-            //如果下载的数据源数组为空则开始 展现空白页
-            if ([self IsNull:responseObject[@"rst"]] ||([responseObject[@"rst"] count] ==0)) {
-                if (_IsOpenEmptyDataSet) {
-                    self.emptyDataSetSource = self;
-                    self.emptyDataSetDelegate =self;
-                }
-            }
-            if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataDic:)]) {
-                [self.QQDeleGate QQtableView:self isPullDown:YES SuccessDataDic:responseObject];
-            }
-            [self.TempController.view Hidden];
-        }else{
-            [self.TempController.view Message:responseObject[@"msg"] HiddenAfterDelay:2];
-        }
-        [self.mj_header endRefreshing];
-    } False:^(NSError *error) {
-        [self.TempController.view Hidden];
-        [self.mj_header endRefreshing];
-        if (error.code == -1001){
-            [self.TempController.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
-            
-        }else  if (error.code != -999) {
-            [self.TempController.view Hidden];
-            //非主动取消链接
-//            [[QQNetManager defaultManager] showProgressHUDWithType:0];
-            [_TempController.view addSubview:self.myLoadView];
-            self.myLoadView.LoadType = QQLoadViewErrornetwork;
-            __weak  typeof(self)  WeakSelf = self;
-            self.myLoadView.ImageClick = ^(){
-                [WeakSelf headerRefresh];
-            };
-        }
-    }];
-}
-//基类的空白页
-- (QQLoadView *)myLoadView
-{
-    if (! _myLoadView) {
-        _myLoadView = [[QQLoadView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
-        _myLoadView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
-    }
-    return _myLoadView;
+    [self SetUpNetWorkParamters:_parameters isPullDown:YES];
 }
 - (void)footerRefresh
 {
@@ -145,32 +92,37 @@
         _pageNumber ++;
         [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
     }
-    [[QQNetManager defaultManager]RTSTableWith:_url Parameters:_parameters From:_TempController Successs:^(id responseObject) {
-        if ([responseObject[@"code"] isEqualToString:@"1"]) {
+    [self SetUpNetWorkParamters:_parameters isPullDown:NO];
+
+}
+- (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
+{
+    [[QQNetManager defaultManager]RTSTableWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
+        if ([responseObject[@"code"] isEqualToString:@"200"]) {
+            //如果下载的数据源数组为空则开始 展现空白页
             if ([self IsNull:responseObject[@"rst"]] ||([responseObject[@"rst"] count] ==0)) {
-                [self.TempController.view Message:@"暂无更多数据" HiddenAfterDelay:2];
+                
             }
             if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataDic:)]) {
-                [self.QQDeleGate QQtableView:self isPullDown:NO SuccessDataDic:responseObject];
-                [self.TempController.view Hidden];
+                [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataDic:responseObject];
             }
+            [self.TempController.view Hidden];
         }else{
             [self.TempController.view Message:responseObject[@"msg"] HiddenAfterDelay:2];
         }
-        [self.mj_footer endRefreshing];
-
+        [self EndRefrseh];
     } False:^(NSError *error) {
-        _pageNumber --;///<上啦出现加载失败的时候PageNum恢复到原始参数
-        [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
         [self.TempController.view Hidden];
-        
-        [self.mj_footer endRefreshing];
+        [self EndRefrseh];
+        if (!isPullDown) {
+            _pageNumber --;///<上啦出现加载失败的时候PageNum恢复到原始参数
+            [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
+        }
         if (error.code == -1001){
             [self.TempController.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
+
+        }else  if (error.code != -999) {//-999主动取消
             
-        }else  if (error.code != -999) {
-            [self.TempController.view Hidden];
-            //非主动取消链接
         }
     }];
 }
@@ -216,179 +168,4 @@
     _ISPaging = page;
     [self.mj_header beginRefreshing];
 }
-
-- (void)UpDate
-{
-    [self.mj_header beginRefreshing];
-}
-
-
-#pragma mark - DZNEmptyDataSetSource Methods
-
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = nil;
-    UIFont *font = nil;
-    UIColor *textColor = nil;
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    
-    
-    text = @"No Messages";
-    font = [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0];
-    textColor = [UIColor cyanColor];
-    
-    if (!text) {
-        return nil;
-    }
-    
-    if (font) [attributes setObject:font forKey:NSFontAttributeName];
-    if (textColor) [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-}
-
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = nil;
-    UIFont *font = nil;
-    UIColor *textColor = nil;
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    text = @"When you have messages, you’ll see them here.";
-    font = [UIFont systemFontOfSize:13.0];
-    textColor = [UIColor purpleColor];
-    paragraph.lineSpacing = 4.0;
-    if (!text) {
-        return nil;
-    }
-    
-    if (font) [attributes setObject:font forKey:NSFontAttributeName];
-    if (textColor) [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
-    if (paragraph) [attributes setObject:paragraph forKey:NSParagraphStyleAttributeName];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
-    
-    return attributedString;
-}
-
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-
-    return [UIImage imageNamed:@""];
-}
-//点击后的动画
-- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    animation.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0) ];
-    animation.duration = 0.25;
-    animation.cumulative = YES;
-    animation.repeatCount = MAXFLOAT;
-    
-    return animation;
-}
-
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-    NSString *text = nil;
-    UIFont *font = nil;
-    UIColor *textColor = nil;
-    
-    text = @"Continue";
-    font = [UIFont boldSystemFontOfSize:17.0];
-    textColor = [UIColor redColor];
-    
-    
-    if (!text) {
-        return nil;
-    }
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    if (font) [attributes setObject:font forKey:NSFontAttributeName];
-    if (textColor) [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-}
-
-- (UIImage *)buttonBackgroundImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-
-    UIEdgeInsets capInsets = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
-    UIEdgeInsets rectInsets = UIEdgeInsetsZero;
-
-    capInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0);
-    rectInsets = UIEdgeInsetsMake(0.0, 10, 0.0, 10);
-
-    
-    return [[[UIImage imageNamed:@""] resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:rectInsets];
-}
-
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIColor whiteColor];
-}
-
-- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return 0.0;
-}
-
-- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return 24.0;
-}
-
-
-#pragma mark - DZNEmptyDataSetDelegate Methods
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView
-{
-    return self.isLoading;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-//    self.loading = YES;
-//    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        self.loading = NO;
-//    });
-    [self.mj_header beginRefreshing];
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
-{
-//    self.loading = YES;
-//    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        self.loading = NO;
-//    });
-    [self.mj_header beginRefreshing];
-
-}
-
-
-
 @end

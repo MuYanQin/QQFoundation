@@ -23,7 +23,6 @@
 @end
 @interface QQtableView : UITableView
 @property (assign,nonatomic) id<QQtableViewGate> QQDeleGate;
-@property (assign, nonatomic)BOOL IsOpenEmptyDataSet;///<是否开启空白页面的图片展示  默认：NO
 @property (weak, nonatomic)UIViewController *TempController;///<传递controller进来展示loadding状态只能是weak不会引用
 /**
  直接开始下载任务
@@ -42,8 +41,4 @@
  */
 - (void)lazyLaunchWithString:(NSString *)url  Paramerters:(NSDictionary *)paramters FromController:(UIViewController *)controller isPaging:(BOOL)page;
 
-/**
- 手动更新
- */
-- (void)UpDate;
 @end

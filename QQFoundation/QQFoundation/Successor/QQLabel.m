@@ -8,7 +8,6 @@
 
 #import "QQLabel.h"
 #import "QQTool.h"
-#import <objc/message.h>
 @implementation QQLabel
 
 - (instancetype)initWithFrame:(CGRect)frame

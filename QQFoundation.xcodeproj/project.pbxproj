@@ -107,7 +107,6 @@
 		52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1761F4D77EF00EA413B /* QQCropperViewController.m */; };
 		52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1781F4D77EF00EA413B /* QQImagePicker.m */; };
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
-		52D8D1A91F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17D1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
 		ACAD54521FEC7AE600F3E395 /* fiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAD54511FEC7AE600F3E395 /* fiveViewController.m */; };
 		ACB0F3CC1FEBEBB900FC9ADB /* mine-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3B41FEBEBB900FC9ADB /* mine-light@2x.png */; };
@@ -345,8 +344,6 @@
 		52D8D1781F4D77EF00EA413B /* QQImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQImagePicker.m; sourceTree = "<group>"; };
 		52D8D17A1F4D77EF00EA413B /* QQtableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQtableView.h; sourceTree = "<group>"; };
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
-		52D8D17C1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
-		52D8D17D1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
 		ACAD54501FEC7AE600F3E395 /* fiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fiveViewController.h; sourceTree = "<group>"; };
@@ -826,8 +823,6 @@
 			children = (
 				52D8D17A1F4D77EF00EA413B /* QQtableView.h */,
 				52D8D17B1F4D77EF00EA413B /* QQtableView.m */,
-				52D8D17C1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.h */,
-				52D8D17D1F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m */,
 			);
 			path = QQTableView;
 			sourceTree = "<group>";
@@ -1098,7 +1093,6 @@
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
 				52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */,
-				52D8D1A91F4D77EF00EA413B /* UIScrollView+EmptyDataSet.m in Sources */,
 				52C1154D1F4EC5CE005471CB /* AFURLRequestSerialization.m in Sources */,
 				5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */,
 				52D8D18D1F4D77EF00EA413B /* UIColor+Hexadecimal.m in Sources */,
