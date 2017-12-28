@@ -45,6 +45,51 @@
 @interface QQTool : NSObject
 
 
+/**
+ 判断字符串是否为空
+ */
++ (BOOL)isBlank:(NSString *)string;
+
+/**
+ 字符串的空、对象、等处理方式
+ @param str 传入对象
+ @return 字符串
+ */
++ (NSString *)strRelay:(id)str;
+
+/**
+ 转换成价格格式  保留俩位小数
+ 
+ @param str 传入的对象
+ @return 字符串
+ */
++ (NSString *)strRelayPrice:(id)str;
+
+
+/**
+ 判断是否为空
+ 
+ @param data 传入的数据
+ 
+ @return bool值是否为空
+ */
++ (BOOL)IsNull:(id)data;
+
+/**
+ 是否为手机号
+ 
+ @param mobile 字符串
+ @return 布尔值
+ */
++ (BOOL)isAvaluebleMobile:(NSString *)mobile;
+
+/**
+ 是否是数字
+
+ @param string 字符串
+ @return 布尔值
+ */
++ (BOOL)isNumbers:(NSString *)string;
 
 /**
  运行时交换方法
@@ -58,7 +103,6 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector);
 
 /**
  json格式字符串转字典
- 
  
  @param jsonString 传入
  
@@ -88,75 +132,5 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector);
  */
 +(NSData *)imageData:(UIImage *)myimage;
 
-
-/**
- 判断是否为空
-
- @param data 传入的数据
-
- @return bool值是否为空
- */
-+ (BOOL)IsNull:(id)data;
-
-/**
- 判断字符串是否为空
- */
-+ (BOOL)isBlank:(NSString *)string;
-
-/**
- 字符串的空、对象、等处理方式
- @param str 传入对象
- @return 字符串
- */
-+ (NSString *)strRelay:(id)str;
-
-
-/**
- 转换成价格格式  保留俩位小数
-
- @param str 传入的对象
- @return 字符串
- */
-+ (NSString *)strRelayPrice:(id)str;
-
-/*
- 身份证号验证
- */
-+ (BOOL)validateIdentityCard: (NSString *)identityCard;
-
-/**
- 判断是否是银行卡号
-
- @param cardNo 卡号
-
- @return bool
- */
-+ (BOOL) checkCardNo:(NSString*) cardNo;
-
-/**
- * 是否为IP
- */
-+(BOOL)isIPAdress :(NSString *)ip;
-
-/**
- * 是否为网址
- */
-+(BOOL)isValidateUrl:(NSString *)url;
-
-/**
- * 是否为邮箱
- */
-+(BOOL)isValidateEmail:(NSString *)email;
-
-/**
- * 是否为手机号码
- */
-+ (BOOL)valiMobile:(NSString *)mobilePhone;
-
-
-/**
- * 是否为车牌
- */
-+(BOOL) isValidateCarNo:(NSString*)carNo;
 
 @end

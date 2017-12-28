@@ -12,6 +12,7 @@
 #import "QQTabBarController.h"
 #import "QQButton.h"
 #import "QQImagePicker.h"
+#import "QQTool.h"
 @interface fristViewController ()
 
 @end
@@ -22,18 +23,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-        QQButton *btn = [QQButton buttonWithFrame:CGRectMake(0, 64, 100, 100) title:@"123" andBlock:^(UIButton *myButton) {
-        QQImagePicker *impicker = [QQImagePicker ShareInstance];
-        [impicker initwithCropRect:CGRectMake(0, 0, 300, 300) ChoosePicType:QQChoosePicLibray];
-
-        }];
+    UITextField *textfeild = [[UITextField alloc]initWithFrame:CGRectMake(100, 100, 100, 30)];
+    textfeild.placeholder = @"请输入手机号";
+    [self.view addSubview:textfeild];
+    QQButton *btn = [QQButton buttonWithFrame:CGRectMake(0, 64, 100, 100) title:@"123" andBlock:^(UIButton *myButton) {
+        if ([QQTool isNumbers:textfeild.text]) {
+            NSLog(@"正确");
+        }else{
+            NSLog(@"错误");
+            
+        }
+        
+    }];
     [self.view addSubview:btn];
-    
+
+                     
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.navigationController pushViewController:[fiveViewController new] animated:YES];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
