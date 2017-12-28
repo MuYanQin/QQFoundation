@@ -131,7 +131,6 @@
     }
     return _BaseScrollView;
 }
-//
 - (QQtableView *)BaseQQTableView
 {
     if (!_BaseQQTableView) {

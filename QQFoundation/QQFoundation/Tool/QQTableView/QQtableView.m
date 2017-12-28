@@ -26,31 +26,10 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-
-//        // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
-//        MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
-//        // 设置普通状态的动画图片
-//        [header setImages:@[[UIImage imageNamed:@"1"]] forState:MJRefreshStateIdle];
-//        // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
-//        [header setImages:@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"],[UIImage imageNamed:@"4"]] forState:MJRefreshStatePulling];
-//        // 设置正在刷新状态的动画图片
-//        [header setImages:@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"],[UIImage imageNamed:@"4"]] forState:MJRefreshStateRefreshing];
-//        // 设置header
-//        self.mj_header = header;//
         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
-//        MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
-//        
-//        // 设置普通状态的动画图片
-//        [footer setImages:@[[UIImage imageNamed:@"1"]] forState:MJRefreshStateIdle];
-//        // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
-//        [footer setImages:@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"],[UIImage imageNamed:@"4"]] forState:MJRefreshStatePulling];
-//        // 设置正在刷新状态的动画图片
-//        [footer setImages:@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"],[UIImage imageNamed:@"4"]] forState:MJRefreshStateRefreshing];
-//        
-//        // 设置尾部
-//        self.mj_footer = footer;
-        if (VERSION >=11) {
+        if (@available(iOS 11.0, *)) {
             self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
             self.estimatedRowHeight  = 0;
             self.estimatedSectionFooterHeight  = 0;
             self.estimatedSectionFooterHeight = 0;
@@ -120,7 +99,6 @@
         }
         if (error.code == -1001){
             [self.TempController.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
-
         }else  if (error.code != -999) {//-999主动取消
             
         }

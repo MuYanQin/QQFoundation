@@ -77,7 +77,4 @@
     }
     return _BadgeLb;
 }
-
-
-
 @end

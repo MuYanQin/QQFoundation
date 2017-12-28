@@ -902,8 +902,8 @@
 			isa = PBXGroup;
 			children = (
 				ACF4B05E1FEE546200668126 /* QQTabBarController.h */,
-				ACF4B05F1FEE546200668126 /* TabarItem.h */,
 				ACF4B0601FEE546200668126 /* QQTabBarController.m */,
+				ACF4B05F1FEE546200668126 /* TabarItem.h */,
 				ACF4B0611FEE546200668126 /* TabarItem.m */,
 			);
 			path = BaseTabBarController;
