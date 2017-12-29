@@ -8,69 +8,61 @@
 
 #import <UIKit/UIKit.h>
 
-
-
-
-typedef enum{
-    // 正常
-    FLAlignmentStatusNormal,
+typedef NS_ENUM(NSInteger,ButtonTextAlignment){
     // 图标和文本位置变化
-    FLAlignmentStatusLeft,// 左对齐
-    FLAlignmentStatusCenter,// 居中对齐
-    FLAlignmentStatusRight,// 右对齐
-    FLAlignmentStatusTop,// 图标在上，文本在下(居中)
-    FLAlignmentStatusBottom, // 图标在下，文本在上(居中)
-    FLAlignmentStatusMy,
-}FLAlignmentStatus;
+    ButtonTextAlignmentRight  = 8,// 文字文字在左
+    ButtonTextAlignmentLeft   = 1,//文字在右
+    ButtonTextAlignmentTop    = 2,// 文字在上(居中)
+    ButtonTextAlignmentBottom = 3, // 文字在下(居中)
+};
 
-typedef void(^myButtonBlock)(UIButton *myButton);
-typedef void(^RegisterBlock)(UIButton *myButton);
-
+@class QQButton;
+typedef void(^myButtonBlock)(QQButton *myButton);
+typedef void(^RegisterBlock)(QQButton *myButton);
 @interface QQButton : UIButton
-@property (nonatomic,assign)FLAlignmentStatus status;
-@property (assign, nonatomic) CGFloat buttonTopRadio;
-@property (nonatomic, copy) id userInfo;//携带信息
+@property (nonatomic,assign)ButtonTextAlignment TextAlignment;//默认文字在右 ButtonTextAlignmentRight
+@property (nonatomic,assign) CGRect imageRect;//图片相对于button的位置
 
+@property (nonatomic, copy) id userInfo;//携带信息
 /**
  快捷设置点击事件  只有文字
 
  @param frame frame
  @param title 文字
- @param block 点击事件
+ @param Click 点击事件
  @return buttob
  */
-+ (QQButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title andBlock:(myButtonBlock)block;
++ (QQButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title ClickBlock:(myButtonBlock)Click;
 
 /**
  快捷设置点击事件 可单独设置status分配文字图片的位置
-
  @param frame frame
  @param title 文字
  @param image 图片名称
- @param block 点击事件
+ @param Click 点击事件
  @return button
  */
-+ (QQButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title image:(UIImage *)image andBlock:(myButtonBlock)block;
++ (QQButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title image:(UIImage *)image ClickBlock:(myButtonBlock)Click;
+
 /**
  快捷设置点击事件 直接设置status 分配文字图片的位置
  
  @param frame frame
  @param title 文字
  @param image 图片名称
- @param block 点击事件
+ @param Click 点击事件
  @return button
  */
-+ (QQButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title image:(UIImage *)image status:(FLAlignmentStatus)status andBlock:(myButtonBlock)block;
++ (QQButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title image:(UIImage *)image TextAlignment:(ButtonTextAlignment)TextAlignment ClickBlock:(myButtonBlock)Click;
 
 /**
  注册用Button
 
  @param frame frame
  @param color 颜色
- @param block 返回block
+ @param Click 返回block
  @return button
  */
-+ (QQButton *)buttonWithFrame:(CGRect)frame color:(UIColor *)color andBlock:(RegisterBlock)block;
++ (QQButton *)buttonWithFrame:(CGRect)frame color:(UIColor *)color ClickBlock:(RegisterBlock)Click;
 
-+ (instancetype)fl_shareButton;
 @end

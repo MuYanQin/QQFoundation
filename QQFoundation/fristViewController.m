@@ -23,19 +23,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-    UITextField *textfeild = [[UITextField alloc]initWithFrame:CGRectMake(100, 100, 100, 30)];
-    textfeild.placeholder = @"请输入手机号";
-    [self.view addSubview:textfeild];
-    QQButton *btn = [QQButton buttonWithFrame:CGRectMake(0, 64, 100, 100) title:@"123" andBlock:^(UIButton *myButton) {
-        if ([QQTool isNumbers:textfeild.text]) {
-            NSLog(@"正确");
-        }else{
-            NSLog(@"错误");
-            
-        }
-        
+
+    QQButton *button = [QQButton buttonWithFrame:CGRectMake(100, 100, 80, 30) title:@"" ClickBlock:^(QQButton *myButton) {
+        NSLog(@"dianji");
     }];
-    [self.view addSubview:btn];
+    [button setTitle:@"秦慕乔" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:12];
+    button.backgroundColor = [UIColor purpleColor];
+    [button setImage:[UIImage imageNamed:@"icon_em_al"] forState:UIControlStateNormal];
+    [self.view addSubview:button];
 
                      
 }
