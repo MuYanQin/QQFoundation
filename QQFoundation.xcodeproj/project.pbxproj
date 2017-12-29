@@ -108,6 +108,14 @@
 		52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1781F4D77EF00EA413B /* QQImagePicker.m */; };
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
+		AC781AC51FF51D2C00863F4C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB61FF51D2C00863F4C /* README.markdown */; };
+		AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB71FF51D2C00863F4C /* LICENSE.txt */; };
+		AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ABB1FF51D2C00863F4C /* FMDatabaseQueue.m */; };
+		AC781AC81FF51D2C00863F4C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ABE1FF51D2C00863F4C /* FMDatabaseAdditions.m */; };
+		AC781AC91FF51D2C00863F4C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ABF1FF51D2C00863F4C /* FMDatabase.m */; };
+		AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781AC31FF51D2C00863F4C /* FMDatabasePool.m */; };
+		AC781ACB1FF51D2C00863F4C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781AC41FF51D2C00863F4C /* FMResultSet.m */; };
+		AC781ACF1FF51E3700863F4C /* QQSqlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ACE1FF51E3700863F4C /* QQSqlHelper.m */; };
 		ACAD54521FEC7AE600F3E395 /* fiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAD54511FEC7AE600F3E395 /* fiveViewController.m */; };
 		ACB0F3CC1FEBEBB900FC9ADB /* mine-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3B41FEBEBB900FC9ADB /* mine-light@2x.png */; };
 		ACB0F3CD1FEBEBB900FC9ADB /* square@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3B51FEBEBB900FC9ADB /* square@3x.png */; };
@@ -346,6 +354,21 @@
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		AC781AB61FF51D2C00863F4C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		AC781AB71FF51D2C00863F4C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		AC781ABA1FF51D2C00863F4C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		AC781ABB1FF51D2C00863F4C /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		AC781ABC1FF51D2C00863F4C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		AC781ABD1FF51D2C00863F4C /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		AC781ABE1FF51D2C00863F4C /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		AC781ABF1FF51D2C00863F4C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		AC781AC01FF51D2C00863F4C /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		AC781AC11FF51D2C00863F4C /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		AC781AC21FF51D2C00863F4C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		AC781AC31FF51D2C00863F4C /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		AC781AC41FF51D2C00863F4C /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		AC781ACD1FF51E3700863F4C /* QQSqlHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSqlHelper.h; sourceTree = "<group>"; };
+		AC781ACE1FF51E3700863F4C /* QQSqlHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQSqlHelper.m; sourceTree = "<group>"; };
 		ACAD54501FEC7AE600F3E395 /* fiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fiveViewController.h; sourceTree = "<group>"; };
 		ACAD54511FEC7AE600F3E395 /* fiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fiveViewController.m; sourceTree = "<group>"; };
 		ACB0F3B41FEBEBB900FC9ADB /* mine-light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-light@2x.png"; sourceTree = "<group>"; };
@@ -638,6 +661,7 @@
 		52D8D10B1F4D775500EA413B /* QQFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				AC781AB51FF51D2C00863F4C /* FMDB */,
 				52C114D71F4EC5CE005471CB /* AFNetworking */,
 				52C114E51F4EC5CE005471CB /* MJRefresh */,
 				52C115141F4EC5CE005471CB /* SDWebImage */,
@@ -772,6 +796,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				AC781ACC1FF51DE400863F4C /* QQSQLManager */,
 				523DF3C01F8DBD67000C1A51 /* PayUtil */,
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
 				52D8D1681F4D77EF00EA413B /* QQNetWork */,
@@ -834,6 +859,51 @@
 				52D8D1801F4D77EF00EA413B /* QQTool.m */,
 			);
 			path = QQTool;
+			sourceTree = "<group>";
+		};
+		AC781AB51FF51D2C00863F4C /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				AC781AB61FF51D2C00863F4C /* README.markdown */,
+				AC781AB71FF51D2C00863F4C /* LICENSE.txt */,
+				AC781AB81FF51D2C00863F4C /* src */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		AC781AB81FF51D2C00863F4C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				AC781AB91FF51D2C00863F4C /* fmdb */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		AC781AB91FF51D2C00863F4C /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				AC781ABA1FF51D2C00863F4C /* FMDatabase.h */,
+				AC781ABB1FF51D2C00863F4C /* FMDatabaseQueue.m */,
+				AC781ABC1FF51D2C00863F4C /* FMResultSet.h */,
+				AC781ABD1FF51D2C00863F4C /* FMDatabasePool.h */,
+				AC781ABE1FF51D2C00863F4C /* FMDatabaseAdditions.m */,
+				AC781ABF1FF51D2C00863F4C /* FMDatabase.m */,
+				AC781AC01FF51D2C00863F4C /* FMDatabaseQueue.h */,
+				AC781AC11FF51D2C00863F4C /* FMDB.h */,
+				AC781AC21FF51D2C00863F4C /* FMDatabaseAdditions.h */,
+				AC781AC31FF51D2C00863F4C /* FMDatabasePool.m */,
+				AC781AC41FF51D2C00863F4C /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		AC781ACC1FF51DE400863F4C /* QQSQLManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC781ACD1FF51E3700863F4C /* QQSqlHelper.h */,
+				AC781ACE1FF51E3700863F4C /* QQSqlHelper.m */,
+			);
+			path = QQSQLManager;
 			sourceTree = "<group>";
 		};
 		ACB0F3B31FEBEBB900FC9ADB /* 图标_ios */ = {
@@ -969,6 +1039,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */,
 				ACB0F3D21FEBEBB900FC9ADB /* friendly-light@2x.png in Resources */,
 				5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */,
 				ACB0F3DF1FEBEBB900FC9ADB /* message@3x.png in Resources */,
@@ -983,6 +1054,7 @@
 				ACB0F3DD1FEBEBB900FC9ADB /* mine@2x.png in Resources */,
 				ACB0F3D51FEBEBB900FC9ADB /* square-hight@2x.png in Resources */,
 				ACB0F3D31FEBEBB900FC9ADB /* square-hight.png in Resources */,
+				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
 				ACB0F3D91FEBEBB900FC9ADB /* message-light@3x.png in Resources */,
 				52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */,
 				ACB0F3E01FEBEBB900FC9ADB /* message.png in Resources */,
@@ -1021,10 +1093,13 @@
 				ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */,
 				52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */,
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
+				AC781ACF1FF51E3700863F4C /* QQSqlHelper.m in Sources */,
 				52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */,
+				AC781ACB1FF51D2C00863F4C /* FMResultSet.m in Sources */,
 				52D8D1891F4D77EF00EA413B /* NSDate+QQCalculate.m in Sources */,
 				52C1154B1F4EC5CE005471CB /* AFNetworkReachabilityManager.m in Sources */,
 				52C1155F1F4EC5CE005471CB /* MJRefreshConst.m in Sources */,
+				AC781AC91FF51D2C00863F4C /* FMDatabase.m in Sources */,
 				52D8D19B1F4D77EF00EA413B /* QQFileManage.m in Sources */,
 				52C115571F4EC5CE005471CB /* MJRefreshAutoStateFooter.m in Sources */,
 				52C115651F4EC5CE005471CB /* FLAnimatedImageView.m in Sources */,
@@ -1062,6 +1137,7 @@
 				52D8D1A41F4D77EF00EA413B /* QQNetManager.m in Sources */,
 				52C115501F4EC5CE005471CB /* MJRefreshAutoFooter.m in Sources */,
 				52C1155D1F4EC5CE005471CB /* MJRefreshStateHeader.m in Sources */,
+				AC781AC81FF51D2C00863F4C /* FMDatabaseAdditions.m in Sources */,
 				52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */,
 				5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
@@ -1075,6 +1151,8 @@
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				52D8D1911F4D77EF00EA413B /* UIView+AlertMessage.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
+				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
+				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
