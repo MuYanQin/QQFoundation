@@ -29,6 +29,15 @@
             }else{
                 NSLog(@"创建表失败");
             }
+            //处理后期表里面增加字段 用模拟器测试是可以的  不知道线上可行
+//            if (![self.db columnExists:@"phone" inTableWithName:@"t_student"]) {
+//                BOOL worked =  [self.db executeUpdate:@"ALTER TABLE t_student ADD COLUMN phone INTEGER default 0"];
+//                if(worked){
+//                    NSLog(@"插入成功");
+//                }else{
+//                    NSLog(@"插入失败");
+//                }
+//            }
         }];
     }
     return self;
