@@ -26,6 +26,7 @@
 
     QQButton *button = [QQButton buttonWithFrame:CGRectMake(100, 100, 80, 30) title:@"" ClickBlock:^(QQButton *myButton) {
         NSLog(@"dianji");
+        [self.navigationController pushViewController:[fiveViewController new] animated:YES];
     }];
     [button setTitle:@"秦慕乔" forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:12];
