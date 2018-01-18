@@ -13,6 +13,7 @@
 #import "QQButton.h"
 #import "QQImagePicker.h"
 #import "QQTool.h"
+#import "QQTextField.h"
 @interface fristViewController ()
 
 @end
@@ -24,16 +25,20 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
 
-    QQButton *button = [QQButton buttonWithFrame:CGRectMake(100, 100, 80, 30) title:@"" ClickBlock:^(QQButton *myButton) {
-        NSLog(@"dianji");
-        [self.navigationController pushViewController:[fiveViewController new] animated:YES];
-    }];
-    [button setTitle:@"秦慕乔" forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:12];
-    button.backgroundColor = [UIColor purpleColor];
-    [button setImage:[UIImage imageNamed:@"icon_em_al"] forState:UIControlStateNormal];
-    [self.view addSubview:button];
+//    QQButton *button = [QQButton buttonWithFrame:CGRectMake(100, 100, 80, 30) title:@"" ClickBlock:^(QQButton *myButton) {
+//        NSLog(@"dianji");
+//        [self.navigationController pushViewController:[fiveViewController new] animated:YES];
+//    }];
+//    [button setTitle:@"秦慕乔" forState:UIControlStateNormal];
+//    button.titleLabel.font = [UIFont systemFontOfSize:12];
+//    button.backgroundColor = [UIColor purpleColor];
+//    [button setImage:[UIImage imageNamed:@"icon_em_al"] forState:UIControlStateNormal];
+//    [self.view addSubview:button];
 
+    QQTextField *text = [[QQTextField alloc]initWithFrame:CGRectMake(50, 100, 200, 40)];
+    text.maxLength = 10;
+    text.placeholder = @"123";
+    [self.view addSubview:text];
                      
 }
 
