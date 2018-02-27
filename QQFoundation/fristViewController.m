@@ -14,6 +14,7 @@
 #import "QQImagePicker.h"
 #import "QQTool.h"
 #import "QQTextField.h"
+#import "QQAlertController.h"
 @interface fristViewController ()
 
 @end
@@ -41,7 +42,14 @@
     [self.view addSubview:text];
                      
 }
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    QQAlertController *alert = [QQAlertController alertControllerWithTitle:@"" description:@"确定交换嘛dshfkjasdhfkjhjsdhffsdhkjfhaksdf？" cancel:@"取消" button:@"确认" action:^(NSInteger index){
+        NSLog(@"tap button %ld",(long)index);
+    }];
+    alert.isTouchHidden = YES;
+    [self presentViewController:alert animated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

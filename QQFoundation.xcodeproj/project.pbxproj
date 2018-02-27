@@ -90,7 +90,6 @@
 		52D8D1951F4D77EF00EA413B /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1521F4D77EF00EA413B /* CALayer+XibConfiguration.m */; };
 		52D8D1961F4D77EF00EA413B /* icon_em_al.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1531F4D77EF00EA413B /* icon_em_al.png */; };
 		52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1541F4D77EF00EA413B /* multi_network_error_icon@2x.png */; };
-		52D8D1981F4D77EF00EA413B /* QQAlertcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1561F4D77EF00EA413B /* QQAlertcontroller.m */; };
 		52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1581F4D77EF00EA413B /* QQButton.m */; };
 		52D8D19A1F4D77EF00EA413B /* QQDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15A1F4D77EF00EA413B /* QQDevice.m */; };
 		52D8D19B1F4D77EF00EA413B /* QQFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15C1F4D77EF00EA413B /* QQFileManage.m */; };
@@ -108,6 +107,7 @@
 		52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1781F4D77EF00EA413B /* QQImagePicker.m */; };
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
+		AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */; };
 		AC781AC51FF51D2C00863F4C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB61FF51D2C00863F4C /* README.markdown */; };
 		AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB71FF51D2C00863F4C /* LICENSE.txt */; };
 		AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ABB1FF51D2C00863F4C /* FMDatabaseQueue.m */; };
@@ -142,6 +142,8 @@
 		ACB0F3E21FEBEBB900FC9ADB /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3CA1FEBEBB900FC9ADB /* message@2x.png */; };
 		ACB0F3E31FEBEBB900FC9ADB /* mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB0F3CB1FEBEBB900FC9ADB /* mine@3x.png */; };
 		ACB0F3E61FEBEDD900FC9ADB /* fourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F3E51FEBEDD900FC9ADB /* fourViewController.m */; };
+		ACE026372017672200A387DC /* QQAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE026362017672200A387DC /* QQAlertController.m */; };
+		ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE026392017695A00A387DC /* DefaultAnimation.m */; };
 		ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0511FEE546200668126 /* QQBarItemViewController.m */; };
 		ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0541FEE546200668126 /* QQBaseViewController.m */; };
 		ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0581FEE546200668126 /* QQNavigationController.m */; };
@@ -318,8 +320,6 @@
 		52D8D1521F4D77EF00EA413B /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
 		52D8D1531F4D77EF00EA413B /* icon_em_al.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_em_al.png; sourceTree = "<group>"; };
 		52D8D1541F4D77EF00EA413B /* multi_network_error_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multi_network_error_icon@2x.png"; sourceTree = "<group>"; };
-		52D8D1551F4D77EF00EA413B /* QQAlertcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQAlertcontroller.h; sourceTree = "<group>"; };
-		52D8D1561F4D77EF00EA413B /* QQAlertcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQAlertcontroller.m; sourceTree = "<group>"; };
 		52D8D1571F4D77EF00EA413B /* QQButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQButton.h; sourceTree = "<group>"; };
 		52D8D1581F4D77EF00EA413B /* QQButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQButton.m; sourceTree = "<group>"; };
 		52D8D1591F4D77EF00EA413B /* QQDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQDevice.h; sourceTree = "<group>"; };
@@ -354,6 +354,8 @@
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		AC5EC653201887030030EBC6 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		AC781AB61FF51D2C00863F4C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		AC781AB71FF51D2C00863F4C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AC781ABA1FF51D2C00863F4C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -397,6 +399,10 @@
 		ACB0F3CB1FEBEBB900FC9ADB /* mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine@3x.png"; sourceTree = "<group>"; };
 		ACB0F3E41FEBEDD900FC9ADB /* fourViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fourViewController.h; sourceTree = "<group>"; };
 		ACB0F3E51FEBEDD900FC9ADB /* fourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fourViewController.m; sourceTree = "<group>"; };
+		ACE026352017672200A387DC /* QQAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQAlertController.h; sourceTree = "<group>"; };
+		ACE026362017672200A387DC /* QQAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQAlertController.m; sourceTree = "<group>"; };
+		ACE026382017695A00A387DC /* DefaultAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultAnimation.h; sourceTree = "<group>"; };
+		ACE026392017695A00A387DC /* DefaultAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultAnimation.m; sourceTree = "<group>"; };
 		ACF4B0511FEE546200668126 /* QQBarItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBarItemViewController.m; sourceTree = "<group>"; };
 		ACF4B0521FEE546200668126 /* QQBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBaseViewController.h; sourceTree = "<group>"; };
 		ACF4B0531FEE546200668126 /* QQBarItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBarItemViewController.h; sourceTree = "<group>"; };
@@ -461,6 +467,8 @@
 				52C114DA1F4EC5CE005471CB /* AFNetworking.h */,
 				52C114DB1F4EC5CE005471CB /* AFNetworkReachabilityManager.h */,
 				52C114DC1F4EC5CE005471CB /* AFNetworkReachabilityManager.m */,
+				AC5EC653201887030030EBC6 /* AFNetworkActivityIndicatorManager.h */,
+				AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */,
 				52C114DD1F4EC5CE005471CB /* AFSecurityPolicy.h */,
 				52C114DE1F4EC5CE005471CB /* AFSecurityPolicy.m */,
 				52C114DF1F4EC5CE005471CB /* AFURLRequestSerialization.h */,
@@ -771,8 +779,6 @@
 				52D8D1521F4D77EF00EA413B /* CALayer+XibConfiguration.m */,
 				52D8D1531F4D77EF00EA413B /* icon_em_al.png */,
 				52D8D1541F4D77EF00EA413B /* multi_network_error_icon@2x.png */,
-				52D8D1551F4D77EF00EA413B /* QQAlertcontroller.h */,
-				52D8D1561F4D77EF00EA413B /* QQAlertcontroller.m */,
 				52D8D1571F4D77EF00EA413B /* QQButton.h */,
 				52D8D1581F4D77EF00EA413B /* QQButton.m */,
 				52D8D1591F4D77EF00EA413B /* QQDevice.h */,
@@ -796,6 +802,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				ACE02634201766FE00A387DC /* QQAlertController */,
 				AC781ACC1FF51DE400863F4C /* QQSQLManager */,
 				523DF3C01F8DBD67000C1A51 /* PayUtil */,
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
@@ -935,6 +942,17 @@
 				ACB0F3CB1FEBEBB900FC9ADB /* mine@3x.png */,
 			);
 			path = "图标_ios";
+			sourceTree = "<group>";
+		};
+		ACE02634201766FE00A387DC /* QQAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				ACE026352017672200A387DC /* QQAlertController.h */,
+				ACE026362017672200A387DC /* QQAlertController.m */,
+				ACE026382017695A00A387DC /* DefaultAnimation.h */,
+				ACE026392017695A00A387DC /* DefaultAnimation.m */,
+			);
+			path = QQAlertController;
 			sourceTree = "<group>";
 		};
 		ACF4B0501FEE546200668126 /* BaseController */ = {
@@ -1092,6 +1110,7 @@
 				52C115541F4EC5CE005471CB /* MJRefreshHeader.m in Sources */,
 				ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */,
 				52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */,
+				AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
 				AC781ACF1FF51E3700863F4C /* QQSqlHelper.m in Sources */,
 				52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */,
@@ -1105,7 +1124,6 @@
 				52C115651F4EC5CE005471CB /* FLAnimatedImageView.m in Sources */,
 				52C1155C1F4EC5CE005471CB /* MJRefreshNormalHeader.m in Sources */,
 				52D8D1951F4D77EF00EA413B /* CALayer+XibConfiguration.m in Sources */,
-				52D8D1981F4D77EF00EA413B /* QQAlertcontroller.m in Sources */,
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
 				52C1157A1F4EC5CE005471CB /* YYDiskCache.m in Sources */,
 				5289010E1FA08F3000C29479 /* twoViewController.m in Sources */,
@@ -1178,6 +1196,7 @@
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
+				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,
 				52C115661F4EC5CE005471CB /* MKAnnotationView+WebCache.m in Sources */,
 				52C115691F4EC5CE005471CB /* SDImageCache.m in Sources */,
@@ -1186,6 +1205,7 @@
 				52C115771F4EC5CE005471CB /* UIView+WebCache.m in Sources */,
 				528901111FA08F4A00C29479 /* threeViewController.m in Sources */,
 				52C1156C1F4EC5CE005471CB /* SDWebImageDecoder.m in Sources */,
+				ACE026372017672200A387DC /* QQAlertController.m in Sources */,
 				52D8D19C1F4D77EF00EA413B /* QQLabel.m in Sources */,
 				52C115791F4EC5CE005471CB /* YYCache.m in Sources */,
 				52D8D1941F4D77EF00EA413B /* UIViewController+QQPrintDealloc.m in Sources */,

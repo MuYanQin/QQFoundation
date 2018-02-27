@@ -7,6 +7,7 @@
 //
 
 #import "QQTabBarController.h"
+#import "DefaultAnimation.h"
 #define width          [UIScreen mainScreen].bounds.size.width
 #define height        [UIScreen mainScreen].bounds.size.height
 #define ButtonTag  100
