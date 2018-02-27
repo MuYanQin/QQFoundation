@@ -23,28 +23,29 @@
 }
 - (void)initialize
 {
-    [self addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
     _maxLength = NSUIntegerMax;
 
 }
 -(void)awakeFromNib {
     [super awakeFromNib];
-    [self addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
     _maxLength = NSUIntegerMax;
 }
-- (void)textDidChange:(QQTextField *)TextField
+- (void)textDidChange:(NSNotification *)notification
 {
     if (_maxLength != NSUIntegerMax) {
-        NSString    *toBeString    = TextField.text;
+        NSString    *toBeString    = self.text;
         
-        if (!TextField.markedTextRange) {
+        if (!self.markedTextRange) {
             if (toBeString.length >_maxLength) {
-                TextField.text = [toBeString substringToIndex:_maxLength]; // 截取最大限制字符数.
-                [self.viewController.view Message:[NSString stringWithFormat:@"最不能超过%lu个字符",(unsigned long)_maxLength] HiddenAfterDelay:2];
-                [TextField resignFirstResponder];
+                self.text = [toBeString substringToIndex:_maxLength]; // 截取最大限制字符数.
+                [self.viewController.view Message:[NSString stringWithFormat:@"最不能超过%lu个字符",_maxLength] HiddenAfterDelay:2];
+                [self resignFirstResponder];
             }
         }
     }
+
 
 }
 @end
