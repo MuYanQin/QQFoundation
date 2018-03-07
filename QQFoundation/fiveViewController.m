@@ -7,7 +7,7 @@
 //
 
 #import "fiveViewController.h"
-#import "UIColor+Hexadecimal.h"
+
 @interface fiveViewController ()
 
 @end
@@ -19,14 +19,7 @@
     // Do any additional setup after loading the view.
     self.title = @"Five";
 }
-- (void)viewWillDisappear:(BOOL)animated
-{
-   self.navigationController.navigationBar.barTintColor = [UIColor colorWithR:0 G:122 B:255 A:1];
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

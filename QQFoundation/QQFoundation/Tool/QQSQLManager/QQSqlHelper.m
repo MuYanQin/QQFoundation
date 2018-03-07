@@ -110,7 +110,6 @@
 {
     __block BOOL ret = YES;
     [self.DBQ inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        [db open];
         [db beginDeferredTransaction];
         BOOL t = [db executeUpdate:sql];
         //当最后*rollback的值为YES的时候，事务回退，如果最后*rollback为NO，事务提交
@@ -119,7 +118,6 @@
         }else{
             *rollback = NO;
         }
-         [db close];
     }];
     return ret;
 }
