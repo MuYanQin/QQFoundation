@@ -84,9 +84,9 @@
             if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataDic:)]) {
                 [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataDic:responseObject];
             }
-            [self.TempController.view Hidden];
-            if (isPullDown) {//下啦刷新才会有空白页
-                if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
+            if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
+                 [self.TempController.view Hidden];
+                if (isPullDown) {//下啦刷新才会有空白页
                     self.listArray = [NSArray arrayWithArray:responseObject[@"data"][@"list"]];
                     if (self.listArray.count == 0) {
                         self.loadStatuesView.width = self.width;
@@ -97,7 +97,8 @@
                         [self setTableFooterView:_footerView];
                     }
                 }
-            }
+             }
+
         }else{
             [self.TempController.view Message:responseObject[@"msg"] HiddenAfterDelay:2];
             [self setTableFooterView:_footerView];
@@ -115,7 +116,6 @@
             self.tableFooterView = self.loadStatuesView;
         }
 
-        
         [self.TempController.view Hidden];
         [self EndRefrseh];
         if (!isPullDown) {
