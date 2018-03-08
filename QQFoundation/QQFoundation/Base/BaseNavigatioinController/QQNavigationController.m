@@ -35,7 +35,6 @@
     //设置颜色
     self.navigationBar.barTintColor =[UIColor colorWithR:0 G:122 B:255 A:1];
 
-
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){

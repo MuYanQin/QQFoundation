@@ -30,27 +30,34 @@
 }
 - (void)initParameters
 {
-    _ImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.width/2 - 50,100, 100, 100)];
-    _ImageView.image = [UIImage imageNamed:@"icon_server_default_icon"];
+    _ImageView = [[UIImageView alloc]init];
+    _ImageView.image = [UIImage imageNamed:@"404-3"];
     _ImageView.userInteractionEnabled = YES;
     [self addSubview:_ImageView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapclick)];
     [_ImageView addGestureRecognizer:tap];
     
-    _showLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.width/2 - 100, _ImageView.bottom + 20, 200, 20)];
+    _showLabel = [[UILabel alloc]init];
     _showLabel.font = [UIFont systemFontOfSize:14];
     _showLabel.textColor = [UIColor colorWithHexString:@"999999"];
     _showLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_showLabel];
-
-    _deatilLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.width/2 - 50, _showLabel.bottom + 20, 100, 20)];
+    
+    _deatilLabel = [[UILabel alloc]init];
     _deatilLabel.font = [UIFont systemFontOfSize:12];
     _deatilLabel.textAlignment = NSTextAlignmentCenter;
     _deatilLabel.hidden = YES;
     _deatilLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     [self addSubview:_deatilLabel];
-
+    
+}
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    _ImageView.frame = CGRectMake((self.width - 117)/2,137, 117, 100);
+    _showLabel.frame = CGRectMake(self.width/2 - 150, _ImageView.bottom + 20, 300, 20);
+    _deatilLabel.frame = CGRectMake(self.width/2 - 50, _showLabel.bottom + 20, 100, 20);
 }
 - (void)setLoadType:(QQLoadViewType)LoadType
 {

@@ -19,11 +19,13 @@
  */
 - (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)direction SuccessDataDic:(NSDictionary *)dic;
 
+- (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error;
 
 @end
 @interface QQtableView : UITableView
 @property (assign,nonatomic) id<QQtableViewGate> QQDeleGate;
 @property (weak, nonatomic)UIViewController *TempController;///<传递controller进来展示loadding状态只能是weak不会引用
+
 /**
  直接开始下载任务
 
