@@ -37,10 +37,10 @@
 
 - (void)RTSGetWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {
-    QQsession *QS= [_dataDic objectForKey:url];
+    QQsession *QS= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!QS) {
         QS = [[QQsession alloc]init];
-        QS.urlStr = url;
+        QS.urlStr = [self cacheKeyWithURL:url parameters:parameters];
         [QS TXDGetWithUrl:url Dic:parameters from:controller success:^(id responseObject) {
             Success(responseObject);
         } False:^(NSError *error) {
@@ -51,10 +51,10 @@
 
 - (void)RTSGetCacheWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {
-    QQsession *QS= [_dataDic objectForKey:url];
+    QQsession *QS= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!QS) {
         QS = [[QQsession alloc]init];
-        QS.urlStr = url;
+        QS.urlStr = [self cacheKeyWithURL:url parameters:parameters];
         [QS TXDGetCacheWithUrl:url Dic:parameters from:controller success:^(id responseObject) {
             Success(responseObject);
         } False:^(NSError *error) {
@@ -64,10 +64,10 @@
 }
 - (void)RTSPostWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {
-    QQsession *QS= [_dataDic objectForKey:url];
+    QQsession *QS= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!QS) {
         QS = [[QQsession alloc]init];
-        QS.urlStr = url;
+        QS.urlStr = [self cacheKeyWithURL:url parameters:parameters];
         [QS TXDPostWithUrl:url Dic:parameters from:controller success:^(id responseObject) {
             Success(responseObject);
         } False:^(NSError *error) {
@@ -77,10 +77,10 @@
 }
 - (void)RTSTableWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {
-    QQsession *QS= [_dataDic objectForKey:url];
+    QQsession *QS= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!QS) {
         QS = [[QQsession alloc]init];
-        QS.urlStr = url;
+        QS.urlStr = [self cacheKeyWithURL:url parameters:parameters];
         [QS TXDTableWithUrl:url Dic:parameters from:controller success:^(id responseObject) {
             Success(responseObject);
         } False:^(NSError *error) {
@@ -90,10 +90,10 @@
 }
 - (void)RTSUploadWith:(NSString *)url Dictionary:(NSDictionary *)parameters MutableArray:(NSMutableArray *)Images From:(UIViewController *)controller Progress:(void (^)(NSProgress *))Progress Success:(void (^)(id))Success False:(void (^)(NSError *))False
 {
-    QQsession *QS= [_dataDic objectForKey:url];
+    QQsession *QS= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!QS) {
         QS = [[QQsession alloc]init];
-        QS.urlStr = url;
+        QS.urlStr = [self cacheKeyWithURL:url parameters:parameters];
         [QS TXDUploadWithUrl:url Dic:parameters MutableArray:Images from:controller Progress:^(NSProgress *uploadProgress) {
             Progress(uploadProgress);
         } success:^(id responseObject) {
@@ -187,5 +187,17 @@
     }
     _alert  =  [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
     [_alert show];
+}
+- (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters
+{
+    if(!parameters){
+        return URL;
+    };
+    // 将参数字典转换成字符串
+    NSData *stringData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+    NSString *paraString = [[NSString alloc] initWithData:stringData encoding:NSUTF8StringEncoding];
+    // 将URL与转换好的参数字符串拼接在一起,成为最终存储的KEY值
+    NSString *cacheKey = [NSString stringWithFormat:@"%@%@",URL,paraString];
+    return cacheKey;
 }
 @end
