@@ -12,13 +12,15 @@
 #import "MJRefresh.h"
 
 @interface QQLoadView ()
-@property (strong, nonatomic)UIImageView *ImageView ;///<中间的图片
-@property (nonatomic,strong) UILabel *showLabel;///<中间大一点的提示文字
-@property (nonatomic,strong) UILabel *deatilLabel;///<下面小一点的字体
+/**中间的图片*/
+@property (strong, nonatomic)UIImageView *ImageView ;
+/**中间大一点的提示文字*/
+@property (nonatomic,strong) UILabel *showLabel;
+/**下面小一点的字体*/
+@property (nonatomic,strong) UILabel *deatilLabel;
 @end
 
 @implementation QQLoadView
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self  = [super initWithFrame:frame]) {
@@ -30,7 +32,7 @@
 }
 - (void)initParameters
 {
-    _ImageView = [[UIImageView alloc]init];
+    self.ImageView = [[UIImageView alloc]init];
     _ImageView.image = [UIImage imageNamed:@"404-3"];
     _ImageView.userInteractionEnabled = YES;
     [self addSubview:_ImageView];

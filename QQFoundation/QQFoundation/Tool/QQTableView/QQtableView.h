@@ -5,8 +5,8 @@
 //  Created by 秦慕乔 on 16/4/19.
 //  Copyright © 2016年 秦慕乔. All rights reserved.
 //
-//李密码的空白界面可 自己写
 #import <UIKit/UIKit.h>
+#import "QQLoadView.h"
 @class QQtableView;
 @protocol QQtableViewGate <NSObject>
 
@@ -15,16 +15,31 @@
 
  @param QQtableView 返回自己
  @param direction   返回bool 表明  YES－－下拉刷新  NO －－－ 上拉记载
- @param dic         返回的数据
+ @param DataArray         返回的数据
  */
-- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)direction SuccessDataDic:(NSDictionary *)dic;
+- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)direction SuccessDataArray:(NSArray *)DataArray;
 
+
+/**
+ 返回网络错误的状态
+
+ @param QQtableView self
+ @param error 错误error
+ */
 - (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error;
 
 @end
 @interface QQtableView : UITableView
 @property (assign,nonatomic) id<QQtableViewGate> QQDeleGate;
-@property (weak, nonatomic)UIViewController *TempController;///<传递controller进来展示loadding状态只能是weak不会引用
+
+/*传递controller进来展示loadding状态只能是weak不会引用*/
+@property (weak, nonatomic)UIViewController *TempController;
+
+/**空白页、网络错误页  页面的内容可用此属性去更改*/
+@property (nonatomic,strong)     QQLoadView *loadStatuesView;
+/*是否展示空白界面  默认YES  展示*/
+@property (nonatomic,assign) BOOL isShowStatues;
+
 
 /**
  直接开始下载任务

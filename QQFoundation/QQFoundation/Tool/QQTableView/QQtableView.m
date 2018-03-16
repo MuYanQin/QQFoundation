@@ -10,17 +10,20 @@
 #import "MJRefresh.h"
 #import "uiview+MB.h"
 #import "QQAppDefine.h"
-#import "QQLoadView.h"
 #import "UIView+QQFrame.h"
 @interface QQtableView ()
 {
-    NSInteger _pageNumber;///<纪录当前处于哪个
-    NSString *_url;///<下载的网址
-    NSMutableDictionary *_parameters;///<下载的参数
-    UIView *_footerView;///<添加的footView
-    BOOL _ISPaging;///<是否启用分页
+    /**纪录当前页数*/
+    NSInteger _pageNumber;
+    /**下载的网址*/
+    NSString *_url;
+    /**下载的参数*/
+    NSMutableDictionary *_parameters;
+    /**添加的footView*/
+    UIView *_footerView;
+    /**是否启用分页*/
+    BOOL _ISPaging;
 }
-@property (nonatomic,strong)     QQLoadView *loadStatuesView;
 @property (nonatomic,strong) NSArray *listArray;
 @property (nonatomic, getter=isLoading) BOOL loading;
 @end
@@ -30,6 +33,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
+        _isShowStatues = YES;
         if (@available(iOS 11.0, *)) {
             self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
@@ -48,6 +52,7 @@
         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
         _footerView  = [[UIView alloc]init];
         [self setTableFooterView:_footerView];
+        _isShowStatues = YES;
     }
     return self;
 }
@@ -81,16 +86,14 @@
 {
     [[QQNetManager defaultManager]RTSTableWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
         if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataDic:)]) {
-                [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataDic:responseObject];
+            if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataArray:)]) {
+                [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataArray:responseObject[@"data"][@"list"]];
             }
             if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
                  [self.TempController.view Hidden];
                 if (isPullDown) {//下啦刷新才会有空白页
                     self.listArray = [NSArray arrayWithArray:responseObject[@"data"][@"list"]];
                     if (self.listArray.count == 0) {
-                        self.loadStatuesView.width = self.width;
-                        self.loadStatuesView.height = self.height  - self.tableHeaderView.height;
                         self.loadStatuesView.LoadType = QQLoadViewEmpty;
                         self.tableFooterView = self.loadStatuesView;
                     }else{
@@ -98,8 +101,8 @@
                     }
                 }
              }
-
         }else{
+            /**返回的code码不是200*/
             [self.TempController.view Message:responseObject[@"msg"] HiddenAfterDelay:2];
             [self setTableFooterView:_footerView];
         }
@@ -110,8 +113,6 @@
             [self.QQDeleGate QQtableView:self requestFailed:error];
         }
         if (self.listArray.count == 0) {//只有下拉刷新时候 或者刚开始请求的时候才会是零  保证有数据的时候网络错误也不出现
-            self.loadStatuesView.width = self.width;
-            self.loadStatuesView.height = self.height  - self.tableHeaderView.height;
             self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
             self.tableFooterView = self.loadStatuesView;
         }
@@ -139,6 +140,8 @@
     if (!_loadStatuesView) {
         _loadStatuesView = [[QQLoadView alloc]init];
         _loadStatuesView.LoadType = QQLoadViewNone;
+        self.loadStatuesView.width = self.width;
+        self.loadStatuesView.height = self.height  - self.tableHeaderView.height;
         _loadStatuesView.backgroundColor = [UIColor colorWithRed:245 green:248 blue:250 alpha:1];
     }
     return _loadStatuesView;
