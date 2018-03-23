@@ -42,20 +42,11 @@
 
 
 /**
- 直接开始下载任务
+ 开始下载任务  网络数据用此开始  本地数据则不用使用本方法 用法同系统的UIT啊bleView
 
  @param url        请求的网址
  @param Parameters 携带的参数 （一定要有，把分页参数放在这里）
- @param page       是否是分页
  */
-- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler IsPaging:(BOOL)page;
-/**
- 参数先传进去  之后在手动开始开始下载
- 
- @param url        url description
- @param paramters  paramters description
- @param page       page description
- */
-- (void)lazyLaunchWithString:(NSString *)url  Paramerters:(NSDictionary *)paramters FromController:(UIViewController *)controller isPaging:(BOOL)page;
+- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler;
 
 @end

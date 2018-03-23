@@ -21,11 +21,9 @@
     NSMutableDictionary *_parameters;
     /**添加的footView*/
     UIView *_footerView;
-    /**是否启用分页*/
-    BOOL _ISPaging;
 }
+/**记录上次请求是否有数据的  如果上次请求有数据 则断网也不会展示网络错误页 以及空白页*/
 @property (nonatomic,strong) NSArray *listArray;
-@property (nonatomic, getter=isLoading) BOOL loading;
 @end
 @implementation QQtableView
 
@@ -56,7 +54,6 @@
     }
     return self;
 }
-
 - (void)headerRefresh
 {
     if (_url.length ==0) {
@@ -64,21 +61,17 @@
         [self.mj_header endRefreshing];
         return;
     }
-    //这里的page要根据后台返回的类型判断
-    if (_ISPaging) {
-        _pageNumber = [_parameters[@"pageIndex"] integerValue];///<分页中页的参数  页的大小外部传入不做更改
-        _pageNumber  = 1;
-        [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
-    }
+    _pageNumber = [_parameters[@"pageIndex"] integerValue];///<分页中页的参数  页的大小外部传入不做更改
+    _pageNumber  = 1;
+    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
+    
     [self SetUpNetWorkParamters:_parameters isPullDown:YES];
 }
 - (void)footerRefresh
 {
-    if (_ISPaging) {
-        _pageNumber = [_parameters[@"pageIndex"] integerValue];
-        _pageNumber ++;
-        [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
-    }
+    _pageNumber = [_parameters[@"pageIndex"] integerValue];
+    _pageNumber ++;
+    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
     [self SetUpNetWorkParamters:_parameters isPullDown:NO];
 
 }
@@ -91,11 +84,11 @@
             }
             if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
                  [self.TempController.view Hidden];
-                if (isPullDown) {//下啦刷新才会有空白页
+                if (isPullDown) {//下拉刷新才会有空白页
                     self.listArray = [NSArray arrayWithArray:responseObject[@"data"][@"list"]];
                     if (self.listArray.count == 0) {
                         self.loadStatuesView.LoadType = QQLoadViewEmpty;
-                        self.tableFooterView = self.loadStatuesView;
+                        self.tableFooterView = self.isShowStatues ? self.loadStatuesView: _footerView;
                     }else{
                         [self setTableFooterView:_footerView];
                     }
@@ -114,7 +107,7 @@
         }
         if (self.listArray.count == 0) {//只有下拉刷新时候 或者刚开始请求的时候才会是零  保证有数据的时候网络错误也不出现
             self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
-            self.tableFooterView = self.loadStatuesView;
+            self.tableFooterView = self.isShowStatues ? self.loadStatuesView :_footerView;
         }
 
         [self.TempController.view Hidden];
@@ -146,26 +139,12 @@
     }
     return _loadStatuesView;
 }
-- (void)lazyLaunchWithString:(NSString *)url  Paramerters:(NSDictionary *)paramters FromController:(UIViewController *)controller isPaging:(BOOL)page
+- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
 {
-    if (page) {//是否分页展示 是分页的话就加上拉加载
-        self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
-    }
-    _url = url;
-    _TempController = controller;
-    _parameters= [NSMutableDictionary dictionaryWithDictionary:paramters];
-    _ISPaging = page;
-}
-
-- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler IsPaging:(BOOL)page
-{
-    if (page) {//是否分页展示 是分页的话就加上拉加载
-        self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
-    }
     _url = url;
     _TempController = controler;
     _parameters= [NSMutableDictionary dictionaryWithDictionary:Parameters];
-    _ISPaging = page;
+    self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
     [self.mj_header beginRefreshing];
 }
 @end
