@@ -15,6 +15,7 @@
 #import "QQTool.h"
 #import "QQTextField.h"
 #import "QQAlertController.h"
+#import "UIView+QQFrame.h"
 @interface fristViewController ()
 
 @end
@@ -26,29 +27,33 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
 
-//    QQButton *button = [QQButton buttonWithFrame:CGRectMake(100, 100, 80, 30) title:@"" ClickBlock:^(QQButton *myButton) {
-//        NSLog(@"dianji");
-//        [self.navigationController pushViewController:[fiveViewController new] animated:YES];
-//    }];
-//    [button setTitle:@"秦慕乔" forState:UIControlStateNormal];
-//    button.titleLabel.font = [UIFont systemFontOfSize:12];
-//    button.backgroundColor = [UIColor purpleColor];
-//    [button setImage:[UIImage imageNamed:@"icon_em_al"] forState:UIControlStateNormal];
-//    [self.view addSubview:button];
+    CGFloat MaxHeight = 60;
+    CGFloat MaxWidth = 60;
+    UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(100, 100, 30, 30)];
+    imageView.image =[UIImage imageNamed:@"multi_network_error_icon@2x"];
+    CGSize imageSize = [imageView sizeThatFits:CGSizeZero];
+    if (imageSize.width >MaxWidth && imageSize.height<=MaxHeight) {
+        imageView.height =  imageView.height *(imageView.width/MaxWidth);
+        imageView.width = MaxWidth;
 
-    QQTextField *text = [[QQTextField alloc]initWithFrame:CGRectMake(50, 100, 200, 40)];
-    text.maxLength = 10;
-    text.placeholder = @"123";
-    [self.view addSubview:text];
-                     
+    }else if (imageSize.height >MaxHeight &&imageSize.width <= MaxWidth){
+        imageView.width =  imageView.width *(imageView.height/MaxHeight);
+        imageView.height = MaxHeight;
+    }else if(imageSize.height >MaxHeight &&imageSize.width>MaxWidth) {
+        imageView.width = MaxWidth;
+        imageView.height =imageSize.height *(MaxWidth/imageSize.width);
+    }else{
+        imageView.width = imageSize.width;
+        imageView.height= imageSize.height;
+    }
+    
+    imageView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:imageView];
+    
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    QQAlertController *alert = [QQAlertController alertControllerWithTitle:@"" description:@"确定交换嘛dshfkjasdhfkjhjsdhffsdhkjfhaksdf？" cancel:@"取消" button:@"确认" action:^(NSInteger index){
-        NSLog(@"tap button %ld",(long)index);
-    }];
-    alert.isTouchHidden = YES;
-    [self presentViewController:alert animated:YES completion:nil];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
