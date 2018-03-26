@@ -65,16 +65,6 @@
  */
 + (NSString *)strRelayPrice:(id)str;
 
-
-/**
- 判断是否为空
- 
- @param data 传入的数据
- 
- @return bool值是否为空
- */
-+ (BOOL)IsNull:(id)data;
-
 /**
  是否为手机号
  

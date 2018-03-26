@@ -71,12 +71,10 @@
 		52D8D1171F4D775500EA413B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1151F4D775500EA413B /* Main.storyboard */; };
 		52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1181F4D775500EA413B /* Assets.xcassets */; };
 		52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D11A1F4D775500EA413B /* LaunchScreen.storyboard */; };
-		52D8D1851F4D77EF00EA413B /* AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1311F4D77EE00EA413B /* AvoidCrash.m */; };
 		52D8D1861F4D77EF00EA413B /* Foundation+HDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1321F4D77EE00EA413B /* Foundation+HDLog.m */; };
 		52D8D1871F4D77EF00EA413B /* MyAttributedStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1341F4D77EE00EA413B /* MyAttributedStringBuilder.m */; };
 		52D8D1881F4D77EF00EA413B /* NSAttributedString+Easy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1361F4D77EE00EA413B /* NSAttributedString+Easy.m */; };
 		52D8D1891F4D77EF00EA413B /* NSDate+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1381F4D77EF00EA413B /* NSDate+QQCalculate.m */; };
-		52D8D18A1F4D77EF00EA413B /* NSDictionary+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D13A1F4D77EF00EA413B /* NSDictionary+AvoidCrash.m */; };
 		52D8D18B1F4D77EF00EA413B /* NSString+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D13C1F4D77EF00EA413B /* NSString+QQCalculate.m */; };
 		52D8D18C1F4D77EF00EA413B /* UIButton+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D13E1F4D77EF00EA413B /* UIButton+Cache.m */; };
 		52D8D18D1F4D77EF00EA413B /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1401F4D77EF00EA413B /* UIColor+Hexadecimal.m */; };
@@ -284,8 +282,6 @@
 		52D8D1181F4D775500EA413B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52D8D11B1F4D775500EA413B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52D8D11D1F4D775500EA413B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52D8D1301F4D77EE00EA413B /* AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvoidCrash.h; sourceTree = "<group>"; };
-		52D8D1311F4D77EE00EA413B /* AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvoidCrash.m; sourceTree = "<group>"; };
 		52D8D1321F4D77EE00EA413B /* Foundation+HDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+HDLog.m"; sourceTree = "<group>"; };
 		52D8D1331F4D77EE00EA413B /* MyAttributedStringBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAttributedStringBuilder.h; sourceTree = "<group>"; };
 		52D8D1341F4D77EE00EA413B /* MyAttributedStringBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttributedStringBuilder.m; sourceTree = "<group>"; };
@@ -293,8 +289,6 @@
 		52D8D1361F4D77EE00EA413B /* NSAttributedString+Easy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Easy.m"; sourceTree = "<group>"; };
 		52D8D1371F4D77EE00EA413B /* NSDate+QQCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+QQCalculate.h"; sourceTree = "<group>"; };
 		52D8D1381F4D77EF00EA413B /* NSDate+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+QQCalculate.m"; sourceTree = "<group>"; };
-		52D8D1391F4D77EF00EA413B /* NSDictionary+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AvoidCrash.h"; sourceTree = "<group>"; };
-		52D8D13A1F4D77EF00EA413B /* NSDictionary+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AvoidCrash.m"; sourceTree = "<group>"; };
 		52D8D13B1F4D77EF00EA413B /* NSString+QQCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QQCalculate.h"; sourceTree = "<group>"; };
 		52D8D13C1F4D77EF00EA413B /* NSString+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QQCalculate.m"; sourceTree = "<group>"; };
 		52D8D13D1F4D77EF00EA413B /* UIButton+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Cache.h"; sourceTree = "<group>"; };
@@ -737,8 +731,6 @@
 				5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */,
 				5295D4081F4EBB6000C6B5F4 /* NSString+Manage.h */,
 				5295D4091F4EBB6000C6B5F4 /* NSString+Manage.m */,
-				52D8D1301F4D77EE00EA413B /* AvoidCrash.h */,
-				52D8D1311F4D77EE00EA413B /* AvoidCrash.m */,
 				52D8D1321F4D77EE00EA413B /* Foundation+HDLog.m */,
 				52D8D1331F4D77EE00EA413B /* MyAttributedStringBuilder.h */,
 				52D8D1341F4D77EE00EA413B /* MyAttributedStringBuilder.m */,
@@ -746,8 +738,6 @@
 				52D8D1361F4D77EE00EA413B /* NSAttributedString+Easy.m */,
 				52D8D1371F4D77EE00EA413B /* NSDate+QQCalculate.h */,
 				52D8D1381F4D77EF00EA413B /* NSDate+QQCalculate.m */,
-				52D8D1391F4D77EF00EA413B /* NSDictionary+AvoidCrash.h */,
-				52D8D13A1F4D77EF00EA413B /* NSDictionary+AvoidCrash.m */,
 				52D8D13B1F4D77EF00EA413B /* NSString+QQCalculate.h */,
 				52D8D13C1F4D77EF00EA413B /* NSString+QQCalculate.m */,
 				52D8D13D1F4D77EF00EA413B /* UIButton+Cache.h */,
@@ -970,8 +960,8 @@
 			isa = PBXGroup;
 			children = (
 				ACF4B0561FEE546200668126 /* QQNavigationController.h */,
-				ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */,
 				ACF4B0581FEE546200668126 /* QQNavigationController.m */,
+				ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */,
 				ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */,
 			);
 			path = BaseNavigatioinController;
@@ -1142,7 +1132,6 @@
 				52C1154A1F4EC5CE005471CB /* AFHTTPSessionManager.m in Sources */,
 				52D8D1861F4D77EF00EA413B /* Foundation+HDLog.m in Sources */,
 				52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */,
-				52D8D18A1F4D77EF00EA413B /* NSDictionary+AvoidCrash.m in Sources */,
 				52C115641F4EC5CE005471CB /* FLAnimatedImage.m in Sources */,
 				52C115721F4EC5CE005471CB /* UIImage+GIF.m in Sources */,
 				52C115741F4EC5CE005471CB /* UIImage+WebP.m in Sources */,
@@ -1183,7 +1172,6 @@
 				52D8D18C1F4D77EF00EA413B /* UIButton+Cache.m in Sources */,
 				52D8D18E1F4D77EF00EA413B /* UIImage+Usually.m in Sources */,
 				52D8D1871F4D77EF00EA413B /* MyAttributedStringBuilder.m in Sources */,
-				52D8D1851F4D77EF00EA413B /* AvoidCrash.m in Sources */,
 				52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */,
 				52C115581F4EC5CE005471CB /* MJRefreshBackGifFooter.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,

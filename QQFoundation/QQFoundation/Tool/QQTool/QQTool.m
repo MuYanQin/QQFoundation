@@ -14,26 +14,6 @@
 #import "NSString+QQCalculate.h"
 
 @implementation QQTool
-
-
-/**
- * 是否为空
- */
-+ (BOOL)IsNull:(id)data
-{
-    BOOL bret = NO;
-    if (data == nil) {
-        bret = YES;
-    }else if (data ==NULL){
-        bret = YES;
-    }else if ([data isEqual:[NSNull null]]){
-        bret = YES;
-        
-    }else if ([data isKindOfClass:[NSNull class]]){
-        bret = YES;
-    }
-    return bret;
-}
 /**
  是不是空
  */
@@ -138,13 +118,9 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
 + (NSString*)dictionaryToJson:(NSDictionary *)dic
 
 {
-    if (![QQTool IsNull:dic]) {
-        NSError *parseError = nil;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
-        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }else{
-        return nil;
-    }
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 /**
  系统级别的复制
