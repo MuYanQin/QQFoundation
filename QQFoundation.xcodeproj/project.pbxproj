@@ -106,6 +106,7 @@
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
 		AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */; };
+		AC686F772069D0A6004A08FF /* QQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC686F762069D0A6004A08FF /* QQDateFormatter.m */; };
 		AC781AC51FF51D2C00863F4C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB61FF51D2C00863F4C /* README.markdown */; };
 		AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB71FF51D2C00863F4C /* LICENSE.txt */; };
 		AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ABB1FF51D2C00863F4C /* FMDatabaseQueue.m */; };
@@ -350,6 +351,8 @@
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
 		AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		AC5EC653201887030030EBC6 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		AC686F752069D0A6004A08FF /* QQDateFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQDateFormatter.h; sourceTree = "<group>"; };
+		AC686F762069D0A6004A08FF /* QQDateFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQDateFormatter.m; sourceTree = "<group>"; };
 		AC781AB61FF51D2C00863F4C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		AC781AB71FF51D2C00863F4C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AC781ABA1FF51D2C00863F4C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -783,6 +786,8 @@
 				52D8D1621F4D77EF00EA413B /* QQTextField.m */,
 				52D8D1631F4D77EF00EA413B /* QQTextView.h */,
 				52D8D1641F4D77EF00EA413B /* QQTextView.m */,
+				AC686F752069D0A6004A08FF /* QQDateFormatter.h */,
+				AC686F762069D0A6004A08FF /* QQDateFormatter.m */,
 				52D8D1651F4D77EF00EA413B /* SHTextView.h */,
 				52D8D1661F4D77EF00EA413B /* SHTextView.m */,
 			);
@@ -1102,6 +1107,7 @@
 				52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */,
 				AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
+				AC686F772069D0A6004A08FF /* QQDateFormatter.m in Sources */,
 				AC781ACF1FF51E3700863F4C /* QQSqlHelper.m in Sources */,
 				52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */,
 				AC781ACB1FF51D2C00863F4C /* FMResultSet.m in Sources */,

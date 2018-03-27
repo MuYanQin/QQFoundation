@@ -45,20 +45,15 @@
 + (NSString *)stringFromDate:(NSDate *)date Formate:(NSString *)formate
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    
-    //    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
     [dateFormatter setDateFormat:formate];
-    
     NSString *destDateString = [dateFormatter stringFromDate:date];
     return destDateString;
 }
 
 + (NSString *)GetNowDate:(NSString *)Formatter;
 {
+    NSDateFormatter  *dateformatter = [[QQDateFormatter ShareIntance] getDateFormatter:Formatter];
     NSDate *datenow = [NSDate date];
-    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-    [dateformatter setDateFormat:Formatter];
     NSString *  locationString=[dateformatter stringFromDate:datenow];
     return locationString;
 }
@@ -68,11 +63,9 @@
  */
 + (NSString *)ConvertTimestampWith:(NSString *)Timestamp Formate:(NSString *)formate;
 {
-    
     NSTimeInterval interval=[Timestamp doubleValue] / 1000.0;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
-    NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
-    [objDateformat setDateFormat:formate];
+    NSDateFormatter *objDateformat =  [[QQDateFormatter ShareIntance] getDateFormatter:formate];
     NSString *timestr =  [objDateformat stringFromDate: date];
     return timestr;
 }
@@ -106,9 +99,51 @@
     NSCalendar *calender = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     NSDate *mDate = [calender dateByAddingComponents:comps toDate:date options:0];
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];//创建一个日期格式化器
-    
-    dateFormatter.dateFormat=formate;//指定转date得日期格式化形式
+    NSDateFormatter *dateFormatter= [[QQDateFormatter ShareIntance] getDateFormatter:formate];//创建一个日期格式化器
     return [dateFormatter stringFromDate:mDate];
+}
++ (NSString *)getHowSecondsAgo:(NSString *)time
+{
+    CGFloat temp = 0;
+    NSString *result;
+    NSString *CH_NUM = @"^[0-9]{1,}$";
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CH_NUM];
+    BOOL bret = [pre evaluateWithObject:time];
+    NSTimeInterval timeInterval;
+    NSDate *data3;
+    if (bret) {
+        NSDate* date11 = [NSDate dateWithTimeIntervalSince1970:[time doubleValue]/ 1000.0];
+        NSDate *currentDate = [NSDate date];
+        timeInterval= [currentDate timeIntervalSinceDate:date11];
+
+    }else{
+        NSDateFormatter *formatter = [[QQDateFormatter ShareIntance] getDateFormatter:@"YYYY-MM-dd HH:mm:ss"];//;
+        data3 = [formatter dateFromString:time];
+        NSDate *currentDate = [NSDate date];
+        timeInterval = [currentDate timeIntervalSinceDate:data3];
+    };
+
+    if (timeInterval/60 < 5) {
+        result = [NSString stringWithFormat:@"刚刚"];
+    }
+    else if((temp = timeInterval/60) <60){
+        result = [NSString stringWithFormat:@"%.0f分钟前",temp];
+    }
+    else if((temp = temp/60) <24){
+        result = [NSString stringWithFormat:@"%.0f小时前",temp];
+    }
+    else if((temp = temp/24) <=5){
+        result = [NSString stringWithFormat:@"%.0f天前",temp];
+    }
+    else{
+        temp = temp/12;
+        if (bret) {
+            result = [NSDate ConvertTimestampWith:time Formate:@"MM/dd  HH:mm"];
+        }else{
+            NSDateFormatter *formatter = [[QQDateFormatter ShareIntance] getDateFormatter:@"MM/dd HH:mm"];//;
+            result = [formatter stringFromDate:data3];
+        }
+    }
+    return result;
 }
 @end

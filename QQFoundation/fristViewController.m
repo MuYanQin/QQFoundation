@@ -46,7 +46,6 @@
         imageView.width = imageSize.width;
         imageView.height= imageSize.height;
     }
-    
     imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];
     

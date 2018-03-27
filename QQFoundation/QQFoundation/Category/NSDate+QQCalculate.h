@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
+#import "QQDateFormatter.h"
 typedef NS_ENUM(NSInteger,QQCalendarType){
     QQCalendarday = 0,
     QQCalendarMonth = 1,
     QQCalendarYear = 2,
 };
 @interface NSDate (QQCalculate)
-
 
 /**
  某年某月有多少天
@@ -75,5 +75,13 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
  */
 + (NSString *)GetTimeInterval:(NSInteger)space from:(NSDate *)date Formate:(NSString *)formate Calendar:(QQCalendarType)Calendar;
 
+
+/**
+ 获取多久之前
+
+ @param time 时间
+ @return 格式化字符串
+ */
++ (NSString *)getHowSecondsAgo:(NSString *)time;
 
 @end
