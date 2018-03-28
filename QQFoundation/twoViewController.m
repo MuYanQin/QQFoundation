@@ -19,34 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"two";
-    [self convertDateToStringUsingNewDateFormatter];
-    [self convertDateToStringUsingBTNSDateFormatterFactoryFormatter];
+    [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
 }
-#define ITERATIONS (1024*10)
-static double then, now;
-
-#pragma test for costs time
-- (void)convertDateToStringUsingNewDateFormatter
+- (void)click
 {
-    then = CFAbsoluteTimeGetCurrent();
-    for (NSUInteger i = 0; i < ITERATIONS; i++) {
-        NSDateFormatter *newDateForMatter = [[NSDateFormatter alloc] init];
-        [newDateForMatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
-        [newDateForMatter setDateFormat:@"YYYY-MM-dd"];
-        self.dateAsString = [newDateForMatter stringFromDate:[NSDate date]];
-    }
-    now = CFAbsoluteTimeGetCurrent();
-    NSLog(@"Convert date to string using NSDateFormatter costs time: %f seconds!\n", now - then);
-}
-
-- (void)convertDateToStringUsingBTNSDateFormatterFactoryFormatter
-{
-    then = CFAbsoluteTimeGetCurrent();
-    for (NSUInteger i = 0; i < ITERATIONS; i++) {
-        self.dateAsString = [NSDate GetNowDate:@"YYYY-MM-dd"];
-    }
-    now = CFAbsoluteTimeGetCurrent();
-    NSLog(@"Convert date to string using BTNSDateFormatterFactory Formatter costs time: %f seconds!\n", now - then);
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -105,9 +105,9 @@
 		52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1781F4D77EF00EA413B /* QQImagePicker.m */; };
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
+		AC10A800206B8CC600FF937D /* UINavigation+SXFixSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = AC10A7FF206B8CC600FF937D /* UINavigation+SXFixSpace.m */; };
 		AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */; };
 		AC686F772069D0A6004A08FF /* QQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC686F762069D0A6004A08FF /* QQDateFormatter.m */; };
-		AC686F7A206A2B20004A08FF /* QQNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC686F79206A2B20004A08FF /* QQNavigationBar.m */; };
 		AC781AC51FF51D2C00863F4C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB61FF51D2C00863F4C /* README.markdown */; };
 		AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB71FF51D2C00863F4C /* LICENSE.txt */; };
 		AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC781ABB1FF51D2C00863F4C /* FMDatabaseQueue.m */; };
@@ -350,12 +350,12 @@
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		AC10A7FE206B8CBD00FF937D /* UINavigation+SXFixSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigation+SXFixSpace.h"; sourceTree = "<group>"; };
+		AC10A7FF206B8CC600FF937D /* UINavigation+SXFixSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigation+SXFixSpace.m"; sourceTree = "<group>"; };
 		AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		AC5EC653201887030030EBC6 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		AC686F752069D0A6004A08FF /* QQDateFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQDateFormatter.h; sourceTree = "<group>"; };
 		AC686F762069D0A6004A08FF /* QQDateFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQDateFormatter.m; sourceTree = "<group>"; };
-		AC686F78206A2B20004A08FF /* QQNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQNavigationBar.h; sourceTree = "<group>"; };
-		AC686F79206A2B20004A08FF /* QQNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQNavigationBar.m; sourceTree = "<group>"; };
 		AC781AB61FF51D2C00863F4C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		AC781AB71FF51D2C00863F4C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AC781ABA1FF51D2C00863F4C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -967,10 +967,10 @@
 		ACF4B0551FEE546200668126 /* BaseNavigatioinController */ = {
 			isa = PBXGroup;
 			children = (
-				AC686F78206A2B20004A08FF /* QQNavigationBar.h */,
-				AC686F79206A2B20004A08FF /* QQNavigationBar.m */,
 				ACF4B0561FEE546200668126 /* QQNavigationController.h */,
 				ACF4B0581FEE546200668126 /* QQNavigationController.m */,
+				AC10A7FE206B8CBD00FF937D /* UINavigation+SXFixSpace.h */,
+				AC10A7FF206B8CC600FF937D /* UINavigation+SXFixSpace.m */,
 				ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */,
 				ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */,
 			);
@@ -1137,6 +1137,7 @@
 				ACF4B0651FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
 				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
+				AC10A800206B8CC600FF937D /* UINavigation+SXFixSpace.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
 				52C1154E1F4EC5CE005471CB /* AFURLResponseSerialization.m in Sources */,
 				52C1156D1F4EC5CE005471CB /* SDWebImageDownloader.m in Sources */,
@@ -1173,7 +1174,6 @@
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
-				AC686F7A206A2B20004A08FF /* QQNavigationBar.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
 				52C115621F4EC5CE005471CB /* UIScrollView+MJRefresh.m in Sources */,
 				52D8D1901F4D77EF00EA413B /* UIScrollView+Touch.m in Sources */,
