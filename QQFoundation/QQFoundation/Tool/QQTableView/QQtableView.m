@@ -54,27 +54,16 @@
     }
     return self;
 }
-- (void)headerRefresh
-{
-    if (_url.length ==0) {
-        NSLog(@"QQTablView:请输入下载网址");
-        [self.mj_header endRefreshing];
-        return;
-    }
-    _pageNumber = [_parameters[@"pageIndex"] integerValue];///<分页中页的参数  页的大小外部传入不做更改
-    _pageNumber  = 1;
-    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
-    
-    [self SetUpNetWorkParamters:_parameters isPullDown:YES];
-}
-- (void)footerRefresh
-{
-    _pageNumber = [_parameters[@"pageIndex"] integerValue];
-    _pageNumber ++;
-    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
-    [self SetUpNetWorkParamters:_parameters isPullDown:NO];
 
+- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
+{
+    _url = url;
+    _TempController = controler;
+    _parameters= [NSMutableDictionary dictionaryWithDictionary:Parameters];
+    self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
+    [self.mj_header beginRefreshing];
 }
+//**请求方法*/
 - (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
     [[QQNetManager defaultManager]RTSTableWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
@@ -105,7 +94,7 @@
         if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
             [self.QQDeleGate QQtableView:self requestFailed:error];
         }
-        if (self.listArray.count == 0) {//只有下拉刷新时候 或者刚开始请求的时候才会是零  保证有数据的时候网络错误也不出现
+        if (self.listArray.count == 0) {//下拉刷新时候 或者刚开始请求的时候才会是零  保证有数据的时候网络错误也不出现
             self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
             self.tableFooterView = self.isShowStatues ? self.loadStatuesView :_footerView;
         }
@@ -123,6 +112,27 @@
         }
     }];
 }
+- (void)headerRefresh
+{
+    if (_url.length ==0) {
+        NSLog(@"QQTablView:请输入下载网址");
+        [self.mj_header endRefreshing];
+        return;
+    }
+    _pageNumber = [_parameters[@"pageIndex"] integerValue];///<分页中页的参数  页的大小外部传入不做更改
+    _pageNumber  = 1;
+    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
+    
+    [self SetUpNetWorkParamters:_parameters isPullDown:YES];
+}
+- (void)footerRefresh
+{
+    _pageNumber = [_parameters[@"pageIndex"] integerValue];
+    _pageNumber ++;
+    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
+    [self SetUpNetWorkParamters:_parameters isPullDown:NO];
+    
+}
 - (void)EndRefrseh
 {
     [self.mj_footer endRefreshing];
@@ -134,17 +144,10 @@
         _loadStatuesView = [[QQLoadView alloc]init];
         _loadStatuesView.LoadType = QQLoadViewNone;
         self.loadStatuesView.width = self.width;
+        //设置view的高度是TableView 的高度减去TableHeaderView的高度
         self.loadStatuesView.height = self.height  - self.tableHeaderView.height;
         _loadStatuesView.backgroundColor = [UIColor colorWithRed:245 green:248 blue:250 alpha:1];
     }
     return _loadStatuesView;
-}
-- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
-{
-    _url = url;
-    _TempController = controler;
-    _parameters= [NSMutableDictionary dictionaryWithDictionary:Parameters];
-    self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
-    [self.mj_header beginRefreshing];
 }
 @end

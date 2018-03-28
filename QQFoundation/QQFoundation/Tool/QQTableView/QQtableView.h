@@ -29,6 +29,7 @@
 - (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error;
 
 @end
+
 @interface QQtableView : UITableView
 @property (assign,nonatomic) id<QQtableViewGate> QQDeleGate;
 
@@ -40,6 +41,8 @@
 /*是否展示空白界面  默认YES  展示*/
 @property (nonatomic,assign) BOOL isShowStatues;
 
+//**开始刷新*/
+- (void)headerRefresh;
 
 /**
  开始下载任务  网络数据用此开始  本地数据则不用使用本方法 用法同系统的UITableView

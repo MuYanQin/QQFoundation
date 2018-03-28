@@ -33,8 +33,6 @@
 #import "NSString+QQCalculate.h"///字符串的一些操作
 #import "NSMutableAttributedString+Manage.h"
 #import "NSString+Manage.h"
-
-//#import "NSDictionary+AvoidCrash.h"//防止快速创建字典时插入空崩溃  不用直接就能
 ///***********************************************************************************
 /// Successor
 ///***********************************************************************************
@@ -48,6 +46,7 @@
 #import "QQDevice.h"//获取系统的一些情况
 #import "QQFileManage.h"///获取文件管理  获取地址  创建  等操作
 #import "QQLoadView.h"//空白页、加载出错页
+#import "QQDateFormatter.h"//Cache  formatter
 ///***********************************************************************************
 /// Tool
 ///***********************************************************************************
