@@ -1,20 +1,20 @@
 //
-//  UINavigation+SXFixSpace.m
-//  UINavigation-SXFixSpace
+//  UINavigationBar+QQSpeace.m
+//  QQFoundation
 //
-//  Created by charles on 2017/9/8.
-//  Copyright © 2017年 None. All rights reserved.
+//  Created by Maybe on 2018/3/28.
+//  Copyright © 2018年 MuYanQin. All rights reserved.
 //
 
-#import "UINavigation+SXFixSpace.h"
+#import "UINavigationBar+QQSpeace.h"
 #import "QQTool.h"
 #import <UIKit/UIKit.h>
 #import <Availability.h>
 
 #define deviceVersion [[[UIDevice currentDevice] systemVersion] floatValue]
+#define KWidth          [UIScreen mainScreen].bounds.size.width
 
-@implementation UINavigationBar (SXFixSpace)
-
+@implementation UINavigationBar (QQSpeace)
 +(void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -38,15 +38,13 @@
 }
 
 @end
-
-@implementation UINavigationItem (SXFixSpace)
-
+@implementation UINavigationItem (QQSpeace)
 +(void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         QQ_methodSwizzle(self, @selector(setLeftBarButtonItem:), @selector(sx_setLeftBarButtonItem:));
         QQ_methodSwizzle(self, @selector(setLeftBarButtonItems:), @selector(sx_setLeftBarButtonItems:));
-
+        
     });
     
 }
@@ -65,7 +63,13 @@
 
 -(void)sx_setLeftBarButtonItems:(NSArray<UIBarButtonItem *> *)leftBarButtonItems {
     if (leftBarButtonItems.count) {
-        NSMutableArray *items = [NSMutableArray arrayWithObject:[self fixedSpaceWithWidth:sx_defaultFixSpace-20]];//可修正iOS11之前的偏移
+        //默认情况下，在320、375宽度的屏幕上，第一个按钮距离屏幕左边界的宽度是16，在414第一个按钮距离屏幕左边界的宽度是20。
+        CGFloat Speace = 16;
+        if(KWidth > 375){
+            Speace = 20;
+        }
+        NSLog(@"%f",KWidth);
+        NSMutableArray *items = [NSMutableArray arrayWithObject:[self fixedSpaceWithWidth:sx_defaultFixSpace-Speace]];//可修正iOS11之前的偏移
         [items addObjectsFromArray:leftBarButtonItems];
         [self sx_setLeftBarButtonItems:items];
     } else {
@@ -82,4 +86,3 @@
 }
 
 @end
-
