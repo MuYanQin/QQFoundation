@@ -54,4 +54,5 @@
 #import "QQtableView.h"/// 简单的封装数据请求层
 #import "QQNetManager.h"/// 封装的AF下载工具  返回取消、同一接口多次请求返回（无响应）
 #import "QQImagePicker.h"///照片单选 裁剪框自定义大小
+#import "QQSqlHelper.h"//sql工具
 #endif /* QQKit_h */
