@@ -18,9 +18,7 @@
  */
 @property (nonatomic,strong)UIColor           *BaseNavBarColor;
 
-@property (strong, nonatomic)UIScrollView     *BaseScrollView;///<基ScrollView
 @property (strong, nonatomic)QQtableView      *BaseQQTableView;///<基QQTableView
-@property (strong, nonatomic)UITableView      *BaseTableView;///<基TableView
 @property (strong, nonatomic)NSMutableArray   *BaseMutableArray;///<基BaseMutableArray
 @property (nonatomic,strong) QQLoadView       *BaseLoadView;///<空白界面、网络出错界面等提示界面
 
@@ -84,16 +82,5 @@
  */
 - (void)QQLoadViewPullRefresh;
 
-
-/**
- 基BaseScroll View的下啦刷新
- */
-- (void)ScrollViewPullRefresh;
-
-
-/**
- 基TableView View的下啦刷新
- */
-- (void)TableViewPullRefresh;
 
 @end

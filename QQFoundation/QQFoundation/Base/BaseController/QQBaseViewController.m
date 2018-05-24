@@ -122,16 +122,6 @@
     
 }
 #pragma mark - 基类里面的一些属性
-//基类scroll
-- (UIScrollView *)BaseScrollView
-{
-    if (!_BaseScrollView) {
-        _BaseScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
-        _BaseScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(ScrollViewPullRefresh)];
-        
-    }
-    return _BaseScrollView;
-}
 - (QQtableView *)BaseQQTableView
 {
     if (!_BaseQQTableView) {
@@ -141,19 +131,6 @@
         _BaseQQTableView.QQDeleGate = self;
     }
     return _BaseQQTableView;
-}
-- (UITableView *)BaseTableView
-{
-    if (!_BaseTableView) {
-        _BaseTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
-        _BaseTableView.delegate = self;
-        _BaseTableView.dataSource = self;
-        _BaseTableView.estimatedRowHeight  = 0;
-        _BaseTableView.estimatedSectionFooterHeight  = 0;
-        _BaseTableView.estimatedSectionFooterHeight = 0;
-        _BaseTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(TableViewPullRefresh)];
-    }
-    return _BaseTableView;
 }
 
 //基类的数组
@@ -180,15 +157,6 @@
     return _BaseLoadView;
 }
 #pragma mark - 基类的下拉刷新方法
-//scroll的下拉刷新方法
-- (void)ScrollViewPullRefresh
-{
-}
-//传统tableview的下啦刷新方法
-- (void)TableViewPullRefresh
-{
-    
-}
 //空白页的下拉刷新方法
 - (void)QQLoadViewPullRefresh
 {
