@@ -52,6 +52,7 @@
 #import "QQAlertcontroller.h"///UIAlertConotrooler的快速使用
 #import "QQTool.h"///以下简单的小工具 一些文件操作   获取app的一些信息   后期要分离
 #import "QQtableView.h"/// 简单的封装数据请求层
+#import "QQTableViewManager.h"//TableView视图管理工具
 #import "QQNetManager.h"/// 封装的AF下载工具  返回取消、同一接口多次请求返回（无响应）
 #import "QQImagePicker.h"///照片单选 裁剪框自定义大小
 #import "QQSqlHelper.h"//sql工具

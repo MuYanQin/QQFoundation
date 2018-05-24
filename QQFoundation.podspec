@@ -86,6 +86,11 @@ s.subspec 'Tool' do |ss|
         sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTableView/**/*.{h,m,c,mm}'
     end
 
+    ss.subspec 'QQTableViewManager' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTableViewManager/**/*.{h,m,c,mm}'
+    end
+
+
     ss.subspec 'QQTool' do |sss|
         sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTool/**/*.{h,m,c,mm}'
     end
