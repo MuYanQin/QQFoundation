@@ -7,20 +7,22 @@
 //
 
 #import "QQTableViewItem.h"
-
+#import "QQTableViewManager.h"
 @implementation QQTableViewItem
 - (instancetype)init
 {
     if (self = [super init]) {
         self.CellHeight = 44;
+        self.allowSlide = NO;
     }
     return self;
 }
 - (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation{
-    [self.tableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    [self.tableViewManager.TableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
 
 }
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation{
-        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.indexPath.row inSection:self.indexPath.section]] withRowAnimation:animation];
+    [self.tableViewManager.items removeObjectAtIndex:self.indexPath.row];
+    [self.tableViewManager.TableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
 }
 @end

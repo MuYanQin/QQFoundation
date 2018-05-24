@@ -21,7 +21,12 @@
 - (void)cellDidLoad
 {
     [super cellDidLoad];
-//    self.contentView.backgroundColor = [UIColor redColor];
+    if (self.item.mark ==1) {
+        self.contentView.backgroundColor = [UIColor yellowColor];
+    }else{
+        self.contentView.backgroundColor = [UIColor yellowColor];
+
+    }
 
 }
 @end

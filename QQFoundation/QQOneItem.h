@@ -10,9 +10,9 @@
 #import "QQTableViewCell.h"
 
 @interface QQOneItem : QQTableViewItem
-
+@property (nonatomic, assign)NSInteger mark;
 @end
 
 @interface QQOneCell : QQTableViewCell
-
+@property (nonatomic, strong) QQOneItem *item;
 @end

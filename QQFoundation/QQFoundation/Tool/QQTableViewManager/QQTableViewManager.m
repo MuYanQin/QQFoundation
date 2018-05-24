@@ -61,8 +61,10 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     QQTableViewItem * item = self.items[indexPath.row];
-    item.tableView = self.TableView;
+    QQTableViewItem * item = self.items[indexPath.row];
+    item.tableViewManager = self;
+    item.indexPath = indexPath;
+    
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
     NSString *cellIdentifier = [NSString stringWithFormat:@"RETableViewManager_%@", [item class]];
@@ -98,6 +100,46 @@
             actionItem.CellSelcetHandler(item);
     }
 }
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    QQTableViewItem *item = self.items[indexPath.row];
+    return item.allowSlide;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        id item = self.items[indexPath.row];
+        QQTableViewItem *actionItem = (QQTableViewItem *)item;
+        if (actionItem.CellSlideHandler)
+            actionItem.CellSlideHandler(item);
+    }
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    id item = self.items[indexPath.row];
+    QQTableViewItem *actionItem = (QQTableViewItem *)item;
+    return actionItem.slideText ? actionItem.slideText: @"删除";
+}
+//- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSMutableArray  *btnArray = [NSMutableArray array];
+//
+//    // 添加一个删除按钮
+//    UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//
+//    }];
+//    // 设置背景颜色
+//    deleteRowAction.backgroundColor = [UIColor redColor];
+//
+//    // 添加一个编辑按钮
+//    UITableViewRowAction *editRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//
+//    }];
+//    // 设置背景颜色
+//    editRowAction.backgroundColor = [UIColor redColor];
+//
+//    // 将按钮们加入数组
+//    [btnArray addObject:deleteRowAction];
+//    [btnArray addObject:editRowAction];
+//
+//    return btnArray;
+//}
 - (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray
 {
     [self.items removeAllObjects];

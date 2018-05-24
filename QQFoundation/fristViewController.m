@@ -34,7 +34,14 @@
     
     self.manager[@"QQOneItem"] = @"QQOneCell";
     QQOneItem *it1 = [[QQOneItem alloc]init];
-    it1.CellHeight = 10;
+    it1.CellHeight = 50;
+    it1.allowSlide = YES;
+    it1.slideText = @"收藏";
+    it1.CellSelcetHandler = ^(QQOneItem * item) {
+    };
+    it1.CellSlideHandler = ^(id item) {
+
+    };
     [self.manager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1]]];
     
 }
