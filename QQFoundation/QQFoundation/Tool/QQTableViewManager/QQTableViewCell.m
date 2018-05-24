@@ -10,9 +10,14 @@
 
 @implementation QQTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (void)cellDidLoad{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+- (void)cellWillAppear{
+    
+}
+- (void)cellDidDisappear{
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,5 +25,8 @@
 
     // Configure the view for the selected state
 }
-
+- (void)setHighlighted:(BOOL)highlighted
+{
+    
+}
 @end

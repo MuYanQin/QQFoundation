@@ -18,11 +18,10 @@
 }
 @end
 @implementation QQOneCell
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)cellDidLoad
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.contentView.backgroundColor = [UIColor redColor];
-    }
-    return self;
+    [super cellDidLoad];
+//    self.contentView.backgroundColor = [UIColor redColor];
+
 }
 @end

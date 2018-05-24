@@ -10,4 +10,9 @@
 @class QQTableViewItem;
 @interface QQTableViewCell : UITableViewCell
 @property (nonatomic, strong) QQTableViewItem *item;
+
+
+- (void)cellDidLoad;
+- (void)cellWillAppear;
+- (void)cellDidDisappear;
 @end

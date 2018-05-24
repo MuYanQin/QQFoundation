@@ -14,6 +14,7 @@
 {
     if (self = [super init]) {
         self.TableView = tableView;
+        self.TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.items = [NSMutableArray array];
         self.registeredClasses = [NSMutableDictionary dictionary];
         tableView.delegate = self;
@@ -72,13 +73,15 @@
     if (cell == nil) {
         cell = [[cellClass alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
     }
-//    cell.rowIndex = indexPath.row;
-//    cell.sectionIndex = indexPath.section;
-//    cell.parentTableView = tableView;
-//    cell.section = section;
     cell.item = item;
     cell.detailTextLabel.text = nil;
+    [cell cellDidLoad];
     return cell;
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    QQTableViewCell * qCell = (QQTableViewCell *)cell;
+    [qCell cellWillAppear];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
