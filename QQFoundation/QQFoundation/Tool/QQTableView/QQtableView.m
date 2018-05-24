@@ -41,8 +41,6 @@
         }
         _footerView  = [[UIView alloc]init];
         [self setTableFooterView:_footerView];
-        self.delegate = self;
-        self.dataSource =self;
     }
     return self;
 }
@@ -113,6 +111,12 @@
             
         }
     }];
+}
+- (void)setIsHasHeaderRefresh:(BOOL)isHasHeaderRefresh
+{
+    if (!isHasHeaderRefresh) {
+        self.mj_header = nil;
+    }
 }
 - (void)headerRefresh
 {
