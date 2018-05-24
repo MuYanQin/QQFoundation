@@ -32,7 +32,7 @@
 @property (nonatomic,strong) TabarItem *item3;
 
 /**
- 修改徐阿中的下标
+ 修改选中的下标
 
  @param index 下标
  */

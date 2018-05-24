@@ -25,6 +25,10 @@
     }
     return self;
 }
+
+/**
+ 重绘图片 文字的大小距离
+ */
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -65,6 +69,16 @@
     self.BadgeLb.layer.masksToBounds = YES;
     [self addSubview:self.BadgeLb];
     
+}
+- (void)setBackColor:(UIColor *)BackColor
+{
+    _BackColor = BackColor;
+    self.BadgeLb.backgroundColor = BackColor;
+}
+- (void)setTextColor:(UIColor *)TextColor
+{
+    _TextColor = TextColor;
+    self.BadgeLb.textColor = TextColor;
 }
 - (UILabel *)BadgeLb
 {

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define sx_defaultFixSpace 8
+static const NSInteger sx_defaultFixSpace = 8;//距离屏幕距离
 
 @interface UINavigationBar (QQSpeace)
 

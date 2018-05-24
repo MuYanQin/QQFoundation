@@ -10,8 +10,8 @@
 #import "DefaultAnimation.h"
 #define width          [UIScreen mainScreen].bounds.size.width
 #define height        [UIScreen mainScreen].bounds.size.height
-#define ButtonTag  100
-#define tabbarHeight  44 //目前还不支持自定义高度   用的是系统的高度 这样不用刻意去适配Phone X了
+static const NSInteger ButtonTag = 100;
+static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   用的是系统的高度 这样不用刻意去适配Phone X了
 @interface QQTabBarController ()
 @property (nonatomic,strong) TabarItem *lastItem;
 @end

@@ -40,7 +40,6 @@
 #import "QQButton.h"///
 #import "QQTextView.h"/// 有展位文字、最大限制文字数
 #import "QQTextField.h"/// 最大限制文字数
-#import "QQAlertcontroller.h"///UIAlertConotrooler的快速使用
 #import "SHTextView.h"///仿QQ的聊天文字输入框 的自增长
 #import "QQLabel.h"///<可点击的label
 #import "QQDevice.h"//获取系统的一些情况
@@ -50,6 +49,7 @@
 ///***********************************************************************************
 /// Tool
 ///***********************************************************************************
+#import "QQAlertcontroller.h"///UIAlertConotrooler的快速使用
 #import "QQTool.h"///以下简单的小工具 一些文件操作   获取app的一些信息   后期要分离
 #import "QQtableView.h"/// 简单的封装数据请求层
 #import "QQNetManager.h"/// 封装的AF下载工具  返回取消、同一接口多次请求返回（无响应）
