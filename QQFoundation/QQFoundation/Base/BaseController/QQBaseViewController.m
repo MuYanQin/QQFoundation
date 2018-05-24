@@ -9,6 +9,7 @@
 #import "QQBaseViewController.h"
 #import "QQAppDefine.h"
 #import "MJRefresh.h"
+#import "QQNetManager.h"
 //按比例获取高度
 #define  WGiveHeight(HEIGHT) HEIGHT * [UIScreen mainScreen].bounds.size.height/568.0
 //按比例获取宽度

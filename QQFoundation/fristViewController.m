@@ -16,8 +16,10 @@
 #import "QQTextField.h"
 #import "QQAlertController.h"
 #import "UIView+QQFrame.h"
+#import "QQTableViewManager.h"
+#import "QQOneItem.h"
 @interface fristViewController ()
-
+@property (strong, nonatomic)QQTableViewManager *manager;
 @end
 
 @implementation fristViewController
@@ -26,34 +28,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-
-    CGFloat MaxHeight = 60;
-    CGFloat MaxWidth = 60;
-    UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(100, 100, 30, 30)];
-    imageView.image =[UIImage imageNamed:@"multi_network_error_icon@2x"];
-    CGSize imageSize = [imageView sizeThatFits:CGSizeZero];
-    if (imageSize.width >MaxWidth && imageSize.height<=MaxHeight) {
-        imageView.height =  imageView.height *(imageView.width/MaxWidth);
-        imageView.width = MaxWidth;
-
-    }else if (imageSize.height >MaxHeight &&imageSize.width <= MaxWidth){
-        imageView.width =  imageView.width *(imageView.height/MaxHeight);
-        imageView.height = MaxHeight;
-    }else if(imageSize.height >MaxHeight &&imageSize.width>MaxWidth) {
-        imageView.width = MaxWidth;
-        imageView.height =imageSize.height *(MaxWidth/imageSize.width);
-    }else{
-        imageView.width = imageSize.width;
-        imageView.height= imageSize.height;
-    }
-    imageView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:imageView];
+    [self.view addSubview:self.BaseQQTableView];
+    
+    self.manager = [[QQTableViewManager alloc] initWithTableView:self.BaseQQTableView];
+    
+    self.manager[@"QQOneItem"] = @"QQOneCell";
+    QQOneItem *it1 = [[QQOneItem alloc]init];
+    it1.CellHeight = 10;
+    [self.manager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1]]];
     
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.navigationController pushViewController:[fiveViewController new] animated:YES];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

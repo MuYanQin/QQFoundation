@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */; };
+		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
+		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
+		0153EDFD20B66F970041CFC4 /* QQOneItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDFC20B66F970041CFC4 /* QQOneItem.m */; };
 		5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274E9F01F8F45D20018E93C /* fristViewController.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
 		5289010E1FA08F3000C29479 /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5289010D1FA08F3000C29479 /* twoViewController.m */; };
@@ -153,6 +157,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0153EDF220B65DC10041CFC4 /* QQTableViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewManager.h; sourceTree = "<group>"; };
+		0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewManager.m; sourceTree = "<group>"; };
+		0153EDF520B66B5F0041CFC4 /* QQTableViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewItem.h; sourceTree = "<group>"; };
+		0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewItem.m; sourceTree = "<group>"; };
+		0153EDF820B66B710041CFC4 /* QQTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewCell.h; sourceTree = "<group>"; };
+		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
+		0153EDFB20B66F970041CFC4 /* QQOneItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQOneItem.h; sourceTree = "<group>"; };
+		0153EDFC20B66F970041CFC4 /* QQOneItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQOneItem.m; sourceTree = "<group>"; };
 		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
 		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
@@ -431,6 +443,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0153EDF020B65D610041CFC4 /* QQTableViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				0153EDF220B65DC10041CFC4 /* QQTableViewManager.h */,
+				0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */,
+				0153EDF520B66B5F0041CFC4 /* QQTableViewItem.h */,
+				0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */,
+				0153EDF820B66B710041CFC4 /* QQTableViewCell.h */,
+				0153EDF920B66B710041CFC4 /* QQTableViewCell.m */,
+			);
+			path = QQTableViewManager;
+			sourceTree = "<group>";
+		};
 		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +712,8 @@
 				ACB0F3E51FEBEDD900FC9ADB /* fourViewController.m */,
 				ACAD54501FEC7AE600F3E395 /* fiveViewController.h */,
 				ACAD54511FEC7AE600F3E395 /* fiveViewController.m */,
+				0153EDFB20B66F970041CFC4 /* QQOneItem.h */,
+				0153EDFC20B66F970041CFC4 /* QQOneItem.m */,
 				ACB0F3B31FEBEBB900FC9ADB /* 图标_ios */,
 				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
 				523DF3C51F8DBDE6000C1A51 /* Podfile */,
@@ -807,6 +834,7 @@
 				52D8D1681F4D77EF00EA413B /* QQNetWork */,
 				52D8D1741F4D77EF00EA413B /* QQSingleImagePicker */,
 				52D8D1791F4D77EF00EA413B /* QQTableView */,
+				0153EDF020B65D610041CFC4 /* QQTableViewManager */,
 				52D8D17E1F4D77EF00EA413B /* QQTool */,
 			);
 			path = Tool;
@@ -1117,6 +1145,7 @@
 				52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */,
 				AC781ACB1FF51D2C00863F4C /* FMResultSet.m in Sources */,
 				52D8D1891F4D77EF00EA413B /* NSDate+QQCalculate.m in Sources */,
+				0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */,
 				52C1154B1F4EC5CE005471CB /* AFNetworkReachabilityManager.m in Sources */,
 				52C1155F1F4EC5CE005471CB /* MJRefreshConst.m in Sources */,
 				AC781AC91FF51D2C00863F4C /* FMDatabase.m in Sources */,
@@ -1166,6 +1195,7 @@
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
 				ACAD54521FEC7AE600F3E395 /* fiveViewController.m in Sources */,
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
+				0153EDFD20B66F970041CFC4 /* QQOneItem.m in Sources */,
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				52D8D1911F4D77EF00EA413B /* UIView+AlertMessage.m in Sources */,
@@ -1189,12 +1219,14 @@
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
 				52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */,
+				0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */,
 				52C1154D1F4EC5CE005471CB /* AFURLRequestSerialization.m in Sources */,
 				5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */,
 				52D8D18D1F4D77EF00EA413B /* UIColor+Hexadecimal.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
+				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,

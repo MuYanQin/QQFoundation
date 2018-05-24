@@ -41,6 +41,8 @@
         }
         _footerView  = [[UIView alloc]init];
         [self setTableFooterView:_footerView];
+        self.delegate = self;
+        self.dataSource =self;
     }
     return self;
 }
