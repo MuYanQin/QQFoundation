@@ -125,7 +125,7 @@
 - (QQtableView *)BaseQQTableView
 {
     if (!_BaseQQTableView) {
-        _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+        _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 - 44)];
         _BaseQQTableView.delegate = self;
         _BaseQQTableView.dataSource = self;
         _BaseQQTableView.QQDeleGate = self;

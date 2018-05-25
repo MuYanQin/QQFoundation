@@ -13,5 +13,12 @@
 @end
 
 @implementation QQTwoCell
-
+- (void)cellDidLoad
+{
+    [super cellDidLoad];
+    UIView *vv = [[UIView alloc]initWithFrame:CGRectMake(40, 40, [UIScreen mainScreen].bounds.size.width, 20)];
+    NSLog(@"%.2f",[UIScreen mainScreen].bounds.size.width);
+    vv.backgroundColor = [UIColor yellowColor];
+    [self.contentView addSubview:vv];
+}
 @end

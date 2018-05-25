@@ -53,12 +53,17 @@
     it2.slideText = @"喜欢";
     it2.bgColor = [UIColor purpleColor];
     it2.CellSelcetHandler = ^(QQOneItem * item) {
-        QQTwoItem *it2 = [[QQTwoItem alloc]init];
-        it2.CellHeight = 70;
-        it2.allowSlide = YES;
-        it2.slideText = @"喜欢";
-        it2.bgColor = [UIColor purpleColor];
-        [self.manager addItems:@[it2]];
+        QQTwoItem *it23 = [[QQTwoItem alloc]init];
+        it23.CellHeight = 70;
+        it23.allowSlide = YES;
+        it23.bgColor = [UIColor purpleColor];
+        it23.CellSlideHandler = ^(QQTwoItem * itemT) {
+            [itemT deleteRowWithAnimation:UITableViewRowAnimationNone];
+        };
+        it23.CellSelcetHandler = ^(QQTwoItem * iteme) {
+            NSLog(@"%ld",(long)iteme.indexPath.row);
+        };
+        [self.manager addItems:@[it23]];
     };
     it2.CellSlideHandler = ^(id item) {
         

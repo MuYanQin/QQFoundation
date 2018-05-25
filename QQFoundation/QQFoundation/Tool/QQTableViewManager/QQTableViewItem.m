@@ -22,7 +22,12 @@
 
 }
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation{
-    [self.tableViewManager.items removeObjectAtIndex:self.indexPath.row];
-    [self.tableViewManager.TableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    NSInteger row = self.indexPath.row;
+    [self.tableViewManager.items removeObjectAtIndex:row];
+    [self.tableViewManager.TableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:animation];
+}
+- (NSIndexPath *)indexPath
+{
+    return [NSIndexPath indexPathForRow:[self.tableViewManager.items indexOfObject:self] inSection:0];
 }
 @end

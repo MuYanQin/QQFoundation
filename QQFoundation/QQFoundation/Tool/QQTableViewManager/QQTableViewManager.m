@@ -62,9 +62,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewItem * item = self.items[indexPath.row];
-    item.tableViewManager = self;
-    item.indexPath = indexPath;
-    
+    item.tableViewManager = self;    
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
     NSString *cellIdentifier = [NSString stringWithFormat:@"RETableViewManager_%@", [item class]];
