@@ -43,6 +43,10 @@
  */
 - (void)addItems:(NSArray *)objects;
 
+/**
+ 主动刷新视图
+ */
+- (void)reloadData;
 //MARK:以下方法重写字典方法
 - (id)objectAtKeyedSubscript:(id <NSCopying>)key;
 

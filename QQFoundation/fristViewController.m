@@ -18,6 +18,7 @@
 #import "UIView+QQFrame.h"
 #import "QQTableViewManager.h"
 #import "QQOneItem.h"
+#import "QQTwoItem.h"
 @interface fristViewController ()
 @property (strong, nonatomic)QQTableViewManager *manager;
 @end
@@ -33,16 +34,37 @@
     self.manager = [[QQTableViewManager alloc] initWithTableView:self.BaseQQTableView];
     
     self.manager[@"QQOneItem"] = @"QQOneCell";
+    self.manager[@"QQTwoItem"] = @"QQTwoCell";
+
     QQOneItem *it1 = [[QQOneItem alloc]init];
     it1.CellHeight = 50;
     it1.allowSlide = YES;
     it1.slideText = @"收藏";
+    
     it1.CellSelcetHandler = ^(QQOneItem * item) {
     };
     it1.CellSlideHandler = ^(id item) {
 
     };
-    [self.manager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1]]];
+    
+    QQTwoItem *it2 = [[QQTwoItem alloc]init];
+    it2.CellHeight = 70;
+    it2.allowSlide = YES;
+    it2.slideText = @"喜欢";
+    it2.bgColor = [UIColor purpleColor];
+    it2.CellSelcetHandler = ^(QQOneItem * item) {
+        QQTwoItem *it2 = [[QQTwoItem alloc]init];
+        it2.CellHeight = 70;
+        it2.allowSlide = YES;
+        it2.slideText = @"喜欢";
+        it2.bgColor = [UIColor purpleColor];
+        [self.manager addItems:@[it2]];
+    };
+    it2.CellSlideHandler = ^(id item) {
+        
+
+    };
+    [self.manager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1,it2]]];
     
 }
 

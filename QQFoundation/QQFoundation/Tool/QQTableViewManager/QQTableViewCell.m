@@ -7,11 +7,14 @@
 //
 
 #import "QQTableViewCell.h"
-
+#import "QQTableViewItem.h"
 @implementation QQTableViewCell
 
 - (void)cellDidLoad{
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (self.item.bgColor) {
+        self.contentView.backgroundColor  = self.item.bgColor;
+    }
 }
 - (void)cellWillAppear{
     

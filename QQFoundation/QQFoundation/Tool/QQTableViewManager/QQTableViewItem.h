@@ -17,7 +17,7 @@
  是否允许策侧滑。默认NO
  */
 @property (nonatomic, assign) BOOL allowSlide;
-
+@property (nonatomic , strong) UIColor * bgColor;
 /**
  侧滑展示的文字。默认是删除
  */

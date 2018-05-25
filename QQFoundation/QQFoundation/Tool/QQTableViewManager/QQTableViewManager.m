@@ -151,4 +151,8 @@
     [self.items addObjectsFromArray:objects];
     [self.TableView reloadData];
 }
+- (void)reloadData
+{
+    [self.TableView reloadData];
+}
 @end
