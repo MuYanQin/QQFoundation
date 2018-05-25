@@ -146,4 +146,9 @@
     [self.items addObjectsFromArray:otherArray];
     [self.TableView reloadData];
 }
+- (void)addItems:(NSArray *)objects
+{
+    [self.items addObjectsFromArray:objects];
+    [self.TableView reloadData];
+}
 @end
