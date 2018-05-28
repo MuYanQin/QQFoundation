@@ -7,15 +7,6 @@
 //
 
 #import "fristViewController.h"
-#import "QQButton.h"
-#import "fiveViewController.h"
-#import "QQTabBarController.h"
-#import "QQButton.h"
-#import "QQImagePicker.h"
-#import "QQTool.h"
-#import "QQTextField.h"
-#import "QQAlertController.h"
-#import "UIView+QQFrame.h"
 #import "QQTableViewManager.h"
 #import "QQOneItem.h"
 #import "QQTwoItem.h"
@@ -48,7 +39,7 @@
     };
     
     QQTwoItem *it2 = [[QQTwoItem alloc]init];
-    it2.CellHeight = 70;
+    it2.CellHeight = 190;
     it2.allowSlide = YES;
     it2.slideText = @"喜欢";
     it2.bgColor = [UIColor purpleColor];
