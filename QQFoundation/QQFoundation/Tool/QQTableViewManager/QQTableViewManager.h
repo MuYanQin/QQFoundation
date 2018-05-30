@@ -20,7 +20,7 @@
 
 
 /**
- 实例化方法
+ 实例化方法  目前仅支持创建一个Section
 
  @param tableView 被管理的视图
  @return QQTableViewManager

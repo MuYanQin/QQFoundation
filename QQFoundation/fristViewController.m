@@ -54,7 +54,7 @@
         it23.CellSelcetHandler = ^(QQTwoItem * iteme) {
             NSLog(@"%ld",(long)iteme.indexPath.row);
         };
-        [self.manager addItems:@[it23]];
+        [it23 insertRow:2 WithAnimation:UITableViewRowAnimationNone];
     };
     it2.CellSlideHandler = ^(id item) {
         
