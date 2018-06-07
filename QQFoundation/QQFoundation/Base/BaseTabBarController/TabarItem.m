@@ -9,7 +9,8 @@
 #import "TabarItem.h"
 #import "NSString+QQCalculate.h"
 #define btnWidth self.bounds.size.width
-
+static const CGFloat imageHeight = 24;
+static const CGFloat imageWidth = 24;
 @interface TabarItem()
 @property (nonatomic,strong) UILabel *BadgeLb;
 
@@ -35,9 +36,9 @@
     NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
     dictM[NSFontAttributeName] = self.titleLabel.font;
     CGRect frame = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dictM context:nil];
-    CGFloat imageX = (btnWidth - 24) * 0.5;
-    self.imageView.frame = CGRectMake(imageX, 6, 24, 24);
-    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, 30, 50, 14);
+    CGFloat imageX = (btnWidth - imageWidth) * 0.5;
+    self.imageView.frame = CGRectMake(imageX, 6, imageWidth, imageHeight);
+    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, 30, btnWidth, 14);
     CGPoint labelCenter = self.titleLabel.center;
     labelCenter.x = self.imageView.center.x;
     self.titleLabel.center = labelCenter;
