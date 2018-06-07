@@ -55,6 +55,7 @@
     return _ImagePickerController;
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
     UIImage * image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //能获取照片的详细信息
     //    NSDictionary *dict = [info objectForKey:UIImagePickerControllerMediaMetadata];

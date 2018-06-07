@@ -20,6 +20,8 @@
 @property (nonatomic,strong) twoViewController *two;
 @property (nonatomic,strong) threeViewController *three;
 @property (nonatomic,strong) fourViewController *four;
+@property (nonatomic,strong) fourViewController *five;
+
 @property (nonatomic,assign) NSInteger SelectIndex;//选中的下标
 
 /**第一个item*/
@@ -30,7 +32,8 @@
 @property (nonatomic,strong) TabarItem *item2;
 /**第四个item*/
 @property (nonatomic,strong) TabarItem *item3;
-
+/**第五个item*/
+@property (nonatomic,strong) TabarItem *item4;
 /**
  修改选中的下标
 

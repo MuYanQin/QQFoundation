@@ -8,6 +8,7 @@
 
 #import "QQTabBarController.h"
 #import "DefaultAnimation.h"
+#import "UIColor+Hexadecimal.h"
 #define width          [UIScreen mainScreen].bounds.size.width
 #define height        [UIScreen mainScreen].bounds.size.height
 static const NSInteger ButtonTag = 100;
@@ -27,6 +28,8 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
     [super viewDidLoad];
     [self initVC];
     [self createVc];
+    [self.tabBar setShadowImage:[UIImage new]];
+    [self.tabBar setBackgroundImage:[UIImage new]];
     [self.tabBar  addSubview:self.tabBarView];
     
 }
@@ -36,33 +39,44 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
     self.two = [twoViewController new];
     self.three = [threeViewController new];
     self.four = [fourViewController new];
+    self.five = [fourViewController new];
+
     self.viewControllers = @[[[QQNavigationController alloc]initWithRootViewController:self.one],
                              [[QQNavigationController alloc]initWithRootViewController:self.two],
                              [[QQNavigationController alloc]initWithRootViewController:self.three],
-                             [[QQNavigationController alloc]initWithRootViewController:self.four]];
+                             [[QQNavigationController alloc]initWithRootViewController:self.four],
+                             [[QQNavigationController alloc]initWithRootViewController:self.five]];
 }
 - (void)createVc
 {
-    NSArray *heightBackground = @[@"square-hight",@"friendly-light",@"message-light",@"mine-light"];
-    NSArray *backgroud = @[@"square",@"friendly",@"message",@"mine"];
-    NSArray *VCname = @[@"首页",@"接单大厅",@"订单",@"消息"];
+    NSArray *heightBackground = @[@"navigation_home_active",@"navigation_reward_active",@"navigation_Finding_car_active",@"navigation_authorized_active",@"navigation_mine_active"];
+    NSArray *backgroud = @[@"navigation_home_defaut",@"navigation_reward_defaut",@"navigation_Finding_car_defaut",@"navigation_authorized_defaut",@"navigation_mine_defaut"];
+    NSArray *VCname = @[@"首页",@"悬赏",@"寻车",@"授权",@"我的"];
     self.item0 =[TabarItem buttonWithType:UIButtonTypeCustom];
     self.item1 =[TabarItem buttonWithType:UIButtonTypeCustom];
     self.item2 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    self.item2.backgroundColor = [UIColor clearColor];
     self.item3 =[TabarItem buttonWithType:UIButtonTypeCustom];
-    NSArray *items = @[self.item0,self.item1,self.item2,self.item3];
+    self.item4 =[TabarItem buttonWithType:UIButtonTypeCustom];
+
+    NSArray *items = @[self.item0,self.item1,self.item2,self.item3,self.item4];
     float TabWidth = width/backgroud.count;
     for (int i=0; i<backgroud.count; i++) {
         NSString *backImage = backgroud[i];
         NSString *heightImage = heightBackground[i];
+        if (i==2) {
+            UIImageView *imm = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"navigation_Finding_car_background"]];
+            imm.frame = CGRectMake(i*TabWidth + TabWidth/6, -5, TabWidth*2/3, TabWidth*2/3);
+            [self.tabBarView addSubview:imm];
+        }
         TabarItem *item = items[i];
         item.frame = CGRectMake(i*TabWidth, 0, TabWidth, tabbarHeight);
         item.tag = ButtonTag + i;
-        item.titleLabel.font = [UIFont systemFontOfSize:11];
+        item.titleLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightRegular];
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
         [item setTitle:VCname[i] forState:UIControlStateNormal];
-        [item setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-        [item setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        [item setTitleColor:[UIColor colorWithR:102 G:102 B:102 A:1] forState:UIControlStateNormal];
+        [item setTitleColor:[UIColor colorWithR:102 G:102 B:102 A:1] forState:UIControlStateSelected];
         if (i == 0) {
             item.selected  = YES;
             self.lastItem = item;
@@ -72,6 +86,7 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
         [item setImage:[UIImage imageNamed:heightImage] forState:UIControlStateSelected];
         [item addTarget:self action:@selector(selectedTab:)
        forControlEvents:UIControlEventTouchUpInside];
+
         [self.tabBarView addSubview:item];
     }
 }
@@ -104,7 +119,10 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
         CGRect rect = self.tabBar.bounds;
         _tabBarView = [[UIView alloc]initWithFrame:rect];
         _tabBarView.backgroundColor = [UIColor whiteColor];
-        
+        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, width, 0.4)];
+        line.backgroundColor = [UIColor lightGrayColor];
+        line.alpha = 0.4;
+        [_tabBarView addSubview:line];
     }
     return _tabBarView;
 }
