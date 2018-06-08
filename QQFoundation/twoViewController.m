@@ -10,7 +10,7 @@
 #import "NSDate+QQCalculate.h"
 @interface twoViewController ()
 @property (nonatomic,copy) NSString *dateAsString;
-
+@property (nonatomic , strong) UIImageView * BackGroudImageview;
 @end
 
 @implementation twoViewController
@@ -21,6 +21,25 @@
     self.navigationItem.title  = @"two";
 
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
+    self.BackGroudImageview = [[UIImageView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    self.BackGroudImageview.backgroundColor = [UIColor purpleColor];
+    [self.view addSubview:self.BackGroudImageview];
+    
+    CABasicAnimation * animation = [CABasicAnimation animation];
+    animation.keyPath = @"transform.scale";//KVC的方式来访问属性
+//    animation.fromValue = [NSValue valueWithCGSize:self.BackGroudImageview.frame.size];
+//    animation.byValue = [NSValue valueWithCGSize:CGSizeMake(self.BackGroudImageview.frame.size.width *2, self.BackGroudImageview.frame.size.height *2)];
+    animation.fromValue = @1.0;
+    animation.toValue = @0.8;
+    animation.duration = 1;//持续时间
+    animation.repeatCount = 110;//无限循环
+    animation.speed = 1;//速度
+    //    animation.repeatDuration = 10;//在多久哪动画有效
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];//结束函数
+    animation.autoreverses= YES;//回归是否是动画形式
+    [self.BackGroudImageview.layer addAnimation:animation forKey:@"frame"];//添加动画
+    
+    
     return;
     //创建队列的方法
     dispatch_queue_t queue = dispatch_queue_create("qinmqiao", DISPATCH_QUEUE_SERIAL);//串

@@ -9,6 +9,7 @@
 #import "QQNavigationController.h"
 #import "QQNetManager.h"
 #import "UIColor+Hexadecimal.h"
+#import "AppDelegate.h"
 @interface QQNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 {
     UIViewController *tempVC;///栈顶的控制器
@@ -112,6 +113,7 @@
 }
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+
     if (!self.isSwitching) {
         //返回调用此方法取消请求  如果是请求完成则从数组中去除本子请求
         [[QQNetManager defaultManager] deleteConnectionVC:self.viewControllers.lastObject];

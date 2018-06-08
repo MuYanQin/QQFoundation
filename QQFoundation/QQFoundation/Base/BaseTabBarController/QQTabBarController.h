@@ -12,8 +12,7 @@
 #import "threeViewController.h"
 #import "fourViewController.h"
 #import "QQNavigationController.h"
-#import "TabarItem.h"
-
+@class MCTabBarItem;
 @interface QQTabBarController : UITabBarController
 @property (nonatomic,strong) UIView *tabBarView;
 @property (nonatomic,strong) fristViewController *one;
@@ -25,15 +24,15 @@
 @property (nonatomic,assign) NSInteger SelectIndex;//选中的下标
 
 /**第一个item*/
-@property (nonatomic,strong) TabarItem *item0;
+@property (nonatomic,strong) MCTabBarItem *item0;
 /**第二个item*/
-@property (nonatomic,strong) TabarItem *item1;
+@property (nonatomic,strong) MCTabBarItem *item1;
 /**第三个item*/
-@property (nonatomic,strong) TabarItem *item2;
+@property (nonatomic,strong) MCTabBarItem *item2;
 /**第四个item*/
-@property (nonatomic,strong) TabarItem *item3;
+@property (nonatomic,strong) MCTabBarItem *item3;
 /**第五个item*/
-@property (nonatomic,strong) TabarItem *item4;
+@property (nonatomic,strong) MCTabBarItem *item4;
 /**
  修改选中的下标
 

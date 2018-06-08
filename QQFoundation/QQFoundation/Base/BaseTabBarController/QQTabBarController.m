@@ -9,31 +9,43 @@
 #import "QQTabBarController.h"
 #import "DefaultAnimation.h"
 #import "UIColor+Hexadecimal.h"
-#define width          [UIScreen mainScreen].bounds.size.width
-#define height        [UIScreen mainScreen].bounds.size.height
+#import "MCTabBarItem.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
+#define kwidth          [UIScreen mainScreen].bounds.size.width
+#define kheight        [UIScreen mainScreen].bounds.size.height
 static const NSInteger ButtonTag = 100;
-static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   用的是系统的高度 这样不用刻意去适配Phone X了
+static const NSInteger tabbarHeight = 80;
 @interface QQTabBarController ()
-@property (nonatomic,strong) TabarItem *lastItem;
+@property (nonatomic,strong) MCTabBarItem *lastItem;
 @end
 
 @implementation QQTabBarController
 - (instancetype)init
 {
     if (self = [super init]) {
+//        self.tabBar.hidden = YES;
+//        [self.tabBar setShadowImage:[UIImage new]];
+//        [self.tabBar setBackgroundImage:[UIImage new]];
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initVC];
     [self createVc];
-    [self.tabBar setShadowImage:[UIImage new]];
-    [self.tabBar setBackgroundImage:[UIImage new]];
-    [self.tabBar  addSubview:self.tabBarView];
+    [self.tabBar addSubview:self.tabBarView];
+//    [self.view addSubview:self.tabBarView];
     
 }
-
+- (void)viewWillLayoutSubviews{
+    CGRect tabFrame = self.tabBar.frame;
+    tabFrame.size.height = tabbarHeight;
+    tabFrame.origin.y = self.view.frame.size.height - tabbarHeight;
+    self.tabBar.frame = tabFrame;
+    CGRect rect = self.tabBar.bounds;
+    self.tabBarView.frame = rect;
+}
 - (void)initVC{
     self.one = [fristViewController new];
     self.two = [twoViewController new];
@@ -52,27 +64,24 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
     NSArray *heightBackground = @[@"navigation_home_active",@"navigation_reward_active",@"navigation_Finding_car_active",@"navigation_authorized_active",@"navigation_mine_active"];
     NSArray *backgroud = @[@"navigation_home_defaut",@"navigation_reward_defaut",@"navigation_Finding_car_defaut",@"navigation_authorized_defaut",@"navigation_mine_defaut"];
     NSArray *VCname = @[@"首页",@"悬赏",@"寻车",@"授权",@"我的"];
-    self.item0 =[TabarItem buttonWithType:UIButtonTypeCustom];
-    self.item1 =[TabarItem buttonWithType:UIButtonTypeCustom];
-    self.item2 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    self.item0 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+    self.item1 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+    self.item1.isHasBackGroudImageview = YES;
+    self.item2 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
     self.item2.backgroundColor = [UIColor clearColor];
-    self.item3 =[TabarItem buttonWithType:UIButtonTypeCustom];
-    self.item4 =[TabarItem buttonWithType:UIButtonTypeCustom];
+    self.item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+    self.item4 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
 
     NSArray *items = @[self.item0,self.item1,self.item2,self.item3,self.item4];
-    float TabWidth = width/backgroud.count;
+    float TabWidth = kwidth/backgroud.count;
     for (int i=0; i<backgroud.count; i++) {
         NSString *backImage = backgroud[i];
         NSString *heightImage = heightBackground[i];
-        if (i==2) {
-            UIImageView *imm = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"navigation_Finding_car_background"]];
-            imm.frame = CGRectMake(i*TabWidth + TabWidth/6, -5, TabWidth*2/3, TabWidth*2/3);
-            [self.tabBarView addSubview:imm];
-        }
-        TabarItem *item = items[i];
+        MCTabBarItem *item = items[i];
         item.frame = CGRectMake(i*TabWidth, 0, TabWidth, tabbarHeight);
         item.tag = ButtonTag + i;
-        item.titleLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightRegular];
+        item.backgroundColor = [UIColor redColor];
+        item.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
         [item setTitle:VCname[i] forState:UIControlStateNormal];
         [item setTitleColor:[UIColor colorWithR:102 G:102 B:102 A:1] forState:UIControlStateNormal];
@@ -90,7 +99,7 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
         [self.tabBarView addSubview:item];
     }
 }
-- (void)selectedTab:(TabarItem *)item
+- (void)selectedTab:(MCTabBarItem *)item
 {
     if (self.lastItem) {
         self.lastItem.selected = NO;
@@ -99,8 +108,12 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
     self.SelectIndex = self.selectedIndex;
     item.selected = YES;
     self.lastItem = item;
-    [self.tabBar  addSubview:self.tabBarView];//每次点击的时候加一次  不然响应事件会被覆盖
-    
+//    [self.tabBar  addSubview:self.tabBarView];//每次点击的时候加一次  不然响应事件会被覆盖
+    if (self.SelectIndex ==1) {
+        self.item1.BackGroudImageName = @"navigation_reward_BG";
+    }else{
+        self.item1.BackGroudImageName = @"";
+    }
     [self QQTabBarController:self didSelect:self.viewControllers[self.selectedIndex]];
 }
 - (void)QQTabBarController:(QQTabBarController *)TabBarController  didSelect:(UIViewController *)viewcontroller
@@ -110,16 +123,16 @@ static const NSInteger tabbarHeight = 44; //目前还不支持自定义高度   
 //设置选中的下标
 - (void)setTabIndex:(NSInteger)index
 {
-    TabarItem *item = [self.tabBarView viewWithTag:index + ButtonTag];
+    MCTabBarItem *item = [self.tabBarView viewWithTag:index + ButtonTag];
     [self selectedTab:item];
 }
+
 - (UIView *)tabBarView
 {
     if (!_tabBarView) {
-        CGRect rect = self.tabBar.bounds;
-        _tabBarView = [[UIView alloc]initWithFrame:rect];
+        _tabBarView = [[UIView alloc]init];
         _tabBarView.backgroundColor = [UIColor whiteColor];
-        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, width, 0.4)];
+        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kwidth, 0.4)];
         line.backgroundColor = [UIColor lightGrayColor];
         line.alpha = 0.4;
         [_tabBarView addSubview:line];

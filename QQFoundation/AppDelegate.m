@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "QQNavigationController.h"
-#import "QQTabBarController.h"
 @interface AppDelegate ()
 @property (strong, nonatomic) UIView *lunchView;
 
@@ -19,12 +18,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window.rootViewController = [[QQTabBarController alloc]init];
-    
+    self.window.rootViewController = self.TabBar;
+
     [self.window makeKeyAndVisible];
     return YES;
 }
-
+- (QQTabBarController *)TabBar
+{
+    if (!_TabBar) {
+        _TabBar = [[QQTabBarController alloc]init];
+    }
+    return _TabBar;
+}
 -(void)removeLun
 {
     [lunchView removeFromSuperview];
