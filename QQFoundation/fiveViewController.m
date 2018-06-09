@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Five";
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {

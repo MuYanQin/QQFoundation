@@ -17,12 +17,12 @@
 /**
  角标的背景颜色。默认红色
  */
-@property (nonatomic,strong) UIColor *BackColor;
+@property (nonatomic,strong) UIColor *BadgeBackColor;
 
 /**
  角标文字颜色。默认白色
  */
-@property (nonatomic,strong) UIColor *TextColor;
+@property (nonatomic,strong) UIColor *BadgeTextColor;
 
 
 /**

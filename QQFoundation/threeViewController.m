@@ -8,8 +8,10 @@
 
 #import "threeViewController.h"
 #import "fourViewController.h"
+#import "MCContent.h"
+#import "twoViewController.h"
 @interface threeViewController ()
-
+@property (nonatomic , strong) MCContent * Content;
 @end
 
 @implementation threeViewController
@@ -19,12 +21,10 @@
     // Do any additional setup after loading the view.
 //    self.title = @"3333";
     self.navigationItem.title  = @"three";
+    self.Content = [[MCContent alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height) titles:@[@"frist",@"seconed"] controllers:@[[[twoViewController alloc]init],[[fourViewController alloc]init]]];
+    [self.view addSubview:self.Content];
+}
 
-}
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.navigationController pushViewController:[fourViewController new] animated:YES];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

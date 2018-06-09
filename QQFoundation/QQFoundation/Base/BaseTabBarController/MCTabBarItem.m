@@ -10,7 +10,7 @@
 #import "NSString+QQCalculate.h"
 #import "UIView+QQFrame.h"
 #define btnWidth self.bounds.size.width
-static const CGFloat imageHeight = 18;
+static const CGFloat imageHeight = 24;
 static const CGFloat imageWidth = imageHeight*1.14;
 @interface MCTabBarItem()
 @property (nonatomic,strong) UILabel *BadgeLb;
@@ -38,7 +38,7 @@ static const CGFloat imageWidth = imageHeight*1.14;
     CGRect frame = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dictM context:nil];
     CGFloat imageX = (btnWidth - imageWidth) * 0.5;
     self.imageView.frame = CGRectMake(imageX, 6, imageWidth, imageHeight);
-    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, self.imageView.bottom +4, btnWidth, 14);
+    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, self.imageView.bottom +8, btnWidth, 14);
     CGPoint labelCenter = self.titleLabel.center;
     labelCenter.x = self.imageView.center.x;
     self.titleLabel.center = labelCenter;
@@ -110,15 +110,15 @@ static const CGFloat imageWidth = imageHeight*1.14;
     }
     
 }
-- (void)setBackColor:(UIColor *)BackColor
+- (void)setBadgeBackColor:(UIColor *)BadgeBackColor
 {
-    _BackColor = BackColor;
-    self.BadgeLb.backgroundColor = BackColor;
+    _BadgeBackColor = BadgeBackColor;
+    self.BadgeLb.backgroundColor = BadgeBackColor;
 }
-- (void)setTextColor:(UIColor *)TextColor
+- (void)setBadgeTextColor:(UIColor *)BadgeTextColor
 {
-    _TextColor = TextColor;
-    self.BadgeLb.textColor = TextColor;
+    _BadgeTextColor = BadgeTextColor;
+    self.BadgeLb.textColor = BadgeTextColor;
 }
 - (UILabel *)BadgeLb
 {

@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"four";
-
+    self.view.backgroundColor = [UIColor purpleColor];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {

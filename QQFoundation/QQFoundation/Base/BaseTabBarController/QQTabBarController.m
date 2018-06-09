@@ -14,7 +14,8 @@
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
 static const NSInteger ButtonTag = 100;
-static const NSInteger tabbarHeight = 80;
+
+static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 @interface QQTabBarController ()
 @property (nonatomic,strong) MCTabBarItem *lastItem;
 @end
@@ -23,9 +24,7 @@ static const NSInteger tabbarHeight = 80;
 - (instancetype)init
 {
     if (self = [super init]) {
-//        self.tabBar.hidden = YES;
-//        [self.tabBar setShadowImage:[UIImage new]];
-//        [self.tabBar setBackgroundImage:[UIImage new]];
+
     }
     return self;
 }
@@ -35,7 +34,6 @@ static const NSInteger tabbarHeight = 80;
     [self initVC];
     [self createVc];
     [self.tabBar addSubview:self.tabBarView];
-//    [self.view addSubview:self.tabBarView];
     
 }
 - (void)viewWillLayoutSubviews{
@@ -80,7 +78,6 @@ static const NSInteger tabbarHeight = 80;
         MCTabBarItem *item = items[i];
         item.frame = CGRectMake(i*TabWidth, 0, TabWidth, tabbarHeight);
         item.tag = ButtonTag + i;
-        item.backgroundColor = [UIColor redColor];
         item.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
         [item setTitle:VCname[i] forState:UIControlStateNormal];
