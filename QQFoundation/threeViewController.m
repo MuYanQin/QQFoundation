@@ -10,6 +10,7 @@
 #import "fourViewController.h"
 #import "MCContent.h"
 #import "twoViewController.h"
+#import "fristViewController.h"
 @interface threeViewController ()
 @property (nonatomic , strong) MCContent * Content;
 @end
@@ -21,7 +22,7 @@
     // Do any additional setup after loading the view.
 //    self.title = @"3333";
     self.navigationItem.title  = @"three";
-    self.Content = [[MCContent alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height) titles:@[@"frist",@"seconed"] controllers:@[[[twoViewController alloc]init],[[fourViewController alloc]init]]];
+    self.Content = [[MCContent alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height) titles:@[@"frist",@"seconed",@"秦慕乔"] controllers:@[[[twoViewController alloc]init],[[fristViewController alloc]init],[[twoViewController alloc]init]]];
     [self.view addSubview:self.Content];
 }
 

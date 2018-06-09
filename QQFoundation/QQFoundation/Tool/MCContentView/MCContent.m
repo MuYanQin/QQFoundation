@@ -8,14 +8,14 @@
 
 #import "MCContent.h"
 #import "UIView+QQFrame.h"
-#import "MCTabBarItem.h"
+#import "QQButton.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
-@interface MCContent ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface MCContent ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
 @property (nonatomic , strong) UIScrollView * titleScroll;
 @property (nonatomic , strong) UICollectionView * contentCollection;
 @property (nonatomic , strong) NSMutableArray * itemArray;
-@property (nonatomic , strong) MCTabBarItem * lastItem;
+@property (nonatomic , strong) QQButton * lastItem;
 @end
 
 static const CGFloat titleScrollHeight = 60;
@@ -35,7 +35,7 @@ static const NSInteger itemTag = 100;
 
 }
 
-#pragma mark UICollectionView
+#pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -54,7 +54,16 @@ static const NSInteger itemTag = 100;
     }
     return cell;
 }
-- (void)selectItem:(UIButton *)btn
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == self.contentCollection) {
+        NSInteger index = scrollView.contentOffset.x/kwidth;
+        [self changeItemStatus:index];
+    }
+}
+
+- (void)selectItem:(QQButton *)btn
 {
     [self selectIndex:btn.tag - itemTag];
 }
@@ -65,31 +74,29 @@ static const NSInteger itemTag = 100;
         return;
     }
     [self.contentCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:labs(index) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-}
-- (void)setSelectTitleFont:(UIFont *)selectTitleFont
-{
-    _selectTitleFont = selectTitleFont;
+//    [self changeItemStatus:index];
+    QQButton * Item = self.itemArray[index];
+    if (self.lastItem) {
+        self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
+        [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
+    }
+    self.lastItem = Item;
+    Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
+    [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
-- (void)setDefaultTitleFont:(UIFont *)defaultTitleFont
+- (void)changeItemStatus:(NSInteger)index
 {
-    _defaultTitleFont = defaultTitleFont;
-}
-- (void)setSelectTitleColor:(UIColor *)selectTitleColor
-{
-    _selectTitleColor = selectTitleColor;
-    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MCTabBarItem *item = (MCTabBarItem *)obj;
-        [item setTitleColor:selectTitleColor forState:UIControlStateSelected];
-    }];
-}
-- (void)setDefaultTitleColor:(UIColor *)defaultTitleColor
-{
-    _defaultTitleColor = defaultTitleColor;
-    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MCTabBarItem *item = (MCTabBarItem *)obj;
-        [item setTitleColor:defaultTitleColor forState:UIControlStateNormal];
-    }];
+    QQButton * Item = self.itemArray[index];
+    if (self.lastItem) {
+        self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
+        [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+
+    }
+    self.lastItem = Item;
+    Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
+    [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
 }
 - (NSArray *)contentTitles
 {
@@ -136,9 +143,10 @@ static const NSInteger itemTag = 100;
         __weak __typeof(&*self)weakSelf = self;
         [_contentTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             @autoreleasepool{
-                MCTabBarItem *item = [[MCTabBarItem alloc]initWithFrame:CGRectMake(idx *btnWidth, 0, btnWidth, titleScrollHeight)];
+                QQButton *item = [[QQButton alloc]initWithFrame:CGRectMake(idx *btnWidth, 0, btnWidth, titleScrollHeight)];
                 item.tag = idx + itemTag;
                 [item setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                item.titleLabel.textColor = [UIColor redColor];
                 [item setTitle:obj forState:UIControlStateNormal];
                 [item.titleLabel setFont:[UIFont systemFontOfSize:14]];
                 [item addTarget:self action:@selector(selectItem:) forControlEvents:UIControlEventTouchUpInside];
@@ -146,6 +154,7 @@ static const NSInteger itemTag = 100;
                 if (idx ==0) {
                     weakSelf.lastItem = item;
                     [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    item.backgroundColor = [UIColor cyanColor];
                 }
                 [weakSelf.itemArray addObject:item];
                 [weakSelf.titleScroll addSubview:item];

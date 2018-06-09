@@ -7,7 +7,7 @@
 //
 
 #import "fourViewController.h"
-
+#import "threeViewController.h"
 @interface fourViewController ()
 
 @end
@@ -22,7 +22,7 @@
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"%lu",self.tabBarController.selectedIndex);
+    [self.navigationController pushViewController:[threeViewController new] animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

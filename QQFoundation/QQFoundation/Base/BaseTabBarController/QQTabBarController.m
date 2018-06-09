@@ -10,7 +10,6 @@
 #import "DefaultAnimation.h"
 #import "UIColor+Hexadecimal.h"
 #import "MCTabBarItem.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
 static const NSInteger ButtonTag = 100;

@@ -29,7 +29,6 @@
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.delegate = self;
     }
-
     self.view.backgroundColor = [UIColor whiteColor];
    //设置透明度  相差64像素  YES会有蒙层
     self.navigationBar.translucent = YES;
@@ -76,10 +75,10 @@
     if (navigationController.viewControllers.count == 1){
         navigationController.interactivePopGestureRecognizer.enabled = NO;
     }else{
-        if(self.CanSlider ){
-            navigationController.interactivePopGestureRecognizer.enabled = YES;
-        }else{
+        if(self.forbidSlider){
             navigationController.interactivePopGestureRecognizer.enabled = NO;
+        }else{
+            navigationController.interactivePopGestureRecognizer.enabled = YES;
         }
     }
     //获取栈顶的Vc

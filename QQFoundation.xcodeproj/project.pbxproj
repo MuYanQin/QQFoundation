@@ -130,7 +130,6 @@
 		ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0511FEE546200668126 /* QQBarItemViewController.m */; };
 		ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0541FEE546200668126 /* QQBaseViewController.m */; };
 		ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0581FEE546200668126 /* QQNavigationController.m */; };
-		ACF4B0651FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0601FEE546200668126 /* QQTabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -380,9 +379,7 @@
 		ACF4B0531FEE546200668126 /* QQBarItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBarItemViewController.h; sourceTree = "<group>"; };
 		ACF4B0541FEE546200668126 /* QQBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBaseViewController.m; sourceTree = "<group>"; };
 		ACF4B0561FEE546200668126 /* QQNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQNavigationController.h; sourceTree = "<group>"; };
-		ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		ACF4B0581FEE546200668126 /* QQNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQNavigationController.m; sourceTree = "<group>"; };
-		ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		ACF4B05B1FEE546200668126 /* QQAppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQAppDefine.h; sourceTree = "<group>"; };
 		ACF4B05C1FEE546200668126 /* QQBaseURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBaseURL.h; sourceTree = "<group>"; };
 		ACF4B05E1FEE546200668126 /* QQTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTabBarController.h; sourceTree = "<group>"; };
@@ -945,8 +942,6 @@
 				ACF4B0581FEE546200668126 /* QQNavigationController.m */,
 				AC10A803206B90B600FF937D /* UINavigationBar+QQSpeace.h */,
 				AC10A804206B90B600FF937D /* UINavigationBar+QQSpeace.m */,
-				ACF4B0571FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.h */,
-				ACF4B0591FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m */,
 			);
 			path = BaseNavigatioinController;
 			sourceTree = "<group>";
@@ -1086,7 +1081,6 @@
 				ACB0F3E61FEBEDD900FC9ADB /* fourViewController.m in Sources */,
 				52D8D1A31F4D77EF00EA413B /* uiview+MB.m in Sources */,
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,
-				ACF4B0651FEE546200668126 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
 				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
