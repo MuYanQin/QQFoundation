@@ -20,6 +20,7 @@
 @property (nonatomic , strong) UICollectionView * contentCollection;
 @property (nonatomic , strong) NSMutableArray * itemArray;
 @property (nonatomic , strong) QQButton * lastItem;
+@property (nonatomic , strong) UIView  * lineView;
 @end
 
 static const CGFloat titleScrollHeight = 60;
@@ -34,6 +35,7 @@ static const NSInteger itemTag = 100;
         _contentCtrollers = [NSArray arrayWithArray:controllers];
         self.itemArray = [NSMutableArray array];
         [self addSubview:self.titleScroll];
+        [self.titleScroll addSubview:self.lineView];
         [self addSubview:self.contentCollection];
     }
     return self;
@@ -65,10 +67,8 @@ static const NSInteger itemTag = 100;
     if (scrollView == self.contentCollection) {
         NSInteger index = scrollView.contentOffset.x/kwidth;
         [self changeItemStatus:index];
-
     }
 }
-
 - (void)selectItem:(QQButton *)btn
 {
     [self selectIndex:btn.tag - itemTag];
@@ -84,6 +84,7 @@ static const NSInteger itemTag = 100;
 }
 - (void)changeItemStatus:(NSInteger)index
 {
+    [self menuScrollToCenter:index];
     QQButton * Item = self.itemArray[index];
     if (self.lastItem) {
         self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
@@ -93,9 +94,29 @@ static const NSInteger itemTag = 100;
     self.lastItem = Item;
     Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
     [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self scrollToItemCenter:Item];
+
     if ([self.delegate respondsToSelector:@selector(MCPageView:didSelectIndex:)]) {
         [self.delegate MCPageView:self didSelectIndex:index];
     }
+}
+// 顶部菜单滚动
+- (void)menuScrollToCenter:(NSInteger)index{
+    
+    CGFloat itemWidth = _titleButtonWidth?_titleButtonWidth : kwidth / self.contentTitles.count;
+    QQButton *Button = self.itemArray[index];
+    CGFloat left = Button.center.x - kwidth / 2.0;
+    left = left <= 0 ? 0 : left;
+    CGFloat maxLeft = itemWidth * self.contentTitles.count - kwidth;
+    left = left >= maxLeft ? maxLeft : left;
+    [self.titleScroll setContentOffset:CGPointMake(left, 0) animated:YES];
+}
+- (void)scrollToItemCenter:(QQButton *)item
+{
+    [UIView animateWithDuration:0.15 animations:^{
+        self.lineView.center = item.center;
+        self.lineView.bottom = item.bottom -1;
+    }];
 }
 - (void)setSelectTitleFont:(UIFont *)selectTitleFont
 {
@@ -107,6 +128,22 @@ static const NSInteger itemTag = 100;
     _selectTitleColor = selectTitleColor;
     [self.lastItem setTitleColor:_selectTitleColor forState:UIControlStateNormal];
     
+}
+- (void)setLineColor:(UIColor *)lineColor
+{
+    _lineColor = lineColor;
+    self.lineView.backgroundColor = lineColor;
+}
+- (void)setTitleButtonWidth:(CGFloat)titleButtonWidth
+{
+    _titleButtonWidth = titleButtonWidth;
+    self.titleScroll.contentSize = CGSizeMake((self.titleButtonWidth *_contentTitles.count), titleScrollHeight);
+    __weak __typeof(&*self)weakSelf = self;
+    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        QQButton *item =  weakSelf.itemArray[idx];
+        item.frame = CGRectMake(idx *titleButtonWidth, 0, titleButtonWidth, titleScrollHeight);
+    }];
+    self.lineView.frame = CGRectMake(titleButtonWidth/6, titleScrollHeight - 1, 2*titleButtonWidth/3, 1);
 }
 - (void)setDefaultTitleFont:(UIFont *)defaultTitleFont
 {
@@ -130,7 +167,18 @@ static const NSInteger itemTag = 100;
         }
     }];
 }
-
+- (UIView *)lineView
+{
+    if (!_lineView) {
+        CGFloat btnWidth = kwidth/_contentTitles.count;
+        if (self.titleButtonWidth >0) {
+            btnWidth = self.titleButtonWidth;
+        }
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake(btnWidth/6, titleScrollHeight - 1, 2*btnWidth/3, 1)];
+        _lineView.backgroundColor = [UIColor redColor];
+    }
+    return _lineView;
+}
 - (NSArray *)contentTitles
 {
     if (!_contentTitles) {

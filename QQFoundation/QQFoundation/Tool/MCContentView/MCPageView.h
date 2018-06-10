@@ -37,6 +37,16 @@
  */
 @property (nonatomic , assign) CGFloat  titleButtonWidth;
 
+
+/**
+ item下  横线的颜色
+ */
+@property (nonatomic , strong) UIColor * lineColor;
+/**
+ 手动选中某个iem
+
+ @param index item下标
+ */
 - (void)selectIndex:(NSInteger)index;
 
 /**
