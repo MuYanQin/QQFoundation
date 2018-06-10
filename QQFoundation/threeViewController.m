@@ -8,11 +8,11 @@
 
 #import "threeViewController.h"
 #import "fourViewController.h"
-#import "MCContent.h"
+#import "MCPageView.h"
 #import "twoViewController.h"
 #import "fristViewController.h"
-@interface threeViewController ()
-@property (nonatomic , strong) MCContent * Content;
+@interface threeViewController ()<MCPageViewDelegate>
+@property (nonatomic , strong) MCPageView * Content;
 @end
 
 @implementation threeViewController
@@ -22,10 +22,17 @@
     // Do any additional setup after loading the view.
 //    self.title = @"3333";
     self.navigationItem.title  = @"three";
-    self.Content = [[MCContent alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height) titles:@[@"frist",@"seconed",@"秦慕乔"] controllers:@[[[twoViewController alloc]init],[[fristViewController alloc]init],[[twoViewController alloc]init]]];
+    self.Content = [[MCPageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height) titles:@[@"frist",@"seconed",@"秦慕乔"] controllers:@[[[twoViewController alloc]init],[[fristViewController alloc]init],[[twoViewController alloc]init]]];
+    self.Content.delegate = self;
+    self.Content.selectTitleColor = [UIColor blackColor];
+    self.Content.defaultTitleFont = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+    self.Content.selectTitleFont = [UIFont systemFontOfSize:16 weight:UIFontWeightHeavy];
     [self.view addSubview:self.Content];
 }
-
+- (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index
+{
+    NSLog(@"%ld",(long)Index);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -1,17 +1,21 @@
 //
-//  MCContent.m
+//  MCPageView.m
 //  QQFoundation
 //
-//  Created by qinmuqiao on 2018/6/9.
+//  Created by qinmuqiao on 2018/6/10.
 //  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import "MCContent.h"
+#import "MCPageView.h"
 #import "UIView+QQFrame.h"
 #import "QQButton.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
-@interface MCContent ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
+#define itemDefaultColor [UIColor colorWithRed:220/255.0f green:220/255.0f blue:220/255.0f alpha:1]
+
+@interface MCPageView ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
+@property (nonatomic , strong) NSArray * contentCtrollers;
+@property (nonatomic , strong) NSArray * contentTitles;
 @property (nonatomic , strong) UIScrollView * titleScroll;
 @property (nonatomic , strong) UICollectionView * contentCollection;
 @property (nonatomic , strong) NSMutableArray * itemArray;
@@ -21,7 +25,8 @@
 static const CGFloat titleScrollHeight = 60;
 static const NSInteger itemTag = 100;
 
-@implementation MCContent
+@implementation MCPageView
+
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles controllers:(NSArray *)controllers
 {
     if (self = [super initWithFrame:frame]) {
@@ -32,7 +37,7 @@ static const NSInteger itemTag = 100;
         [self addSubview:self.contentCollection];
     }
     return self;
-
+    
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -60,6 +65,7 @@ static const NSInteger itemTag = 100;
     if (scrollView == self.contentCollection) {
         NSInteger index = scrollView.contentOffset.x/kwidth;
         [self changeItemStatus:index];
+
     }
 }
 
@@ -69,35 +75,62 @@ static const NSInteger itemTag = 100;
 }
 - (void)selectIndex:(NSInteger)index
 {
-    if (index <0 || index >self.contentTitles.count) {
+    if (index <0 || index >self.contentCtrollers.count) {
         NSLog(@"滚动的位置大于条目数");
         return;
     }
     [self.contentCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:labs(index) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-//    [self changeItemStatus:index];
-    QQButton * Item = self.itemArray[index];
-    if (self.lastItem) {
-        self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
-        [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-
-    }
-    self.lastItem = Item;
-    Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
-    [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self changeItemStatus:index];
 }
 - (void)changeItemStatus:(NSInteger)index
 {
     QQButton * Item = self.itemArray[index];
     if (self.lastItem) {
         self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
-        [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-
+        [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:itemDefaultColor forState:UIControlStateNormal];
+        
     }
     self.lastItem = Item;
     Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
     [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
+    if ([self.delegate respondsToSelector:@selector(MCPageView:didSelectIndex:)]) {
+        [self.delegate MCPageView:self didSelectIndex:index];
+    }
 }
+- (void)setSelectTitleFont:(UIFont *)selectTitleFont
+{
+    _selectTitleFont = selectTitleFont;
+    self.lastItem.titleLabel.font = _selectTitleFont;
+}
+- (void)setSelectTitleColor:(UIColor *)selectTitleColor
+{
+    _selectTitleColor = selectTitleColor;
+    [self.lastItem setTitleColor:_selectTitleColor forState:UIControlStateNormal];
+    
+}
+- (void)setDefaultTitleFont:(UIFont *)defaultTitleFont
+{
+    _defaultTitleFont = defaultTitleFont;
+    __weak __typeof(&*self)weakSelf = self;
+    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        QQButton *item =  weakSelf.itemArray[idx];
+        if (![item isEqual:weakSelf.lastItem]) {
+            item.titleLabel.font = _defaultTitleFont;
+        }
+    }];
+}
+- (void)setDefaultTitleColor:(UIColor *)defaultTitleColor
+{
+    _defaultTitleColor = defaultTitleColor;
+    __weak __typeof(&*self)weakSelf = self;
+    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        QQButton *item =  weakSelf.itemArray[idx];
+        if (![item isEqual:weakSelf.lastItem]) {
+            [item setTitleColor:_defaultTitleColor forState:UIControlStateNormal];
+        }
+    }];
+}
+
 - (NSArray *)contentTitles
 {
     if (!_contentTitles) {
@@ -145,8 +178,7 @@ static const NSInteger itemTag = 100;
             @autoreleasepool{
                 QQButton *item = [[QQButton alloc]initWithFrame:CGRectMake(idx *btnWidth, 0, btnWidth, titleScrollHeight)];
                 item.tag = idx + itemTag;
-                [item setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                item.titleLabel.textColor = [UIColor redColor];
+                [item setTitleColor:itemDefaultColor forState:UIControlStateNormal];
                 [item setTitle:obj forState:UIControlStateNormal];
                 [item.titleLabel setFont:[UIFont systemFontOfSize:14]];
                 [item addTarget:self action:@selector(selectItem:) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +186,6 @@ static const NSInteger itemTag = 100;
                 if (idx ==0) {
                     weakSelf.lastItem = item;
                     [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                    item.backgroundColor = [UIColor cyanColor];
                 }
                 [weakSelf.itemArray addObject:item];
                 [weakSelf.titleScroll addSubview:item];
@@ -163,4 +194,5 @@ static const NSInteger itemTag = 100;
     }
     return _titleScroll;
 }
+
 @end

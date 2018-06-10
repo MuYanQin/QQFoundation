@@ -1,24 +1,20 @@
 //
-//  MCContent.h
+//  MCPageView.h
 //  QQFoundation
 //
-//  Created by qinmuqiao on 2018/6/9.
+//  Created by qinmuqiao on 2018/6/10.
 //  Copyright © 2018年 慕纯. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-@class MCContent;
-@protocol MCContentDelegate <NSObject>
-- (void)MCContent:(MCContent *)MCContent didSelectIndex:(NSInteger)Index;
+@class MCPageView;
+@protocol MCPageViewDelegate <NSObject>
+- (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index;
 @end
 
-@interface MCContent : UIView
+@interface MCPageView : UIView
 
-
-@property (nonatomic , strong) NSArray * contentCtrollers;
-
-@property (nonatomic , strong) NSArray * contentTitles;
-
+@property (nonatomic , assign) id<MCPageViewDelegate>  delegate;
 /**
  可选 默认[UIFont systemFontOfSize:14]
  */
@@ -45,7 +41,7 @@
 
 /**
  实例化方法
-
+ 
  @param frame frame
  @param titles titleS数组
  @param controllers jiemian数组

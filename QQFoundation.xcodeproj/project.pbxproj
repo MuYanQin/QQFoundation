@@ -11,9 +11,9 @@
 		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
 		0153EDFD20B66F970041CFC4 /* QQOneItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDFC20B66F970041CFC4 /* QQOneItem.m */; };
-		4B39DA8320CB604800332B95 /* MCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B39DA8220CB604800332B95 /* MCContent.m */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */; };
+		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274E9F01F8F45D20018E93C /* fristViewController.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
 		5289010E1FA08F3000C29479 /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5289010D1FA08F3000C29479 /* twoViewController.m */; };
@@ -142,12 +142,12 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		0153EDFB20B66F970041CFC4 /* QQOneItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQOneItem.h; sourceTree = "<group>"; };
 		0153EDFC20B66F970041CFC4 /* QQOneItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQOneItem.m; sourceTree = "<group>"; };
-		4B39DA8120CB604800332B95 /* MCContent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCContent.h; sourceTree = "<group>"; };
-		4B39DA8220CB604800332B95 /* MCContent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCContent.m; sourceTree = "<group>"; };
 		4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabBarItem.h; sourceTree = "<group>"; };
 		4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabBarItem.m; sourceTree = "<group>"; };
 		4BA65F5920B8068A007A8E95 /* QQTwoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTwoItem.h; sourceTree = "<group>"; };
 		4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTwoItem.m; sourceTree = "<group>"; };
+		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
+		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
 		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
 		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
@@ -414,8 +414,8 @@
 		4B39DA8020CB5FD600332B95 /* MCContentView */ = {
 			isa = PBXGroup;
 			children = (
-				4B39DA8120CB604800332B95 /* MCContent.h */,
-				4B39DA8220CB604800332B95 /* MCContent.m */,
+				4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */,
+				4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */,
 			);
 			path = MCContentView;
 			sourceTree = "<group>";
@@ -1102,6 +1102,7 @@
 				52C115501F4EC5CE005471CB /* MJRefreshAutoFooter.m in Sources */,
 				52C1155D1F4EC5CE005471CB /* MJRefreshStateHeader.m in Sources */,
 				AC781AC81FF51D2C00863F4C /* FMDatabaseAdditions.m in Sources */,
+				4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */,
 				52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */,
 				4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */,
 				5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */,
@@ -1153,7 +1154,6 @@
 				52D8D1921F4D77EF00EA413B /* UIView+QQFrame.m in Sources */,
 				52C115771F4EC5CE005471CB /* UIView+WebCache.m in Sources */,
 				528901111FA08F4A00C29479 /* threeViewController.m in Sources */,
-				4B39DA8320CB604800332B95 /* MCContent.m in Sources */,
 				52C1156C1F4EC5CE005471CB /* SDWebImageDecoder.m in Sources */,
 				ACE026372017672200A387DC /* QQAlertController.m in Sources */,
 				52D8D19C1F4D77EF00EA413B /* QQLabel.m in Sources */,
