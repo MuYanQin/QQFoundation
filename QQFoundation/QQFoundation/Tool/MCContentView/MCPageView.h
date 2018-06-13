@@ -42,6 +42,9 @@
  item下  横线的颜色
  */
 @property (nonatomic , strong) UIColor * lineColor;
+
+
+
 /**
  手动选中某个iem
 

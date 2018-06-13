@@ -8,6 +8,7 @@
 
 #import "fourViewController.h"
 #import "threeViewController.h"
+#import "QQFileManage.h"
 @interface fourViewController ()
 
 @end
@@ -19,6 +20,16 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"four";
     self.view.backgroundColor = [UIColor purpleColor];
+    if ([QQFileManage isContainAtPath:[NSString stringWithFormat:@"%@%@",[QQFileManage GetCachesPath],@"/MCDownload"]]) {
+        NSLog(@"123");
+    }else{
+        NSLog(@"456");
+    }
+    [QQFileManage CreateFolderWithPath:[QQFileManage GetCachesPath] FolderName:@"MCDownload" Success:^(NSString *Path, NSError *error) {
+        if (!error) {
+            NSLog(@"%@",Path);
+        }
+    }];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {

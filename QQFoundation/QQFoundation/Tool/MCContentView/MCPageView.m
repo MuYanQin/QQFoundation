@@ -211,7 +211,9 @@ static const NSInteger itemTag = 100;
     if (!_titleScroll) {
         _titleScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kwidth, titleScrollHeight)];
         _titleScroll.delegate = self;
-        
+        _titleScroll.showsVerticalScrollIndicator = NO;
+        _titleScroll.showsHorizontalScrollIndicator = NO;
+
         if ((self.titleButtonWidth *_contentTitles.count) >kwidth) {
             self.titleScroll.contentSize = CGSizeMake((self.titleButtonWidth *_contentTitles.count), titleScrollHeight);
         }else{
