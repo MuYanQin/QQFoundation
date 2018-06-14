@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 typedef NS_ENUM(NSInteger,MCDownload){
-    MCDownloadWaiting = 0,
-    MCDownloadLoading = 1,
+    MCDownloadWaiting  = 0,
+    MCDownloadLoading  = 1,
     MCDownloadComplete = 2,
-    MCDownloadError = 3
+    MCDownloadPause    = 3,
+    MCDownloadError    = 4
 };
 @interface MCDownloadItem : NSObject
 
@@ -27,6 +28,10 @@ typedef NS_ENUM(NSInteger,MCDownload){
 
 
 /**
+ 下载的文件名
+ */
+@property (nonatomic , strong) NSString * fileName;
+/**
  下载任务
  */
 @property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
@@ -39,5 +44,5 @@ typedef NS_ENUM(NSInteger,MCDownload){
 /**
  断点续传用的resumeData
  */
-@property (nonatomic , strong) NSDate * resumeData;
+@property (nonatomic , strong) NSData * resumeData;
 @end

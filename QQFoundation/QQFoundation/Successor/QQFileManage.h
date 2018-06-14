@@ -79,6 +79,8 @@
  @return 结果
  */
 + (BOOL)isContainAtPath:(NSString *)path;
+
++ (BOOL)removeItematPath:(NSString *)path;
 /**
  创建文件夹
  

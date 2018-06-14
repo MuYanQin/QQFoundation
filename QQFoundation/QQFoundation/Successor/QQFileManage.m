@@ -51,6 +51,16 @@
     BOOL isExist = [fileManager fileExistsAtPath:path];
     return isExist;
 }
++ (BOOL)removeItematPath:(NSString *)path
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    BOOL bret = [fileManager removeItemAtPath:path error:&error];
+    if (error) {
+        NSLog(@"%@==删除失败%@",path,error);
+    }
+    return bret;
+}
 +(void)CreateFolderWithPath:(NSString *)path FolderName:(NSString *)name Success:(void (^)(NSString*, NSError *))result{
     if ([QQTool isBlank:path] | [QQTool isBlank:name]) {
         NSLog(@"%s--路径不能为空 ",__FUNCTION__);

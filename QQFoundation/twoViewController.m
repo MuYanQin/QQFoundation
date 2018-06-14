@@ -20,7 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"two";
-    [[MCDownloadManager defaultManager]startDownloadWith:@"http://dldir1.qq.com/qqfile/QQforMac/QQ_V6.0.1.dmg"];
     self.view.backgroundColor = [UIColor yellowColor];
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
     self.BackGroudImageview = [[UIImageView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];

@@ -9,6 +9,8 @@
 #import "fourViewController.h"
 #import "threeViewController.h"
 #import "QQFileManage.h"
+#import "QQButton.h"
+#import "MCDownloadManager.h"
 @interface fourViewController ()
 
 @end
@@ -20,21 +22,33 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"four";
     self.view.backgroundColor = [UIColor purpleColor];
-    if ([QQFileManage isContainAtPath:[NSString stringWithFormat:@"%@%@",[QQFileManage GetCachesPath],@"/MCDownload"]]) {
-        NSLog(@"123");
-    }else{
-        NSLog(@"456");
-    }
-    [QQFileManage CreateFolderWithPath:[QQFileManage GetCachesPath] FolderName:@"MCDownload" Success:^(NSString *Path, NSError *error) {
-        if (!error) {
-            NSLog(@"%@",Path);
-        }
+    QQButton *start = [QQButton buttonWithFrame:CGRectMake(100, 64, 100, 40) title:@"开始" ClickBlock:^(QQButton *myButton) {
+        [[MCDownloadManager defaultManager]startDownloadWith:@"http://dldir1.qq.com/qqfile/QQforMac/QQ_V6.0.1.dmg"];
+        [[MCDownloadManager defaultManager]startDownloadWith:@"https://mp4.1sj.tv/mp4/78b31daf2731ea0d491af530b6f4bde7.mp4"];
+        [[MCDownloadManager defaultManager]startDownloadWith:@"https://vd1.bdstatic.com/mda-hiqmm8s10vww26sx/mda-hiqmm8s10vww26sx.mp4"];
     }];
+    [self.view addSubview:start];
+    
+    QQButton *pause = [QQButton buttonWithFrame:CGRectMake(100, 120, 100, 40) title:@"暂停" ClickBlock:^(QQButton *myButton) {
+        [[MCDownloadManager defaultManager] PauseAllTask];
+        
+    }];
+    [self.view addSubview:pause];
+    
+    QQButton *resume = [QQButton buttonWithFrame:CGRectMake(100, 170, 100, 40) title:@"恢复" ClickBlock:^(QQButton *myButton) {
+        [[MCDownloadManager defaultManager] resumeTaskWith:@"http://dldir1.qq.com/qqfile/QQforMac/QQ_V6.0.1.dmg"];
+        
+    }];
+    [self.view addSubview:resume];
+    
+    QQButton *clean = [QQButton buttonWithFrame:CGRectMake(100, 220, 100, 40) title:@"清空" ClickBlock:^(QQButton *myButton) {
+        [[MCDownloadManager defaultManager] cleanDisk];
+        
+    }];
+    [self.view addSubview:clean];
+    [[MCDownloadManager alloc]init];
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.navigationController pushViewController:[threeViewController new] animated:YES];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
