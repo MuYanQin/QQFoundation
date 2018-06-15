@@ -10,14 +10,14 @@
 #import "QQFileManage.h"
 #import "MCDownloadItem.h"
 typedef void(^BGCompletedHandler)();
-@interface MCDownloadManager ()<NSURLSessionDelegate,NSURLSessionDownloadDelegate>
+@interface MCDownloadManager ()<NSURLSessionDelegate,NSURLSessionDownloadDelegate,NSURLSessionDataDelegate>
 @property (nonatomic , strong) NSURLSessionConfiguration * Configuration;
 @property (nonatomic , strong) NSURLSession * Session;
 @property (nonatomic , strong) NSURLSessionDownloadTask * loadTask;
 @property (nonatomic , strong) NSMutableDictionary * taskMuDic;
 @property (nonatomic , copy) BGCompletedHandler   CompletedHandler;
 @end
-static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation/ConfigurationIdentifier";
+static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation.ConfigurationIdentifier";
 
 @implementation MCDownloadManager
 + (instancetype)defaultManager
@@ -69,7 +69,6 @@ static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation/Conf
         return item;
     }else if(item.loadStatus == MCDownloadLoading){
         item = [[MCDownloadItem alloc]init];
-        item.loadStatus = MCDownloadLoading;
         return item;
         
     }else{
@@ -163,7 +162,8 @@ static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation/Conf
 //将一个后台session作废完成后的回调，用来切换是否允许使用蜂窝煤网络，重新创建session
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error {
-    
+    NSLog(@"%s",__func__);
+    NSLog(@"didBecomeInvalidWithError");
 }
 //下载完成时调用
 //如果appDelegate实现下面的方法，后台下载完成时，会自动唤醒启动app。如果不实现，那么后台下载完成不唤醒，用户手动启动会调用相关回调方法
@@ -198,6 +198,7 @@ didFinishDownloadingToURL:(NSURL *)location
  didResumeAtOffset:(int64_t)fileOffset
 expectedTotalBytes:(int64_t)expectedTotalBytes
 {
+    NSLog(@"%s", __func__);
     NSLog(@"下载恢复");
 }
 /* 下载过程中调用，用于跟踪下载进度
@@ -218,12 +219,14 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 willPerformHTTPRedirection:(NSHTTPURLResponse *)response
         newRequest:(NSURLRequest *)request
  completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
-    
+    NSLog(@"%s", __func__);
+
     //NSLog(@"willPerformHTTPRedirection ------> %@",response);
 }
-/* 应用在后台，而且后台所有下载任务完成后，
+/* 应用在后台，而且后台所有下载任务完成后才会调用这个方法，
  * 在所有其他NSURLSession和NSURLSessionDownloadTask委托方法执行完后回调，
  * 可以在该方法中做下载数据管理和UI刷新
+ *
  */
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
 {
@@ -238,6 +241,8 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
  */
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     // 请求完成,成功或者失败的处理
+    NSLog(@"%s", __func__);
+
     MCDownloadItem *item = self.taskMuDic[[self getURLFromTask:task]];
     if (!item) {
         NSLog(@"下载失败 重定向后的URL%@",[self getURLFromTask:task]);

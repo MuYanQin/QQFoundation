@@ -56,11 +56,11 @@
 
 /**
  经过上面的代码测试 参考别人的：https://www.sohu.com/a/206606189_208051
- 这个回调的作用有点牛皮。通过上面代理可以测试出completionHandler，在第一个后台下载任务完成时回调，这时后台App已经被唤醒，定时器开始输出计时秒数。然后其它的下载任务完成时不会再次回调该方法。所有下载任务完成时，没有处理completionHandler计时器继续运行。 调用执行时completionHandler计时器停止运行，App继续处于休眠状态。
+ 通过上面测试出completionHandler，在第一个后台下载任务完成时回调，这时后台App已经被唤醒，定时器开始输出计时秒数。然后其它的下载任务完成时不会再次回调该方法。所有下载任务完成时，没有处理completionHandler计时器继续运行。 调用执行completionHandler计时器停止运行，App继续处于休眠状态。
  
- 虽然不知道completionHandler做了哪些处理，但是通过测试现象得出大概的作用。他用来控制后台的App被唤醒后继续处于休眠状态，节约系统资源。
- 
- 所以不执行completionHandler App如果不重新启动，处于后台时会一直在运行状态。下载任务正常
+ 1、闪退后下载并没有中断，手动杀死软件的不会再下载
+ 2、抓包发现闪退后下载并没有终止，也没有另起一个下载进程。故并不像网上所说的那样闪退后临时文件清除 重新开始一份下载
+ 3、下载的时候会下载俩个文件 一是下载的文件本身 一个是文件下载的记录信息  重启app的时候拿文件记录信息取下载文件
  */
 -(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler{
     NSLog(@"%s", __func__);
