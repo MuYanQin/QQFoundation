@@ -159,6 +159,38 @@ static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation.Conf
     [QQFileManage removeItematPath:[self CahePath]];
     
 }
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
+{
+    NSLog(@"%s",__func__);
+
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
+{
+    NSLog(@"%s",__func__);
+
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask
+{
+    NSLog(@"%s",__func__);
+
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data
+{
+    NSLog(@"%s",__func__);
+
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+ willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * _Nullable cachedResponse))completionHandler
+{
+    NSLog(@"%s",__func__);
+
+}
 //将一个后台session作废完成后的回调，用来切换是否允许使用蜂窝煤网络，重新创建session
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error {
@@ -211,8 +243,8 @@ expectedTotalBytes:(int64_t)expectedTotalBytes
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
-    float progress =(float) totalBytesWritten/totalBytesExpectedToWrite;
-    NSLog(@"%f", progress);
+//    float progress =(float) totalBytesWritten/totalBytesExpectedToWrite;
+//    NSLog(@"%f", progress);
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
