@@ -90,7 +90,6 @@
 		52D8D18E1F4D77EF00EA413B /* UIImage+Usually.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */; };
 		52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */; };
 		52D8D1901F4D77EF00EA413B /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */; };
-		52D8D1911F4D77EF00EA413B /* UIView+AlertMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1481F4D77EF00EA413B /* UIView+AlertMessage.m */; };
 		52D8D1921F4D77EF00EA413B /* UIView+QQFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */; };
 		52D8D1931F4D77EF00EA413B /* UIView+SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D14C1F4D77EF00EA413B /* UIView+SuperViewController.m */; };
 		52D8D1941F4D77EF00EA413B /* UIViewController+QQPrintDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D14E1F4D77EF00EA413B /* UIViewController+QQPrintDealloc.m */; };
@@ -304,8 +303,6 @@
 		52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
 		52D8D1451F4D77EF00EA413B /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
 		52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
-		52D8D1471F4D77EF00EA413B /* UIView+AlertMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AlertMessage.h"; sourceTree = "<group>"; };
-		52D8D1481F4D77EF00EA413B /* UIView+AlertMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AlertMessage.m"; sourceTree = "<group>"; };
 		52D8D1491F4D77EF00EA413B /* UIView+QQFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QQFrame.h"; sourceTree = "<group>"; };
 		52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QQFrame.m"; sourceTree = "<group>"; };
 		52D8D14B1F4D77EF00EA413B /* UIView+SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SuperViewController.h"; sourceTree = "<group>"; };
@@ -766,8 +763,6 @@
 				52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */,
 				52D8D1451F4D77EF00EA413B /* UIScrollView+Touch.h */,
 				52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */,
-				52D8D1471F4D77EF00EA413B /* UIView+AlertMessage.h */,
-				52D8D1481F4D77EF00EA413B /* UIView+AlertMessage.m */,
 				52D8D1491F4D77EF00EA413B /* UIView+QQFrame.h */,
 				52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */,
 				52D8D14B1F4D77EF00EA413B /* UIView+SuperViewController.h */,
@@ -1136,7 +1131,6 @@
 				0153EDFD20B66F970041CFC4 /* QQOneItem.m in Sources */,
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
-				52D8D1911F4D77EF00EA413B /* UIView+AlertMessage.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,

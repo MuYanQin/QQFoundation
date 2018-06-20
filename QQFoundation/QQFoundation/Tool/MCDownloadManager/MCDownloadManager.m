@@ -10,7 +10,7 @@
 #import "QQFileManage.h"
 #import "MCDownloadItem.h"
 typedef void(^BGCompletedHandler)();
-@interface MCDownloadManager ()<NSURLSessionDelegate,NSURLSessionDownloadDelegate,NSURLSessionDataDelegate>
+@interface MCDownloadManager ()<NSURLSessionDelegate>
 @property (nonatomic , strong) NSURLSessionConfiguration * Configuration;
 @property (nonatomic , strong) NSURLSession * Session;
 @property (nonatomic , strong) NSURLSessionDownloadTask * loadTask;
@@ -43,7 +43,8 @@ static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation.Conf
                 Item.downloadTask = obj;
             }
         }];
-        NSLog(@"%@",dictM);
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate) name:UIApplicationWillTerminateNotification object:nil];
+
     }
     return self;
 }
@@ -159,6 +160,10 @@ static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation.Conf
     [QQFileManage removeItematPath:[self CahePath]];
     
 }
+- (void)appWillTerminate
+{
+    NSLog(@"qinmuqiao");
+}
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
@@ -243,8 +248,8 @@ expectedTotalBytes:(int64_t)expectedTotalBytes
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
-//    float progress =(float) totalBytesWritten/totalBytesExpectedToWrite;
-//    NSLog(@"%f", progress);
+    float progress =(float) totalBytesWritten/totalBytesExpectedToWrite;
+    NSLog(@"%.2f",progress);
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
@@ -276,9 +281,7 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
     NSLog(@"%s", __func__);
 
     MCDownloadItem *item = self.taskMuDic[[self getURLFromTask:task]];
-    if (!item) {
-        NSLog(@"下载失败 重定向后的URL%@",[self getURLFromTask:task]);
-    }
+    
     if (error) {
         NSData *resumeData = [error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData];
         if (resumeData) {
@@ -349,7 +352,9 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
 }
 - (NSURLSession *)Session
 {
-    _Session = [NSURLSession sessionWithConfiguration:self.Configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    if (!_Session) {
+        _Session = [NSURLSession sessionWithConfiguration:self.Configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    }
     return _Session;
 }
 @end

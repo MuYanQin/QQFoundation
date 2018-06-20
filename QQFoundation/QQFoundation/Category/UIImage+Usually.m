@@ -48,62 +48,6 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
     return [[UIImage alloc] initWithContentsOfFile:filePath];
 }
-#pragma mark - 保存图片至沙盒
-- (BOOL)saveImage:(UIImage *)currentImage withName:(NSString *)imageName resultSize:(CGFloat)resultSize
-{
-    NSData *temp = UIImageJPEGRepresentation(currentImage, 1);
-    // 获取沙盒目录
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
-    
-    CGFloat tempSize = [temp length] / 1024;
-    
-    // 规定大小
-    CGFloat theSize = resultSize;
-    // 大于200kb 就压缩
-    CGFloat ratio;
-    
-    if (tempSize > theSize) {
-        ratio = (theSize / tempSize) * 2.5;
-    } else {
-        ratio = 1;
-    }
-    temp = UIImageJPEGRepresentation(currentImage, ratio);
-    
-    // 将图片写入文件
-    return [temp writeToFile:fullPath atomically:YES];
-}
-
-
-// 等比缩放
-- (UIImage *)QQ_cropSameImageToSize:(CGSize)size
-{
-    CGFloat scale =  [UIScreen mainScreen].scale;
-    UIGraphicsBeginImageContextWithOptions(size, YES, scale);
-    CGSize aspectFitSize = CGSizeZero;
-    if (self.size.width != 0 && self.size.height != 0)
-    {
-        CGFloat rateWidth = size.width / self.size.width;
-        CGFloat rateHeight = size.height / self.size.height;
-        CGFloat rate = MIN(rateHeight, rateWidth);
-        aspectFitSize = CGSizeMake(self.size.width * rate, self.size.height * rate);
-    }
-    [self drawInRect:CGRectMake(0, 0, aspectFitSize.width, aspectFitSize.height)];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-// 非等比缩放
-- (UIImage *)QQ_noSameImageToSize:(CGSize)size
-{
-    CGFloat scale =  [UIScreen mainScreen].scale;
-    UIGraphicsBeginImageContextWithOptions(size, YES, scale);
-    [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
 //圆角切割
 - (UIImage *)QQ_getCornerRadius:(CGFloat)cornerRadius
 {
@@ -120,15 +64,6 @@
     UIGraphicsEndImageContext();
     return image;
 }
-
-
-
-
-
-
-
-
-
 
 
 

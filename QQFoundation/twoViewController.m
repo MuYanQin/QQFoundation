@@ -9,6 +9,7 @@
 #import "twoViewController.h"
 #import "NSDate+QQCalculate.h"
 #import "MCDownloadManager.h"
+#import "UIImage+Usually.h"
 @interface twoViewController ()
 @property (nonatomic,copy) NSString *dateAsString;
 @property (nonatomic , strong) UIImageView * BackGroudImageview;

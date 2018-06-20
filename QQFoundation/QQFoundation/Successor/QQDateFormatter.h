@@ -15,3 +15,4 @@
 + (instancetype)ShareIntance;
 - (NSDateFormatter *)getDateFormatter:(NSString *)format;
 @end
+

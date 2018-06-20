@@ -32,7 +32,7 @@
 }
 - (void)applicationWillResignActive:(UIApplication *)application{
     
-    [self testTimer];
+//    [self testTimer];
     NSLog(@"%s",__func__);
 }
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -61,6 +61,7 @@
  1、闪退后下载并没有中断，手动杀死软件的不会再下载
  2、抓包发现闪退后下载并没有终止，也没有另起一个下载进程。故并不像网上所说的那样闪退后临时文件清除 重新开始一份下载（抓包每开启一个下载任务就会有个新的请求）
  3、下载的时候会下载俩个文件 一是下载的文件本身 一个是文件下载的记录信息  重启app的时候拿文件记录信息取下载文件
+ 4、下载的过程中出现网络挣断 再恢复可以下载（app没有杀死）
  */
 -(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler{
     NSLog(@"%s", __func__);

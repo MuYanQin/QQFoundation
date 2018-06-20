@@ -44,7 +44,7 @@
 //NSDate转NSString
 + (NSString *)stringFromDate:(NSDate *)date Formate:(NSString *)formate
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [[QQDateFormatter ShareIntance] getDateFormatter:formate];
     [dateFormatter setDateFormat:formate];
     NSString *destDateString = [dateFormatter stringFromDate:date];
     return destDateString;
@@ -117,7 +117,7 @@
         timeInterval= [currentDate timeIntervalSinceDate:date11];
 
     }else{
-        NSDateFormatter *formatter = [[QQDateFormatter ShareIntance] getDateFormatter:@"YYYY-MM-dd HH:mm:ss"];//;
+        NSDateFormatter *formatter = [[QQDateFormatter ShareIntance] getDateFormatter:@"yyyy-MM-dd HH:mm:ss"];//;
         data3 = [formatter dateFromString:time];
         NSDate *currentDate = [NSDate date];
         timeInterval = [currentDate timeIntervalSinceDate:data3];

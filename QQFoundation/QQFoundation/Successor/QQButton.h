@@ -23,7 +23,7 @@ typedef void(^RegisterBlock)(QQButton *myButton);
 @property (nonatomic,assign)ButtonTextAlignment TextAlignment;//默认文字在右 ButtonTextAlignmentRight
 @property (nonatomic,assign) CGRect imageRect;//图片相对于button的位置
 
-@property (nonatomic, copy) id userInfo;//携带信息
+@property (nonatomic, copy) id Info;//携带信息
 /**
  快捷设置点击事件  只有文字
 

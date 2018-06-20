@@ -24,40 +24,14 @@
 + (UIImage *)SetQrcodeImageWithString:(NSString *)string;
 
 /**
- *  @brief  通过路径加载图片
+ *  @brief  通过路径加载图片 图片一定不能在Assets中
  *
  *  @param imageName 图片名
  *
  *  @return UIImage实例
  */
 + (UIImage *)imageWithName:(NSString *)imageName;
-/**
- *  @brief  将图片压缩后保存到本地
- *
- *  @param currentImage 目标图片
- *  @param imageName    图片名
- *  @param resultSize   目标大小
- *
- *  @return 保存是否成功
- */
-- (BOOL)saveImage:(UIImage *)currentImage withName:(NSString *)imageName resultSize:(CGFloat)resultSize;
 
-
-/**
- 图片等比缩放
-
- @param size 需要缩放到什么size
-
- @return 返回缩放后的图片
- */
-- (UIImage *)QQ_cropSameImageToSize:(CGSize)size;
-/**
- 非等比缩放
- @param size 需要缩放到什么size
- 
- @return 返回缩放后的图片
- */
-- (UIImage *)QQ_noSameImageToSize:(CGSize)size;
 //圆角切割
 - (UIImage *)QQ_getCornerRadius:(CGFloat)cornerRadius;
 @end

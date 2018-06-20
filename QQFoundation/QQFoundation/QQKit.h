@@ -24,7 +24,6 @@
 #import "UIColor+Hexadecimal.h"///颜色的分类 
 #import "UIView+QQFrame.h"/// 快速获取View的left、right、top、bottom
 #import "UIView+SuperViewController.h"///获取View的父Controller
-#import "UIView+AlertMessage.h"///类似alertView的提示框
 #import "UIImage+Usually.h"///
 #import "NSAttributedString+Easy.h"/// 一些AttibutedString的快速使用
 #import "UIImageView+Cache.h"///
