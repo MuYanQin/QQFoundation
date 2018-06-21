@@ -26,8 +26,9 @@
     
     self.manager[@"QQOneItem"] = @"QQOneCell";
     self.manager[@"QQTwoItem"] = @"QQTwoCell";
-
+    
     QQOneItem *it1 = [[QQOneItem alloc]init];
+
     it1.CellHeight = 50;
     it1.allowSlide = YES;
     it1.slideText = @"收藏";

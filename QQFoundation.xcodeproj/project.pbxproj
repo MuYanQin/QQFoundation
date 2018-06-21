@@ -12,6 +12,8 @@
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
 		0153EDFD20B66F970041CFC4 /* QQOneItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDFC20B66F970041CFC4 /* QQOneItem.m */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
+		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
+		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */; };
@@ -145,6 +147,10 @@
 		0153EDFC20B66F970041CFC4 /* QQOneItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQOneItem.m; sourceTree = "<group>"; };
 		4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabBarItem.h; sourceTree = "<group>"; };
 		4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabBarItem.m; sourceTree = "<group>"; };
+		4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MCPopView.h"; sourceTree = "<group>"; };
+		4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MCPopView.m"; sourceTree = "<group>"; };
+		4B43A86E20DB7B6500422438 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
+		4B43A86F20DB7B6500422438 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
 		4B8B19ED20CFE86100B77A9D /* MCDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
@@ -423,6 +429,15 @@
 			path = MCContentView;
 			sourceTree = "<group>";
 		};
+		4B43A86D20DB7B6500422438 /* KLCPopup */ = {
+			isa = PBXGroup;
+			children = (
+				4B43A86E20DB7B6500422438 /* KLCPopup.h */,
+				4B43A86F20DB7B6500422438 /* KLCPopup.m */,
+			);
+			path = KLCPopup;
+			sourceTree = "<group>";
+		};
 		4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +687,7 @@
 		52D8D10B1F4D775500EA413B /* QQFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				4B43A86D20DB7B6500422438 /* KLCPopup */,
 				AC781AB51FF51D2C00863F4C /* FMDB */,
 				52C114D71F4EC5CE005471CB /* AFNetworking */,
 				52C114E51F4EC5CE005471CB /* MJRefresh */,
@@ -767,6 +783,8 @@
 				52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */,
 				52D8D14B1F4D77EF00EA413B /* UIView+SuperViewController.h */,
 				52D8D14C1F4D77EF00EA413B /* UIView+SuperViewController.m */,
+				4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */,
+				4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */,
 				52D8D14D1F4D77EF00EA413B /* UIViewController+QQPrintDealloc.h */,
 				52D8D14E1F4D77EF00EA413B /* UIViewController+QQPrintDealloc.m */,
 			);
@@ -1111,6 +1129,7 @@
 				52C115601F4EC5CE005471CB /* NSBundle+MJRefresh.m in Sources */,
 				52C1155A1F4EC5CE005471CB /* MJRefreshBackStateFooter.m in Sources */,
 				52D8D18B1F4D77EF00EA413B /* NSString+QQCalculate.m in Sources */,
+				4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */,
 				4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */,
 				52C115631F4EC5CE005471CB /* UIView+MJExtension.m in Sources */,
 				52D8D1A41F4D77EF00EA413B /* QQNetManager.m in Sources */,
@@ -1159,6 +1178,7 @@
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
+				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,

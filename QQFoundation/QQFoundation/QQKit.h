@@ -32,6 +32,7 @@
 #import "NSString+QQCalculate.h"///字符串的一些操作
 #import "NSMutableAttributedString+Manage.h"
 #import "NSString+Manage.h"
+#import "UIView+MCPopView"
 ///***********************************************************************************
 /// Successor
 ///***********************************************************************************
