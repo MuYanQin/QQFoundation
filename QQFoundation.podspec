@@ -16,11 +16,13 @@ s.platform     = :ios, "7.0"
 
 s.requires_arc = true
 
-s.dependency 'SDWebImage', '~> 4.0.0'
-s.dependency 'MJRefresh', '~> 3.1.12'
-s.dependency 'AFNetworking', '~> 3.1.0'
-s.dependency 'YYCache',  '~> 1.0.4'
-s.dependency 'FLAnimatedImage',  '~> 1.0.12'
+
+s.dependency 'KLCPopup'
+s.dependency 'AFNetworking'
+s.dependency 'MJRefresh'
+s.dependency 'SDWebImage'
+s.dependency 'YYCache'
+s.dependency 'FLAnimatedImage'
 
 s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag => "1.0"}
 
@@ -57,6 +59,14 @@ end
 
 
 s.subspec 'Tool' do |ss|
+
+    ss.subspec 'MCContentView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCContentView/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCDownloadManager' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCDownloadManager/**/*.{h,m,c,mm}'
+    end
 
     ss.subspec 'QQAlertController' do |sss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/QQAlertController/**/*.{h,m,c,mm}'
@@ -97,8 +107,6 @@ s.subspec 'Tool' do |ss|
 
 
 end
-
-
 
 
 

@@ -8,7 +8,7 @@
 
 #import "QQTextField.h"
 #import "UIView+SuperViewController.h"
-#import "uiview+MB.h"
+#import "UIView+MBProgress.h"
 @implementation QQTextField
 
 - (instancetype)initWithFrame:(CGRect)frame

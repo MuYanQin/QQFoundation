@@ -8,7 +8,7 @@
 #import "QQtableView.h"
 #import "QQNetManager.h"
 #import "MJRefresh.h"
-#import "uiview+MB.h"
+#import "UIView+MBProgress.h"
 #import "QQAppDefine.h"
 #import "UIView+QQFrame.h"
 @interface QQtableView ()

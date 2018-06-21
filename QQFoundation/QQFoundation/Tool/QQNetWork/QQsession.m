@@ -11,7 +11,7 @@
 #import "QQNetManager.h"
 #import "NSDate+QQCalculate.h"
 #import "YYCache.h"
-#import "uiview+MB.h"
+#import "UIView+MBProgress.h"
 #import "QQTool.h"
 #define QQBaseUrl @""
 @interface QQsession ()
@@ -64,7 +64,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];//域名和接口拼接起来的
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];//方便加请求参数
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading_0314];
+    [controller.view Loading];
     NSURLSessionDataTask * operation = [self.sharedHTTPSession GET:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -93,7 +93,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading_0314];
+    [controller.view Loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -129,7 +129,7 @@ static AFHTTPSessionManager *manager;
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     
     [[QQNetManager defaultManager] insertQQConnection:self];///<
-    [controller.view Loading_0314];
+    [controller.view Loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession GET:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull downloadProgress) {
         
@@ -164,7 +164,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading_0314];
+    [controller.view Loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -200,7 +200,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading_0314];
+    [controller.view Loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         

@@ -1,15 +1,14 @@
 //
-//  uiview+MB.h
-//  Teacher
+//  UIView+MBProgress.h
+//  QQFoundation
 //
-//  Created by tlt on 16/8/11.
-//  Copyright © 2016年 tlt. All rights reserved.
+//  Created by qinmuqiao on 2018/6/21.
+//  Copyright © 2018年 慕纯. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-@interface  UIView (uiview_MB)
-
+@interface UIView (MBProgress)<MBProgressHUDDelegate>
 /**信息提示框*/
 @property(strong, nonatomic) MBProgressHUD * hud;
 /**提示信息*/
@@ -22,9 +21,9 @@
 - (void)Message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay;
 
 /**展示Loading标示*/
-- (void)Loading:(NSString *)message;
+- (void)LoadingWith:(NSString *)message;
 
-- (void)Loading_0314;
+- (void)Loading;
 
 /**隐藏*/
 - (void)HiddenAfterDelay:(NSTimeInterval)delay;

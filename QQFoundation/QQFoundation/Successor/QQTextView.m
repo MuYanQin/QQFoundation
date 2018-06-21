@@ -8,7 +8,7 @@
 
 #import "QQTextView.h"
 #import "UIView+SuperViewController.h"
-#import "uiview+MB.h"
+#import "UIView+MBProgress.h"
 #define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 @implementation QQTextView
 

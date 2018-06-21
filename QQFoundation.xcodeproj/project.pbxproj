@@ -18,6 +18,7 @@
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
+		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
 		5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274E9F01F8F45D20018E93C /* fristViewController.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
 		5289010E1FA08F3000C29479 /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5289010D1FA08F3000C29479 /* twoViewController.m */; };
@@ -106,9 +107,7 @@
 		52D8D19E1F4D77EF00EA413B /* QQTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1621F4D77EF00EA413B /* QQTextField.m */; };
 		52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1641F4D77EF00EA413B /* QQTextView.m */; };
 		52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1661F4D77EF00EA413B /* SHTextView.m */; };
-		52D8D1A11F4D77EF00EA413B /* MBProgressHUD+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D16B1F4D77EF00EA413B /* MBProgressHUD+Category.m */; };
 		52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D16D1F4D77EF00EA413B /* MBProgressHUD.m */; };
-		52D8D1A31F4D77EF00EA413B /* uiview+MB.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D16F1F4D77EF00EA413B /* uiview+MB.m */; };
 		52D8D1A41F4D77EF00EA413B /* QQNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1711F4D77EF00EA413B /* QQNetManager.m */; };
 		52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1731F4D77EF00EA413B /* QQsession.m */; };
 		52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1761F4D77EF00EA413B /* QQCropperViewController.m */; };
@@ -159,6 +158,8 @@
 		4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTwoItem.m; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
+		4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MBProgress.h"; sourceTree = "<group>"; };
+		4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBProgress.m"; sourceTree = "<group>"; };
 		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
 		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
@@ -336,12 +337,8 @@
 		52D8D1641F4D77EF00EA413B /* QQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTextView.m; sourceTree = "<group>"; };
 		52D8D1651F4D77EF00EA413B /* SHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTextView.h; sourceTree = "<group>"; };
 		52D8D1661F4D77EF00EA413B /* SHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTextView.m; sourceTree = "<group>"; };
-		52D8D16A1F4D77EF00EA413B /* MBProgressHUD+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Category.h"; sourceTree = "<group>"; };
-		52D8D16B1F4D77EF00EA413B /* MBProgressHUD+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Category.m"; sourceTree = "<group>"; };
 		52D8D16C1F4D77EF00EA413B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		52D8D16D1F4D77EF00EA413B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		52D8D16E1F4D77EF00EA413B /* uiview+MB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uiview+MB.h"; sourceTree = "<group>"; };
-		52D8D16F1F4D77EF00EA413B /* uiview+MB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "uiview+MB.m"; sourceTree = "<group>"; };
 		52D8D1701F4D77EF00EA413B /* QQNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQNetManager.h; sourceTree = "<group>"; };
 		52D8D1711F4D77EF00EA413B /* QQNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQNetManager.m; sourceTree = "<group>"; };
 		52D8D1721F4D77EF00EA413B /* QQsession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQsession.h; sourceTree = "<group>"; };
@@ -853,12 +850,10 @@
 		52D8D1691F4D77EF00EA413B /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				52D8D16A1F4D77EF00EA413B /* MBProgressHUD+Category.h */,
-				52D8D16B1F4D77EF00EA413B /* MBProgressHUD+Category.m */,
 				52D8D16C1F4D77EF00EA413B /* MBProgressHUD.h */,
 				52D8D16D1F4D77EF00EA413B /* MBProgressHUD.m */,
-				52D8D16E1F4D77EF00EA413B /* uiview+MB.h */,
-				52D8D16F1F4D77EF00EA413B /* uiview+MB.m */,
+				4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */,
+				4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1110,7 +1105,6 @@
 				52C115701F4EC5CE005471CB /* SDWebImagePrefetcher.m in Sources */,
 				52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */,
 				ACB0F3E61FEBEDD900FC9ADB /* fourViewController.m in Sources */,
-				52D8D1A31F4D77EF00EA413B /* uiview+MB.m in Sources */,
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
 				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
@@ -1129,6 +1123,7 @@
 				52C115601F4EC5CE005471CB /* NSBundle+MJRefresh.m in Sources */,
 				52C1155A1F4EC5CE005471CB /* MJRefreshBackStateFooter.m in Sources */,
 				52D8D18B1F4D77EF00EA413B /* NSString+QQCalculate.m in Sources */,
+				4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */,
 				4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */,
 				4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */,
 				52C115631F4EC5CE005471CB /* UIView+MJExtension.m in Sources */,
@@ -1143,7 +1138,6 @@
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
-				52D8D1A11F4D77EF00EA413B /* MBProgressHUD+Category.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
 				ACAD54521FEC7AE600F3E395 /* fiveViewController.m in Sources */,
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
