@@ -10,26 +10,12 @@
 #import "QQAppDefine.h"
 #import "MJRefresh.h"
 #import "QQNetManager.h"
-//按比例获取高度
-#define  WGiveHeight(HEIGHT) HEIGHT * [UIScreen mainScreen].bounds.size.height/568.0
-//按比例获取宽度
-#define  WGiveWidth(WIDTH) WIDTH * [UIScreen mainScreen].bounds.size.width/320.0
-#define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+
 @interface QQBaseViewController ()
 @property (nonatomic,strong)UIView *navBar;
 @end
 
 @implementation QQBaseViewController
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -101,9 +87,6 @@
  */
 - (void)getTempError:(NSError *)error TagURL:(NSString *)URL{
     
-    [self.view addSubview:self.BaseLoadView];
-    self.BaseLoadView.LoadType = QQLoadViewErrornetwork;
-    
     //    error.code == -1009;///<offline 断网
     [self getError:error TagURL:URL];
     
@@ -132,7 +115,14 @@
     }
     return _BaseQQTableView;
 }
-
+- (QQTableViewManager *)tabManager
+{
+    if (!_tabManager) {
+        [self.view addSubview:self.BaseQQTableView];
+        _tabManager = [[QQTableViewManager alloc]initWithTableView:self.BaseQQTableView];
+    }
+    return _tabManager;
+}
 //基类的数组
 - (NSMutableArray *)BaseMutableArray
 {
@@ -169,15 +159,4 @@
 {
     return UIStatusBarStyleLightContent;
 }
-
-/**
- *  返回取消渲染的image
- */
-- (UIImage *)removeRendering:(NSString *)imageName
-{
-    UIImage * image = [UIImage imageNamed:imageName];
-    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-}
-
-
 @end

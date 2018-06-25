@@ -7,11 +7,9 @@
 //
 
 #import "fristViewController.h"
-#import "QQTableViewManager.h"
 #import "QQOneItem.h"
 #import "QQTwoItem.h"
 @interface fristViewController ()
-@property (strong, nonatomic)QQTableViewManager *manager;
 @end
 
 @implementation fristViewController
@@ -20,12 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-    [self.view addSubview:self.BaseQQTableView];
     
-    self.manager = [[QQTableViewManager alloc] initWithTableView:self.BaseQQTableView];
-    
-    self.manager[@"QQOneItem"] = @"QQOneCell";
-    self.manager[@"QQTwoItem"] = @"QQTwoCell";
+    self.tabManager[@"QQOneItem"] = @"QQOneCell";
+    self.tabManager[@"QQTwoItem"] = @"QQTwoCell";
     
     QQOneItem *it1 = [[QQOneItem alloc]init];
     it1.CellHeight = 50;
@@ -47,7 +42,7 @@
     it2.slideCellHandler = ^(id item) {
         
     };
-    [self.manager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1,it2]]];
+    [self.tabManager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1,it2]]];
     
 }
 
