@@ -60,6 +60,10 @@ end
 
 s.subspec 'Tool' do |ss|
 
+    ss.subspec 'MCPuchMediator' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCPuchMediator/**/*.{h,m,c,mm}'
+    end
+
     ss.subspec 'MCContentView' do |sss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/MCContentView/**/*.{h,m,c,mm}'
     end

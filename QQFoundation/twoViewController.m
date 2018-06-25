@@ -12,6 +12,8 @@
 #import "UIImage+Usually.h"
 #import "UIView+MCPopView.h"
 #import "UIView+MBProgress.h"
+#import "fiveViewController.h"
+#import "MCPuchMediator.h"
 @interface twoViewController ()
 @property (nonatomic,copy) NSString *dateAsString;
 @property (nonatomic , strong) UIImageView * BackGroudImageview;
@@ -108,13 +110,9 @@
 }
 - (void)click
 {
-//    self.BackGroudImageview = [[UIImageView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
-//    self.BackGroudImageview.backgroundColor = [UIColor purpleColor];
-//    [UIView showOnView:self.BackGroudImageview showType:viewShowTypeFadeIn dissType:viewShowTypeFadeOut positionType:viewPositionTypeCenter dismissOnBackgroundTouch:YES];
-    [self.view Message:@"loading..." HiddenAfterDelay:2];
-    
-    [self.view Loading];
-
+    [MCPuchMediator pushToClassFromStaring:@"fiveVintroller" takeParameters:nil callBack:^(id data) {
+        NSLog(@"213213");
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

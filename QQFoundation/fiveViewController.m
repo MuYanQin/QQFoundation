@@ -7,7 +7,8 @@
 //
 
 #import "fiveViewController.h"
-
+#import "MCPuchMediator.h"
+#import "fourViewController.h"
 @interface fiveViewController ()
 
 @end
@@ -20,7 +21,15 @@
     self.title = @"Five";
     self.view.backgroundColor = [UIColor redColor];
 }
-
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.pushCallBack(@"2312");
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [MCPuchMediator pushToClassFromStaring:@"fourViewController" takeParameters:nil callBack:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

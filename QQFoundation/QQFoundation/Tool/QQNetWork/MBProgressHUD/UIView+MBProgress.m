@@ -19,7 +19,6 @@ static NSInteger const HUDWIDTH = 80;
     objc_setAssociatedObject(self, &HUDKEY_BE, newValue, OBJC_ASSOCIATION_RETAIN);
 }
 -(MBProgressHUD *)hud{
-    
     MBProgressHUD * hud =  objc_getAssociatedObject(self, &HUDKEY_BE);
     if(hud == nil){
         hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
@@ -42,7 +41,6 @@ static NSInteger const HUDWIDTH = 80;
 
 /**自定义提示框位置，只显示文字*/
 - (void)Message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay{
-    
     MBProgressHUD *ProgressHUD  = self.hud;
     ProgressHUD.offset = CGPointMake(0, yoffset);// HUD相对于父视图中心点的y轴偏移量
     ProgressHUD.mode = MBProgressHUDModeText;

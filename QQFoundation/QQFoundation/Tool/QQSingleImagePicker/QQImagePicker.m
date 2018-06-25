@@ -86,7 +86,10 @@
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         [QQCropperViewController.navigationController dismissViewControllerAnimated:YES completion:nil];
     }else{
-        [QQCropperViewController.navigationController popViewControllerAnimated:YES];
+        //popToRootViewControllerAnimated原因是 如果选择的是gif会经过系统的裁剪框 返回上一个界面系统的裁剪框取消点击不了
+//        [QQCropperViewController.navigationController popViewControllerAnimated:YES];
+        [QQCropperViewController.navigationController popToRootViewControllerAnimated:YES];
+
     }
 }
 - (void)QQCropperViewController:(QQCropperViewController *)QQCropperViewController didFinishedImage:(UIImage *)CropImage
@@ -96,4 +99,24 @@
         [self.delegate QQImagePicker:self didFinishPic:CropImage];
     }
 }
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([UIDevice currentDevice].systemVersion.floatValue < 11)
+    {
+        return;
+    }
+    if ([viewController isKindOfClass:NSClassFromString(@"PUPhotoPickerHostViewController")])
+    {
+        [viewController.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             // iOS 11之后，图片编辑界面最上层会出现一个宽度<42的view，会遮盖住左下方的cancel按钮，使cancel按钮很难被点击到，故改变该view的层级结构
+             if (obj.frame.size.width < 42)
+             {
+                 [viewController.view sendSubviewToBack:obj];
+                 *stop = YES;
+             }
+         }];
+    }
+}
+
 @end

@@ -33,7 +33,7 @@
 #import "UIView+MBProgress"
 #import "UIView+QQFrame.h"/// 快速获取View的left、right、top、bottom
 #import "UIView+SuperViewController.h"///获取View的父Controller
-#import "UIView+MCPopView"
+#import "UIView+MCPopView"//快捷的弹出视图分类
 
 ///***********************************************************************************
 /// Successor
@@ -51,8 +51,9 @@
 ///***********************************************************************************
 /// Tool
 ///***********************************************************************************
-#import "MCDownloadManager.h"
-#import "MCPageView.h"
+#import "MCPuchMediator"//push界面的中介者 解耦合->复杂的push关系
+#import "MCDownloadManager.h"//下载管理类 ->半成品
+#import "MCPageView.h"//类似新闻类app首页侧滑功能
 #import "QQAlertcontroller.h"///UIAlertConotrooler的快速使用
 #import "QQSqlHelper.h"//sql工具
 #import "QQScanVC.h"/// 
