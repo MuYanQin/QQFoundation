@@ -20,6 +20,7 @@
     // Do any additional setup after loading the view.
     self.title = @"Five";
     self.view.backgroundColor = [UIColor redColor];
+    NSLog(@"传递过来的userid========%@",self.userId);
 }
 - (void)viewDidDisappear:(BOOL)animated
 {

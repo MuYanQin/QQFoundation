@@ -20,14 +20,14 @@ typedef NS_ENUM(NSInteger,viewShowType) {
 };
 //隐藏动画
 typedef NS_ENUM(NSInteger,viewDissType) {
-    viewShowTypeFadeOut = 0,//浅出
-    viewShowTypeGrowOut,//放大出
-    viewShowTypeShrinkOut,//缩小出
-    viewShowTypeSlideOutFromTop,
-    viewShowTypeSlideOutFromBottom,
-    viewShowTypeBounceOut,//类似缩小出 开始有放大效果
-    viewShowTypeBounceOutFromTop,
-    viewShowTypeBounceOutFromBottom,
+    viewDissTypeFadeOut = 0,//浅出
+    viewDissTypeGrowOut,//放大出
+    viewDissTypeShrinkOut,//缩小出
+    viewDissTypeSlideOutFromTop,
+    viewDissTypeSlideOutFromBottom,
+    viewDissTypeBounceOut,//类似缩小出 开始有放大效果
+    viewDissTypeBounceOutFromTop,
+    viewDissTypeBounceOutFromBottom,
 };
 //显示位置
 typedef NS_ENUM(NSInteger,viewPositionType) {
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger,viewPositionType) {
  @param positionType 显示的位置
  @param shouldDismissOnBackgroundTouch 是否允许点击背景隐藏
  */
-+ (void)showOnView:(UIView *)containView
++ (void)showView:(UIView *)containView
           showType:(viewShowType)showType
           dissType:(viewDissType)dissType
       positionType:(viewPositionType)positionType

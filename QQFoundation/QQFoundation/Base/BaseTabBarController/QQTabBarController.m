@@ -11,7 +11,6 @@
 #import "UIColor+Hexadecimal.h"
 #import "MCTabBarItem.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
-#define kheight        [UIScreen mainScreen].bounds.size.height
 static const NSInteger ButtonTag = 100;
 
 static const NSInteger tabbarHeight = 80;//自定义TabBar的高度

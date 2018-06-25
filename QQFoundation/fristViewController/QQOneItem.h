@@ -10,9 +10,12 @@
 #import "QQTableViewCell.h"
 
 @interface QQOneItem : QQTableViewItem
-@property (nonatomic, assign)NSInteger mark;
+@property (nonatomic , copy) NSString * imageString;
+@property (nonatomic , copy) NSString * leftString;
 @end
 
 @interface QQOneCell : QQTableViewCell
 @property (nonatomic, strong) QQOneItem *item;
+@property (nonatomic , strong) UIImageView *IconImageView;
+@property (nonatomic , strong) UILabel * leftLb;
 @end

@@ -11,7 +11,7 @@
 @interface MCPushMediator : NSObject
 
 /**
-push到某个界面 当completion不为空时 对应的push对象一定要实现completion block函数才能收到回调
+push到某个界面 当callback不为空时 对应的push对象一定要实现callback block函数才能收到回调 反之就不要实现callback
 
  @param ClassString push对象的类命字符串
  @param Parameters 要传递的参数 可为空

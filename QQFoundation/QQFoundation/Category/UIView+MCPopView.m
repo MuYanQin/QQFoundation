@@ -9,7 +9,7 @@
 #import "UIView+MCPopView.h"
 #import "KLCPopup.h"
 @implementation UIView (MCPopView)
-+ (void)showOnView:(UIView *)containView
++ (void)showView:(UIView *)containView
           showType:(viewShowType)showType
           dissType:(viewDissType)dissType
       positionType:(viewPositionType)positionType
@@ -40,19 +40,19 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
         PopupShowType = KLCPopupShowTypeBounceInFromBottom;
     }
     KLCPopupDismissType  PopupDismissType;
-    if (dissType == viewShowTypeFadeOut) {
+    if (dissType == viewDissTypeFadeOut) {
         PopupDismissType = KLCPopupDismissTypeFadeOut;
-    }else if (dissType == viewShowTypeGrowOut){
+    }else if (dissType == viewDissTypeGrowOut){
         PopupDismissType = KLCPopupDismissTypeGrowOut;
-    }else if (dissType == viewShowTypeShrinkOut){
+    }else if (dissType == viewDissTypeShrinkOut){
         PopupDismissType = KLCPopupDismissTypeShrinkOut;
-    }else if (dissType == viewShowTypeBounceOut){
+    }else if (dissType == viewDissTypeBounceOut){
         PopupDismissType = KLCPopupDismissTypeBounceOut;
-    }else if (dissType == viewShowTypeSlideOutFromTop){
+    }else if (dissType == viewDissTypeSlideOutFromTop){
         PopupDismissType = KLCPopupDismissTypeSlideOutToTop;
-    }else if (dissType == viewShowTypeSlideOutFromBottom){
+    }else if (dissType == viewDissTypeSlideOutFromBottom){
         PopupDismissType = KLCPopupDismissTypeSlideOutToBottom;
-    }else if (dissType == viewShowTypeBounceOutFromTop){
+    }else if (dissType == viewDissTypeBounceOutFromTop){
         PopupDismissType = KLCPopupDismissTypeBounceOutToTop;
     }else {
         PopupDismissType = KLCPopupDismissTypeBounceOutToBottom;

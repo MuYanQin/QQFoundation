@@ -112,6 +112,9 @@
         _BaseQQTableView.delegate = self;
         _BaseQQTableView.dataSource = self;
         _BaseQQTableView.QQDeleGate = self;
+        _BaseQQTableView.estimatedRowHeight = 0;
+        _BaseQQTableView.estimatedSectionFooterHeight = 0;
+        _BaseQQTableView.estimatedSectionHeaderHeight = 0;
     }
     return _BaseQQTableView;
 }

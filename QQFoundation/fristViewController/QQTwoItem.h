@@ -10,9 +10,13 @@
 #import "QQTableViewCell.h"
 
 @interface QQTwoItem : QQTableViewItem
-
+@property (nonatomic , copy) NSString * leftSting;
+@property (nonatomic , copy) NSString * rightSting;
 @end
 
 @interface QQTwoCell : QQTableViewCell
+@property (nonatomic , strong) QQTwoItem * item;
+@property (nonatomic , strong) UILabel * leftLb;
+@property (nonatomic , strong) UILabel * rightLb;
 
 @end

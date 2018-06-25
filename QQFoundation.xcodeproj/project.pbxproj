@@ -21,6 +21,7 @@
 		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
 		4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
+		4BDC83D820E114EA00F13C46 /* MCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC83D720E114EA00F13C46 /* MCAlertView.m */; };
 		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
 		5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274E9F01F8F45D20018E93C /* fristViewController.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
@@ -166,6 +167,8 @@
 		4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTwoItem.m; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
+		4BDC83D620E114EA00F13C46 /* MCAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAlertView.h; sourceTree = "<group>"; };
+		4BDC83D720E114EA00F13C46 /* MCAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAlertView.m; sourceTree = "<group>"; };
 		4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MBProgress.h"; sourceTree = "<group>"; };
 		4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBProgress.m"; sourceTree = "<group>"; };
 		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
@@ -445,6 +448,21 @@
 			path = KLCPopup;
 			sourceTree = "<group>";
 		};
+		4B4D82E720E0F76900AC5FD3 /* fristViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5274E9EF1F8F45D20018E93C /* fristViewController.h */,
+				5274E9F01F8F45D20018E93C /* fristViewController.m */,
+				0153EDFB20B66F970041CFC4 /* QQOneItem.h */,
+				0153EDFC20B66F970041CFC4 /* QQOneItem.m */,
+				4BA65F5920B8068A007A8E95 /* QQTwoItem.h */,
+				4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */,
+				4BDC83D620E114EA00F13C46 /* MCAlertView.h */,
+				4BDC83D720E114EA00F13C46 /* MCAlertView.m */,
+			);
+			path = fristViewController;
+			sourceTree = "<group>";
+		};
 		4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,8 +730,7 @@
 				52D8D1231F4D77EE00EA413B /* QQFoundation */,
 				52D8D10F1F4D775500EA413B /* AppDelegate.h */,
 				52D8D1101F4D775500EA413B /* AppDelegate.m */,
-				5274E9EF1F8F45D20018E93C /* fristViewController.h */,
-				5274E9F01F8F45D20018E93C /* fristViewController.m */,
+				4B4D82E720E0F76900AC5FD3 /* fristViewController */,
 				5289010C1FA08F3000C29479 /* twoViewController.h */,
 				5289010D1FA08F3000C29479 /* twoViewController.m */,
 				5289010F1FA08F4A00C29479 /* threeViewController.h */,
@@ -722,10 +739,6 @@
 				ACB0F3E51FEBEDD900FC9ADB /* fourViewController.m */,
 				ACAD54501FEC7AE600F3E395 /* fiveViewController.h */,
 				ACAD54511FEC7AE600F3E395 /* fiveViewController.m */,
-				0153EDFB20B66F970041CFC4 /* QQOneItem.h */,
-				0153EDFC20B66F970041CFC4 /* QQOneItem.m */,
-				4BA65F5920B8068A007A8E95 /* QQTwoItem.h */,
-				4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */,
 				4B8D23D220E0DA46005F6047 /* MCGCDStudy */,
 				ACB0F3B31FEBEBB900FC9ADB /* 图标_ios */,
 				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
@@ -1141,6 +1154,7 @@
 				52C115721F4EC5CE005471CB /* UIImage+GIF.m in Sources */,
 				52C115741F4EC5CE005471CB /* UIImage+WebP.m in Sources */,
 				AC10A805206B90B600FF937D /* UINavigationBar+QQSpeace.m in Sources */,
+				4BDC83D820E114EA00F13C46 /* MCAlertView.m in Sources */,
 				52C1155B1F4EC5CE005471CB /* MJRefreshGifHeader.m in Sources */,
 				52C115601F4EC5CE005471CB /* NSBundle+MJRefresh.m in Sources */,
 				52C1155A1F4EC5CE005471CB /* MJRefreshBackStateFooter.m in Sources */,

@@ -9,5 +9,5 @@
 #import "QQBaseViewController.h"
 
 @interface fiveViewController : QQBaseViewController
-
+@property (nonatomic , copy) NSString * userId;
 @end
