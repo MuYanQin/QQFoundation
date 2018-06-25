@@ -7,7 +7,6 @@
 //
 
 #import "QQTableViewCell.h"
-#import "QQTableViewItem.h"
 @implementation QQTableViewCell
 
 - (void)cellDidLoad{

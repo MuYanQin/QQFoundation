@@ -7,8 +7,8 @@
 //
 
 #import "fiveViewController.h"
-#import "MCPuchMediator.h"
 #import "fourViewController.h"
+#import "MCPushMediator.h"
 @interface fiveViewController ()
 
 @end
@@ -24,12 +24,9 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    self.pushCallBack(@"2312");
+    self.pushCallBack(@"123");
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [MCPuchMediator pushToClassFromStaring:@"fourViewController" takeParameters:nil callBack:nil];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

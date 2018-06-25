@@ -19,8 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.title = @"3333";
     self.navigationItem.title  = @"three";
     self.Content = [[MCPageView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height) titles:@[@"frist",@"seconed",@"秦慕乔",@"秦慕乔",@"秦慕乔",@"秦慕乔",@"秦慕乔",@"秦慕乔",@"秦慕乔",@"秦慕乔"] controllers:@[[[twoViewController alloc]init],[[fristViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init],[[twoViewController alloc]init]]];
     self.Content.delegate = self;

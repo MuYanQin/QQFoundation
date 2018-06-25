@@ -16,7 +16,9 @@
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
-		4B8D23C620E087DE005F6047 /* MCPuchMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPuchMediator.m */; };
+		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
+		4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */; };
+		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
 		4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
@@ -155,8 +157,11 @@
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
 		4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadItem.m; sourceTree = "<group>"; };
-		4B8D23C420E087DE005F6047 /* MCPuchMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPuchMediator.h; sourceTree = "<group>"; };
-		4B8D23C520E087DE005F6047 /* MCPuchMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPuchMediator.m; sourceTree = "<group>"; };
+		4B8D23C420E087DE005F6047 /* MCPushMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPushMediator.h; sourceTree = "<group>"; };
+		4B8D23C520E087DE005F6047 /* MCPushMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPushMediator.m; sourceTree = "<group>"; };
+		4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCEmptyCell.h; sourceTree = "<group>"; };
+		4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCEmptyCell.m; sourceTree = "<group>"; };
+		4B8D23D220E0DA46005F6047 /* MCGCDStudy */ = {isa = PBXFileReference; lastKnownFileType = text; path = MCGCDStudy; sourceTree = "<group>"; };
 		4BA65F5920B8068A007A8E95 /* QQTwoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTwoItem.h; sourceTree = "<group>"; };
 		4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTwoItem.m; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
@@ -416,6 +421,8 @@
 				0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */,
 				0153EDF820B66B710041CFC4 /* QQTableViewCell.h */,
 				0153EDF920B66B710041CFC4 /* QQTableViewCell.m */,
+				4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */,
+				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
 			);
 			path = QQTableViewManager;
 			sourceTree = "<group>";
@@ -449,13 +456,13 @@
 			path = MCDownloadManager;
 			sourceTree = "<group>";
 		};
-		4B8D23C720E087EB005F6047 /* MCPuchMediator */ = {
+		4B8D23C720E087EB005F6047 /* MCPushMediator */ = {
 			isa = PBXGroup;
 			children = (
-				4B8D23C420E087DE005F6047 /* MCPuchMediator.h */,
-				4B8D23C520E087DE005F6047 /* MCPuchMediator.m */,
+				4B8D23C420E087DE005F6047 /* MCPushMediator.h */,
+				4B8D23C520E087DE005F6047 /* MCPushMediator.m */,
 			);
-			path = MCPuchMediator;
+			path = MCPushMediator;
 			sourceTree = "<group>";
 		};
 		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
@@ -719,6 +726,7 @@
 				0153EDFC20B66F970041CFC4 /* QQOneItem.m */,
 				4BA65F5920B8068A007A8E95 /* QQTwoItem.h */,
 				4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */,
+				4B8D23D220E0DA46005F6047 /* MCGCDStudy */,
 				ACB0F3B31FEBEBB900FC9ADB /* 图标_ios */,
 				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
 				523DF3C51F8DBDE6000C1A51 /* Podfile */,
@@ -832,7 +840,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				4B8D23C720E087EB005F6047 /* MCPuchMediator */,
+				4B8D23C720E087EB005F6047 /* MCPushMediator */,
 				4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */,
 				4B39DA8020CB5FD600332B95 /* MCContentView */,
 				ACE02634201766FE00A387DC /* QQAlertController */,
@@ -1068,6 +1076,7 @@
 				AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */,
 				5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */,
 				52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */,
+				4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */,
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
 				52C1155E1F4EC5CE005471CB /* MJRefresh.bundle in Resources */,
 				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
@@ -1162,7 +1171,7 @@
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
-				4B8D23C620E087DE005F6047 /* MCPuchMediator.m in Sources */,
+				4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
 				52C115621F4EC5CE005471CB /* UIScrollView+MJRefresh.m in Sources */,
 				52D8D1901F4D77EF00EA413B /* UIScrollView+Touch.m in Sources */,
@@ -1175,6 +1184,7 @@
 				52D8D1871F4D77EF00EA413B /* MyAttributedStringBuilder.m in Sources */,
 				52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */,
 				52C115581F4EC5CE005471CB /* MJRefreshBackGifFooter.m in Sources */,
+				4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
 				52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */,

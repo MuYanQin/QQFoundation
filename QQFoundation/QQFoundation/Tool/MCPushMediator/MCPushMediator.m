@@ -6,10 +6,10 @@
 //  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import "MCPuchMediator.h"
+#import "MCPushMediator.h"
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
-@implementation MCPuchMediator
+@implementation MCPushMediator
 
 + (void)pushToClassFromStaring:(NSString *)ClassString takeParameters:(NSDictionary *)Parameters callBack:(void (^)(id))callBack
 {

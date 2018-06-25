@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MCPuchMediator : NSObject
+@interface MCPushMediator : NSObject
 
 /**
 push到某个界面 当completion不为空时 对应的push对象一定要实现completion block函数才能收到回调

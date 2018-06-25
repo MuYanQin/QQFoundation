@@ -22,8 +22,8 @@
  侧滑展示的文字。默认是删除
  */
 @property (nonatomic, copy  ) NSString *slideText;
-@property (nonatomic, copy  ) void(^CellSelcetHandler)(id item);
-@property (nonatomic, copy  ) void(^CellSlideHandler)(id item);
+@property (nonatomic, copy  ) void(^selcetCellHandler)(id item);
+@property (nonatomic, copy  ) void(^slideCellHandler)(id item);
 
 - (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation;
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation;

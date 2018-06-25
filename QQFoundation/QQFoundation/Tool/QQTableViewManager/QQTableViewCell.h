@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class QQTableViewItem;
+#import "QQTableViewItem.h"
 @interface QQTableViewCell : UITableViewCell
 @property (nonatomic, strong) QQTableViewItem *item;
 

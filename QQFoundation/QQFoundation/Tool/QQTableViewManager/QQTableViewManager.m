@@ -42,6 +42,7 @@
         [self.TableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellReuseIdentifier:objectClass];
     }
 }
+//MARK:重写字典的写入方法
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key
 {
     [self registerClass:(NSString *)key forCellWithReuseIdentifier:obj];
@@ -65,7 +66,7 @@
     item.tableViewManager = self;    
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
-    NSString *cellIdentifier = [NSString stringWithFormat:@"RETableViewManager_%@", [item class]];
+    NSString *cellIdentifier = [NSString stringWithFormat:@"QQTableViewManager_%@", [item class]];
     
     Class cellClass = self.registeredClasses[item.class];
     
@@ -83,6 +84,11 @@
     QQTableViewCell * qCell = (QQTableViewCell *)cell;
     [qCell cellWillAppear];
 }
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    QQTableViewCell * qCell = (QQTableViewCell *)cell;
+    [qCell cellDidDisappear];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewItem *item = self.items[indexPath.row];
@@ -92,10 +98,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id item = self.items[indexPath.row];
-    if ([item respondsToSelector:@selector(setCellSelcetHandler:)]) {
+    if ([item respondsToSelector:@selector(selcetCellHandler)]) {
         QQTableViewItem *actionItem = (QQTableViewItem *)item;
-        if (actionItem.CellSelcetHandler)
-            actionItem.CellSelcetHandler(item);
+        if (actionItem.selcetCellHandler)
+            actionItem.selcetCellHandler(item);
     }
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,8 +112,8 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         id item = self.items[indexPath.row];
         QQTableViewItem *actionItem = (QQTableViewItem *)item;
-        if (actionItem.CellSlideHandler)
-            actionItem.CellSlideHandler(item);
+        if (actionItem.slideCellHandler)
+            actionItem.slideCellHandler(item);
     }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{

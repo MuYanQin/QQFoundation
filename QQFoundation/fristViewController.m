@@ -28,15 +28,12 @@
     self.manager[@"QQTwoItem"] = @"QQTwoCell";
     
     QQOneItem *it1 = [[QQOneItem alloc]init];
-
     it1.CellHeight = 50;
     it1.allowSlide = YES;
     it1.slideText = @"收藏";
-    
-    it1.CellSelcetHandler = ^(QQOneItem * item) {
+    it1.selcetCellHandler = ^(QQOneItem * item) {
     };
-    it1.CellSlideHandler = ^(id item) {
-
+    it1.slideCellHandler  = ^(id item) {
     };
     
     QQTwoItem *it2 = [[QQTwoItem alloc]init];
@@ -44,21 +41,11 @@
     it2.allowSlide = YES;
     it2.slideText = @"喜欢";
     it2.bgColor = [UIColor purpleColor];
-    it2.CellSelcetHandler = ^(QQOneItem * item) {
-        QQTwoItem *it23 = [[QQTwoItem alloc]init];
-        it23.CellHeight = 70;
-        it23.allowSlide = YES;
-        it23.bgColor = [UIColor purpleColor];
-        it23.CellSlideHandler = ^(QQTwoItem * itemT) {
-            [itemT deleteRowWithAnimation:UITableViewRowAnimationNone];
-        };
-        it23.CellSelcetHandler = ^(QQTwoItem * iteme) {
-            NSLog(@"%ld",(long)iteme.indexPath.row);
-        };
-    };
-    it2.CellSlideHandler = ^(id item) {
-        
+    it2.selcetCellHandler = ^(QQOneItem * item) {
 
+    };
+    it2.slideCellHandler = ^(id item) {
+        
     };
     [self.manager replaceSectionsWithSectionsFromArray:[NSMutableArray arrayWithArray:@[it1,it2]]];
     
