@@ -31,6 +31,7 @@
     }
     self.view.backgroundColor = [UIColor whiteColor];
    //设置透明度  相差64像素  YES会有蒙层
+    //YES (0,0)->(0,0)  NO(0.64) - >(0,0)
     self.navigationBar.translucent = YES;
     //设置颜色
     self.navigationBar.barTintColor =[UIColor colorWithR:0 G:122 B:255 A:1];

@@ -22,12 +22,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"one";
-    
+    self.view.backgroundColor = [UIColor purpleColor];
     self.tabManager[@"QQOneItem"] = @"QQOneCell";
     self.tabManager[@"QQTwoItem"] = @"QQTwoCell";
     self.BaseQQTableView.isHasHeaderRefresh = NO;//设置是否有刷新
     NSMutableArray *itemArray  = [NSMutableArray array];
-    
+    NSLog(@"%@  %.2f",self.view,[UIScreen mainScreen].bounds.size.height);
     QQOneItem *it1 = [[QQOneItem alloc]init];
     it1.allowSlide = YES;
     it1.leftString = @"首页1";
@@ -63,7 +63,6 @@
     QQOneItem *it3 = [[QQOneItem alloc]init];
     it3.allowSlide = YES;
     it3.bgColor = [UIColor purpleColor];
-
     it3.leftString = @"首页3";
     it3.slideText = @"喜欢";
     it3.imageString = @"home_03";

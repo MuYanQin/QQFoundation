@@ -27,8 +27,6 @@
     self.navigationItem.title  = @"two";
     self.view.backgroundColor = [UIColor yellowColor];
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
-
-    return;
 }
 - (void)click
 {
