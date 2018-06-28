@@ -11,12 +11,11 @@
 
 - (void)cellDidLoad{
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+- (void)cellWillAppear{
     if (self.item.bgColor) {
         self.contentView.backgroundColor  = self.item.bgColor;
     }
-}
-- (void)cellWillAppear{
-    
 }
 - (void)cellDidDisappear{
     

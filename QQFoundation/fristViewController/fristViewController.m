@@ -81,6 +81,22 @@
     };
     [itemArray addObject:it4];
 
+    for (int i = 0 ; i<10; i++) {
+        QQOneItem *ewq = [[QQOneItem alloc]init];
+        ewq.allowSlide = YES;
+        ewq.leftString = @"首页1";
+        ewq.bgColor = [UIColor yellowColor];
+        ewq.slideText = @"收藏";
+        ewq.imageString = @"home_01";
+        ewq.selcetCellHandler = ^(QQOneItem * item) {
+            
+        };
+        ewq.slideCellHandler  = ^(id item) {
+            NSLog(@"it1 侧滑被点击了！！");
+        };
+        [itemArray addObject:ewq];
+    }
+    
     [self.tabManager replaceSectionsWithSectionsFromArray:itemArray];
     
 }

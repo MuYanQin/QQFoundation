@@ -48,10 +48,10 @@ static const NSInteger itemTag = 100;
 {
     return self.contentCtrollers.count;
 }
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MCContent" forIndexPath:indexPath];
+    cell.highlighted = NO;
     cell.backgroundColor = [UIColor purpleColor];
     UIViewController *childVC = self.contentCtrollers[indexPath.item];
     childVC.view.frame = cell.contentView.bounds;

@@ -67,16 +67,17 @@
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
     NSString *cellIdentifier = [NSString stringWithFormat:@"QQTableViewManager_%@", [item class]];
-    
     Class cellClass = self.registeredClasses[item.class];
     
     QQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[cellClass alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
+        [cell cellDidLoad];
+
+        NSLog(@"%@",cellIdentifier);
     }
     cell.item = item;
     cell.detailTextLabel.text = nil;
-    [cell cellDidLoad];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

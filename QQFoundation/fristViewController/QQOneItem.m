@@ -27,6 +27,7 @@
     self.IconImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:self.IconImageView];
     self.leftLb = [[UILabel alloc]init];
+    self.leftLb.backgroundColor = [UIColor redColor];
     self.leftLb.textAlignment = NSTextAlignmentLeft;
     self.leftLb.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
     [self.contentView addSubview:self.leftLb];
