@@ -13,7 +13,7 @@
 #import "YYCache.h"
 #import "UIView+MBProgress.h"
 #import "QQTool.h"
-#define QQBaseUrl @""
+static NSString *const successCode = @"200";
 @interface QQsession ()
 @end
 
@@ -204,7 +204,7 @@ static AFHTTPSessionManager *manager;
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        NSData *data = nil;
+//        NSData *data = nil;
         for (int j = 0; j<Images.count; j++) {
 //            data = [QQTool imageData:Images[j]];
 //            [formData appendPartWithFileData:data name:@"files"
@@ -227,8 +227,7 @@ static AFHTTPSessionManager *manager;
     if (Cache) {
         [HttpCache setObject:responseObject forKey:key withBlock:nil];//需要缓存则
     }
-    //MB延时处理  不做延时处理的话 直接就因为hidden 导致提示出不来  也可以在下面单独区分隐藏
-    if ([responseObject[@"code"] isEqualToString:@"200"]) {
+    if ([responseObject[@"code"] isEqualToString:successCode]) {
         [controller.view Hidden];
         successBlock(responseObject);
     }else{
@@ -246,13 +245,13 @@ static AFHTTPSessionManager *manager;
 {
 
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
-    if (error.code == -1001){
+    if (error.code == -1001){///<请求超时不是错误不用返回错误
         [controller.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
     }else  if (error.code != -999) {//-999是请求被取消
         [controller.view Hidden];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            failureBlock(error);///<请求超时不是错误
-        });
+        failureBlock(error);
+    }else{
+        failureBlock(error);
     }
     [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;//请求失败关闭小菊花
     [[QQNetManager defaultManager] deleteQQConnection:self];//请求结束 从字典里删除本次请求

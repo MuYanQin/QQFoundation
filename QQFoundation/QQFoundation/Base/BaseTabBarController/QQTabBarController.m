@@ -34,6 +34,10 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     [self.tabBar addSubview:self.tabBarView];
     
 }
+
+/**
+ 改变tabbar的高度
+ */
 - (void)viewWillLayoutSubviews{
     CGRect tabFrame = self.tabBar.frame;
     tabFrame.size.height = tabbarHeight;
@@ -103,7 +107,6 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     self.SelectIndex = self.selectedIndex;
     item.selected = YES;
     self.lastItem = item;
-//    [self.tabBar  addSubview:self.tabBarView];//每次点击的时候加一次  不然响应事件会被覆盖
     if (self.SelectIndex ==1) {
         self.item1.BackGroudImageName = @"navigation_reward_BG";
     }else{
@@ -113,7 +116,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 }
 - (void)QQTabBarController:(QQTabBarController *)TabBarController  didSelect:(UIViewController *)viewcontroller
 {
-    NSLog(@"%ld",(long)TabBarController.SelectIndex);
+
 }
 //设置选中的下标
 - (void)setTabIndex:(NSInteger)index

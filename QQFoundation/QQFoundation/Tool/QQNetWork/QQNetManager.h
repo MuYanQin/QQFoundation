@@ -10,13 +10,7 @@
 #import "QQsession.h"
 #import <UIKit/UIKit.h>
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
-
 @interface QQNetManager : NSObject
-{
-    NSMutableDictionary *_dataDic;///<纪录下载的url
-    NSMutableArray      *_VCS; ///<纪录当前控制器有哪些下载
-    UIAlertView         * _alert;///<防止alert重复出现
-}
 @property (assign, nonatomic)    BOOL   IsConsolePrint;///< default is 'YES'  是否打印取消下载的URL
 + (id)defaultManager;
 

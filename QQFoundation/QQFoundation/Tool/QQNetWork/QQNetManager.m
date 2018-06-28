@@ -8,6 +8,10 @@
 
 #import "QQNetManager.h"
 #import "QQTool.h"
+@interface QQNetManager()
+@property (nonatomic , strong) NSMutableDictionary * dataDic;///<纪录下载的url
+@property (nonatomic , strong) NSMutableArray * VCS;///<纪录当前控制器有哪些下载
+@end
 @implementation QQNetManager
 {
     NSURLSessionDataTask *operation;
@@ -123,6 +127,10 @@
  */
 - (void)insertConnectionVC:(UIViewController *)VC  QQConnection:(QQsession *)hc  SessionDataTask:(NSURLSessionDataTask *)task
 {
+    if (VC ==nil) {
+        NSLog(@"%s :can't insert nil",__func__);
+        return;
+    }
     [lock lock];
     NSString *VCName = [NSString stringWithFormat:@"%@",VC];
     NSDictionary *Dic = @{VCName:hc,@"Task":task};
@@ -130,23 +138,24 @@
     [lock unlock];
 }
 //控制器消失的时候取消下载
-- (void)deleteConnectionVC:(UIViewController *)vc
+- (void)deleteConnectionVC:(UIViewController *)delvc
 {
+    if (delvc ==nil) {
+        NSLog(@"%s :can't delete nil",__func__);
+        return;
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [lock lock];
         NSMutableArray *tempArr = [NSMutableArray arrayWithArray:_VCS];
-        NSMutableArray *VCArray = [NSMutableArray arrayWithArray:vc.childViewControllers];
-        //自定义的nav里面修改了一定有值
-        [VCArray addObject:vc];///<把父控制器加进来
-        
-        /**
-         有的三方滑动视图  或者自己的写的segment都会用到addchildviewcontroller：
-         但是点击返回直接返回到上一个界面  segment的父视图是自己写的另一个界面 而三方的滑动视图是别人的
-         */
+        //有的三方滑动视图  或者自己的写的segment都会用到addchildviewcontroller：
+        NSMutableArray *VCArray = [NSMutableArray arrayWithArray:delvc.childViewControllers];
+        //把父控制器加进来
+        [VCArray addObject:delvc];
+
         //这里主要还是根据入库的控制器来写不是一定的  根据个人需要
         for (UIViewController *VC in VCArray) {
             @autoreleasepool {
-                NSString *VCName = [NSString stringWithFormat:@"%@",VC];
+                NSString *VCName = [NSString stringWithFormat:@"%@",VC];;
                 for (NSDictionary *TempDic in tempArr) {///<在存储请求的数据里找对应的界面
                     @autoreleasepool {
                         if (TempDic[VCName]) {
@@ -163,30 +172,6 @@
         }
         [lock unlock];
     });
-}
-- (void)showProgressHUDWithType:(NSInteger)type {
-    //解决alert重弹出
-    if (_alert.isVisible) {
-        return;
-    }
-    NSString *msg = nil;
-    switch (type) {
-        case 0:
-        {
-            msg =@"网络连接异常，请检查网络！";
-            break;
-        }
-        case 1:
-        {
-            msg = @"服务故障，正在抢修！";
-            break;
-        }
-            
-        default:
-            break;
-    }
-    _alert  =  [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
-    [_alert show];
 }
 - (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters
 {

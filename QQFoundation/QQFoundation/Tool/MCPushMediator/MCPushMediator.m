@@ -82,9 +82,9 @@
 
 + (void)load
 {
-    QQ_methodSwizzle([self class], NSSelectorFromString(@"viewWillDisappear:"), @selector(QQ_viewWillDisappear:));
+    QQ_methodSwizzle([self class], NSSelectorFromString(@"viewDidDisappear:"), @selector(QQ_viewDidDisappear:));
 }
-- (void)QQ_viewWillDisappear:(BOOL)animation
+- (void)QQ_viewDidDisappear:(BOOL)animation
 {
     if(self.pushCallBack){
         self.pushCallBack(self.callBackData);

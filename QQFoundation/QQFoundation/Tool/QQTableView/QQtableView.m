@@ -11,6 +11,7 @@
 #import "UIView+MBProgress.h"
 #import "QQAppDefine.h"
 #import "UIView+QQFrame.h"
+static NSString * const pageIndex = @"pageIndex";//获取第几页的
 @interface QQtableView ()
 {
     /**纪录当前页数*/
@@ -30,31 +31,29 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
-        _isShowStatues = YES;
-        if (@available(iOS 11.0, *)) {
-            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        } else {
-            self.estimatedRowHeight  = 0;
-            self.estimatedSectionFooterHeight  = 0;
-            self.estimatedSectionFooterHeight = 0;
-        }
-        _footerView  = [[UIView alloc]init];
-        [self setTableFooterView:_footerView];
+        [self initTableView];
     }
     return self;
 }
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     if (self = [super initWithFrame:frame style:style] ) {
-        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
-        _footerView  = [[UIView alloc]init];
-        [self setTableFooterView:_footerView];
-        _isShowStatues = YES;
+        [self initTableView];
     }
     return self;
 }
-
+- (void)initTableView{
+    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
+    if (@available(iOS 11.0, *)) {
+        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    self.estimatedRowHeight  = 0;
+    self.estimatedSectionFooterHeight  = 0;
+    self.estimatedSectionFooterHeight = 0;
+    _footerView  = [[UIView alloc]init];
+    [self setTableFooterView:_footerView];
+    _isShowStatues = YES;
+}
 - (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
 {
     _url = url;
@@ -73,7 +72,7 @@
             }
             if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
                  [self.TempController.view Hidden];
-                if (isPullDown) {//下拉刷新才会有空白页
+                if (isPullDown) {//下拉刷新才会有空白页  另一个角度下拉都空白了上拉一定是空白啊
                     self.listArray = [NSArray arrayWithArray:responseObject[@"data"][@"list"]];
                     if (self.listArray.count == 0) {
                         self.loadStatuesView.LoadType = QQLoadViewEmpty;
@@ -88,7 +87,6 @@
             [self.TempController.view Message:responseObject[@"msg"] HiddenAfterDelay:2];
             [self setTableFooterView:_footerView];
         }
-        
         [self EndRefrseh];
     } False:^(NSError *error) {
         if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
@@ -102,8 +100,7 @@
         [self.TempController.view Hidden];
         [self EndRefrseh];
         if (!isPullDown) {
-            _pageNumber --;///<上啦出现加载失败的时候PageNum恢复到原始参数
-            [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
+            [self changeIndexWithStatus:3];
         }
         if (error.code == -1001){
             [self.TempController.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
@@ -125,19 +122,25 @@
         [self.mj_header endRefreshing];
         return;
     }
-    _pageNumber = [_parameters[@"pageIndex"] integerValue];///<分页中页的参数  页的大小外部传入不做更改
-    _pageNumber  = 1;
-    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
-    
+    [self changeIndexWithStatus:1];
     [self SetUpNetWorkParamters:_parameters isPullDown:YES];
 }
 - (void)footerRefresh
 {
-    _pageNumber = [_parameters[@"pageIndex"] integerValue];
-    _pageNumber ++;
-    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:@"pageIndex"];
+    [self changeIndexWithStatus:2];
     [self SetUpNetWorkParamters:_parameters isPullDown:NO];
-    
+}
+- (void)changeIndexWithStatus:(NSInteger)Status//1  下拉  2上拉  3减一
+{
+    _pageNumber = [_parameters[pageIndex] integerValue];
+    if (Status == 1) {
+        _pageNumber = 1;
+    }else if (Status == 2){
+        _pageNumber ++;
+    }else{
+        _pageNumber --;
+    }
+    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:pageIndex];
 }
 - (void)EndRefrseh
 {

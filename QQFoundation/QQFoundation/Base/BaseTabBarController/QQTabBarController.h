@@ -15,13 +15,13 @@
 @class MCTabBarItem;
 @interface QQTabBarController : UITabBarController
 @property (nonatomic,strong) UIView *tabBarView;
+@property (nonatomic,assign) NSInteger SelectIndex;//选中的下标
+
 @property (nonatomic,strong) fristViewController *one;
 @property (nonatomic,strong) twoViewController *two;
 @property (nonatomic,strong) threeViewController *three;
 @property (nonatomic,strong) fourViewController *four;
 @property (nonatomic,strong) fourViewController *five;
-
-@property (nonatomic,assign) NSInteger SelectIndex;//选中的下标
 
 /**第一个item*/
 @property (nonatomic,strong) MCTabBarItem *item0;

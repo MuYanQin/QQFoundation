@@ -77,7 +77,7 @@ static NSInteger const HUDWIDTH = 80;
     ProgressHUD.margin = 10;// HUD各元素与HUD边缘的间距
     ProgressHUD.minSize = CGSizeMake(HUDWIDTH, HUDWIDTH);
 
-    //    hud_0314.bezelView.color = [UIColor colorWithHexString:@"e8e8e8"];// 背景框的颜色
+    //    ProgressHUD.bezelView.color = [UIColor colorWithHexString:@"e8e8e8"];// 背景框的颜色
     // 需要注意的是如果设置了这个属性，则opacity属性会失效，即不会有半透明效果
     [ProgressHUD showAnimated:YES];
 }

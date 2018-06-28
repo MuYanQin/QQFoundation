@@ -95,7 +95,6 @@
         if (![context isCancelled]) {
             //这里打印的是栈顶的VC   所以要tempVC中间过渡
             [[QQNetManager defaultManager] deleteConnectionVC:tempVC];
-            NSLog(@"全屏手势返回");
         }
     }];
 }

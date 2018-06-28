@@ -11,8 +11,7 @@
 @protocol QQtableViewGate <NSObject>
 
 /**
- QQTableView的代理
-
+ 返回请求到的数据
  @param QQtableView 返回自己
  @param PullDown   返回bool 表明  YES－－下拉刷新  NO －－－ 上拉记载
  @param DataArray         返回的数据

@@ -11,13 +11,13 @@
 
 #define   ServerType 3 //1 开发  2 测试  3生产
 #if (ServerType == 1)
-
+#define QQBaseUrl  @""
 
 #elif (ServerType == 2)
-
+#define QQBaseUrl  @""
 
 #elif (ServerType == 3)
-
+#define QQBaseUrl  @""
 
 #endif
 
