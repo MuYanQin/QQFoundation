@@ -22,6 +22,10 @@
     self.view.backgroundColor = [UIColor redColor];
     self.callBackData = @"秦慕乔";
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

@@ -14,7 +14,11 @@
 {
     UIViewController *tempVC;///栈顶的控制器
 }
-@property (assign, nonatomic) BOOL isSwitching;//判断push动作有没有完成  没有完成则忽略 下一次push
+
+/**
+ 判断push动作有没有完成  没有完成则忽略 下一次push
+ */
+@property (assign, nonatomic) BOOL isSwitching;
 @end
 
 @implementation QQNavigationController
@@ -33,9 +37,7 @@
    //设置透明度  相差64像素  YES会有蒙层
     //YES (0,0)->(0,0)  NO(0.64) - >(0,0)
     self.navigationBar.translucent = YES;
-    //设置颜色
     self.navigationBar.barTintColor =[UIColor colorWithR:0 G:122 B:255 A:1];
-
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){

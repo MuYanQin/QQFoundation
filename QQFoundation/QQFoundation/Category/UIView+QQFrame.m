@@ -147,6 +147,24 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
     self.frame = newframe;
 }
 
+- (CGFloat)centerX
+{
+    return self.center.x;
+}
+- (void)setCenterX:(CGFloat)centerX
+{
+    self.center = CGPointMake(centerX, self.center.y);
+}
+
+- (CGFloat)centerY
+{
+    return self.center.y;
+}
+- (void)setCenterY:(CGFloat)centerY
+{
+    self.center = CGPointMake(self.center.x,centerY);
+
+}
 // Move via offset
 - (void) moveBy: (CGPoint) delta
 {

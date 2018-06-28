@@ -7,8 +7,7 @@
 //
 
 #import "QQTextView.h"
-#import "UIView+SuperViewController.h"
-#import "UIView+MBProgress.h"
+
 #define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 @implementation QQTextView
 
@@ -50,7 +49,6 @@
         if (!self.markedTextRange) {
             if (toBeString.length >_maxLength) {
                 self.text = [toBeString substringToIndex:_maxLength]; // 截取最大限制字符数.
-                [self.viewController.view Message:[NSString stringWithFormat:@"最不能超过%lu个字符",_maxLength] HiddenAfterDelay:2];
                 [self resignFirstResponder];
             }
         }
