@@ -20,14 +20,12 @@
     // Do any additional setup after loading the view.
     self.title = @"Five";
     self.view.backgroundColor = [UIColor redColor];
-    NSLog(@"传递过来的userid========%@",self.userId);
+    self.callBackData = @"秦慕乔";
 }
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
-    self.pushCallBack(@"123");
+    [super viewWillDisappear:animated];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

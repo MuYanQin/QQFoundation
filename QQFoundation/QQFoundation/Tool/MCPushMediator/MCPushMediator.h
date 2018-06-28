@@ -7,20 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface MCPushMediator : NSObject
 
 /**
-push到某个界面 当callback不为空时 对应的push对象一定要实现callback block函数才能收到回调 反之就不要实现callback
-
+push到某个界面
  @param ClassString push对象的类命字符串
  @param Parameters 要传递的参数 可为空
- @param callBack 回调函数
+ @param callBack 界面即将消失的回调函数  携带的data参数需要 需要手动在即将消失的界面赋值  self.callBackData = @"";即可
  */
-+ (void)pushToClassFromStaring:(NSString *)ClassString takeParameters:(NSDictionary *)Parameters  callBack:(void(^)(id data))callBack;
++ (void)pushToClassFromStaring:(NSString *)ClassString takeParameters:(NSDictionary *)Parameters  callBack:(void(^)(id callBackData))callBack;
 @end
 
+
+
 typedef  void(^callBack)(id data);
+
 @interface NSObject (MCParameters)
 @property (nonatomic, copy) callBack pushCallBack;
+@property (nonatomic , strong) id callBackData;
+@end
+
+
+
+@interface UIViewController (MCWillDisappear)
+
 @end

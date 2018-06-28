@@ -11,11 +11,13 @@
 
 #define QQWeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 #define VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
-//按比例获取高度
-#define  WGiveHeight(HEIGHT) HEIGHT * [UIScreen mainScreen].bounds.size.height/568.0
-//按比例获取宽度
-#define  WGiveWidth(WIDTH) WIDTH * [UIScreen mainScreen].bounds.size.width/320.0
+#define KScreenWidth  CGRectGetWidth([UIScreen mainScreen].bounds)
+#define KScreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
 #define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define kIs_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define NavHeight  (kIs_iPhoneX ?(88):(64))
+#define RSTabbarHeight  (kIs_iPhoneX?83:49)
+#define RSBottomDistance  (kIs_iPhoneX?34:0)
 
 #if DEBUG
 #define QQLog(...) NSLog(__VA_ARGS__)

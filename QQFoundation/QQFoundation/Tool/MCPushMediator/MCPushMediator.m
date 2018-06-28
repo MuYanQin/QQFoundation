@@ -9,6 +9,7 @@
 #import "MCPushMediator.h"
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import "QQTool.h"
 @implementation MCPushMediator
 
 + (void)pushToClassFromStaring:(NSString *)ClassString takeParameters:(NSDictionary *)Parameters callBack:(void (^)(id))callBack
@@ -62,9 +63,32 @@
     objc_setAssociatedObject(self, @selector(pushCallBack), pushCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
 
 }
+- (void)setCallBackData:(id)callBackData
+{
+    objc_setAssociatedObject(self, @selector(callBackData), callBackData, OBJC_ASSOCIATION_COPY_NONATOMIC);
+
+}
 - (callBack)pushCallBack
+{
+    return objc_getAssociatedObject(self, _cmd);
+}
+- (id)callBackData
 {
     return objc_getAssociatedObject(self, _cmd);
 }
 @end
 
+@implementation UIViewController (MCWillDisappear)
+
++ (void)load
+{
+    QQ_methodSwizzle([self class], NSSelectorFromString(@"viewWillDisappear:"), @selector(QQ_viewWillDisappear:));
+}
+- (void)QQ_viewWillDisappear:(BOOL)animation
+{
+    if(self.pushCallBack){
+        self.pushCallBack(self.callBackData);
+    }
+}
+
+@end
