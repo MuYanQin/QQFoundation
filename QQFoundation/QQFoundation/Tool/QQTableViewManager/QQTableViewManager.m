@@ -73,8 +73,6 @@
     if (cell == nil) {
         cell = [[cellClass alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
         [cell cellDidLoad];
-
-        NSLog(@"%@",cellIdentifier);
     }
     cell.item = item;
     cell.detailTextLabel.text = nil;

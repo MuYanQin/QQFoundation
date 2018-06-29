@@ -7,17 +7,11 @@
 //
 
 #import "twoViewController.h"
-#import "NSDate+QQCalculate.h"
-#import "MCDownloadManager.h"
-#import "UIImage+Usually.h"
-#import "UIView+MCPopView.h"
-#import "UIView+MBProgress.h"
 #import "fiveViewController.h"
 #import "MCPushMediator.h"
-#import "MCScrollTableView.h"
+
 @interface twoViewController ()
-@property (nonatomic,copy) NSString *dateAsString;
-@property (nonatomic , strong) UIImageView * BackGroudImageview;
+
 @end
 
 @implementation twoViewController
@@ -28,13 +22,6 @@
     self.navigationItem.title  = @"two";
     self.view.backgroundColor = [UIColor yellowColor];
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
-    MCScrollTableView *ss = [[MCScrollTableView alloc]initWithFrame:CGRectMake(0, 64,KScreenWidth, KScreenHeight - 64 - 80)];
-    [self.view addSubview:ss];
-    
-    UIView *rr = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 100)];
-    rr.backgroundColor = [UIColor lightGrayColor];
-    ss.headerView = rr;
-    
 }
 - (void)click
 {
