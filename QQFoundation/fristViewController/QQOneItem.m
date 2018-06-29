@@ -21,7 +21,7 @@
 
 @synthesize item = _item;
 
-- (void)cellDidLoad
+- (void)cellDidLoad//
 {
     [super cellDidLoad];
     self.IconImageView = [[UIImageView alloc]init];
