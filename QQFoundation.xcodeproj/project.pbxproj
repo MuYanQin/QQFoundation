@@ -121,6 +121,7 @@
 		52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1781F4D77EF00EA413B /* QQImagePicker.m */; };
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
+		97C408A2534C1BE9962DC787 /* libPods-QQFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */; };
 		AC10A805206B90B600FF937D /* UINavigationBar+QQSpeace.m in Sources */ = {isa = PBXBuildFile; fileRef = AC10A804206B90B600FF937D /* UINavigationBar+QQSpeace.m */; };
 		AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */; };
 		AC686F772069D0A6004A08FF /* QQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC686F762069D0A6004A08FF /* QQDateFormatter.m */; };
@@ -164,6 +165,8 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		0153EDFB20B66F970041CFC4 /* QQOneItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQOneItem.h; sourceTree = "<group>"; };
 		0153EDFC20B66F970041CFC4 /* QQOneItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQOneItem.m; sourceTree = "<group>"; };
+		37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QQFoundation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.release.xcconfig"; sourceTree = "<group>"; };
 		4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabBarItem.h; sourceTree = "<group>"; };
 		4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabBarItem.m; sourceTree = "<group>"; };
 		4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MCPopView.h"; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		985D015E9F38546EB6DE4F7D /* Pods-QQFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.debug.xcconfig"; sourceTree = "<group>"; };
 		AC10A803206B90B600FF937D /* UINavigationBar+QQSpeace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+QQSpeace.h"; sourceTree = "<group>"; };
 		AC10A804206B90B600FF937D /* UINavigationBar+QQSpeace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+QQSpeace.m"; sourceTree = "<group>"; };
 		AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5295D4D71F4EC0C500C6B5F4 /* libsqlite3.tbd in Frameworks */,
+				97C408A2534C1BE9962DC787 /* libPods-QQFoundation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				5295D4D61F4EC0C500C6B5F4 /* libsqlite3.tbd */,
+				37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -754,6 +760,7 @@
 				4BFAB7A520EB65000076E090 /* qqfundation */,
 				52D8D10A1F4D775500EA413B /* Products */,
 				5295D4D51F4EC0C500C6B5F4 /* Frameworks */,
+				C2B370A0092B43924375A2E3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1080,6 +1087,15 @@
 			path = BaseTabBarController;
 			sourceTree = "<group>";
 		};
+		C2B370A0092B43924375A2E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				985D015E9F38546EB6DE4F7D /* Pods-QQFoundation.debug.xcconfig */,
+				3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1087,6 +1103,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D8D1201F4D775500EA413B /* Build configuration list for PBXNativeTarget "QQFoundation" */;
 			buildPhases = (
+				14BF369690ABE3DD1059E4A9 /* [CP] Check Pods Manifest.lock */,
 				52D8D1051F4D775500EA413B /* Sources */,
 				52D8D1061F4D775500EA413B /* Frameworks */,
 				52D8D1071F4D775500EA413B /* Resources */,
@@ -1163,6 +1180,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14BF369690ABE3DD1059E4A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QQFoundation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		52D8D1051F4D775500EA413B /* Sources */ = {
@@ -1408,6 +1446,7 @@
 		};
 		52D8D1211F4D775500EA413B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 985D015E9F38546EB6DE4F7D /* Pods-QQFoundation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1430,6 +1469,7 @@
 		};
 		52D8D1221F4D775500EA413B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
