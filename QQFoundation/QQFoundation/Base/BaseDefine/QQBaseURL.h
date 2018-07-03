@@ -9,7 +9,7 @@
 #ifndef QQBaseURL_h
 #define QQBaseURL_h
 
-#define   ServerType 3 //1 开发  2 测试  3生产
+#define   ServerType 1 //1 开发  2 测试  3生产
 #if (ServerType == 1)
 #define QQBaseUrl  @""
 

@@ -11,11 +11,10 @@
 		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
 		0153EDFD20B66F970041CFC4 /* QQOneItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDFC20B66F970041CFC4 /* QQOneItem.m */; };
+		47303B270159D541CB915510 /* libPods-QQFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C15DB7E8054C50F56C4AB3 /* libPods-QQFoundation.a */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
-		4B87334220E9C9180045851A /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B87334120E9C9180045851A /* NotificationService.m */; };
-		4B87334620E9C9180045851A /* FoundationExtention.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4B87333E20E9C9180045851A /* FoundationExtention.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
@@ -25,6 +24,11 @@
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BDC83D820E114EA00F13C46 /* MCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC83D720E114EA00F13C46 /* MCAlertView.m */; };
 		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
+		4BFAB79520EB2B630076E090 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79220EB2B630076E090 /* YYFPSLabel.m */; };
+		4BFAB79620EB2B630076E090 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79420EB2B630076E090 /* YYWeakProxy.m */; };
+		4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79920EB45020076E090 /* MCDetectionView.m */; };
+		4BFAB7A820EB65000076E090 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB7A720EB65000076E090 /* NotificationService.m */; };
+		4BFAB7AC20EB65000076E090 /* qqfundation.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4BFAB7A420EB65000076E090 /* qqfundation.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274E9F01F8F45D20018E93C /* fristViewController.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
 		5289010E1FA08F3000C29479 /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5289010D1FA08F3000C29479 /* twoViewController.m */; };
@@ -142,12 +146,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4B87334420E9C9180045851A /* PBXContainerItemProxy */ = {
+		4BFAB7AA20EB65000076E090 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 52D8D1011F4D775500EA413B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4B87333D20E9C9180045851A;
-			remoteInfo = FoundationExtention;
+			remoteGlobalIDString = 4BFAB7A320EB65000076E090;
+			remoteInfo = qqfundation;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -158,7 +162,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				4B87334620E9C9180045851A /* FoundationExtention.appex in Embed App Extensions */,
+				4BFAB7AC20EB65000076E090 /* qqfundation.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,16 +178,15 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		0153EDFB20B66F970041CFC4 /* QQOneItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQOneItem.h; sourceTree = "<group>"; };
 		0153EDFC20B66F970041CFC4 /* QQOneItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQOneItem.m; sourceTree = "<group>"; };
+		082E4638119932BA805CD2ED /* Pods-FoundationExtention.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoundationExtention.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoundationExtention/Pods-FoundationExtention.release.xcconfig"; sourceTree = "<group>"; };
+		378E303D2BD80F21A1C974A1 /* Pods-FoundationExtention.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoundationExtention.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoundationExtention/Pods-FoundationExtention.debug.xcconfig"; sourceTree = "<group>"; };
+		3A4EB2AD1A706ADC393CFD64 /* Pods-QQFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.debug.xcconfig"; sourceTree = "<group>"; };
 		4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabBarItem.h; sourceTree = "<group>"; };
 		4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabBarItem.m; sourceTree = "<group>"; };
 		4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MCPopView.h"; sourceTree = "<group>"; };
 		4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MCPopView.m"; sourceTree = "<group>"; };
 		4B43A86E20DB7B6500422438 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
 		4B43A86F20DB7B6500422438 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
-		4B87333E20E9C9180045851A /* FoundationExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoundationExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B87334020E9C9180045851A /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		4B87334120E9C9180045851A /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		4B87334320E9C9180045851A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8B19ED20CFE86100B77A9D /* MCDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
@@ -202,6 +205,17 @@
 		4BDC83D920E120F600F13C46 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MBProgress.h"; sourceTree = "<group>"; };
 		4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBProgress.m"; sourceTree = "<group>"; };
+		4BFAB79120EB2B630076E090 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		4BFAB79220EB2B630076E090 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		4BFAB79320EB2B630076E090 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		4BFAB79420EB2B630076E090 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		4BFAB79820EB45020076E090 /* MCDetectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetectionView.h; sourceTree = "<group>"; };
+		4BFAB79920EB45020076E090 /* MCDetectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetectionView.m; sourceTree = "<group>"; };
+		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
+		4BFAB7A420EB65000076E090 /* qqfundation.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = qqfundation.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFAB7A620EB65000076E090 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		4BFAB7A720EB65000076E090 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		4BFAB7A920EB65000076E090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
 		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
@@ -393,6 +407,7 @@
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		627199A3FE771EF34C51BABE /* libPods-FoundationExtention.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoundationExtention.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC10A803206B90B600FF937D /* UINavigationBar+QQSpeace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+QQSpeace.h"; sourceTree = "<group>"; };
 		AC10A804206B90B600FF937D /* UINavigationBar+QQSpeace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+QQSpeace.m"; sourceTree = "<group>"; };
 		AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
@@ -432,10 +447,12 @@
 		ACF4B05C1FEE546200668126 /* QQBaseURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBaseURL.h; sourceTree = "<group>"; };
 		ACF4B05E1FEE546200668126 /* QQTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTabBarController.h; sourceTree = "<group>"; };
 		ACF4B0601FEE546200668126 /* QQTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTabBarController.m; sourceTree = "<group>"; };
+		C5C15DB7E8054C50F56C4AB3 /* libPods-QQFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QQFoundation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51B5D8B21D3D78800324C6B /* Pods-QQFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4B87333B20E9C9180045851A /* Frameworks */ = {
+		4BFAB7A120EB65000076E090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -447,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5295D4D71F4EC0C500C6B5F4 /* libsqlite3.tbd in Frameworks */,
+				47303B270159D541CB915510 /* libPods-QQFoundation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +484,17 @@
 				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
 			);
 			path = QQTableViewManager;
+			sourceTree = "<group>";
+		};
+		207A2E65D8A4F807D6FCD9EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				378E303D2BD80F21A1C974A1 /* Pods-FoundationExtention.debug.xcconfig */,
+				082E4638119932BA805CD2ED /* Pods-FoundationExtention.release.xcconfig */,
+				3A4EB2AD1A706ADC393CFD64 /* Pods-QQFoundation.debug.xcconfig */,
+				F51B5D8B21D3D78800324C6B /* Pods-QQFoundation.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		4B39DA8020CB5FD600332B95 /* MCContentView */ = {
@@ -501,16 +530,6 @@
 			path = fristViewController;
 			sourceTree = "<group>";
 		};
-		4B87333F20E9C9180045851A /* FoundationExtention */ = {
-			isa = PBXGroup;
-			children = (
-				4B87334020E9C9180045851A /* NotificationService.h */,
-				4B87334120E9C9180045851A /* NotificationService.m */,
-				4B87334320E9C9180045851A /* Info.plist */,
-			);
-			path = FoundationExtention;
-			sourceTree = "<group>";
-		};
 		4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +550,25 @@
 			path = MCPushMediator;
 			sourceTree = "<group>";
 		};
+		4BFAB79B20EB45070076E090 /* MCDetectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4BFAB79820EB45020076E090 /* MCDetectionView.h */,
+				4BFAB79920EB45020076E090 /* MCDetectionView.m */,
+			);
+			path = MCDetectionView;
+			sourceTree = "<group>";
+		};
+		4BFAB7A520EB65000076E090 /* qqfundation */ = {
+			isa = PBXGroup;
+			children = (
+				4BFAB7A620EB65000076E090 /* NotificationService.h */,
+				4BFAB7A720EB65000076E090 /* NotificationService.m */,
+				4BFAB7A920EB65000076E090 /* Info.plist */,
+			);
+			path = qqfundation;
+			sourceTree = "<group>";
+		};
 		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +584,8 @@
 			isa = PBXGroup;
 			children = (
 				5295D4D61F4EC0C500C6B5F4 /* libsqlite3.tbd */,
+				627199A3FE771EF34C51BABE /* libPods-FoundationExtention.a */,
+				C5C15DB7E8054C50F56C4AB3 /* libPods-QQFoundation.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -753,9 +793,10 @@
 			isa = PBXGroup;
 			children = (
 				52D8D10B1F4D775500EA413B /* QQFoundation */,
-				4B87333F20E9C9180045851A /* FoundationExtention */,
+				4BFAB7A520EB65000076E090 /* qqfundation */,
 				52D8D10A1F4D775500EA413B /* Products */,
 				5295D4D51F4EC0C500C6B5F4 /* Frameworks */,
+				207A2E65D8A4F807D6FCD9EA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -763,7 +804,7 @@
 			isa = PBXGroup;
 			children = (
 				52D8D1091F4D775500EA413B /* QQFoundation.app */,
-				4B87333E20E9C9180045851A /* FoundationExtention.appex */,
+				4BFAB7A420EB65000076E090 /* qqfundation.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -771,6 +812,7 @@
 		52D8D10B1F4D775500EA413B /* QQFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */,
 				4B43A86D20DB7B6500422438 /* KLCPopup */,
 				AC781AB51FF51D2C00863F4C /* FMDB */,
 				52C114D71F4EC5CE005471CB /* AFNetworking */,
@@ -790,6 +832,10 @@
 				ACAD54501FEC7AE600F3E395 /* fiveViewController.h */,
 				ACAD54511FEC7AE600F3E395 /* fiveViewController.m */,
 				4B8D23D220E0DA46005F6047 /* MCGCDStudy */,
+				4BFAB79120EB2B630076E090 /* YYFPSLabel.h */,
+				4BFAB79220EB2B630076E090 /* YYFPSLabel.m */,
+				4BFAB79320EB2B630076E090 /* YYWeakProxy.h */,
+				4BFAB79420EB2B630076E090 /* YYWeakProxy.m */,
 				ACB0F3B31FEBEBB900FC9ADB /* 图标_ios */,
 				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
 				523DF3C51F8DBDE6000C1A51 /* Podfile */,
@@ -904,6 +950,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4BFAB79B20EB45070076E090 /* MCDetectionView */,
 				4B8D23C720E087EB005F6047 /* MCPushMediator */,
 				4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */,
 				4B39DA8020CB5FD600332B95 /* MCContentView */,
@@ -1080,27 +1127,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B87333D20E9C9180045851A /* FoundationExtention */ = {
+		4BFAB7A320EB65000076E090 /* qqfundation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B87334920E9C9180045851A /* Build configuration list for PBXNativeTarget "FoundationExtention" */;
+			buildConfigurationList = 4BFAB7AD20EB65000076E090 /* Build configuration list for PBXNativeTarget "qqfundation" */;
 			buildPhases = (
-				4B87333A20E9C9180045851A /* Sources */,
-				4B87333B20E9C9180045851A /* Frameworks */,
-				4B87333C20E9C9180045851A /* Resources */,
+				4BFAB7A020EB65000076E090 /* Sources */,
+				4BFAB7A120EB65000076E090 /* Frameworks */,
+				4BFAB7A220EB65000076E090 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = FoundationExtention;
-			productName = FoundationExtention;
-			productReference = 4B87333E20E9C9180045851A /* FoundationExtention.appex */;
+			name = qqfundation;
+			productName = qqfundation;
+			productReference = 4BFAB7A420EB65000076E090 /* qqfundation.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		52D8D1081F4D775500EA413B /* QQFoundation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D8D1201F4D775500EA413B /* Build configuration list for PBXNativeTarget "QQFoundation" */;
 			buildPhases = (
+				7FED7C50B09338FC40E8414B /* [CP] Check Pods Manifest.lock */,
 				52D8D1051F4D775500EA413B /* Sources */,
 				52D8D1061F4D775500EA413B /* Frameworks */,
 				52D8D1071F4D775500EA413B /* Resources */,
@@ -1109,7 +1157,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4B87334520E9C9180045851A /* PBXTargetDependency */,
+				4BFAB7AB20EB65000076E090 /* PBXTargetDependency */,
 			);
 			name = QQFoundation;
 			productName = QQFoundation;
@@ -1126,7 +1174,7 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "慕纯";
 				TargetAttributes = {
-					4B87333D20E9C9180045851A = {
+					4BFAB7A320EB65000076E090 = {
 						CreatedOnToolsVersion = 9.3;
 						DevelopmentTeam = 2VRQMS6TMZ;
 						ProvisioningStyle = Automatic;
@@ -1135,6 +1183,14 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 2VRQMS6TMZ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1152,13 +1208,13 @@
 			projectRoot = "";
 			targets = (
 				52D8D1081F4D775500EA413B /* QQFoundation */,
-				4B87333D20E9C9180045851A /* FoundationExtention */,
+				4BFAB7A320EB65000076E090 /* qqfundation */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4B87333C20E9C9180045851A /* Resources */ = {
+		4BFAB7A220EB65000076E090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1184,12 +1240,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7FED7C50B09338FC40E8414B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QQFoundation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		4B87333A20E9C9180045851A /* Sources */ = {
+		4BFAB7A020EB65000076E090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B87334220E9C9180045851A /* NotificationService.m in Sources */,
+				4BFAB7A820EB65000076E090 /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,6 +1340,7 @@
 				4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */,
 				5274E9F11F8F45D20018E93C /* fristViewController.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
+				4BFAB79520EB2B630076E090 /* YYFPSLabel.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
@@ -1275,6 +1353,8 @@
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
+				4BFAB79620EB2B630076E090 /* YYWeakProxy.m in Sources */,
+				4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
 				4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
@@ -1322,10 +1402,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4B87334520E9C9180045851A /* PBXTargetDependency */ = {
+		4BFAB7AB20EB65000076E090 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4B87333D20E9C9180045851A /* FoundationExtention */;
-			targetProxy = 4B87334420E9C9180045851A /* PBXContainerItemProxy */;
+			target = 4BFAB7A320EB65000076E090 /* qqfundation */;
+			targetProxy = 4BFAB7AA20EB65000076E090 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1349,7 +1429,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4B87334720E9C9180045851A /* Debug */ = {
+		4BFAB7AE20EB65000076E090 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1364,20 +1444,21 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = FoundationExtention/Info.plist;
+				INFOPLIST_FILE = qqfundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation.FoundationExtention;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation.qqfundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		4B87334820E9C9180045851A /* Release */ = {
+		4BFAB7AF20EB65000076E090 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1392,13 +1473,14 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = FoundationExtention/Info.plist;
+				INFOPLIST_FILE = qqfundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation.FoundationExtention;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation.qqfundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1497,10 +1579,12 @@
 		};
 		52D8D1211F4D775500EA413B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A4EB2AD1A706ADC393CFD64 /* Pods-QQFoundation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = QQFoundation/QQFoundation.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1510,7 +1594,7 @@
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1518,10 +1602,12 @@
 		};
 		52D8D1221F4D775500EA413B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F51B5D8B21D3D78800324C6B /* Pods-QQFoundation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = QQFoundation/QQFoundation.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1531,7 +1617,7 @@
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1540,11 +1626,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B87334920E9C9180045851A /* Build configuration list for PBXNativeTarget "FoundationExtention" */ = {
+		4BFAB7AD20EB65000076E090 /* Build configuration list for PBXNativeTarget "qqfundation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4B87334720E9C9180045851A /* Debug */,
-				4B87334820E9C9180045851A /* Release */,
+				4BFAB7AE20EB65000076E090 /* Debug */,
+				4BFAB7AF20EB65000076E090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
