@@ -1,6 +1,6 @@
 //
 //  NotificationService.m
-//  qqfundation
+//  MCServerExtension
 //
 //  Created by qinmuqiao on 2018/7/3.
 //  Copyright © 2018年 慕纯. All rights reserved.
@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) void (^contentHandler)(UNNotificationContent *contentToDeliver);
 @property (nonatomic, strong) UNMutableNotificationContent *bestAttemptContent;
-
 @end
 
 @implementation NotificationService
@@ -22,9 +21,10 @@
     self.bestAttemptContent = [request.content mutableCopy];
     
     // Modify the notification content here...
+    self.bestAttemptContent.title = [NSString stringWithFormat:@"%@ [modified]", self.bestAttemptContent.title];
     self.bestAttemptContent.title = @"测试Extension";
     self.bestAttemptContent.body = @"秦慕乔";
-    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:@"测试"];
+    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:@"花纯荣"];
     AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
     [synth speakUtterance:utterance];
     self.contentHandler(self.bestAttemptContent);

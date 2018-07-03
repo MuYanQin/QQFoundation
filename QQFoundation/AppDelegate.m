@@ -10,8 +10,9 @@
 #import "QQNavigationController.h"
 #import "MCDownloadManager.h"
 #import "MCDetectionView.h"
-
-@interface AppDelegate ()
+#import "JPUSHService.h"
+#import <UserNotifications/UserNotifications.h>
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 @property (nonatomic , strong) NSTimer * timer;
 @property (nonatomic , assign) NSInteger  duration;
 @end
@@ -25,10 +26,34 @@
     if (ServerType !=3) {
         [self.window addSubview:[[MCDetectionView alloc]initWithFrame:CGRectMake(15, 64, 90, 40)]];
     }
-
+    //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
+    [JPUSHService setupWithOption:launchOptions appKey:@"2e0551392cfc2b695e42a88d"
+                          channel:nil
+                 apsForProduction:NO
+            advertisingIdentifier:nil];
+    [self registerRemoteNotification];
     return YES;
 }
-
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+    NSLog(@"\n-->%@<--\n", [NSString stringWithFormat:@"Device Token: %@", deviceToken]);
+}
+/** 远程通知注册失败委托 */
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"\n>>>[DeviceToken Error]:%@\n\n", error.description);
+}
 - (QQTabBarController *)TabBar
 {
     if (!_TabBar) {
@@ -74,7 +99,44 @@
     [[MCDownloadManager defaultManager]addCompletionHandler:completionHandler identifier:identifier];
 }
 
-
+- (void)registerRemoteNotification {
+    /*
+     警告：Xcode8的需要手动开启“TARGETS -> Capabilities -> Push Notifications”
+     */
+    
+    /*
+     警告：该方法需要开发者自定义，以下代码根据APP支持的iOS系统不同，代码可以对应修改。
+     以下为演示代码，注意根据实际需要修改，注意测试支持的iOS系统都能获取到DeviceToken
+     */
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0 // Xcode 8编译会调用
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay) completionHandler:^(BOOL granted, NSError *_Nullable error) {
+            if (!error) {
+                NSLog(@"request authorization succeeded!");
+            }
+        }];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+#else // Xcode 7编译会调用
+        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+#endif
+    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
+                                                                       UIRemoteNotificationTypeSound |
+                                                                       UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+    }
+}
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

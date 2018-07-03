@@ -14,6 +14,8 @@
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
+		4B4D16BD20EB9D7F0058794C /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D16BC20EB9D7F0058794C /* NotificationService.m */; };
+		4B4D16C120EB9D7F0058794C /* MCServerExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4B4D16B920EB9D7F0058794C /* MCServerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
@@ -143,6 +145,16 @@
 		ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0601FEE546200668126 /* QQTabBarController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4B4D16BF20EB9D7F0058794C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D8D1011F4D775500EA413B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B4D16B820EB9D7F0058794C;
+			remoteInfo = MCServerExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		4B87334A20E9C9180045851A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -150,6 +162,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				4B4D16C120EB9D7F0058794C /* MCServerExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +186,10 @@
 		4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MCPopView.m"; sourceTree = "<group>"; };
 		4B43A86E20DB7B6500422438 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
 		4B43A86F20DB7B6500422438 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
+		4B4D16B920EB9D7F0058794C /* MCServerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MCServerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4D16BB20EB9D7F0058794C /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		4B4D16BC20EB9D7F0058794C /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		4B4D16BE20EB9D7F0058794C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8B19ED20CFE86100B77A9D /* MCDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
@@ -198,9 +215,6 @@
 		4BFAB79820EB45020076E090 /* MCDetectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetectionView.h; sourceTree = "<group>"; };
 		4BFAB79920EB45020076E090 /* MCDetectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetectionView.m; sourceTree = "<group>"; };
 		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
-		4BFAB7A620EB65000076E090 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		4BFAB7A720EB65000076E090 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		4BFAB7A920EB65000076E090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
 		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
@@ -435,6 +449,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B4D16B620EB9D7F0058794C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D8D1061F4D775500EA413B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,6 +501,16 @@
 			path = KLCPopup;
 			sourceTree = "<group>";
 		};
+		4B4D16BA20EB9D7F0058794C /* MCServerExtension */ = {
+			isa = PBXGroup;
+			children = (
+				4B4D16BB20EB9D7F0058794C /* NotificationService.h */,
+				4B4D16BC20EB9D7F0058794C /* NotificationService.m */,
+				4B4D16BE20EB9D7F0058794C /* Info.plist */,
+			);
+			path = MCServerExtension;
+			sourceTree = "<group>";
+		};
 		4B4D82E720E0F76900AC5FD3 /* fristViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,16 +553,6 @@
 				4BFAB79920EB45020076E090 /* MCDetectionView.m */,
 			);
 			path = MCDetectionView;
-			sourceTree = "<group>";
-		};
-		4BFAB7A520EB65000076E090 /* qqfundation */ = {
-			isa = PBXGroup;
-			children = (
-				4BFAB7A620EB65000076E090 /* NotificationService.h */,
-				4BFAB7A720EB65000076E090 /* NotificationService.m */,
-				4BFAB7A920EB65000076E090 /* Info.plist */,
-			);
-			path = qqfundation;
 			sourceTree = "<group>";
 		};
 		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
@@ -757,7 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				52D8D10B1F4D775500EA413B /* QQFoundation */,
-				4BFAB7A520EB65000076E090 /* qqfundation */,
+				4B4D16BA20EB9D7F0058794C /* MCServerExtension */,
 				52D8D10A1F4D775500EA413B /* Products */,
 				5295D4D51F4EC0C500C6B5F4 /* Frameworks */,
 				C2B370A0092B43924375A2E3 /* Pods */,
@@ -768,6 +789,7 @@
 			isa = PBXGroup;
 			children = (
 				52D8D1091F4D775500EA413B /* QQFoundation.app */,
+				4B4D16B920EB9D7F0058794C /* MCServerExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1099,6 +1121,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4B4D16B820EB9D7F0058794C /* MCServerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B4D16C420EB9D7F0058794C /* Build configuration list for PBXNativeTarget "MCServerExtension" */;
+			buildPhases = (
+				4B4D16B520EB9D7F0058794C /* Sources */,
+				4B4D16B620EB9D7F0058794C /* Frameworks */,
+				4B4D16B720EB9D7F0058794C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MCServerExtension;
+			productName = MCServerExtension;
+			productReference = 4B4D16B920EB9D7F0058794C /* MCServerExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		52D8D1081F4D775500EA413B /* QQFoundation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D8D1201F4D775500EA413B /* Build configuration list for PBXNativeTarget "QQFoundation" */;
@@ -1112,6 +1151,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B4D16C020EB9D7F0058794C /* PBXTargetDependency */,
 			);
 			name = QQFoundation;
 			productName = QQFoundation;
@@ -1128,6 +1168,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "慕纯";
 				TargetAttributes = {
+					4B4D16B820EB9D7F0058794C = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = 2VRQMS6TMZ;
+						ProvisioningStyle = Automatic;
+					};
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 2VRQMS6TMZ;
@@ -1157,11 +1202,19 @@
 			projectRoot = "";
 			targets = (
 				52D8D1081F4D775500EA413B /* QQFoundation */,
+				4B4D16B820EB9D7F0058794C /* MCServerExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B4D16B720EB9D7F0058794C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D8D1071F4D775500EA413B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1203,6 +1256,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4B4D16B520EB9D7F0058794C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B4D16BD20EB9D7F0058794C /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D8D1051F4D775500EA413B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1334,6 +1395,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4B4D16C020EB9D7F0058794C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B4D16B820EB9D7F0058794C /* MCServerExtension */;
+			targetProxy = 4B4D16BF20EB9D7F0058794C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		52D8D1151F4D775500EA413B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1354,6 +1423,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4B4D16C220EB9D7F0058794C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCServerExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation.MCServerExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B4D16C320EB9D7F0058794C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCServerExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation.MCServerExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		52D8D11E1F4D775500EA413B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1493,6 +1620,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B4D16C420EB9D7F0058794C /* Build configuration list for PBXNativeTarget "MCServerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4D16C220EB9D7F0058794C /* Debug */,
+				4B4D16C320EB9D7F0058794C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		52D8D1041F4D775500EA413B /* Build configuration list for PBXProject "QQFoundation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
