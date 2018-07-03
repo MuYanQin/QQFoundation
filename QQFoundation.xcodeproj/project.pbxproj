@@ -14,6 +14,8 @@
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
+		4B87334220E9C9180045851A /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B87334120E9C9180045851A /* NotificationService.m */; };
+		4B87334620E9C9180045851A /* FoundationExtention.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4B87333E20E9C9180045851A /* FoundationExtention.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
@@ -139,6 +141,30 @@
 		ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4B0601FEE546200668126 /* QQTabBarController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4B87334420E9C9180045851A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D8D1011F4D775500EA413B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B87333D20E9C9180045851A;
+			remoteInfo = FoundationExtention;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4B87334A20E9C9180045851A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4B87334620E9C9180045851A /* FoundationExtention.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0153EDF220B65DC10041CFC4 /* QQTableViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewManager.h; sourceTree = "<group>"; };
 		0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewManager.m; sourceTree = "<group>"; };
@@ -154,6 +180,10 @@
 		4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MCPopView.m"; sourceTree = "<group>"; };
 		4B43A86E20DB7B6500422438 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
 		4B43A86F20DB7B6500422438 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
+		4B87333E20E9C9180045851A /* FoundationExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoundationExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B87334020E9C9180045851A /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		4B87334120E9C9180045851A /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		4B87334320E9C9180045851A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8B19ED20CFE86100B77A9D /* MCDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
@@ -405,6 +435,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B87333B20E9C9180045851A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D8D1061F4D775500EA413B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,6 +499,16 @@
 				4BDC83D720E114EA00F13C46 /* MCAlertView.m */,
 			);
 			path = fristViewController;
+			sourceTree = "<group>";
+		};
+		4B87333F20E9C9180045851A /* FoundationExtention */ = {
+			isa = PBXGroup;
+			children = (
+				4B87334020E9C9180045851A /* NotificationService.h */,
+				4B87334120E9C9180045851A /* NotificationService.m */,
+				4B87334320E9C9180045851A /* Info.plist */,
+			);
+			path = FoundationExtention;
 			sourceTree = "<group>";
 		};
 		4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */ = {
@@ -706,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				52D8D10B1F4D775500EA413B /* QQFoundation */,
+				4B87333F20E9C9180045851A /* FoundationExtention */,
 				52D8D10A1F4D775500EA413B /* Products */,
 				5295D4D51F4EC0C500C6B5F4 /* Frameworks */,
 			);
@@ -715,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				52D8D1091F4D775500EA413B /* QQFoundation.app */,
+				4B87333E20E9C9180045851A /* FoundationExtention.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1031,6 +1080,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4B87333D20E9C9180045851A /* FoundationExtention */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B87334920E9C9180045851A /* Build configuration list for PBXNativeTarget "FoundationExtention" */;
+			buildPhases = (
+				4B87333A20E9C9180045851A /* Sources */,
+				4B87333B20E9C9180045851A /* Frameworks */,
+				4B87333C20E9C9180045851A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoundationExtention;
+			productName = FoundationExtention;
+			productReference = 4B87333E20E9C9180045851A /* FoundationExtention.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		52D8D1081F4D775500EA413B /* QQFoundation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D8D1201F4D775500EA413B /* Build configuration list for PBXNativeTarget "QQFoundation" */;
@@ -1038,10 +1104,12 @@
 				52D8D1051F4D775500EA413B /* Sources */,
 				52D8D1061F4D775500EA413B /* Frameworks */,
 				52D8D1071F4D775500EA413B /* Resources */,
+				4B87334A20E9C9180045851A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4B87334520E9C9180045851A /* PBXTargetDependency */,
 			);
 			name = QQFoundation;
 			productName = QQFoundation;
@@ -1058,6 +1126,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "慕纯";
 				TargetAttributes = {
+					4B87333D20E9C9180045851A = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = 2VRQMS6TMZ;
+						ProvisioningStyle = Automatic;
+					};
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 2VRQMS6TMZ;
@@ -1079,11 +1152,19 @@
 			projectRoot = "";
 			targets = (
 				52D8D1081F4D775500EA413B /* QQFoundation */,
+				4B87333D20E9C9180045851A /* FoundationExtention */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B87333C20E9C9180045851A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D8D1071F4D775500EA413B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1104,6 +1185,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4B87333A20E9C9180045851A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B87334220E9C9180045851A /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D8D1051F4D775500EA413B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1232,6 +1321,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4B87334520E9C9180045851A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B87333D20E9C9180045851A /* FoundationExtention */;
+			targetProxy = 4B87334420E9C9180045851A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		52D8D1151F4D775500EA413B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1252,6 +1349,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4B87334720E9C9180045851A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FoundationExtention/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation.FoundationExtention;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B87334820E9C9180045851A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FoundationExtention/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = shanjin.QQFoundation.FoundationExtention;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		52D8D11E1F4D775500EA413B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1348,6 +1501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
@@ -1368,6 +1522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
@@ -1385,6 +1540,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B87334920E9C9180045851A /* Build configuration list for PBXNativeTarget "FoundationExtention" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B87334720E9C9180045851A /* Debug */,
+				4B87334820E9C9180045851A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		52D8D1041F4D775500EA413B /* Build configuration list for PBXProject "QQFoundation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

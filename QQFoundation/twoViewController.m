@@ -9,7 +9,7 @@
 #import "twoViewController.h"
 #import "fiveViewController.h"
 #import "MCPushMediator.h"
-
+#import "QQTabBarController.h"
 @interface twoViewController ()
 
 @end
@@ -22,6 +22,12 @@
     self.navigationItem.title  = @"two";
     self.view.backgroundColor = [UIColor yellowColor];
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
+    
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+//    [self presentViewController:[[QQTabBarController alloc]init] animated:YES completion:nil];
+    [self.navigationController pushViewController:[[QQTabBarController alloc]init] animated:YES];
 }
 - (void)click
 {
