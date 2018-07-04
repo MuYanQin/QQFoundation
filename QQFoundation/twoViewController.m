@@ -10,6 +10,7 @@
 #import "fiveViewController.h"
 #import "MCPushMediator.h"
 #import "QQTabBarController.h"
+#import "MCFactory.h"
 @interface twoViewController ()
 
 @end
@@ -20,15 +21,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"two";
-    self.view.backgroundColor = [UIColor yellowColor];
+
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
-    
+    UILabel *label = getLabel([UIFont systemFontOfSize:14],@"123", [UIColor redColor], left, CGRectMake(10, 70, 80, 20));
+    [self.view addSubview:label];
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-//    [self presentViewController:[[QQTabBarController alloc]init] animated:YES completion:nil];
-    [self.navigationController pushViewController:[[QQTabBarController alloc]init] animated:YES];
-}
+
 - (void)click
 {
     [MCPushMediator pushToClassFromStaring:@"fiveVintroller" takeParameters:nil callBack:^(id data) {

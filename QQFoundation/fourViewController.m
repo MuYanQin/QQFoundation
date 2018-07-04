@@ -8,9 +8,6 @@
 
 #import "fourViewController.h"
 #import "threeViewController.h"
-#import "YYFPSLabel.h"
-
-
 @interface fourViewController ()
 
 @end
@@ -21,10 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"four";
-//    self.view.backgroundColor = [UIColor purpleColor];
-    YYFPSLabel *yl = [[YYFPSLabel alloc]initWithFrame:CGRectMake(10, 90, 90, 20)];
-    yl.backgroundColor = [UIColor redColor];
-    [self.view addSubview:yl];
     
 }
 

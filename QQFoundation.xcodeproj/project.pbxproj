@@ -17,6 +17,7 @@
 		4B4D16BD20EB9D7F0058794C /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D16BC20EB9D7F0058794C /* NotificationService.m */; };
 		4B4D16C120EB9D7F0058794C /* MCServerExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4B4D16B920EB9D7F0058794C /* MCServerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */; };
+		4B5BEF8320ECA6B4000BB2E2 /* MCFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
@@ -193,6 +194,8 @@
 		4B4D16BE20EB9D7F0058794C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B5BEF7820EC5AB3000BB2E2 /* MCDetect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetect.h; sourceTree = "<group>"; };
 		4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetect.m; sourceTree = "<group>"; };
+		4B5BEF8120ECA6B3000BB2E2 /* MCFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCFactory.h; sourceTree = "<group>"; };
+		4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFactory.m; sourceTree = "<group>"; };
 		4B8B19ED20CFE86100B77A9D /* MCDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
@@ -527,6 +530,15 @@
 				4BDC83D720E114EA00F13C46 /* MCAlertView.m */,
 			);
 			path = fristViewController;
+			sourceTree = "<group>";
+		};
+		4B5BEF8020ECA691000BB2E2 /* MCFactory */ = {
+			isa = PBXGroup;
+			children = (
+				4B5BEF8120ECA6B3000BB2E2 /* MCFactory.h */,
+				4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */,
+			);
+			path = MCFactory;
 			sourceTree = "<group>";
 		};
 		4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */ = {
@@ -940,6 +952,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4B5BEF8020ECA691000BB2E2 /* MCFactory */,
 				4BFAB79B20EB45070076E090 /* MCDetectionView */,
 				4B8D23C720E087EB005F6047 /* MCPushMediator */,
 				4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */,
@@ -1311,6 +1324,7 @@
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
 				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
+				4B5BEF8320ECA6B4000BB2E2 /* MCFactory.m in Sources */,
 				52C1154E1F4EC5CE005471CB /* AFURLResponseSerialization.m in Sources */,
 				52C1156D1F4EC5CE005471CB /* SDWebImageDownloader.m in Sources */,
 				52C1154A1F4EC5CE005471CB /* AFHTTPSessionManager.m in Sources */,
