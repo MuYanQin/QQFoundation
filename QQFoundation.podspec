@@ -9,13 +9,11 @@ s.homepage     = "https://github.com/MuYanQin/QQFoundation"
 
 s.license      = "MIT"
 
-s.author       = { "shangwu" => "1159854187@qq.com" }
+s.author       = { "MuYanQin" => "1159854187@qq.com" }
 
-s.platform     = :ios
 s.platform     = :ios, "7.0"
 
 s.requires_arc = true
-
 
 s.dependency 'KLCPopup'
 s.dependency 'AFNetworking'
@@ -25,7 +23,6 @@ s.dependency 'YYCache'
 s.dependency 'FLAnimatedImage'
 
 s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag => "1.0"}
-
 
 s.source_files  = 'QQFoundation/QQFoundation'
 s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
@@ -59,6 +56,14 @@ end
 
 
 s.subspec 'Tool' do |ss|
+
+    ss.subspec 'MCFactory' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCFactory/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCDetectionView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCDetectionView/**/*.{h,m,c,mm}'
+    end
 
     ss.subspec 'MCPushMediator' do |sss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/MCPushMediator/**/*.{h,m,c,mm}'
@@ -104,11 +109,9 @@ s.subspec 'Tool' do |ss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTableViewManager/**/*.{h,m,c,mm}'
     end
 
-
     ss.subspec 'QQTool' do |sss|
         sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTool/**/*.{h,m,c,mm}'
     end
-
 
 end
 
