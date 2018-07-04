@@ -25,6 +25,8 @@
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
     UILabel *label = getLabel([UIFont systemFontOfSize:14],@"123", [UIColor redColor], left, CGRectMake(10, 70, 80, 20));
     [self.view addSubview:label];
+    
+    [self.view.layer addSublayer:getLayer([UIColor redColor], [UIImage imageNamed:@"icon_em_al"], CGRectMake(10, 100, 80, 20))];
 }
 
 - (void)click

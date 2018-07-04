@@ -10,10 +10,19 @@
 
 @implementation MCFactory
 UIView * getView(UIColor *Bgcolor,CGRect frame){
-    UIView *view = [UIView alloc]initWithCoder:frame;
+    UIView *view = [[UIView alloc]initWithFrame:frame];
     view.backgroundColor = Bgcolor;
     return view;
 }
+
+CALayer * getLayer(UIColor *bgcolor,UIImage *image,CGRect frame){
+    CALayer *layer = [[CALayer alloc]init];
+    layer.frame = frame;
+    layer.backgroundColor = bgcolor.CGColor;
+    layer.contents = (id)image.CGImage;;
+    return layer;
+}
+
 UILabel * getLabel(UIFont *font,NSString *text,UIColor *textColor,textAlignment alignment,CGRect frame){
     UILabel *label = [[UILabel alloc]initWithFrame:frame];
     label.font = font;

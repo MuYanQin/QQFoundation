@@ -16,6 +16,6 @@
 
 @interface QQOneCell : QQTableViewCell
 @property (nonatomic, strong) QQOneItem *item;
-@property (nonatomic , strong) UIImageView *IconImageView;
+@property (nonatomic , strong) CALayer *IconImageView;
 @property (nonatomic , strong) UILabel * leftLb;
 @end

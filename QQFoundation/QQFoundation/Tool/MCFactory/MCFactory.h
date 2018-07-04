@@ -14,7 +14,10 @@ typedef NS_ENUM(NSInteger,textAlignment){
     right
 };
 @interface MCFactory : NSObject
+
 UIView * getView(UIColor *Bgcolor,CGRect frame);
+
+CALayer * getLayer(UIColor *bgcolor,UIImage *image,CGRect frame);
 
 UILabel * getLabel(UIFont *font,NSString *text,UIColor *textColor,textAlignment alignment,CGRect frame);
 

@@ -8,6 +8,7 @@
 
 #import "QQOneItem.h"
 #import "QQTool.h"
+#import "MCFactory.h"
 @implementation QQOneItem
 - (instancetype)init
 {
@@ -24,8 +25,8 @@
 - (void)cellDidLoad//
 {
     [super cellDidLoad];
-    self.IconImageView = [[UIImageView alloc]init];
-    [self.contentView addSubview:self.IconImageView];
+    self.IconImageView = getLayer(nil, nil, CGRectZero);
+    [self.contentView.layer addSublayer:self.IconImageView];
     self.leftLb = [[UILabel alloc]init];
     self.leftLb.backgroundColor = [UIColor redColor];
     self.leftLb.textAlignment = NSTextAlignmentLeft;
@@ -37,7 +38,7 @@
     [super cellWillAppear];
     //在这里写赋值 切记不能再cellDidLoad赋值
     self.leftLb.text = [QQTool strRelay:self.item.leftString];
-    self.IconImageView.image = [UIImage imageNamed:self.item.imageString];
+    self.IconImageView.contents = (__bridge id _Nullable)([UIImage imageNamed:self.item.imageString].CGImage);
 }
 - (void)layoutSubviews
 {
