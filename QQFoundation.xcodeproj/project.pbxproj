@@ -16,6 +16,7 @@
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
 		4B4D16BD20EB9D7F0058794C /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D16BC20EB9D7F0058794C /* NotificationService.m */; };
 		4B4D16C120EB9D7F0058794C /* MCServerExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4B4D16B920EB9D7F0058794C /* MCServerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */; };
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
@@ -190,6 +191,8 @@
 		4B4D16BB20EB9D7F0058794C /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		4B4D16BC20EB9D7F0058794C /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		4B4D16BE20EB9D7F0058794C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B5BEF7820EC5AB3000BB2E2 /* MCDetect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetect.h; sourceTree = "<group>"; };
+		4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetect.m; sourceTree = "<group>"; };
 		4B8B19ED20CFE86100B77A9D /* MCDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadManager.h; sourceTree = "<group>"; };
 		4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadManager.m; sourceTree = "<group>"; };
 		4B8B19F020CFED9200B77A9D /* MCDownloadItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDownloadItem.h; sourceTree = "<group>"; };
@@ -551,6 +554,8 @@
 			children = (
 				4BFAB79820EB45020076E090 /* MCDetectionView.h */,
 				4BFAB79920EB45020076E090 /* MCDetectionView.m */,
+				4B5BEF7820EC5AB3000BB2E2 /* MCDetect.h */,
+				4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */,
 			);
 			path = MCDetectionView;
 			sourceTree = "<group>";
@@ -1372,6 +1377,7 @@
 				5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */,
 				52D8D18D1F4D77EF00EA413B /* UIColor+Hexadecimal.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
+				4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,

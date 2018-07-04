@@ -13,23 +13,55 @@
 @implementation MCDetectionView
 {
     CGPoint _touchPoint;
-    
+    NSArray *_URLArray;
 }
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         [self initDetectionView];
         self.backgroundColor = [UIColor purpleColor];
+        self.alpha = 0.7;
+        self.layer.cornerRadius = 4;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap)];
+        tap.numberOfTapsRequired = 2;
+        if (ServerType ==1) {
+            [self addGestureRecognizer:tap];
+            _URLArray = @[QQBaseUrl,@"http://192.168.1.136:9021/api/appuser",@"http://www.baidu.com"];
+        }
     }
     return self;
 }
+- (void)tap
+{
+    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"\n更改服务器 URL" message:[NSString stringWithFormat:@"当前地址为\n%@",QQBaseUrl] preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelA = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *confirmA = [UIAlertAction actionWithTitle:_URLArray[0] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults]setObject:_URLArray[0] forKey:@"URL"];
+        exit(0);
+    }];
+    UIAlertAction *confirmB = [UIAlertAction actionWithTitle:_URLArray[1] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults]setObject:_URLArray[1] forKey:@"URL"];
+            exit(0);
+    }];
+    UIAlertAction *confirmC = [UIAlertAction actionWithTitle:_URLArray[2] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults]setObject:_URLArray[2] forKey:@"URL"];
+            exit(0);
+    }];
+    [alertCtrl addAction:cancelA];
+    [alertCtrl addAction:confirmA];
+    [alertCtrl addAction:confirmB];
+    [alertCtrl addAction:confirmC];
+    [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:alertCtrl animated:YES completion:nil];
+}
 - (void)initDetectionView
 {
+    
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.width, self.height - 20)];
     title.numberOfLines = 0;
-//    title.backgroundColor = [UIColor yellowColor];
     title.textAlignment = NSTextAlignmentCenter;
     title.font = [UIFont systemFontOfSize:16];
+    title.textColor = [UIColor whiteColor];
     [self addSubview:title];
     
     NSString *version = [QQDevice APPVersion];
@@ -37,6 +69,7 @@
     NSString *titletext = [NSString stringWithFormat:@"V%@ B%@",version,build];
     title.text = titletext;
     YYFPSLabel *ly = [[YYFPSLabel alloc]initWithFrame:CGRectMake(0, self.height - 20, self.width, 20)];
+    ly.textColor = [UIColor whiteColor];
     [self addSubview:ly];
     
 }

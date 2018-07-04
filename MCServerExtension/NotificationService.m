@@ -24,7 +24,7 @@
     self.bestAttemptContent.title = [NSString stringWithFormat:@"%@ [modified]", self.bestAttemptContent.title];
     self.bestAttemptContent.title = @"测试Extension";
     self.bestAttemptContent.body = @"秦慕乔";
-    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:@"花纯荣"];
+    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:@"语音推送"];
     AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
     [synth speakUtterance:utterance];
     self.contentHandler(self.bestAttemptContent);

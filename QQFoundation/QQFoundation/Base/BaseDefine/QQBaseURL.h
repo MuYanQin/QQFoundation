@@ -11,7 +11,7 @@
 
 #define   ServerType 1 //1 开发  2 测试  3生产
 #if (ServerType == 1)
-#define QQBaseUrl  @""
+#define QQBaseUrl  [[NSUserDefaults standardUserDefaults]objectForKey:@"URL"] ? [[NSUserDefaults standardUserDefaults]objectForKey:@"URL"]: @"http://222.73.56.13:9020/api/appuser"
 
 #elif (ServerType == 2)
 #define QQBaseUrl  @""

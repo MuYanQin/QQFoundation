@@ -12,6 +12,7 @@
 #import "MCDetectionView.h"
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
+#import "MCDetect.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 @property (nonatomic , strong) NSTimer * timer;
 @property (nonatomic , assign) NSInteger  duration;
@@ -24,7 +25,7 @@
     self.window.rootViewController = self.TabBar;
     [self.window makeKeyAndVisible];
     if (ServerType !=3) {
-        [self.window addSubview:[[MCDetectionView alloc]initWithFrame:CGRectMake(15, 64, 90, 40)]];
+        [MCDetect setup];
     }
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
@@ -43,6 +44,54 @@
     [self registerRemoteNotification];
     return YES;
 }
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // Required
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    // Required
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler();  // 系统要求执行这个方法
+}
+#pragma mark - iOS 10及以上中收到推送消息
+//ios 10 而是在前台的时候回调
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    NSDictionary *dic = notification.request.content.userInfo;
+    completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+}
+// ios 10 从后台进入的时候回调
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
+{
+    NSLog(@"%@",response.notification.request.content.userInfo);
+    //        NSInteger x=[UIApplication sharedApplication].applicationIconBadgeNumber;
+    //软件处于后台的时候不会走此方法点击一次  角标➖一
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [JPUSHService resetBadge];
+}
+#pragma mark - APP运行中接收到通知(推送)处理 - iOS 10以下版本收到推送
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    [JPUSHService handleRemoteNotification:userInfo];
+    //在已经打开app时收到通知
+    if (application.applicationState == UIApplicationStateActive) {
+        //振动
+        completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound);
+    } else if( application.applicationState == UIApplicationStateBackground){
+        
+    }else{//带激活状态
+    }
+} 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
