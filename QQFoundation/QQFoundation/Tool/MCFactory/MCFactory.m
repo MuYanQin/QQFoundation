@@ -58,26 +58,26 @@ UIImage * getColorImage(UIColor *color)
 
 
 
-UIFont *getThin(NSInteger font)
+UIFont *getFontThin(NSInteger font)
 {
     return [UIFont systemFontOfSize:font weight:UIFontWeightThin];
 }
 
-UIFont *getLight(NSInteger font)
+UIFont *getFontLight(NSInteger font)
 {
     return [UIFont systemFontOfSize:font weight:UIFontWeightLight];
 }
 
-UIFont * getRegular(NSInteger font)
+UIFont * getFontRegular(NSInteger font)
 {
     return [UIFont systemFontOfSize:font weight:UIFontWeightRegular];
 }
-UIFont *getMedium(NSInteger font)
+UIFont *getFontMedium(NSInteger font)
 {
     return [UIFont systemFontOfSize:font weight:UIFontWeightMedium];
 
 }
-UIFont *getBold(NSInteger font)
+UIFont *getFontBold(NSInteger font)
 {
     return [UIFont systemFontOfSize:font weight:UIFontWeightBold];
 }

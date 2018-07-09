@@ -63,6 +63,12 @@
  */
 + (BOOL)isAvaluebleMobile:(NSString *)mobile
 {
+    /*
+     {n}    重复n次
+     {n,}   重复n次或更多次
+     {n,m}  重复n到m次
+     @"([#][^#]+[#])";话题的正则
+    */
     if(mobile.length ==0)return NO;
     NSString *CH_NUM = @"^[1]{1}[3-8]{1}[0-9]{9}$";
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CH_NUM];

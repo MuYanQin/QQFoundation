@@ -24,15 +24,15 @@ UIColor * getColorWithHex(NSString *hex);
 UIImage * getColorImage(UIColor *color);
 
 //获取字体
-UIFont *getThin(NSInteger font);
+UIFont *getFontThin(NSInteger font);
 
-UIFont *getLight(NSInteger font);
+UIFont *getFontLight(NSInteger font);
 
-UIFont * getRegular(NSInteger font);
+UIFont * getFontRegular(NSInteger font);
 
-UIFont *getMedium(NSInteger font);
+UIFont *getFontMedium(NSInteger font);
 
-UIFont *getBold(NSInteger font);
+UIFont *getFontBold(NSInteger font);
 
 //获取UI控件
 UIView * getView(UIColor *Bgcolor,CGRect frame);
