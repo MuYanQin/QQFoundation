@@ -21,8 +21,9 @@ static NSInteger const HUDWIDTH = 80;
 -(MBProgressHUD *)hud{
     MBProgressHUD * hud =  objc_getAssociatedObject(self, &HUDKEY_BE);
     if(hud == nil){
-        hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+        hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].delegate.window animated:YES];
         hud.delegate = self;
+        
         hud.removeFromSuperViewOnHide = NO;
         [self setHud:hud];//保证只有一个HUD
     }
@@ -68,7 +69,6 @@ static NSInteger const HUDWIDTH = 80;
 - (void)Loading{
 //    [self touchesEnded:nil withEvent:nil];
     MBProgressHUD * ProgressHUD = self.hud;
-    //    hud_0314.contentColor 里面内容的颜色
     ProgressHUD.mode = MBProgressHUDModeIndeterminate;
     ProgressHUD.bezelView.layer.cornerRadius= 4;
     ProgressHUD.bezelView.layer.masksToBounds = YES;

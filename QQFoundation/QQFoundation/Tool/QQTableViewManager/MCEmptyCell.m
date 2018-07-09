@@ -11,7 +11,7 @@
 - (instancetype)initWithHeight:(CGFloat)height{
     if (self = [super init]) {
         self.CellHeight = height;
-        self.hasLine = YES;
+        self.hasLine = NO;
     }
     return self;
 }
@@ -31,7 +31,7 @@
 - (void)cellWillAppear
 {
     [super cellWillAppear];
-    _line.frame =CGRectMake(self.item.leftMargin, self.item.CellHeight - 1, self.frame.size.width -  self.item.leftMargin - self.item.rightMargin, 0.5);
+    _line.frame =CGRectMake(self.item.leftMargin, self.item.CellHeight - 1, [UIScreen mainScreen].bounds.size.width -  self.item.leftMargin - self.item.rightMargin, 0.5);
     _line.hidden = !self.item.hasLine;
     _line.backgroundColor = self.item.lineColor;
 }
