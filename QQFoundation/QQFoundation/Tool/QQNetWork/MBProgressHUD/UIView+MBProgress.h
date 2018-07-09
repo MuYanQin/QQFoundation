@@ -12,25 +12,25 @@
 /**信息提示框*/
 @property(strong, nonatomic) MBProgressHUD * hud;
 /**提示信息*/
-- (void)Message:(NSString *)message;
+- (void)message:(NSString *)message;
 
 /**提示信息，N秒后关闭*/
-- (void)Message:(NSString *)message HiddenAfterDelay:(NSTimeInterval)delay;
+- (void)message:(NSString *)message HiddenAfterDelay:(NSTimeInterval)delay;
 
 /**自定义提示框位置*/
-- (void)Message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay;
+- (void)message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay;
 
 /**展示Loading标示*/
-- (void)LoadingWith:(NSString *)message;
+- (void)loadingWith:(NSString *)message;
 
-- (void)Loading;
-
-/**隐藏*/
-- (void)HiddenAfterDelay:(NSTimeInterval)delay;
+- (void)loading;
 
 /**隐藏*/
-- (void)Hidden;
+- (void)hiddenAfterDelay:(NSTimeInterval)delay;
+
+/**隐藏*/
+- (void)hiddenHUD;
 
 /*是否Loading中*/
-- (BOOL)IsLoading;
+- (BOOL)isLoading;
 @end

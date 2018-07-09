@@ -21,9 +21,11 @@ static NSInteger const HUDWIDTH = 80;
 -(MBProgressHUD *)hud{
     MBProgressHUD * hud =  objc_getAssociatedObject(self, &HUDKEY_BE);
     if(hud == nil){
-        hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].delegate.window animated:YES];
+        //[UIApplication sharedApplication].delegate.window 会一直保持在最上层。  但是loading的时候不能点击nav的按钮
+        //self的话可能会被别的视图遮住
+        hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
         hud.delegate = self;
-        
+        hud.layer.zPosition = 1;//这句话的作用是 让hub保持在self的最上层不会被覆盖
         hud.removeFromSuperViewOnHide = NO;
         [self setHud:hud];//保证只有一个HUD
     }
@@ -31,17 +33,17 @@ static NSInteger const HUDWIDTH = 80;
 }
 #pragma 显示
 /**提示信息*/
-- (void)Message:(NSString *)message{
-    [self Message:message HiddenAfterDelay:DELAYTIME];
+- (void)message:(NSString *)message{
+    [self message:message HiddenAfterDelay:DELAYTIME];
 }
 
 /**提示信息，N秒后关闭*/
-- (void)Message:(NSString *)message HiddenAfterDelay:(NSTimeInterval)delay{
-    [self Message:message YOffset:0.0 HiddenAfterDelay:delay];
+- (void)message:(NSString *)message HiddenAfterDelay:(NSTimeInterval)delay{
+    [self message:message YOffset:0.0 HiddenAfterDelay:delay];
 }
 
 /**自定义提示框位置，只显示文字*/
-- (void)Message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay{
+- (void)message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay{
     MBProgressHUD *ProgressHUD  = self.hud;
     ProgressHUD.offset = CGPointMake(0, yoffset);// HUD相对于父视图中心点的y轴偏移量
     ProgressHUD.mode = MBProgressHUDModeText;
@@ -54,7 +56,7 @@ static NSInteger const HUDWIDTH = 80;
 }
 
 /**展示Loading标示*/
-- (void)LoadingWith:(NSString *)message{
+- (void)loadingWith:(NSString *)message{
     MBProgressHUD * ProgressHUD = self.hud;
     ProgressHUD.offset = CGPointMake(0, 0);
     ProgressHUD.mode = MBProgressHUDModeIndeterminate;
@@ -66,7 +68,7 @@ static NSInteger const HUDWIDTH = 80;
 }
 
 
-- (void)Loading{
+- (void)loading{
 //    [self touchesEnded:nil withEvent:nil];
     MBProgressHUD * ProgressHUD = self.hud;
     ProgressHUD.mode = MBProgressHUDModeIndeterminate;
@@ -84,18 +86,18 @@ static NSInteger const HUDWIDTH = 80;
 
 
 /**隐藏*/
-- (void)HiddenAfterDelay:(NSTimeInterval)delay{
+- (void)hiddenAfterDelay:(NSTimeInterval)delay{
     [self.hud hideAnimated:YES afterDelay:delay];
 }
 
 /**隐藏*/
-- (void)Hidden{
+- (void)hiddenHUD{
     [self.hud hideAnimated:YES];
 }
 
 
 /*是否Loading中*/
-- (BOOL)IsLoading{
+- (BOOL)isLoading{
     MBProgressHUD * ProgressHUD = self.hud;
     
     if((ProgressHUD.mode == MBProgressHUDModeIndeterminate || ProgressHUD.mode == MBProgressHUDModeIndeterminate) &&

@@ -71,7 +71,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
                 [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataArray:responseObject[@"data"][@"list"]];
             }
             if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
-                 [self.TempController.view Hidden];
+                 [self.TempController.view hiddenHUD];
                 if (isPullDown) {//下拉刷新才会有空白页  另一个角度下拉都空白了上拉一定是空白啊
                     self.listArray = [NSArray arrayWithArray:responseObject[@"data"][@"list"]];
                     if (self.listArray.count == 0) {
@@ -84,7 +84,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
              }
         }else{
             /**返回的code码不是200*/
-            [self.TempController.view Message:responseObject[@"msg"] HiddenAfterDelay:2];
+            [self.TempController.view message:responseObject[@"msg"] HiddenAfterDelay:2];
             [self setTableFooterView:_footerView];
         }
         [self EndRefrseh];
@@ -97,13 +97,13 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
             self.tableFooterView = self.isShowStatues ? self.loadStatuesView :_footerView;
         }
 
-        [self.TempController.view Hidden];
+        [self.TempController.view hiddenHUD];
         [self EndRefrseh];
         if (!isPullDown) {
             [self changeIndexWithStatus:3];
         }
         if (error.code == -1001){
-            [self.TempController.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
+            [self.TempController.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
         }else  if (error.code != -999) {//-999主动取消
             
         }

@@ -35,10 +35,8 @@
 //    [MCPushMediator pushToClassFromStaring:@"fiveVintroller" takeParameters:nil callBack:^(id data) {
 //        NSLog(@"213213");
 //    }];
-    [self.view Loading];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.view Hidden];
-    });
+    [self.view loading];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -64,7 +64,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];//域名和接口拼接起来的
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];//方便加请求参数
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading];
+    [controller.view loading];
     NSURLSessionDataTask * operation = [self.sharedHTTPSession GET:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -93,7 +93,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading];
+    [controller.view loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -129,7 +129,7 @@ static AFHTTPSessionManager *manager;
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     
     [[QQNetManager defaultManager] insertQQConnection:self];///<
-    [controller.view Loading];
+    [controller.view loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession GET:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull downloadProgress) {
         
@@ -164,7 +164,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading];
+    [controller.view loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -200,7 +200,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view Loading];
+    [controller.view loading];
     
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
@@ -228,10 +228,10 @@ static AFHTTPSessionManager *manager;
         [HttpCache setObject:responseObject forKey:key withBlock:nil];//需要缓存则
     }
     if ([responseObject[@"code"] isEqualToString:successCode]) {
-        [controller.view Hidden];
+        [controller.view hiddenHUD];
         successBlock(responseObject);
     }else{
-        [controller.view Message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
+        [controller.view message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
         NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[@"msg"]], NSLocalizedDescriptionKey,nil];
         NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:8003 userInfo:userInfo1];
         failureBlock(error);
@@ -246,9 +246,9 @@ static AFHTTPSessionManager *manager;
 
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
-        [controller.view Message:@"请求超时，请重试！" HiddenAfterDelay:2];
+        [controller.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
     }else  if (error.code != -999) {//-999是请求被取消
-        [controller.view Hidden];
+        [controller.view hiddenHUD];
         failureBlock(error);
     }else{
         failureBlock(error);
