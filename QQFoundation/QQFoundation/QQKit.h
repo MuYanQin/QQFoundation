@@ -26,7 +26,6 @@
 #import "NSDate+QQCalculate.h"///获取时间日期的一些方法
 #import "NSString+QQCalculate.h"///字符串的一些操作
 #import "UIButton+Cache.h"///为了防止中间更换其他的图片下载工具
-#import "UIColor+Hexadecimal"///
 #import "UIImage+Usually.h"///
 #import "UIImageView+Cache.h"///
 #import "UIScrollView+Touch.h"///解决ScrollView 的滑动与touch事件冲突

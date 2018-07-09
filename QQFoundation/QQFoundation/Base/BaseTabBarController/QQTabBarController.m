@@ -8,7 +8,7 @@
 
 #import "QQTabBarController.h"
 #import "DefaultAnimation.h"
-#import "UIColor+Hexadecimal.h"
+#import "MCFactory.h"
 #import "MCTabBarItem.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 static const NSInteger ButtonTag = 100;
@@ -83,8 +83,8 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
         item.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
         [item setTitle:VCname[i] forState:UIControlStateNormal];
-        [item setTitleColor:[UIColor colorWithR:102 G:102 B:102 A:1] forState:UIControlStateNormal];
-        [item setTitleColor:[UIColor colorWithR:102 G:102 B:102 A:1] forState:UIControlStateSelected];
+        [item setTitleColor:getColor(102, 102, 102) forState:UIControlStateNormal];
+        [item setTitleColor:getColor(102, 102, 102) forState:UIControlStateSelected];
         if (i == 0) {
             item.selected  = YES;
             self.lastItem = item;

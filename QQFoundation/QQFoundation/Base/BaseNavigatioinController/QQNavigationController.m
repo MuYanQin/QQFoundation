@@ -8,7 +8,7 @@
 
 #import "QQNavigationController.h"
 #import "QQNetManager.h"
-#import "UIColor+Hexadecimal.h"
+#import "MCFactory.h"
 #import "AppDelegate.h"
 @interface QQNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 {
@@ -37,7 +37,7 @@
    //设置透明度  相差64像素  YES会有蒙层
     //YES (0,0)->(0,0)  NO(0.64) - >(0,0)
     self.navigationBar.translucent = YES;
-    self.navigationBar.barTintColor =[UIColor colorWithR:0 G:122 B:255 A:1];
+    self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){

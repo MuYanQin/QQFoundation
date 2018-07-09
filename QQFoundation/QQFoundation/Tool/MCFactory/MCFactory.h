@@ -15,6 +15,26 @@ typedef NS_ENUM(NSInteger,textAlignment){
 };
 @interface MCFactory : NSObject
 
+UIColor * getColor(CGFloat red,CGFloat gree, CGFloat blue);
+
+UIColor * getColorWithAlpha(CGFloat red,CGFloat gree, CGFloat blue,CGFloat alpha);
+
+UIColor * getColorWithHex(NSString *hex);
+
+UIImage * getColorImage(UIColor *color);
+
+//获取字体
+UIFont *getThin(NSInteger font);
+
+UIFont *getLight(NSInteger font);
+
+UIFont * getRegular(NSInteger font);
+
+UIFont *getMedium(NSInteger font);
+
+UIFont *getBold(NSInteger font);
+
+//获取UI控件
 UIView * getView(UIColor *Bgcolor,CGRect frame);
 
 CALayer * getLayer(UIColor *bgcolor,UIImage *image,CGRect frame);

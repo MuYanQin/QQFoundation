@@ -7,7 +7,7 @@
 //
 
 #import "QQLoadView.h"
-#import "UIColor+Hexadecimal.h"
+#import "MCFactory.h"
 #import "UIView+QQFrame.h"
 #import "MJRefresh.h"
 
@@ -25,7 +25,7 @@
 {
     if (self  = [super initWithFrame:frame]) {
         _LoadType = QQLoadViewNone;
-        self.backgroundColor = [UIColor colorWithHexString:@"F5F8FA"];
+        self.backgroundColor = getColorWithHex(@"f5f8fa");
         [self initParameters];
     }
     return self;
@@ -42,7 +42,7 @@
     
     _showLabel = [[UILabel alloc]init];
     _showLabel.font = [UIFont systemFontOfSize:14];
-    _showLabel.textColor = [UIColor colorWithHexString:@"999999"];
+    _showLabel.textColor = getColorWithHex(@"999999");
     _showLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_showLabel];
     
@@ -50,7 +50,7 @@
     _deatilLabel.font = [UIFont systemFontOfSize:12];
     _deatilLabel.textAlignment = NSTextAlignmentCenter;
     _deatilLabel.hidden = YES;
-    _deatilLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    _deatilLabel.textColor =  getColorWithHex(@"666666");
     [self addSubview:_deatilLabel];
     
 }

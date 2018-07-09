@@ -100,7 +100,6 @@
 		52D8D1891F4D77EF00EA413B /* NSDate+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1381F4D77EF00EA413B /* NSDate+QQCalculate.m */; };
 		52D8D18B1F4D77EF00EA413B /* NSString+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D13C1F4D77EF00EA413B /* NSString+QQCalculate.m */; };
 		52D8D18C1F4D77EF00EA413B /* UIButton+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D13E1F4D77EF00EA413B /* UIButton+Cache.m */; };
-		52D8D18D1F4D77EF00EA413B /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1401F4D77EF00EA413B /* UIColor+Hexadecimal.m */; };
 		52D8D18E1F4D77EF00EA413B /* UIImage+Usually.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */; };
 		52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */; };
 		52D8D1901F4D77EF00EA413B /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */; };
@@ -363,8 +362,6 @@
 		52D8D13C1F4D77EF00EA413B /* NSString+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QQCalculate.m"; sourceTree = "<group>"; };
 		52D8D13D1F4D77EF00EA413B /* UIButton+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Cache.h"; sourceTree = "<group>"; };
 		52D8D13E1F4D77EF00EA413B /* UIButton+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Cache.m"; sourceTree = "<group>"; };
-		52D8D13F1F4D77EF00EA413B /* UIColor+Hexadecimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hexadecimal.h"; sourceTree = "<group>"; };
-		52D8D1401F4D77EF00EA413B /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
 		52D8D1411F4D77EF00EA413B /* UIImage+Usually.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Usually.h"; sourceTree = "<group>"; };
 		52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Usually.m"; sourceTree = "<group>"; };
 		52D8D1431F4D77EF00EA413B /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
@@ -900,8 +897,6 @@
 				52D8D13C1F4D77EF00EA413B /* NSString+QQCalculate.m */,
 				52D8D13D1F4D77EF00EA413B /* UIButton+Cache.h */,
 				52D8D13E1F4D77EF00EA413B /* UIButton+Cache.m */,
-				52D8D13F1F4D77EF00EA413B /* UIColor+Hexadecimal.h */,
-				52D8D1401F4D77EF00EA413B /* UIColor+Hexadecimal.m */,
 				52D8D1411F4D77EF00EA413B /* UIImage+Usually.h */,
 				52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */,
 				52D8D1431F4D77EF00EA413B /* UIImageView+Cache.h */,
@@ -1389,7 +1384,6 @@
 				0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */,
 				52C1154D1F4EC5CE005471CB /* AFURLRequestSerialization.m in Sources */,
 				5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */,
-				52D8D18D1F4D77EF00EA413B /* UIColor+Hexadecimal.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
