@@ -107,7 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  - `application/json`
  - `text/json`
- - `text/javascript`
+ - `text/javascript` 
  */
 @interface AFJSONResponseSerializer : AFHTTPResponseSerializer
 

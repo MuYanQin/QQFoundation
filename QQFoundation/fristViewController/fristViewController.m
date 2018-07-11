@@ -75,7 +75,6 @@
     QQTwoItem *it4 = [[QQTwoItem alloc]init];
     it4.leftSting = @"主标题";
     it4.CellHeight = 100;
-    it4.bgColor = [UIColor lightGrayColor];
     it4.rightSting = @"副标题";
     it4.selcetCellHandler = ^(QQOneItem * item) {
     };

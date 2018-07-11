@@ -25,7 +25,8 @@
 {
     [super cellDidLoad];
     self.leftLb = [[UILabel alloc]init];
-    
+    self.contentView.backgroundColor  = [UIColor lightGrayColor];
+
     self.leftLb.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
     self.leftLb.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:self.leftLb];
