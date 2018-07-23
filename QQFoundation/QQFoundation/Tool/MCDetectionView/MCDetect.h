@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface MCDetect : NSObject
 + (void)setup;
 @end

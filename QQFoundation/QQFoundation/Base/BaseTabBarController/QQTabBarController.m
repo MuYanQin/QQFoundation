@@ -110,7 +110,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     if (self.SelectIndex ==1) {
         self.item1.BackGroudImageName = @"navigation_reward_BG";
     }else{
-        self.item1.BackGroudImageName = @"";
+        self.item1.BackGroudImageName = @"213123";
     }
     [self QQTabBarController:self didSelect:self.viewControllers[self.selectedIndex]];
 }

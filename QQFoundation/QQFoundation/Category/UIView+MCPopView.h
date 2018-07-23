@@ -50,5 +50,5 @@ typedef NS_ENUM(NSInteger,viewPositionType) {
           dissType:(viewDissType)dissType
       positionType:(viewPositionType)positionType
 dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch;
-
++ (void)dismissView;
 @end

@@ -81,12 +81,14 @@ static const CGFloat imageWidth = imageHeight*1.14;
 - (void)setBackGroudImageName:(NSString *)BackGroudImageName
 {
     _BackGroudImageName = BackGroudImageName;
+    NSLog(@"%@",BackGroudImageName);
     if (BackGroudImageName.length <= 0) {
         self.BackGroudImageview.image = nil;
         self.BackGroudImageview.hidden = YES;
     }else{
         self.BackGroudImageview.hidden = NO;
         self.BackGroudImageview.image =  [UIImage imageNamed:_BackGroudImageName];
+        
         
         CABasicAnimation * animation = [CABasicAnimation animation];
         animation.keyPath = @"transform.scale";//KVC的方式来访问属性

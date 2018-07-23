@@ -12,6 +12,7 @@
 #import "QQTabBarController.h"
 #import "MCFactory.h"
 #import "UIView+MBProgress.h"
+#import "MCDetect.h"
 @interface twoViewController ()
 @property (nonatomic , strong) NSMutableArray * ar;
 @end
@@ -24,6 +25,8 @@
     self.navigationItem.title  = @"two";
 
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
+
+
 }
 
 - (void)click
@@ -31,7 +34,8 @@
 //    [MCPushMediator pushToClassFromStaring:@"fiveVintroller" takeParameters:nil callBack:^(id data) {
 //        NSLog(@"213213");
 //    }];
-    [self.view loading];
+//    [self.view loading];
+    [self.view hiddenHUD];
     
 }
 - (void)didReceiveMemoryWarning {

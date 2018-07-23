@@ -45,7 +45,7 @@
 }
 
 + (UIImage *)imageWithName:(NSString *)imageName {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
+    NSString *filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:imageName];
     return [[UIImage alloc] initWithContentsOfFile:filePath];
 }
 //圆角切割
