@@ -26,6 +26,7 @@
     self.tabManager[@"QQOneItem"] = @"QQOneCell";
     self.tabManager[@"QQTwoItem"] = @"QQTwoCell";
 //    self.BaseQQTableView.isHasHeaderRefresh = NO;//设置是否有刷新
+    [self.BaseQQTableView setUpWithUrl:@"" Parameters:@{} formController:self];
     
     NSMutableArray *itemArray  = [NSMutableArray array];
     QQOneItem *it1 = [[QQOneItem alloc]init];
@@ -39,9 +40,9 @@
             NSLog(@"%@",data);
         }];
     };
-    it1.slideCellHandler  = ^(id item) {
-        NSLog(@"it1 侧滑被点击了！！");
-    };
+//    it1.slideCellHandler  = ^(id item) {
+//        NSLog(@"it1 侧滑被点击了！！");
+//    };
     [itemArray addObject:it1];
     
     QQOneItem *it2 = [[QQOneItem alloc]init];
@@ -55,9 +56,9 @@
         alertview.backgroundColor = [UIColor whiteColor];
         [UIView showView:alertview showType:viewShowTypeFadeIn dissType:viewDissTypeFadeOut positionType:viewPositionTypeCenter dismissOnBackgroundTouch:YES];
     };
-    it2.slideCellHandler  = ^(id item) {
-        
-    };
+//    it2.slideCellHandler  = ^(id item) {
+//
+//    };
     [itemArray addObject:it2];
     
     QQOneItem *it3 = [[QQOneItem alloc]init];
@@ -88,7 +89,7 @@
         ewq.slideText = @"收藏";
         ewq.imageString = @"home_01";
         ewq.selcetCellHandler = ^(QQOneItem * item) {
-            
+            NSLog(@"%d",item.indexPath);
         };
         ewq.slideCellHandler  = ^(id item) {
             NSLog(@"it1 侧滑被点击了！！");
@@ -99,7 +100,19 @@
     [self.tabManager replaceSectionsWithSectionsFromArray:itemArray];
     
 }
-
+- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)PullDown SuccessDataArray:(NSArray *)DataArray
+{
+    if (PullDown) {
+//    array    removeALl
+//        array add
+    }else{
+//  add
+    }
+}
+- (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error
+{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -23,12 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title  = @"two";
-
     [self nav_RightItemWithStr:@"Done" Selector:@selector(click)];
-
-
+    
 }
-
 - (void)click
 {
 //    [MCPushMediator pushToClassFromStaring:@"fiveVintroller" takeParameters:nil callBack:^(id data) {

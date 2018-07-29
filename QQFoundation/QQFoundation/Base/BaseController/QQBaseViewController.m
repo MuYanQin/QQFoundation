@@ -91,6 +91,7 @@
     
 }
 - (void)getTempResponseObject:(id)response TagURL:(NSString *)URL {
+    
     //这里要判断是不是为空
     [self getResponseObject:response TagURL:URL];
 }
@@ -101,7 +102,7 @@
     
 }
 - (void)getError:(NSError *)err TagURL:(NSString *)URL {
-    
+
 }
 #pragma mark - 基类里面的一些属性
 - (QQtableView *)BaseQQTableView

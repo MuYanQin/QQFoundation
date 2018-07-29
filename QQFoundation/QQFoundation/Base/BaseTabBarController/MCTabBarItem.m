@@ -81,7 +81,6 @@ static const CGFloat imageWidth = imageHeight*1.14;
 - (void)setBackGroudImageName:(NSString *)BackGroudImageName
 {
     _BackGroudImageName = BackGroudImageName;
-    NSLog(@"%@",BackGroudImageName);
     if (BackGroudImageName.length <= 0) {
         self.BackGroudImageview.image = nil;
         self.BackGroudImageview.hidden = YES;

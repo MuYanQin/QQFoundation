@@ -19,6 +19,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         QQ_methodSwizzle(self, @selector(layoutSubviews), @selector(sx_layoutSubviews));
+        //NSSelectorFromString(@"layoutSubviews");
     });
 }
 
@@ -36,7 +37,6 @@
         }
     }
 }
-
 @end
 @implementation UINavigationItem (QQSpeace)
 +(void)load {
@@ -48,7 +48,6 @@
     });
     
 }
-
 -(void)sx_setLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem {
     if (deviceVersion >= 11) {
         [self sx_setLeftBarButtonItem:leftBarButtonItem];

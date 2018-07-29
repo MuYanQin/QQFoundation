@@ -26,7 +26,9 @@
     self.Content.defaultTitleFont = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
     self.Content.selectTitleFont = [UIFont systemFontOfSize:16 weight:UIFontWeightHeavy];
     self.Content.titleButtonWidth = 80;
+    
     [self.view addSubview:self.Content];
+    
 }
 - (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index
 {
