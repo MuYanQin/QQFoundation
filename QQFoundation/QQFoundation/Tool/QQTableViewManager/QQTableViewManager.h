@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+@class QQTableViewItem;
 @protocol RETableViewManagerDelegate <UITableViewDelegate>
 
 @end
@@ -43,10 +43,12 @@
  */
 - (void)addItems:(NSArray *)objects;
 
+- (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index;
 /**
  主动刷新视图
  */
 - (void)reloadData;
+
 //MARK:以下方法重写字典方法
 - (id)objectAtKeyedSubscript:(id <NSCopying>)key;
 

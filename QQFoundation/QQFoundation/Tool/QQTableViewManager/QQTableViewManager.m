@@ -154,6 +154,11 @@
     [self.items addObjectsFromArray:objects];
     [self.TableView reloadData];
 }
+- (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index
+{
+    [self.items insertObject:Item atIndex:index];
+    [self.TableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
 - (void)reloadData
 {
     [self.TableView reloadData];

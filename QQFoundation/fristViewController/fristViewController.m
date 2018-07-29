@@ -40,9 +40,7 @@
             NSLog(@"%@",data);
         }];
     };
-//    it1.slideCellHandler  = ^(id item) {
-//        NSLog(@"it1 侧滑被点击了！！");
-//    };
+
     [itemArray addObject:it1];
     
     QQOneItem *it2 = [[QQOneItem alloc]init];
@@ -56,9 +54,7 @@
         alertview.backgroundColor = [UIColor whiteColor];
         [UIView showView:alertview showType:viewShowTypeFadeIn dissType:viewDissTypeFadeOut positionType:viewPositionTypeCenter dismissOnBackgroundTouch:YES];
     };
-//    it2.slideCellHandler  = ^(id item) {
-//
-//    };
+
     [itemArray addObject:it2];
     
     QQOneItem *it3 = [[QQOneItem alloc]init];
@@ -68,6 +64,17 @@
     it3.slideText = @"喜欢";
     it3.imageString = @"home_03";
     it3.selcetCellHandler = ^(QQOneItem * item) {
+        QQOneItem *it90 = [[QQOneItem alloc]init];
+        it90.allowSlide = YES;
+        it90.bgColor = [UIColor cyanColor];
+        it90.leftString = @"首页3";
+        it90.slideText = @"喜欢";
+        it90.selcetCellHandler = ^(QQOneItem * TTitem) {
+            NSLog(@"%@",TTitem.indexPath);
+        };
+        it90.imageString = @"home_03";
+        [self.tabManager insertItem:it90 Index:2];
+        
     };
     it3.slideCellHandler  = ^(id item) {
     };
@@ -89,7 +96,7 @@
         ewq.slideText = @"收藏";
         ewq.imageString = @"home_01";
         ewq.selcetCellHandler = ^(QQOneItem * item) {
-            NSLog(@"%d",item.indexPath);
+            NSLog(@"%@",item.indexPath);
         };
         ewq.slideCellHandler  = ^(id item) {
             NSLog(@"it1 侧滑被点击了！！");
