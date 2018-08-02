@@ -44,6 +44,8 @@
 - (void)addItems:(NSArray *)objects;
 
 - (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index;
+
+- (void)deleteItem:(QQTableViewItem *)item;
 /**
  主动刷新视图
  */

@@ -932,6 +932,7 @@
 				52D8D15E1F4D77EF00EA413B /* QQLabel.m */,
 				52D8D15F1F4D77EF00EA413B /* QQLoadView.h */,
 				52D8D1601F4D77EF00EA413B /* QQLoadView.m */,
+				ACF4B0511FEE546200668126 /* QQBarItemViewController.m */,
 				52D8D1611F4D77EF00EA413B /* QQTextField.h */,
 				52D8D1621F4D77EF00EA413B /* QQTextField.m */,
 				52D8D1631F4D77EF00EA413B /* QQTextView.h */,
@@ -1084,7 +1085,6 @@
 			isa = PBXGroup;
 			children = (
 				ACF4B0531FEE546200668126 /* QQBarItemViewController.h */,
-				ACF4B0511FEE546200668126 /* QQBarItemViewController.m */,
 				ACF4B0521FEE546200668126 /* QQBaseViewController.h */,
 				ACF4B0541FEE546200668126 /* QQBaseViewController.m */,
 			);
