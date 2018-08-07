@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor purpleColor];
     self.tabManager[@"QQOneItem"] = @"QQOneCell";
     self.tabManager[@"QQTwoItem"] = @"QQTwoCell";
-//    self.BaseQQTableView.isHasHeaderRefresh = NO;//设置是否有刷新
+    self.BaseQQTableView.isHasHeaderRefresh = NO;//设置是否有刷新
     [self.BaseQQTableView setUpWithUrl:@"" Parameters:@{} formController:self];
     
     NSMutableArray *itemArray  = [NSMutableArray array];
@@ -103,7 +103,6 @@
     }
     
     [self.tabManager replaceSectionsWithSectionsFromArray:itemArray];
-    
 }
 - (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)PullDown SuccessDataArray:(NSArray *)DataArray
 {

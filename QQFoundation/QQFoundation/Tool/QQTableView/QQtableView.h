@@ -43,6 +43,10 @@
 /*是否有头部刷新  默认YES  */
 @property (nonatomic,assign) BOOL isHasHeaderRefresh;
 
+/**获取总的Item*/
+@property (nonatomic , assign) NSInteger  getTotal;
+
+
 //**开始刷新*/
 - (void)headerRefresh;
 

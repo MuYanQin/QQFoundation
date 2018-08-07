@@ -11,6 +11,8 @@
 #import "UIView+MBProgress.h"
 #import "QQAppDefine.h"
 #import "UIView+QQFrame.h"
+#import "QQTool.h"
+#import "MCFactory.h"
 static NSString * const pageIndex = @"pageIndex";//获取第几页的
 @interface QQtableView ()
 {
@@ -20,14 +22,19 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
     NSString *_url;
     /**下载的参数*/
     NSMutableDictionary *_parameters;
-    /**添加的footView*/
-    UIView *_footerView;
+    /**出现网络失败*/
+    BOOL _hasNetError;
+    /**底部的文字*/
+    UILabel * _textLb;
 }
-/**记录上次请求是否有数据的  如果上次请求有数据 则断网也不会展示网络错误页 以及空白页*/
-@property (nonatomic,strong) NSArray *listArray;
+/**添加的footView*/
+@property (nonatomic , strong) UIView *footerView;
 @end
 @implementation QQtableView
-
++ (void)load
+{
+    QQ_methodSwizzle(self, @selector(reloadData), @selector(mc_reloadData));
+}
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -50,9 +57,33 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
     self.estimatedRowHeight  = 0;
     self.estimatedSectionFooterHeight  = 0;
     self.estimatedSectionFooterHeight = 0;
-    _footerView  = [[UIView alloc]init];
-    [self setTableFooterView:_footerView];
+    _hasNetError = NO;
+    [self setTableFooterView:self.footerView];
     _isShowStatues = YES;
+}
+- (void)mc_reloadData
+{
+    [self mc_reloadData];
+    if (self.getTotal == 0) {
+        self.loadStatuesView.LoadType = QQLoadViewEmpty;
+    }else if (self.getTotal == 0 && _hasNetError){
+        self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
+    }else{
+        [self setTableFooterView:self.footerView];
+    }
+    self.tableFooterView = self.isShowStatues ? self.loadStatuesView: self.footerView;
+}
+- (NSInteger)getTotal
+{
+    
+    NSInteger sections = 0;
+    
+    sections = [self numberOfSections];
+    NSInteger items = 0;
+    for (NSInteger section = 0; section < sections; section++) {
+        items += [self numberOfRowsInSection:section];
+    }
+    return items;
 }
 - (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
 {
@@ -66,38 +97,23 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
 - (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
     [[QQNetManager defaultManager]RTSTableWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
-        if ([responseObject[@"code"] isEqualToString:@"200"]) {
-            if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataArray:)]) {
-                [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataArray:responseObject[@"data"][@"list"]];
-            }
-            if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]] && [responseObject[@"data"][@"list"] isKindOfClass:[NSArray class]]) {
-                 [self.TempController.view hiddenHUD];
-                if (isPullDown) {//下拉刷新才会有空白页  另一个角度下拉都空白了上拉一定是空白啊
-                    self.listArray = [NSArray arrayWithArray:responseObject[@"data"][@"list"]];
-                    if (self.listArray.count == 0) {
-                        self.loadStatuesView.LoadType = QQLoadViewEmpty;
-                        self.tableFooterView = self.isShowStatues ? self.loadStatuesView: _footerView;
-                    }else{
-                        [self setTableFooterView:_footerView];
-                    }
-                }
-             }
-        }else{
+        //不管有没有数据都应该抛出去
+        if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataArray:)]) {
+            [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataArray:responseObject[@"data"][@"list"]];
+        }
+        [self.TempController.view hiddenHUD];
+        if (![responseObject[@"code"] isEqualToString:@"200"]) {
             /**返回的code码不是200*/
             [self.TempController.view message:responseObject[@"msg"] HiddenAfterDelay:2];
-            [self setTableFooterView:_footerView];
         }
+        _hasNetError = NO;
         [self EndRefrseh];
     } False:^(NSError *error) {
+        _hasNetError = YES;
+        [self.TempController.view hiddenHUD];
         if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
             [self.QQDeleGate QQtableView:self requestFailed:error];
         }
-        if (self.listArray.count == 0) {//下拉刷新时候 或者刚开始请求的时候才会是零  保证有数据的时候网络错误也不出现
-            self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
-            self.tableFooterView = self.isShowStatues ? self.loadStatuesView :_footerView;
-        }
-
-        [self.TempController.view hiddenHUD];
         [self EndRefrseh];
         if (!isPullDown) {
             [self changeIndexWithStatus:3];
@@ -147,6 +163,19 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
     [self.mj_footer endRefreshing];
     [self.mj_header endRefreshing];
 }
+- (UIView *)footerView
+{
+    if (!_footerView) {
+        _footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 5)];
+//        _textLb = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, self.width, 20)];
+//        _textLb.textAlignment = NSTextAlignmentCenter;
+//        _textLb.textColor = getColorWithHex(@"2c2c2c");
+//        _textLb.font = getFontRegular(15);
+//        [_footerView addSubview:_textLb];
+    }
+    return _footerView;
+}
+
 - (QQLoadView *)loadStatuesView
 {
     if (!_loadStatuesView) {
