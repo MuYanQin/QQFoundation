@@ -36,9 +36,7 @@
     it1.slideText = @"收藏";
     it1.imageString = @"home_01";
     it1.selcetCellHandler = ^(QQOneItem * item) {
-        [MCPushMediator pushToClassFromStaring:@"fiveViewController" takeParameters:@{@"userId":@"12345678"} callBack:^(id data) {
-            NSLog(@"%@",data);
-        }];
+
     };
 
     [itemArray addObject:it1];

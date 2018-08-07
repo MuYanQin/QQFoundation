@@ -43,9 +43,22 @@
  */
 - (void)addItems:(NSArray *)objects;
 
+
+/**
+ 插入一条数据
+
+ @param Item 数据
+ @param index 插入的位置
+ */
 - (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index;
 
+/**
+ 删除一条数据
+
+ @param item 要删除的数据
+ */
 - (void)deleteItem:(QQTableViewItem *)item;
+
 /**
  主动刷新视图
  */

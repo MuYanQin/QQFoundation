@@ -24,6 +24,13 @@
 		4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */; };
 		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
 		4BA65F5B20B8068A007A8E95 /* QQTwoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */; };
+		4BBBFC7F21192A19003EC96B /* wechatMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */; };
+		4BBBFC8021192D08003EC96B /* MCPlayerMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */; };
+		4BBBFC8F2119438C003EC96B /* bing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC8E2119438C003EC96B /* bing.caf */; };
+		4BBBFC9121194421003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
+		4BBBFC9721194CD9003EC96B /* bing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC8E2119438C003EC96B /* bing.caf */; };
+		4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
+		4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC962119499C003EC96B /* 456.m4a */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BDC83D820E114EA00F13C46 /* MCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC83D720E114EA00F13C46 /* MCAlertView.m */; };
 		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
@@ -206,6 +213,12 @@
 		4B8D23D220E0DA46005F6047 /* MCGCDStudy */ = {isa = PBXFileReference; lastKnownFileType = text; path = MCGCDStudy; sourceTree = "<group>"; };
 		4BA65F5920B8068A007A8E95 /* QQTwoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTwoItem.h; sourceTree = "<group>"; };
 		4BA65F5A20B8068A007A8E95 /* QQTwoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTwoItem.m; sourceTree = "<group>"; };
+		4BBBFC7B2119298E003EC96B /* MCPlayerMusic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPlayerMusic.h; sourceTree = "<group>"; };
+		4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPlayerMusic.m; sourceTree = "<group>"; };
+		4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wechatMusic.mp3; sourceTree = "<group>"; };
+		4BBBFC8E2119438C003EC96B /* bing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bing.caf; sourceTree = "<group>"; };
+		4BBBFC9021194421003EC96B /* bing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bing.mp3; sourceTree = "<group>"; };
+		4BBBFC962119499C003EC96B /* 456.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.m4a; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
 		4BDC83D620E114EA00F13C46 /* MCAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAlertView.h; sourceTree = "<group>"; };
@@ -507,6 +520,12 @@
 		4B4D16BA20EB9D7F0058794C /* MCServerExtension */ = {
 			isa = PBXGroup;
 			children = (
+				4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */,
+				4BBBFC8E2119438C003EC96B /* bing.caf */,
+				4BBBFC9021194421003EC96B /* bing.mp3 */,
+				4BBBFC962119499C003EC96B /* 456.m4a */,
+				4BBBFC7B2119298E003EC96B /* MCPlayerMusic.h */,
+				4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */,
 				4B4D16BB20EB9D7F0058794C /* NotificationService.h */,
 				4B4D16BC20EB9D7F0058794C /* NotificationService.m */,
 				4B4D16BE20EB9D7F0058794C /* Info.plist */,
@@ -1225,6 +1244,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBBFC9121194421003EC96B /* bing.mp3 in Resources */,
+				4BBBFC8F2119438C003EC96B /* bing.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,6 +1253,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBBFC9721194CD9003EC96B /* bing.caf in Resources */,
+				4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */,
+				4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */,
 				AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */,
 				5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */,
 				52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */,
@@ -1242,6 +1266,7 @@
 				52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */,
 				52D8D1171F4D775500EA413B /* Main.storyboard in Resources */,
 				52D8D1961F4D77EF00EA413B /* icon_em_al.png in Resources */,
+				4BBBFC7F21192A19003EC96B /* wechatMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,6 +1298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBBFC8021192D08003EC96B /* MCPlayerMusic.m in Sources */,
 				4B4D16BD20EB9D7F0058794C /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
