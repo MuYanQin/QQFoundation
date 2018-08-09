@@ -7,21 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "fristViewController.h"
-#import "twoViewController.h"
-#import "threeViewController.h"
-#import "fourViewController.h"
+#import "MCHomeViewController.h"
+#import "MCRewardViewController.h"
+#import "MCSearchViewController.h"
+#import "MCAuthorViewController.h"
+#import "MCMineViewController.h"
 #import "QQNavigationController.h"
 @class MCTabBarItem;
 @interface QQTabBarController : UITabBarController
 @property (nonatomic,strong) UIView *tabBarView;
 @property (nonatomic,assign) NSInteger SelectIndex;//选中的下标
 
-@property (nonatomic,strong) fristViewController *one;
-@property (nonatomic,strong) twoViewController *two;
-@property (nonatomic,strong) threeViewController *three;
-@property (nonatomic,strong) fourViewController *four;
-@property (nonatomic,strong) fourViewController *five;
+@property (nonatomic,strong) MCHomeViewController *home;
+@property (nonatomic,strong) MCRewardViewController *reward;
+@property (nonatomic,strong) MCSearchViewController *search;
+@property (nonatomic,strong) MCAuthorViewController *author;
+@property (nonatomic,strong) MCMineViewController *mine;
 
 /**第一个item*/
 @property (nonatomic,strong) MCTabBarItem *item0;

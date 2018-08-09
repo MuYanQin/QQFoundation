@@ -1,24 +1,22 @@
 //
-//  fourViewController.m
+//  MCAuthorViewController.m
 //  QQFoundation
 //
-//  Created by Maybe on 2017/12/21.
-//  Copyright © 2017年 ZhangQun. All rights reserved.
+//  Created by qinmuqiao on 2018/8/8.
+//  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import "fourViewController.h"
-#import "threeViewController.h"
-@interface fourViewController ()
+#import "MCAuthorViewController.h"
+
+@interface MCAuthorViewController ()
 
 @end
 
-@implementation fourViewController
+@implementation MCAuthorViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title  = @"four";
-    
 }
 
 - (void)didReceiveMemoryWarning {

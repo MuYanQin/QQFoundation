@@ -1,35 +1,24 @@
 //
-//  fiveViewController.m
+//  MCRewardViewController.m
 //  QQFoundation
 //
-//  Created by Maybe on 2017/12/22.
-//  Copyright © 2017年 ZhangQun. All rights reserved.
+//  Created by qinmuqiao on 2018/8/8.
+//  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import "fiveViewController.h"
-#import "fourViewController.h"
-#import "MCPushMediator.h"
-@interface fiveViewController ()
+#import "MCRewardViewController.h"
+
+@interface MCRewardViewController ()
 
 @end
 
-@implementation fiveViewController
+@implementation MCRewardViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"Five";
-    self.view.backgroundColor = [UIColor redColor];
-    self.callBackData = @"秦慕乔";
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

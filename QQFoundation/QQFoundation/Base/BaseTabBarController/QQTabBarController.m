@@ -39,25 +39,25 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
  改变tabbar的高度
  */
 - (void)viewWillLayoutSubviews{
-    CGRect tabFrame = self.tabBar.frame;
-    tabFrame.size.height = tabbarHeight;
-    tabFrame.origin.y = self.view.frame.size.height - tabbarHeight;
-    self.tabBar.frame = tabFrame;
+//    CGRect tabFrame = self.tabBar.frame;
+//    tabFrame.size.height = tabbarHeight;
+//    tabFrame.origin.y = self.view.frame.size.height - tabbarHeight;
+//    self.tabBar.frame = tabFrame;
     CGRect rect = self.tabBar.bounds;
     self.tabBarView.frame = rect;
 }
 - (void)initVC{
-    self.one = [fristViewController new];
-    self.two = [twoViewController new];
-    self.three = [threeViewController new];
-    self.four = [fourViewController new];
-    self.five = [fourViewController new];
+    self.home   = [MCHomeViewController   new];
+    self.reward = [MCRewardViewController new];
+    self.search = [MCSearchViewController new];
+    self.author = [MCAuthorViewController new];
+    self.mine   = [MCMineViewController   new];
 
-    self.viewControllers = @[[[QQNavigationController alloc]initWithRootViewController:self.one],
-                             [[QQNavigationController alloc]initWithRootViewController:self.two],
-                             [[QQNavigationController alloc]initWithRootViewController:self.three],
-                             [[QQNavigationController alloc]initWithRootViewController:self.four],
-                             [[QQNavigationController alloc]initWithRootViewController:self.five]];
+    self.viewControllers = @[[[QQNavigationController alloc]initWithRootViewController:self.home],
+                             [[QQNavigationController alloc]initWithRootViewController:self.reward],
+                             [[QQNavigationController alloc]initWithRootViewController:self.search],
+                             [[QQNavigationController alloc]initWithRootViewController:self.author],
+                             [[QQNavigationController alloc]initWithRootViewController:self.mine]];
 }
 - (void)createVc
 {

@@ -2,19 +2,23 @@ PODS:
   - JCore (1.2.0)
   - JPush (3.0.9):
     - JCore (~> 1.2.0)
+  - Masonry (1.1.0)
 
 DEPENDENCIES:
   - JPush
+  - Masonry
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JCore
     - JPush
+    - Masonry
 
 SPEC CHECKSUMS:
   JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
   JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: cbae204e655afde76aafae2cba0dd9e97b41c3d5
+PODFILE CHECKSUM: 14c162c9adacc10e4b4e8cc360e71de81f4b5fbd
 
 COCOAPODS: 1.5.3

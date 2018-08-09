@@ -16,18 +16,15 @@
     }
     return self;
 }
-- (void)dealloc {
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    [self initialize];
 }
 - (void)initialize
 {
     [self addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
     _maxLength = NSUIntegerMax;
-    
-}
--(void)awakeFromNib {
-    [super awakeFromNib];
-    [self addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
-    _maxLength = NSUIntegerMax;
+    self.delegate = self;
 }
 - (void)textDidChange:(QQTextField *)TextField
 {
@@ -41,7 +38,23 @@
             }
         }
     }
-    
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+
+{
+    if (self.openPriceCheck) {
+        NSString * str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+        //匹配以0开头的数字
+        NSPredicate * predicate0 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0][0-9]+$"];
+        //匹配两位小数、整数
+        NSPredicate * predicate1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(([1-9]{1}[0-9]*|[0]).?[0-9]{0,2})$"];
+        return ![predicate0 evaluateWithObject:str] && [predicate1 evaluateWithObject:str] ? YES : NO;
+    }
+    return YES;
+}
+
+- (void)dealloc {
+}
+
 @end
 
