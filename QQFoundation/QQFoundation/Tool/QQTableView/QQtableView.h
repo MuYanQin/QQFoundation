@@ -37,6 +37,7 @@
 
 /**空白页、网络错误页  页面的内容可用此属性去更改*/
 @property (nonatomic,strong)     QQLoadView *loadStatuesView;
+
 /*是否展示空白界面  默认YES  */
 @property (nonatomic,assign) BOOL isShowStatues;
 

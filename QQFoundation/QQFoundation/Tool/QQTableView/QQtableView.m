@@ -66,12 +66,13 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
     [self mc_reloadData];
     if (self.getTotal == 0) {
         self.loadStatuesView.LoadType = QQLoadViewEmpty;
+        self.tableFooterView = self.isShowStatues ? self.loadStatuesView: self.footerView;
     }else if (self.getTotal == 0 && _hasNetError){
         self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
+        self.tableFooterView = self.isShowStatues ? self.loadStatuesView: self.footerView;
     }else{
         [self setTableFooterView:self.footerView];
     }
-    self.tableFooterView = self.isShowStatues ? self.loadStatuesView: self.footerView;
 }
 - (NSInteger)getTotal
 {

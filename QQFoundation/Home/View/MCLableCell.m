@@ -7,18 +7,62 @@
 //
 
 #import "MCLableCell.h"
+@implementation MCLableItem
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.CellHeight = 50;
+    }
+    return self;
+}
+
+@end
 
 @implementation MCLableCell
+@synthesize item = _item;
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (void)cellDidLoad
+{
+    [super cellDidLoad];
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    self.leftLb = getLabel(getFontRegular(15), @"", getColorWithHex(@"2c2c2c"), left);
+    [self.leftLb sizeToFit];
+    [self.contentView addSubview:self.leftLb];
+    
+    self.rightLb = getLabel(getFontRegular(15), @"", getColorWithHex(@"cccccc"), right);
+    [self.rightLb sizeToFit];
+    [self.contentView addSubview:self.rightLb];
+    
+    UIView *line = getView(getColorWithHex(@"f8f8f8"));
+    [self.contentView addSubview:line];
+    
+    [self.leftLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(15);
+        make.centerY.equalTo(self.mas_centerY);
+    }];
+    
+    [self.rightLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-35);
+        make.centerY.equalTo(self.mas_centerY);
+    }];
+    
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-15);
+        make.left.equalTo(self).offset(5);
+        make.height.mas_equalTo(1);
+        make.bottom.equalTo(self);
+    }];
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)cellWillAppear
+{
+    [super cellWillAppear];
+    self.leftLb.text = self.item.leftText;
+    self.rightLb.text = self.item.rightText;
 }
-
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+}
 @end

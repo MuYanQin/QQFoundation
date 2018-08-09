@@ -10,8 +10,8 @@
 #import "MCTextFieldCell.h"
 @interface MCTextFieldItem : QQTableViewItem
 @property (nonatomic , copy) NSString * leftText;
-@property (nonatomic , copy) NSString * placeholderText;
 @property (nonatomic , copy) NSString * rightText;
+@property (nonatomic , copy) NSString * placeholderText;
 @property (nonatomic , strong) QQTextField * TextF;
 @end
 @interface MCTextFieldCell : QQTableViewCell

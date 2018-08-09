@@ -31,6 +31,9 @@
     self.TextField.openPriceCheck = YES;
     [self.contentView addSubview:self.TextField];
     
+    UIView *line = getView(getColorWithHex(@"f8f8f8"));
+    [self.contentView addSubview:line];
+    
     [self.LeftLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15);
         make.centerY.equalTo(self.mas_centerY);
@@ -41,6 +44,13 @@
         make.left.equalTo(self.LeftLb.mas_right).offset(5);
         make.centerY.equalTo(self.mas_centerY);
         make.top.bottom.equalTo(self);
+    }];
+    
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-15);
+        make.left.equalTo(self).offset(5);
+        make.height.mas_equalTo(1);
+        make.bottom.equalTo(self);
     }];
     
 }

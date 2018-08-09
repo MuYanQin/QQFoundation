@@ -7,7 +7,13 @@
 //
 
 #import "QQTableViewCell.h"
+@interface MCLableItem : QQTableViewItem
+@property (nonatomic , copy) NSString * leftText;
+@property (nonatomic , copy) NSString * rightText;
+@end
 
 @interface MCLableCell : QQTableViewCell
-
+@property (nonatomic , strong) MCLableItem * item;
+@property (nonatomic , strong) UILabel * leftLb;
+@property (nonatomic , strong) UILabel * rightLb;
 @end
