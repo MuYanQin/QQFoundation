@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"案例使用";
+    self.navigationItem.title = @"案例使用1";
     self.tabManager[@"MCTextFieldItem"] = @"MCTextFieldCell";
     self.tabManager[@"MCEmptyItem"] = @"MCEmptyCell";
     self.tabManager[@"MCLableItem"] = @"MCLableCell";

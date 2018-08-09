@@ -27,7 +27,6 @@
     //这里的色值与 Nav的色值相同
     self.BaseNavBarColor = self.navigationController.view.backgroundColor;
     [self.view addSubview:self.navBar];
-    [self.view addSubview:self.BaseLoadView];
 }
 //nav透明的使用
 #pragma mark -- Setter & Getter
@@ -146,6 +145,7 @@
         _BaseLoadView.ImageClick  = ^{
             [QQL.mj_header beginRefreshing];
         };
+        [self.view addSubview:_BaseLoadView];
     }
     return _BaseLoadView;
 }

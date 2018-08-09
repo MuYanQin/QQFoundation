@@ -10,6 +10,8 @@
 		0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */; };
 		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
+		4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */; };
+		4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F10C7211C384500B09B80 /* MCUserInfo.m */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
@@ -185,6 +187,10 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QQFoundation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.release.xcconfig"; sourceTree = "<group>"; };
+		4B1F107F211C303700B09B80 /* MCVerificationCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCVerificationCodeView.h; sourceTree = "<group>"; };
+		4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerificationCodeView.m; sourceTree = "<group>"; };
+		4B1F10C6211C384500B09B80 /* MCUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCUserInfo.h; sourceTree = "<group>"; };
+		4B1F10C7211C384500B09B80 /* MCUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCUserInfo.m; sourceTree = "<group>"; };
 		4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabBarItem.h; sourceTree = "<group>"; };
 		4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabBarItem.m; sourceTree = "<group>"; };
 		4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MCPopView.h"; sourceTree = "<group>"; };
@@ -494,6 +500,24 @@
 				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
 			);
 			path = QQTableViewManager;
+			sourceTree = "<group>";
+		};
+		4B1F107E211C301600B09B80 /* MCVerificationCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				4B1F107F211C303700B09B80 /* MCVerificationCodeView.h */,
+				4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */,
+			);
+			path = MCVerificationCodeView;
+			sourceTree = "<group>";
+		};
+		4B1F10C5211C381C00B09B80 /* BaseUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4B1F10C6211C384500B09B80 /* MCUserInfo.h */,
+				4B1F10C7211C384500B09B80 /* MCUserInfo.m */,
+			);
+			path = BaseUserInfo;
 			sourceTree = "<group>";
 		};
 		4B39DA8020CB5FD600332B95 /* MCContentView */ = {
@@ -924,6 +948,7 @@
 		52D8D1241F4D77EE00EA413B /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4B1F10C5211C381C00B09B80 /* BaseUserInfo */,
 				ACF4B0501FEE546200668126 /* BaseController */,
 				ACF4B05A1FEE546200668126 /* BaseDefine */,
 				ACF4B0551FEE546200668126 /* BaseNavigatioinController */,
@@ -1000,6 +1025,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4B1F107E211C301600B09B80 /* MCVerificationCodeView */,
 				4B5BEF8020ECA691000BB2E2 /* MCFactory */,
 				4BFAB79B20EB45070076E090 /* MCDetectionView */,
 				4B8D23C720E087EB005F6047 /* MCPushMediator */,
@@ -1429,6 +1455,7 @@
 				52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */,
 				52C115581F4EC5CE005471CB /* MJRefreshBackGifFooter.m in Sources */,
 				4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */,
+				4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
 				52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */,
@@ -1451,6 +1478,7 @@
 				52C115671F4EC5CE005471CB /* NSData+ImageContentType.m in Sources */,
 				52D8D1921F4D77EF00EA413B /* UIView+QQFrame.m in Sources */,
 				52C115771F4EC5CE005471CB /* UIView+WebCache.m in Sources */,
+				4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */,
 				52C1156C1F4EC5CE005471CB /* SDWebImageDecoder.m in Sources */,
 				ACE026372017672200A387DC /* QQAlertController.m in Sources */,
 				52D8D19C1F4D77EF00EA413B /* QQLabel.m in Sources */,

@@ -12,6 +12,5 @@
 +(void)setup
 {
     [[UIApplication sharedApplication].delegate.window addSubview:[[MCDetectionView alloc]initWithFrame:CGRectMake(15, 20, 90, 40)]];
-
 }
 @end
