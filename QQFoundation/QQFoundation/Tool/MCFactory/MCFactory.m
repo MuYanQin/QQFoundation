@@ -88,13 +88,13 @@ UIView * getView(UIColor *Bgcolor){
     return view;
 }
 
-QQTextField *getTextField(UIFont *font,UIColor *textColor,textAlignment alignment){
-    QQTextField *textField = [[QQTextField alloc]init];
-    textField.font = font;
-    textField.textColor = textColor;
-    textField.textAlignment = (int)alignment;
-    return textField;
-}
+//QQTextField *getTextField(UIFont *font,UIColor *textColor,textAlignment alignment){
+//    QQTextField *textField = [[QQTextField alloc]init];
+//    textField.font = font;
+//    textField.textColor = textColor;
+//    textField.textAlignment = (int)alignment;
+//    return textField;
+//}
 
 CALayer * getLayer(UIColor *bgcolor,UIImage *image){
     CALayer *layer = [[CALayer alloc]init];

@@ -27,24 +27,28 @@ s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag 
 s.source_files  = 'QQFoundation/QQFoundation'
 s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
 
-s.subspec 'Base' do |ss|
+#s.subspec 'Base' do |ss|
 
-    ss.subspec 'BaseController' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseController/**/*.{h,m,c,mm}'
-    end
+#   ss.subspec 'BaseController' do |sss|
+#   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseController/**/*.{h,m,c,mm}'
+#   end
+#
+#   ss.subspec 'BaseDefine' do |sss|
+#   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseDefine/**/*.{h,m,c,mm}'
+#   end
+#
+#   ss.subspec 'BaseNavigatioinController' do |sss|
+#   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseNavigatioinController/**/*.{h,m,c,mm}'
+#   end
+#
+#   ss.subspec 'BaseTabBarController' do |sss|
+#    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseTabBarController/**/*.{h,m,c,mm}'
+#    end
 
-    ss.subspec 'BaseDefine' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseDefine/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'BaseNavigatioinController' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseNavigatioinController/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'BaseTabBarController' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseTabBarController/**/*.{h,m,c,mm}'
-    end
-end
+#    ss.subspec 'BaseUserInfo' do |sss|
+#    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseUserInfo/**/*.{h,m,c,mm}'
+#    end
+#end
 
 s.subspec 'Category' do |ss|
 ss.source_files = 'QQFoundation/QQFoundation/Category/**/*.{h,m,c,mm}'
@@ -56,6 +60,10 @@ end
 
 
 s.subspec 'Tool' do |ss|
+
+    ss.subspec 'MCVerificationCodeView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCVerificationCodeView/**/*.{h,m,c,mm}'
+    end
 
     ss.subspec 'MCFactory' do |sss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/MCFactory/**/*.{h,m,c,mm}'
@@ -69,12 +77,12 @@ s.subspec 'Tool' do |ss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/MCPushMediator/**/*.{h,m,c,mm}'
     end
 
-    ss.subspec 'MCContentView' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCContentView/**/*.{h,m,c,mm}'
-    end
-
     ss.subspec 'MCDownloadManager' do |sss|
     sss.source_files = 'QQFoundation/QQFoundation/Tool/MCDownloadManager/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCContentView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCContentView/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'QQAlertController' do |sss|
