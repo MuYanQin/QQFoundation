@@ -10,11 +10,12 @@
 #import "QQTool.h"
 #import <objc/runtime.h>
 static MCUserInfo *info = nil;
+static dispatch_once_t onceToken;
+
 @implementation MCUserInfo
 
 + (instancetype)instance
 {
-    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         info = [[self alloc]init];
     });
@@ -62,6 +63,7 @@ static MCUserInfo *info = nil;
     }
     //清除单例的属性值
     info = nil;
+    onceToken = 0;
 }
 + (void)updateValue:(NSString *)value  key:(NSString *)key
 {

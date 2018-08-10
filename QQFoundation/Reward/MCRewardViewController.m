@@ -33,6 +33,12 @@
     NSLog(@"======================================");
     NSLog(@"getUserDic== %@",[MCUserInfo getUserDic]);
     NSLog(@"%@ %@ %@ %@",[MCUserInfo instance].avatar,[MCUserInfo instance].openId,[MCUserInfo instance].name,[MCUserInfo instance].tags);
+    
+    NSLog(@"======================================");
+
+    [MCUserInfo writeUserInfo:dic];
+    NSLog(@"getUserDic== %@",[MCUserInfo getUserDic]);
+    NSLog(@"%@ %@ %@ %@",[MCUserInfo instance].avatar,[MCUserInfo instance].openId,[MCUserInfo instance].name,[MCUserInfo instance].tags);
 }
 
 - (void)didReceiveMemoryWarning {

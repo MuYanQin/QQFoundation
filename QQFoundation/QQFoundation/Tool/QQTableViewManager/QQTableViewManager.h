@@ -53,11 +53,20 @@
 - (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index;
 
 /**
- 删除一条数据
+ 根据Item删除一条数据。推荐使用
 
  @param item 要删除的数据
  */
-- (void)deleteItem:(QQTableViewItem *)item;
+- (void)deleteItemWithItem:(QQTableViewItem *)item;
+
+
+/**
+ 根据下标删除一个Item 注意：一旦数据源变动下标对应就会变动 一定要保证下标的准确性 推荐使用 deleteItemWithItem：
+ 如果需要和deleteItemWithItem配合使用的话 一定要放在 deleteItemWithItem前调用
+ @param index 下标
+ */
+- (void)deleteItemWithIndex:(NSInteger )index;
+
 
 /**
  主动刷新视图

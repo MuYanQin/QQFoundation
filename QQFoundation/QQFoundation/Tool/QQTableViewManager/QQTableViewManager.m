@@ -159,10 +159,16 @@
     [self.items insertObject:Item atIndex:index];
     [self.TableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
-- (void)deleteItem:(QQTableViewItem *)item
+- (void)deleteItemWithItem:(QQTableViewItem *)item
 {
     NSInteger index = [self.items indexOfObject:item];
     [self.items removeObject:item];
+    NSIndexPath *toDelete = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.TableView deleteRowsAtIndexPaths:@[toDelete] withRowAnimation:UITableViewRowAnimationNone];
+}
+- (void)deleteItemWithIndex:(NSInteger )index
+{
+    [self.items removeObjectAtIndex:index];
     NSIndexPath *toDelete = [NSIndexPath indexPathForRow:index inSection:0];
     [self.TableView deleteRowsAtIndexPaths:@[toDelete] withRowAnimation:UITableViewRowAnimationNone];
 }

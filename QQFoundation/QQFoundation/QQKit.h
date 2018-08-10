@@ -17,6 +17,7 @@
 #import "BaseViewController.h"
 #import "QQBaseURL.h"
 #import "QQAppDefine.h"
+#import "MCUserInfo.h"//用户的信息
 ///***********************************************************************************
 /// Category
 ///***********************************************************************************
@@ -50,6 +51,9 @@
 ///***********************************************************************************
 /// Tool
 ///***********************************************************************************
+#import "MCVerificationCodeView.h"//验证码view
+#import "MCFactory.h"//工程模式工具
+#import "MCDetect.h"//切换域名
 #import "MCPushMediator.h"//push界面的中介者 解耦合->复杂的push关系
 #import "MCDownloadManager.h"//下载管理类 ->半成品
 #import "MCPageView.h"//类似新闻类app首页侧滑功能
