@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-//#import "QQTextField.h"
+#import "QQTextField.h"
 typedef NS_ENUM(NSInteger,textAlignment){
     left = 0,
     center,
@@ -38,9 +38,13 @@ UIFont *getFontBold(NSInteger font);
 //获取UI控件
 UIView * getView(UIColor *Bgcolor);
 
-//QQTextField *getTextField(UIFont *font,UIColor *textColor,textAlignment alignment);
+QQTextField *getTextField(UIFont *font,UIColor *textColor,textAlignment alignment);
 
 CALayer * getLayer(UIColor *bgcolor,UIImage *image);
+
+CALayer * getLayerView(UIColor *bgcolor);
+
+CALayer * getGradientLayer(UIView *view);
 
 UILabel * getLabel(UIFont *font,NSString *text,UIColor *textColor,textAlignment alignment);
 

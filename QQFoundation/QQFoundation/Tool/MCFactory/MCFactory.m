@@ -88,19 +88,43 @@ UIView * getView(UIColor *Bgcolor){
     return view;
 }
 
-//QQTextField *getTextField(UIFont *font,UIColor *textColor,textAlignment alignment){
-//    QQTextField *textField = [[QQTextField alloc]init];
-//    textField.font = font;
-//    textField.textColor = textColor;
-//    textField.textAlignment = (int)alignment;
-//    return textField;
-//}
+QQTextField *getTextField(UIFont *font,UIColor *textColor,textAlignment alignment){
+    QQTextField *textField = [[QQTextField alloc]init];
+    textField.font = font;
+    textField.textColor = textColor;
+    textField.textAlignment = (int)alignment;
+    return textField;
+}
 
 CALayer * getLayer(UIColor *bgcolor,UIImage *image){
     CALayer *layer = [[CALayer alloc]init];
     layer.backgroundColor = bgcolor.CGColor;
-    layer.contents = (id)image.CGImage;;
+    layer.contents = (id)image.CGImage;
     return layer;
+}
+CALayer * getLayerView(UIColor *bgcolor){
+    CALayer *layer = [[CALayer alloc]init];
+    layer.backgroundColor = bgcolor.CGColor;
+    return layer;
+}
+
+CALayer * getGradientLayer(UIView *view){
+    //    CAGradientLayer类对其绘制渐变背景颜色、填充层的形状(包括圆角)
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = view.bounds;
+    
+    //  创建渐变色数组，需要转换为CGColor颜色
+    gradientLayer.colors = @[(__bridge id)getColorWithHex(@"1CA3FB").CGColor,(__bridge id)getColorWithHex(@"64CBD7").CGColor];
+    
+    //  设置渐变颜色方向，左上点为(0,0), 右下点为(1,1)
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 1);
+    
+    //  设置颜色变化点，取值范围 0.0~1.0
+    gradientLayer.locations = @[@0,@1];
+    
+    return gradientLayer;
+    
 }
 
 UILabel * getLabel(UIFont *font,NSString *text,UIColor *textColor,textAlignment alignment){

@@ -10,8 +10,9 @@
 #import "MCTextFieldCell.h"
 #import "MCEmptyCell.h"
 #import "MCLableCell.h"
+#import "UIView+QQFrame.h"
 @interface MCHomeViewController ()
-
+@property (nonatomic , strong) UIView *wq;
 @end
 
 @implementation MCHomeViewController
@@ -24,6 +25,28 @@
     self.tabManager[@"MCEmptyItem"] = @"MCEmptyCell";
     self.tabManager[@"MCLableItem"] = @"MCLableCell";
     [self iniUI];
+    
+    self.wq = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight, KScreenWidth, KScreenHeight)];
+    self.wq.backgroundColor = [UIColor purpleColor];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.wq.top = 0;
+    }];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button .frame = CGRectMake(100, 100, 100,30 );
+    button.backgroundColor = [UIColor whiteColor];
+    [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.wq addSubview:button];
+    [[UIApplication sharedApplication].delegate.window addSubview:self.wq];
+}
+- (void)buttonClick
+{
+    [UIView animateWithDuration:0.5 animations:^{
+//        self.wq.top = KScreenHeight;
+        self.wq.frame = CGRectMake(0, 0, 30, 30);
+    } completion:^(BOOL finished) {
+//        [self.wq removeFromSuperview];
+    }];
 }
 - (void)iniUI
 {
