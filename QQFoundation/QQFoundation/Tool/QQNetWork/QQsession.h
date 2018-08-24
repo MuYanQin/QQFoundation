@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 typedef NS_ENUM (NSInteger,QQSessionType){
     post = 0,
     get
@@ -18,7 +17,6 @@ typedef NS_ENUM (NSInteger,CacheType){
     ignore = 0,
     localData
 };
-
 @interface QQsession : NSObject
 @property (copy, nonatomic) NSString *urlStr;///<记录当前下载的URl  MD5加密后的
 @property (nonatomic , strong) NSURLSessionDataTask * SessionTask;//记录某次下载的任务

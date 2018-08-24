@@ -13,7 +13,7 @@
 #import "UIView+QQFrame.h"
 #import "QQTool.h"
 #import "MCFactory.h"
-static NSString * const pageIndex = @"pageIndex";//获取第几页的
+static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自己的需求替换
 @interface QQtableView ()
 {
     /**纪录当前页数*/
@@ -99,8 +99,8 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
 {
     [[QQNetManager defaultManager]RTSGetWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
-        if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
-            [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
+        if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
+            [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
         }
         [self.TempController.view hiddenHUD];
         _hasNetError = NO;
@@ -108,8 +108,8 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
     } False:^(NSError *error) {
         _hasNetError = YES;
         [self.TempController.view hiddenHUD];
-        if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
-            [self.QQDeleGate QQtableView:self requestFailed:error];
+        if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
+            [self.RequestDelegate QQtableView:self requestFailed:error];
         }
         [self EndRefrseh];
         if (!isPullDown) {

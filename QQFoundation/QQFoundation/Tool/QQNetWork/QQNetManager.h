@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "QQsession.h"
 #import <UIKit/UIKit.h>
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
+@class QQsession;
 static NSString *const successCode = @"200";//配置正确返回的code码
 static NSInteger const cuntomErrorCode = 8001; //自定义返回的errorCode值 不符合正确返回码的数据都在失败回调里
 @interface QQNetManager : NSObject
@@ -89,10 +89,6 @@ static NSInteger const cuntomErrorCode = 8001; //自定义返回的errorCode值 
 - (void)insertQQConnection:(QQsession *)hc;///<插入对象
 - (void)deleteQQConnection:(QQsession *)hc;///<删除对象
 
-
 //在返回的地方调用此方法取消下载
 - (void)deleteConnectionVC:(UIViewController *)vc;///<销毁控制器时取消下载
-
-
-- (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters;
 @end

@@ -39,7 +39,6 @@
 {
     MyAttributedStringBuilder *builder = nil;
     builder = [[MyAttributedStringBuilder alloc] initWithString:string];
-    builder = [[MyAttributedStringBuilder alloc] initWithString:string];
     builder.allRange.backgroundColor = color;
     builder.allRange.textColor = TextColor;
     return builder.commit;

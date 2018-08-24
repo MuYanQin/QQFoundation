@@ -15,7 +15,6 @@
 #import "QQNavigationController.h"
 @class MCTabBarItem;
 @interface QQTabBarController : UITabBarController
-@property (nonatomic,strong) UIView *tabBarView;
 @property (nonatomic,assign) NSInteger SelectIndex;//选中的下标
 
 @property (nonatomic,strong) MCHomeViewController *home;

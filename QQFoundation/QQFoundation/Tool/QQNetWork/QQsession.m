@@ -8,10 +8,9 @@
 
 #import "QQsession.h"
 #import "AFNetworking.h"
-#import "QQNetManager.h"
-#import "NSDate+QQCalculate.h"
 #import "UIView+MBProgress.h"
 #import "QQTool.h"
+#import "QQNetManager.h"
 @interface QQsession ()
 @end
 

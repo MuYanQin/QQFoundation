@@ -9,6 +9,8 @@
 #import "QQNetManager.h"
 #import "QQTool.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "QQsession.h"
+
 @interface QQNetManager()
 @property (nonatomic , strong) NSMutableDictionary * dataDic;///<纪录下载的url
 @property (nonatomic , strong) NSMutableArray * controllerRequest;///<纪录页面的请求
@@ -50,7 +52,7 @@
 
 - (void)RTSGetCacheWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {
-    [self filtrationTxdWithUrl:url Param:parameters from:controller txdType:get cacheType:localDate success:Success False:False];
+    [self filtrationTxdWithUrl:url Param:parameters from:controller txdType:get cacheType:localData success:Success False:False];
 }
 - (void)RTSPostWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {

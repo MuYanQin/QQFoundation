@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "QQLoadView.h"
 @class QQtableView;
-@protocol QQtableViewGate <NSObject>
+@protocol QQtableViewRequestDelegate <NSObject>
 
 /**
  返回请求到的数据
@@ -30,7 +30,7 @@
 @end
 
 @interface QQtableView : UITableView
-@property (assign,nonatomic) id<QQtableViewGate> QQDeleGate;
+@property (assign,nonatomic) id<QQtableViewRequestDelegate> RequestDelegate;
 
 /*传递controller进来展示loadding状态只能是weak不会引用*/
 @property (weak, nonatomic)UIViewController *TempController;

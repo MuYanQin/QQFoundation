@@ -10,7 +10,7 @@
 #import "QQtableView.h"
 #import "QQTableViewManager.h"
 @class QQLoadView,QQNetManager;
-@interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,QQtableViewGate>
+@interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,QQtableViewRequestDelegate>
 @property (copy, nonatomic)NSString *GlobalId;///<每个界面 预留的字符串
 @property (nonatomic,strong) id Info;
 /**

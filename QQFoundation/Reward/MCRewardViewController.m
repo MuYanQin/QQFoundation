@@ -19,26 +19,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"案例使用2";
-    /**
-     @property (nonatomic,copy) NSString *avatar;//头像
-     @property (nonatomic,copy) NSString *openId;
-     @property (nonatomic,copy) NSString *name;//性别
-     */
-    NSDictionary *dic = @{@"avatar":@"www.baidu.com",@"openId":@"123213123",@"name":@"秦慕乔",@"tags":@[@"帅",@"酷",@"富",@"高",]};
-    [MCUserInfo writeUserInfo:dic];
-    NSLog(@"getUserDic== %@",[MCUserInfo getUserDic]);
-    NSLog(@"%@ %@ %@ %@",[MCUserInfo instance].avatar,[MCUserInfo instance].openId,[MCUserInfo instance].name,[MCUserInfo instance].tags);
-    
-    [MCUserInfo cleanUpInfo];
-    NSLog(@"======================================");
-    NSLog(@"getUserDic== %@",[MCUserInfo getUserDic]);
-    NSLog(@"%@ %@ %@ %@",[MCUserInfo instance].avatar,[MCUserInfo instance].openId,[MCUserInfo instance].name,[MCUserInfo instance].tags);
-    
-    NSLog(@"======================================");
-
-    [MCUserInfo writeUserInfo:dic];
-    NSLog(@"getUserDic== %@",[MCUserInfo getUserDic]);
-    NSLog(@"%@ %@ %@ %@",[MCUserInfo instance].avatar,[MCUserInfo instance].openId,[MCUserInfo instance].name,[MCUserInfo instance].tags);
 }
 
 - (void)didReceiveMemoryWarning {

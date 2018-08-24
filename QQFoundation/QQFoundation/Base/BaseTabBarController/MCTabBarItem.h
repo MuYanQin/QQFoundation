@@ -30,7 +30,6 @@
  */
 @property (nonatomic , assign) BOOL  isHasBackGroudImageview;
 
-
 /**
  背景图片名称
  */

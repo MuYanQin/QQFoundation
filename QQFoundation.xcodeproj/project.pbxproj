@@ -12,6 +12,8 @@
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
 		4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */; };
 		4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F10C7211C384500B09B80 /* MCUserInfo.m */; };
+		4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */; };
+		4B27C3B721300E6E008FBE2C /* UITabBar+MCBigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
@@ -187,6 +189,9 @@
 		4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerificationCodeView.m; sourceTree = "<group>"; };
 		4B1F10C6211C384500B09B80 /* MCUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCUserInfo.h; sourceTree = "<group>"; };
 		4B1F10C7211C384500B09B80 /* MCUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCUserInfo.m; sourceTree = "<group>"; };
+		4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_launch@2x.png"; sourceTree = "<group>"; };
+		4B27C3B521300E6E008FBE2C /* UITabBar+MCBigItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+MCBigItem.h"; sourceTree = "<group>"; };
+		4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+MCBigItem.m"; sourceTree = "<group>"; };
 		4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabBarItem.h; sourceTree = "<group>"; };
 		4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabBarItem.m; sourceTree = "<group>"; };
 		4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MCPopView.h"; sourceTree = "<group>"; };
@@ -1162,6 +1167,9 @@
 				ACF4B0601FEE546200668126 /* QQTabBarController.m */,
 				4B3D24EB20CA17F7002F8112 /* MCTabBarItem.h */,
 				4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */,
+				4B27C3B521300E6E008FBE2C /* UITabBar+MCBigItem.h */,
+				4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */,
+				4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */,
 			);
 			path = BaseTabBarController;
 			sourceTree = "<group>";
@@ -1285,6 +1293,7 @@
 				5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */,
 				52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */,
 				4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */,
+				4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */,
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
 				52C1155E1F4EC5CE005471CB /* MJRefresh.bundle in Resources */,
 				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
@@ -1368,6 +1377,7 @@
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
+				4B27C3B721300E6E008FBE2C /* UITabBar+MCBigItem.m in Sources */,
 				4B5BEF8320ECA6B4000BB2E2 /* MCFactory.m in Sources */,
 				52C1154E1F4EC5CE005471CB /* AFURLResponseSerialization.m in Sources */,
 				52C1156D1F4EC5CE005471CB /* SDWebImageDownloader.m in Sources */,
