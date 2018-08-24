@@ -97,16 +97,12 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
 //**请求方法*/
 - (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
-    [[QQNetManager defaultManager]RTSTableWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
+    [[QQNetManager defaultManager]RTSGetWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
-        if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessDataArray:)]) {
-            [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessDataArray:responseObject[@"data"][@"list"]];
+        if ([self.QQDeleGate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
+            [self.QQDeleGate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
         }
         [self.TempController.view hiddenHUD];
-        if (![responseObject[@"code"] isEqualToString:@"200"]) {
-            /**返回的code码不是200*/
-            [self.TempController.view message:responseObject[@"msg"] HiddenAfterDelay:2];
-        }
         _hasNetError = NO;
         [self EndRefrseh];
     } False:^(NSError *error) {
@@ -118,11 +114,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的
         [self EndRefrseh];
         if (!isPullDown) {
             [self changeIndexWithStatus:3];
-        }
-        if (error.code == -1001){
-            [self.TempController.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
-        }else  if (error.code != -999) {//-999主动取消
-            
         }
     }];
 }

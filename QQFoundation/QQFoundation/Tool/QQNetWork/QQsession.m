@@ -10,15 +10,12 @@
 #import "AFNetworking.h"
 #import "QQNetManager.h"
 #import "NSDate+QQCalculate.h"
-#import "YYCache.h"
 #import "UIView+MBProgress.h"
 #import "QQTool.h"
-static NSString *const successCode = @"200";
 @interface QQsession ()
 @end
 
 @implementation QQsession
-static YYCache *HttpCache;
 static NSString *const QQCacheName = @"QQNetWorkCache";
 static AFHTTPSessionManager *manager;
 -(AFHTTPSessionManager *)sharedHTTPSession{
@@ -44,206 +41,94 @@ static AFHTTPSessionManager *manager;
     securityPolicy.validatesDomainName = NO;
     return securityPolicy;
 }
-+ (void)initialize
+- (NSURLSessionDataTask *)TXDWith:(NSString *)url Param:(NSDictionary *)param from:(UIViewController *)controller txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType success:(void (^)(id))success False:(void (^)(NSError *))False
 {
-    HttpCache = [YYCache cacheWithName:QQCacheName];
-}
-
-//手机上的小菊花用    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-//来实现就好了  我这里是自己写的
-- (NSURLSessionDataTask *)TXDGetWithUrl:(NSString *)url Dic:(NSDictionary *)dic from:(UIViewController *)controller success:(void (^)(id))success False:(void (^)(NSError *))False
-{
-    //没网络的情况时直接返回
-//    if (![self requestBeforeJudgeConnect]) {
-//        [[QQNetManager defaultManager] showProgressHUDWithType:0];
-//        return nil;
+//    NSString *keyStr = nil;
+////判断缓存
+//    if (cacheType == localDate) {
+//        keyStr = [self cacheKeyWithURL:url parameters:param];
 //    }
-    if (controller == nil || controller == NULL) {
-        controller =[self getCurrentVC];
-    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];//域名和接口拼接起来的
-    NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];//方便加请求参数
+    NSURLSessionDataTask * operation;
     [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view loading];
-    NSURLSessionDataTask * operation = [self.sharedHTTPSession GET:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        [self handleResponseObject:responseObject IsCache:NO key:nil Controller:controller Success:success failure:False];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self handleResponseObject:error Controller:controller failure:False];
-    }];
-    
-    [[QQNetManager defaultManager] insertConnectionVC:controller QQConnection:self SessionDataTask:operation];
-    
+    switch (txdType) {
+        case get:
+        {
+            operation = [self.sharedHTTPSession GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self handleResponseObject:responseObject cacheType:cacheType key:nil Controller:controller Success:success failure:False];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self handleResponseObject:error Controller:controller failure:False];
+            }];
+            break;
+        }
+        case post:
+        {
+            [self.sharedHTTPSession POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self handleResponseObject:responseObject cacheType:cacheType key:nil Controller:controller Success:success failure:False];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self handleResponseObject:error Controller:controller failure:False];
+            }];
+            break;
+        }
+        default:
+            break;
+    }
+    self.SessionTask = operation;
     return operation;
 }
-//common post
-- (NSURLSessionDataTask *)TXDPostWithUrl:(NSString *)url Dic:(NSDictionary *)dic from:(UIViewController *)controller success:(void (^)(id))success False:(void (^)(NSError *))False
+//upload files
+- (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
+                                       Dic:(NSDictionary *)dic
+                              MutableArray:(NSMutableArray *)Images
+                                      from:(UIViewController *)controller
+                                  fileMark:(NSString *)fileMark
+                                  Progress:(void (^)(NSProgress *uploadProgress))Progress
+                                   success:(void(^)(id responseObject))success
+                                     False:(void(^)(NSError *error))False
 {
-    //没网络的情况时直接返回
-//    if (![self requestBeforeJudgeConnect]) {
-//        [[QQNetManager defaultManager] showProgressHUDWithType:0];
-//        return nil;
-//    }
-    if (controller == nil || controller == NULL) {
-        controller =[self getCurrentVC];
-    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
-    NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view loading];
-    
-    NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handleResponseObject:responseObject IsCache:NO key:nil Controller:controller Success:success failure:False];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self handleResponseObject:error Controller:controller failure:False];
-    }];
-    [[QQNetManager defaultManager] insertConnectionVC:controller QQConnection:self SessionDataTask:operation];
-    
-    return operation;
-
-}
-//get with cache
-- (NSURLSessionDataTask *)TXDGetCacheWithUrl:(NSString *)url Dic:(NSDictionary *)dic from:(UIViewController *)controller success:(void (^)(id))success False:(void (^)(NSError *))False
-{
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
-    //没网络的情况时 判断有没有缓存 有就直接拿出来
-    NSString *keyStr =[self cacheKeyWithURL:TrueUrl parameters:dic];
-    if ([HttpCache containsObjectForKey:keyStr]) {// is have cache
-        success([HttpCache objectForKey:keyStr]);// have  return
-        return nil; //NO:  go on
-    }
-    
-//    if (![self requestBeforeJudgeConnect]) {
-//        [[QQNetManager defaultManager] showProgressHUDWithType:0];
-//        False(nil);
-//        return nil;
-//    }
-    if (controller == nil || controller == NULL) {
-        controller =[self getCurrentVC];
-    }
-    NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    
-    [[QQNetManager defaultManager] insertQQConnection:self];///<
-    [controller.view loading];
-    
-    NSURLSessionDataTask * operation = [self.sharedHTTPSession GET:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        [self handleResponseObject:responseObject IsCache:YES key:keyStr Controller:controller Success:success failure:False];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self handleResponseObject:error Controller:controller failure:False];
-    }];
-    
-    [[QQNetManager defaultManager] insertConnectionVC:controller QQConnection:self SessionDataTask:operation];
-    
-    return operation;
-    
-
-}
-//tableview load
-- (NSURLSessionDataTask *)TXDTableWithUrl:(NSString *)url Dic:(NSDictionary *)dic from:(UIViewController *)controller success:(void (^)(id))success False:(void (^)(NSError *))False
-{
-#pragma mark  -  后面把tableview的第一个界面的缓存  用户下啦更新
-    //没网络的情况时直接返回
-//    if (![self requestBeforeJudgeConnect]) {
-//        [[QQNetManager defaultManager] showProgressHUDWithType:0];
-//        NSError *error = nil;
-//        False(error);//没有网络 但是tableview的刷新等操作时要 结束得熬的所以单拿出
-//        return nil;
-//    }
-    if (controller == nil || controller == NULL) {
-        controller =[self getCurrentVC];
-    }
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
-    NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [[QQNetManager defaultManager] insertQQConnection:self];
-    [controller.view loading];
-    
-    NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;
-        [[QQNetManager defaultManager] deleteQQConnection:self];
-        [[QQNetManager defaultManager] deleteConnectionVC:controller];///<下载成功 删除数组里存储
-
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        False(error);
-        [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;
-        [[QQNetManager defaultManager] deleteQQConnection:self];
-        [[QQNetManager defaultManager] deleteConnectionVC:controller];///<下载失败 删除数组里存储
-
-    }];
-    [[QQNetManager defaultManager] insertConnectionVC:controller QQConnection:self SessionDataTask:operation];
-    
-    return operation;
-
-}
-// upload files
-- (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr Dic:(NSDictionary *)dic MutableArray:(NSMutableArray *)Images from:(UIViewController *)controller Progress:(void (^)(NSProgress *))Progress success:(void (^)(id))success False:(void (^)(NSError *))False
-{
-    //没网络的情况时直接返回
-//    if (![self requestBeforeJudgeConnect]) {
-//        [[QQNetManager defaultManager] showProgressHUDWithType:0];
-//        return nil;
-//    }
-    if (controller == nil || controller == NULL) {
-        controller =[self getCurrentVC];
-    }
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view loading];
-    
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-//        NSData *data = nil;
+        NSData *data = nil;
         for (int j = 0; j<Images.count; j++) {
-//            data = [QQTool imageData:Images[j]];
-//            [formData appendPartWithFileData:data name:@"files"
-//                                    fileName:[NSString stringWithFormat:@"%@.png",[QQTool GetNowDate:@"YYYYMMddHHmmSSS"]]
-//                                    mimeType:@"image/jpg"];
+            data = [QQTool imageData:Images[j]];
+            [formData appendPartWithFileData:data name:fileMark
+                                    fileName:[NSString stringWithFormat:@"%@.png",@([[NSDate date] timeIntervalSince1970])]
+                                    mimeType:@"image/jpg"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         Progress(uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handleResponseObject:responseObject IsCache:NO key:TrueUrl Controller:controller Success:success failure:False];
+        [self handleResponseObject:responseObject cacheType:ignore key:nil Controller:controller Success:success failure:False];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self handleResponseObject:error Controller:controller failure:False];
     }];
-    [[QQNetManager defaultManager] insertConnectionVC:controller QQConnection:self SessionDataTask:operation];
     return operation;
 }
 #pragma mark - 统一处理下载返回的数据
-- (void)handleResponseObject:(id)responseObject  IsCache:(BOOL)Cache key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
+- (void)handleResponseObject:(id)responseObject  cacheType:(CacheType)cacheType key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
 {
-    if (Cache) {
-        [HttpCache setObject:responseObject forKey:key withBlock:nil];//需要缓存则
-    }
+    
     if ([responseObject[@"code"] isEqualToString:successCode]) {
+//        if (cacheType ==localDate) {
+//            [[QQNetManager defaultManager].dataCache setObject:responseObject forKey:key];
+//        }
         [controller.view hiddenHUD];
         successBlock(responseObject);
     }else{
         [controller.view message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
         NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[@"msg"]], NSLocalizedDescriptionKey,nil];
-        NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:8003 userInfo:userInfo1];
+        NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:cuntomErrorCode userInfo:userInfo1];
         failureBlock(error);
     }
-    [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;
-    [[QQNetManager defaultManager] deleteQQConnection:self];
-    [[QQNetManager defaultManager] deleteConnectionVC:controller];///<下载成功 删除数组里存储
-
+    [self doneRequest:controller];
 }
 - (void)handleResponseObject:(NSError *)error  Controller:(UIViewController *)controller failure:(void(^)(NSError *error))failureBlock
 {
-
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [controller.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
@@ -253,29 +138,12 @@ static AFHTTPSessionManager *manager;
     }else{
         failureBlock(error);
     }
+    [self doneRequest:controller];
+}
+- (void)doneRequest:(UIViewController *)controller
+{
     [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;//请求失败关闭小菊花
     [[QQNetManager defaultManager] deleteQQConnection:self];//请求结束 从字典里删除本次请求
-    [[QQNetManager defaultManager] deleteConnectionVC:controller];///<下载失败 删除数组里存储
-    
-}
-#pragma mark - 取消下载
-- (void)cancelWithOperation:(NSURLSessionDataTask *)operation
-{
-    [operation cancel];
-    [[QQNetManager defaultManager] deleteQQConnection:self];
-}
-#pragma mark - 组织URL存取的key
-- (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters
-{
-    if(!parameters){
-        return URL;
-    };
-    // 将参数字典转换成字符串
-    NSData *stringData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
-    NSString *paraString = [[NSString alloc] initWithData:stringData encoding:NSUTF8StringEncoding];
-    // 将URL与转换好的参数字符串拼接在一起,成为最终存储的KEY值
-    NSString *cacheKey = [NSString stringWithFormat:@"%@%@",URL,paraString];
-    return cacheKey;
 }
 #pragma mark  网络判断
 -(BOOL)requestBeforeJudgeConnect
@@ -301,33 +169,6 @@ static AFHTTPSessionManager *manager;
         [UIApplication sharedApplication].networkActivityIndicatorVisible =isNetworkEnable;/*  网络指示器的状态： 有网络 ： 开  没有网络： 关  */
     });
     return isNetworkEnable;
-}
-
-//获取当前屏幕显示的viewcontroller
-- (UIViewController *)getCurrentVC
-{
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    UIViewController *currentVC = [self getCurrentVCFrom:rootViewController];
-    return currentVC;
-}
-- (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC
-{
-    UIViewController *currentVC;
-    if ([rootVC presentedViewController]) {
-        // 视图是被presented出来的
-        rootVC = [rootVC presentedViewController];
-    }
-    if ([rootVC isKindOfClass:[UITabBarController class]]) {
-        // 根视图为UITabBarController
-        currentVC = [self getCurrentVCFrom:[(UITabBarController *)rootVC selectedViewController]];
-    } else if ([rootVC isKindOfClass:[UINavigationController class]]){
-        // 根视图为UINavigationController
-        currentVC = [self getCurrentVCFrom:[(UINavigationController *)rootVC visibleViewController]];
-    } else {
-        // 根视图为非导航类
-        currentVC = rootVC;
-    }
-    return currentVC;
 }
 @end
 

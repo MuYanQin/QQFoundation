@@ -14,9 +14,9 @@
  返回请求到的数据
  @param QQtableView 返回自己
  @param PullDown   返回bool 表明  YES－－下拉刷新  NO －－－ 上拉记载
- @param DataArray         返回的数据
+ @param SuccessData         返回的数据
  */
-- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)PullDown SuccessDataArray:(NSArray *)DataArray;
+- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)PullDown SuccessData:(id)SuccessData;
 
 
 /**

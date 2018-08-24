@@ -95,10 +95,6 @@
 		52C115761F4EC5CE005471CB /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1153C1F4EC5CE005471CB /* UIImageView+WebCache.m */; };
 		52C115771F4EC5CE005471CB /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1153E1F4EC5CE005471CB /* UIView+WebCache.m */; };
 		52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C115401F4EC5CE005471CB /* UIView+WebCacheOperation.m */; };
-		52C115791F4EC5CE005471CB /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C115431F4EC5CE005471CB /* YYCache.m */; };
-		52C1157A1F4EC5CE005471CB /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C115451F4EC5CE005471CB /* YYDiskCache.m */; };
-		52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C115471F4EC5CE005471CB /* YYKVStorage.m */; };
-		52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C115491F4EC5CE005471CB /* YYMemoryCache.m */; };
 		52D8D10E1F4D775500EA413B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D10D1F4D775500EA413B /* main.m */; };
 		52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1101F4D775500EA413B /* AppDelegate.m */; };
 		52D8D1171F4D775500EA413B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8D1151F4D775500EA413B /* Main.storyboard */; };
@@ -355,14 +351,6 @@
 		52C1153E1F4EC5CE005471CB /* UIView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCache.m"; sourceTree = "<group>"; };
 		52C1153F1F4EC5CE005471CB /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		52C115401F4EC5CE005471CB /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		52C115421F4EC5CE005471CB /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
-		52C115431F4EC5CE005471CB /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
-		52C115441F4EC5CE005471CB /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
-		52C115451F4EC5CE005471CB /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
-		52C115461F4EC5CE005471CB /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
-		52C115471F4EC5CE005471CB /* YYKVStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKVStorage.m; sourceTree = "<group>"; };
-		52C115481F4EC5CE005471CB /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
-		52C115491F4EC5CE005471CB /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
 		52D8D1091F4D775500EA413B /* QQFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D8D10D1F4D775500EA413B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		52D8D10F1F4D775500EA413B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -855,21 +843,6 @@
 			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
-		52C115411F4EC5CE005471CB /* YYCache */ = {
-			isa = PBXGroup;
-			children = (
-				52C115421F4EC5CE005471CB /* YYCache.h */,
-				52C115431F4EC5CE005471CB /* YYCache.m */,
-				52C115441F4EC5CE005471CB /* YYDiskCache.h */,
-				52C115451F4EC5CE005471CB /* YYDiskCache.m */,
-				52C115461F4EC5CE005471CB /* YYKVStorage.h */,
-				52C115471F4EC5CE005471CB /* YYKVStorage.m */,
-				52C115481F4EC5CE005471CB /* YYMemoryCache.h */,
-				52C115491F4EC5CE005471CB /* YYMemoryCache.m */,
-			);
-			path = YYCache;
-			sourceTree = "<group>";
-		};
 		52D8D1001F4D775500EA413B = {
 			isa = PBXGroup;
 			children = (
@@ -899,7 +872,6 @@
 				52C114D71F4EC5CE005471CB /* AFNetworking */,
 				52C114E51F4EC5CE005471CB /* MJRefresh */,
 				52C115141F4EC5CE005471CB /* SDWebImage */,
-				52C115411F4EC5CE005471CB /* YYCache */,
 				52D8D1231F4D77EE00EA413B /* QQFoundation */,
 				4B4D5A59211B2864007FDED8 /* Home */,
 				4B4D5A5A211B2884007FDED8 /* Reward */,
@@ -1370,7 +1342,6 @@
 				52ACF7201F51282500CFA470 /* QQScanVC.m in Sources */,
 				52C115541F4EC5CE005471CB /* MJRefreshHeader.m in Sources */,
 				ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */,
-				52C1157B1F4EC5CE005471CB /* YYKVStorage.m in Sources */,
 				AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
 				AC686F772069D0A6004A08FF /* QQDateFormatter.m in Sources */,
@@ -1390,14 +1361,12 @@
 				52C1155C1F4EC5CE005471CB /* MJRefreshNormalHeader.m in Sources */,
 				52D8D1951F4D77EF00EA413B /* CALayer+XibConfiguration.m in Sources */,
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
-				52C1157A1F4EC5CE005471CB /* YYDiskCache.m in Sources */,
 				52D8D19D1F4D77EF00EA413B /* QQLoadView.m in Sources */,
 				4B4D5A69211B2932007FDED8 /* MCAuthorViewController.m in Sources */,
 				52C115701F4EC5CE005471CB /* SDWebImagePrefetcher.m in Sources */,
 				52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */,
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,
 				52C115611F4EC5CE005471CB /* UIScrollView+MJExtension.m in Sources */,
-				52C1157C1F4EC5CE005471CB /* YYMemoryCache.m in Sources */,
 				52C115591F4EC5CE005471CB /* MJRefreshBackNormalFooter.m in Sources */,
 				4B5BEF8320ECA6B4000BB2E2 /* MCFactory.m in Sources */,
 				52C1154E1F4EC5CE005471CB /* AFURLResponseSerialization.m in Sources */,
@@ -1482,7 +1451,6 @@
 				52C1156C1F4EC5CE005471CB /* SDWebImageDecoder.m in Sources */,
 				ACE026372017672200A387DC /* QQAlertController.m in Sources */,
 				52D8D19C1F4D77EF00EA413B /* QQLabel.m in Sources */,
-				52C115791F4EC5CE005471CB /* YYCache.m in Sources */,
 				52D8D1941F4D77EF00EA413B /* UIViewController+QQPrintDealloc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

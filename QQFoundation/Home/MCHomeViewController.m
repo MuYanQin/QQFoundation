@@ -11,6 +11,7 @@
 #import "MCEmptyCell.h"
 #import "MCLableCell.h"
 #import "UIView+QQFrame.h"
+#import "QQNetManager.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) UIView *wq;
 @end
@@ -26,18 +27,6 @@
     self.tabManager[@"MCLableItem"] = @"MCLableCell";
     [self iniUI];
     
-    self.wq = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight, KScreenWidth, KScreenHeight)];
-    self.wq.backgroundColor = [UIColor purpleColor];
-    [UIView animateWithDuration:0.5 animations:^{
-        self.wq.top = 0;
-    }];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button .frame = CGRectMake(100, 100, 100,30 );
-    button.backgroundColor = [UIColor whiteColor];
-    [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.wq addSubview:button];
-    [[UIApplication sharedApplication].delegate.window addSubview:self.wq];
 }
 - (void)buttonClick
 {
@@ -65,7 +54,11 @@
     lableItem.leftText = @"视图弹出";
     lableItem.rightText = @"点击弹出视图";
     lableItem.selcetCellHandler = ^(id item) {
+        [[QQNetManager defaultManager]RTSGetWith:@"" Parameters:nil From:self Successs:^(id responseObject) {
+            
+        } False:^(NSError *error) {
         
+        }];
     };
     [items addObject:lableItem];
     

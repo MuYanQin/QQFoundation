@@ -8,45 +8,36 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+typedef NS_ENUM (NSInteger,QQSessionType){
+    post = 0,
+    get
+};
+
+typedef NS_ENUM (NSInteger,CacheType){
+    ignore = 0,
+    localDate
+};
+
 @interface QQsession : NSObject
 @property (copy, nonatomic) NSString *urlStr;///<记录当前下载的URl
+@property (nonatomic , strong) NSURLSessionDataTask * SessionTask;//记录某次下载的任务
+@property (nonatomic , copy) NSString * controllerName;//记录某次下载所在界面的名称
 
-
-
-- (NSURLSessionDataTask *)TXDGetWithUrl:(NSString *)url
-                                    Dic:(NSDictionary *)dic
-                                   from:(UIViewController *)controller
-                                success:(void(^)(id responseObject))success
-                                  False:(void(^)(NSError *error))False;
-
-- (NSURLSessionDataTask *)TXDPostWithUrl:(NSString *)url
-                                     Dic:(NSDictionary *)dic
-                                    from:(UIViewController *)controller
-                                 success:(void(^)(id responseObject))success
-                                   False:(void(^)(NSError *error))False;
-
-- (NSURLSessionDataTask *)TXDTableWithUrl:(NSString *)url
-                                      Dic:(NSDictionary *)dic
-                                     from:(UIViewController *)controller
-                                  success:(void(^)(id responseObject))success
-                                    False:(void(^)(NSError *error))False;
-
-- (NSURLSessionDataTask *)TXDGetCacheWithUrl:(NSString *)url
-                                         Dic:(NSDictionary *)dic
-                                        from:(UIViewController *)controller
-                                     success:(void(^)(id responseObject))success
-                                       False:(void(^)(NSError *error))False;
-
+- (NSURLSessionDataTask *)TXDWith:(NSString *)url
+                            Param:(NSDictionary *)param
+                             from:(UIViewController *)controller
+                          txdType:(QQSessionType)txdType
+                          cacheType:(CacheType)cacheType
+                          success:(void(^)(id responseObject))success
+                            False:(void(^)(NSError *error))False;
 
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
                                        Dic:(NSDictionary *)dic
                               MutableArray:(NSMutableArray *)Images
                                       from:(UIViewController *)controller
+                                  fileMark:(NSString *)fileMark
                                   Progress:(void (^)(NSProgress *uploadProgress))Progress
                                    success:(void(^)(id responseObject))success
                                      False:(void(^)(NSError *error))False;
-
-
-- (void)cancelWithOperation:(NSURLSessionDataTask *)operation;
-
 @end

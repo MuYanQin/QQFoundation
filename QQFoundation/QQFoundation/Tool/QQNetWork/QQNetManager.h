@@ -10,10 +10,13 @@
 #import "QQsession.h"
 #import <UIKit/UIKit.h>
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
+static NSString *const successCode = @"200";//配置正确返回的code码
+static NSInteger const cuntomErrorCode = 8001; //自定义返回的errorCode值 不符合正确返回码的数据都在失败回调里
 @interface QQNetManager : NSObject
 @property (assign, nonatomic)    BOOL   IsConsolePrint;///< default is 'YES'  是否打印取消下载的URL
-+ (id)defaultManager;
+@property (nonatomic , strong) NSCache * dataCache;//缓存数据 最大3M 超出会被清理
 
++ (instancetype)defaultManager;
 
 /**
  普通的get请求
@@ -68,6 +71,7 @@
  @param parameters 请求的参数
  @param Images 图片的数组
  @param controller 请求的界面
+ @param fileMark 后台接受图片的字段
  @param Progress 上传的进度回调
  @param Success 成功的回调
  @param False 失败的回调
@@ -76,36 +80,19 @@
            Dictionary:(NSDictionary *)parameters
          MutableArray:(NSMutableArray *)Images
                  From:(UIViewController *)controller
+                 fileMark:(NSString *)fileMark
              Progress:(void (^)(NSProgress *uploadProgress))Progress
               Success:(void(^)( id responseObject))Success
                 False:(void(^)(NSError *error))False;
 
-/**
-  QQTableview使用的请求，因为统一处理的失败请求 无失败的返回  故TableView 独有一个
-
- @param url 请求的网址
- @param parameters 请求的参数
- @param controller 请求的界面
- @param Success 成功的回调
- @param False 失败的回调
- */
-- (void)RTSTableWith:(NSString *)url
-          Parameters:(NSDictionary *)parameters
-                From:(UIViewController *)controller
-            Successs:(void(^)(id responseObject))Success
-               False:(void (^)(NSError * error))False;
-
-
-
 
 - (void)insertQQConnection:(QQsession *)hc;///<插入对象
 - (void)deleteQQConnection:(QQsession *)hc;///<删除对象
-//控制器用
-- (void)insertConnectionVC:(UIViewController *)VC
-              QQConnection:(QQsession *)hc
-           SessionDataTask:(NSURLSessionDataTask *)task;///<插入当前控制器的
+
 
 //在返回的地方调用此方法取消下载
 - (void)deleteConnectionVC:(UIViewController *)vc;///<销毁控制器时取消下载
 
+
+- (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters;
 @end
