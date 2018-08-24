@@ -130,7 +130,7 @@
                             [self deleteQQConnection:session];
                             [session.SessionTask cancel];
                             if (_IsConsolePrint) {
-                                NSLog(@"Cancel this url '%@'",session.urlStr);
+                                NSLog(@"Cancel this controller '%@'",session.controllerName);
                             }
                         }
                     }

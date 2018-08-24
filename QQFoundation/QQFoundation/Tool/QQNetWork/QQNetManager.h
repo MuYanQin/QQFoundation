@@ -15,7 +15,7 @@ static NSInteger const cuntomErrorCode = 8001; //自定义返回的errorCode值 
 @interface QQNetManager : NSObject
 @property (assign, nonatomic)    BOOL   IsConsolePrint;///< default is 'YES'  是否打印取消下载的URL
 @property (nonatomic , strong) NSCache * dataCache;//缓存数据 最大3M 超出会被清理
-
+@property (nonatomic , assign) NSInteger  cacheMin;//缓存时间。秒为单位  默认60S
 + (instancetype)defaultManager;
 
 /**

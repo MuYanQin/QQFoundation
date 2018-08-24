@@ -43,11 +43,18 @@ static AFHTTPSessionManager *manager;
 }
 - (NSURLSessionDataTask *)TXDWith:(NSString *)url Param:(NSDictionary *)param from:(UIViewController *)controller txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType success:(void (^)(id))success False:(void (^)(NSError *))False
 {
-//    NSString *keyStr = nil;
-////判断缓存
-//    if (cacheType == localDate) {
-//        keyStr = [self cacheKeyWithURL:url parameters:param];
-//    }
+//判断缓存
+    if (cacheType == localData) {
+        NSDictionary *dic  = [[QQNetManager defaultManager].dataCache objectForKey:self.urlStr];
+        double preTime = [dic[@"time"] boolValue];
+        double nowtime = (long)[[NSDate date] timeIntervalSince1970];
+        if ((nowtime - preTime)>60) {
+            [[QQNetManager defaultManager].dataCache removeObjectForKey:self.urlStr];
+        }else{
+            success(dic[@"data"]);
+            return nil;
+        }
+    }
     NSURLSessionDataTask * operation;
     [[QQNetManager defaultManager] insertQQConnection:self];
     [controller.view loading];
@@ -56,7 +63,7 @@ static AFHTTPSessionManager *manager;
         {
             operation = [self.sharedHTTPSession GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleResponseObject:responseObject cacheType:cacheType key:nil Controller:controller Success:success failure:False];
+                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:False];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [self handleResponseObject:error Controller:controller failure:False];
             }];
@@ -66,7 +73,7 @@ static AFHTTPSessionManager *manager;
         {
             [self.sharedHTTPSession POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleResponseObject:responseObject cacheType:cacheType key:nil Controller:controller Success:success failure:False];
+                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:False];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [self handleResponseObject:error Controller:controller failure:False];
             }];
@@ -114,9 +121,10 @@ static AFHTTPSessionManager *manager;
 {
     
     if ([responseObject[@"code"] isEqualToString:successCode]) {
-//        if (cacheType ==localDate) {
-//            [[QQNetManager defaultManager].dataCache setObject:responseObject forKey:key];
-//        }
+        if (cacheType == localData) {
+            double time = (long)[[NSDate date] timeIntervalSince1970];
+            [[QQNetManager defaultManager].dataCache setObject:@{@"data":responseObject,@"time":@(time)} forKey:key];
+        }
         [controller.view hiddenHUD];
         successBlock(responseObject);
     }else{

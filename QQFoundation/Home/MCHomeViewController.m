@@ -26,7 +26,7 @@
     self.tabManager[@"MCEmptyItem"] = @"MCEmptyCell";
     self.tabManager[@"MCLableItem"] = @"MCLableCell";
     [self iniUI];
-    
+
 }
 - (void)buttonClick
 {

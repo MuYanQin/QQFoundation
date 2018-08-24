@@ -70,11 +70,12 @@
 }
 - (void)RequestUpdateWith:(NSString *)url Parameters:(NSDictionary *)parameters Images:(NSMutableArray *)images
 {
-    [[QQNetManager defaultManager]RTSUploadWith:url Dictionary:parameters MutableArray:images From:self Progress:^(NSProgress *uploadProgress) {
+    [[QQNetManager defaultManager]RTSUploadWith:url Dictionary:parameters MutableArray:images From:self fileMark:@"" Progress:^(NSProgress *uploadProgress) {
+        
     } Success:^(id responseObject) {
-        [self getTempResponseObject:responseObject TagURL:url];
+        
     } False:^(NSError *error) {
-        [self getTempError:error TagURL:url];
+        
     }];
 }
 
