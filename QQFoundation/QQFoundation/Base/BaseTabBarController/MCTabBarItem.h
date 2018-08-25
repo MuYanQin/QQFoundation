@@ -24,18 +24,4 @@
  */
 @property (nonatomic,strong) UIColor *BadgeTextColor;
 
-
-/**
- 额外的给item添加一个背景图  做TabBar的凸起按钮
- */
-@property (nonatomic , assign) BOOL  isHasBackGroudImageview;
-
-/**
- 背景图片名称
- */
-@property (nonatomic , copy) NSString * BackGroudImageName;
-/**
- 背景imageView
- */
-@property (nonatomic , strong) UIImageView * BackGroudImageview;
 @end

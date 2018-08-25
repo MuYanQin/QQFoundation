@@ -12,6 +12,7 @@
 #import "MCLableCell.h"
 #import "UIView+QQFrame.h"
 #import "QQNetManager.h"
+#import "MCMineViewController.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) UIView *wq;
 @end
@@ -54,7 +55,7 @@
     lableItem.leftText = @"视图弹出";
     lableItem.rightText = @"点击弹出视图";
     lableItem.selcetCellHandler = ^(id item) {
-        [[QQNetManager defaultManager]RTSGetWith:@"" Parameters:nil From:self Successs:^(id responseObject) {
+        [[QQNetManager Instance]RTSGetWith:@"" Parameters:nil From:self Successs:^(id responseObject) {
             
         } False:^(NSError *error) {
         
@@ -67,7 +68,7 @@
     contentView.leftText = @"侧滑视图";
     contentView.rightText = @"";
     contentView.selcetCellHandler = ^(id item) {
-        
+        [self.navigationController pushViewController: [MCMineViewController new] animated:YES];
     };
     [items addObject:contentView];
     

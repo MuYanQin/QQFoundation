@@ -42,14 +42,6 @@ static const CGFloat imageWidth = imageHeight*1.14;
     CGPoint labelCenter = self.titleLabel.center;
     labelCenter.x = self.imageView.center.x;
     self.titleLabel.center = labelCenter;
-    
-    if (_isHasBackGroudImageview) {
-        self.BackGroudImageview.frame = self.imageView.frame;
-        self.BackGroudImageview.size = CGSizeMake(self.imageView.width *0.9, self.imageView.height *0.9);
-        self.BackGroudImageview.center = self.imageView.center;
-        [self addSubview:self.BackGroudImageview];
-        [self sendSubviewToBack:self.BackGroudImageview];
-    }
 }
 - (void)setBadge:(NSInteger)Badge
 {
@@ -78,39 +70,20 @@ static const CGFloat imageWidth = imageHeight*1.14;
     [self addSubview:self.BadgeLb];
     
 }
-- (void)setBackGroudImageName:(NSString *)BackGroudImageName
-{
-    _BackGroudImageName = BackGroudImageName;
-    if (BackGroudImageName.length <= 0) {
-        self.BackGroudImageview.image = nil;
-        self.BackGroudImageview.hidden = YES;
-    }else{
-        self.BackGroudImageview.hidden = NO;
-        self.BackGroudImageview.image =  [UIImage imageNamed:_BackGroudImageName];
-        
-        
-        CABasicAnimation * animation = [CABasicAnimation animation];
-        animation.keyPath = @"transform.scale";//KVC的方式来访问属性
-        animation.fromValue = @0.0;
-        animation.toValue = @1.0;
-        animation.duration = 0.15;//持续时间
-        animation.repeatCount = 1;//无限循环
-        animation.speed = 1;//速度
-        //    animation.repeatDuration = 10;//在多久哪动画有效
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];//结束函数
-        animation.autoreverses= NO;//回归是否是动画形式
-        [self.BackGroudImageview.layer addAnimation:animation forKey:@"frame"];//添加动画
-        
-    }
-}
-- (void)setIsHasBackGroudImageview:(BOOL)isHasBackGroudImageview
-{
-    _isHasBackGroudImageview = isHasBackGroudImageview;
-    if (isHasBackGroudImageview) {
-        [self setNeedsLayout];
-    }
-    
-}
+/**
+ CABasicAnimation * animation = [CABasicAnimation animation];
+ animation.keyPath = @"transform.scale";//KVC的方式来访问属性
+ animation.fromValue = @0.0;
+ animation.toValue = @1.0;
+ animation.duration = 0.15;//持续时间
+ animation.repeatCount = 1;//无限循环
+ animation.speed = 1;//速度
+ //    animation.repeatDuration = 10;//在多久哪动画有效
+ animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];//结束函数
+ animation.autoreverses= NO;//回归是否是动画形式
+ [self.BackGroudImageview.layer addAnimation:animation forKey:@"frame"];//添加动画
+ */
+
 - (void)setBadgeBackColor:(UIColor *)BadgeBackColor
 {
     _BadgeBackColor = BadgeBackColor;
@@ -131,12 +104,5 @@ static const CGFloat imageWidth = imageHeight*1.14;
         _BadgeLb.textAlignment = NSTextAlignmentCenter;
     }
     return _BadgeLb;
-}
-- (UIImageView *)BackGroudImageview
-{
-    if (!_BackGroudImageview) {
-        _BackGroudImageview = [[UIImageView alloc]init];
-    }
-    return _BackGroudImageview;
 }
 @end

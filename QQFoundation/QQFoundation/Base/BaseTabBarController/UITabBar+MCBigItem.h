@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UITabBar (MCBigItem)
+//传递那个大的button 为了超出部分能响应事件
 @property (nonatomic , strong) UIButton * BigButton;
 @end

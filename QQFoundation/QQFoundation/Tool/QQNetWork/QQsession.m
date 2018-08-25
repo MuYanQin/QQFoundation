@@ -44,18 +44,18 @@ static AFHTTPSessionManager *manager;
 {
 //判断缓存
     if (cacheType == localData) {
-        NSDictionary *dic  = [[QQNetManager defaultManager].dataCache objectForKey:self.urlStr];
+        NSDictionary *dic  = [[QQNetManager Instance].dataCache objectForKey:self.urlStr];
         double preTime = [dic[@"time"] boolValue];
         double nowtime = (long)[[NSDate date] timeIntervalSince1970];
         if ((nowtime - preTime)>60) {
-            [[QQNetManager defaultManager].dataCache removeObjectForKey:self.urlStr];
+            [[QQNetManager Instance].dataCache removeObjectForKey:self.urlStr];
         }else{
             success(dic[@"data"]);
             return nil;
         }
     }
     NSURLSessionDataTask * operation;
-    [[QQNetManager defaultManager] insertQQConnection:self];
+    [[QQNetManager Instance] insertQQConnection:self];
     [controller.view loading];
     switch (txdType) {
         case get:
@@ -122,7 +122,7 @@ static AFHTTPSessionManager *manager;
     if ([responseObject[@"code"] isEqualToString:successCode]) {
         if (cacheType == localData) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
-            [[QQNetManager defaultManager].dataCache setObject:@{@"data":responseObject,@"time":@(time)} forKey:key];
+            [[QQNetManager Instance].dataCache setObject:@{@"data":responseObject,@"time":@(time)} forKey:key];
         }
         [controller.view hiddenHUD];
         successBlock(responseObject);
@@ -150,7 +150,7 @@ static AFHTTPSessionManager *manager;
 - (void)doneRequest:(UIViewController *)controller
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;//请求失败关闭小菊花
-    [[QQNetManager defaultManager] deleteQQConnection:self];//请求结束 从字典里删除本次请求
+    [[QQNetManager Instance] deleteQQConnection:self];//请求结束 从字典里删除本次请求
 }
 #pragma mark  网络判断
 -(BOOL)requestBeforeJudgeConnect

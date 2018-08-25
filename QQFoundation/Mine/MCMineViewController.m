@@ -7,7 +7,7 @@
 //
 
 #import "MCMineViewController.h"
-
+#import "QQNetManager.h"
 @interface MCMineViewController ()
 
 @end
@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[QQNetManager Instance]RTSGetWith:@"" Parameters:nil From:self Successs:^(id responseObject) {
+        
+    } False:^(NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

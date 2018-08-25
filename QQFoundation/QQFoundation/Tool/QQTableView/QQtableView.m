@@ -97,7 +97,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 //**请求方法*/
 - (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
-    [[QQNetManager defaultManager]RTSGetWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
+    [[QQNetManager Instance]RTSGetWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
             [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];

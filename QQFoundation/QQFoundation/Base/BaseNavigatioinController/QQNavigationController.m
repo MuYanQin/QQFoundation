@@ -96,7 +96,7 @@
         //手势返回  成功取消
         if (![context isCancelled]) {
             //这里打印的是栈顶的VC   所以要tempVC中间过渡
-            [[QQNetManager defaultManager] deleteConnectionVC:tempVC];
+            [[QQNetManager Instance] deleteConnectionVC:tempVC];
         }
     }];
 }
@@ -117,7 +117,7 @@
 
     if (!self.isSwitching) {
         //返回调用此方法取消请求  如果是请求完成则从数组中去除本子请求
-        [[QQNetManager defaultManager] deleteConnectionVC:self.viewControllers.lastObject];
+        [[QQNetManager Instance] deleteConnectionVC:self.viewControllers.lastObject];
         return [super popViewControllerAnimated:animated];
     } else {
         //        [self enqueuePopViewController:nil animate:animated];

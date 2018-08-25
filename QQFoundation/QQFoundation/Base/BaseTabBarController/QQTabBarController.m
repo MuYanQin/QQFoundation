@@ -31,12 +31,14 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     [super viewDidLoad];
     [self initVC];
     [self createVc];
+    //去除tab伤的横线
     [self.tabBar setBackgroundImage:[UIImage new]];
     [self.tabBar setShadowImage:[UIImage new]];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    //去除系统的UITabBarButton
     Class class = NSClassFromString(@"UITabBarButton");
     for (UIView *btn in self.tabBar.subviews) {
         //遍历系统tabbar的子控件
@@ -50,12 +52,12 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
  */
 - (void)viewWillLayoutSubviews{
 
+    //这里设置高度  默认就是系统的高度
 //    CGRect tabFrame = self.tabBar.frame;
 //    tabFrame.size.height = tabbarHeight;
 //    tabFrame.origin.y = self.view.frame.size.height - tabbarHeight;
 //    self.tabBar.frame = tabFrame;
-//    CGRect rect = self.tabBar.bounds;
-//    self.tabBarView.frame = rect;
+
 }
 - (void)initVC{
     self.home   = [MCHomeViewController   new];
@@ -77,8 +79,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     NSArray *VCname = @[@"首页",@"悬赏",@"寻车",@"授权",@"我的"];
     self.item0 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
     self.item1 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
-    self.item1.isHasBackGroudImageview = YES;
-    self.item2 =[[MCTabBarItem alloc]init];
+    self.item2 =[MCTabBarItem  buttonWithType:UIButtonTypeCustom];
     self.item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
     self.item4 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
 
@@ -95,7 +96,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
             [item setBackgroundImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateNormal];
             [item setBackgroundImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateHighlighted];
         }else{
-            item.frame = CGRectMake(i*TabWidth, 0, TabWidth, tabbarHeight);
+            item.frame = CGRectMake(i*TabWidth, 0, TabWidth, self.tabBar.frame.size.height);
             [item setImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
             [item setImage:[UIImage imageNamed:heightImage] forState:UIControlStateSelected];
             [item setTitle:VCname[i] forState:UIControlStateNormal];
@@ -124,11 +125,6 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     self.SelectIndex = self.selectedIndex;
     item.selected = YES;
     self.lastItem = item;
-    if (self.SelectIndex ==1) {
-        self.item1.BackGroudImageName = @"navigation_reward_BG";
-    }else{
-        self.item1.BackGroudImageName = @"213123";
-    }
     [self QQTabBarController:self didSelect:self.viewControllers[self.selectedIndex]];
 }
 - (void)QQTabBarController:(QQTabBarController *)TabBarController  didSelect:(UIViewController *)viewcontroller
