@@ -9,6 +9,8 @@
 #import "MCRewardViewController.h"
 #import "MCVerificationCodeView.h"
 #import "MCUserInfo.h"
+#import "UILabel+MCChained.h"
+#import "UIButton+MCChained.h"
 @interface MCRewardViewController ()
 
 @end
@@ -19,8 +21,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"案例使用2";
+    UILabel * TLabel  = [[UILabel alloc]init];
+    TLabel.Qtext(@"秦慕乔");
+//    TLabel.frame = CGRectMake(100, 100, 100, 40);
+    [self.view addSubview:TLabel];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试", UIControlStateNormal).Qframe(CGRectMake(100, 100, 100, 40)).Qtarget(self,@selector(clic)).QtitleClolor([UIColor redColor], UIControlStateNormal).QbackgroudClolor([UIColor lightGrayColor]);
+    [self.view addSubview:button];
 }
-
+- (void)clic
+{
+    NSLog(@"123");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

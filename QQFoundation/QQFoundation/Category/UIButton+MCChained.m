@@ -1,0 +1,96 @@
+//
+//  UIButton+MCChained.m
+//  QQFoundation
+//
+//  Created by qinmuqiao on 2018/8/26.
+//  Copyright © 2018年 慕纯. All rights reserved.
+//
+
+#import "UIButton+MCChained.h"
+
+@implementation UIButton (MCChained)
+- (UIButton *(^)(NSString *, UIControlState))QtitleText
+{
+    return ^UIButton *(NSString * input,UIControlState state){
+        [self setTitle:input forState:state];
+        return self;
+    };
+}
+- (UIButton *(^)(UIColor *, UIControlState))QtitleClolor
+{
+    return ^UIButton *(UIColor *color,UIControlState state){
+        [self setTitleColor:color forState:state];
+        return self;
+    };
+}
+- (UIButton *(^)(UIColor *))QbackgroudClolor
+{
+    return ^UIButton *(UIColor *color){
+        self.backgroundColor = color;
+        return self;
+    };
+}
+- (UIButton *(^)(UIFont *))QtitleFont
+{
+    return ^UIButton *(UIFont *font){
+        self.titleLabel.font = font;
+        return self;
+    };
+}
+- (UIButton *(^)(UIImage *, UIControlState))Qimage
+{
+     return ^UIButton *(UIImage *image,UIControlState state){
+         [self setImage:image forState:state];
+         return self;
+     };
+}
+- (UIButton *(^)(UIImage *, UIControlState))QbackgroudImage
+{
+    return ^UIButton *(UIImage *image,UIControlState state){
+        [self setBackgroundImage:image forState:state];
+        return self;
+    };
+}
+- (UIButton *(^)(CGRect))Qframe
+{
+    return ^UIButton *(CGRect frame){
+        self.frame = frame;
+        return self;
+    };
+}
+- (UIButton *(^)(CGFloat))QcornerRadius
+{
+    return ^UIButton *(CGFloat Radius){
+        self.layer.cornerRadius = Radius;
+        return self;
+    };
+}
+- (UIButton *(^)(UIColor *))QborderColor
+{
+    return ^UIButton *(UIColor *Color){
+        self.layer.borderColor = Color.CGColor;
+        return self;
+    };
+}
+- (UIButton *(^)(CGFloat))QborderWidth
+{
+    return ^UIButton *(CGFloat Width){
+        self.layer.borderWidth = Width;
+        return self;
+    };
+}
+- (UIButton *(^)(BOOL))QmasksToBounds
+{
+    return ^UIButton *(BOOL isMasks){
+        self.layer.masksToBounds = isMasks;
+        return self;
+    };
+}
+- (UIButton *(^)(id, SEL))Qtarget
+{
+    return ^UIButton *(id target,SEL action){
+        [self addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+        return self;
+    };
+}
+@end

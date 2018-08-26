@@ -21,7 +21,9 @@ static char const BIG;
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     UIView *view = [super hitTest:point withEvent:event];
-    if (view == nil) {
+    
+    //tabbar隐藏的时候 不走此方法
+    if (view == nil && !self.hidden) {
         CGPoint newPoint = [self.BigButton convertPoint:point fromView:self];
         // 判断触摸点是否在button上
         if (CGRectContainsPoint(self.BigButton.bounds, newPoint)) {

@@ -23,17 +23,18 @@
 ///***********************************************************************************
 #import "NSMutableAttributedString+Manage.h"
 #import "NSString+Manage.h"
-#import "NSAttributedString+Easy.h"/// 一些AttibutedString的快速使用
 #import "NSDate+QQCalculate.h"///获取时间日期的一些方法
 #import "NSString+QQCalculate.h"///字符串的一些操作
 #import "UIButton+Cache.h"///为了防止中间更换其他的图片下载工具
 #import "UIImage+Usually.h"///
 #import "UIImageView+Cache.h"///
 #import "UIScrollView+Touch.h"///解决ScrollView 的滑动与touch事件冲突
-#import "UIView+MBProgress"
+#import "UIView+MBProgress.h"
 #import "UIView+QQFrame.h"/// 快速获取View的left、right、top、bottom
 #import "UIView+SuperViewController.h"///获取View的父Controller
-#import "UIView+MCPopView"//快捷的弹出视图分类
+#import "UIView+MCPopView.h"//快捷的弹出视图分类
+#import "UILabel+MCChained.h"//快捷的弹出视图分类
+#import "UIButton+MCChained.h"//快捷的弹出视图分类
 
 ///***********************************************************************************
 /// Successor
