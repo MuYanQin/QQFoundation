@@ -21,13 +21,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"案例使用2";
-    UILabel * TLabel  = [[UILabel alloc]init];
-    TLabel.Qtext(@"秦慕乔");
-//    TLabel.frame = CGRectMake(100, 100, 100, 40);
+    UILabel * TLabel  = [UILabel getLabel].Qtext(@"秦慕乔").Qframe(CGRectMake(100, 100, 100, 30));
     [self.view addSubview:TLabel];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试", UIControlStateNormal).Qframe(CGRectMake(100, 100, 100, 40)).Qtarget(self,@selector(clic)).QtitleClolor([UIColor redColor], UIControlStateNormal).QbackgroudClolor([UIColor lightGrayColor]);
+    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试").Qframe(CGRectMake(100, 200, 100, 40)).Qtarget(self,@selector(clic)).QtitleClolor([UIColor redColor]).QbackgroudClolor([UIColor lightGrayColor]);
     [self.view addSubview:button];
 }
 - (void)clic

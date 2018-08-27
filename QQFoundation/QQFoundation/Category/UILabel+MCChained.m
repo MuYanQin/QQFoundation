@@ -12,6 +12,10 @@ typedef UILabel * (^Label)(id input);
 @implementation UILabel (MCChained)
 @dynamic Qtext,QtextColor,Qfont;
 
++ (UILabel *)getLabel
+{
+    return [[UILabel alloc]init];
+}
 - (UILabel *(^)(UIColor *))QtextColor
 {
     return ^UILabel *(id input){
@@ -33,7 +37,13 @@ typedef UILabel * (^Label)(id input);
         return self;
     };
 }
-
+- (UILabel *(^)(CGRect frame))Qframe
+{
+    return ^UILabel *(CGRect input){
+        self.frame = input;
+        return self;
+    };
+}
 - (UILabel *(^)(NSMutableAttributedString *QattributedText))QattributedText
 {
     return ^UILabel *(id input){

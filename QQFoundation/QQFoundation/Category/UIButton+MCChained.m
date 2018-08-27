@@ -9,17 +9,32 @@
 #import "UIButton+MCChained.h"
 
 @implementation UIButton (MCChained)
-- (UIButton *(^)(NSString *, UIControlState))QtitleText
+- (UIButton *(^)(NSString *, UIControlState))QtitleTextState
 {
     return ^UIButton *(NSString * input,UIControlState state){
         [self setTitle:input forState:state];
         return self;
     };
 }
-- (UIButton *(^)(UIColor *, UIControlState))QtitleClolor
+- (UIButton *(^)(NSString *))QtitleText
+{
+    return ^UIButton *(NSString * input){
+        [self setTitle:input forState:UIControlStateNormal];
+        return self;
+    };
+    
+}
+- (UIButton *(^)(UIColor *, UIControlState))QtitleClolorState
 {
     return ^UIButton *(UIColor *color,UIControlState state){
         [self setTitleColor:color forState:state];
+        return self;
+    };
+}
+- (UIButton *(^)(UIColor *))QtitleClolor
+{
+    return ^UIButton *(UIColor *color){
+        [self setTitleColor:color forState:UIControlStateNormal];
         return self;
     };
 }
@@ -37,17 +52,32 @@
         return self;
     };
 }
-- (UIButton *(^)(UIImage *, UIControlState))Qimage
+- (UIButton *(^)(UIImage *, UIControlState))QimageState
 {
      return ^UIButton *(UIImage *image,UIControlState state){
          [self setImage:image forState:state];
          return self;
      };
 }
-- (UIButton *(^)(UIImage *, UIControlState))QbackgroudImage
+- (UIButton *(^)(UIImage *))Qimage
+{
+    return ^UIButton *(UIImage *image){
+        [self setImage:image forState:UIControlStateNormal];
+        return self;
+    };
+}
+- (UIButton *(^)(UIImage *, UIControlState))QbackgroudImageState
+
 {
     return ^UIButton *(UIImage *image,UIControlState state){
         [self setBackgroundImage:image forState:state];
+        return self;
+    };
+}
+- (UIButton *(^)(UIImage *))QbackgroudImage
+{
+    return ^UIButton *(UIImage *image){
+        [self setBackgroundImage:image forState:UIControlStateNormal];
         return self;
     };
 }

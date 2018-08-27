@@ -33,8 +33,8 @@
 #import "UIView+QQFrame.h"/// 快速获取View的left、right、top、bottom
 #import "UIView+SuperViewController.h"///获取View的父Controller
 #import "UIView+MCPopView.h"//快捷的弹出视图分类
-#import "UILabel+MCChained.h"//快捷的弹出视图分类
-#import "UIButton+MCChained.h"//快捷的弹出视图分类
+#import "UILabel+MCChained.h"//链式语法创建label
+#import "UIButton+MCChained.h"//链式语法创建button
 
 ///***********************************************************************************
 /// Successor

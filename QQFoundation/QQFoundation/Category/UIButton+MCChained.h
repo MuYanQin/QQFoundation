@@ -9,12 +9,30 @@
 #import <UIKit/UIKit.h>
 
 @interface UIButton (MCChained)
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleText)(NSString *titleText,UIControlState);
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleFont)(UIFont *font);
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleClolor)(UIColor *color,UIControlState);
+@property (nonatomic , strong ,readonly) UIButton *(^QtitleTextState)(NSString *titleText,UIControlState);
+
+/**
+ 默认 Normal
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QtitleText)(NSString *titleText);
+@property (nonatomic , strong ,readonly) UIButton *(^QtitleClolorState)(UIColor *color,UIControlState);
+/**
+ 默认 Normal
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QtitleClolor)(UIColor *color);
+@property (nonatomic , strong ,readonly) UIButton *(^QimageState)(UIImage *image,UIControlState);
+/**
+ 默认 Normal
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^Qimage)(UIImage *image);
+@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImageState)(UIImage *image,UIControlState);
+/**
+ 默认 Normal
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImage)(UIImage *image);
+
 @property (nonatomic , strong ,readonly) UIButton *(^QbackgroudClolor)(UIColor *color);
-@property (nonatomic , strong ,readonly) UIButton *(^Qimage)(UIImage *image,UIControlState);
-@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImage)(UIImage *image,UIControlState);
+@property (nonatomic , strong ,readonly) UIButton *(^QtitleFont)(UIFont *font);
 @property (nonatomic , strong ,readonly) UIButton *(^Qframe)(CGRect frame);
 @property (nonatomic , strong ,readonly) UIButton *(^QcornerRadius)(CGFloat Radius);
 @property (nonatomic , strong ,readonly) UIButton *(^QborderWidth)(CGFloat Width);

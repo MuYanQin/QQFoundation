@@ -12,6 +12,9 @@
 @property (nonatomic, readonly) UILabel *(^Qfont)(UIFont *font);
 @property (nonatomic, readonly) UILabel *(^QtextColor)(UIColor *color);
 @property (nonatomic, readonly) UILabel *(^Qtext)(NSString *text);
+@property (nonatomic , strong ,readonly) UILabel *(^Qframe)(CGRect frame);
 @property (nonatomic, readonly) UILabel *(^QattributedText)(NSMutableAttributedString *text);
 @property (nonatomic, readonly) UILabel *(^QnumberOfLines)(NSInteger num);
+
++ (UILabel *)getLabel;
 @end
