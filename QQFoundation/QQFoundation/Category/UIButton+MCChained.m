@@ -150,4 +150,12 @@
         return self;
     };
 }
+- (UIButton *(^)(BOOL))Qhidden
+{
+    return ^UIButton *(BOOL hidden){
+        self.hidden = hidden;
+        return self;
+    };
+    
+}
 @end

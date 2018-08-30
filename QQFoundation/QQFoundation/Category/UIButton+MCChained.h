@@ -56,4 +56,5 @@ typedef NS_ENUM(NSInteger,QTextPosition){
 @property (nonatomic , strong ,readonly) UIButton *(^Qtarget)(id target,SEL action);
 
 @property (nonatomic, readonly) UIButton *(^Qtag)(NSInteger tag);
+@property (nonatomic, readonly) UIButton *(^Qhidden)(BOOL hidden);
 @end
