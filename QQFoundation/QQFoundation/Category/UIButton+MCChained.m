@@ -8,7 +8,27 @@
 
 #import "UIButton+MCChained.h"
 
+
 @implementation UIButton (MCChained)
+
+-(UIButton *(^)(id))QInfo
+{
+    return ^UIButton *(id info){
+        return self;
+    };
+}
+- (UIButton *(^)(CGSize))QimageSize
+{
+    return ^UIButton *(CGSize size){
+        return self;
+    };
+}
+- (UIButton *(^)(QTextPosition))QtextPosition
+{
+    return ^UIButton *(QTextPosition Position){
+        return self;
+    };
+}
 - (UIButton *(^)(NSString *, UIControlState))QtitleTextState
 {
     return ^UIButton *(NSString * input,UIControlState state){
@@ -120,6 +140,13 @@
 {
     return ^UIButton *(id target,SEL action){
         [self addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+        return self;
+    };
+}
+- (UIButton *(^)(NSInteger))Qtag
+{
+    return ^UIButton *(NSInteger tag){
+        self.tag = tag;
         return self;
     };
 }

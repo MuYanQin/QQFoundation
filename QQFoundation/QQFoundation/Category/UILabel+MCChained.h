@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef NS_ENUM(NSInteger,QtextAlignment){
+    Qleft = 0,
+    Qcenter,
+    Qright
+};
 @interface UILabel (MCChained)
 @property (nonatomic, readonly) UILabel *(^Qfont)(UIFont *font);
 @property (nonatomic, readonly) UILabel *(^QtextColor)(UIColor *color);
@@ -15,6 +19,8 @@
 @property (nonatomic , strong ,readonly) UILabel *(^Qframe)(CGRect frame);
 @property (nonatomic, readonly) UILabel *(^QattributedText)(NSMutableAttributedString *text);
 @property (nonatomic, readonly) UILabel *(^QnumberOfLines)(NSInteger num);
-
+@property (nonatomic, readonly) UILabel *(^Qtag)(NSInteger tag);
+@property (nonatomic, readonly) UILabel *(^Qalignment)(QtextAlignment Alignment);
+@property (nonatomic, readonly) UILabel *(^Qhidden)(BOOL hidden);
 + (UILabel *)getLabel;
 @end

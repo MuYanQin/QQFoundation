@@ -45,7 +45,7 @@
 - (NSMutableArray *)selectAllInfo
 {
     __block NSMutableArray *users = [[NSMutableArray alloc] init];
-    NSString *sql = [NSString stringWithFormat:@"select count(*) from %@",TABLENAME];
+    NSString *sql = [NSString stringWithFormat:@"select * from %@",TABLENAME];
     [self.DBQ inDatabase:^(FMDatabase *db)   {//代码实际上是同步
         [db open];
         FMResultSet *rs = [db executeQuery:sql];

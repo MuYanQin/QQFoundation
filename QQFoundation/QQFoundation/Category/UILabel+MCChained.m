@@ -58,4 +58,25 @@ typedef UILabel * (^Label)(id input);
         return self;
     };
 }
+- (UILabel *(^)(NSInteger))Qtag
+{
+    return ^UILabel *(NSInteger tag){
+        self.tag = tag;
+        return self;
+    };
+}
+- (UILabel *(^)(QtextAlignment))Qalignment
+{
+    return ^UILabel *(QtextAlignment Alignment){
+        self.textAlignment  = (int)Alignment;
+        return self;
+    };
+}
+-(UILabel *(^)(BOOL))Qhidden
+{
+    return ^UILabel *(BOOL hidden){
+        self.hidden  = hidden;
+        return self;
+    };
+}
 @end

@@ -10,7 +10,7 @@
 #import "MCVerificationCodeView.h"
 #import "MCUserInfo.h"
 #import "UILabel+MCChained.h"
-#import "UIButton+MCChained.h"
+#import "QQButton.h"
 @interface MCRewardViewController ()
 
 @end
@@ -24,13 +24,15 @@
     UILabel * TLabel  = [UILabel getLabel].Qtext(@"秦慕乔").Qframe(CGRectMake(100, 100, 100, 30));
     [self.view addSubview:TLabel];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试").Qframe(CGRectMake(100, 200, 100, 40)).Qtarget(self,@selector(clic)).QtitleClolor([UIColor redColor]).QbackgroudClolor([UIColor lightGrayColor]);
+    QQButton *button = [QQButton buttonWithType:UIButtonTypeCustom];
+    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试文字位置").Qframe(CGRectMake(100, 200, 100, 100)).Qtarget(self,@selector(clic:)).QtitleClolor([UIColor redColor]).QbackgroudClolor([UIColor lightGrayColor]).Qimage([UIImage imageNamed:@"tab_launch"]).QInfo(@"info").QtextPosition(Ttop);
+
     [self.view addSubview:button];
+    
 }
-- (void)clic
+- (void)clic:(QQButton *)btn;
 {
-    NSLog(@"123");
+    NSLog(@"%@",btn.info);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
