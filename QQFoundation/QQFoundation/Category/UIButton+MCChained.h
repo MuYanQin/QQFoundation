@@ -8,14 +8,24 @@
 
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger,QTextPosition){
-    Tright  = 0,// 文字文字在右
-    Tleft   = 1,//文字在左
-    Ttop    = 2,// 文字在上
-    Tbottom = 3 // 文字在下
+    Tright  = 1,// 文字文字在右
+    Tleft   = 2,//文字在左
+    Ttop    = 3,// 文字在上
+    Tbottom = 4 // 文字在下
 };
 @interface UIButton (MCChained)
+/**
+    下属性是给子类QQButton使用。用来做图片位置 否则使用无效。设置图片的大小
+ */
 @property (nonatomic , assign , readonly) UIButton *(^QimageSize)(CGSize imageSize);
+/**
+    下属性是给子类QQButton使用。用来做图片位置 否则使用无效。 设置文字的文字
+ */
 @property (nonatomic , assign , readonly) UIButton *(^QtextPosition)(QTextPosition position);
+
+/**
+    下属性是给子类QQButton使用。用来携带信息 懒得用运行时了 否则使用无效
+ */
 @property (nonatomic , strong , readonly) UIButton *(^QInfo)(id Info);//携带信息
 
 /**

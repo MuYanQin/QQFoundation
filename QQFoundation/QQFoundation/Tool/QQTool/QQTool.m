@@ -70,7 +70,7 @@
      @"([#][^#]+[#])";话题的正则
     */
     if(mobile.length ==0)return NO;
-    NSString *CH_NUM = @"^[1]{1}[3-8]{1}[0-9]{9}$";
+    NSString *CH_NUM = @"^[1]{1}[3-9]{1}[0-9]{9}$";
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CH_NUM];
     BOOL bret = [pre evaluateWithObject:mobile];
     return bret;

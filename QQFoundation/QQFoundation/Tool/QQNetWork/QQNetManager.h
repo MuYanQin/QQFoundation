@@ -11,7 +11,6 @@
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
 @class QQsession;
 static NSString *const successCode = @"200";//配置正确返回的code码
-static NSInteger const cuntomErrorCode = 8001; //自定义返回的errorCode值 不符合正确返回码的数据都在失败回调里
 @interface QQNetManager : NSObject
 @property (assign, nonatomic)    BOOL   IsConsolePrint;///< default is 'YES'  是否打印取消下载的URL
 @property (nonatomic , strong) NSCache * dataCache;//缓存数据 最大3M 超出会被清理

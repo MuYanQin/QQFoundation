@@ -129,7 +129,7 @@ static AFHTTPSessionManager *manager;
     }else{
         [controller.view message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
         NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[@"msg"]], NSLocalizedDescriptionKey,nil];
-        NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:cuntomErrorCode userInfo:userInfo1];
+        NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:[responseObject[@"code"] integerValue] userInfo:userInfo1];
         failureBlock(error);
     }
     [self doneRequest:controller];

@@ -31,6 +31,9 @@
 @end
 
 @implementation QQButton
+{
+    dispatch_source_t _timer;
+}
 -(UIButton *(^)(id))QInfo
 {
     return ^UIButton *(id info){
@@ -53,11 +56,11 @@
         return self;
     };
 }
-- (void)RegisterClick:(QQButton *)button
+- (void)startCountdown
 {
     __block NSInteger timeOut = 60;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     // 每秒执行一次
     dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(_timer, ^{
@@ -80,13 +83,19 @@
     });
     dispatch_resume(_timer);
 }
+- (void)resetCountdown
+{
+    dispatch_source_cancel(_timer);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setTitle:@"点击重新获取验证码" forState:UIControlStateNormal];
+        self.userInteractionEnabled = YES;
+    });
+}
 /**
  *  布局子控件
  */
 - (void)layoutSubviews{
     [super layoutSubviews];
-    self.imageView.backgroundColor = [UIColor purpleColor];
-    self.titleLabel.backgroundColor = [UIColor redColor];
     switch (self.position) {
         case Tright:
         {
@@ -114,6 +123,38 @@
 }
 #pragma mark - 文字在右
 - (void)alignmentRight{
+
+    // 计算文本的的宽度
+    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
+    dictM[NSFontAttributeName] = self.titleLabel.font;
+    self.titleLabel.numberOfLines = 0;
+    CGFloat width = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dictM context:nil].size.width;
+    
+    if (width > button_btnWidth - 15 - self.imageSize.width ) {
+        width = button_btnWidth - 15 - self.imageSize.width;
+    }
+    
+    CGFloat imageWith = 0;
+    CGFloat imageHeight = 0;
+    if (self.imageSize.width>0) {
+        imageWith = self.imageSize.width;
+        imageHeight = self.imageSize.height;
+    }else{
+        imageWith = 2* button_btnWidth/3;
+        imageHeight = 2* button_btnHeight/3;
+    }
+    CGFloat total  = imageWith + width + 5;
+    
+    CGFloat imageX = (button_btnWidth - total)/2;
+    CGFloat imageY = (button_btnHeight - imageHeight)/2;
+    
+    self.imageView.frame = CGRectMake(imageX, imageY, imageWith, imageHeight);
+    self.titleLabel.frame = CGRectMake(imageX + 5 +imageWith , imageY, width, imageHeight);
+
+}
+
+#pragma mark - 文字在左
+- (void)alignmentLeft{
     // 计算文本的的宽度
     NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
     dictM[NSFontAttributeName] = self.titleLabel.font;
@@ -139,39 +180,6 @@
     
     self.titleLabel.frame = CGRectMake(labelX, labelY, width, imageHeight);
     self.imageView.frame = CGRectMake(labelX + width + 5, labelY, imageWith, imageHeight);
-    
-}
-
-#pragma mark - 文字在左
-- (void)alignmentLeft{
-    
-    // 计算文本的的宽度
-    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
-    dictM[NSFontAttributeName] = self.titleLabel.font;
-    self.titleLabel.numberOfLines = 0;
-    CGFloat width = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dictM context:nil].size.width;
-
-    if (width > button_btnWidth - 15 - self.imageSize.width ) {
-        width = button_btnWidth - 15 - self.imageSize.width;
-    }
-    
-    CGFloat imageWith = 0;
-    CGFloat imageHeight = 0;
-    if (self.imageSize.width>0) {
-        imageWith = self.imageSize.width;
-        imageHeight = self.imageSize.height;
-    }else{
-        imageWith = 2* button_btnWidth/3;
-        imageHeight = 2* button_btnHeight/3;
-    }
-    CGFloat total  = imageWith + width + 5;
-    
-    CGFloat imageX = (button_btnWidth - total)/2;
-    CGFloat imageY = (button_btnHeight - imageHeight)/2;
-    
-    self.imageView.frame = CGRectMake(imageX, imageY, imageWith, imageHeight);
-    self.titleLabel.frame = CGRectMake(imageX + 5 +imageWith , imageY, width, imageHeight);
-
 }
 #pragma mark - 文本在上(居中)
 - (void)alignmentTop{

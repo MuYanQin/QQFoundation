@@ -25,14 +25,13 @@
     [self.view addSubview:TLabel];
     
     QQButton *button = [QQButton buttonWithType:UIButtonTypeCustom];
-    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试文字位置").Qframe(CGRectMake(100, 200, 100, 100)).Qtarget(self,@selector(clic:)).QtitleClolor([UIColor redColor]).QbackgroudClolor([UIColor lightGrayColor]).Qimage([UIImage imageNamed:@"tab_launch"]).QInfo(@"info").QtextPosition(Ttop);
-
+    button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试文字位置").Qframe(CGRectMake(100, 200, 200, 50)).Qtarget(self,@selector(clic:)).QtitleClolor([UIColor redColor]).QbackgroudClolor([UIColor lightGrayColor]).Qimage([UIImage imageNamed:@"tab_launch"]).QInfo(@"info").QtextPosition(Tright).QimageSize(CGSizeMake(50, 50));
     [self.view addSubview:button];
-    
 }
 - (void)clic:(QQButton *)btn;
 {
     NSLog(@"%@",btn.info);
+    [btn startCountdown];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,6 +10,11 @@
 		0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */; };
 		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
+		4B1ADA572141361700EEADCE /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA522141361700EEADCE /* MCPickerHeaderView.m */; };
+		4B1ADA582141361700EEADCE /* MCPickerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA532141361700EEADCE /* MCPickerListView.m */; };
+		4B1ADA592141361700EEADCE /* MCPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA542141361700EEADCE /* MCPickerView.m */; };
+		4B1ADA5A2141361700EEADCE /* MCPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA552141361700EEADCE /* MCPickerModel.m */; };
+		4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */; };
 		4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */; };
 		4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F10C7211C384500B09B80 /* MCUserInfo.m */; };
 		4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */; };
@@ -184,6 +189,16 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QQFoundation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.release.xcconfig"; sourceTree = "<group>"; };
+		4B1ADA4D2141361700EEADCE /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
+		4B1ADA4E2141361700EEADCE /* MCPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerView.h; sourceTree = "<group>"; };
+		4B1ADA4F2141361700EEADCE /* MCPickerListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerListView.h; sourceTree = "<group>"; };
+		4B1ADA502141361700EEADCE /* MCPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerModel.h; sourceTree = "<group>"; };
+		4B1ADA512141361700EEADCE /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		4B1ADA522141361700EEADCE /* MCPickerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerHeaderView.m; sourceTree = "<group>"; };
+		4B1ADA532141361700EEADCE /* MCPickerListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerListView.m; sourceTree = "<group>"; };
+		4B1ADA542141361700EEADCE /* MCPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerView.m; sourceTree = "<group>"; };
+		4B1ADA552141361700EEADCE /* MCPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerModel.m; sourceTree = "<group>"; };
+		4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
 		4B1F107F211C303700B09B80 /* MCVerificationCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCVerificationCodeView.h; sourceTree = "<group>"; };
 		4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerificationCodeView.m; sourceTree = "<group>"; };
 		4B1F10C6211C384500B09B80 /* MCUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCUserInfo.h; sourceTree = "<group>"; };
@@ -490,6 +505,23 @@
 				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
 			);
 			path = QQTableViewManager;
+			sourceTree = "<group>";
+		};
+		4B1ADA4C2141361700EEADCE /* MCPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4B1ADA4E2141361700EEADCE /* MCPickerView.h */,
+				4B1ADA542141361700EEADCE /* MCPickerView.m */,
+				4B1ADA4F2141361700EEADCE /* MCPickerListView.h */,
+				4B1ADA532141361700EEADCE /* MCPickerListView.m */,
+				4B1ADA4D2141361700EEADCE /* MCPickerHeaderView.h */,
+				4B1ADA522141361700EEADCE /* MCPickerHeaderView.m */,
+				4B1ADA502141361700EEADCE /* MCPickerModel.h */,
+				4B1ADA552141361700EEADCE /* MCPickerModel.m */,
+				4B1ADA512141361700EEADCE /* MyCollectionViewCell.h */,
+				4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */,
+			);
+			path = MCPicker;
 			sourceTree = "<group>";
 		};
 		4B1F107E211C301600B09B80 /* MCVerificationCodeView */ = {
@@ -997,6 +1029,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4B1ADA4C2141361700EEADCE /* MCPicker */,
 				4B1F107E211C301600B09B80 /* MCVerificationCodeView */,
 				4B5BEF8020ECA691000BB2E2 /* MCFactory */,
 				4BFAB79B20EB45070076E090 /* MCDetectionView */,
@@ -1337,6 +1370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B4D5A6C211B293F007FDED8 /* MCSearchViewController.m in Sources */,
+				4B1ADA5A2141361700EEADCE /* MCPickerModel.m in Sources */,
 				52C1154F1F4EC5CE005471CB /* AFURLSessionManager.m in Sources */,
 				ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */,
 				52D8D1931F4D77EF00EA413B /* UIView+SuperViewController.m in Sources */,
@@ -1404,12 +1438,14 @@
 				4BFAB79520EB2B630076E090 /* YYFPSLabel.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
+				4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
 				4B4D5A63211B2910007FDED8 /* MCRewardViewController.m in Sources */,
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
+				4B1ADA592141361700EEADCE /* MCPickerView.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
@@ -1436,6 +1472,7 @@
 				0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */,
 				52C1154D1F4EC5CE005471CB /* AFURLRequestSerialization.m in Sources */,
 				5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */,
+				4B1ADA582141361700EEADCE /* MCPickerListView.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
@@ -1444,6 +1481,7 @@
 				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
+				4B1ADA572141361700EEADCE /* MCPickerHeaderView.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,
 				4B4D5A60211B28FF007FDED8 /* MCHomeViewController.m in Sources */,
 				52C115661F4EC5CE005471CB /* MKAnnotationView+WebCache.m in Sources */,
