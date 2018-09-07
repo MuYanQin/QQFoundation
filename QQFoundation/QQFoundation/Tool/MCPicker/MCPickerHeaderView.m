@@ -55,13 +55,18 @@
     MyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCollectionViewCell" forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor whiteColor];
+    cell.tLb.text = self.dataArray[indexPath.row];
     if (self.isLastRed && (indexPath.row ==  self.dataArray.count -1)) {
+        CGRect cellRect = [self.collectionView convertRect:cell.frame toView:self.collectionView];
+        CGRect tt = [self.collectionView convertRect:cellRect toView:self];
+        tt.size.height = 1;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.animationline.frame = tt;
+        }];
         cell.tLb.textColor = [UIColor redColor];
-        [self setAnimationLineAnimation:indexPath];
     }else{
         cell.tLb.textColor = [UIColor blackColor];
     }
-    cell.tLb.text = self.dataArray[indexPath.row];
 
     return cell;
 }
