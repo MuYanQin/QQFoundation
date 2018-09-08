@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "QQLoadView.h"
-@class QQtableView;
+@class QQtableView,EmptyView;
 @protocol QQtableViewRequestDelegate <NSObject>
 
 /**
@@ -36,10 +36,7 @@
 @property (weak, nonatomic)UIViewController *TempController;
 
 /**空白页、网络错误页  页面的内容可用此属性去更改*/
-@property (nonatomic,strong)     QQLoadView *loadStatuesView;
-
-/*是否展示空白界面  默认YES  */
-@property (nonatomic,assign) BOOL isShowStatues;
+@property (nonatomic , strong)  EmptyView * emptyView;
 
 /*是否有头部刷新  默认YES  */
 @property (nonatomic,assign) BOOL isHasHeaderRefresh;
@@ -60,3 +57,30 @@
 - (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler;
 
 @end
+
+/***************************  以下是空白界面的View  **************************************************/
+@interface EmptyView : UIView
+@property (nonatomic , copy) NSString * imageName;
+/**
+ 默认图片大小显示居中
+ */
+@property (nonatomic , assign) CGSize  imageSize;
+@property (nonatomic , copy) NSString * hintText;
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

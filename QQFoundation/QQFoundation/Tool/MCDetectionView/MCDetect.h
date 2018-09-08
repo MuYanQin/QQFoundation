@@ -8,5 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @interface MCDetect : NSObject
-+ (void)setup;
+
+/**
+ 初始化组件
+
+ @param Domains 域名的数组
+ */
++ (void)setupWithDomains:(NSArray *)Domains;
 @end

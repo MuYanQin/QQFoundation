@@ -37,6 +37,11 @@
     MCPickerModel *model = self.dataArray[indexPath.row];
     cell.textLabel.text = model.name;
     cell.textLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];
+    if ([model.name isEqualToString:self.selectText]) {
+        cell.textLabel.textColor = [UIColor redColor];
+    }else{
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -44,6 +49,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([self.delegate respondsToSelector:@selector(MCPickerListView:didSelcetedValue:)]) {
         MCPickerModel *model = self.dataArray[indexPath.row];
+        self.selectText = model.name;
         [self.delegate MCPickerListView:self didSelcetedValue:model];
     }
 }
@@ -51,6 +57,13 @@
 {
     _dataArray = dataArray;
     [self.tableView reloadData];
+}
+- (void)setSelectText:(NSString *)selectText
+{
+    _selectText = selectText;
+    if (_dataArray) {
+        [self.tableView reloadData];
+    }
 }
 - (UITableView *)tableView
 {

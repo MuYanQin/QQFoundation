@@ -46,6 +46,7 @@
 		4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
 		4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC962119499C003EC96B /* 456.m4a */; };
 		4BC8F97B213185CE00C71E0A /* UILabel+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC8F97A213185CE00C71E0A /* UILabel+MCChained.m */; };
+		4BCB67CA2142457E0094E664 /* MCClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCB67C92142457E0094E664 /* MCClose@2x.png */; };
 		4BCC87C521322B9500841AB3 /* UIButton+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC87C421322B9500841AB3 /* UIButton+MCChained.m */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
@@ -251,6 +252,7 @@
 		4BBBFC962119499C003EC96B /* 456.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.m4a; sourceTree = "<group>"; };
 		4BC8F979213185CE00C71E0A /* UILabel+MCChained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+MCChained.h"; sourceTree = "<group>"; };
 		4BC8F97A213185CE00C71E0A /* UILabel+MCChained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MCChained.m"; sourceTree = "<group>"; };
+		4BCB67C92142457E0094E664 /* MCClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCClose@2x.png"; sourceTree = "<group>"; };
 		4BCC87C321322B9500841AB3 /* UIButton+MCChained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+MCChained.h"; sourceTree = "<group>"; };
 		4BCC87C421322B9500841AB3 /* UIButton+MCChained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MCChained.m"; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				4B1ADA552141361700EEADCE /* MCPickerModel.m */,
 				4B1ADA512141361700EEADCE /* MyCollectionViewCell.h */,
 				4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */,
+				4BCB67C92142457E0094E664 /* MCClose@2x.png */,
 			);
 			path = MCPicker;
 			sourceTree = "<group>";
@@ -1315,6 +1318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BBBFC9721194CD9003EC96B /* bing.caf in Resources */,
+				4BCB67CA2142457E0094E664 /* MCClose@2x.png in Resources */,
 				4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */,
 				4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */,
 				AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */,

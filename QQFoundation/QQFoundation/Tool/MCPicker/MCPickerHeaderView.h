@@ -14,7 +14,7 @@
 @interface MCPickerHeaderView : UIView
 @property (nonatomic , weak) id<MCPickerHeaderViewDelegate> dalegate;
 @property (nonatomic , strong) NSArray * dataArray;
-@property (nonatomic , assign) BOOL  isLastRed;//最后一个时候是空色
+@property (nonatomic , assign) BOOL  isLastRed;//最后一个时候是红色
 
 - (void)setindex:(NSInteger )index;
 @end

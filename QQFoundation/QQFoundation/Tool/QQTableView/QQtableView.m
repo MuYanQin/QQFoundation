@@ -8,11 +8,6 @@
 #import "QQtableView.h"
 #import "QQNetManager.h"
 #import "MJRefresh.h"
-#import "UIView+MBProgress.h"
-#import "QQAppDefine.h"
-#import "UIView+QQFrame.h"
-#import "QQTool.h"
-#import "MCFactory.h"
 static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自己的需求替换
 @interface QQtableView ()
 {
@@ -24,8 +19,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     NSMutableDictionary *_parameters;
     /**出现网络失败*/
     BOOL _hasNetError;
-    /**底部的文字*/
-    UILabel * _textLb;
 }
 /**添加的footView*/
 @property (nonatomic , strong) UIView *footerView;
@@ -33,7 +26,22 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 @implementation QQtableView
 + (void)load
 {
-    QQ_methodSwizzle(self, @selector(reloadData), @selector(mc_reloadData));
+    Method originalMethod = class_getInstanceMethod(self, @selector(reloadData));
+    Method swizzledMethod = class_getInstanceMethod(self, @selector(mc_reloadData));
+    BOOL didAddMethod =
+    class_addMethod(self,
+                    @selector(reloadData),
+                    method_getImplementation(swizzledMethod),
+                    method_getTypeEncoding(swizzledMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(self,
+                            @selector(mc_reloadData),
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
 }
 - (id)initWithFrame:(CGRect)frame
 {
@@ -57,19 +65,19 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     self.estimatedRowHeight  = 0;
     self.estimatedSectionFooterHeight  = 0;
     self.estimatedSectionFooterHeight = 0;
-    _hasNetError = NO;
     [self setTableFooterView:self.footerView];
-    _isShowStatues = YES;
+    _hasNetError = NO;
 }
 - (void)mc_reloadData
 {
     [self mc_reloadData];
+    if (!self.footerView) {
+        self.footerView = self.tableFooterView;
+    }
     if (self.getTotal == 0) {
-        self.loadStatuesView.LoadType = QQLoadViewEmpty;
-        self.tableFooterView = self.isShowStatues ? self.loadStatuesView: self.footerView;
+        self.tableFooterView = self.emptyView;
     }else if (self.getTotal == 0 && _hasNetError){
-        self.loadStatuesView.LoadType = QQLoadViewErrornetwork;
-        self.tableFooterView = self.isShowStatues ? self.loadStatuesView: self.footerView;
+        self.tableFooterView =  self.emptyView;
     }else{
         [self setTableFooterView:self.footerView];
     }
@@ -97,17 +105,17 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 //**请求方法*/
 - (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
+    
+#warning 这里替换成自己的网络请求方法就好了 
     [[QQNetManager Instance]RTSGetWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
             [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
         }
-        [self.TempController.view hiddenHUD];
         _hasNetError = NO;
         [self EndRefrseh];
     } False:^(NSError *error) {
         _hasNetError = YES;
-        [self.TempController.view hiddenHUD];
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
             [self.RequestDelegate QQtableView:self requestFailed:error];
         }
@@ -138,6 +146,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     [self changeIndexWithStatus:2];
     [self SetUpNetWorkParamters:_parameters isPullDown:NO];
 }
+
 - (void)changeIndexWithStatus:(NSInteger)Status//1  下拉  2上拉  3减一
 {
     _pageNumber = [_parameters[pageIndex] integerValue];
@@ -155,29 +164,78 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     [self.mj_footer endRefreshing];
     [self.mj_header endRefreshing];
 }
-- (UIView *)footerView
+- (EmptyView *)emptyView
 {
-    if (!_footerView) {
-        _footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 5)];
-//        _textLb = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, self.width, 20)];
-//        _textLb.textAlignment = NSTextAlignmentCenter;
-//        _textLb.textColor = getColorWithHex(@"2c2c2c");
-//        _textLb.font = getFontRegular(15);
-//        [_footerView addSubview:_textLb];
+    if (!_emptyView) {
+        _emptyView = [[EmptyView alloc]init];
+        _emptyView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - self.tableHeaderView.frame.size.height);
+        _emptyView.backgroundColor = [UIColor colorWithRed:245/255.0f green:248/255.0f blue:250/255.0f alpha:1];
     }
-    return _footerView;
-}
-
-- (QQLoadView *)loadStatuesView
-{
-    if (!_loadStatuesView) {
-        _loadStatuesView = [[QQLoadView alloc]init];
-        _loadStatuesView.LoadType = QQLoadViewNone;
-        self.loadStatuesView.width = self.width;
-        //设置view的高度是TableView 的高度减去TableHeaderView的高度
-        self.loadStatuesView.height = self.height  - self.tableHeaderView.height;
-        _loadStatuesView.backgroundColor = [UIColor colorWithRed:245 green:248 blue:250 alpha:1];
-    }
-    return _loadStatuesView;
+    return _emptyView;
 }
 @end
+
+
+/***************************  以下是空白界面的View  **************************************************/
+@interface EmptyView ()
+@property (nonatomic , strong) UILabel * hintLb;
+@property (nonatomic , strong) UIImageView * imageView;
+@end
+@implementation EmptyView
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self initEmptyView];
+    }
+    return self;
+}
+- (void)initEmptyView
+{
+    self.imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_em_al"]];
+    [self.imageView sizeToFit];
+    [self.imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:self.imageView];
+    
+    self.hintLb = [[UILabel alloc]init];
+    self.hintLb.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];
+    self.hintLb.textColor = [UIColor colorWithRed:204/255.0f green:204/255.0f blue:204/255.0f alpha:1];
+    self.hintLb.text = @"暂时还没有数据哦0.0";
+    [self.hintLb setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.hintLb.textAlignment = NSTextAlignmentCenter;
+    self.hintLb.numberOfLines = 0;
+    [self addSubview:self.hintLb];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:0.6 constant:0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hintLb attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hintLb attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.imageView attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hintLb attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1 constant:-20]];
+
+}
+- (void)setImageSize:(CGSize)imageSize
+{
+    _imageSize = imageSize;
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0 constant:imageSize.width]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0 constant:imageSize.height]];
+}
+- (void)setHintText:(NSString *)hintText
+{
+    self.hintLb.text = hintText;
+}
+- (void)setImageName:(NSString *)imageName
+{
+    self.imageView.image = [UIImage imageNamed:imageName];
+}
+@end
+
+
+
+
+
+
+
+
+
+
+

@@ -13,6 +13,15 @@
 - (void)MCPickerListView:(MCPickerListView *)MCPickerListView didSelcetedValue:(MCPickerModel *)Value;
 @end
 @interface MCPickerListView : UIView
+
+/**
+ 数据源
+ */
 @property (nonatomic , strong) NSArray * dataArray;
+
+/**
+ 已选择的字符串
+ */
+@property (nonatomic , copy) NSString * selectText;
 @property (nonatomic , weak) id<MCPickerListViewDelegate>  delegate;
 @end

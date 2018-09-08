@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MCDetectionView : UIView
-
+@property (nonatomic , strong) NSArray * Domains;
 @end

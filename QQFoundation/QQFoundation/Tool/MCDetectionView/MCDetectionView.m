@@ -13,7 +13,6 @@
 @implementation MCDetectionView
 {
     CGPoint _touchPoint;
-    NSArray *_URLArray;
 }
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -24,28 +23,33 @@
         self.layer.cornerRadius = 4;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap)];
         tap.numberOfTapsRequired = 2;
-        if (ServerType ==1) {
-            [self addGestureRecognizer:tap];
-            _URLArray = @[QQBaseUrl,@"http://192.168.1.136:9021/api/appuser",@"http://www.baidu.com"];
-        }
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
+- (void)setDomains:(NSArray *)Domains
+{
+    _Domains = Domains;
+}
 - (void)tap
 {
+    if (self.Domains.count == 0) {
+        NSLog(@"******无可选的域名！******");
+        return;
+    }
     UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"\n更改服务器 URL" message:[NSString stringWithFormat:@"当前地址为\n%@",QQBaseUrl] preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancelA = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *confirmA = [UIAlertAction actionWithTitle:_URLArray[0] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        [[NSUserDefaults standardUserDefaults]setObject:_URLArray[0] forKey:@"URL"];
+    UIAlertAction *confirmA = [UIAlertAction actionWithTitle:_Domains[0] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults]setObject:_Domains[0] forKey:@"URL"];
         exit(0);
     }];
-    UIAlertAction *confirmB = [UIAlertAction actionWithTitle:_URLArray[1] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [[NSUserDefaults standardUserDefaults]setObject:_URLArray[1] forKey:@"URL"];
+    UIAlertAction *confirmB = [UIAlertAction actionWithTitle:_Domains[1] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults]setObject:_Domains[1] forKey:@"URL"];
             exit(0);
     }];
-    UIAlertAction *confirmC = [UIAlertAction actionWithTitle:_URLArray[2] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [[NSUserDefaults standardUserDefaults]setObject:_URLArray[2] forKey:@"URL"];
+    UIAlertAction *confirmC = [UIAlertAction actionWithTitle:_Domains[2] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults]setObject:_Domains[2] forKey:@"URL"];
             exit(0);
     }];
     [alertCtrl addAction:cancelA];

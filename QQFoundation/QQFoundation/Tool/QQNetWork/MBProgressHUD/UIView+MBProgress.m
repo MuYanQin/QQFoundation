@@ -23,9 +23,10 @@ static NSInteger const HUDWIDTH = 80;
     if(hud == nil){
         //[UIApplication sharedApplication].delegate.window 会一直保持在最上层。  但是loading的时候不能点击nav的按钮
         //self的话可能会被别的视图遮住
+        //self.navigationController.view
         hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
         hud.delegate = self;
-        hud.layer.zPosition = 1;//这句话的作用是 让hub保持在self的最上层不会被覆盖
+//        hud.layer.zPosition = 1;//这句话的作用是 让hub保持在self的最上层不会被覆盖
         hud.removeFromSuperViewOnHide = NO;
         [self setHud:hud];//保证只有一个HUD
     }
@@ -45,12 +46,16 @@ static NSInteger const HUDWIDTH = 80;
 /**自定义提示框位置，只显示文字*/
 - (void)message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay{
     MBProgressHUD *ProgressHUD  = self.hud;
+    [self bringSubviewToFront:self.hud];
     ProgressHUD.offset = CGPointMake(0, yoffset);// HUD相对于父视图中心点的y轴偏移量
     ProgressHUD.mode = MBProgressHUDModeText;
-    ProgressHUD.label.text = message;
-    ProgressHUD.margin = 10;
+    ProgressHUD.detailsLabel.text = message;
+    ProgressHUD.detailsLabel.textColor = [UIColor whiteColor];
+    ProgressHUD.detailsLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+    ProgressHUD.minSize = CGSizeMake(0, 0);
+    ProgressHUD.margin = 5;
     [ProgressHUD showAnimated:YES];
-//    ProgressHUD 
+    ProgressHUD.bezelView.color = [UIColor blackColor];// 背景框的颜色
     [ProgressHUD hideAnimated:YES afterDelay:delay];
     
 }
@@ -58,12 +63,13 @@ static NSInteger const HUDWIDTH = 80;
 /**展示Loading标示*/
 - (void)loadingWith:(NSString *)message{
     MBProgressHUD * ProgressHUD = self.hud;
+    [self bringSubviewToFront:self.hud];
     ProgressHUD.offset = CGPointMake(0, 0);
     ProgressHUD.mode = MBProgressHUDModeIndeterminate;
-    ProgressHUD.label.text = message;
+    ProgressHUD.detailsLabel.text = message;
     ProgressHUD.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
     ProgressHUD.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
-    ProgressHUD.minSize = CGSizeMake(100, 100);
+    ProgressHUD.minSize = CGSizeMake(HUDWIDTH, HUDWIDTH);
     [ProgressHUD showAnimated:YES];
 }
 
@@ -71,15 +77,15 @@ static NSInteger const HUDWIDTH = 80;
 - (void)loading{
 //    [self touchesEnded:nil withEvent:nil];
     MBProgressHUD * ProgressHUD = self.hud;
+    [self bringSubviewToFront:self.hud];
     ProgressHUD.mode = MBProgressHUDModeIndeterminate;
     ProgressHUD.bezelView.layer.cornerRadius= 4;
     ProgressHUD.bezelView.layer.masksToBounds = YES;
-    ProgressHUD.alpha = 0.9;
-    ProgressHUD.label.text = @"";
+    ProgressHUD.detailsLabel.text = @"";
     ProgressHUD.margin = 10;// HUD各元素与HUD边缘的间距
     ProgressHUD.minSize = CGSizeMake(HUDWIDTH, HUDWIDTH);
-
-    //    ProgressHUD.bezelView.color = [UIColor colorWithHexString:@"e8e8e8"];// 背景框的颜色
+    ProgressHUD.contentColor = [UIColor whiteColor];
+    ProgressHUD.bezelView.color = [UIColor blackColor];// 背景框的颜色
     // 需要注意的是如果设置了这个属性，则opacity属性会失效，即不会有半透明效果
     [ProgressHUD showAnimated:YES];
 }

@@ -24,7 +24,28 @@
 @end
 @interface MCPickerView : UIView
 @property (nonatomic , weak) id<MCPickerViewDelegate>  delegate;
-@property (nonatomic , assign) NSInteger  totalLevel;//总共有几层结束 必须设置
+
+/**
+ 总共有几层结束 必须设置
+ */
+@property (nonatomic , assign) NSInteger  totalLevel;
+
+/**
+ 每一层的数据数组
+ */
 @property (nonatomic , strong) NSArray * dataArray;
+
+/**
+ 选择窗的title
+ */
 @property (nonatomic , copy) NSString * titleText;
+
+
+/**
+ 给每一层数据添加数据源 与默认选择的 字符串  无默认选择的话 推荐使用 setDataArray
+
+ @param dataArray 数据源
+ @param Text 默认选择的字符串
+ */
+- (void)setData:(NSArray *)dataArray  selectText:(NSString *)Text;
 @end

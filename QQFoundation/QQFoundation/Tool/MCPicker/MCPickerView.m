@@ -55,8 +55,8 @@ static NSInteger const ScrollViewY = 70;//ScrollViewY Y坐标起始位
     [ContentView addSubview:self.TitleLb];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(self.frame.size.width - 70, 0, 60, 40);
-    button.backgroundColor = [UIColor purpleColor];
+    button.frame = CGRectMake(self.frame.size.width - 60, 0, 60, 40);
+    [button setImage:[UIImage imageNamed:@"MCClose"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(hiddenClick) forControlEvents:UIControlEventTouchUpInside];
     [ContentView addSubview:button];
     
@@ -112,20 +112,32 @@ static NSInteger const ScrollViewY = 70;//ScrollViewY Y坐标起始位
 
 - (void)setDataArray:(NSArray *)dataArray
 {
+    [self manageDataArray:dataArray selectText:@""];
+}
+- (void)setTitleText:(NSString *)titleText
+{
+    self.TitleLb.text = titleText;
+}
+- (void)setData:(NSArray *)dataArray selectText:(NSString *)Text
+{
+    [self.headerDataArray addObject:Text];
+    [self.headerDataArray removeObject:@"请选择"];
+    self.header.dataArray = self.headerDataArray;
+    [self manageDataArray:dataArray selectText:Text];
+}
+- (void)manageDataArray:(NSArray *)dataArray  selectText:(NSString *)Text
+{
     [self.dataArrays addObject:dataArray];
     
     MCPickerListView * ListView = [[MCPickerListView alloc]initWithFrame:CGRectMake((self.frame.size.width *(self.dataArrays.count - 1)),0,self.frame.size.width, self.frame.size.height  - ScrollViewY)];
     ListView.delegate = self;
     ListView.tag = self.dataArrays.count - 1;
+    ListView.selectText = Text;
     ListView.dataArray = dataArray;
     [self.ScrollView addSubview:ListView];
     self.ScrollView.contentSize = CGSizeMake(self.frame.size.width *self.dataArrays.count, 0);
     [self.ScrollView setContentOffset:CGPointMake((self.frame.size.width *(self.dataArrays.count - 1)),0) animated:YES];
     [self.listViewArray addObject:ListView];
-}
-- (void)setTitleText:(NSString *)titleText
-{
-    self.TitleLb.text = titleText;
 }
 - (void)hiddenClick
 {

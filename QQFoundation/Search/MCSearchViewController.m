@@ -7,60 +7,18 @@
 //
 
 #import "MCSearchViewController.h"
-#import "MCPickerView.h"
-#import "MCPickerModel.h"
-@interface MCSearchViewController ()<MCPickerViewDelegate>
+
+@interface MCSearchViewController ()
 
 @end
 
 @implementation MCSearchViewController
-{
-    MCPickerView *picker;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"搜索";
-    __block NSMutableArray *models = [NSMutableArray array];
-    
-    for (int i=0; i<5; i++) {
-        MCPickerModel *model = [[MCPickerModel alloc]init];
-        model.name = @"安徽省";
-        model.pid = @"123";
-        [models addObject:model];
-    }
-    picker = [[MCPickerView alloc]initWithFrame:self.view.bounds];
-    picker.dataArray = models;
-    picker.delegate = self;
-    picker.totalLevel = 3;//共有3层数据
-    picker.titleText = @"选择地区";
-    [self.view addSubview:picker];
-}
-- (void)MCPickerView:(MCPickerView *)MCPickerView complete:(NSString *)complete
-{
-    NSLog(@"===%@",complete);
-}
-- (void)MCPickerView:(MCPickerView *)MCPickerView didSelcetedRow:(NSInteger)Row value:(MCPickerModel *)value
-{
-    if (Row == 0) {
-        __block NSMutableArray *models = [NSMutableArray array];
-        for (int i=0; i<5; i++) {
-            MCPickerModel *model = [[MCPickerModel alloc]init];
-            model.name = @"合肥市";
-            model.pid = @"123";
-            [models addObject:model];
-        }
-        picker.dataArray = models;
-    }else if(Row == 1){
-        __block NSMutableArray *models = [NSMutableArray array];
-        for (int i=0; i<5; i++) {
-            MCPickerModel *model = [[MCPickerModel alloc]init];
-            model.name = @"蜀山区";
-            model.pid = @"123";
-            [models addObject:model];
-        }
-        picker.dataArray = models;
-    }
+    [self.view addSubview: self.BaseQQTableView ];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
