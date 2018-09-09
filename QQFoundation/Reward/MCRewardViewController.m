@@ -11,6 +11,8 @@
 #import "MCUserInfo.h"
 #import "UILabel+MCChained.h"
 #import "QQButton.h"
+#import "NSString+Manage.h"
+#import "NSMutableAttributedString+Manage.h"
 @interface MCRewardViewController ()
 
 @end
@@ -27,6 +29,18 @@
     QQButton *button = [QQButton buttonWithType:UIButtonTypeCustom];
     button.QtitleFont([UIFont systemFontOfSize:14]).QtitleText(@"测试文字位置").Qframe(CGRectMake(100, 200, 200, 50)).Qtarget(self,@selector(clic:)).QtitleClolor([UIColor redColor]).QbackgroudClolor([UIColor lightGrayColor]).Qimage([UIImage imageNamed:@"tab_launch"]).QInfo(@"info").QtextPosition(Tright).QimageSize(CGSizeMake(50, 50));
     [self.view addSubview:button];
+    
+    UILabel *leb = [[UILabel alloc]initWithFrame:CGRectMake(10, 170, 200, 20)];
+    NSString *tt = @"秦慕乔是好人";
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc]initWithString:tt];
+    text.font([UIFont systemFontOfSize:14]);
+    leb.attributedText = text;
+    leb.actionArray = @[@"秦慕乔"];
+    leb.userInteractionEnabled = YES;
+    leb.tapClick = ^(NSString *string, NSRange range, NSInteger index) {
+        NSLog(@"%@",string);
+    };
+    [self.view addSubview:leb];
 }
 - (void)clic:(QQButton *)btn;
 {

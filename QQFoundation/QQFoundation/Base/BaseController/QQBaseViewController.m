@@ -111,8 +111,6 @@
         _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 - 44)];
         _BaseQQTableView.RequestDelegate = self;
         _BaseQQTableView.estimatedRowHeight = 0;
-        _BaseQQTableView.estimatedSectionFooterHeight = 0;
-        _BaseQQTableView.estimatedSectionHeaderHeight = 0;
     }
     return _BaseQQTableView;
 }

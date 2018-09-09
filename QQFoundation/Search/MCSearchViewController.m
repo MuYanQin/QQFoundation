@@ -7,7 +7,7 @@
 //
 
 #import "MCSearchViewController.h"
-
+#import <CoreText/CoreText.h>
 @interface MCSearchViewController ()
 
 @end
@@ -18,7 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"搜索";
-    [self.view addSubview: self.BaseQQTableView ];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

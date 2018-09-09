@@ -22,5 +22,7 @@ typedef NS_ENUM(NSInteger,QtextAlignment){
 @property (nonatomic, readonly) UILabel *(^Qtag)(NSInteger tag);
 @property (nonatomic, readonly) UILabel *(^Qalignment)(QtextAlignment Alignment);
 @property (nonatomic, readonly) UILabel *(^Qhidden)(BOOL hidden);
+@property (nonatomic , strong) NSArray * actionArray;
+@property (nonatomic , copy) void (^tapClick) (NSString *string , NSRange range , NSInteger index);
 + (UILabel *)getLabel;
 @end

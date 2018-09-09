@@ -22,6 +22,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 /**添加的footView*/
 @property (nonatomic , strong) UIView *footerView;
+//@property (nonatomic , strong) UIView *;
 @end
 @implementation QQtableView
 + (void)load
@@ -65,15 +66,13 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     self.estimatedRowHeight  = 0;
     self.estimatedSectionFooterHeight  = 0;
     self.estimatedSectionFooterHeight = 0;
+    self.footerView = [UIView new];
     [self setTableFooterView:self.footerView];
     _hasNetError = NO;
 }
 - (void)mc_reloadData
 {
     [self mc_reloadData];
-    if (!self.footerView) {
-        self.footerView = self.tableFooterView;
-    }
     if (self.getTotal == 0) {
         self.tableFooterView = self.emptyView;
     }else if (self.getTotal == 0 && _hasNetError){
@@ -84,9 +83,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 - (NSInteger)getTotal
 {
-    
     NSInteger sections = 0;
-    
     sections = [self numberOfSections];
     NSInteger items = 0;
     for (NSInteger section = 0; section < sections; section++) {
@@ -175,7 +172,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 @end
 
-
 /***************************  以下是空白界面的View  **************************************************/
 @interface EmptyView ()
 @property (nonatomic , strong) UILabel * hintLb;
@@ -191,7 +187,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 - (void)initEmptyView
 {
-    self.imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_em_al"]];
+    self.imageView = [[UIImageView alloc]init];
     [self.imageView sizeToFit];
     [self.imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:self.imageView];
@@ -199,7 +195,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     self.hintLb = [[UILabel alloc]init];
     self.hintLb.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];
     self.hintLb.textColor = [UIColor colorWithRed:204/255.0f green:204/255.0f blue:204/255.0f alpha:1];
-    self.hintLb.text = @"暂时还没有数据哦0.0";
     [self.hintLb setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.hintLb.textAlignment = NSTextAlignmentCenter;
     self.hintLb.numberOfLines = 0;
@@ -207,6 +202,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:0.6 constant:0]];
+    
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hintLb attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hintLb attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.imageView attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
@@ -219,23 +215,27 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0 constant:imageSize.width]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0 constant:imageSize.height]];
 }
-- (void)setHintText:(NSString *)hintText
-{
-    self.hintLb.text = hintText;
-}
 - (void)setImageName:(NSString *)imageName
 {
     self.imageView.image = [UIImage imageNamed:imageName];
 }
+
+
+- (void)setHintText:(NSString *)hintText
+{
+    self.hintLb.text = hintText;
+}
+- (void)setHintTextFont:(UIFont *)hintTextFont
+{
+    self.hintLb.font = hintTextFont;
+}
+- (void)setHintTextColor:(UIColor *)hintTextColor
+{
+    self.hintLb.textColor = hintTextColor;
+}
+- (void)setHintAttributedText:(NSAttributedString *)hintAttributedText
+{
+    self.hintLb.attributedText = hintAttributedText;
+}
+
 @end
-
-
-
-
-
-
-
-
-
-
-

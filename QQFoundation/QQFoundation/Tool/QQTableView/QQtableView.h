@@ -18,7 +18,6 @@
  */
 - (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)PullDown SuccessData:(id)SuccessData;
 
-
 /**
  返回网络错误的状态
 
@@ -65,22 +64,10 @@
  默认图片大小显示居中
  */
 @property (nonatomic , assign) CGSize  imageSize;
+/**提示文字的属性**/
 @property (nonatomic , copy) NSString * hintText;
+@property (nonatomic , strong) UIFont * hintTextFont;
+@property (nonatomic , strong) UIColor * hintTextColor;
+@property (nonatomic , strong) NSAttributedString * hintAttributedText;
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
