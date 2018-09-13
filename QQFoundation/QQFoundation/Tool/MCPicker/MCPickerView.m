@@ -12,6 +12,8 @@
 #import "MCPickerModel.h"
 static NSInteger const headerHeight = 30;//headerView的高度
 static NSInteger const ScrollViewY = 70;//ScrollViewY Y坐标起始位
+static NSInteger const PickerViewHeight = 350;//
+
 @interface MCPickerView ()<MCPickerListViewDelegate,MCPickerHeaderViewDelegate,MCPickerHeaderViewDelegate,UIScrollViewDelegate>
 @property (nonatomic , strong) UIScrollView * ScrollView;
 @property (nonatomic , strong) UILabel * TitleLb;
@@ -103,7 +105,7 @@ static NSInteger const ScrollViewY = 70;//ScrollViewY Y坐标起始位
 - (UIScrollView *)ScrollView
 {
     if (!_ScrollView) {
-        _ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,ScrollViewY, self.frame.size.width, self.frame.size.height  - ScrollViewY)];
+        _ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,ScrollViewY, self.frame.size.width, PickerViewHeight  - ScrollViewY)];
         _ScrollView.pagingEnabled = YES;
         _ScrollView.delegate = self;
     }
@@ -129,7 +131,7 @@ static NSInteger const ScrollViewY = 70;//ScrollViewY Y坐标起始位
 {
     [self.dataArrays addObject:dataArray];
     
-    MCPickerListView * ListView = [[MCPickerListView alloc]initWithFrame:CGRectMake((self.frame.size.width *(self.dataArrays.count - 1)),0,self.frame.size.width, self.frame.size.height  - ScrollViewY)];
+    MCPickerListView * ListView = [[MCPickerListView alloc]initWithFrame:CGRectMake((self.frame.size.width *(self.dataArrays.count - 1)),0,self.frame.size.width, PickerViewHeight  - ScrollViewY)];
     ListView.delegate = self;
     ListView.tag = self.dataArrays.count - 1;
     ListView.selectText = Text;

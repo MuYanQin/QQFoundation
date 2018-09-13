@@ -9,7 +9,7 @@
 #ifndef QQAppDefine_h
 #define QQAppDefine_h
 
-#define QQWeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define QQWeakSelf  __weak __typeof(&*self)weakSelf = self;
 
 #define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 #define onePoint (1 / [UIScreen mainScreen].scale)

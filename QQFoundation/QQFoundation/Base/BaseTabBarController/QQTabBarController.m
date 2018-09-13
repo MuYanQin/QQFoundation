@@ -31,7 +31,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     [super viewDidLoad];
     [self initVC];
     [self createVc];
-    //去除tab伤的横线
+    //去除tab的横线
     [self.tabBar setBackgroundImage:[UIImage new]];
     [self.tabBar setShadowImage:[UIImage new]];
 }

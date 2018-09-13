@@ -6,6 +6,7 @@ target 'QQFoundation' do
   # use_frameworks!
 pod 'JPush'
 pod 'Masonry'
+pod 'MJExtension'
 #pod 'DZNEmptyDataSet'
   # Pods for QQFoundation
 
