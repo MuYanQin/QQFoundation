@@ -43,6 +43,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
+
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -50,6 +51,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     return self;
 }
+
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     if (self = [super initWithFrame:frame style:style] ) {
@@ -57,6 +59,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     return self;
 }
+
 - (void)initTableView{
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
     if (@available(iOS 11.0, *)) {
@@ -69,6 +72,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     [self setTableFooterView:self.footerView];
     _hasNetError = NO;
 }
+
 - (void)mc_reloadData
 {
     [self mc_reloadData];
@@ -80,6 +84,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         [self setTableFooterView:self.footerView];
     }
 }
+
 - (NSInteger)getTotal
 {
     NSInteger sections = 0;
@@ -90,6 +95,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     return items;
 }
+
 - (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
 {
     _url = url;
@@ -100,6 +106,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     [self.mj_header beginRefreshing];
 }
+
 //**请求方法*/
 - (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
@@ -123,12 +130,14 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         }
     }];
 }
+
 - (void)setIsHasHeaderRefresh:(BOOL)isHasHeaderRefresh
 {
     if (!isHasHeaderRefresh) {
         self.mj_header = nil;
     }
 }
+
 - (void)headerRefresh
 {
     if (_url.length ==0) {
@@ -141,6 +150,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     [self SetUpNetWorkParamters:_parameters isPullDown:YES];
 }
+
 - (void)footerRefresh
 {
     [self changeIndexWithStatus:2];
@@ -159,19 +169,23 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:pageIndex];
 }
+
 - (void)EndRefrseh
 {
     [self.mj_footer endRefreshing];
     [self.mj_header endRefreshing];
 }
+
 - (void)setRequestParam:(NSDictionary *)requestParam
 {
     _parameters = requestParam.mutableCopy;
 }
+
 - (void)setRequestUrl:(NSString *)requestUrl
 {
     _url = requestUrl;
 }
+
 - (EmptyView *)emptyView
 {
     if (!_emptyView) {
