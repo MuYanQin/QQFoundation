@@ -57,9 +57,8 @@
 {
     [self.pwdTextField becomeFirstResponder];
 }
-- (BOOL)textFieldShouldReturn:(UITextField *)textFieldr
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"123");
     return YES;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

@@ -43,7 +43,6 @@
 #import "QQButton.h"///
 #import "QQDevice.h"//获取系统的一些情况
 #import "QQFileManage.h"///获取文件管理  获取地址  创建  等操作
-#import "QQLabel.h"///<可点击的label
 #import "QQLoadView.h"//空白页、加载出错页
 #import "QQTextField.h"/// 最大限制文字数
 #import "QQTextView.h"/// 有展位文字、最大限制文字数

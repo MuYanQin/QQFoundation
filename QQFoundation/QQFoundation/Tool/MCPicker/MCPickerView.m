@@ -89,16 +89,16 @@ static NSInteger const PickerViewHeight = 350;//
     self.headerDataArray  = [self.headerDataArray subarrayWithRange:NSMakeRange(0, MCPickerListView.tag)].mutableCopy;
     [self.headerDataArray addObject:Value.name];
     [self.headerDataArray addObject:@"请选择"];
-    if (self.totalLevel == MCPickerListView.tag + 1) {
+    if (self.totalTier == MCPickerListView.tag + 1) {
         [self.headerDataArray removeLastObject];
         [self hiddenClick];
     }
-    if ((self.totalLevel == MCPickerListView.tag + 1) && [self.delegate respondsToSelector:@selector(MCPickerView:complete:)]) {
+    if ((self.totalTier == MCPickerListView.tag + 1) && [self.delegate respondsToSelector:@selector(MCPickerView:complete:)]) {
         [self.delegate MCPickerView:self complete:[self.headerDataArray componentsJoinedByString:@""]];
     }
     
-    if ([self.delegate respondsToSelector:@selector(MCPickerView:didSelcetedRow:value:)]) {
-        [self.delegate MCPickerView:self didSelcetedRow:MCPickerListView.tag value:Value];
+    if ([self.delegate respondsToSelector:@selector(MCPickerView:didSelcetedTier:value:)]) {
+        [self.delegate MCPickerView:self didSelcetedTier:MCPickerListView.tag value:Value];
     }
     self.header.dataArray = self.headerDataArray;
 }

@@ -127,7 +127,6 @@
 		52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1581F4D77EF00EA413B /* QQButton.m */; };
 		52D8D19A1F4D77EF00EA413B /* QQDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15A1F4D77EF00EA413B /* QQDevice.m */; };
 		52D8D19B1F4D77EF00EA413B /* QQFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15C1F4D77EF00EA413B /* QQFileManage.m */; };
-		52D8D19C1F4D77EF00EA413B /* QQLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15E1F4D77EF00EA413B /* QQLabel.m */; };
 		52D8D19D1F4D77EF00EA413B /* QQLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1601F4D77EF00EA413B /* QQLoadView.m */; };
 		52D8D19E1F4D77EF00EA413B /* QQTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1621F4D77EF00EA413B /* QQTextField.m */; };
 		52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1641F4D77EF00EA413B /* QQTextView.m */; };
@@ -417,8 +416,6 @@
 		52D8D15A1F4D77EF00EA413B /* QQDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQDevice.m; sourceTree = "<group>"; };
 		52D8D15B1F4D77EF00EA413B /* QQFileManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQFileManage.h; sourceTree = "<group>"; };
 		52D8D15C1F4D77EF00EA413B /* QQFileManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQFileManage.m; sourceTree = "<group>"; };
-		52D8D15D1F4D77EF00EA413B /* QQLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQLabel.h; sourceTree = "<group>"; };
-		52D8D15E1F4D77EF00EA413B /* QQLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQLabel.m; sourceTree = "<group>"; };
 		52D8D15F1F4D77EF00EA413B /* QQLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQLoadView.h; sourceTree = "<group>"; };
 		52D8D1601F4D77EF00EA413B /* QQLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQLoadView.m; sourceTree = "<group>"; };
 		52D8D1611F4D77EF00EA413B /* QQTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTextField.h; sourceTree = "<group>"; };
@@ -1021,8 +1018,6 @@
 				52D8D15A1F4D77EF00EA413B /* QQDevice.m */,
 				52D8D15B1F4D77EF00EA413B /* QQFileManage.h */,
 				52D8D15C1F4D77EF00EA413B /* QQFileManage.m */,
-				52D8D15D1F4D77EF00EA413B /* QQLabel.h */,
-				52D8D15E1F4D77EF00EA413B /* QQLabel.m */,
 				52D8D15F1F4D77EF00EA413B /* QQLoadView.h */,
 				52D8D1601F4D77EF00EA413B /* QQLoadView.m */,
 				52D8D1611F4D77EF00EA413B /* QQTextField.h */,
@@ -1507,7 +1502,6 @@
 				4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */,
 				52C1156C1F4EC5CE005471CB /* SDWebImageDecoder.m in Sources */,
 				ACE026372017672200A387DC /* QQAlertController.m in Sources */,
-				52D8D19C1F4D77EF00EA413B /* QQLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -143,6 +143,14 @@
         return self;
     };
 }
+- (UIButton *(^)(id, SEL, UIControlEvents))QtargetEvent
+{
+    return ^UIButton *(id target,SEL action,UIControlEvents event){
+        [self addTarget:target action:action forControlEvents:event];
+        return self;
+    };
+}
+
 - (UIButton *(^)(NSInteger))Qtag
 {
     return ^UIButton *(NSInteger tag){

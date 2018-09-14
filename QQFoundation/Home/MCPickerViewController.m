@@ -66,7 +66,7 @@
 
     self.picker  =[[MCPickerView alloc]initWithFrame:self.view.bounds];
     self.picker.delegate = self;
-    self.picker.totalLevel = 3;
+    self.picker.totalTier = 3;
     self.picker.titleText = @"选择区域";
     self.picker.dataArray = self.pro;
     [self.view addSubview:self.picker];

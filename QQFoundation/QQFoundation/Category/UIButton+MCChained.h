@@ -32,39 +32,97 @@ typedef NS_ENUM(NSInteger,QTextPosition){
  默认 Normal
  */
 @property (nonatomic , strong ,readonly) UIButton *(^QtitleText)(NSString *titleText);
+
+/**
+ 设置title 设置类型
+ */
 @property (nonatomic , strong ,readonly) UIButton *(^QtitleTextState)(NSString *titleText,UIControlState);
 
 /**
  默认 Normal
  */
 @property (nonatomic , strong ,readonly) UIButton *(^QtitleClolor)(UIColor *color);
+
+/**
+ 设置titleColor 设置类型
+ */
 @property (nonatomic , strong ,readonly) UIButton *(^QtitleClolorState)(UIColor *color,UIControlState);
 
 /**
  默认 Normal
  */
 @property (nonatomic , strong ,readonly) UIButton *(^Qimage)(UIImage *image);
+
+/**
+ 设置image 设置类型
+ */
 @property (nonatomic , strong ,readonly) UIButton *(^QimageState)(UIImage *image,UIControlState);
 
 /**
  默认 Normal
  */
 @property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImage)(UIImage *image);
+
+/**
+ 设置backgroudImage 设置类型
+ */
 @property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImageState)(UIImage *image,UIControlState);
 
 
-@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudClolor)(UIColor *color);
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleFont)(UIFont *font);
-@property (nonatomic , strong ,readonly) UIButton *(^Qframe)(CGRect frame);
-@property (nonatomic , strong ,readonly) UIButton *(^QcornerRadius)(CGFloat Radius);
-@property (nonatomic , strong ,readonly) UIButton *(^QborderWidth)(CGFloat Width);
-@property (nonatomic , strong ,readonly) UIButton *(^QborderColor)(UIColor *color);
-@property (nonatomic , strong ,readonly) UIButton *(^QmasksToBounds)(BOOL);
 /**
- m默认都touchUpinside
+ 设置背景颜色
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudClolor)(UIColor *color);
+
+/**
+ 设置title字体
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QtitleFont)(UIFont *font);
+
+/**
+ button的Frame
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^Qframe)(CGRect frame);
+
+/**
+ button 的圆角
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QcornerRadius)(CGFloat Radius);
+
+/**
+ 描边宽度
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QborderWidth)(CGFloat Width);
+
+/**
+ 描边的颜色
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QborderColor)(UIColor *color);
+
+/**
+ 是否剪切
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QmasksToBounds)(BOOL);
+
+/**
+ 默认touchUpinside
  */
 @property (nonatomic , strong ,readonly) UIButton *(^Qtarget)(id target,SEL action);
 
+
+/**
+ 设置按钮触发事件
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^QtargetEvent)(id target,SEL action,UIControlEvents Event);
+
+/**
+ 设置tag
+ */
 @property (nonatomic, readonly) UIButton *(^Qtag)(NSInteger tag);
+
+
+/**
+ 设置显示隐藏
+ */
 @property (nonatomic, readonly) UIButton *(^Qhidden)(BOOL hidden);
 @end

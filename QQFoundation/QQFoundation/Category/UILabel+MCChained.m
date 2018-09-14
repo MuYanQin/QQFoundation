@@ -9,11 +9,15 @@
 #import "UILabel+MCChained.h"
 #import <objc/runtime.h>
 #import <CoreText/CoreText.h>
+
 static char const actionChar;
 static char const ClickChar;
+static char const touchSelChar;
 
 typedef UILabel * (^Label)(id input);
-
+@interface UILabel()
+@property (nonatomic , assign) NSString  *touchSelString;
+@end;
 @implementation UILabel (MCChained)
 @dynamic Qtext,QtextColor,Qfont;
 - (NSArray *)actionArray
@@ -26,18 +30,114 @@ typedef UILabel * (^Label)(id input);
 }
 - (void)setTapClick:(void (^)(NSString *, NSRange, NSInteger))tapClick
 {
+    self.userInteractionEnabled = YES;
     objc_setAssociatedObject(self, &ClickChar, tapClick, OBJC_ASSOCIATION_COPY);
+}
+- (void)setTouchSelString:(NSString *)touchSelString
+{
+    objc_setAssociatedObject(self, &touchSelChar, touchSelString, OBJC_ASSOCIATION_ASSIGN);
+}
+- (NSString *)touchSelString
+{
+    return objc_getAssociatedObject(self,  &touchSelChar);
 }
 - (void (^)(NSString *, NSRange, NSInteger))tapClick
 {
     return objc_getAssociatedObject(self,  &ClickChar);
 }
+- (UILabel *(^)(NSString *))Qclick
+{
+    return ^UILabel *(NSString * event){
+        self.touchSelString = event;
+        self.userInteractionEnabled = YES;
+        return self;
+    };
+}
++ (UILabel *)getLabel
+{
+    return [[UILabel alloc]init];
+}
+- (UILabel *(^)(UIColor *))QtextColor
+{
+    return ^UILabel *(id input){
+        self.textColor = input;
+        return self;
+    };
+}
+- (UILabel *(^)(UIFont *font))Qfont
+{
+    return ^UILabel *(id input){
+        self.font = input;
+        return self;
+    };
+}
+- (UILabel *(^)(NSString *))Qtext
+{
+    return ^UILabel *(id input){
+        self.text = input;
+        return self;
+    };
+}
+- (UILabel *(^)(CGRect frame))Qframe
+{
+    return ^UILabel *(CGRect input){
+        self.frame = input;
+        return self;
+    };
+}
+- (UILabel *(^)(NSMutableAttributedString *QattributedText))QattributedText
+{
+    return ^UILabel *(id input){
+        self.attributedText = input;
+        return self;
+    };
+}
+- (UILabel *(^)(NSInteger QnumberOfLines))QnumberOfLines
+{
+    return ^UILabel *(NSInteger input){
+        self.numberOfLines = input;
+        return self;
+    };
+}
+- (UILabel *(^)(NSInteger))Qtag
+{
+    return ^UILabel *(NSInteger tag){
+        self.tag = tag;
+        return self;
+    };
+}
+- (UILabel *(^)(QtextAlignment))Qalignment
+{
+    return ^UILabel *(QtextAlignment Alignment){
+        self.textAlignment  = (int)Alignment;
+        return self;
+    };
+}
+-(UILabel *(^)(BOOL))Qhidden
+{
+    return ^UILabel *(BOOL hidden){
+        self.hidden  = hidden;
+        return self;
+    };
+}
+- (UIViewController *)viewController {
+    UIResponder *next = [self nextResponder];
+    do {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)next;
+        }
+        next = [next nextResponder];
+    } while (next != nil);
+    return nil;
+}
 #pragma mark - touchAction
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-//    if (!self.isTapAction) {
-//        return;
-//    }
+    if (self.touchSelString ) {
+        [self.viewController  performSelector:NSSelectorFromString(self.touchSelString) withObject:nil afterDelay:0];
+        
+        return;
+    }
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     __weak typeof(self) weakSelf = self;
@@ -127,11 +227,11 @@ typedef UILabel * (^Label)(id input);
         if (CGRectContainsPoint(rect, point)) {
             CGPoint relativePoint = CGPointMake(point.x - CGRectGetMinX(rect), point.y - CGRectGetMinY(rect));
             CFIndex index = CTLineGetStringIndexForPosition(line, relativePoint);
-//            CGFloat offset;
-//            CTLineGetOffsetForStringIndex(line, index, &offset);
-//            if (offset > relativePoint.x) {
-                index = index - 1;
-//            }
+            //            CGFloat offset;
+            //            CTLineGetOffsetForStringIndex(line, index, &offset);
+            //            if (offset > relativePoint.x) {
+            index = index - 1;
+            //            }
             //哪一些是高亮
             NSInteger link_count = self.actionArray.count;
             for (int j = 0; j < link_count; j++) {
@@ -159,7 +259,6 @@ typedef UILabel * (^Label)(id input);
 {
     return CGAffineTransformScale(CGAffineTransformMakeTranslation(0, self.bounds.size.height), 1.f, -1.f);
 }
-
 - (CGRect)yb_getLineBounds:(CTLineRef)line point:(CGPoint)point
 {
     CGFloat ascent = 0.0f;
@@ -171,71 +270,4 @@ typedef UILabel * (^Label)(id input);
     return CGRectMake(point.x, point.y , width, height);
 }
 
-+ (UILabel *)getLabel
-{
-    return [[UILabel alloc]init];
-}
-- (UILabel *(^)(UIColor *))QtextColor
-{
-    return ^UILabel *(id input){
-        self.textColor = input;
-        return self;
-    };
-}
-- (UILabel *(^)(UIFont *font))Qfont
-{
-    return ^UILabel *(id input){
-        self.font = input;
-        return self;
-    };
-}
-- (UILabel *(^)(NSString *))Qtext
-{
-    return ^UILabel *(id input){
-        self.text = input;
-        return self;
-    };
-}
-- (UILabel *(^)(CGRect frame))Qframe
-{
-    return ^UILabel *(CGRect input){
-        self.frame = input;
-        return self;
-    };
-}
-- (UILabel *(^)(NSMutableAttributedString *QattributedText))QattributedText
-{
-    return ^UILabel *(id input){
-        self.attributedText = input;
-        return self;
-    };
-}
-- (UILabel *(^)(NSInteger QnumberOfLines))QnumberOfLines
-{
-    return ^UILabel *(NSInteger input){
-        self.numberOfLines = input;
-        return self;
-    };
-}
-- (UILabel *(^)(NSInteger))Qtag
-{
-    return ^UILabel *(NSInteger tag){
-        self.tag = tag;
-        return self;
-    };
-}
-- (UILabel *(^)(QtextAlignment))Qalignment
-{
-    return ^UILabel *(QtextAlignment Alignment){
-        self.textAlignment  = (int)Alignment;
-        return self;
-    };
-}
--(UILabel *(^)(BOOL))Qhidden
-{
-    return ^UILabel *(BOOL hidden){
-        self.hidden  = hidden;
-        return self;
-    };
-}
 @end

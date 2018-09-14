@@ -9,20 +9,10 @@
 #import "QQButton.h"
 #import "UIView+QQFrame.h"
 
-/**
- *  定义宏：按钮中文本和图片的间隔
- */
-#define button_Padding 7
 
 //    获得按钮的大小
 #define button_btnWidth              self.bounds.size.width
 #define button_btnHeight             self.bounds.size.height
-//    获得按钮中UILabel文本的大小
-#define button_labelWidth            self.titleLabel.bounds.size.width
-#define button_labelHeight           self.titleLabel.bounds.size.height
-//    获得按钮中image图标的大小
-#define button_imageWidth            self.imageView.bounds.size.width
-#define button_imageHeight           self.imageView.bounds.size.height
 
 @interface QQButton ()
 
@@ -174,7 +164,6 @@
         imageHeight = 2* button_btnHeight/3;
     }
     CGFloat total  = imageWith + width + 5;
-    
     CGFloat labelX = (button_btnWidth - total)/2;
     CGFloat labelY = (button_btnHeight - imageHeight)/2;
     
