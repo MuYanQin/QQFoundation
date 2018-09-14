@@ -98,13 +98,14 @@ static AFHTTPSessionManager *manager;
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [controller.view loading];
     NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        NSData *data = nil;
-        for (int j = 0; j<Images.count; j++) {
-            data = [QQTool imageData:Images[j]];
-            [formData appendPartWithFileData:data name:fileMark
-                                    fileName:[NSString stringWithFormat:@"%@.png",@([[NSDate date] timeIntervalSince1970])]
-                                    mimeType:@"image/jpg"];
+        for (int k = 0; k<Images.count; k++) {
+            NSDictionary *imageDic = Images[k];
+            [imageDic enumerateKeysAndObjectsUsingBlock:^(NSString * key, UIImage * obj, BOOL *stop) {
+                NSData * data = [QQTool imageData:obj];
+                [formData appendPartWithFileData:data name:fileMark.length >0 ? fileMark: key
+                                        fileName:[NSString stringWithFormat:@"%@.png",key]
+                                        mimeType:@"image/jpeg"];
+            }];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         Progress(uploadProgress);
@@ -139,10 +140,9 @@ static AFHTTPSessionManager *manager;
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [controller.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
-    }else  if (error.code != -999) {//-999是请求被取消
-        [controller.view hiddenHUD];
-        failureBlock(error);
+    }else  if (error.code == -999) {//-999是请求被取消
     }else{
+        [controller.view hiddenHUD];
         failureBlock(error);
     }
     [self doneRequest:controller];

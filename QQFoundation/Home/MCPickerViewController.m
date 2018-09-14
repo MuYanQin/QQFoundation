@@ -39,6 +39,9 @@
     button.frame = CGRectMake(0, 100, self.view.frame.size.width, 40);
     [self.view addSubview:button];
 
+}
+- (void)MCPickerView:(MCPickerView *)MCPickerView complete:(NSString *)complete
+{
     
 }
 - (void)MCPickerView:(MCPickerView *)MCPickerView didSelcetedRow:(NSInteger)Row value:(MCPickerModel *)value

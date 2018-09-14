@@ -90,10 +90,10 @@ static NSInteger const PickerViewHeight = 350;//
     [self.headerDataArray addObject:Value.name];
     [self.headerDataArray addObject:@"请选择"];
     if (self.totalLevel == MCPickerListView.tag + 1) {
+        [self.headerDataArray removeLastObject];
         [self hiddenClick];
     }
     if ((self.totalLevel == MCPickerListView.tag + 1) && [self.delegate respondsToSelector:@selector(MCPickerView:complete:)]) {
-        [self.headerDataArray removeLastObject];
         [self.delegate MCPickerView:self complete:[self.headerDataArray componentsJoinedByString:@""]];
     }
     
@@ -111,7 +111,6 @@ static NSInteger const PickerViewHeight = 350;//
     }
     return _ScrollView;
 }
-
 - (void)setDataArray:(NSArray *)dataArray
 {
     [self manageDataArray:dataArray selectText:@""];

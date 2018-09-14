@@ -34,21 +34,39 @@
 /*传递controller进来展示loadding状态只能是weak不会引用*/
 @property (weak, nonatomic)UIViewController *TempController;
 
-/**空白页、网络错误页  页面的内容可用此属性去更改*/
+
+/**
+ 空白页、网络错误页  页面的内容可用此属性去更改
+ */
 @property (nonatomic , strong)  EmptyView * emptyView;
 
-/*是否有头部刷新  默认YES  */
+/**
+ 是否有头部刷新  默认YES
+ */
 @property (nonatomic,assign) BOOL isHasHeaderRefresh;
 
-/**获取总的Item*/
+/**
+ 获取总的Item
+ */
 @property (nonatomic , assign) NSInteger  getTotal;
 
+/**
+ 请求的网址
+ */
+@property (nonatomic , copy) NSString * requestUrl;
 
-//**开始刷新*/
+/**
+ 请求的参数
+ */
+@property (nonatomic , strong) NSDictionary * requestParam;
+
+/**
+ 开始刷新
+ */
 - (void)headerRefresh;
 
 /**
- 开始下载任务  网络数据用此开始  本地数据则不用使用本方法 用法同系统的UITableView
+ 开始下载任务  网络数据用此开始  本地数据则不用使用本方法
 
  @param url        请求的网址
  @param Parameters 携带的参数 （一定要有，把分页参数放在这里）
@@ -59,15 +77,34 @@
 
 /***************************  以下是空白界面的View  **************************************************/
 @interface EmptyView : UIView
+
+/**
+ 图片名称
+ */
 @property (nonatomic , copy) NSString * imageName;
 /**
  默认图片大小显示居中
  */
 @property (nonatomic , assign) CGSize  imageSize;
-/**提示文字的属性**/
+
+/**
+ 提示文字
+ */
 @property (nonatomic , copy) NSString * hintText;
+
+/**
+ 提示文字字体
+ */
 @property (nonatomic , strong) UIFont * hintTextFont;
+
+/**
+ 提示文字颜色
+ */
 @property (nonatomic , strong) UIColor * hintTextColor;
+
+/**
+ 提示文字富文本
+ */
 @property (nonatomic , strong) NSAttributedString * hintAttributedText;
 @end
 

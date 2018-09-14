@@ -68,9 +68,9 @@ static NSString *const successCode = @"200";//配置正确返回的code码
 
  @param url 请求网址
  @param parameters 请求的参数
- @param Images 图片的数组
+ @param Images 图片字典的数组 格式@[@{@"imageName":image}] key:图片名称。 value 图片对象
  @param controller 请求的界面
- @param fileMark 后台接受图片的字段
+ @param fileMark 后台接受图片的字段。为空的话 就用图片的名称
  @param Progress 上传的进度回调
  @param Success 成功的回调
  @param False 失败的回调

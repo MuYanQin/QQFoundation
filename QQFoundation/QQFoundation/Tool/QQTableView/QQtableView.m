@@ -22,7 +22,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 /**添加的footView*/
 @property (nonatomic , strong) UIView *footerView;
-//@property (nonatomic , strong) UIView *;
 @end
 @implementation QQtableView
 + (void)load
@@ -95,8 +94,10 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     _url = url;
     _TempController = controler;
-    _parameters= [NSMutableDictionary dictionaryWithDictionary:Parameters];
-    self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
+    _parameters= Parameters.mutableCopy;
+    if ([Parameters.allKeys containsObject:pageIndex]) {
+        self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
+    }
     [self.mj_header beginRefreshing];
 }
 //**请求方法*/
@@ -135,7 +136,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         [self.mj_header endRefreshing];
         return;
     }
-    [self changeIndexWithStatus:1];
+    if ([_parameters.allKeys containsObject:pageIndex]) {
+        [self changeIndexWithStatus:1];
+    }
     [self SetUpNetWorkParamters:_parameters isPullDown:YES];
 }
 - (void)footerRefresh
@@ -160,6 +163,14 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     [self.mj_footer endRefreshing];
     [self.mj_header endRefreshing];
+}
+- (void)setRequestParam:(NSDictionary *)requestParam
+{
+    _parameters = requestParam.mutableCopy;
+}
+- (void)setRequestUrl:(NSString *)requestUrl
+{
+    _url = requestUrl;
 }
 - (EmptyView *)emptyView
 {
@@ -219,8 +230,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     self.imageView.image = [UIImage imageNamed:imageName];
 }
-
-
 - (void)setHintText:(NSString *)hintText
 {
     self.hintLb.text = hintText;
