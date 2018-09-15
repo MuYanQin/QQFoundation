@@ -13,10 +13,13 @@
 static char const actionChar;
 static char const ClickChar;
 static char const touchSelChar;
+static char const touchTargetChar;
 
 typedef UILabel * (^Label)(id input);
 @interface UILabel()
 @property (nonatomic , assign) NSString  *touchSelString;
+@property (nonatomic , weak) id  touchTarget;
+
 @end;
 @implementation UILabel (MCChained)
 @dynamic Qtext,QtextColor,Qfont;
@@ -33,6 +36,10 @@ typedef UILabel * (^Label)(id input);
     self.userInteractionEnabled = YES;
     objc_setAssociatedObject(self, &ClickChar, tapClick, OBJC_ASSOCIATION_COPY);
 }
+- (void (^)(NSString *, NSRange, NSInteger))tapClick
+{
+    return objc_getAssociatedObject(self,  &ClickChar);
+}
 - (void)setTouchSelString:(NSString *)touchSelString
 {
     objc_setAssociatedObject(self, &touchSelChar, touchSelString, OBJC_ASSOCIATION_ASSIGN);
@@ -41,14 +48,20 @@ typedef UILabel * (^Label)(id input);
 {
     return objc_getAssociatedObject(self,  &touchSelChar);
 }
-- (void (^)(NSString *, NSRange, NSInteger))tapClick
+- (void)setTouchTarget:(id)touchTarget
 {
-    return objc_getAssociatedObject(self,  &ClickChar);
+    objc_setAssociatedObject(self, &touchTargetChar,touchTarget , OBJC_ASSOCIATION_ASSIGN);
+
 }
-- (UILabel *(^)(NSString *))Qclick
+- (id)touchTarget
 {
-    return ^UILabel *(NSString * event){
+    return objc_getAssociatedObject(self,  &touchTargetChar);
+}
+-(UILabel *(^)(id, NSString *))Qclick
+{
+    return ^UILabel *(id target,NSString * event){
         self.touchSelString = event;
+        self.touchTarget = target;
         self.userInteractionEnabled = YES;
         return self;
     };
@@ -120,22 +133,11 @@ typedef UILabel * (^Label)(id input);
         return self;
     };
 }
-- (UIViewController *)viewController {
-    UIResponder *next = [self nextResponder];
-    do {
-        if ([next isKindOfClass:[UIViewController class]]) {
-            return (UIViewController *)next;
-        }
-        next = [next nextResponder];
-    } while (next != nil);
-    return nil;
-}
 #pragma mark - touchAction
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    if (self.touchSelString ) {
-        [self.viewController  performSelector:NSSelectorFromString(self.touchSelString) withObject:nil afterDelay:0];
-        
+    if (self.touchSelString && self.touchTarget) {
+        [self.touchTarget performSelector:NSSelectorFromString(self.touchSelString) withObject:nil afterDelay:0];
         return;
     }
     UITouch *touch = [touches anyObject];

@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger,QtextAlignment){
 /**
  label的点击事件的字符串
  */
-@property (nonatomic, readonly) UILabel *(^Qclick)(NSString *SelString);
+@property (nonatomic, readonly) UILabel *(^Qclick)(id target,NSString *SelString);
 
 
 
