@@ -33,7 +33,7 @@
 @property (nonatomic , strong) UIColor * selectTitleColor;
 
 /**
- 属性可选 默认平分整个屏幕
+ 属性可选 默认平分整个屏幕 最小60
  */
 @property (nonatomic , assign) CGFloat  titleButtonWidth;
 
@@ -44,6 +44,10 @@
 @property (nonatomic , strong) UIColor * lineColor;
 
 
+/**
+ 是否可以滑动 默认yes
+ */
+@property (nonatomic , assign) BOOL  canSlide;
 
 /**
  手动选中某个iem

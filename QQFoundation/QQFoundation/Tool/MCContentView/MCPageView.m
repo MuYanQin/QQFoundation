@@ -25,7 +25,7 @@
 
 static const CGFloat titleScrollHeight = 60;
 static const NSInteger itemTag = 100;
-
+static const NSInteger  minTitleButtonWitdh = 60;
 @implementation MCPageView
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles controllers:(NSArray *)controllers
@@ -134,16 +134,29 @@ static const NSInteger itemTag = 100;
     _lineColor = lineColor;
     self.lineView.backgroundColor = lineColor;
 }
+- (void)setCanSlide:(BOOL)canSlide
+{
+    _canSlide = canSlide;
+    self.contentCollection.scrollEnabled = canSlide;
+}
 - (void)setTitleButtonWidth:(CGFloat)titleButtonWidth
 {
     _titleButtonWidth = titleButtonWidth;
-    self.titleScroll.contentSize = CGSizeMake((self.titleButtonWidth *_contentTitles.count), titleScrollHeight);
+    CGFloat titleBtnWitdh  = 0;
+    //如果给的宽度和个数乘积还是小于屏幕宽度的话 则无效 还是平分屏幕
+    if ((self.titleButtonWidth *_contentTitles.count) >kwidth) {
+        self.titleScroll.contentSize = CGSizeMake((self.titleButtonWidth *_contentTitles.count), titleScrollHeight);
+        titleBtnWitdh = titleButtonWidth;
+    }else{
+        self.titleScroll.contentSize = CGSizeMake(kwidth, titleScrollHeight);
+        titleBtnWitdh = kwidth/(self.itemArray.count);
+    }
     __weak __typeof(&*self)weakSelf = self;
     [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         QQButton *item =  weakSelf.itemArray[idx];
-        item.frame = CGRectMake(idx *titleButtonWidth, 0, titleButtonWidth, titleScrollHeight);
+        item.frame = CGRectMake(idx *titleBtnWitdh, 0, titleBtnWitdh, titleScrollHeight);
     }];
-    self.lineView.frame = CGRectMake(titleButtonWidth/6, titleScrollHeight - 1, 2*titleButtonWidth/3, 1);
+    self.lineView.frame = CGRectMake(titleBtnWitdh/6, titleScrollHeight - 1, 2*titleBtnWitdh/3, 1);
 }
 - (void)setDefaultTitleFont:(UIFont *)defaultTitleFont
 {
@@ -214,14 +227,13 @@ static const NSInteger itemTag = 100;
         _titleScroll.showsVerticalScrollIndicator = NO;
         _titleScroll.showsHorizontalScrollIndicator = NO;
 
-        if ((self.titleButtonWidth *_contentTitles.count) >kwidth) {
-            self.titleScroll.contentSize = CGSizeMake((self.titleButtonWidth *_contentTitles.count), titleScrollHeight);
+        CGFloat btnWidth = kwidth/_contentTitles.count;
+        //最小值与个数乘积还大与屏幕的话 就按60宽度算
+        if (_contentTitles.count * minTitleButtonWitdh > kwidth) {
+            btnWidth = minTitleButtonWitdh;
+            self.titleScroll.contentSize = CGSizeMake((minTitleButtonWitdh *_contentTitles.count), titleScrollHeight);
         }else{
             self.titleScroll.contentSize = CGSizeMake(kwidth, titleScrollHeight);
-        }
-        CGFloat btnWidth = kwidth/_contentTitles.count;
-        if (self.titleButtonWidth >0) {
-            btnWidth = self.titleButtonWidth;
         }
         __weak __typeof(&*self)weakSelf = self;
         [_contentTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
