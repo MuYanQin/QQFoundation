@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger,QTextPosition){
+    Tnone   = 0,//
     Tright  = 1,// 文字文字在右
     Tleft   = 2,//文字在左
     Ttop    = 3,// 文字在上

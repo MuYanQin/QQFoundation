@@ -48,7 +48,7 @@ static dispatch_once_t onceToken;
         [filemanager removeItemAtPath:[self getUserInfoFile] error:&error];
     }
     [NSKeyedArchiver archiveRootObject:dic toFile:[self getUserInfoFile]];
-    [self getLoginInfo];
+    [self setCacheInfo];
 
 }
 + (void)cleanUpInfo
@@ -74,12 +74,21 @@ static dispatch_once_t onceToken;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[self getUserDic]];
     [dic setObject:[QQTool strRelay:value] forKey:[QQTool strRelay:key]];
     [self writeUserInfo:dic];
-    [self getLoginInfo];
+    [self setCacheInfo];
+}
++ (void)updateInfoWith:(NSDictionary *)dic
+{
+    if (dic.allKeys.count == 0) {
+        NSLog(@"don't be nil");
+        return;
+    }
+    NSMutableDictionary *userDic = [NSMutableDictionary dictionaryWithDictionary:[self getUserDic]];
+    [userDic setValuesForKeysWithDictionary:dic];
+    [self writeUserInfo:userDic];
+    [self setCacheInfo];
 }
 + (MCUserInfo *)getLoginInfo
 {
-    MCUserInfo *info = [MCUserInfo instance];
-    [info setValuesForKeysWithDictionary:[self getUserDic]];
     return info;
 }
 + (NSString *)getUserInfoFile {
@@ -87,5 +96,17 @@ static dispatch_once_t onceToken;
     NSString * documentsDirectory = [paths objectAtIndex:0];
     NSString * path = [documentsDirectory stringByAppendingPathComponent:@"user.txt"];
     return path;
+}
++ (void)setCacheInfo
+{
+    MCUserInfo *UserInfo = [MCUserInfo instance];
+    [UserInfo setValuesForKeysWithDictionary:[self getUserDic]];
+}
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    if([key isEqualToString:@"id"])
+    {
+        self.pid= value;
+    }
 }
 @end

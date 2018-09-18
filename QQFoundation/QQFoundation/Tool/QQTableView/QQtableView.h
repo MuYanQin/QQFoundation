@@ -60,6 +60,7 @@
  */
 @property (nonatomic , strong) NSDictionary * requestParam;
 
+
 /**
  开始刷新
  */

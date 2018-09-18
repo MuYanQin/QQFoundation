@@ -107,6 +107,13 @@
             [self alignmentBottom];
             break;
         }
+        case Tnone:
+        {
+            CGRect rect = self.imageView.frame;
+            rect.size = self.imageSize;
+            self.imageView.frame = rect;
+            break;
+        }
         default:
             break;
     }

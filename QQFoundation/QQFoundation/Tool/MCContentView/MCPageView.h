@@ -33,19 +33,29 @@
 @property (nonatomic , strong) UIColor * selectTitleColor;
 
 /**
- 属性可选 默认平分整个屏幕 最小60
+ 可选 默认平分整个屏幕 最小60
  */
 @property (nonatomic , assign) CGFloat  titleButtonWidth;
 
+/**
+ 可选 顶部文字区域的高度 默认50
+ */
+@property (nonatomic , assign) CGFloat  titleScrollHeight;
 
 /**
- item下  横线的颜色
+ 可选 item下  横线的颜色 默认取选中字体的颜色
  */
 @property (nonatomic , strong) UIColor * lineColor;
 
 
 /**
- 是否可以滑动 默认yes
+ 可选 item下 横线的宽度相对于item宽度的比例。0～1 默认0.5
+ */
+@property (nonatomic , assign) CGFloat lineWitdhScale;
+
+
+/**
+ 可选 是否可以滑动 默认yes
  */
 @property (nonatomic , assign) BOOL  canSlide;
 

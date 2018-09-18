@@ -10,10 +10,7 @@
 
 @interface MCUserInfo : NSObject
 
-@property (nonatomic,copy) NSString *avatar;//头像
-@property (nonatomic,copy) NSString *openId;
-@property (nonatomic,copy) NSString *name;//性别
-@property (nonatomic , strong) NSArray * tags;
+@property (nonatomic , copy) NSString * pid;
 /**
  实例化对象
  
@@ -58,4 +55,11 @@
  @param key 数据key
  */
 + (void)updateValue:(NSString *)value  key:(NSString *)key;
+
+/**
+ 用字典更新用户信息
+ 
+ @param dic dic description
+ */
++ (void)updateInfoWith:(NSDictionary *)dic;
 @end
