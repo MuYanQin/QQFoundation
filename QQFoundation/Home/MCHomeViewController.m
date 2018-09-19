@@ -14,6 +14,7 @@
 #import "QQNetManager.h"
 #import "MCMineViewController.h"
 #import "MCPickerViewController.h"
+#import "MCPageViewViewController.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) UIView *wq;
 @end
@@ -142,14 +143,23 @@
     
     
     MCLableItem *mcpickerView = [[MCLableItem alloc]init];
-    mcpickerView.leftText = @"MCpickerView使用";
+    mcpickerView.leftText = @"MCPickerView使用";
     mcpickerView.rightText = @"";
     mcpickerView.selcetCellHandler = ^(id item) {
         [weakSelf.navigationController pushViewController:[MCPickerViewController new] animated:YES];
     };
     [items addObject:mcpickerView];
     
-    MCEmptyItem *empty1 = [[MCEmptyItem alloc]initWithHeight:15];
+    
+    MCLableItem *PageView = [[MCLableItem alloc]init];
+    PageView.leftText = @"MCPageView使用";
+    PageView.rightText = @"";
+    PageView.selcetCellHandler = ^(id item) {
+        [weakSelf.navigationController pushViewController:[MCPageViewViewController new] animated:YES];
+    };
+    [items addObject:PageView];
+    
+    MCEmptyItem *empty1 = [[MCEmptyItem alloc]initWithHeight:40];
     empty1.bgColor = getColorWithHex(@"f8f8f8");
     [items addObject:empty1];
     

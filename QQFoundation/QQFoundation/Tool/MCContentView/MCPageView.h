@@ -59,15 +59,33 @@
  */
 @property (nonatomic , assign) BOOL  canSlide;
 
+
 /**
- 手动选中某个iem
+ 可选 设置角标的数据
+ 个数须与item个数相同
+ 设置角标  0 消失  大于零展示 小于0 圆圈
+ @param badgeArray 角标的数据
+ */
+- (void)setItemBadgeWithArray:(NSArray *)badgeArray;
+
+
+/**
+ 可选 设置某个item的角标
+ 设置角标  0 消失  大于零展示 小于0 圆圈
+ @param index item下标 0开始
+ @param badge 角标数量
+ */
+- (void)setBadgeWithIndex:(NSInteger)index  badge:(NSInteger)badge;
+
+/**
+ 可选 手动选中某个iem
 
  @param index item下标
  */
 - (void)selectIndex:(NSInteger)index;
 
 /**
- 实例化方法
+ 必选 实例化方法
  
  @param frame frame
  @param titles titleS数组
@@ -76,3 +94,14 @@
  */
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  controllers:(NSArray *)controllers;
 @end
+
+@interface MCItem : UIButton
+
+/**
+ 设置角标  0 消失, 小于0 展示圆圈 ,  大于零展示 大于999  显示999+
+ */
+@property (nonatomic,assign) NSInteger badge;
+
+
+@end
+

@@ -8,7 +8,6 @@
 
 #import "MCPageView.h"
 #import "UIView+QQFrame.h"
-#import "QQButton.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
 #define itemDefaultColor [UIColor colorWithRed:220/255.0f green:220/255.0f blue:220/255.0f alpha:1]
@@ -19,7 +18,7 @@
 @property (nonatomic , strong) UIScrollView * titleScroll;
 @property (nonatomic , strong) UICollectionView * contentCollection;
 @property (nonatomic , strong) NSMutableArray * itemArray;
-@property (nonatomic , strong) QQButton * lastItem;
+@property (nonatomic , strong) MCItem * lastItem;
 @property (nonatomic , strong) UIView  * lineView;
 @end
 
@@ -33,10 +32,10 @@ static const NSInteger  minTitleButtonWitdh = 60;
         self.contentTitles = [NSArray arrayWithArray:titles];
         _contentCtrollers = [NSArray arrayWithArray:controllers];
         self.itemArray = [NSMutableArray array];
-        self.titleScrollHeight = 60;
-        self.lineWitdhScale = 0.5;
+        self.titleScrollHeight = 50;
         [self addSubview:self.titleScroll];
         [self.titleScroll addSubview:self.lineView];
+        self.lineWitdhScale = 0.5;
         [self addSubview:self.contentCollection];
     }
     return self;
@@ -70,7 +69,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
         [self changeItemStatus:index];
     }
 }
-- (void)selectItem:(QQButton *)btn
+- (void)selectItem:(MCItem *)btn
 {
     [self selectIndex:btn.tag - itemTag];
 }
@@ -83,10 +82,23 @@ static const NSInteger  minTitleButtonWitdh = 60;
     [self.contentCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:labs(index) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     [self changeItemStatus:index];
 }
+- (void)setBadgeWithIndex:(NSInteger)index badge:(NSInteger)badge
+{
+    if (index <0 || index >= self.itemArray.count) {
+        NSLog(@"设置下标错误");
+        return;
+    }
+    MCItem *item =  self.itemArray[index];
+    item.badge = badge;
+}
+- (void)setItemBadgeWithArray:(NSArray *)badgeArray
+{
+    
+}
 - (void)changeItemStatus:(NSInteger)index
 {
     [self menuScrollToCenter:index];
-    QQButton * Item = self.itemArray[index];
+    MCItem * Item = self.itemArray[index];
     if (self.lastItem) {
         self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
         [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:itemDefaultColor forState:UIControlStateNormal];
@@ -105,14 +117,15 @@ static const NSInteger  minTitleButtonWitdh = 60;
 - (void)menuScrollToCenter:(NSInteger)index{
     
     CGFloat itemWidth = _titleButtonWidth?_titleButtonWidth : kwidth / self.contentTitles.count;
-    QQButton *Button = self.itemArray[index];
+    MCItem *Button = self.itemArray[index];
     CGFloat left = Button.center.x - kwidth / 2.0;
     left = left <= 0 ? 0 : left;
     CGFloat maxLeft = itemWidth * self.contentTitles.count - kwidth;
     left = left >= maxLeft ? maxLeft : left;
     [self.titleScroll setContentOffset:CGPointMake(left, 0) animated:YES];
 }
-- (void)scrollToItemCenter:(QQButton *)item
+//横线滚动
+- (void)scrollToItemCenter:(MCItem *)item
 {
     [UIView animateWithDuration:0.15 animations:^{
         self.lineView.center = item.center;
@@ -163,7 +176,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
     }
     __weak __typeof(&*self)weakSelf = self;
     [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        QQButton *item =  weakSelf.itemArray[idx];
+        MCItem *item =  weakSelf.itemArray[idx];
         item.frame = CGRectMake(idx *titleBtnWitdh, 0, titleBtnWitdh, self.titleScrollHeight);
     }];
 }
@@ -173,7 +186,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
     _defaultTitleFont = defaultTitleFont;
     __weak __typeof(&*self)weakSelf = self;
     [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        QQButton *item =  weakSelf.itemArray[idx];
+        MCItem *item =  weakSelf.itemArray[idx];
         if (![item isEqual:weakSelf.lastItem]) {
             item.titleLabel.font = _defaultTitleFont;
         }
@@ -184,7 +197,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
     _defaultTitleColor = defaultTitleColor;
     __weak __typeof(&*self)weakSelf = self;
     [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        QQButton *item =  weakSelf.itemArray[idx];
+        MCItem *item =  weakSelf.itemArray[idx];
         if (![item isEqual:weakSelf.lastItem]) {
             [item setTitleColor:_defaultTitleColor forState:UIControlStateNormal];
         }
@@ -244,7 +257,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
         __weak __typeof(&*self)weakSelf = self;
         [_contentTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             @autoreleasepool{
-                QQButton *item = [[QQButton alloc]initWithFrame:CGRectMake(idx *self.titleButtonWidth, 0, self.titleButtonWidth, self.titleScrollHeight)];
+                MCItem *item = [[MCItem alloc]initWithFrame:CGRectMake(idx *self.titleButtonWidth, 0, self.titleButtonWidth, self.titleScrollHeight)];
                 item.tag = idx + itemTag;
                 [item setTitleColor:itemDefaultColor forState:UIControlStateNormal];
                 [item setTitle:obj forState:UIControlStateNormal];
@@ -262,5 +275,65 @@ static const NSInteger  minTitleButtonWitdh = 60;
     }
     return _titleScroll;
 }
+@end
+
+@interface MCItem()
+@property (nonatomic,strong) UILabel *badgeLb;
 
 @end
+@implementation MCItem
+
+- (void)setBadge:(NSInteger)badge
+{
+    _badge = badge;
+ 
+    NSString *badgeText = [NSString string];
+    if (badge > 999) {
+        badgeText = @"999+";
+    }else if(badge >0){
+        badgeText = [NSString stringWithFormat:@"%lu",(long)badge];
+    }else{
+        self.badgeLb.text = @"";
+    }
+    self.badgeLb.text = badgeText;
+}
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGRect rect = self.badgeLb.frame;
+    if (_badge < 0) {
+        rect.size.width = 10;
+        rect.size.height = 10;
+    }else{
+        rect.size.width = self.badgeLb.frame.size.width + 5;
+    }
+    self.badgeLb.frame  = rect;
+    
+    CGPoint point = self.badgeLb.center;
+    point.x = self.frame.size.width/2 + (self.titleLabel.frame.size.width/2);
+    point.y = self.frame.size.height/2 - self.titleLabel.frame.size.height/2 - 5;
+    self.badgeLb.center = point;
+    self.badgeLb.layer.cornerRadius = self.badgeLb.frame.size.height/2;
+    
+}
+- (UILabel *)badgeLb
+{
+    if (!_badgeLb) {
+        _badgeLb = [[UILabel alloc]init];
+        _badgeLb.textColor = [UIColor whiteColor];
+        _badgeLb.backgroundColor = [UIColor redColor];
+        _badgeLb.font = [UIFont systemFontOfSize:10];
+        _badgeLb.textAlignment = NSTextAlignmentCenter;
+        _badgeLb.layer.masksToBounds = YES;
+        [_badgeLb setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self addSubview:_badgeLb];
+
+
+        
+        
+    }
+    return _badgeLb;
+}
+
+@end
+
