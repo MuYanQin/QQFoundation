@@ -68,7 +68,9 @@ typedef NS_ENUM(NSInteger,QtextAlignment){
 
 
 @property (nonatomic , strong) NSArray * actionArray;
+
 @property (nonatomic , copy) void (^tapClick) (NSString *string , NSRange range , NSInteger index);
 
 + (UILabel *)getLabel;
+
 @end

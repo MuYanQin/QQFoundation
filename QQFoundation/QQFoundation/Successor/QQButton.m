@@ -109,6 +109,9 @@
         }
         case Tnone:
         {
+            if (self.imageSize.width <=0) {
+                return;
+            }
             CGRect rect = self.imageView.frame;
             rect.size = self.imageSize;
             self.imageView.frame = rect;

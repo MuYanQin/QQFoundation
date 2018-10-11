@@ -15,18 +15,22 @@
 @interface MCPageView : UIView
 
 @property (nonatomic , assign) id<MCPageViewDelegate>  delegate;
+
 /**
  可选 默认[UIFont systemFontOfSize:14]
  */
 @property (nonatomic , strong) UIFont * defaultTitleFont;
+
 /**
  可选 默认[UIFont systemFontOfSize:14]
  */
 @property (nonatomic , strong) UIFont * selectTitleFont;
+
 /**
  可选 默认灰色
  */
 @property (nonatomic , strong) UIColor * defaultTitleColor;
+
 /**
  可选 默认黑色
  */
@@ -94,6 +98,7 @@
  */
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  controllers:(NSArray *)controllers;
 @end
+
 
 @interface MCItem : UIButton
 

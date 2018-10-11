@@ -11,6 +11,7 @@
 @interface UIView (MBProgress)<MBProgressHUDDelegate>
 /**信息提示框*/
 @property(strong, nonatomic) MBProgressHUD * hud;
+
 /**提示信息*/
 - (void)message:(NSString *)message;
 

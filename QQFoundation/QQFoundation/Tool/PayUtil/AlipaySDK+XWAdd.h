@@ -22,34 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AlipaySDK (XWAdd)
 
 /**
- *  注册支付宝支付(客户端签名的时候才需要调用)
- *
- *  @param partnerID      PID，商户ID，一般以2088开头
- *  @param sellerID       收款账户地址，如邮箱等
- *  @param partnerPrivKey 通过SSL工具生成的私钥，同时需要把匹配的公钥传至支付宝账户
- */
-+ (void)xwAdd_registerAlipayWithPartnerID:(NSString*)partnerID sellerID:(NSString*)sellerID partnerPrivKey:(NSString *)partnerPrivKey;
-
-/**
- *  发起支付（客户端签名版本）
- *
- *  @param orderID          订单号
- *  @param orderName        订单标题
- *  @param orderDescription 订单描述
- *  @param orderPrice       订单价格，保留小数点2位，单位（元）
- *  @param orderNotifyUrl   服务端回调URL（重要）
- *  @param appScheme        设置的app的URLScheme
- *  @param config           支付完成后的回调（无论是网页版本还是支付宝客户端的版本都通过此block回调）（successed = YES 代表支付成功）
- */
-+ (void)xwAdd_sendPayRequestWithOrderID:(NSString *)orderID
-                              orderName:(NSString *)orderName
-                              orderDescription:(nullable NSString *)orderDescription
-                             orderPrice:(NSString *)orderPrice
-                         orderNotifyUrl:(NSString *)orderNotifyUrl
-                              appScheme:(NSString *)appScheme
-                              callbackConfig:(void (^)(BOOL successed))config;
-
-/**
  *  发起支付 (服务器端签名版本)
  *
  *  @param orderInfo 服务器签名好的订单信息

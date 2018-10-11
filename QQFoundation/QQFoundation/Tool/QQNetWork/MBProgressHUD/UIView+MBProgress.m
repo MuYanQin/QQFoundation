@@ -22,11 +22,8 @@ static NSInteger const HUDWIDTH = 80;
     MBProgressHUD * hud =  objc_getAssociatedObject(self, &HUDKEY_BE);
     if(hud == nil){
         //[UIApplication sharedApplication].delegate.window 会一直保持在最上层。  但是loading的时候不能点击nav的按钮
-        //self的话可能会被别的视图遮住
-        //self.navigationController.view
         hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
         hud.delegate = self;
-//        hud.layer.zPosition = 1;//这句话的作用是 让hub保持在self的最上层不会被覆盖
         hud.removeFromSuperViewOnHide = NO;
         [self setHud:hud];//保证只有一个HUD
     }
@@ -45,8 +42,9 @@ static NSInteger const HUDWIDTH = 80;
 
 /**自定义提示框位置，只显示文字*/
 - (void)message:(NSString *)message YOffset:(float)yoffset HiddenAfterDelay:(NSTimeInterval)delay{
-    MBProgressHUD *ProgressHUD  = self.hud;
-    [self bringSubviewToFront:self.hud];
+    MBProgressHUD *ProgressHUD =  [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].delegate.window animated:YES];
+    ProgressHUD.removeFromSuperViewOnHide = YES;
+    ProgressHUD.backgroundView.hidden = YES;
     ProgressHUD.offset = CGPointMake(0, yoffset);// HUD相对于父视图中心点的y轴偏移量
     ProgressHUD.mode = MBProgressHUDModeText;
     ProgressHUD.detailsLabel.text = message;
@@ -57,7 +55,6 @@ static NSInteger const HUDWIDTH = 80;
     [ProgressHUD showAnimated:YES];
     ProgressHUD.bezelView.color = [UIColor blackColor];// 背景框的颜色
     [ProgressHUD hideAnimated:YES afterDelay:delay];
-    
 }
 
 /**展示Loading标示*/
@@ -75,7 +72,6 @@ static NSInteger const HUDWIDTH = 80;
 
 
 - (void)loading{
-//    [self touchesEnded:nil withEvent:nil];
     MBProgressHUD * ProgressHUD = self.hud;
     [self bringSubviewToFront:self.hud];
     ProgressHUD.mode = MBProgressHUDModeIndeterminate;
@@ -86,7 +82,6 @@ static NSInteger const HUDWIDTH = 80;
     ProgressHUD.minSize = CGSizeMake(HUDWIDTH, HUDWIDTH);
     ProgressHUD.contentColor = [UIColor whiteColor];
     ProgressHUD.bezelView.color = [UIColor blackColor];// 背景框的颜色
-    // 需要注意的是如果设置了这个属性，则opacity属性会失效，即不会有半透明效果
     [ProgressHUD showAnimated:YES];
 }
 

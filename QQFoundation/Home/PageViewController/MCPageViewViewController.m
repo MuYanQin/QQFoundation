@@ -36,8 +36,6 @@
     [self.PageView setBadgeWithIndex:4 badge:58];
     [self.PageView setBadgeWithIndex:5 badge:-1];
     [self.PageView setBadgeWithIndex:6 badge:1000];
-//    self.PageView.selectTitleFont = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
-
     [self.view addSubview:self.PageView];
 }
 

@@ -7,8 +7,6 @@
 //
 
 #import "AlipaySDK+XWAdd.h"
-#import "Order.h"
-#import "DataSigner.h"
 #import <objc/runtime.h>
 
 static void * const xwAdd_partnerID_key = "xwAdd_partnerID_key";
@@ -17,61 +15,6 @@ static void * const xwAdd_partnerPrivKey_key = "xwAdd_partnerPrivKey_key";
 static void * const xwAdd_callbackConfig_key = "xwAdd_callbackConfig_key";
 
 @implementation AlipaySDK (XWAdd)
-
-+ (void)xwAdd_registerAlipayWithPartnerID:(NSString*)partnerID sellerID:(NSString*)sellerID partnerPrivKey:(NSString *)partnerPrivKey {
-    [self _xwAdd_saveValueWithKey:xwAdd_partnerID_key value:partnerID];
-    [self _xwAdd_saveValueWithKey:xwAdd_sellerID_key value:sellerID];
-    [self _xwAdd_saveValueWithKey:xwAdd_partnerPrivKey_key value:partnerPrivKey];
-}
-
-+ (void)xwAdd_sendPayRequestWithOrderID:(NSString *)orderID
-                              orderName:(NSString *)orderName
-                              orderDescription:(NSString *)orderDescription
-                             orderPrice:(NSString *)orderPrice
-                         orderNotifyUrl:(NSString *)orderNotifyUrl
-                              appScheme:(NSString *)appScheme
-                         callbackConfig:(void (^)(BOOL successed))config {
-    if (!config) {
-        NSLog(@"必须设置回调block");
-        return;
-    }
-    //生成订单信息
-    NSString * partnerID = [self _xwAdd_readValueWithKey:xwAdd_partnerID_key];
-    NSString * sellerID = [self _xwAdd_readValueWithKey:xwAdd_sellerID_key];
-    NSString * partnerPrivKey = [self _xwAdd_readValueWithKey:xwAdd_partnerPrivKey_key];
-    if (!partnerID.length || !sellerID.length || !partnerPrivKey.length) {
-        NSLog(@"基础信息不全");
-        config(NO);
-        return;
-    }
-    Order *order = [[Order alloc] init];
-    order.partner = partnerID; //支付宝分配给商户的ID
-    order.seller = sellerID; //收款支付宝账号（用于收💰）
-    order.tradeNO = orderID; //订单ID(由商家自行制定)
-    order.productName = orderName; //商品标题
-    order.productDescription = orderDescription; //商品描述
-    order.amount = orderPrice; //商品价格
-    order.notifyURL =  orderNotifyUrl; //回调URL（通知服务器端交易结果）(重要)
-    order.service = @"mobile.securitypay.pay"; //接口名称, 固定值, 不可空
-    order.inputCharset = @"utf-8"; //参数编码字符集: 商户网站使用的编码格式, 固定为utf-8, 不可空
-    // 将订单信息拼接成字符串
-    NSString *orderSpec = [order description];
-    NSLog(@"订单信息orderSpec = %@", orderSpec);
-    //通过私钥将订单信息签名
-    id<DataSigner> signer = CreateRSADataSigner(partnerPrivKey);
-    NSString *signedString = [signer signString:orderSpec];
-    if (!signedString.length) {
-        NSLog(@"签名失败");
-        config(NO);
-        return;
-    }
-    //将签名成功字符串格式化为订单字符串,请严格按照该格式
-    NSString *orderString = nil;
-    orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                   orderSpec, signedString, @"RSA"];
-    NSLog(@"==== %@", orderString);
-    [self xwAdd_sendPayWithOrderInfo:orderString appScheme:appScheme callbackConfig:config];
-}
 
 + (void)xwAdd_sendPayWithOrderInfo:(NSString *)orderInfo
                          appScheme:(NSString *)appScheme
