@@ -10,6 +10,7 @@
 #import "QQTool.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "QQsession.h"
+#import "AFNetworking.h"
 
 @interface QQNetManager()
 @property (nonatomic , strong) NSMutableDictionary * dataDic;///<纪录下载的url
@@ -26,7 +27,6 @@
     if (self = [super init]) {
         _dataDic = [[NSMutableDictionary alloc]init];
         _controllerRequest = [NSMutableArray array];
-        _IsConsolePrint = YES;
         _dataCache = [[NSCache alloc]init];
         _dataCache.totalCostLimit = 3 * 1024 * 1024;
     }
@@ -37,14 +37,26 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[self alloc]init];
+        manager.sessionManager = [AFHTTPSessionManager manager];
+        manager.sessionManager.requestSerializer.timeoutInterval = 30.f;
+        manager.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        //        [manager setSecurityPolicy:self.customSecurityPolicy];//是否开启ssl验证
+        //设置请求头
+        //        [[WSUtils getRequestHeaderDict] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        //            [manager.requestSerializer setValue:[WSLUtil strRelay:obj] forHTTPHeaderField:[WSLUtil strRelay:key]];
+        //        }];
+        manager.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];//@"application/x-javascript"
     });
     return manager;
 }
-- (void)setIsConsolePrint:(BOOL)IsConsolePrint
+//设置证书的时候 后台验证
+- (AFSecurityPolicy*)customSecurityPolicy
 {
-    _IsConsolePrint = IsConsolePrint;
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    return securityPolicy;
 }
-
 - (void)RTSGetWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
 {
     [self filtrationTxdWithUrl:url Param:parameters from:controller txdType:get cacheType:ignore success:Success False:False];
@@ -70,7 +82,8 @@
     QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:param]];
     if (!session) {
         session = [[QQsession alloc]init];
-        session.urlStr = [self cacheKeyWithURL:url parameters:param];
+        session.urlStr = url;
+        session.cacheKey = [self cacheKeyWithURL:url parameters:param];
         session.controllerName = NSStringFromClass([controller class]);
         [session TXDWith:url Param:param from:controller txdType:txdType cacheType:cacheType success:success False:False];
     }
@@ -85,13 +98,11 @@
               Success:(void(^)( id responseObject))Success
                 False:(void(^)(NSError *error))False
 {
-    if (Images.count <=0) {
-        return;
-    }
     QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!session) {
         session = [[QQsession alloc]init];
-        session.urlStr = [self cacheKeyWithURL:url parameters:parameters];
+        session.urlStr = url;
+        session.cacheKey = [self cacheKeyWithURL:url parameters:parameters];
         [session TXDUploadWithUrl:url Dic:parameters MutableArray:Images from:controller fileMark:fileMark Progress:Progress success:Success False:False];
     }
 }
@@ -131,9 +142,6 @@
                         if ([session.controllerName isEqualToString: VCName]) {
                             [self deleteQQConnection:session];
                             [session.SessionTask cancel];
-                            if (_IsConsolePrint) {
-                                NSLog(@"Cancel this controller '%@'",session.controllerName);
-                            }
                         }
                     }
                 }
@@ -166,5 +174,14 @@
             result[8], result[9], result[10], result[11],
             result[12], result[13], result[14], result[15]
             ];
+}
+- (MCMonitorView *)monitorView
+{
+    if (!_monitorView) {
+        _monitorView = [[MCMonitorView alloc]initWithFrame:CGRectMake(KScreenWidth - 150, KScreenHeight - 200, 140, 100)];
+        
+        [[UIApplication sharedApplication].delegate.window addSubview:_monitorView];
+    }
+    return _monitorView;
 }
 @end

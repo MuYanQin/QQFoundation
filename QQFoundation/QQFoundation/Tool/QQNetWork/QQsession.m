@@ -15,31 +15,7 @@
 @end
 
 @implementation QQsession
-static NSString *const QQCacheName = @"QQNetWorkCache";
-static AFHTTPSessionManager *manager;
--(AFHTTPSessionManager *)sharedHTTPSession{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [AFHTTPSessionManager manager];
-        manager.requestSerializer.timeoutInterval = 30.f;
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//        [manager setSecurityPolicy:self.customSecurityPolicy];//是否开启ssl验证
-        //设置请求头
-//        [[WSUtils getRequestHeaderDict] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//            [manager.requestSerializer setValue:[WSLUtil strRelay:obj] forHTTPHeaderField:[WSLUtil strRelay:key]];
-//        }];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];//@"application/x-javascript"
-    });
-    return manager;
-}
-//设置证书的时候 后台验证
-- (AFSecurityPolicy*)customSecurityPolicy
-{
-    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    securityPolicy.allowInvalidCertificates = YES;
-    securityPolicy.validatesDomainName = NO;
-    return securityPolicy;
-}
+
 - (NSURLSessionDataTask *)TXDWith:(NSString *)url Param:(NSDictionary *)param from:(UIViewController *)controller txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType success:(void (^)(id))success False:(void (^)(NSError *))False
 {
 //判断缓存
@@ -60,7 +36,7 @@ static AFHTTPSessionManager *manager;
     switch (txdType) {
         case get:
         {
-            operation = [self.sharedHTTPSession GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
+            operation = [[QQNetManager Instance].sessionManager GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:False];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -70,7 +46,7 @@ static AFHTTPSessionManager *manager;
         }
         case post:
         {
-            [self.sharedHTTPSession POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+            [[QQNetManager Instance].sessionManager POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:False];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -97,7 +73,7 @@ static AFHTTPSessionManager *manager;
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [controller.view loading];
-    NSURLSessionDataTask * operation = [self.sharedHTTPSession POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    NSURLSessionDataTask * operation = [[QQNetManager Instance].sessionManager POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int k = 0; k<Images.count; k++) {
             NSDictionary *imageDic = Images[k];
             [imageDic enumerateKeysAndObjectsUsingBlock:^(NSString * key, UIImage * obj, BOOL *stop) {
@@ -119,13 +95,12 @@ static AFHTTPSessionManager *manager;
 #pragma mark - 统一处理下载返回的数据
 - (void)handleResponseObject:(id)responseObject  cacheType:(CacheType)cacheType key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
 {
-    
+    [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
     if ([responseObject[@"code"] isEqualToString:successCode]) {
         if (cacheType == localData) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
             [[QQNetManager Instance].dataCache setObject:@{@"data":responseObject,@"time":@(time)} forKey:key];
         }
-        [controller.view hiddenHUD];
         successBlock(responseObject);
     }else{
         [controller.view message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
@@ -133,18 +108,21 @@ static AFHTTPSessionManager *manager;
         NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:[responseObject[@"code"] integerValue] userInfo:userInfo1];
         failureBlock(error);
     }
+    [controller.view hiddenHUD];
+
     [self doneRequest:controller];
 }
 - (void)handleResponseObject:(NSError *)error  Controller:(UIViewController *)controller failure:(void(^)(NSError *error))failureBlock
 {
+    [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:error};
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [controller.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
     }else  if (error.code == -999) {//-999是请求被取消
     }else{
-        [controller.view hiddenHUD];
         failureBlock(error);
     }
+    [controller.view hiddenHUD];
     [self doneRequest:controller];
 }
 - (void)doneRequest:(UIViewController *)controller

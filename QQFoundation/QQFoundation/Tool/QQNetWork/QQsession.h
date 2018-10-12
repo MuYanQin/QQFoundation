@@ -18,7 +18,8 @@ typedef NS_ENUM (NSInteger,CacheType){
     localData
 };
 @interface QQsession : NSObject
-@property (copy, nonatomic) NSString *urlStr;///<记录当前下载的URl  MD5加密后的
+@property (copy, nonatomic) NSString *urlStr;///<记录当前下载的URl
+@property (copy, nonatomic) NSString *cacheKey;///<记录当前下载的URl  MD5加密后的
 @property (nonatomic , strong) NSURLSessionDataTask * SessionTask;//记录某次下载的任务
 @property (nonatomic , copy) NSString * controllerName;//记录某次下载所在界面的名称
 

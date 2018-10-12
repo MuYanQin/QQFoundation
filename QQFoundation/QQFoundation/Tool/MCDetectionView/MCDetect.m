@@ -11,7 +11,7 @@
 @implementation MCDetect
 + (void)setupWithDomains:(NSArray *)Domains
 {
-    MCDetectionView *Detection = [[MCDetectionView alloc]initWithFrame:CGRectMake(15, 20, 90, 40)];
+    MCDetectionView *Detection = [[MCDetectionView alloc]initWithFrame:CGRectMake(64, 20, 90, 40)];
     Detection.Domains = Domains;
     [[UIApplication sharedApplication].delegate.window addSubview:Detection];
 }

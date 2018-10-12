@@ -44,6 +44,8 @@
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
 		4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */; };
 		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
+		4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A33E21707B7900299613 /* MCMonitorView.m */; };
+		4BA5A34521708DB200299613 /* MCWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A34321708DB200299613 /* MCWebViewViewController.m */; };
 		4BBBFC7F21192A19003EC96B /* wechatMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */; };
 		4BBBFC8021192D08003EC96B /* MCPlayerMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */; };
 		4BBBFC8F2119438C003EC96B /* bing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC8E2119438C003EC96B /* bing.caf */; };
@@ -263,6 +265,10 @@
 		4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCEmptyCell.h; sourceTree = "<group>"; };
 		4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCEmptyCell.m; sourceTree = "<group>"; };
 		4B8D23D220E0DA46005F6047 /* MCGCDStudy */ = {isa = PBXFileReference; lastKnownFileType = text; path = MCGCDStudy; sourceTree = "<group>"; };
+		4BA5A33D21707B7900299613 /* MCMonitorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMonitorView.h; sourceTree = "<group>"; };
+		4BA5A33E21707B7900299613 /* MCMonitorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCMonitorView.m; sourceTree = "<group>"; };
+		4BA5A34321708DB200299613 /* MCWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCWebViewViewController.m; sourceTree = "<group>"; };
+		4BA5A34421708DB200299613 /* MCWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCWebViewViewController.h; sourceTree = "<group>"; };
 		4BBBFC7B2119298E003EC96B /* MCPlayerMusic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPlayerMusic.h; sourceTree = "<group>"; };
 		4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPlayerMusic.m; sourceTree = "<group>"; };
 		4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wechatMusic.mp3; sourceTree = "<group>"; };
@@ -705,6 +711,17 @@
 			path = MCPushMediator;
 			sourceTree = "<group>";
 		};
+		4BA5A33C21707B0500299613 /* MCMonitorView */ = {
+			isa = PBXGroup;
+			children = (
+				4BA5A33D21707B7900299613 /* MCMonitorView.h */,
+				4BA5A33E21707B7900299613 /* MCMonitorView.m */,
+				4BA5A34421708DB200299613 /* MCWebViewViewController.h */,
+				4BA5A34321708DB200299613 /* MCWebViewViewController.m */,
+			);
+			path = MCMonitorView;
+			sourceTree = "<group>";
+		};
 		4BE30A81215270AE0063164A /* PageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1109,6 +1126,7 @@
 		52D8D1681F4D77EF00EA413B /* QQNetWork */ = {
 			isa = PBXGroup;
 			children = (
+				4BA5A33C21707B0500299613 /* MCMonitorView */,
 				52D8D1691F4D77EF00EA413B /* MBProgressHUD */,
 				52D8D1701F4D77EF00EA413B /* QQNetManager.h */,
 				52D8D1711F4D77EF00EA413B /* QQNetManager.m */,
@@ -1543,10 +1561,12 @@
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
+				4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */,
 				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
 				4B1ADA572141361700EEADCE /* MCPickerHeaderView.m in Sources */,
+				4BA5A34521708DB200299613 /* MCWebViewViewController.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,
 				4B46A1892165D397001B560A /* MCContentView.m in Sources */,
 				4B4D5A60211B28FF007FDED8 /* MCHomeViewController.m in Sources */,

@@ -17,7 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[QQNetManager Instance]RTSGetWith:@"" Parameters:nil From:self Successs:^(id responseObject) {
+    //http://www.iopan.cn/medical/f/getUserInfor
+    [[QQNetManager Instance]RTSGetWith:@"www.ipan.com:8080:maintan/f/" Parameters:nil From:self Successs:^(id responseObject) {
+        
+    } False:^(NSError *error) {
+        
+    }];
+    
+    [[QQNetManager Instance]RTSGetWith:@"http://www.iopan.cn/medical/f/getUserInfor" Parameters:@{@"userid":@"18e660daa75840e38e042ce176308e76"} From:self Successs:^(id responseObject) {
         
     } False:^(NSError *error) {
         

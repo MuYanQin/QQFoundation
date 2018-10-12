@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+//显示网络请求的view
+#import "MCMonitorView.h"
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
-@class QQsession;
+@class QQsession,AFHTTPSessionManager;
 static NSString *const successCode = @"200";//配置正确返回的code码
 @interface QQNetManager : NSObject
-@property (assign, nonatomic)    BOOL   IsConsolePrint;///< default is 'YES'  是否打印取消下载的URL
+@property (nonatomic , strong) AFHTTPSessionManager * sessionManager;
+@property (nonatomic , strong) MCMonitorView * monitorView;
 @property (nonatomic , strong) NSCache * dataCache;//缓存数据 最大3M 超出会被清理
 @property (nonatomic , assign) NSInteger  cacheMin;//缓存时间。秒为单位  默认60S
+
 + (instancetype)Instance;
 
 /**
