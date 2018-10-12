@@ -13,10 +13,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     /**纪录当前页数*/
     NSInteger _pageNumber;
-    /**下载的网址*/
-    NSString *_url;
-    /**下载的参数*/
-    NSMutableDictionary *_parameters;
     /**出现网络失败*/
     BOOL _hasNetError;
 }
@@ -61,7 +57,8 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 
 - (void)initTableView{
-    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
+    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+
     if (@available(iOS 11.0, *)) {
         self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
@@ -76,9 +73,11 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 - (void)mc_reloadData
 {
     [self mc_reloadData];
-    if (self.getTotal == 0) {
+    if (self.getTotal == 0 && _hasNetError) {
+        //这里是网络出错的数据为空
         self.tableFooterView = self.emptyView;
-    }else if (self.getTotal == 0 && _hasNetError){
+    }else if (self.getTotal == 0 ){
+        //就是数据为空
         self.tableFooterView =  self.emptyView;
     }else{
         [self setTableFooterView:self.footerView];
@@ -98,9 +97,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 
 - (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
 {
-    _url = url;
+    _requestUrl = url;
     _TempController = controler;
-    _parameters= Parameters.mutableCopy;
+    _requestParam= Parameters.mutableCopy;
     if ([Parameters.allKeys containsObject:pageIndex]) {
         self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
     }
@@ -112,7 +111,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     
 #warning 这里替换成自己的网络请求方法就好了 
-    [[QQNetManager Instance]RTSGetWith:_url Parameters:paramters From:_TempController Successs:^(id responseObject) {
+    [[QQNetManager Instance]RTSGetWith:_requestUrl Parameters:paramters From:_TempController Successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
             [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
@@ -135,31 +134,32 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     if (!isHasHeaderRefresh) {
         self.mj_header = nil;
+    }else{
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
     }
 }
-
-- (void)headerRefresh
+- (void)requestData
 {
-    if (_url.length ==0) {
+    if (_requestUrl.length ==0) {
         NSLog(@"QQTablView:请输入下载网址");
         [self.mj_header endRefreshing];
         return;
     }
-    if ([_parameters.allKeys containsObject:pageIndex]) {
+    if ([_requestParam.allKeys containsObject:pageIndex]) {
         [self changeIndexWithStatus:1];
     }
-    [self SetUpNetWorkParamters:_parameters isPullDown:YES];
+    [self SetUpNetWorkParamters:_requestParam isPullDown:YES];
 }
 
 - (void)footerRefresh
 {
     [self changeIndexWithStatus:2];
-    [self SetUpNetWorkParamters:_parameters isPullDown:NO];
+    [self SetUpNetWorkParamters:_requestParam isPullDown:NO];
 }
 
 - (void)changeIndexWithStatus:(NSInteger)Status//1  下拉  2上拉  3减一
 {
-    _pageNumber = [_parameters[pageIndex] integerValue];
+    _pageNumber = [_requestParam[pageIndex] integerValue];
     if (Status == 1) {
         _pageNumber = 1;
     }else if (Status == 2){
@@ -167,7 +167,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }else{
         _pageNumber --;
     }
-    [_parameters setObject:[NSNumber numberWithInteger:_pageNumber] forKey:pageIndex];
+    [_requestParam setObject:[NSNumber numberWithInteger:_pageNumber] forKey:pageIndex];
 }
 
 - (void)EndRefrseh
@@ -178,12 +178,12 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 
 - (void)setRequestParam:(NSDictionary *)requestParam
 {
-    _parameters = requestParam.mutableCopy;
+    _requestParam = requestParam.mutableCopy;
 }
 
 - (void)setRequestUrl:(NSString *)requestUrl
 {
-    _url = requestUrl;
+    _requestUrl = requestUrl;
 }
 
 - (EmptyView *)emptyView

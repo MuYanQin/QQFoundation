@@ -58,19 +58,20 @@
 /**
  请求的参数
  */
-@property (nonatomic , strong) NSDictionary * requestParam;
+@property (nonatomic , strong) NSMutableDictionary * requestParam;
 
 
 /**
- 开始刷新
+ 刷新 无下拉动作
  */
-- (void)headerRefresh;
+- (void)requestData;
+
 
 /**
  开始下载任务  网络数据用此开始  本地数据则不用使用本方法
 
  @param url        请求的网址
- @param Parameters 携带的参数 （一定要有，把分页参数放在这里）
+ @param Parameters 携带的参数 （一定要把分页参数放在这里）
  */
 - (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler;
 
