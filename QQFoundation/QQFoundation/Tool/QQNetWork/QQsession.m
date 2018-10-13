@@ -95,7 +95,9 @@
 #pragma mark - 统一处理下载返回的数据
 - (void)handleResponseObject:(id)responseObject  cacheType:(CacheType)cacheType key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
 {
-    [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
+    if ([QQNetManager Instance].isMonitor) {
+        [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
+    }
     if ([responseObject[@"code"] isEqualToString:successCode]) {
         if (cacheType == localData) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
@@ -114,7 +116,9 @@
 }
 - (void)handleResponseObject:(NSError *)error  Controller:(UIViewController *)controller failure:(void(^)(NSError *error))failureBlock
 {
-    [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:error};
+    if ([QQNetManager Instance].isMonitor) {
+        [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:error};
+    }
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [controller.view message:@"请求超时，请重试！" HiddenAfterDelay:2];

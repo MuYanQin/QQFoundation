@@ -16,6 +16,11 @@ static NSString *const successCode = @"200";//配置正确返回的code码
 @interface QQNetManager : NSObject
 @property (nonatomic , strong) AFHTTPSessionManager * sessionManager;
 @property (nonatomic , strong) MCMonitorView * monitorView;
+
+/**
+ 是否打开监控 默认yes打开
+ */
+@property (nonatomic , assign) BOOL  isMonitor;
 @property (nonatomic , strong) NSCache * dataCache;//缓存数据 最大3M 超出会被清理
 @property (nonatomic , assign) NSInteger  cacheMin;//缓存时间。秒为单位  默认60S
 

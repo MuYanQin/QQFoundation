@@ -37,17 +37,24 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[self alloc]init];
-        manager.sessionManager = [AFHTTPSessionManager manager];
-        manager.sessionManager.requestSerializer.timeoutInterval = 30.f;
-        manager.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.isMonitor = YES;
+    });
+    return manager;
+}
+- (AFHTTPSessionManager *)sessionManager
+{
+    if (!_sessionManager) {
+        _sessionManager = [AFHTTPSessionManager manager];
+        _sessionManager.requestSerializer.timeoutInterval = 30.f;
+        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
         //        [manager setSecurityPolicy:self.customSecurityPolicy];//是否开启ssl验证
         //设置请求头
         //        [[WSUtils getRequestHeaderDict] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         //            [manager.requestSerializer setValue:[WSLUtil strRelay:obj] forHTTPHeaderField:[WSLUtil strRelay:key]];
         //        }];
-        manager.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];//@"application/x-javascript"
-    });
-    return manager;
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];//@"application/x-javascript"
+    }
+    return _sessionManager;
 }
 //设置证书的时候 后台验证
 - (AFSecurityPolicy*)customSecurityPolicy

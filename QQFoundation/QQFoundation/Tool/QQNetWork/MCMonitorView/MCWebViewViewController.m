@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"数据详情";
     [self.WebView loadHTMLString:self.contentHtml baseURL:nil];
     [self.view addSubview:self.WebView];
     self.navigationController.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
