@@ -16,7 +16,7 @@
 #import "MCPickerViewController.h"
 #import "MCPageViewViewController.h"
 @interface MCHomeViewController ()
-@property (nonatomic , strong) UIView *wq;
+
 @end
 
 @implementation MCHomeViewController
@@ -29,16 +29,8 @@
     self.tabManager[@"MCEmptyItem"] = @"MCEmptyCell";
     self.tabManager[@"MCLableItem"] = @"MCLableCell";
     [self iniUI];
-
-}
-- (void)buttonClick
-{
-    [UIView animateWithDuration:0.5 animations:^{
-//        self.wq.top = KScreenHeight;
-        self.wq.frame = CGRectMake(0, 0, 30, 30);
-    } completion:^(BOOL finished) {
-//        [self.wq removeFromSuperview];
-    }];
+    [self getrequest];
+    
 }
 - (void)iniUI
 {
@@ -164,6 +156,19 @@
     [items addObject:empty1];
     
     [self.tabManager replaceSectionsWithSectionsFromArray:items];
+}
+- (void)getrequest{
+    [[QQNetManager Instance]RTSGetWith:@"www.ipan.com:8080:maintan/f/" Parameters:nil From:self Successs:^(id responseObject) {
+        
+    } False:^(NSError *error) {
+        
+    }];
+    
+    [[QQNetManager Instance]RTSGetWith:@"http://www.iopan.cn/medical/f/getUserInfor" Parameters:@{@"userid":@"18e660daa75840e38e042ce176308e76"} From:self Successs:^(id responseObject) {
+        
+    } False:^(NSError *error) {
+        
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

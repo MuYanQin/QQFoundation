@@ -35,7 +35,6 @@
 		4B4D5A6C211B293F007FDED8 /* MCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D5A6B211B293F007FDED8 /* MCSearchViewController.m */; };
 		4B4D5A70211B2B40007FDED8 /* MCTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D5A6F211B2B40007FDED8 /* MCTextFieldCell.m */; };
 		4B4D5A73211B2B5E007FDED8 /* MCLableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D5A72211B2B5E007FDED8 /* MCLableCell.m */; };
-		4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */; };
 		4B5BEF8320ECA6B4000BB2E2 /* MCFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */; };
 		4B7663A6214A452A0073F7D8 /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7663A5214A452A0073F7D8 /* addr.json */; };
 		4B7663A9214A46550073F7D8 /* MCPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7663A8214A46550073F7D8 /* MCPickerViewController.m */; };
@@ -61,8 +60,6 @@
 		4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A83215270E40063164A /* MCPageViewSub1ViewController.m */; };
 		4BE30A87215270F30063164A /* MCPageViewSub2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */; };
 		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
-		4BFAB79520EB2B630076E090 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79220EB2B630076E090 /* YYFPSLabel.m */; };
-		4BFAB79620EB2B630076E090 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79420EB2B630076E090 /* YYWeakProxy.m */; };
 		4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79920EB45020076E090 /* MCDetectionView.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
 		5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */; };
@@ -249,8 +246,6 @@
 		4B4D5A6F211B2B40007FDED8 /* MCTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTextFieldCell.m; sourceTree = "<group>"; };
 		4B4D5A71211B2B5E007FDED8 /* MCLableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCLableCell.h; sourceTree = "<group>"; };
 		4B4D5A72211B2B5E007FDED8 /* MCLableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCLableCell.m; sourceTree = "<group>"; };
-		4B5BEF7820EC5AB3000BB2E2 /* MCDetect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetect.h; sourceTree = "<group>"; };
-		4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetect.m; sourceTree = "<group>"; };
 		4B5BEF8120ECA6B3000BB2E2 /* MCFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCFactory.h; sourceTree = "<group>"; };
 		4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFactory.m; sourceTree = "<group>"; };
 		4B7663A5214A452A0073F7D8 /* addr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addr.json; sourceTree = "<group>"; };
@@ -291,10 +286,6 @@
 		4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub2ViewController.m; sourceTree = "<group>"; };
 		4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MBProgress.h"; sourceTree = "<group>"; };
 		4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBProgress.m"; sourceTree = "<group>"; };
-		4BFAB79120EB2B630076E090 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
-		4BFAB79220EB2B630076E090 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
-		4BFAB79320EB2B630076E090 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
-		4BFAB79420EB2B630076E090 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		4BFAB79820EB45020076E090 /* MCDetectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetectionView.h; sourceTree = "<group>"; };
 		4BFAB79920EB45020076E090 /* MCDetectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetectionView.m; sourceTree = "<group>"; };
 		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
@@ -716,6 +707,8 @@
 			children = (
 				4BA5A33D21707B7900299613 /* MCMonitorView.h */,
 				4BA5A33E21707B7900299613 /* MCMonitorView.m */,
+				4BFAB79820EB45020076E090 /* MCDetectionView.h */,
+				4BFAB79920EB45020076E090 /* MCDetectionView.m */,
 				4BA5A34421708DB200299613 /* MCWebViewViewController.h */,
 				4BA5A34321708DB200299613 /* MCWebViewViewController.m */,
 			);
@@ -733,17 +726,6 @@
 				4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */,
 			);
 			path = PageViewController;
-			sourceTree = "<group>";
-		};
-		4BFAB79B20EB45070076E090 /* MCDetectionView */ = {
-			isa = PBXGroup;
-			children = (
-				4BFAB79820EB45020076E090 /* MCDetectionView.h */,
-				4BFAB79920EB45020076E090 /* MCDetectionView.m */,
-				4B5BEF7820EC5AB3000BB2E2 /* MCDetect.h */,
-				4B5BEF7920EC5AB3000BB2E2 /* MCDetect.m */,
-			);
-			path = MCDetectionView;
 			sourceTree = "<group>";
 		};
 		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
@@ -990,10 +972,6 @@
 				52D8D10F1F4D775500EA413B /* AppDelegate.h */,
 				52D8D1101F4D775500EA413B /* AppDelegate.m */,
 				4B8D23D220E0DA46005F6047 /* MCGCDStudy */,
-				4BFAB79120EB2B630076E090 /* YYFPSLabel.h */,
-				4BFAB79220EB2B630076E090 /* YYFPSLabel.m */,
-				4BFAB79320EB2B630076E090 /* YYWeakProxy.h */,
-				4BFAB79420EB2B630076E090 /* YYWeakProxy.m */,
 				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
 				523DF3C51F8DBDE6000C1A51 /* Podfile */,
 				52D8D1151F4D775500EA413B /* Main.storyboard */,
@@ -1106,7 +1084,6 @@
 				4B1ADA4C2141361700EEADCE /* MCPicker */,
 				4B1F107E211C301600B09B80 /* MCVerificationCodeView */,
 				4B5BEF8020ECA691000BB2E2 /* MCFactory */,
-				4BFAB79B20EB45070076E090 /* MCDetectionView */,
 				4B8D23C720E087EB005F6047 /* MCPushMediator */,
 				4B8B19EC20CFE00F00B77A9D /* MCDownloadManager */,
 				4B39DA8020CB5FD600332B95 /* MCContentView */,
@@ -1514,7 +1491,6 @@
 				4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */,
 				52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
-				4BFAB79520EB2B630076E090 /* YYFPSLabel.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
 				4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */,
@@ -1530,7 +1506,6 @@
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
-				4BFAB79620EB2B630076E090 /* YYWeakProxy.m in Sources */,
 				4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */,
 				4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
@@ -1557,7 +1532,6 @@
 				4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */,
 				4B1ADA582141361700EEADCE /* MCPickerListView.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
-				4B5BEF7A20EC5AB3000BB2E2 /* MCDetect.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,

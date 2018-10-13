@@ -64,9 +64,6 @@
 }
 - (void)click2One
 {
-    [self.view message:@"哈哈哈"];
-//    [self.navigationController popViewControllerAnimated:YES];
-    return;
     self.picker  =[[MCPickerView alloc]initWithFrame:self.view.bounds];
     self.picker.delegate = self;
     self.picker.totalTier = 3;

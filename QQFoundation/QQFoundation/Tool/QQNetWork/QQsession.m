@@ -97,6 +97,7 @@
 {
     if ([QQNetManager Instance].isMonitor) {
         [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
+        
     }
     if ([responseObject[@"code"] isEqualToString:successCode]) {
         if (cacheType == localData) {

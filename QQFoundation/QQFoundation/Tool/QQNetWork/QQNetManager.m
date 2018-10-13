@@ -186,9 +186,10 @@
 {
     if (!_monitorView) {
         _monitorView = [[MCMonitorView alloc]initWithFrame:CGRectMake(KScreenWidth - 150, KScreenHeight - 200, 140, 100)];
-        
+        _monitorView.Domains =self.Domains;
         [[UIApplication sharedApplication].delegate.window addSubview:_monitorView];
     }
     return _monitorView;
 }
+
 @end

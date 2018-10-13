@@ -19,10 +19,25 @@ static NSString *const successCode = @"200";//配置正确返回的code码
 
 /**
  是否打开监控 默认yes打开
+ 在didFinishLaunchingWithOptions初始化一次即可
  */
 @property (nonatomic , assign) BOOL  isMonitor;
-@property (nonatomic , strong) NSCache * dataCache;//缓存数据 最大3M 超出会被清理
-@property (nonatomic , assign) NSInteger  cacheMin;//缓存时间。秒为单位  默认60S
+
+/**
+ 切换url功能的url数组。仅当isMonitor == yes 有意义
+ 在didFinishLaunchingWithOptions初始化一次即可
+ */
+@property (nonatomic , strong) NSArray * Domains;
+
+/**
+ 缓存数据 最大3M 超出会被清理
+ */
+@property (nonatomic , strong) NSCache * dataCache;
+
+/**
+ 缓存时间。秒为单位  默认60S
+ */
+@property (nonatomic , assign) NSInteger  cacheMin;
 
 + (instancetype)Instance;
 

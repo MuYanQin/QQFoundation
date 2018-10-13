@@ -10,4 +10,5 @@
 
 @interface MCMonitorView : UIView
 @property (nonatomic , strong) NSDictionary * dataDic;
+@property (nonatomic , strong) NSArray * Domains;
 @end
