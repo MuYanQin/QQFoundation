@@ -148,18 +148,42 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
  */
 +(NSData *)imageData:(UIImage *)myimage
 {
-    NSData *data=UIImageJPEGRepresentation(myimage, 1.0);
-    if (data.length>100*1024) {
-        if (data.length>4*1024*1024) {
-            data=UIImageJPEGRepresentation(myimage, 0.02);
-        }else  if (data.length>1024*1024) {//1M以及以上
-            data=UIImageJPEGRepresentation(myimage, 0.1);
-        }else if (data.length>512*1024) {//0.5M-1M
-            data=UIImageJPEGRepresentation(myimage, 0.5);
+        // Compress by quality
+    NSInteger maxLength = 150*1024;
+    CGFloat compression = 1;
+    NSData *data = UIImageJPEGRepresentation(myimage, compression);
+    //NSLog(@"Before compressing quality, image size = %ld KB",data.length/1024);
+    if (data.length < maxLength) return data;
+    CGFloat max = 1;
+    CGFloat min = 0;
+    for (int i = 0; i < 6; ++i) {
+        compression = (max + min) / 2;
+        //NSLog(@"Compression = %.1f", compression);
+        //NSLog(@"In compressing quality loop, image size = %ld KB", data.length / 1024);
+        if (data.length < maxLength * 0.9) {
+            min = compression;
+        } else if (data.length > maxLength) {
+            max = compression;
+        } else {
+            break;
         }
-        else if (data.length>200*1024) {//0.25M-0.5M
-            data=UIImageJPEGRepresentation(myimage, 0.9);
-        }
+    }
+    //NSLog(@"After compressing quality, image size = %ld KB", data.length / 1024);
+    if (data.length < maxLength) return data;
+    UIImage *resultImage = [UIImage imageWithData:data];
+    // Compress by size
+    NSUInteger lastDataLength = 0;
+    while (data.length > maxLength && data.length != lastDataLength) {
+        lastDataLength = data.length;
+        CGFloat ratio = (CGFloat)maxLength / data.length;
+        //NSLog(@"Ratio = %.1f", ratio);
+        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
+                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+        UIGraphicsBeginImageContext(size);
+        [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        resultImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        data = UIImageJPEGRepresentation(resultImage, compression);
     }
     return data;
 }
