@@ -66,7 +66,9 @@
 - (void)setCallBackData:(id)callBackData
 {
     objc_setAssociatedObject(self, @selector(callBackData), callBackData, OBJC_ASSOCIATION_COPY_NONATOMIC);
-
+    if(self.pushCallBack){
+        self.pushCallBack(self.callBackData);
+    }
 }
 - (callBack)pushCallBack
 {
@@ -76,19 +78,4 @@
 {
     return objc_getAssociatedObject(self, _cmd);
 }
-@end
-
-@implementation UIViewController (MCWillDisappear)
-
-+ (void)load
-{
-    QQ_methodSwizzle([self class], NSSelectorFromString(@"viewDidDisappear:"), @selector(QQ_viewDidDisappear:));
-}
-- (void)QQ_viewDidDisappear:(BOOL)animation
-{
-    if(self.pushCallBack){
-        self.pushCallBack(self.callBackData);
-    }
-}
-
 @end

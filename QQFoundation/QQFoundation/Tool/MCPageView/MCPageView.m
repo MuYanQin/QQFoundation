@@ -116,7 +116,16 @@ static const NSInteger  minTitleButtonWitdh = 60;
 // 顶部菜单滚动
 - (void)menuScrollToCenter:(NSInteger)index{
     
-    CGFloat itemWidth = _titleButtonWidth?_titleButtonWidth : kwidth / self.contentTitles.count;
+    //如果给的宽度和个数乘积还是小于屏幕宽度的话 则无效 还是平分屏幕
+    CGFloat itemWidth;
+    if ((_titleButtonWidth *_contentTitles.count) >kwidth) {
+        self.titleScroll.contentSize = CGSizeMake((_titleButtonWidth *_contentTitles.count), self.titleScrollHeight);
+        itemWidth = _titleButtonWidth;
+    }else{
+        self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleScrollHeight);
+        itemWidth = kwidth/(self.itemArray.count);
+    }
+    
     MCItem *Button = self.itemArray[index];
     CGFloat left = Button.center.x - kwidth / 2.0;
     left = left <= 0 ? 0 : left;

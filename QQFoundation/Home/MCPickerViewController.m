@@ -11,6 +11,7 @@
 #import "MCPickerModel.h"
 #import <MJExtension.h>
 #import "UIView+MBProgress.h"
+#import "MCPushMediator.h"
 @interface MCPickerViewController ()<MCPickerViewDelegate>
 @property (nonatomic , strong) MCPickerView *picker ;
 @property (nonatomic , strong) NSMutableArray * pro;

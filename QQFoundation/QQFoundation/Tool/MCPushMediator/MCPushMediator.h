@@ -27,9 +27,3 @@ typedef  void(^callBack)(id data);
 @property (nonatomic, copy) callBack pushCallBack;
 @property (nonatomic , strong) id callBackData;
 @end
-
-
-
-@interface UIViewController (MCWillDisappear)
-
-@end

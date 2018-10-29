@@ -15,6 +15,7 @@
 #import "MCMineViewController.h"
 #import "MCPickerViewController.h"
 #import "MCPageViewViewController.h"
+#import "MCPushMediator.h"
 @interface MCHomeViewController ()
 
 @end
@@ -138,7 +139,11 @@
     mcpickerView.leftText = @"MCPickerView使用";
     mcpickerView.rightText = @"";
     mcpickerView.selcetCellHandler = ^(id item) {
-        [weakSelf.navigationController pushViewController:[MCPickerViewController new] animated:YES];
+        MCPickerViewController *PickerView = [MCPickerViewController new];
+        PickerView.pushCallBack = ^(id data) {
+            NSLog(@"=======%@",data);
+        };
+        [weakSelf.navigationController pushViewController:PickerView animated:YES];
     };
     [items addObject:mcpickerView];
     
