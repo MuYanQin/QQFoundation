@@ -23,6 +23,7 @@
 @end
 
 static const NSInteger itemTag = 100;
+/**titleButton的最小宽度*/
 static const NSInteger  minTitleButtonWitdh = 60;
 @implementation MCPageView
 
@@ -32,10 +33,13 @@ static const NSInteger  minTitleButtonWitdh = 60;
         self.contentTitles = [NSArray arrayWithArray:titles];
         _contentCtrollers = [NSArray arrayWithArray:controllers];
         self.itemArray = [NSMutableArray array];
-        self.titleScrollHeight = 50;
+        //titleView 的初始化高度
+        _titleScrollHeight = 50;
+        //初始化横线的宽度是title的一半
+        _lineWitdhScale = 0.5;
+        
         [self addSubview:self.titleScroll];
         [self.titleScroll addSubview:self.lineView];
-        self.lineWitdhScale = 0.5;
         [self addSubview:self.contentCollection];
     }
     return self;
@@ -65,7 +69,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     if (scrollView == self.contentCollection) {
-        NSInteger index = scrollView.contentOffset.x/kwidth;
+        NSInteger index = (int)scrollView.contentOffset.x/kwidth;
         [self changeItemStatus:index];
     }
 }
@@ -93,7 +97,15 @@ static const NSInteger  minTitleButtonWitdh = 60;
 }
 - (void)setItemBadgeWithArray:(NSArray *)badgeArray
 {
-    
+    if (badgeArray.count > self.itemArray.count || badgeArray.count ==0) {
+        NSLog(@"设置下标错误");
+        return;
+    }
+    __weak __typeof(&*self)weakSelf = self;
+    [badgeArray enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        MCItem *item =  weakSelf.itemArray[idx];
+        item.badge = obj.integerValue;
+    }];
 }
 - (void)changeItemStatus:(NSInteger)index
 {
@@ -108,44 +120,53 @@ static const NSInteger  minTitleButtonWitdh = 60;
     Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
     [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self scrollToItemCenter:Item];
-
     if ([self.delegate respondsToSelector:@selector(MCPageView:didSelectIndex:)]) {
         [self.delegate MCPageView:self didSelectIndex:index];
     }
 }
-// 顶部菜单滚动
+
+/**
+ 顶部菜单滑动到中间
+
+ @param index 第几个item
+ */
 - (void)menuScrollToCenter:(NSInteger)index{
-    
-    //如果给的宽度和个数乘积还是小于屏幕宽度的话 则无效 还是平分屏幕
-    CGFloat itemWidth;
-    if ((_titleButtonWidth *_contentTitles.count) >kwidth) {
-        self.titleScroll.contentSize = CGSizeMake((_titleButtonWidth *_contentTitles.count), self.titleScrollHeight);
-        itemWidth = _titleButtonWidth;
-    }else{
-        self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleScrollHeight);
-        itemWidth = kwidth/(self.itemArray.count);
-    }
-    
+
     MCItem *Button = self.itemArray[index];
     CGFloat left = Button.center.x - kwidth / 2.0;
     left = left <= 0 ? 0 : left;
-    CGFloat maxLeft = itemWidth * self.contentTitles.count - kwidth;
+    CGFloat maxLeft = _titleButtonWidth * self.contentTitles.count - kwidth;
+    if (maxLeft <=0) {
+        maxLeft = 0;
+    }
     left = left >= maxLeft ? maxLeft : left;
     [self.titleScroll setContentOffset:CGPointMake(left, 0) animated:YES];
+    
 }
-//横线滚动
+
+/**
+ title底部横线滑动
+
+ @param item 滑动到那个item下
+ */
 - (void)scrollToItemCenter:(MCItem *)item
 {
+    if (!item) {
+        return;
+    }
     [UIView animateWithDuration:0.15 animations:^{
         self.lineView.center = item.center;
         self.lineView.bottom = item.bottom -1;
     }];
 }
+
+/**设置选中title字体*/
 - (void)setSelectTitleFont:(UIFont *)selectTitleFont
 {
     _selectTitleFont = selectTitleFont;
     self.lastItem.titleLabel.font = _selectTitleFont;
 }
+/**设置选中title颜色*/
 - (void)setSelectTitleColor:(UIColor *)selectTitleColor
 {
     _selectTitleColor = selectTitleColor;
@@ -154,42 +175,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
     _lineColor = selectTitleColor;
     self.lineView.backgroundColor = selectTitleColor;
 }
-- (void)setLineColor:(UIColor *)lineColor
-{
-    _lineColor = lineColor;
-    self.lineView.backgroundColor = lineColor;
-}
-- (void)setLineWitdhScale:(CGFloat)lineWitdhScale
-{
-    _lineWitdhScale = lineWitdhScale;
-    CGRect rect = self.lineView.frame;
-    rect.size.width = self.titleButtonWidth*lineWitdhScale;
-    self.lineView.frame = rect;
-}
-- (void)setCanSlide:(BOOL)canSlide
-{
-    _canSlide = canSlide;
-    self.contentCollection.scrollEnabled = canSlide;
-}
-- (void)setTitleButtonWidth:(CGFloat)titleButtonWidth
-{
-    _titleButtonWidth = titleButtonWidth;
-    CGFloat titleBtnWitdh  = 0;
-    //如果给的宽度和个数乘积还是小于屏幕宽度的话 则无效 还是平分屏幕
-    if ((_titleButtonWidth *_contentTitles.count) >kwidth) {
-        self.titleScroll.contentSize = CGSizeMake((_titleButtonWidth *_contentTitles.count), self.titleScrollHeight);
-        titleBtnWitdh = _titleButtonWidth;
-    }else{
-        self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleScrollHeight);
-        titleBtnWitdh = kwidth/(self.itemArray.count);
-    }
-    __weak __typeof(&*self)weakSelf = self;
-    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MCItem *item =  weakSelf.itemArray[idx];
-        item.frame = CGRectMake(idx *titleBtnWitdh, 0, titleBtnWitdh, self.titleScrollHeight);
-    }];
-}
-
 - (void)setDefaultTitleFont:(UIFont *)defaultTitleFont
 {
     _defaultTitleFont = defaultTitleFont;
@@ -212,10 +197,56 @@ static const NSInteger  minTitleButtonWitdh = 60;
         }
     }];
 }
+/**设置横线颜色*/
+- (void)setLineColor:(UIColor *)lineColor
+{
+    _lineColor = lineColor;
+    self.lineView.backgroundColor = lineColor;
+}
+/**设置横下相对于titleBtn款低的比例*/
+- (void)setLineWitdhScale:(CGFloat)lineWitdhScale
+{
+    _lineWitdhScale = lineWitdhScale;
+    CGRect rect = self.lineView.frame;
+    rect.size.width = _titleButtonWidth*lineWitdhScale;
+    self.lineView.frame = rect;
+}
+/**是否允许页面滑动*/
+- (void)setCanSlide:(BOOL)canSlide
+{
+    _canSlide = canSlide;
+    self.contentCollection.scrollEnabled = canSlide;
+}
+/**设置选中titlebtn的宽度*/
+- (void)setTitleButtonWidth:(CGFloat)titleButtonWidth
+{
+    _titleButtonWidth = titleButtonWidth;
+    //取最小值minTitleButtonWitdh
+    if (_titleButtonWidth < minTitleButtonWitdh) {
+        _titleButtonWidth = minTitleButtonWitdh;
+    }
+    //如果给的宽度与title个数乘积小于屏幕宽度   则无效  。取平分屏幕
+    if ((_titleButtonWidth *_contentTitles.count) >kwidth) {
+        self.titleScroll.contentSize = CGSizeMake((_titleButtonWidth *_contentTitles.count), self.titleScrollHeight);
+    }else{
+        _titleButtonWidth = kwidth/(self.itemArray.count);
+        self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleScrollHeight);
+    }
+    __weak __typeof(&*self)weakSelf = self;
+    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        MCItem *item =  weakSelf.itemArray[idx];
+        item.frame = CGRectMake(idx *_titleButtonWidth, 0, _titleButtonWidth, self.titleScrollHeight);
+    }];
+    
+    CGRect lineRect = self.lineView.frame;
+    lineRect.size.width = _titleButtonWidth*_lineWitdhScale;
+    self.lineView.frame = lineRect;
+    [self scrollToItemCenter:self.lastItem];
+}
 - (UIView *)lineView
 {
     if (!_lineView) {
-        _lineView = [[UIView alloc]initWithFrame:CGRectMake(self.titleButtonWidth/4, self.titleScrollHeight - 1, self.titleButtonWidth/2, 1)];
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake(_titleButtonWidth/4, self.titleScrollHeight - 1, _titleButtonWidth/2, 1)];
         _lineView.backgroundColor = [UIColor lightGrayColor];
     }
     return _lineView;
@@ -255,10 +286,10 @@ static const NSInteger  minTitleButtonWitdh = 60;
         _titleScroll.showsVerticalScrollIndicator = NO;
         _titleScroll.showsHorizontalScrollIndicator = NO;
 
-        self.titleButtonWidth = kwidth/_contentTitles.count;
+        _titleButtonWidth = kwidth/_contentTitles.count;
         //最小值与个数乘积还大与屏幕的话 就按60宽度算
         if (_contentTitles.count * minTitleButtonWitdh > kwidth) {
-            self.titleButtonWidth = minTitleButtonWitdh;
+            _titleButtonWidth = minTitleButtonWitdh;
             self.titleScroll.contentSize = CGSizeMake((minTitleButtonWitdh *_contentTitles.count), self.titleScrollHeight);
         }else{
             self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleScrollHeight);
@@ -266,7 +297,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
         __weak __typeof(&*self)weakSelf = self;
         [_contentTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             @autoreleasepool{
-                MCItem *item = [[MCItem alloc]initWithFrame:CGRectMake(idx *self.titleButtonWidth, 0, self.titleButtonWidth, self.titleScrollHeight)];
+                MCItem *item = [[MCItem alloc]initWithFrame:CGRectMake(idx *_titleButtonWidth, 0, self.titleButtonWidth, self.titleScrollHeight)];
                 item.tag = idx + itemTag;
                 [item setTitleColor:itemDefaultColor forState:UIControlStateNormal];
                 [item setTitle:obj forState:UIControlStateNormal];
@@ -295,7 +326,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
 - (void)setBadge:(NSInteger)badge
 {
     _badge = badge;
- 
     NSString *badgeText = [NSString string];
     if (badge > 999) {
         badgeText = @"999+";
@@ -336,10 +366,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
         _badgeLb.layer.masksToBounds = YES;
         [_badgeLb setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:_badgeLb];
-
-
-        
-        
     }
     return _badgeLb;
 }
