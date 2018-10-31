@@ -42,11 +42,6 @@
 @property (nonatomic , assign) CGFloat  titleButtonWidth;
 
 /**
- 可选 顶部文字区域的高度 默认50
- */
-@property (nonatomic , assign) CGFloat  titleScrollHeight;
-
-/**
  可选 item下  横线的颜色 默认取选中字体的颜色
  */
 @property (nonatomic , strong) UIColor * lineColor;

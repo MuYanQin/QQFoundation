@@ -20,6 +20,7 @@
 @property (nonatomic , strong) NSMutableArray * itemArray;
 @property (nonatomic , strong) MCItem * lastItem;
 @property (nonatomic , strong) UIView  * lineView;
+@property (nonatomic , assign) CGFloat  titleScrollHeight;
 @end
 
 static const NSInteger itemTag = 100;
