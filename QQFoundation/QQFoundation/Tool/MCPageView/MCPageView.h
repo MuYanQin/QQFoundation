@@ -107,6 +107,5 @@
  */
 @property (nonatomic,assign) NSInteger badge;
 
-
 @end
 
