@@ -68,7 +68,7 @@ typedef UILabel * (^Label)(id input);
 }
 + (UILabel *)getLabel
 {
-    return [[UILabel alloc]init];
+    return [[self alloc]init];
 }
 - (UILabel *(^)(UIColor *))QtextColor
 {

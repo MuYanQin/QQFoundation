@@ -140,4 +140,7 @@ typedef NS_ENUM(NSInteger,QFont){
  设置显示隐藏
  */
 @property (nonatomic, readonly) UIButton *(^Qhidden)(BOOL hidden);
+
++ (UIButton *)getButton;
+
 @end

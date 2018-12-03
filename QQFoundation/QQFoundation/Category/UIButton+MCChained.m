@@ -205,4 +205,11 @@
     };
     
 }
+
++ (UIButton *)getButton
+{
+    UIButton *button = [self buttonWithType:UIButtonTypeCustom];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    return button;
+}
 @end
