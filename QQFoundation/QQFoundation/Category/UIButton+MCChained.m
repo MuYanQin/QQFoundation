@@ -65,13 +65,52 @@
         return self;
     };
 }
-- (UIButton *(^)(UIFont *))QtitleFont
+- (UIButton *(^)(NSInteger, QFont))QfontWithWeight
 {
-    return ^UIButton *(UIFont *font){
-        self.titleLabel.font = font;
+    return ^UIButton *(NSInteger size,QFont font){
+        UIFontWeight weight = UIFontWeightRegular;
+        switch (font) {
+            case QR:
+            {
+                weight = UIFontWeightRegular;
+                break;
+            }
+            case QL:
+            {
+                weight = UIFontWeightLight;
+                break;
+            }
+            case QM:
+            {
+                weight = UIFontWeightMedium;
+                break;
+            }
+            case QB:
+            {
+                weight = UIFontWeightBold;
+                break;
+            }
+            case QH:
+            {
+                weight = UIFontWeightHeavy;
+                break;
+            }
+            default:
+                break;
+        }
+    
+        self.titleLabel.font = [UIFont systemFontOfSize:size weight:weight];
         return self;
     };
 }
+- (UIButton *(^)(NSInteger))Qfont
+{
+    return ^UIButton *(NSInteger size){
+        self.titleLabel.font = [UIFont systemFontOfSize:size weight:UIFontWeightRegular];
+        return self;
+    };
+}
+
 - (UIButton *(^)(UIImage *, UIControlState))QimageState
 {
      return ^UIButton *(UIImage *image,UIControlState state){
@@ -86,7 +125,7 @@
         return self;
     };
 }
-- (UIButton *(^)(UIImage *, UIControlState))QbackgroudImageState
+- (UIButton *(^)(UIImage *, UIControlState))QbgImageState
 
 {
     return ^UIButton *(UIImage *image,UIControlState state){
@@ -94,7 +133,7 @@
         return self;
     };
 }
-- (UIButton *(^)(UIImage *))QbackgroudImage
+- (UIButton *(^)(UIImage *))QbgImage
 {
     return ^UIButton *(UIImage *image){
         [self setBackgroundImage:image forState:UIControlStateNormal];

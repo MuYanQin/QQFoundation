@@ -220,11 +220,11 @@
         imageWith = 2* button_btnWidth/3;
         imageHeight = 2* button_btnHeight/3;
     }
-    CGFloat total  = imageHeight + height + 5;
+    CGFloat total  = imageHeight + height +5 ;
     CGFloat imageX = (button_btnWidth - imageWith) * 0.5;
-    self.imageView.frame = CGRectMake(imageX, (button_btnHeight - total)/2 , imageWith, imageHeight);
-    self.titleLabel.frame = CGRectMake(0, (button_btnHeight - total)/2 + imageHeight , button_btnWidth, button_btnHeight/3);
-
+    CGFloat imageY = (button_btnHeight - total)/2;
+    self.imageView.frame = CGRectMake(imageX, imageY , imageWith, imageHeight);
+    self.titleLabel.frame = CGRectMake(0, imageY+ imageHeight +5, button_btnWidth, height);
 }
 @end
 

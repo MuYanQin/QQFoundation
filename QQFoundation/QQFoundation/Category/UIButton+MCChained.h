@@ -14,6 +14,14 @@ typedef NS_ENUM(NSInteger,QTextPosition){
     Ttop    = 3,// 文字在上
     Tbottom = 4 // 文字在下
 };
+typedef NS_ENUM(NSInteger,QFont){
+    QR   = 0,//Regular
+    QL  = 1,//Light
+    QM   = 2,//Medium
+    QB    = 3,//Bold
+    QH = 4 // Heavy
+};
+
 @interface UIButton (MCChained)
 /**
     下属性是给子类QQButton使用。用来做图片位置 否则使用无效。设置图片的大小
@@ -25,7 +33,7 @@ typedef NS_ENUM(NSInteger,QTextPosition){
 @property (nonatomic , assign , readonly) UIButton *(^QtextPosition)(QTextPosition position);
 
 /**
-    下属性是给子类QQButton使用。用来携带信息 懒得用运行时了 否则使用无效
+    下属性是给子类QQButton使用。用来携带信息 否则使用无效
  */
 @property (nonatomic , strong , readonly) UIButton *(^QInfo)(id Info);//携带信息
 
@@ -62,12 +70,12 @@ typedef NS_ENUM(NSInteger,QTextPosition){
 /**
  默认 Normal
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImage)(UIImage *image);
+@property (nonatomic , strong ,readonly) UIButton *(^QbgImage)(UIImage *image);
 
 /**
  设置backgroudImage 设置类型
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudImageState)(UIImage *image,UIControlState);
+@property (nonatomic , strong ,readonly) UIButton *(^QbgImageState)(UIImage *image,UIControlState);
 
 
 /**
@@ -76,9 +84,15 @@ typedef NS_ENUM(NSInteger,QTextPosition){
 @property (nonatomic , strong ,readonly) UIButton *(^QbackgroudClolor)(UIColor *color);
 
 /**
- 设置title字体
+ 设置title字体 可选weight
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleFont)(UIFont *font);
+@property (nonatomic , strong ,readonly) UIButton *(^QfontWithWeight)(NSInteger size,QFont font);
+
+/**
+ 设置title字体 默认 regular
+ */
+@property (nonatomic , strong ,readonly) UIButton *(^Qfont)(NSInteger size);
+
 
 /**
  button的Frame
