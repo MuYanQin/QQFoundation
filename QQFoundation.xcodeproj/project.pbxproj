@@ -288,6 +288,7 @@
 		4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub2ViewController.m; sourceTree = "<group>"; };
 		4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MBProgress.h"; sourceTree = "<group>"; };
 		4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBProgress.m"; sourceTree = "<group>"; };
+		4BE7487121BB6C2E0058E5DB /* MCChainedEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCChainedEnums.h; sourceTree = "<group>"; };
 		4BFAB79820EB45020076E090 /* MCDetectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetectionView.h; sourceTree = "<group>"; };
 		4BFAB79920EB45020076E090 /* MCDetectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetectionView.m; sourceTree = "<group>"; };
 		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
@@ -1042,6 +1043,7 @@
 				52D8D14C1F4D77EF00EA413B /* UIView+SuperViewController.m */,
 				4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */,
 				4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */,
+				4BE7487121BB6C2E0058E5DB /* MCChainedEnums.h */,
 				4BC8F979213185CE00C71E0A /* UILabel+MCChained.h */,
 				4BC8F97A213185CE00C71E0A /* UILabel+MCChained.m */,
 				4BCC87C321322B9500841AB3 /* UIButton+MCChained.h */,

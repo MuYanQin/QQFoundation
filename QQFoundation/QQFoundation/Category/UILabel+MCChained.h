@@ -7,23 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef NS_ENUM(NSInteger,QtextAlignment){
-    Qleft = 0,
-    Qcenter,
-    Qright
-};
+#import "MCChainedEnums.h"
 @interface UILabel (MCChained)
 
 
 /**
- 字体
+ 字体 默认regular
  */
-@property (nonatomic, readonly) UILabel *(^Qfont)(UIFont *font);
+@property (nonatomic, readonly) UILabel *(^Qfont)(NSInteger size);
 
+/**
+ 字体 可设置weight
+ */
+@property (nonatomic, readonly) UILabel *(^QfontWeight)(NSInteger size,QFont font);
 /**
  字体颜色
  */
 @property (nonatomic, readonly) UILabel *(^QtextColor)(UIColor *color);
+
+/**
+ 背景颜色
+ */
+@property (nonatomic, readonly) UILabel *(^QbgColor)(UIColor *color);
 
 /**
  文字
@@ -60,8 +65,9 @@ typedef NS_ENUM(NSInteger,QtextAlignment){
  */
 @property (nonatomic, readonly) UILabel *(^Qhidden)(BOOL hidden);
 
+
 /**
- label的点击事件的字符串
+ label的点击事件
  */
 @property (nonatomic, readonly) UILabel *(^Qclick)(id target,NSString *SelString);
 

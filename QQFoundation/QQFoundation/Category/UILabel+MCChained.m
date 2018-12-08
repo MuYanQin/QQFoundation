@@ -77,10 +77,54 @@ typedef UILabel * (^Label)(id input);
         return self;
     };
 }
-- (UILabel *(^)(UIFont *font))Qfont
+- (UILabel *(^)(UIColor *))QbgColor
 {
     return ^UILabel *(id input){
-        self.font = input;
+        self.backgroundColor = input;
+        return self;
+    };
+}
+- (UILabel *(^)(NSInteger))Qfont
+{
+    return ^UILabel *(NSInteger size){
+        self.font = [UIFont systemFontOfSize:size weight:UIFontWeightRegular];
+        return self;
+    };
+}
+- (UILabel *(^)(NSInteger, QFont))QfontWeight
+{
+    return ^UILabel *(NSInteger size,QFont font){
+        UIFontWeight weight = UIFontWeightRegular;
+        switch (font) {
+            case QR:
+            {
+                weight = UIFontWeightRegular;
+                break;
+            }
+            case QL:
+            {
+                weight = UIFontWeightLight;
+                break;
+            }
+            case QM:
+            {
+                weight = UIFontWeightMedium;
+                break;
+            }
+            case QB:
+            {
+                weight = UIFontWeightBold;
+                break;
+            }
+            case QH:
+            {
+                weight = UIFontWeightHeavy;
+                break;
+            }
+            default:
+                break;
+        }
+        self.font = [UIFont systemFontOfSize:size weight:weight];
         return self;
     };
 }

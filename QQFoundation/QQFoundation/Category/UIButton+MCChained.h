@@ -7,20 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef NS_ENUM(NSInteger,QTextPosition){
-    Tnone   = 0,//
-    Tright  = 1,// 文字文字在右
-    Tleft   = 2,//文字在左
-    Ttop    = 3,// 文字在上
-    Tbottom = 4 // 文字在下
-};
-typedef NS_ENUM(NSInteger,QFont){
-    QR   = 0,//Regular
-    QL  = 1,//Light
-    QM   = 2,//Medium
-    QB    = 3,//Bold
-    QH = 4 // Heavy
-};
+#import "MCChainedEnums.h"
 
 @interface UIButton (MCChained)
 /**
