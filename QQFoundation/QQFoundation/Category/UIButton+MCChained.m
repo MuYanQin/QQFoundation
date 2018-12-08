@@ -29,14 +29,7 @@
         return self;
     };
 }
-- (UIButton *(^)(NSString *, UIControlState))QtitleTextState
-{
-    return ^UIButton *(NSString * input,UIControlState state){
-        [self setTitle:input forState:state];
-        return self;
-    };
-}
-- (UIButton *(^)(NSString *))QtitleText
+- (UIButton *(^)(NSString *))Qtext
 {
     return ^UIButton *(NSString * input){
         [self setTitle:input forState:UIControlStateNormal];
@@ -44,28 +37,36 @@
     };
     
 }
-- (UIButton *(^)(UIColor *, UIControlState))QtitleClolorState
+- (UIButton *(^)(NSString *, UIControlState))QtextState
 {
-    return ^UIButton *(UIColor *color,UIControlState state){
-        [self setTitleColor:color forState:state];
+    return ^UIButton *(NSString * input,UIControlState state){
+        [self setTitle:input forState:state];
         return self;
     };
 }
-- (UIButton *(^)(UIColor *))QtitleClolor
+
+- (UIButton *(^)(UIColor *))QtextClolor
 {
     return ^UIButton *(UIColor *color){
         [self setTitleColor:color forState:UIControlStateNormal];
         return self;
     };
 }
-- (UIButton *(^)(UIColor *))QbackgroudClolor
+- (UIButton *(^)(UIColor *, UIControlState))QtextClolorState
+{
+    return ^UIButton *(UIColor *color,UIControlState state){
+        [self setTitleColor:color forState:state];
+        return self;
+    };
+}
+- (UIButton *(^)(UIColor *))QbgClolor
 {
     return ^UIButton *(UIColor *color){
         self.backgroundColor = color;
         return self;
     };
 }
-- (UIButton *(^)(NSInteger, QFont))QfontWithWeight
+- (UIButton *(^)(NSInteger, QFont))QfontWeight
 {
     return ^UIButton *(NSInteger size,QFont font){
         UIFontWeight weight = UIFontWeightRegular;

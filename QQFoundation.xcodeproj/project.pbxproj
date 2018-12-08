@@ -15,6 +15,7 @@
 		4B1ADA592141361700EEADCE /* MCPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA542141361700EEADCE /* MCPickerView.m */; };
 		4B1ADA5A2141361700EEADCE /* MCPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA552141361700EEADCE /* MCPickerModel.m */; };
 		4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */; };
+		4B1C576F21B93E3E000AFCF1 /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C576D21B93E3E000AFCF1 /* UIScrollView+Touch.m */; };
 		4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */; };
 		4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F10C7211C384500B09B80 /* MCUserInfo.m */; };
 		4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */; };
@@ -124,7 +125,6 @@
 		52D8D18C1F4D77EF00EA413B /* UIButton+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D13E1F4D77EF00EA413B /* UIButton+Cache.m */; };
 		52D8D18E1F4D77EF00EA413B /* UIImage+Usually.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */; };
 		52D8D18F1F4D77EF00EA413B /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */; };
-		52D8D1901F4D77EF00EA413B /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */; };
 		52D8D1921F4D77EF00EA413B /* UIView+QQFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */; };
 		52D8D1931F4D77EF00EA413B /* UIView+SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D14C1F4D77EF00EA413B /* UIView+SuperViewController.m */; };
 		52D8D1951F4D77EF00EA413B /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1521F4D77EF00EA413B /* CALayer+XibConfiguration.m */; };
@@ -207,6 +207,8 @@
 		4B1ADA542141361700EEADCE /* MCPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerView.m; sourceTree = "<group>"; };
 		4B1ADA552141361700EEADCE /* MCPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerModel.m; sourceTree = "<group>"; };
 		4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
+		4B1C576D21B93E3E000AFCF1 /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
+		4B1C576E21B93E3E000AFCF1 /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
 		4B1F107F211C303700B09B80 /* MCVerificationCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCVerificationCodeView.h; sourceTree = "<group>"; };
 		4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerificationCodeView.m; sourceTree = "<group>"; };
 		4B1F10C6211C384500B09B80 /* MCUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCUserInfo.h; sourceTree = "<group>"; };
@@ -417,8 +419,6 @@
 		52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Usually.m"; sourceTree = "<group>"; };
 		52D8D1431F4D77EF00EA413B /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
 		52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
-		52D8D1451F4D77EF00EA413B /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
-		52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
 		52D8D1491F4D77EF00EA413B /* UIView+QQFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QQFrame.h"; sourceTree = "<group>"; };
 		52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QQFrame.m"; sourceTree = "<group>"; };
 		52D8D14B1F4D77EF00EA413B /* UIView+SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SuperViewController.h"; sourceTree = "<group>"; };
@@ -1019,6 +1019,8 @@
 		52D8D12F1F4D77EE00EA413B /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4B1C576E21B93E3E000AFCF1 /* UIScrollView+Touch.h */,
+				4B1C576D21B93E3E000AFCF1 /* UIScrollView+Touch.m */,
 				5295D4061F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.h */,
 				5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */,
 				5295D4081F4EBB6000C6B5F4 /* NSString+Manage.h */,
@@ -1034,8 +1036,6 @@
 				52D8D1421F4D77EF00EA413B /* UIImage+Usually.m */,
 				52D8D1431F4D77EF00EA413B /* UIImageView+Cache.h */,
 				52D8D1441F4D77EF00EA413B /* UIImageView+Cache.m */,
-				52D8D1451F4D77EF00EA413B /* UIScrollView+Touch.h */,
-				52D8D1461F4D77EF00EA413B /* UIScrollView+Touch.m */,
 				52D8D1491F4D77EF00EA413B /* UIView+QQFrame.h */,
 				52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */,
 				52D8D14B1F4D77EF00EA413B /* UIView+SuperViewController.h */,
@@ -1452,6 +1452,7 @@
 				52C115651F4EC5CE005471CB /* FLAnimatedImageView.m in Sources */,
 				52C1155C1F4EC5CE005471CB /* MJRefreshNormalHeader.m in Sources */,
 				52D8D1951F4D77EF00EA413B /* CALayer+XibConfiguration.m in Sources */,
+				4B1C576F21B93E3E000AFCF1 /* UIScrollView+Touch.m in Sources */,
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
 				52D8D19D1F4D77EF00EA413B /* QQLoadView.m in Sources */,
 				4B4D5A69211B2932007FDED8 /* MCAuthorViewController.m in Sources */,
@@ -1512,7 +1513,6 @@
 				4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
 				52C115621F4EC5CE005471CB /* UIScrollView+MJRefresh.m in Sources */,
-				52D8D1901F4D77EF00EA413B /* UIScrollView+Touch.m in Sources */,
 				52C1154C1F4EC5CE005471CB /* AFSecurityPolicy.m in Sources */,
 				52D8D19E1F4D77EF00EA413B /* QQTextField.m in Sources */,
 				52D8D19A1F4D77EF00EA413B /* QQDevice.m in Sources */,

@@ -40,22 +40,22 @@ typedef NS_ENUM(NSInteger,QFont){
 /**
  默认 Normal
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleText)(NSString *titleText);
+@property (nonatomic , strong ,readonly) UIButton *(^Qtext)(NSString *titleText);
 
 /**
  设置title 设置类型
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleTextState)(NSString *titleText,UIControlState);
+@property (nonatomic , strong ,readonly) UIButton *(^QtextState)(NSString *titleText,UIControlState);
 
 /**
  默认 Normal
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleClolor)(UIColor *color);
+@property (nonatomic , strong ,readonly) UIButton *(^QtextClolor)(UIColor *color);
 
 /**
  设置titleColor 设置类型
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QtitleClolorState)(UIColor *color,UIControlState);
+@property (nonatomic , strong ,readonly) UIButton *(^QtextClolorState)(UIColor *color,UIControlState);
 
 /**
  默认 Normal
@@ -81,12 +81,12 @@ typedef NS_ENUM(NSInteger,QFont){
 /**
  设置背景颜色
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QbackgroudClolor)(UIColor *color);
+@property (nonatomic , strong ,readonly) UIButton *(^QbgClolor)(UIColor *color);
 
 /**
  设置title字体 可选weight
  */
-@property (nonatomic , strong ,readonly) UIButton *(^QfontWithWeight)(NSInteger size,QFont font);
+@property (nonatomic , strong ,readonly) UIButton *(^QfontWeight)(NSInteger size,QFont font);
 
 /**
  设置title字体 默认 regular
