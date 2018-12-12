@@ -41,7 +41,7 @@
 
     
     self.PageView = [[MCPageView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight - MCBottomDistance) titles:titles controllers:controllers];
-    self.PageView.titleButtonWidth = 30;
+    self.PageView.titleButtonWidth = 60;
     self.PageView.lineWitdhScale = 0.2;
     self.PageView.selectTitleFont = [UIFont systemFontOfSize:18];
     self.PageView.selectTitleColor = [UIColor purpleColor];

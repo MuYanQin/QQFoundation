@@ -215,8 +215,13 @@ static const NSInteger  minTitleButtonWitdh = 60;
 /**设置横下相对于titleBtn款低的比例*/
 - (void)setLineWitdhScale:(CGFloat)lineWitdhScale
 {
+    if (lineWitdhScale > 1) {
+        NSLog(@"长度不必不可大与一");
+        return;
+    }
     _lineWitdhScale = lineWitdhScale;
     CGRect rect = self.lineView.frame;
+    rect.origin.x = rect.origin.x + ( rect.size.width  - _titleButtonWidth*lineWitdhScale)/2;
     rect.size.width = _titleButtonWidth*lineWitdhScale;
     self.lineView.frame = rect;
 }
