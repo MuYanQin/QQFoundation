@@ -57,14 +57,22 @@ static const NSInteger  minTitleButtonWitdh = 60;
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MCContent" forIndexPath:indexPath];
     cell.highlighted = NO;
-    cell.backgroundColor = [UIColor purpleColor];
+    return cell;
+}
+//将要加载某个Item时调用的方法
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
     UIViewController *childVC = self.contentCtrollers[indexPath.item];
     childVC.view.frame = cell.contentView.bounds;
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if (![cell.contentView.subviews containsObject:childVC.view]) {
         [cell.contentView addSubview:childVC.view];
     }
-    return cell;
+}
+//将要加载头尾视图时调用的方法
+- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

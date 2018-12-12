@@ -1,18 +1,18 @@
 //
-//  MCPageViewSub1ViewController.m
+//  MCPageViewSub3ViewController.m
 //  QQFoundation
 //
-//  Created by qinmuqiao on 2018/9/19.
+//  Created by qinmuqiao on 2018/12/12.
 //  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import "MCPageViewSub1ViewController.h"
+#import "MCPageViewSub3ViewController.h"
 
-@interface MCPageViewSub1ViewController ()
+@interface MCPageViewSub3ViewController ()
 
 @end
 
-@implementation MCPageViewSub1ViewController
+@implementation MCPageViewSub3ViewController
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -20,12 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-}
+    self.view.backgroundColor = [UIColor yellowColor];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

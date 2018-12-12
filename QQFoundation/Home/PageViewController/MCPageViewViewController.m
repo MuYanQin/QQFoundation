@@ -10,6 +10,8 @@
 #import "MCPageView.h"
 #import "MCPageViewSub1ViewController.h"
 #import "MCPageViewSub2ViewController.h"
+#import "MCPageViewSub3ViewController.h"
+
 @interface MCPageViewViewController ()
 @property (nonatomic , strong) MCPageView * PageView;
 @end
@@ -22,14 +24,21 @@
     NSMutableArray *titles = [NSMutableArray array];
     NSMutableArray *controllers = [NSMutableArray array];
     
-    for (int i = 0; i<8; i++) {
-        if (i%2 == 0) {
-            [controllers addObject:[MCPageViewSub1ViewController new]];
-        }else{
-            [controllers addObject:[MCPageViewSub2ViewController new]];
-        }
-        [titles addObject:[NSString stringWithFormat:@"title_%d",i]];
-    }
+//    for (int i = 0; i<8; i++) {
+//        if (i%2 == 0) {
+//            [controllers addObject:[MCPageViewSub1ViewController new]];
+//        }else{
+//            [controllers addObject:[MCPageViewSub2ViewController new]];
+//        }
+//    }
+    [controllers addObject:[MCPageViewSub1ViewController new]];
+    [titles addObject:[NSString stringWithFormat:@"title_%d",1]];
+
+    [controllers addObject:[MCPageViewSub2ViewController new]];
+    [titles addObject:[NSString stringWithFormat:@"title_%d",2]];
+    [controllers addObject:[MCPageViewSub3ViewController new]];
+    [titles addObject:[NSString stringWithFormat:@"title_%d",3]];
+
     
     self.PageView = [[MCPageView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight - MCBottomDistance) titles:titles controllers:controllers];
     self.PageView.titleButtonWidth = 30;

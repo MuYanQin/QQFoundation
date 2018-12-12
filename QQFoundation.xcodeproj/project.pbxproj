@@ -44,6 +44,7 @@
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
 		4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */; };
 		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
+		4B94392321C110CC00F34743 /* MCPageViewSub3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */; };
 		4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A33E21707B7900299613 /* MCMonitorView.m */; };
 		4BA5A34521708DB200299613 /* MCWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A34321708DB200299613 /* MCWebViewViewController.m */; };
 		4BBBFC7F21192A19003EC96B /* wechatMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */; };
@@ -262,6 +263,8 @@
 		4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCEmptyCell.h; sourceTree = "<group>"; };
 		4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCEmptyCell.m; sourceTree = "<group>"; };
 		4B8D23D220E0DA46005F6047 /* MCGCDStudy */ = {isa = PBXFileReference; lastKnownFileType = text; path = MCGCDStudy; sourceTree = "<group>"; };
+		4B94392121C110CC00F34743 /* MCPageViewSub3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageViewSub3ViewController.h; sourceTree = "<group>"; };
+		4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub3ViewController.m; sourceTree = "<group>"; };
 		4BA5A33D21707B7900299613 /* MCMonitorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMonitorView.h; sourceTree = "<group>"; };
 		4BA5A33E21707B7900299613 /* MCMonitorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCMonitorView.m; sourceTree = "<group>"; };
 		4BA5A34321708DB200299613 /* MCWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCWebViewViewController.m; sourceTree = "<group>"; };
@@ -725,6 +728,8 @@
 				4BE30A83215270E40063164A /* MCPageViewSub1ViewController.m */,
 				4BE30A85215270F30063164A /* MCPageViewSub2ViewController.h */,
 				4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */,
+				4B94392121C110CC00F34743 /* MCPageViewSub3ViewController.h */,
+				4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */,
 			);
 			path = PageViewController;
 			sourceTree = "<group>";
@@ -1470,6 +1475,7 @@
 				52C1154A1F4EC5CE005471CB /* AFHTTPSessionManager.m in Sources */,
 				4BCC87C521322B9500841AB3 /* UIButton+MCChained.m in Sources */,
 				4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */,
+				4B94392321C110CC00F34743 /* MCPageViewSub3ViewController.m in Sources */,
 				52D8D1861F4D77EF00EA413B /* Foundation+HDLog.m in Sources */,
 				4B46A18F2165D469001B560A /* MCContentTableView.m in Sources */,
 				52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */,
