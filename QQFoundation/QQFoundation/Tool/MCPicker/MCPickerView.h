@@ -12,12 +12,13 @@
 @protocol MCPickerViewDelegate<NSObject>
 
 /**
- 点击Cell的回调  返回下一个视图需要的数据数组
+ 点击Cell的回调  返回下一个视图需要的数据数组 
  @param MCPickerView MCPickerView description
  @param tier 点击的第几层
  @param value 点击那一列的数据
  */
 - (NSMutableArray<MCPickerModel *> *)MCPickerView:(MCPickerView *)MCPickerView didSelcetedTier:(NSInteger)tier  selcetedValue:(MCPickerModel *)value;
+
 
 /**
  完成时候的回调
