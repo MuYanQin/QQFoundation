@@ -42,32 +42,22 @@
     [self.view addSubview:button];
 
 }
-- (void)MCPickerView:(MCPickerView *)MCPickerView complete:(NSString *)complete
+- (void)MCPickerView:(MCPickerView *)MCPickerView completeArray:(NSMutableArray<MCPickerModel *> *)comArray completeStr:(NSString *)comStr
 {
     
 }
-- (void)MCPickerView:(MCPickerView *)MCPickerView didSelcetedTier:(NSInteger)Tier  value:(MCPickerModel *)value
+- (NSMutableArray<MCPickerModel *> *)MCPickerView:(MCPickerView *)MCPickerView didSelcetedTier:(NSInteger)tier selcetedValue:(MCPickerModel *)value
 {
-    if (Tier == 0) {
-        __block NSMutableArray *tempCity = [NSMutableArray array];
-        [value.child enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [tempCity addObject:[MCPickerModel mj_objectWithKeyValues:obj]];
-        }];
-        self.picker.dataArray = tempCity;
-
-    }else if (Tier ==1){
-        __block NSMutableArray *tempTown = [NSMutableArray array];
-        [value.child enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [tempTown addObject:[MCPickerModel mj_objectWithKeyValues:obj]];
-        }];
-        self.picker.dataArray = tempTown;
-    }
+    __block NSMutableArray *tempTown = [NSMutableArray array];
+    [value.child enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [tempTown addObject:[MCPickerModel mj_objectWithKeyValues:obj]];
+    }];
+    return tempTown;
 }
 - (void)click2One
 {
     self.picker  =[[MCPickerView alloc]initWithFrame:self.view.bounds];
     self.picker.delegate = self;
-    self.picker.totalTier = 3;
     self.picker.titleText = @"选择区域";
     self.picker.dataArray = self.pro;
     [self.view addSubview:self.picker];

@@ -83,22 +83,25 @@ static NSInteger const PickerViewHeight = 350;//
     [self.ScrollView setContentOffset:CGPointMake(self.frame.size.width*index,0) animated:YES];
 }
 //listView列表点击
-- (void)MCPickerListView:(MCPickerListView *)MCPickerListView didSelcetedValue:(MCPickerModel *)Value
+- (void)MCPickerListView:(MCPickerListView *)MCPickerListView didSelcetedValue:(MCPickerModel *)value
 {
     self.dataArrays  = [self.dataArrays subarrayWithRange:NSMakeRange(0, MCPickerListView.tag + 1)].mutableCopy;
     self.headerDataArray  = [self.headerDataArray subarrayWithRange:NSMakeRange(0, MCPickerListView.tag)].mutableCopy;
-    [self.headerDataArray addObject:Value.name];
+    [self.headerDataArray addObject:value.name];
     [self.headerDataArray addObject:@"请选择"];
-    if (self.totalTier == MCPickerListView.tag + 1) {
+    NSMutableArray<MCPickerModel *> * array;
+    if ([self.delegate respondsToSelector:@selector(MCPickerView:didSelcetedTier:selcetedValue:)]) {
+        array =  [self.delegate MCPickerView:self didSelcetedTier:MCPickerListView.tag selcetedValue:value];
+        if (array.count>0) {
+            self.dataArray = array;
+        }
+    }
+    if (array.count ==0 ) {
         [self.headerDataArray removeLastObject];
         [self hiddenClick];
     }
-    if ((self.totalTier == MCPickerListView.tag + 1) && [self.delegate respondsToSelector:@selector(MCPickerView:complete:)]) {
-        [self.delegate MCPickerView:self complete:[self.headerDataArray componentsJoinedByString:@""]];
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(MCPickerView:didSelcetedTier:value:)]) {
-        [self.delegate MCPickerView:self didSelcetedTier:MCPickerListView.tag value:Value];
+    if (array.count ==0 && [self.delegate respondsToSelector:@selector(MCPickerView:completeArray:completeStr:)]) {
+        [self.delegate MCPickerView:self completeArray:self.dataArrays completeStr:[self.headerDataArray componentsJoinedByString:@""]];
     }
     self.header.dataArray = self.headerDataArray;
 }
@@ -111,7 +114,7 @@ static NSInteger const PickerViewHeight = 350;//
     }
     return _ScrollView;
 }
-- (void)setDataArray:(NSArray *)dataArray
+- (void)setDataArray:(NSArray<MCPickerModel *> *)dataArray
 {
     [self manageDataArray:dataArray selectText:@""];
 }
@@ -119,7 +122,7 @@ static NSInteger const PickerViewHeight = 350;//
 {
     self.TitleLb.text = titleText;
 }
-- (void)setData:(NSArray *)dataArray selectText:(NSString *)Text
+- (void)setData:(NSArray<MCPickerModel *> *)dataArray selectText:(NSString *)Text
 {
     [self.headerDataArray addObject:Text];
     [self.headerDataArray removeObject:@"请选择"];
