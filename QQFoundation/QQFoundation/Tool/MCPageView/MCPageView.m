@@ -46,7 +46,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
     return self;
     
 }
-
 #pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

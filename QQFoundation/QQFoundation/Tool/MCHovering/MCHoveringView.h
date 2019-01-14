@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 /**返回展示列表的tableView*/
 - (NSArray<UIScrollView *> *)listView;
+//**必须设置的头部View*/
+- (UIView *)headView;
 
 //下面是配合使用MCPageView需要的俩个数据//
 /**返回子列表所在的controller*/
@@ -35,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**返回子列表的title*/
 - (NSArray<NSString *> *)listTitle;
+
+
 
 @optional
 
@@ -47,6 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFrame:(CGRect)frame deleaget:(id<MCHoveringListViewDelegate>)delegate;
 /**是否在视图中间刷新*/
 @property (nonatomic , assign) BOOL  isMidRefresh;
+
 @end
 
 NS_ASSUME_NONNULL_END

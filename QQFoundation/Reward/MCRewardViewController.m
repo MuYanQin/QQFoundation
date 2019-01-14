@@ -43,6 +43,10 @@
 {
     return @[search.BaseQQTableView,Author.BaseQQTableView,mine.BaseQQTableView];
 }
+- (UIView *)headView
+{
+    return    [[UIView alloc]initWithFrame:CGRectMake(0, 0, 90, 200)];
+}
 - (NSArray<UIViewController *> *)listCtroller
 {
     return @[search,Author,mine];
