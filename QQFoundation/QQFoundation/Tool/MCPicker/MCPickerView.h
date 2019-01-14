@@ -42,19 +42,16 @@
 @property (nonatomic , copy) NSString * titleText;
 
 /**
- 每一层的数据数组
+ 每一层的数据数组 用点击的代理给也是可以的
  */
 @property (nonatomic , strong) NSArray<MCPickerModel *> *dataArray;
 
 /**
- 每一层的数据数组
- */
-@property (nonatomic , strong) NSArray<NSString *> *selectArray;
-
-
-/**
- 给每一层数据添加数据源 有默认选择的字符串   无默认选择的话推荐使用 setDataArray
-
+ 适用于有默认选择地址的时候。要一次性给全数据
+ 如：
+ [setData:proArray selectText:@"安徽省"];
+ [setData:cityArray selectText:@"合肥市"];
+ [setData:areaArray selectText:@"瑶海区"];
  @param dataArray 数据源
  @param Text 默认选择的字符串
  */
