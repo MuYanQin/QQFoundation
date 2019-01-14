@@ -734,7 +734,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           }
             
           case KLCPopupVerticalLayoutBottom: {
-            finalContainerFrame.origin.y = CGRectGetHeight(self.bounds) - CGRectGetHeight(containerFrame);
+            finalContainerFrame.origin.y = CGRectGetHeight(self.bounds) - CGRectGetHeight(containerFrame) - MCBottomDistance;
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleTopMargin;
             break;
           }
