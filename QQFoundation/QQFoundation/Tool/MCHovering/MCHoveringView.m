@@ -7,16 +7,12 @@
 //
 
 #import "MCHoveringView.h"
-#import "MCPageView.h"
 #import "QQtableView.h"
 
 
 @interface MCHoveringView ()<UIScrollViewDelegate,MCPageViewDelegate>
-/**底部scrollView*/
-@property (nonatomic , strong) UIScrollView * scrollView;
-@property (nonatomic , assign) CGFloat  headHeight;
-@property (nonatomic , strong) MCPageView * pageView;
 
+@property (nonatomic , assign) CGFloat  headHeight;
 /**x是否悬停了*/
 @property (nonatomic , assign) BOOL  isHover;
 
@@ -29,6 +25,7 @@
     self =  [self initWithFrame:frame];
     self.delegate = delegate;
     self.isHover = NO;
+    self.isMidRefresh = NO;
     UIView *headView = [self.delegate headView];
     self.headHeight = headView.frame.size.height;
     [self addSubview:self.scrollView];
