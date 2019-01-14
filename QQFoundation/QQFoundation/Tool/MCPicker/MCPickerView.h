@@ -46,6 +46,11 @@
  */
 @property (nonatomic , strong) NSArray<MCPickerModel *> *dataArray;
 
+/**
+ 每一层的数据数组
+ */
+@property (nonatomic , strong) NSArray<NSString *> *selectArray;
+
 
 /**
  给每一层数据添加数据源 有默认选择的字符串   无默认选择的话推荐使用 setDataArray

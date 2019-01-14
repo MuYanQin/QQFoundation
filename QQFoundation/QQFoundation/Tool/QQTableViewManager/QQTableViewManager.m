@@ -122,7 +122,10 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    self.TableView.scrollViewDidScroll(scrollView);
+    if (self.TableView.scrollViewDidScroll) {
+        self.TableView.scrollViewDidScroll(scrollView);
+    }
+    
 }
 //- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSMutableArray  *btnArray = [NSMutableArray array];
