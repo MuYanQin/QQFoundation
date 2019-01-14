@@ -62,7 +62,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 - (void)initVC{
     self.home   = [MCHomeViewController   new];
     self.reward = [MCRewardViewController new];
-    self.search = [MCSearchViewController new];
+    self.search = [MCSearchTViewController new];
     self.author = [MCAuthorViewController new];
     self.mine   = [MCMineViewController   new];
 

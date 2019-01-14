@@ -6,19 +6,28 @@
 //  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import "MCSearchViewController.h"
+#import "MCSearchTViewController.h"
 #import <CoreText/CoreText.h>
-@interface MCSearchViewController ()
+#import "MCSearchCell.h"
+@interface MCSearchTViewController ()
 
 @end
 
-@implementation MCSearchViewController
+@implementation MCSearchTViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"搜索";
-    
+    self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
+    self.BaseQQTableView.isHasHeaderRefresh = NO;
+    self.BaseQQTableView.top = 0;
+    for (int i = 0; i<=100; i++) {
+        MCSearchItem *item = [[MCSearchItem alloc]init];
+        item.text = [NSString stringWithFormat:@"Search=%d",i];
+        [self.BaseMutableArray addObject:item];
+    }
+    [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

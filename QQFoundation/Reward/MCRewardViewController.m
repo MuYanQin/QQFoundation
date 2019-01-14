@@ -13,17 +13,43 @@
 #import "QQButton.h"
 #import "NSString+Manage.h"
 #import "NSMutableAttributedString+Manage.h"
-@interface MCRewardViewController ()
+#import "MCHoveringView.h"
+
+#import "MCAuthorViewController.h"
+#import "MCSearchTViewController.h"
+#import "MCMineViewController.h"
+@interface MCRewardViewController ()<MCHoveringListViewDelegate>
 
 @end
-
 @implementation MCRewardViewController
-
+{
+    MCSearchTViewController *search;
+    MCAuthorViewController *Author;
+    MCMineViewController *mine;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"案例使用2";
-
+    search= [MCSearchTViewController new];
+    Author  = [MCAuthorViewController new];
+    mine = [MCMineViewController new];
+    
+    MCHoveringView *hovering = [[MCHoveringView alloc]initWithFrame:CGRectMake(0, 64, KScreenWidth, KScreenHeight - 64) deleaget:self];
+    hovering.isMidRefresh = YES;
+    [self.view addSubview:hovering];
+}
+- (NSArray<UIScrollView *> *)listView
+{
+    return @[search.BaseQQTableView,Author.BaseQQTableView,mine.BaseQQTableView];
+}
+- (NSArray<UIViewController *> *)listCtroller
+{
+    return @[search,Author,mine];
+}
+- (NSArray<NSString *> *)listTitle
+{
+    return @[@"搜索",@"认证",@"我的"];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

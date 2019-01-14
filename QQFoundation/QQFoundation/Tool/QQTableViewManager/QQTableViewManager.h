@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "QQtableView.h"
 @class QQTableViewItem;
 @protocol RETableViewManagerDelegate <UITableViewDelegate>
 
 @end
 @interface QQTableViewManager : NSObject<UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) UITableView *TableView;
+@property (strong, nonatomic) QQtableView *TableView;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (strong, readwrite, nonatomic) NSMutableDictionary *registeredClasses;
 

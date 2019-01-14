@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MCHomeViewController.h"
 #import "MCRewardViewController.h"
-#import "MCSearchViewController.h"
+#import "MCSearchTViewController.h"
 #import "MCAuthorViewController.h"
 #import "MCMineViewController.h"
 #import "QQNavigationController.h"
@@ -19,7 +19,7 @@
 
 @property (nonatomic,strong) MCHomeViewController *home;
 @property (nonatomic,strong) MCRewardViewController *reward;
-@property (nonatomic,strong) MCSearchViewController *search;
+@property (nonatomic,strong) MCSearchTViewController *search;
 @property (nonatomic,strong) MCAuthorViewController *author;
 @property (nonatomic,strong) MCMineViewController *mine;
 

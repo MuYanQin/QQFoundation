@@ -7,6 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "QQLoadView.h"
+#import "MCHoveringView.h"
 @class QQtableView,EmptyView;
 @protocol QQtableViewRequestDelegate <NSObject>
 
@@ -28,8 +29,15 @@
 
 @end
 
-@interface QQtableView : UITableView
+@interface QQtableView : UITableView<UIGestureRecognizerDelegate>
 @property (assign,nonatomic) id<QQtableViewRequestDelegate> RequestDelegate;
+//配合MCHoveringView使用的属性/
+//**获取tableView偏移量的Block*/
+@property (nonatomic , copy) void(^scrollViewDidScroll)(UIScrollView * scrollView);
+
+//配合MCHoveringView使用的属性/
+/**是否同时响应多个手势 默认NO*/
+@property (nonatomic , assign) BOOL  canResponseMutiGesture;
 
 /*传递controller进来展示loadding状态只能是weak不会引用*/
 @property (weak, nonatomic)UIViewController *TempController;

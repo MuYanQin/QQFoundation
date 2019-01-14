@@ -7,7 +7,7 @@
 //
 
 #import "MCAuthorViewController.h"
-
+#import "MCSearchCell.h"
 @interface MCAuthorViewController ()
 
 @end
@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
+    self.BaseQQTableView.top = 0;
+    for (int i = 0; i<=10; i++) {
+        MCSearchItem *item = [[MCSearchItem alloc]init];
+        item.text = [NSString stringWithFormat:@"Author=%d",i];
+        [self.BaseMutableArray addObject:item];
+    }
+    [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
 }
 
 - (void)didReceiveMemoryWarning {

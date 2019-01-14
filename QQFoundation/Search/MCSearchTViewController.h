@@ -8,6 +8,6 @@
 
 #import "QQBaseViewController.h"
 
-@interface MCSearchViewController : QQBaseViewController
+@interface MCSearchTViewController : QQBaseViewController
 
 @end

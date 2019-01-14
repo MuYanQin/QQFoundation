@@ -120,6 +120,10 @@
     QQTableViewItem *actionItem = (QQTableViewItem *)item;
     return actionItem.slideText ? actionItem.slideText: @"删除";
 }
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.TableView.scrollViewDidScroll(scrollView);
+}
 //- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSMutableArray  *btnArray = [NSMutableArray array];
 //

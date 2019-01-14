@@ -68,6 +68,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     self.footerView = [UIView new];
     [self setTableFooterView:self.footerView];
     _hasNetError = NO;
+    self.canResponseMutiGesture = NO;
 }
 
 - (void)mc_reloadData
@@ -194,6 +195,12 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         _emptyView.backgroundColor = [UIColor colorWithRed:245/255.0f green:248/255.0f blue:250/255.0f alpha:1];
     }
     return _emptyView;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return self.canResponseMutiGesture;
+//    return YES;
 }
 @end
 
