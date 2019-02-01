@@ -59,6 +59,10 @@
 		4BBBFC9721194CD9003EC96B /* bing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC8E2119438C003EC96B /* bing.caf */; };
 		4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
 		4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC962119499C003EC96B /* 456.m4a */; };
+		4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */; };
+		4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2921121EF0F04008530AE /* ArtileImageCell.m */; };
+		4BC2921C21EF1178008530AE /* MCDEleteItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */; };
+		4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921B21EF1178008530AE /* SelectImage@2x.png */; };
 		4BC8F97B213185CE00C71E0A /* UILabel+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC8F97A213185CE00C71E0A /* UILabel+MCChained.m */; };
 		4BCB67CA2142457E0094E664 /* MCClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCB67C92142457E0094E664 /* MCClose@2x.png */; };
 		4BCC87C521322B9500841AB3 /* UIButton+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCC87C421322B9500841AB3 /* UIButton+MCChained.m */; };
@@ -289,6 +293,12 @@
 		4BBBFC8E2119438C003EC96B /* bing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bing.caf; sourceTree = "<group>"; };
 		4BBBFC9021194421003EC96B /* bing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bing.mp3; sourceTree = "<group>"; };
 		4BBBFC962119499C003EC96B /* 456.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.m4a; sourceTree = "<group>"; };
+		4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSelectImageCell.h; sourceTree = "<group>"; };
+		4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSelectImageCell.m; sourceTree = "<group>"; };
+		4BC2921021EF0F04008530AE /* ArtileImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtileImageCell.h; sourceTree = "<group>"; };
+		4BC2921121EF0F04008530AE /* ArtileImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtileImageCell.m; sourceTree = "<group>"; };
+		4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCDEleteItem@2x.png"; sourceTree = "<group>"; };
+		4BC2921B21EF1178008530AE /* SelectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectImage@2x.png"; sourceTree = "<group>"; };
 		4BC8F979213185CE00C71E0A /* UILabel+MCChained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+MCChained.h"; sourceTree = "<group>"; };
 		4BC8F97A213185CE00C71E0A /* UILabel+MCChained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MCChained.m"; sourceTree = "<group>"; };
 		4BCB67C92142457E0094E664 /* MCClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCClose@2x.png"; sourceTree = "<group>"; };
@@ -545,6 +555,12 @@
 				0153EDF920B66B710041CFC4 /* QQTableViewCell.m */,
 				4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */,
 				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
+				4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */,
+				4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */,
+				4BC2921021EF0F04008530AE /* ArtileImageCell.h */,
+				4BC2921121EF0F04008530AE /* ArtileImageCell.m */,
+				4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */,
+				4BC2921B21EF1178008530AE /* SelectImage@2x.png */,
 			);
 			path = QQTableViewManager;
 			sourceTree = "<group>";
@@ -1341,6 +1357,7 @@
 				52D8D1061F4D775500EA413B /* Frameworks */,
 				52D8D1071F4D775500EA413B /* Resources */,
 				4B87334A20E9C9180045851A /* Embed App Extensions */,
+				BF8A17EC3200454160FA004B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1428,7 +1445,9 @@
 				4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */,
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
 				52C1155E1F4EC5CE005471CB /* MJRefresh.bundle in Resources */,
+				4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */,
 				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
+				4BC2921C21EF1178008530AE /* MCDEleteItem@2x.png in Resources */,
 				52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */,
 				52D8D1171F4D775500EA413B /* Main.storyboard in Resources */,
 				52D8D1961F4D77EF00EA413B /* icon_em_al.png in Resources */,
@@ -1456,6 +1475,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF8A17EC3200454160FA004B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation-resources.sh",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1552,6 +1589,7 @@
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
 				4B46A1852165D2A0001B560A /* WXUtil.mm in Sources */,
 				4B7663A9214A46550073F7D8 /* MCPickerViewController.m in Sources */,
+				4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */,
 				4B4D5A63211B2910007FDED8 /* MCRewardViewController.m in Sources */,
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,
 				4BFBC6E421E837D800012B96 /* MCHoveringView.m in Sources */,
@@ -1560,6 +1598,7 @@
 				4B1ADA592141361700EEADCE /* MCPickerView.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
+				4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */,
 				4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */,

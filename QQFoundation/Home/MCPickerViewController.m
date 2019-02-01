@@ -59,7 +59,6 @@
     self.picker  =[[MCPickerView alloc]initWithFrame:self.view.bounds];
     self.picker.delegate = self;
     self.picker.titleText = @"选择区域";
-    self.picker.selectArray = @[@"安徽省",@"合肥市",@"蜀山区"];
     self.picker.dataArray = self.pro;
     [self.view addSubview:self.picker];
 }

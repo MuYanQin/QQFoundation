@@ -7,6 +7,8 @@ target 'QQFoundation' do
 pod 'JPush'
 pod 'Masonry'
 pod 'MJExtension'
+pod 'TZImagePickerController'
+
 #pod 'DZNEmptyDataSet'
   # Pods for QQFoundation
 

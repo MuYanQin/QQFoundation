@@ -50,7 +50,7 @@
 - (MCPageView *)pageView
 {
     if (!_pageView) {
-        _pageView = [[MCPageView alloc]initWithFrame:CGRectMake(0, self.headHeight, self.frame.size.width, self.frame.size.width + self.headHeight) titles:[self.delegate listTitle] controllers:[self.delegate listCtroller]];
+        _pageView = [[MCPageView alloc]initWithFrame:CGRectMake(0, self.headHeight, self.frame.size.width, self.frame.size.height + self.headHeight) titles:[self.delegate listTitle] controllers:[self.delegate listCtroller]];
         _pageView.delegate = self;
     }
     return _pageView;

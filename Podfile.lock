@@ -4,11 +4,13 @@ PODS:
     - JCore (~> 1.2.0)
   - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
+  - TZImagePickerController (3.1.9)
 
 DEPENDENCIES:
   - JPush
   - Masonry
   - MJExtension
+  - TZImagePickerController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -16,13 +18,15 @@ SPEC REPOS:
     - JPush
     - Masonry
     - MJExtension
+    - TZImagePickerController
 
 SPEC CHECKSUMS:
   JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
   JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  TZImagePickerController: c3f7c505d23281e21e98df6dbeae372946caa28f
 
-PODFILE CHECKSUM: c8e4399a1acd0cfe5c0904536ca36e6b6903cf72
+PODFILE CHECKSUM: 4367c6c1d23e3bded184c3ecd4cb59a1951802c1
 
 COCOAPODS: 1.5.3
