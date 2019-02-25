@@ -6,7 +6,6 @@
 //  Copyright © 2016年 秦慕乔. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "QQLoadView.h"
 #import "MCHoveringView.h"
 @class QQtableView,EmptyView;
 @protocol QQtableViewRequestDelegate <NSObject>

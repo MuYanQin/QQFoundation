@@ -9,7 +9,7 @@
 #import "QQBarItemViewController.h"
 #import "QQtableView.h"
 #import "QQTableViewManager.h"
-@class QQLoadView,QQNetManager;
+@class QQNetManager;
 @interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,QQtableViewRequestDelegate>
 @property (copy, nonatomic)NSString *GlobalId;///<每个界面 预留的字符串
 @property (nonatomic,strong) id Info;
@@ -20,7 +20,6 @@
 @property (nonatomic,strong)UIColor           *BaseNavBarColor;
 @property (strong, nonatomic)QQtableView      *BaseQQTableView;///<基QQTableView
 @property (strong, nonatomic)NSMutableArray   *BaseMutableArray;///<基BaseMutableArray
-@property (nonatomic,strong) QQLoadView       *BaseLoadView;///<空白界面、网络出错界面等提示界面
 @property (nonatomic , strong) QQTableViewManager * tabManager;
 /**
  普通的get请求

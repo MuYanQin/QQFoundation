@@ -144,7 +144,6 @@
 		52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1581F4D77EF00EA413B /* QQButton.m */; };
 		52D8D19A1F4D77EF00EA413B /* QQDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15A1F4D77EF00EA413B /* QQDevice.m */; };
 		52D8D19B1F4D77EF00EA413B /* QQFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15C1F4D77EF00EA413B /* QQFileManage.m */; };
-		52D8D19D1F4D77EF00EA413B /* QQLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1601F4D77EF00EA413B /* QQLoadView.m */; };
 		52D8D19E1F4D77EF00EA413B /* QQTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1621F4D77EF00EA413B /* QQTextField.m */; };
 		52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1641F4D77EF00EA413B /* QQTextView.m */; };
 		52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1661F4D77EF00EA413B /* SHTextView.m */; };
@@ -464,8 +463,6 @@
 		52D8D15A1F4D77EF00EA413B /* QQDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQDevice.m; sourceTree = "<group>"; };
 		52D8D15B1F4D77EF00EA413B /* QQFileManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQFileManage.h; sourceTree = "<group>"; };
 		52D8D15C1F4D77EF00EA413B /* QQFileManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQFileManage.m; sourceTree = "<group>"; };
-		52D8D15F1F4D77EF00EA413B /* QQLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQLoadView.h; sourceTree = "<group>"; };
-		52D8D1601F4D77EF00EA413B /* QQLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQLoadView.m; sourceTree = "<group>"; };
 		52D8D1611F4D77EF00EA413B /* QQTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTextField.h; sourceTree = "<group>"; };
 		52D8D1621F4D77EF00EA413B /* QQTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTextField.m; sourceTree = "<group>"; };
 		52D8D1631F4D77EF00EA413B /* QQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTextView.h; sourceTree = "<group>"; };
@@ -1126,8 +1123,6 @@
 				52D8D15A1F4D77EF00EA413B /* QQDevice.m */,
 				52D8D15B1F4D77EF00EA413B /* QQFileManage.h */,
 				52D8D15C1F4D77EF00EA413B /* QQFileManage.m */,
-				52D8D15F1F4D77EF00EA413B /* QQLoadView.h */,
-				52D8D1601F4D77EF00EA413B /* QQLoadView.m */,
 				52D8D1611F4D77EF00EA413B /* QQTextField.h */,
 				52D8D1621F4D77EF00EA413B /* QQTextField.m */,
 				52D8D1631F4D77EF00EA413B /* QQTextView.h */,
@@ -1542,7 +1537,6 @@
 				52D8D1951F4D77EF00EA413B /* CALayer+XibConfiguration.m in Sources */,
 				4B1C576F21B93E3E000AFCF1 /* UIScrollView+Touch.m in Sources */,
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
-				52D8D19D1F4D77EF00EA413B /* QQLoadView.m in Sources */,
 				4B4D5A69211B2932007FDED8 /* MCAuthorViewController.m in Sources */,
 				52C115701F4EC5CE005471CB /* SDWebImagePrefetcher.m in Sources */,
 				52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */,

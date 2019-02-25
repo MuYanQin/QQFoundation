@@ -130,28 +130,7 @@
     }
     return _BaseMutableArray;
 }
-//基类的空白页
-- (QQLoadView *)BaseLoadView
-{
-    if (! _BaseLoadView) {
-        _BaseLoadView = [[QQLoadView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
-        _BaseLoadView.backgroundColor = [UIColor whiteColor];
-        _BaseLoadView.LoadType = QQLoadViewNone;
-        __block QQLoadView *QQL = _BaseLoadView;
-        _BaseLoadView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(QQLoadViewPullRefresh)];
-        _BaseLoadView.ImageClick  = ^{
-            [QQL.mj_header beginRefreshing];
-        };
-        [self.view addSubview:_BaseLoadView];
-    }
-    return _BaseLoadView;
-}
 #pragma mark - 基类的下拉刷新方法
-//空白页的下拉刷新方法
-- (void)QQLoadViewPullRefresh
-{
-    
-}
 /**
  *  修改状态颜色 需要在自定义的nav里同时修改
  */

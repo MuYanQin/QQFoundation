@@ -17,13 +17,9 @@ static dispatch_once_t onceToken;
 + (instancetype)instance
 {
     dispatch_once(&onceToken, ^{
-        info = [[self alloc]init];
+        info = self.cacheInfo;
     });
     return info;
-}
-+ (BOOL)isLogin
-{
-    return YES;
 }
 
 + (NSDictionary *)getUserDic
@@ -51,20 +47,6 @@ static dispatch_once_t onceToken;
     [self setCacheInfo];
 
 }
-+ (void)cleanUpInfo
-{
-    NSError *error;
-    NSFileManager *filemanager = [NSFileManager defaultManager];
-    BOOL bret = [filemanager removeItemAtPath:[self getUserInfoFile] error:&error];//删除本地文件
-    if (bret) {
-        NSLog(@"清除信息成功！");
-    }else{
-        NSLog(@"清除信息失败！:%@",error);
-    }
-    //清除单例的属性值
-    info = nil;
-    onceToken = 0;
-}
 + (void)updateValue:(NSString *)value  key:(NSString *)key
 {
     if (key.length <=0 || key == nil) {
@@ -87,9 +69,34 @@ static dispatch_once_t onceToken;
     [self writeUserInfo:userDic];
     [self setCacheInfo];
 }
++ (void)setCacheInfo
+{
+    MCUserInfo *UserInfo = [self instance];
+    [UserInfo setValuesForKeysWithDictionary:[self getUserDic]];
+}
++ (MCUserInfo *)cacheInfo{
+    MCUserInfo *UserInfo = [[self alloc]init];
+    [UserInfo setValuesForKeysWithDictionary:[self getUserDic]];
+    return UserInfo;
+}
 + (MCUserInfo *)getLoginInfo
 {
     return info;
+}
+
++ (void)cleanUpInfo
+{
+    NSError *error;
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+    BOOL bret = [filemanager removeItemAtPath:[self getUserInfoFile] error:&error];//删除本地文件
+    if (bret) {
+        NSLog(@"清除信息成功！");
+    }else{
+        NSLog(@"清除信息失败！:%@",error);
+    }
+    //清除单例的属性值
+    info = nil;
+    onceToken = 0;
 }
 + (NSString *)getUserInfoFile {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -97,12 +104,6 @@ static dispatch_once_t onceToken;
     NSString * path = [documentsDirectory stringByAppendingPathComponent:@"user.txt"];
     return path;
 }
-+ (void)setCacheInfo
-{
-    MCUserInfo *UserInfo = [MCUserInfo instance];
-    [UserInfo setValuesForKeysWithDictionary:[self getUserDic]];
-}
-
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if([key isEqualToString:@"id"])
     {

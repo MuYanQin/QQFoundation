@@ -179,6 +179,10 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 
 - (void)setRequestParam:(NSDictionary *)requestParam
 {
+    if (_requestParam) {
+        [_requestParam addEntriesFromDictionary:requestParam];
+        return;
+    }
     _requestParam = requestParam.mutableCopy;
 }
 
@@ -200,7 +204,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return self.canResponseMutiGesture;
-//    return YES;
 }
 @end
 

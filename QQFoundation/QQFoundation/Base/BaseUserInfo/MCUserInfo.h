@@ -20,14 +20,6 @@
 
 
 /**
- 是否登陆
- 
- @return 是否
- */
-+ (BOOL)isLogin;
-
-
-/**
  获取用户的信息
  
  @return 字典

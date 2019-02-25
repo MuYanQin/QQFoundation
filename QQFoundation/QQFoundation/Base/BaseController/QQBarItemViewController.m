@@ -36,7 +36,10 @@
  */
 - (void)nav_RightItemWithStr:(NSString *)str Selector:(SEL)sel{
     UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
-    NSDictionary *dic = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    
     [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightitem;
 }

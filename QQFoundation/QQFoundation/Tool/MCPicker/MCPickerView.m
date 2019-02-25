@@ -101,7 +101,7 @@ static NSInteger const PickerViewHeight = 350;//
         [self hiddenClick];
     }
     if (array.count ==0 && [self.delegate respondsToSelector:@selector(MCPickerView:completeArray:completeStr:)]) {
-        [self.delegate MCPickerView:self completeArray:self.dataArrays completeStr:[self.headerDataArray componentsJoinedByString:@""]];
+        [self.delegate MCPickerView:self completeArray:self.headerDataArray completeStr:[self.headerDataArray componentsJoinedByString:@""]];
     }
     self.header.dataArray = self.headerDataArray;
 }

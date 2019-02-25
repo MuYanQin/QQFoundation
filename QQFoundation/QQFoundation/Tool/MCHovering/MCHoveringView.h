@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 //**是否在视图中间刷新 默认NO*/
 @property (nonatomic , assign) BOOL  isMidRefresh;
 
-//**整体的scrollView  暴漏用于添加刷新控件*/
+//**整体的scrollView  用于添加刷新控件*/
 @property (nonatomic , strong) UIScrollView * scrollView;
 
 //**分页View*/

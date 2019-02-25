@@ -27,7 +27,7 @@
  @param complete 完成时候返回拼接的字符串
  */
 @required
-- (void)MCPickerView:(MCPickerView *)MCPickerView completeArray:(NSMutableArray<MCPickerModel *> *)comArray completeStr:(NSString *)comStr ;
+- (void)MCPickerView:(MCPickerView *)MCPickerView completeArray:(NSMutableArray<NSString *> *)comArray completeStr:(NSString *)comStr ;
 
 @end
 

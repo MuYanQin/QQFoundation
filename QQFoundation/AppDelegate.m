@@ -13,6 +13,7 @@
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
 #import "QQNetManager.h"
+#import "MCUserInfo.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 @property (nonatomic , strong) NSTimer * timer;
 @property (nonatomic , assign) NSInteger  duration;
@@ -24,6 +25,7 @@
     // Override point for customization after application launch.
     self.window.rootViewController = self.TabBar;
     [self.window makeKeyAndVisible];
+    [MCUserInfo instance].pid;
     [QQNetManager Instance].Domains = @[@"http://222.73.56.13:9020",@"www.baodu.com",@"www.jd.com"];
     
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
@@ -35,7 +37,7 @@
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-    
+    //2e0551392cfc2b695e42a88d  自己的
     [JPUSHService setupWithOption:launchOptions appKey:@"2e0551392cfc2b695e42a88d"
                           channel:nil
                  apsForProduction:NO
