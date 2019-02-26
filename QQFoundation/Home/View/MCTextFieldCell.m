@@ -26,9 +26,10 @@
     [self.contentView addSubview:self.LeftLb];
     
     self.TextField = getTextField(getFontRegular(15), getColorWithHex(@"2c2c2c"), right);
-    self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.TextField.maxLength = 8;
-    self.TextField.openPriceCheck = YES;
+//    self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
+//    self.TextField.maxLength = 8;
+//    self.TextField.openPriceCheck = YES;
+    self.TextField.regularText = @"^[A-Za-z]*$";
     [self.contentView addSubview:self.TextField];
     
     UIView *line = getView(getColorWithHex(@"f8f8f8"));
