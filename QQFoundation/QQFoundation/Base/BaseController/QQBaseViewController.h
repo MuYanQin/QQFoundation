@@ -10,7 +10,7 @@
 #import "QQtableView.h"
 #import "QQTableViewManager.h"
 @class QQNetManager;
-@interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,QQtableViewRequestDelegate>
+@interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,QQtableViewRequestDelegate>
 @property (copy, nonatomic)NSString *GlobalId;///<每个界面 预留的字符串
 @property (nonatomic,strong) id Info;
 /**
@@ -74,12 +74,6 @@
  @param URL 请求的网址
  */
 - (void)getError:(NSError *)err TagURL:(NSString *)URL;
-
-
-/**
- 空白界面的下拉刷新
- */
-- (void)QQLoadViewPullRefresh;
 
 
 @end
