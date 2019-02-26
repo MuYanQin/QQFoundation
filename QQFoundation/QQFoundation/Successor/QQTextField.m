@@ -31,7 +31,7 @@
     if (_maxLength != NSUIntegerMax) {
         NSString    *toBeString    = TextField.text;
         
-        if (!TextField.markedTextRange) {
+        if (!TextField.markedTextRange) {//高亮部分
             if (toBeString.length >_maxLength) {
                 TextField.text = [toBeString substringToIndex:_maxLength]; // 截取最大限制字符数.
                 [TextField resignFirstResponder];
@@ -49,12 +49,6 @@
         //匹配两位小数、整数
         NSPredicate * predicate1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(([1-9]{1}[0-9]*|[0]).?[0-9]{0,2})$"];
         return ![predicate0 evaluateWithObject:str] && [predicate1 evaluateWithObject:str] ? YES : NO;
-    }
-    if (self.regularText) {
-        NSString * str = [NSString stringWithFormat:@"%@%@",textField.text,string];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",self.regularText];
-        BOOL bret =  [predicate evaluateWithObject:str];
-        return bret;
     }
     return YES;
 }
