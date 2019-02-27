@@ -7,8 +7,8 @@
 //
 
 #import "MCTabBarItem.h"
-#import "NSString+QQCalculate.h"
 #import "UIView+QQFrame.h"
+#import "QQTool.h"
 #define btnWidth self.bounds.size.width
 static const CGFloat imageHeight = 24;
 static const CGFloat imageWidth = imageHeight*1.14;

@@ -11,7 +11,7 @@
 @interface MCPushMediator : NSObject
 
 /**
-push到某个界面
+ push到某个界面
  @param ClassString push对象的类命字符串
  @param Parameters 要传递的参数 可为空
  @param callBack 界面即将消失的回调函数  携带的data参数需要 需要手动在即将消失的界面赋值  self.callBackData = @"";即可
@@ -22,8 +22,8 @@ push到某个界面
 
 
 typedef  void(^callBack)(id data);
-
 @interface NSObject (MCParameters)
+
 @property (nonatomic, copy) callBack pushCallBack;
 @property (nonatomic , strong) id callBackData;
 @end

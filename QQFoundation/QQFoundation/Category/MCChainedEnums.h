@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 /*label的文字位置**/
 typedef NS_ENUM(NSInteger,QtextAlignment){
     Qleft = 0,

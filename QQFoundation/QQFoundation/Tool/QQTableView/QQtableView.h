@@ -9,7 +9,7 @@
 #import "MCHoveringView.h"
 @class QQtableView,EmptyView;
 @protocol QQtableViewRequestDelegate <NSObject>
-
+@optional
 /**
  返回请求到的数据
  @param QQtableView 返回自己
@@ -24,6 +24,7 @@
  @param QQtableView self
  @param error 错误error
  */
+@optional
 - (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error;
 
 @end

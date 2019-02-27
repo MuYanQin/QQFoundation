@@ -16,6 +16,5 @@
 #import "MCFactory.h"
 #import <Masonry.h>
 #import "QQButton.h"
-#import "UILabel+MCChained.h"
 #import "UIView+QQFrame.h"
 #endif /* PrefixHeader_pch */
