@@ -9,7 +9,7 @@
 #import "MCRewardViewController.h"
 #import "MCVerificationCodeView.h"
 #import "MCUserInfo.h"
-#import "UILabel+MCChained.h"
+#import "MCChained.h"
 #import "QQButton.h"
 #import "NSString+Manage.h"
 #import "NSMutableAttributedString+Manage.h"

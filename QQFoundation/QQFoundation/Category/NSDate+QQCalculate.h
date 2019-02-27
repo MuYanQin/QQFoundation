@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "QQDateFormatter.h"
+#import "QQTool.h"
 typedef NS_ENUM(NSInteger,QQCalendarType){
     QQCalendarday = 0,
     QQCalendarMonth = 1,

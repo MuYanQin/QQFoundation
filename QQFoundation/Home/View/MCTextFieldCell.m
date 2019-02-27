@@ -29,7 +29,7 @@
 //    self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
 //    self.TextField.maxLength = 8;
 //    self.TextField.openPriceCheck = YES;
-//    self.TextField.regularText = @"^[\u4e00-\u9fa5 A-Za-z]*$";
+    self.TextField.regularText = @"^[A-Za-z]*$";
     [self.contentView addSubview:self.TextField];
     
     UIView *line = getView(getColorWithHex(@"f8f8f8"));
