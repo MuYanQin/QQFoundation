@@ -7,16 +7,24 @@
 //
 
 #import "AppDelegate.h"
-#import "QQNavigationController.h"
 #import "MCDownloadManager.h"
 #import "MCDetectionView.h"
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
 #import "QQNetManager.h"
 #import "MCUserInfo.h"
+
+#import "MCHomeViewController.h"
+#import "MCRewardViewController.h"
+#import "MCSearchTViewController.h"
+#import "MCAuthorViewController.h"
+#import "MCMineViewController.h"
+#import "QQNavigationController.h"
+#import "MCTabBarItem.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 @property (nonatomic , strong) NSTimer * timer;
 @property (nonatomic , assign) NSInteger  duration;
+
 @end
 
 @implementation AppDelegate
@@ -25,7 +33,6 @@
     // Override point for customization after application launch.
     self.window.rootViewController = self.TabBar;
     [self.window makeKeyAndVisible];
-    [MCUserInfo instance].pid;
     [QQNetManager Instance].Domains = @[@"http://222.73.56.13:9020",@"www.baodu.com",@"www.jd.com"];
     
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
@@ -107,7 +114,22 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (QQTabBarController *)TabBar
 {
     if (!_TabBar) {
-        _TabBar = [[QQTabBarController alloc]init];
+        
+        MCTabBarItem * item0 = [MCTabBarItem buttonWithType:UIButtonTypeCustom];
+        item0.vc = [MCHomeViewController   new];
+        
+        MCTabBarItem * item1 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+        item1.vc = [MCRewardViewController new];
+
+        MCTabBarItem * item2 =[MCTabBarItem  buttonWithType:UIButtonTypeCustom];
+        item2.vc = [MCSearchTViewController new];
+
+        MCTabBarItem * item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+        item3.vc = [MCAuthorViewController new];
+
+        MCTabBarItem * item4 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+        item4.vc = [MCMineViewController   new];
+        _TabBar = [[QQTabBarController alloc]initTabWithItems:@[item0,item1,item2,item3,item4] navClass:[QQNavigationController class]];
     }
     return _TabBar;
 }

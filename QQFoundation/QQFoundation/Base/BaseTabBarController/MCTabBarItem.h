@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface MCTabBarItem : UIButton
+
+/**默认图片*/
+@property (nonatomic , strong) UIImage * defaultImg;
+/**选中图片*/
+@property (nonatomic , strong) UIImage * selectedImg;
+/**下表文字*/
+@property (nonatomic , copy) NSString * text;
+
 /**
  设置角标  0 就是一个红点  小于0 消失   大于999  显示999+
  */
@@ -23,5 +31,11 @@
  角标文字颜色。默认白色
  */
 @property (nonatomic,strong) UIColor *BadgeTextColor;
+
+
+/**
+ controller
+ */
+@property (nonatomic , strong) UIViewController  *vc;
 
 @end

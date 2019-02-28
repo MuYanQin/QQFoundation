@@ -11,6 +11,7 @@
 #import "UIView+MBProgress.h"
 #import "QQTool.h"
 #import "QQNetManager.h"
+#import "NSDate+QQCalculate.h"
 @interface QQsession ()
 @end
 
@@ -74,14 +75,11 @@
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [controller.view loading];
     NSURLSessionDataTask * operation = [[QQNetManager Instance].sessionManager POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        for (int k = 0; k<Images.count; k++) {
-            NSDictionary *imageDic = Images[k];
-            [imageDic enumerateKeysAndObjectsUsingBlock:^(NSString * key, UIImage * obj, BOOL *stop) {
-                NSData * data = [QQTool imageData:obj];
-                [formData appendPartWithFileData:data name:fileMark.length >0 ? fileMark: key
-                                        fileName:[NSString stringWithFormat:@"%@.png",key]
-                                        mimeType:@"image/jpeg"];
-            }];
+        for (UIImage *image in Images) {
+            NSData * data = [QQTool imageData:image];
+            [formData appendPartWithFileData:data name:fileMark
+                                    fileName:[NSString stringWithFormat:@"%@.png",[NSDate GetNowDate:@"YYYYMMDDHHmmSSS"]]
+                                    mimeType:@"image/jpeg"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         Progress(uploadProgress);

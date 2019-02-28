@@ -7,6 +7,7 @@
 //
 
 #import "MCLableCell.h"
+#import "UILabel+MCChained.h"
 @implementation MCLableItem
 - (instancetype)init
 {
@@ -26,11 +27,17 @@
     [super cellDidLoad];
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    self.leftLb = getLabel(getFontRegular(15), @"", getColorWithHex(@"2c2c2c"), left);
+    self.leftLb = [UILabel getLabel]
+    .Qfont(15)
+    .QtextColor(getColorWithHex(@"2c2c2c"))
+    .Qalignment(Qleft);
     [self.leftLb sizeToFit];
     [self.contentView addSubview:self.leftLb];
     
-    self.rightLb = getLabel(getFontRegular(15), @"", getColorWithHex(@"cccccc"), right);
+    self.rightLb = [UILabel getLabel]
+    .Qfont(15)
+    .QtextColor(getColorWithHex(@"2c2c2c"))
+    .Qalignment(Qleft);
     [self.rightLb sizeToFit];
     [self.contentView addSubview:self.rightLb];
     

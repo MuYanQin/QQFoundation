@@ -29,11 +29,19 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initVC];
-    [self createVc];
-    //去除tab的横线
-    [self.tabBar setBackgroundImage:[UIImage new]];
-    [self.tabBar setShadowImage:[UIImage new]];
+
+}
+- (instancetype)initTabWithItems:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass;
+{
+    if (self = [super init]) {
+        
+        [self initVC:items navClass:navClass];
+        [self createVc:items];
+        //去除tab的横线
+        [self.tabBar setBackgroundImage:[UIImage new]];
+        [self.tabBar setShadowImage:[UIImage new]];
+    }
+    return self;
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -51,61 +59,35 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
  改变tabbar的高度
  */
 - (void)viewWillLayoutSubviews{
-
     //这里设置高度  默认就是系统的高度
 //    CGRect tabFrame = self.tabBar.frame;
 //    tabFrame.size.height = tabbarHeight;
 //    tabFrame.origin.y = self.view.frame.size.height - tabbarHeight;
 //    self.tabBar.frame = tabFrame;
-
 }
-- (void)initVC{
-    self.home   = [MCHomeViewController   new];
-    self.reward = [MCRewardViewController new];
-    self.search = [MCSearchTViewController new];
-    self.author = [MCAuthorViewController new];
-    self.mine   = [MCMineViewController   new];
+- (void)initVC:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass{
+    NSMutableArray *vcs = [NSMutableArray array];
+    for (MCTabBarItem *item in items) {
+        UINavigationController *nav = (UINavigationController *) [[navClass alloc] initWithRootViewController:item.vc];
+        [vcs addObject:nav];
+    }
 
-    self.viewControllers = @[[[QQNavigationController alloc]initWithRootViewController:self.home],
-                             [[QQNavigationController alloc]initWithRootViewController:self.reward],
-                             [[QQNavigationController alloc]initWithRootViewController:self.search],
-                             [[QQNavigationController alloc]initWithRootViewController:self.author],
-                             [[QQNavigationController alloc]initWithRootViewController:self.mine]];
+    self.viewControllers = vcs;
 }
-- (void)createVc
+- (void)createVc:(NSArray<MCTabBarItem *> *)items
 {
-    NSArray *heightBackground = @[@"navigation_home_active",@"navigation_reward_active",@"navigation_Finding_car_active",@"navigation_authorized_active",@"navigation_mine_active"];
-    NSArray *backgroud = @[@"navigation_home_defaut",@"navigation_reward_defaut",@"navigation_Finding_car_defaut",@"navigation_authorized_defaut",@"navigation_mine_defaut"];
-    NSArray *VCname = @[@"首页",@"悬赏",@"寻车",@"授权",@"我的"];
-    self.item0 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
-    self.item1 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
-    self.item2 =[MCTabBarItem  buttonWithType:UIButtonTypeCustom];
-    self.item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
-    self.item4 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
-
-    self.tabBar.BigButton = self.item2;
-    
-    NSArray *items = @[self.item0,self.item1,self.item2,self.item3,self.item4];
-    float TabWidth = kwidth/backgroud.count;
-    for (int i=0; i<backgroud.count; i++) {
-        NSString *backImage = backgroud[i];
-        NSString *heightImage = heightBackground[i];
+    float TabWidth = kwidth/items.count;
+    for (int i=0; i<items.count; i++) {
         MCTabBarItem *item = items[i];
-        if (i == 2) {
-            item.frame = CGRectMake(i*TabWidth, -38, TabWidth, TabWidth);
-            [item setBackgroundImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateNormal];
-            [item setBackgroundImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateHighlighted];
-        }else{
-            item.frame = CGRectMake(i*TabWidth, 0, TabWidth, self.tabBar.frame.size.height);
-            [item setImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
-            [item setImage:[UIImage imageNamed:heightImage] forState:UIControlStateSelected];
-            [item setTitle:VCname[i] forState:UIControlStateNormal];
-        }
+        item.frame = CGRectMake(i*TabWidth, 0, TabWidth, self.tabBar.frame.size.height);
+        [item setImage:item.defaultImg forState:UIControlStateNormal];
+        [item setImage:item.selectedImg forState:UIControlStateSelected];
+        [item setTitle:item.text forState:UIControlStateNormal];
         item.tag = ButtonTag + i;
-        item.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+        item.titleLabel.font = self.font;
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [item setTitleColor:getColor(102, 102, 102) forState:UIControlStateNormal];
-        [item setTitleColor:getColor(102, 102, 102) forState:UIControlStateSelected];
+        [item setTitleColor:self.defaultColor forState:UIControlStateNormal];
+        [item setTitleColor:self.selectedColor forState:UIControlStateSelected];
         if (i == 0) {
             item.selected  = YES;
             self.lastItem = item;

@@ -8,8 +8,8 @@
 
 #import "HRSelectImageCell.h"
 #import "ArtileImageCell.h"
-#import "UIView+SuperViewController.h"
 #import "UIImageView+WebCache.h"
+#import "UIView+QQFrame.h"
 @interface HRSelectImageItem ()
 @property (nonatomic , strong) NSMutableArray * selectedAssets;
 @property (nonatomic , strong) NSMutableArray * selectedPhotos;

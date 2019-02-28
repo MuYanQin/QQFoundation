@@ -54,6 +54,29 @@ NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
 NSLog(@"group---end");
 });
 
+self.group = dispatch_group_create();
+[self.Items enumerateObjectsUsingBlock:^(MCPublicArticleItem * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+dispatch_group_enter(weakSelf.group);
+
+[weakSelf uploadImagWithItem:obj];
+}];
+
+[[QQNetManager Instance]RTSUploadWith:uploadImag Dictionary:nil MutableArray:temp From:nil fileMark:@"file" Progress:^(NSProgress *uploadProgress) {
+
+} Success:^(id responseObject) {
+dispatch_group_leave(weakSelf.group);
+
+} False:^(NSError *error) {
+dispatch_group_leave(weakSelf.group);
+}];
+
+dispatch_group_notify(weakSelf.group, dispatch_get_global_queue(0, 0), ^{
+dispatch_async(dispatch_get_main_queue(), ^{
+[self upLoadArticle];
+});
+});
+
+
 
 
 //Dispatch Semaphore 线程同步

@@ -19,41 +19,35 @@
 #import "QQAppDefine.h"
 #import "MCUserInfo.h"//用户的信息
 ///***********************************************************************************
-/// Category
+
 ///***********************************************************************************
 #import "NSMutableAttributedString+Manage.h"
 #import "NSString+Manage.h"
 #import "NSDate+QQCalculate.h"///获取时间日期的一些方法
 #import "NSString+QQCalculate.h"///字符串的一些操作
-#import "UIButton+Cache.h"///为了防止中间更换其他的图片下载工具
 #import "UIImage+Usually.h"///
-#import "UIImageView+Cache.h"///
 #import "UIScrollView+Touch.h"///解决ScrollView 的滑动与touch事件冲突
 #import "UIView+MBProgress.h"
 #import "UIView+QQFrame.h"/// 快速获取View的left、right、top、bottom
-#import "UIView+SuperViewController.h"///获取View的父Controller
 #import "UIView+MCPopView.h"//快捷的弹出视图分类
 #import "UILabel+MCChained.h"//链式语法创建label
 #import "UIButton+MCChained.h"//链式语法创建button
 
 ///***********************************************************************************
-/// Successor
+
 ///***********************************************************************************
 #import "CALayer+XibConfiguration.h"///nib文件设置button的边框
 #import "QQButton.h"///
 #import "QQDevice.h"//获取系统的一些情况
 #import "QQFileManage.h"///获取文件管理  获取地址  创建  等操作
-#import "QQLoadView.h"//空白页、加载出错页
 #import "QQTextField.h"/// 最大限制文字数
 #import "QQTextView.h"/// 有展位文字、最大限制文字数
-#import "QQDateFormatter.h"//Cache  formatter
-#import "SHTextView.h"///仿QQ的聊天文字输入框 的自增长
+
 ///***********************************************************************************
-/// Tool
+
 ///***********************************************************************************
 #import "MCVerificationCodeView.h"//验证码view
 #import "MCFactory.h"//工程模式工具
-#import "MCDetect.h"//切换域名
 #import "MCPushMediator.h"//push界面的中介者 解耦合->复杂的push关系
 #import "MCDownloadManager.h"//下载管理类 ->半成品
 #import "MCPageView.h"//类似新闻类app首页侧滑功能
