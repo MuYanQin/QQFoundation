@@ -15,11 +15,11 @@ s.platform     = :ios, "7.0"
 
 s.requires_arc = true
 
-s.dependency 'KLCPopup'
+#s.dependency 'KLCPopup'
 s.dependency 'AFNetworking'
 s.dependency 'MJRefresh'
 s.dependency 'SDWebImage'
-s.dependency 'YYCache'
+#s.dependency 'YYCache'
 s.dependency 'FLAnimatedImage'
 
 s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag => "1.0"}

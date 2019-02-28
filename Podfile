@@ -8,7 +8,7 @@ pod 'JPush'
 pod 'Masonry'
 pod 'MJExtension'
 pod 'TZImagePickerController'
-
+#    pod 'QQFoundation', :git => "https://github.com/MuYanQin/QQFoundation.git"
 #pod 'DZNEmptyDataSet'
   # Pods for QQFoundation
 
