@@ -7,6 +7,7 @@
 //
 
 #import "MCSearchCell.h"
+#import "UILabel+MCChained.h"
 @implementation MCSearchItem
 - (instancetype)init
 {

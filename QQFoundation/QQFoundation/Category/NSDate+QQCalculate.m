@@ -7,7 +7,7 @@
 //
 
 #import "NSDate+QQCalculate.h"
-
+#import "QQDateFormatter.h"
 @implementation NSDate (QQCalculate)
 
 + (NSInteger)numberOfDaysInYear:(NSInteger)year month:(NSInteger)imonth{
