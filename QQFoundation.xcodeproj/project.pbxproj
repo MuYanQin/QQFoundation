@@ -27,7 +27,6 @@
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
 		4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */; };
 		4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43A86F20DB7B6500422438 /* KLCPopup.m */; };
-		4B46A1852165D2A0001B560A /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4B46A1842165D29F001B560A /* WXUtil.mm */; };
 		4B46A1892165D397001B560A /* MCContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46A1882165D397001B560A /* MCContentView.m */; };
 		4B46A18C2165D453001B560A /* MCContentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46A18B2165D453001B560A /* MCContentHeadView.m */; };
 		4B46A18F2165D469001B560A /* MCContentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46A18E2165D469001B560A /* MCContentTableView.m */; };
@@ -236,8 +235,6 @@
 		4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MCPopView.m"; sourceTree = "<group>"; };
 		4B43A86E20DB7B6500422438 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
 		4B43A86F20DB7B6500422438 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
-		4B46A1832165D29F001B560A /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
-		4B46A1842165D29F001B560A /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
 		4B46A1872165D397001B560A /* MCContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCContentView.h; sourceTree = "<group>"; };
 		4B46A1882165D397001B560A /* MCContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCContentView.m; sourceTree = "<group>"; };
 		4B46A18A2165D453001B560A /* MCContentHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCContentHeadView.h; sourceTree = "<group>"; };
@@ -319,10 +316,6 @@
 		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
 		4BFBC6E221E837D800012B96 /* MCHoveringView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHoveringView.h; sourceTree = "<group>"; };
 		4BFBC6E321E837D800012B96 /* MCHoveringView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCHoveringView.m; sourceTree = "<group>"; };
-		523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlipaySDK+XWAdd.h"; sourceTree = "<group>"; };
-		523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlipaySDK+XWAdd.m"; sourceTree = "<group>"; };
-		523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXApi+XWAdd.h"; sourceTree = "<group>"; };
-		523DF3C41F8DBD67000C1A51 /* WXApi+XWAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WXApi+XWAdd.m"; sourceTree = "<group>"; };
 		523DF3C51F8DBDE6000C1A51 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonicon_back@2x.png"; sourceTree = "<group>"; };
 		5295D4061F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Manage.h"; sourceTree = "<group>"; };
@@ -735,6 +728,18 @@
 			path = MCPushMediator;
 			sourceTree = "<group>";
 		};
+		4BA4E12B2227B56A003DDF5C /* MCChained */ = {
+			isa = PBXGroup;
+			children = (
+				4B2F3FEE22269F6E00528272 /* MCChainedEnums.h */,
+				4B2F3FF822269F8400528272 /* UIButton+MCChained.h */,
+				4B2F3FFB22269F8500528272 /* UIButton+MCChained.m */,
+				4B2F3FF922269F8400528272 /* UILabel+MCChained.h */,
+				4B2F3FFA22269F8500528272 /* UILabel+MCChained.m */,
+			);
+			path = MCChained;
+			sourceTree = "<group>";
+		};
 		4BA5A33C21707B0500299613 /* MCMonitorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,19 +775,6 @@
 				4BFBC6E321E837D800012B96 /* MCHoveringView.m */,
 			);
 			path = MCHovering;
-			sourceTree = "<group>";
-		};
-		523DF3C01F8DBD67000C1A51 /* PayUtil */ = {
-			isa = PBXGroup;
-			children = (
-				523DF3C11F8DBD67000C1A51 /* AlipaySDK+XWAdd.h */,
-				523DF3C21F8DBD67000C1A51 /* AlipaySDK+XWAdd.m */,
-				523DF3C31F8DBD67000C1A51 /* WXApi+XWAdd.h */,
-				523DF3C41F8DBD67000C1A51 /* WXApi+XWAdd.m */,
-				4B46A1832165D29F001B560A /* WXUtil.h */,
-				4B46A1842165D29F001B560A /* WXUtil.mm */,
-			);
-			path = PayUtil;
 			sourceTree = "<group>";
 		};
 		5295D4D51F4EC0C500C6B5F4 /* Frameworks */ = {
@@ -1078,15 +1070,10 @@
 				52D8D14C1F4D77EF00EA413B /* UIView+SuperViewController.m */,
 				4B43A85E20DB72EF00422438 /* UIView+MCPopView.h */,
 				4B43A85F20DB72EF00422438 /* UIView+MCPopView.m */,
-				4B2F3FEE22269F6E00528272 /* MCChainedEnums.h */,
 				4B2F3FF022269F6E00528272 /* NSDate+QQCalculate.h */,
 				4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */,
 				4B2F3FEF22269F6E00528272 /* NSString+QQCalculate.h */,
 				4B2F3FF222269F6F00528272 /* NSString+QQCalculate.m */,
-				4B2F3FF822269F8400528272 /* UIButton+MCChained.h */,
-				4B2F3FFB22269F8500528272 /* UIButton+MCChained.m */,
-				4B2F3FF922269F8400528272 /* UILabel+MCChained.h */,
-				4B2F3FFA22269F8500528272 /* UILabel+MCChained.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1115,6 +1102,7 @@
 		52D8D1671F4D77EF00EA413B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4BA4E12B2227B56A003DDF5C /* MCChained */,
 				4BFBC6E121E837AC00012B96 /* MCHovering */,
 				4B772A9F21E347FB009D1805 /* MCSearch */,
 				4B46A1862165D31F001B560A /* MCPageView */,
@@ -1126,7 +1114,6 @@
 				4B39DA8020CB5FD600332B95 /* MCContentView */,
 				ACE02634201766FE00A387DC /* QQAlertController */,
 				AC781ACC1FF51DE400863F4C /* QQSQLManager */,
-				523DF3C01F8DBD67000C1A51 /* PayUtil */,
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
 				52D8D1681F4D77EF00EA413B /* QQNetWork */,
 				52D8D1741F4D77EF00EA413B /* QQSingleImagePicker */,
@@ -1543,7 +1530,6 @@
 				4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
-				4B46A1852165D2A0001B560A /* WXUtil.mm in Sources */,
 				4B7663A9214A46550073F7D8 /* MCPickerViewController.m in Sources */,
 				4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */,
 				4B4D5A63211B2910007FDED8 /* MCRewardViewController.m in Sources */,
