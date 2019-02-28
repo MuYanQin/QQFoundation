@@ -50,12 +50,6 @@
         NSPredicate * predicate1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(([1-9]{1}[0-9]*|[0]).?[0-9]{0,2})$"];
         return ![predicate0 evaluateWithObject:str] && [predicate1 evaluateWithObject:str] ? YES : NO;
     }
-    if (self.regularText) {
-        NSString * str = [NSString stringWithFormat:@"%@%@",textField.text,string];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",self.regularText];
-        BOOL bret =  [predicate evaluateWithObject:str];
-        return bret;
-    }
     return YES;
 }
 

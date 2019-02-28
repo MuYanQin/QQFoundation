@@ -85,3 +85,12 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
 + (NSString *)getHowSecondsAgo:(NSString *)time;
 
 @end
+
+@interface QQDateFormatter : NSObject<NSCacheDelegate>
+@property (nonatomic,strong) NSCache *DateCache;
+@property (nonatomic, assign) NSUInteger cacheLimit;//default is 5
+
++ (instancetype)ShareIntance;
+- (NSDateFormatter *)getDateFormatter:(NSString *)format;
+@end
+

@@ -10,8 +10,6 @@
 
 @interface QQTextField : UITextField <UITextFieldDelegate>
 
-/**正则表达式*/
-@property (nonatomic , copy) NSString * regularText;
 /**
  最大限制文本长度, 默认为无穷大(即不限制).
  */

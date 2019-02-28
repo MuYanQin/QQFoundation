@@ -22,7 +22,6 @@
 		4B27C3B721300E6E008FBE2C /* UITabBar+MCBigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */; };
 		4B2F3FF322269F6F00528272 /* NSDate+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */; };
 		4B2F3FF422269F6F00528272 /* NSString+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FF222269F6F00528272 /* NSString+QQCalculate.m */; };
-		4B2F3FF722269F7700528272 /* QQDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FF522269F7700528272 /* QQDateFormatter.m */; };
 		4B2F3FFC22269F8500528272 /* UILabel+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FFA22269F8500528272 /* UILabel+MCChained.m */; };
 		4B2F3FFD22269F8500528272 /* UIButton+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FFB22269F8500528272 /* UIButton+MCChained.m */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
@@ -144,7 +143,6 @@
 		52D8D19B1F4D77EF00EA413B /* QQFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D15C1F4D77EF00EA413B /* QQFileManage.m */; };
 		52D8D19E1F4D77EF00EA413B /* QQTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1621F4D77EF00EA413B /* QQTextField.m */; };
 		52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1641F4D77EF00EA413B /* QQTextView.m */; };
-		52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1661F4D77EF00EA413B /* SHTextView.m */; };
 		52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D16D1F4D77EF00EA413B /* MBProgressHUD.m */; };
 		52D8D1A41F4D77EF00EA413B /* QQNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1711F4D77EF00EA413B /* QQNetManager.m */; };
 		52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1731F4D77EF00EA413B /* QQsession.m */; };
@@ -228,8 +226,6 @@
 		4B2F3FF022269F6E00528272 /* NSDate+QQCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+QQCalculate.h"; sourceTree = "<group>"; };
 		4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+QQCalculate.m"; sourceTree = "<group>"; };
 		4B2F3FF222269F6F00528272 /* NSString+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QQCalculate.m"; sourceTree = "<group>"; };
-		4B2F3FF522269F7700528272 /* QQDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQDateFormatter.m; sourceTree = "<group>"; };
-		4B2F3FF622269F7700528272 /* QQDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQDateFormatter.h; sourceTree = "<group>"; };
 		4B2F3FF822269F8400528272 /* UIButton+MCChained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MCChained.h"; sourceTree = "<group>"; };
 		4B2F3FF922269F8400528272 /* UILabel+MCChained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MCChained.h"; sourceTree = "<group>"; };
 		4B2F3FFA22269F8500528272 /* UILabel+MCChained.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MCChained.m"; sourceTree = "<group>"; };
@@ -460,8 +456,6 @@
 		52D8D1621F4D77EF00EA413B /* QQTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTextField.m; sourceTree = "<group>"; };
 		52D8D1631F4D77EF00EA413B /* QQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTextView.h; sourceTree = "<group>"; };
 		52D8D1641F4D77EF00EA413B /* QQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTextView.m; sourceTree = "<group>"; };
-		52D8D1651F4D77EF00EA413B /* SHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTextView.h; sourceTree = "<group>"; };
-		52D8D1661F4D77EF00EA413B /* SHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTextView.m; sourceTree = "<group>"; };
 		52D8D16C1F4D77EF00EA413B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		52D8D16D1F4D77EF00EA413B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		52D8D1701F4D77EF00EA413B /* QQNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQNetManager.h; sourceTree = "<group>"; };
@@ -1100,8 +1094,6 @@
 		52D8D1501F4D77EF00EA413B /* Successor */ = {
 			isa = PBXGroup;
 			children = (
-				4B2F3FF622269F7700528272 /* QQDateFormatter.h */,
-				4B2F3FF522269F7700528272 /* QQDateFormatter.m */,
 				52D8D17F1F4D77EF00EA413B /* QQTool.h */,
 				52D8D1801F4D77EF00EA413B /* QQTool.m */,
 				52D8D1531F4D77EF00EA413B /* icon_em_al.png */,
@@ -1116,8 +1108,6 @@
 				52D8D1621F4D77EF00EA413B /* QQTextField.m */,
 				52D8D1631F4D77EF00EA413B /* QQTextView.h */,
 				52D8D1641F4D77EF00EA413B /* QQTextView.m */,
-				52D8D1651F4D77EF00EA413B /* SHTextView.h */,
-				52D8D1661F4D77EF00EA413B /* SHTextView.m */,
 			);
 			path = Successor;
 			sourceTree = "<group>";
@@ -1533,7 +1523,6 @@
 				52C115721F4EC5CE005471CB /* UIImage+GIF.m in Sources */,
 				52C115741F4EC5CE005471CB /* UIImage+WebP.m in Sources */,
 				AC10A805206B90B600FF937D /* UINavigationBar+QQSpeace.m in Sources */,
-				4B2F3FF722269F7700528272 /* QQDateFormatter.m in Sources */,
 				4B4D5A73211B2B5E007FDED8 /* MCLableCell.m in Sources */,
 				4B2F3FF322269F6F00528272 /* NSDate+QQCalculate.m in Sources */,
 				52C1155B1F4EC5CE005471CB /* MJRefreshGifHeader.m in Sources */,
@@ -1548,7 +1537,6 @@
 				52C1155D1F4EC5CE005471CB /* MJRefreshStateHeader.m in Sources */,
 				AC781AC81FF51D2C00863F4C /* FMDatabaseAdditions.m in Sources */,
 				4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */,
-				52D8D1A01F4D77EF00EA413B /* SHTextView.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
