@@ -45,10 +45,10 @@ typedef NS_ENUM(NSInteger,viewPositionType) {
  @param positionType 显示的位置
  @param shouldDismissOnBackgroundTouch 是否允许点击背景隐藏
  */
-+ (void)showView:(UIView *)containView
-          showType:(viewShowType)showType
-          dissType:(viewDissType)dissType
-      positionType:(viewPositionType)positionType
-dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch;
-+ (void)dismissView;
+- (void)         showType:(viewShowType)showType
+                 dissType:(viewDissType)dissType
+             positionType:(viewPositionType)positionType
+ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch;
+
+- (void)dismissView;
 @end

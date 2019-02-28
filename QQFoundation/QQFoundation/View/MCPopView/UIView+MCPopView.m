@@ -9,10 +9,9 @@
 #import "UIView+MCPopView.h"
 #import "KLCPopup.h"
 @implementation UIView (MCPopView)
-+ (void)showView:(UIView *)containView
-          showType:(viewShowType)showType
-          dissType:(viewDissType)dissType
-      positionType:(viewPositionType)positionType
+- (void)        showType:(viewShowType)showType
+                dissType:(viewDissType)dissType
+            positionType:(viewPositionType)positionType
 dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
 {
     KLCPopupLayout  PopupLayout;
@@ -57,7 +56,7 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
     }else {
         PopupDismissType = KLCPopupDismissTypeBounceOutToBottom;
     }
-    KLCPopup* popup = [KLCPopup popupWithContentView:containView
+    KLCPopup* popup = [KLCPopup popupWithContentView:self
                                             showType:PopupShowType
                                          dismissType:PopupDismissType
                                             maskType:KLCPopupMaskTypeDimmed
@@ -65,5 +64,9 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
                                dismissOnContentTouch:NO];
     [popup showWithLayout:PopupLayout];
 
+}
+- (void)dismissView
+{
+    [self dismissPresentingPopup];
 }
 @end
