@@ -50,80 +50,96 @@ s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
 #    end
 #end
 
-s.subspec 'Category' do |ss|
-ss.source_files = 'QQFoundation/QQFoundation/Category/**/*.{h,m,c,mm}'
-end
-
-s.subspec 'Successor' do |ss|
-ss.source_files = 'QQFoundation/QQFoundation/Successor/**/*.{h,m,c,mm}'
-end
-
-
-s.subspec 'Tool' do |ss|
-
-    ss.subspec 'MCVerificationCodeView' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCVerificationCodeView/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'MCFactory' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCFactory/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'MCDetectionView' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCDetectionView/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'MCPushMediator' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCPushMediator/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'MCDownloadManager' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCDownloadManager/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'MCContentView' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/MCContentView/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'QQAlertController' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/QQAlertController/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'QQSQLManager' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/QQSQLManager/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'PayUtil' do |sss|
-        sss.source_files = 'QQFoundation/QQFoundation/Tool/PayUtil/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'QQScanQRCode' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/QQScanQRCode/**/*.{h,m,c,mm}'
-    end
-
-    ss.subspec 'QQNetWork' do |sss|
-        sss.source_files = 'QQFoundation/QQFoundation/Tool/QQNetWork/**/*.{h,m,c,mm}'
+s.subspec 'View' do |ss|
+    ss.subspec 'MCPopView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCPopView/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'QQSingleImagePicker' do |sss|
-        sss.source_files = 'QQFoundation/QQFoundation/Tool/QQSingleImagePicker/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/View/QQSingleImagePicker/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'QQScanQRCode' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/QQScanQRCode/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'QQTableView' do |sss|
-        sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTableView/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/View/QQTableView/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'QQTableViewManager' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTableViewManager/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/View/QQTableViewManager/**/*.{h,m,c,mm}'
     end
 
-    ss.subspec 'QQTool' do |sss|
-        sss.source_files = 'QQFoundation/QQFoundation/Tool/QQTool/**/*.{h,m,c,mm}'
+    ss.subspec 'QQAlertController' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/QQAlertController/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCHovering' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCHovering/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCVerificationCodeView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCVerificationCodeView/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCPicker' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCPicker/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCPageView' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCPageView/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCSearch' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCSearch/**/*.{h,m,c,mm}'
+    end
+end
+
+s.subspec 'Core' do |ss|
+
+
+    ss.subspec 'AttributedString' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/AttributedString/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'Kit' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/Kit/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCChained' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCChained/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCFactory' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCFactory/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCPushMediator' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCPushMediator/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'MCDownloadManager' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/MCDownloadManager/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'QQSQLManager' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/View/QQSQLManager/**/*.{h,m,c,mm}'
+    end
+
+    ss.subspec 'QQNetWork' do |sss|
+        sss.subspec 'MCMonitorView' do |ssss|
+        ssss.source_files = 'QQFoundation/QQFoundation/View/MCMonitorView/**/*.{h,m,c,mm}'
+        end
+
+        sss.subspec 'MBProgressHUD' do |ssss|
+        ssss.source_files = 'QQFoundation/QQFoundation/View/MBProgressHUD/**/*.{h,m,c,mm}'
+        end
+
+        sss.source_files = 'QQFoundation/QQFoundation/View/QQNetWork/**/*.{h,m,c,mm}'
+
     end
 
 end
-
-
-
 
 end
