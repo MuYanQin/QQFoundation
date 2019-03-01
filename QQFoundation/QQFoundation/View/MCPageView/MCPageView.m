@@ -88,6 +88,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
             NSInteger index = (int)scrollView.contentOffset.x/kwidth;
             [self changeItemStatus:index];
         }
+        //点击头部按钮的时候不走下面的动画
         if (self.isClick) {
             return;
         }
@@ -112,8 +113,8 @@ static const NSInteger  minTitleButtonWitdh = 60;
         return;
     }
     if (!self.netxColor) {
-        [self getDefaultRGB:self.defaultTitleColor];
-        [self getSeltectRGB:self.selectTitleColor];
+        [self getColorRGB:self.defaultTitleColor isSelected:NO];
+        [self getColorRGB:self.selectTitleColor isSelected:YES];
     }
     self.netxColor =[UIColor colorWithRed:self.defaultR + (self.selectedR - self.defaultR)*percent green:self.defaultG + (self.selectedG - self.defaultG)*percent blue:self.defaultB + (self.selectedB - self.defaultB)*percent alpha:self.defaultA + (self.selectedA - self.defaultA)*percent];
     
@@ -124,29 +125,26 @@ static const NSInteger  minTitleButtonWitdh = 60;
     }
     [item setTitleColor:self.netxColor forState:UIControlStateNormal];
 }
-- (void)getDefaultRGB:(UIColor *)color
+- (void)getColorRGB:(UIColor *)color isSelected:(BOOL)isSelected
+
 {
     CGFloat red = 0.0;
     CGFloat green = 0.0;
     CGFloat blue = 0.0;
     CGFloat alpha = 0.0;
     [color getRed:&red green:&green blue:&blue alpha:&alpha];
-    self.defaultA = alpha;
-    self.defaultR = red;
-    self.defaultG = green;
-    self.defaultB = blue;
-}
-- (void)getSeltectRGB:(UIColor *)color
-{
-    CGFloat red = 0.0;
-    CGFloat green = 0.0;
-    CGFloat blue = 0.0;
-    CGFloat alpha = 0.0;
-    [color getRed:&red green:&green blue:&blue alpha:&alpha];
-    self.selectedA = alpha;
-    self.selectedR = red;
-    self.selectedG = green;
-    self.selectedB = blue;
+    if (isSelected) {
+        self.selectedA = alpha;
+        self.selectedR = red;
+        self.selectedG = green;
+        self.selectedB = blue;
+    }else{
+        self.defaultA = alpha;
+        self.defaultR = red;
+        self.defaultG = green;
+        self.defaultB = blue;
+    }
+
 }
 - (void)selectItem:(MCItem *)btn
 {
