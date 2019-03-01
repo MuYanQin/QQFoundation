@@ -47,9 +47,9 @@
     self.PageView.defaultTitleColor = [UIColor redColor];
     self.PageView.selectTitleColor = [UIColor purpleColor];
     [self.PageView setBadgeWithIndex:3 badge:0];
-    [self.PageView setBadgeWithIndex:4 badge:58];
+    [self.PageView setBadgeWithIndex:1 badge:58];
     [self.PageView setBadgeWithIndex:5 badge:-1];
-    [self.PageView setBadgeWithIndex:6 badge:1000];
+    [self.PageView setBadgeWithIndex:2 badge:1000];
     [self.view addSubview:self.PageView];
 }
 

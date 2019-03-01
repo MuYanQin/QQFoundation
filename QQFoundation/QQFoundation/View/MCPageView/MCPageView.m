@@ -146,10 +146,10 @@ static const NSInteger  minTitleButtonWitdh = 60;
     }
 
 }
+/**item 点击事件*/
 - (void)selectItem:(MCItem *)btn
 {
     [self selectIndex:btn.tag - itemTag];
-
 }
 - (void)selectIndex:(NSInteger)index
 {
@@ -186,7 +186,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
 - (void)changeItemStatus:(NSInteger)index
 {
     MCItem * Item = self.itemArray[index];
-
     if (Item == self.lastItem) {
         return;
     }
@@ -194,7 +193,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
     if (self.lastItem) {
         self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
         [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:itemDefaultColor forState:UIControlStateNormal];
-        
     }
     self.lastItem = Item;
     Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
@@ -206,7 +204,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
 
 /**
  顶部菜单滑动到中间
-
  @param index 第几个item
  */
 - (void)menuScrollToCenter:(NSInteger)index{
@@ -220,12 +217,10 @@ static const NSInteger  minTitleButtonWitdh = 60;
     }
     left = left >= maxLeft ? maxLeft : left;
     [self.titleScroll setContentOffset:CGPointMake(left, 0) animated:YES];
-    
 }
 
 /**
  title底部横线滑动
-
  @param item 滑动到那个item下
  */
 - (void)scrollToItemCenter:(MCItem *)item
@@ -259,8 +254,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
 {
     _defaultTitleFont = defaultTitleFont;
     __weak __typeof(&*self)weakSelf = self;
-    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MCItem *item =  weakSelf.itemArray[idx];
+    [self.itemArray enumerateObjectsUsingBlock:^(MCItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
         if (![item isEqual:weakSelf.lastItem]) {
             item.titleLabel.font = _defaultTitleFont;
         }
@@ -270,8 +264,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
 {
     _defaultTitleColor = defaultTitleColor;
     __weak __typeof(&*self)weakSelf = self;
-    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MCItem *item =  weakSelf.itemArray[idx];
+    [self.itemArray enumerateObjectsUsingBlock:^(MCItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
         if (![item isEqual:weakSelf.lastItem]) {
             [item setTitleColor:_defaultTitleColor forState:UIControlStateNormal];
         }
@@ -287,7 +280,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
 - (void)setLineWitdhScale:(CGFloat)lineWitdhScale
 {
     if (lineWitdhScale > 1) {
-        NSLog(@"长度不必不可大与一");
+        NSLog(@"长度不可大与一");
         return;
     }
     _lineWitdhScale = lineWitdhScale;
@@ -318,9 +311,8 @@ static const NSInteger  minTitleButtonWitdh = 60;
         self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleScrollHeight);
     }
     __weak __typeof(&*self)weakSelf = self;
-    [self.itemArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MCItem *item =  weakSelf.itemArray[idx];
-        item.frame = CGRectMake(idx *_titleButtonWidth, 0, _titleButtonWidth, self.titleScrollHeight);
+    [self.itemArray enumerateObjectsUsingBlock:^(MCItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
+        item.frame = CGRectMake(idx *_titleButtonWidth, 0, _titleButtonWidth, weakSelf.titleScrollHeight);
     }];
     
     CGRect lineRect = self.lineView.frame;
@@ -455,7 +447,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
         _badgeLb.font = [UIFont systemFontOfSize:10];
         _badgeLb.textAlignment = NSTextAlignmentCenter;
         _badgeLb.layer.masksToBounds = YES;
-//        [_badgeLb setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:_badgeLb];
     }
     return _badgeLb;
