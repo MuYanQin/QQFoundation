@@ -130,7 +130,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         item1.selectedImg = [UIImage imageNamed:@"navigation_Finding_car_active"];
 
         MCTabBarItem * item2 =[MCTabBarItem  buttonWithType:UIButtonTypeCustom];
-        item2.vc = [MCSearchTViewController new];
+        //不传就是一个单纯的按钮
+//        item2.vc = [MCSearchTViewController new];
+        
         item2.text = @"大Button";
         item2.isBigItem = YES;
         item2.bigItemSize = CGSizeMake(60, 60);

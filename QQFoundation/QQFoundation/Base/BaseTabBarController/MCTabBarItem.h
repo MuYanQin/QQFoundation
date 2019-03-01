@@ -24,27 +24,17 @@
 /**图片的大小*/
 @property (nonatomic , assign) CGSize  imgSize;
 
-
 /**是否是大的Item 中间凸起的*/
 @property (nonatomic , assign) BOOL  isBigItem;
 /**大Item的size 中间凸起的 isBigItem=YES生效*/
 @property (nonatomic , assign) CGSize  bigItemSize;
 /**大Item的向上的偏移量 为负数 中间凸起的 isBigItem=YES生效*/
 @property (nonatomic , assign) CGFloat  offset;
-
-/**
- 设置角标  0 就是一个红点  小于0 消失   大于999  显示999+
- */
+/**设置角标  0 就是一个红点  小于0 消失   大于999  显示999+*/
 @property (nonatomic,assign) NSInteger Badge;
-
-/**
- 角标的背景颜色。默认红色
- */
+/**角标的背景颜色。默认红色*/
 @property (nonatomic,strong) UIColor *BadgeBackColor;
-
-/**
- 角标文字颜色。默认白色
- */
+/**角标文字颜色。默认白色*/
 @property (nonatomic,strong) UIColor *BadgeTextColor;
 
 @end

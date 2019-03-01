@@ -79,7 +79,6 @@ static const CGFloat imageWidth = imageHeight*1.14;
     }else{
         self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, self.BadgeLb.frame.size.width + 5, self.BadgeLb.frame.size.height);
     }
-    
     self.BadgeLb.layer.cornerRadius = self.BadgeLb.frame.size.height/2;
     self.BadgeLb.layer.masksToBounds = YES;
     [self addSubview:self.BadgeLb];
