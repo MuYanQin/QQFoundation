@@ -117,19 +117,38 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         MCTabBarItem * item0 = [MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item0.vc = [MCHomeViewController   new];
+        item0.text = @"首页";
+        item0.defaultImg = [UIImage imageNamed:@"navigation_home_defaut"];
+        item0.selectedImg = [UIImage imageNamed:@"navigation_home_active"];
         
         MCTabBarItem * item1 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
+        item1.text = @"赏金";
         item1.vc = [MCRewardViewController new];
+        item1.defaultImg = [UIImage imageNamed:@"navigation_Finding_car_defaut"];
+        item1.selectedImg = [UIImage imageNamed:@"navigation_Finding_car_active"];
 
         MCTabBarItem * item2 =[MCTabBarItem  buttonWithType:UIButtonTypeCustom];
         item2.vc = [MCSearchTViewController new];
+        item2.text = @"搜索";
+        item2.defaultImg = [UIImage imageNamed:@"navigation_authorized_defaut"];
+        item2.selectedImg = [UIImage imageNamed:@"navigation_authorized_active"];
 
         MCTabBarItem * item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item3.vc = [MCAuthorViewController new];
+        item3.text = @"实名";
+        item3.defaultImg = [UIImage imageNamed:@"navigation_home_defaut"];
+        item3.selectedImg = [UIImage imageNamed:@"navigation_home_active"];
 
         MCTabBarItem * item4 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item4.vc = [MCMineViewController   new];
+        item4.text = @"我的";
+        item4.defaultImg = [UIImage imageNamed:@"navigation_mine_defaut"];
+        item4.selectedImg = [UIImage imageNamed:@"navigation_mine_active"];
+        
         _TabBar = [[QQTabBarController alloc]initTabWithItems:@[item0,item1,item2,item3,item4] navClass:[QQNavigationController class]];
+        _TabBar.defaultColor = getColorWithAlpha(0, 0, 0, 0.4);
+        _TabBar.selectedColor = getColorWithHex(@"4285F4");
+        _TabBar.font = getFontMedium(10);
     }
     return _TabBar;
 }

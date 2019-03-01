@@ -17,6 +17,7 @@ static const NSInteger ButtonTag = 100;
 static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 @interface QQTabBarController ()
 @property (nonatomic,strong) MCTabBarItem *lastItem;
+@property (nonatomic,strong) NSArray *itemsArray;
 @end
 
 @implementation QQTabBarController
@@ -34,12 +35,12 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 - (instancetype)initTabWithItems:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass;
 {
     if (self = [super init]) {
-        
+        self.itemsArray = items;
         [self initVC:items navClass:navClass];
         [self createVc:items];
         //去除tab的横线
-        [self.tabBar setBackgroundImage:[UIImage new]];
-        [self.tabBar setShadowImage:[UIImage new]];
+//        [self.tabBar setBackgroundImage:[UIImage new]];
+//        [self.tabBar setShadowImage:[UIImage new]];
     }
     return self;
 }
@@ -84,10 +85,7 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
         [item setImage:item.selectedImg forState:UIControlStateSelected];
         [item setTitle:item.text forState:UIControlStateNormal];
         item.tag = ButtonTag + i;
-        item.titleLabel.font = self.font;
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [item setTitleColor:self.defaultColor forState:UIControlStateNormal];
-        [item setTitleColor:self.selectedColor forState:UIControlStateSelected];
         if (i == 0) {
             item.selected  = YES;
             self.lastItem = item;
@@ -96,6 +94,27 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
         [item addTarget:self action:@selector(selectedTab:)forControlEvents:UIControlEventTouchUpInside];
         [self.tabBar addSubview:item];
     }
+}
+- (void)setDefaultColor:(UIColor *)defaultColor
+{
+    _defaultColor = defaultColor;
+    [self.itemsArray enumerateObjectsUsingBlock:^(MCTabBarItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
+        [item setTitleColor:defaultColor forState:UIControlStateNormal];
+    }];
+}
+- (void)setSelectedColor:(UIColor *)selectedColor
+{
+    _selectedColor = selectedColor;
+    [self.itemsArray enumerateObjectsUsingBlock:^(MCTabBarItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
+        [item setTitleColor:selectedColor forState:UIControlStateSelected];
+    }];
+}
+- (void)setFont:(UIFont *)font
+{
+    _font = font;
+    [self.itemsArray enumerateObjectsUsingBlock:^(MCTabBarItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
+        item.titleLabel.font = font;
+    }];
 
 }
 - (void)selectedTab:(MCTabBarItem *)item
