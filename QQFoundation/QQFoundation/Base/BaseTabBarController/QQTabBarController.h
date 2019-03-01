@@ -22,8 +22,6 @@
 
 @property (nonatomic , assign) id<QQTabBarControllerDelegate>  customDelegate;
 
-@property (nonatomic,assign) NSInteger SelectIndex;
-
 /**字体*/
 @property (nonatomic , strong) UIFont * font;
 /**默认字体颜色*/

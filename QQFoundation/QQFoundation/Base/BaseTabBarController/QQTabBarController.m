@@ -110,7 +110,6 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
         if (i == 0) {
             item.selected  = YES;
             self.lastItem = item;
-            self.SelectIndex = 0;
         }
         [item addTarget:self action:@selector(selectedTab:)forControlEvents:UIControlEventTouchUpInside];
         [self.tabBar addSubview:item];
@@ -150,7 +149,6 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
         self.lastItem.selected = NO;
     }
     self.selectedIndex = item.tag - ButtonTag;
-    self.SelectIndex = self.selectedIndex;
     item.selected = YES;
     self.lastItem = item;
     if ([self.customDelegate respondsToSelector:@selector(QQTabBarController:didSelectdIndex:)]) {
