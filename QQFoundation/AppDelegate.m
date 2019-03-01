@@ -118,11 +118,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         MCTabBarItem * item0 = [MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item0.vc = [MCHomeViewController   new];
         item0.text = @"首页";
+        item0.Badge = 30;
         item0.defaultImg = [UIImage imageNamed:@"navigation_home_defaut"];
         item0.selectedImg = [UIImage imageNamed:@"navigation_home_active"];
         
         MCTabBarItem * item1 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item1.text = @"赏金";
+        item1.Badge = 9;
         item1.vc = [MCRewardViewController new];
         item1.defaultImg = [UIImage imageNamed:@"navigation_Finding_car_defaut"];
         item1.selectedImg = [UIImage imageNamed:@"navigation_Finding_car_active"];
@@ -138,6 +140,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         MCTabBarItem * item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item3.vc = [MCAuthorViewController new];
         item3.text = @"实名";
+        item3.Badge = 100;
         item3.defaultImg = [UIImage imageNamed:@"navigation_home_defaut"];
         item3.selectedImg = [UIImage imageNamed:@"navigation_home_active"];
 

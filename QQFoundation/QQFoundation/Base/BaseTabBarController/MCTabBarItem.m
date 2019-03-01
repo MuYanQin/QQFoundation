@@ -23,7 +23,7 @@ static const CGFloat imageWidth = imageHeight*1.14;
 {
     self = [super initWithFrame:frame];
     if (self != nil) {
-        
+        _Badge = -1;
     }
     return self;
 }
@@ -34,10 +34,6 @@ static const CGFloat imageWidth = imageHeight*1.14;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
-    dictM[NSFontAttributeName] = self.titleLabel.font;
-    CGRect frame = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dictM context:nil];
     CGFloat imageX = (btnWidth - imageWidth) * 0.5;
     if (self.imgSize.width>0) {
         self.imageView.frame = CGRectMake(imageX, 5, self.imgSize.width, self.imgSize.height);
@@ -50,32 +46,38 @@ static const CGFloat imageWidth = imageHeight*1.14;
     }else{
         margin = 3;
     }
-    
-    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, self.imageView.bottom + margin, btnWidth, self.titleLabel.frame.size.height);
-    CGPoint labelCenter = self.titleLabel.center;
-    labelCenter.x = self.imageView.center.x;
-    self.titleLabel.center = labelCenter;
+    self.titleLabel.frame = CGRectMake(0, self.imageView.bottom + margin, btnWidth, self.titleLabel.frame.size.height);
+    [self caculate:_Badge];
 }
 - (void)setBadge:(NSInteger)Badge
 {
     _Badge = Badge;
-    if(Badge < 0){
+}
+- (void)caculate:(NSInteger)count
+{
+    if(count < 0){
         self.BadgeLb.hidden = YES;
         return;
     }
-    NSString *badge = [NSString string];
-    if (Badge > 999) {
+    NSString *badge = nil;
+    if (count > 999) {
         badge = @"999+";
     }else{
-        badge = [NSString stringWithFormat:@"%lu",(long)Badge];
+        badge = [NSString stringWithFormat:@"%lu",(long)count];
     }
     self.BadgeLb.text = badge;
     [self.BadgeLb sizeToFit];
-    if (Badge == 0) {
-        self.BadgeLb.text = @"";
-        self.BadgeLb.frame = CGRectMake(self.imageView.frame.origin.x + 24, 5, 10, 10);
+    CGFloat badgeLbx = self.imageView.frame.origin.x +  self.imageView.frame.size.width - self.BadgeLb.frame.size.width/2;
+    CGFloat badgeLby = self.imageView.frame.origin.y ;
+    if (count <=9) {
+        if (count ==0) {
+            self.BadgeLb.text = @"";
+            self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, 10, 10);
+        }else{
+            self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, 14, self.BadgeLb.frame.size.height);
+        }
     }else{
-        self.BadgeLb.frame = CGRectMake(self.imageView.frame.origin.x + 24, 5, self.BadgeLb.frame.size.width + 5, 15);
+        self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, self.BadgeLb.frame.size.width + 5, self.BadgeLb.frame.size.height);
     }
     
     self.BadgeLb.layer.cornerRadius = self.BadgeLb.frame.size.height/2;
