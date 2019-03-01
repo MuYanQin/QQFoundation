@@ -69,8 +69,11 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 - (void)initVC:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass{
     NSMutableArray *vcs = [NSMutableArray array];
     for (MCTabBarItem *item in items) {
-        UINavigationController *nav = (UINavigationController *) [[navClass alloc] initWithRootViewController:item.vc];
-        [vcs addObject:nav];
+        if (item.vc) {
+            UINavigationController *nav = (UINavigationController *) [[navClass alloc] initWithRootViewController:item.vc];
+            item.vc.navigationItem.title = item.text;
+            [vcs addObject:nav];
+        }
     }
 
     self.viewControllers = vcs;
@@ -78,13 +81,31 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 - (void)createVc:(NSArray<MCTabBarItem *> *)items
 {
     float TabWidth = kwidth/items.count;
+    NSInteger index = 0;
     for (int i=0; i<items.count; i++) {
         MCTabBarItem *item = items[i];
-        item.frame = CGRectMake(i*TabWidth, 0, TabWidth, self.tabBar.frame.size.height);
-        [item setImage:item.defaultImg forState:UIControlStateNormal];
-        [item setImage:item.selectedImg forState:UIControlStateSelected];
-        [item setTitle:item.text forState:UIControlStateNormal];
-        item.tag = ButtonTag + i;
+        if (item.isBigItem && !self.tabBar.BigButton) {
+            self.tabBar.BigButton = item;
+            CGFloat offset = 0;
+            if (item.offset && item.offset<0) {
+                offset = item.offset;
+            }else{
+                offset = -20;
+            }
+            item.frame = CGRectMake(i*TabWidth, offset, item.bigItemSize.width, item.bigItemSize.height);
+            item.centerX = self.tabBar.centerX;
+            [item setBackgroundImage:item.defaultImg forState:UIControlStateNormal];
+            [item setBackgroundImage:item.selectedImg forState:UIControlStateSelected];
+        }else{
+            item.frame = CGRectMake(i*TabWidth, 0, TabWidth, self.tabBar.frame.size.height);
+            [item setImage:item.defaultImg forState:UIControlStateNormal];
+            [item setImage:item.selectedImg forState:UIControlStateSelected];
+            [item setTitle:item.text forState:UIControlStateNormal];
+        }
+        if (item.vc) {
+            item.tag = ButtonTag + index;
+            index +=1;
+        }
         item.titleLabel.textAlignment = NSTextAlignmentCenter;
         if (i == 0) {
             item.selected  = YES;
@@ -115,10 +136,16 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     [self.itemsArray enumerateObjectsUsingBlock:^(MCTabBarItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
         item.titleLabel.font = font;
     }];
-
 }
+
 - (void)selectedTab:(MCTabBarItem *)item
 {
+    if (!item.tag) {
+        if ([self.customDelegate respondsToSelector:@selector(clickBigItem)]) {
+            [self.customDelegate clickBigItem];
+        }
+        return;
+    }
     if (self.lastItem) {
         self.lastItem.selected = NO;
     }
@@ -126,11 +153,9 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
     self.SelectIndex = self.selectedIndex;
     item.selected = YES;
     self.lastItem = item;
-    [self QQTabBarController:self didSelect:self.viewControllers[self.selectedIndex]];
-}
-- (void)QQTabBarController:(QQTabBarController *)TabBarController  didSelect:(UIViewController *)viewcontroller
-{
-
+    if ([self.customDelegate respondsToSelector:@selector(QQTabBarController:didSelectdIndex:)]) {
+        [self.customDelegate QQTabBarController:self didSelectdIndex:self.selectedIndex];
+    }
 }
 //设置选中的下标
 - (void)setTabIndex:(NSInteger)index

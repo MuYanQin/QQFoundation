@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MCTabBarItem;
+@class MCTabBarItem,QQTabBarController;
+
+@protocol QQTabBarControllerDelegate <NSObject>
+
+@optional
+- (void)clickBigItem;
+
+- (void)QQTabBarController:(QQTabBarController *)tab didSelectdIndex:(NSInteger)index;
+
+@end
+
 @interface QQTabBarController : UITabBarController
+
+@property (nonatomic , assign) id<QQTabBarControllerDelegate>  customDelegate;
 
 @property (nonatomic,assign) NSInteger SelectIndex;
 
@@ -18,6 +30,7 @@
 @property (nonatomic,strong) UIColor * defaultColor;
 /**选中字体颜色*/
 @property (nonatomic,strong) UIColor * selectedColor;
+
 
 - (instancetype)initTabWithItems:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass;
 

@@ -10,6 +10,7 @@
 #import "UIView+QQFrame.h"
 #import "QQTool.h"
 #define btnWidth self.bounds.size.width
+
 static const CGFloat imageHeight = 24;
 static const CGFloat imageWidth = imageHeight*1.14;
 @interface MCTabBarItem()
@@ -33,12 +34,24 @@ static const CGFloat imageWidth = imageHeight*1.14;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
     NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
     dictM[NSFontAttributeName] = self.titleLabel.font;
     CGRect frame = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dictM context:nil];
     CGFloat imageX = (btnWidth - imageWidth) * 0.5;
-    self.imageView.frame = CGRectMake(imageX, 6, imageWidth, imageHeight);
-    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, self.imageView.bottom +8, btnWidth, 14);
+    if (self.imgSize.width>0) {
+        self.imageView.frame = CGRectMake(imageX, 5, self.imgSize.width, self.imgSize.height);
+    }else{
+        self.imageView.frame = CGRectMake(imageX, 5, imageWidth, imageHeight);
+    }
+    CGFloat margin = 0;
+    if (self.margin>0) {
+        margin = self.margin;
+    }else{
+        margin = 3;
+    }
+    
+    self.titleLabel.frame = CGRectMake((self.center.x - frame.size.width) * 0.5, self.imageView.bottom + margin, btnWidth, self.titleLabel.frame.size.height);
     CGPoint labelCenter = self.titleLabel.center;
     labelCenter.x = self.imageView.center.x;
     self.titleLabel.center = labelCenter;

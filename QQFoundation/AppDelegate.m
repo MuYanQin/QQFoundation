@@ -21,7 +21,7 @@
 #import "MCMineViewController.h"
 #import "QQNavigationController.h"
 #import "MCTabBarItem.h"
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate,QQTabBarControllerDelegate>
 @property (nonatomic , strong) NSTimer * timer;
 @property (nonatomic , assign) NSInteger  duration;
 
@@ -129,9 +129,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
         MCTabBarItem * item2 =[MCTabBarItem  buttonWithType:UIButtonTypeCustom];
         item2.vc = [MCSearchTViewController new];
-        item2.text = @"搜索";
-        item2.defaultImg = [UIImage imageNamed:@"navigation_authorized_defaut"];
-        item2.selectedImg = [UIImage imageNamed:@"navigation_authorized_active"];
+        item2.text = @"大Button";
+        item2.isBigItem = YES;
+        item2.bigItemSize = CGSizeMake(60, 60);
+        item2.defaultImg = [UIImage imageNamed:@"tab_launch"];
+        item2.selectedImg = [UIImage imageNamed:@"tab_launch"];
 
         MCTabBarItem * item3 =[MCTabBarItem buttonWithType:UIButtonTypeCustom];
         item3.vc = [MCAuthorViewController new];
@@ -146,11 +148,20 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         item4.selectedImg = [UIImage imageNamed:@"navigation_mine_active"];
         
         _TabBar = [[QQTabBarController alloc]initTabWithItems:@[item0,item1,item2,item3,item4] navClass:[QQNavigationController class]];
+        _TabBar.customDelegate   = self;
         _TabBar.defaultColor = getColorWithAlpha(0, 0, 0, 0.4);
         _TabBar.selectedColor = getColorWithHex(@"4285F4");
         _TabBar.font = getFontMedium(10);
     }
     return _TabBar;
+}
+- (void)clickBigItem
+{
+    NSLog(@"click");
+}
+- (void)QQTabBarController:(QQTabBarController *)tab didSelectdIndex:(NSInteger)index
+{
+    NSLog(@"%ld",index);
 }
 - (void)applicationWillResignActive:(UIApplication *)application{
     
