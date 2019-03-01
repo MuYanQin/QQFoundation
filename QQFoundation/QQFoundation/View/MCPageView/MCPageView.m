@@ -21,6 +21,10 @@
 @property (nonatomic , strong) MCItem * lastItem;
 @property (nonatomic , strong) UIView  * lineView;
 @property (nonatomic , assign) CGFloat  titleScrollHeight;
+@property (nonatomic , assign) BOOL  isClick;
+//记录外面传进来的RGB的值
+@property (nonatomic , assign) CGFloat  defaultR,defaultG,defaultB,defaultA,selectedR,selectedG,selectedB,selectedA;
+@property (nonatomic , strong) UIColor *netxColor ;
 @end
 
 static const NSInteger itemTag = 100;
@@ -38,7 +42,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
         _titleScrollHeight = 50;
         //初始化横线的宽度是title的一半
         _lineWitdhScale = 0.5;
-        
+        self.isClick = NO;
         [self addSubview:self.titleScroll];
         [self.titleScroll addSubview:self.lineView];
         [self addSubview:self.contentCollection];
@@ -74,16 +78,80 @@ static const NSInteger  minTitleButtonWitdh = 60;
     
 }
 #pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == self.contentCollection) {
         NSInteger index = (int)scrollView.contentOffset.x/kwidth;
-        [self changeItemStatus:index];
+        CGFloat percent =  (scrollView.contentOffset.x - kwidth *index)/kwidth;
+        percent = fabs(percent);
+        if (scrollView.contentOffset.x - kwidth *(index) == 0) {
+            NSInteger index = (int)scrollView.contentOffset.x/kwidth;
+            [self changeItemStatus:index];
+        }
+        if (self.isClick) {
+            return;
+        }
+        //横线的动画
+        if (scrollView.contentOffset.x<kwidth *index) {
+            self.lineView.centerX = self.titleButtonWidth *(0.5 + index - percent);
+            [self animationItem:YES percent:percent index:index];
+        }else{
+            self.lineView.centerX = self.titleButtonWidth *(0.5 + index + percent);
+            [self animationItem:NO percent:percent index:index];
+        }
     }
+}
+- (void)animationItem:(BOOL)isleft percent:(CGFloat)percent index:(NSInteger)index{
+    MCItem *item =  nil;
+    if (isleft && index -1 >=0 ) {
+        item = self.itemArray[index-1];
+    }else if(!isleft && index + 1 < self.itemArray.count){
+        item = self.itemArray[index +1];
+    }
+    if (!item) {
+        return;
+    }
+    if (!self.netxColor) {
+        [self getDefaultRGB:self.defaultTitleColor];
+        [self getSeltectRGB:self.selectTitleColor];
+    }
+    self.netxColor =[UIColor colorWithRed:self.defaultR + (self.selectedR - self.defaultR)*percent green:self.defaultG + (self.selectedG - self.defaultG)*percent blue:self.defaultB + (self.selectedB - self.defaultB)*percent alpha:self.defaultA + (self.selectedA - self.defaultA)*percent];
+    
+    UIColor *lastColor = [UIColor colorWithRed:self.selectedR - (self.selectedR - self.defaultR)*percent green:self.selectedG - (self.selectedG - self.defaultG)*percent blue:self.selectedB - (self.selectedB - self.defaultB)*percent alpha: self.selectedA - (self.selectedA - self.defaultA)*percent];
+    
+    if (self.lastItem) {
+        [self.lastItem setTitleColor:lastColor forState:UIControlStateNormal];
+    }
+    [item setTitleColor:self.netxColor forState:UIControlStateNormal];
+}
+- (void)getDefaultRGB:(UIColor *)color
+{
+    CGFloat red = 0.0;
+    CGFloat green = 0.0;
+    CGFloat blue = 0.0;
+    CGFloat alpha = 0.0;
+    [color getRed:&red green:&green blue:&blue alpha:&alpha];
+    self.defaultA = alpha;
+    self.defaultR = red;
+    self.defaultG = green;
+    self.defaultB = blue;
+}
+- (void)getSeltectRGB:(UIColor *)color
+{
+    CGFloat red = 0.0;
+    CGFloat green = 0.0;
+    CGFloat blue = 0.0;
+    CGFloat alpha = 0.0;
+    [color getRed:&red green:&green blue:&blue alpha:&alpha];
+    self.selectedA = alpha;
+    self.selectedR = red;
+    self.selectedG = green;
+    self.selectedB = blue;
 }
 - (void)selectItem:(MCItem *)btn
 {
     [self selectIndex:btn.tag - itemTag];
+
 }
 - (void)selectIndex:(NSInteger)index
 {
@@ -91,8 +159,10 @@ static const NSInteger  minTitleButtonWitdh = 60;
         NSLog(@"滚动的位置大于条目数");
         return;
     }
-    [self.contentCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:labs(index) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    self.isClick = YES;
     [self changeItemStatus:index];
+    [self.contentCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:labs(index) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    [self scrollToItemCenter:self.itemArray[index]];
 }
 - (void)setBadgeWithIndex:(NSInteger)index badge:(NSInteger)badge
 {
@@ -117,8 +187,12 @@ static const NSInteger  minTitleButtonWitdh = 60;
 }
 - (void)changeItemStatus:(NSInteger)index
 {
-    [self menuScrollToCenter:index];
     MCItem * Item = self.itemArray[index];
+
+    if (Item == self.lastItem) {
+        return;
+    }
+    [self menuScrollToCenter:index];
     if (self.lastItem) {
         self.lastItem.titleLabel.font = self.defaultTitleFont ?self.defaultTitleFont:[UIFont systemFontOfSize:14];
         [self.lastItem setTitleColor:self.defaultTitleColor ?self.defaultTitleColor:itemDefaultColor forState:UIControlStateNormal];
@@ -127,7 +201,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
     self.lastItem = Item;
     Item.titleLabel.font = self.selectTitleFont ?self.selectTitleFont:[UIFont systemFontOfSize:14];
     [Item setTitleColor:self.selectTitleColor ?self.selectTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self scrollToItemCenter:Item];
     if ([self.delegate respondsToSelector:@selector(MCPageView:didSelectIndex:)]) {
         [self.delegate MCPageView:self didSelectIndex:index];
     }
@@ -162,7 +235,8 @@ static const NSInteger  minTitleButtonWitdh = 60;
     if (!item) {
         return;
     }
-    [UIView animateWithDuration:0.15 animations:^{
+    self.isClick = NO;
+    [UIView animateWithDuration:0.3 animations:^{
         self.lineView.center = item.center;
         self.lineView.bottom = item.bottom -1;
     }];

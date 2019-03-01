@@ -27,28 +27,28 @@ s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag 
 s.source_files  = 'QQFoundation/QQFoundation'
 s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
 
-#s.subspec 'Base' do |ss|
+s.subspec 'Base' do |ss|
 
-#   ss.subspec 'BaseController' do |sss|
-#   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseController/**/*.{h,m,c,mm}'
-#   end
-#
+   ss.subspec 'BaseController' do |sss|
+   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseController/**/*.{h,m,c,mm}'
+   end
+
 #   ss.subspec 'BaseDefine' do |sss|
 #   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseDefine/**/*.{h,m,c,mm}'
 #   end
-#
-#   ss.subspec 'BaseNavigatioinController' do |sss|
-#   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseNavigatioinController/**/*.{h,m,c,mm}'
-#   end
-#
-#   ss.subspec 'BaseTabBarController' do |sss|
-#    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseTabBarController/**/*.{h,m,c,mm}'
-#    end
+
+   ss.subspec 'BaseNavigatioinController' do |sss|
+   sss.source_files = 'QQFoundation/QQFoundation/Base/BaseNavigatioinController/**/*.{h,m,c,mm}'
+   end
+
+   ss.subspec 'BaseTabBarController' do |sss|
+    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseTabBarController/**/*.{h,m,c,mm}'
+    end
 
 #    ss.subspec 'BaseUserInfo' do |sss|
 #    sss.source_files = 'QQFoundation/QQFoundation/Base/BaseUserInfo/**/*.{h,m,c,mm}'
 #    end
-#end
+end
 
 s.subspec 'View' do |ss|
     ss.subspec 'MCPopView' do |sss|

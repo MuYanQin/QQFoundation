@@ -38,8 +38,6 @@ typedef NS_ENUM(NSInteger,viewPositionType) {
 
 /**
  快捷弹出图层。依赖于KLCPopUp
-
- @param containView 需要弹出的图层
  @param showType 显示的类型
  @param dissType 隐藏的类型
  @param positionType 显示的位置
