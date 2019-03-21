@@ -15,7 +15,6 @@
 @interface QQNetManager()
 @property (nonatomic , strong) NSMutableDictionary * dataDic;///<纪录下载的url
 @property (nonatomic , strong) NSMutableArray * controllerRequest;///<纪录页面的请求
-
 @end
 @implementation QQNetManager
 {
@@ -41,50 +40,33 @@
     });
     return manager;
 }
-- (AFHTTPSessionManager *)sessionManager
+
+
+- (void)RTSGetWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void(^)(id responseObject))successs failed:(void (^)(NSError * error))failed;
 {
-    if (!_sessionManager) {
-        _sessionManager = [AFHTTPSessionManager manager];
-        _sessionManager.requestSerializer.timeoutInterval = 30.f;
-        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        //        [manager setSecurityPolicy:self.customSecurityPolicy];//是否开启ssl验证
-        //设置请求头
-        //        [[WSUtils getRequestHeaderDict] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        //            [manager.requestSerializer setValue:[WSLUtil strRelay:obj] forHTTPHeaderField:[WSLUtil strRelay:key]];
-        //        }];
-        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];//@"application/x-javascript"
-    }
-    return _sessionManager;
-}
-//设置证书的时候 后台验证
-- (AFSecurityPolicy*)customSecurityPolicy
-{
-    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    securityPolicy.allowInvalidCertificates = YES;
-    securityPolicy.validatesDomainName = NO;
-    return securityPolicy;
-}
-- (void)RTSGetWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
-{
-    [self filtrationTxdWithUrl:url Param:parameters from:controller txdType:get cacheType:ignore success:Success False:False];
+    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:ignore commiteType:keyV success:successs failed:failed];
 }
 
-- (void)RTSGetCacheWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
+- (void)RTSPostWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
 {
-    [self filtrationTxdWithUrl:url Param:parameters from:controller txdType:get cacheType:localData success:Success False:False];
+    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:post cacheType:ignore commiteType:keyV success:successs failed:failed];
 }
-- (void)RTSPostWith:(NSString *)url Parameters:(NSDictionary *)parameters From:(UIViewController *)controller Successs:(void (^)(id))Success False:(void (^)(NSError *))False
+-(void)RTSPostJsonWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void(^)(id responseObject))successs failed:(void (^)(NSError * error))failed
 {
-    [self filtrationTxdWithUrl:url Param:parameters from:controller txdType:post cacheType:ignore success:Success False:False];
+    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:ignore commiteType:json success:successs failed:failed];
 }
-
+- (void)RTSGetCacheWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
+{
+    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:localData commiteType:keyV success:successs failed:failed];
+}
 - (void)filtrationTxdWithUrl:(NSString *)url
-                       Param:(NSDictionary *)param
+                       param:(NSDictionary *)param
                         from:(UIViewController *)controller
                      txdType:(QQSessionType)txdType
                    cacheType:(CacheType)cacheType
+                 commiteType:(CommiteType)commiteType
                      success:(void(^)(id responseObject))success
-                       False:(void(^)(NSError *error))False
+                       failed:(void(^)(NSError *error))failed
 {
     QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:param]];
     if (!session) {
@@ -92,25 +74,25 @@
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:param];
         session.controllerName = NSStringFromClass([controller class]);
-        [session TXDWith:url Param:param from:controller txdType:txdType cacheType:cacheType success:success False:False];
+        [session TXDWith:url param:param from:controller txdType:txdType cacheType:cacheType commiteType:commiteType success:success failed:failed];
     }
 }
 
 - (void)RTSUploadWith:(NSString *)url
-           Dictionary:(NSDictionary *)parameters
-         MutableArray:(NSMutableArray *)Images
-                 From:(UIViewController *)controller
+           parameters:(NSDictionary *)parameters
+           imageArray:(NSMutableArray *)images
+                 from:(UIViewController *)controller
              fileMark:(NSString *)fileMark
-             Progress:(void (^)(NSProgress *uploadProgress))Progress
-              Success:(void(^)( id responseObject))Success
-                False:(void(^)(NSError *error))False
+             progress:(void (^)(NSProgress *uploadProgress))progress
+              success:(void(^)( id responseObject))success
+               failed:(void(^)(NSError *error))failed
 {
     QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
     if (!session) {
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:parameters];
-        [session TXDUploadWithUrl:url Dic:parameters MutableArray:Images from:controller fileMark:fileMark Progress:Progress success:Success False:False];
+        [session TXDUploadWithUrl:url dic:parameters imageArray:images from:controller fileMark:fileMark progress:progress success:success failed:failed];
     }
 }
 

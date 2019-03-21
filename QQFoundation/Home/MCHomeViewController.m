@@ -51,11 +51,7 @@
     lableItem.leftText = @"视图弹出";
     lableItem.rightText = @"点击弹出视图";
     lableItem.selcetCellHandler = ^(id item) {
-        [[QQNetManager Instance]RTSGetWith:@"" Parameters:nil From:self Successs:^(id responseObject) {
-            
-        } False:^(NSError *error) {
-        
-        }];
+
     };
     [items addObject:lableItem];
     
@@ -163,17 +159,9 @@
     [self.tabManager replaceSectionsWithSectionsFromArray:items];
 }
 - (void)getrequest{
-    [[QQNetManager Instance]RTSGetWith:@"www.ipan.com:8080:maintan/f/" Parameters:nil From:self Successs:^(id responseObject) {
-        
-    } False:^(NSError *error) {
-        
-    }];
+
     
-    [[QQNetManager Instance]RTSGetWith:@"http://www.iopan.cn/medical/f/getUserInfor" Parameters:@{@"userid":@"18e660daa75840e38e042ce176308e76"} From:self Successs:^(id responseObject) {
-        
-    } False:^(NSError *error) {
-        
-    }];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

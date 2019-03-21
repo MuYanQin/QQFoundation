@@ -13,11 +13,14 @@
 #import "QQNetManager.h"
 #import "NSDate+QQCalculate.h"
 @interface QQsession ()
+@property (nonatomic , strong) AFHTTPSessionManager * sessionManager;
+@property (nonatomic , strong) AFHTTPRequestSerializer <AFURLRequestSerialization> * requestJsonSerializer;
+@property (nonatomic , strong) AFHTTPRequestSerializer <AFURLRequestSerialization> * requestKeyVSerializer;
 @end
 
 @implementation QQsession
 
-- (NSURLSessionDataTask *)TXDWith:(NSString *)url Param:(NSDictionary *)param from:(UIViewController *)controller txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType success:(void (^)(id))success False:(void (^)(NSError *))False
+- (NSURLSessionDataTask *)TXDWith:(NSString *)url param:(NSDictionary *)param from:(UIViewController *)controller txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType commiteType:(CommiteType)commiteType success:(void (^)(id))success failed:(void (^)(NSError *))failed
 {
 //判断缓存
     if (cacheType == localData) {
@@ -31,27 +34,32 @@
             return nil;
         }
     }
+    if (commiteType == keyV) {
+        self.sessionManager.requestSerializer = self.requestKeyVSerializer;
+    }else{
+        self.sessionManager.requestSerializer = self.requestJsonSerializer;
+    }
     NSURLSessionDataTask * operation;
     [[QQNetManager Instance] insertQQConnection:self];
     [self loading];
     switch (txdType) {
         case get:
         {
-            operation = [[QQNetManager Instance].sessionManager GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
+            operation = [self.sessionManager GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:False];
+                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:failed];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [self handleResponseObject:error Controller:controller failure:False];
+                [self handleResponseObject:error Controller:controller failure:failed];
             }];
             break;
         }
         case post:
         {
-            [[QQNetManager Instance].sessionManager POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+            [self.sessionManager POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:False];
+                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:failed];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [self handleResponseObject:error Controller:controller failure:False];
+                [self handleResponseObject:error Controller:controller failure:failed];
             }];
             break;
         }
@@ -63,30 +71,30 @@
 }
 //upload files
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
-                                       Dic:(NSDictionary *)dic
-                              MutableArray:(NSMutableArray *)Images
+                                       dic:(NSDictionary *)dic
+                              imageArray:(NSMutableArray *)images
                                       from:(UIViewController *)controller
                                   fileMark:(NSString *)fileMark
-                                  Progress:(void (^)(NSProgress *uploadProgress))Progress
+                                  progress:(void (^)(NSProgress *uploadProgress))progress
                                    success:(void(^)(id responseObject))success
-                                     False:(void(^)(NSError *error))False
+                                     failed:(void(^)(NSError *error))failed
 {
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [self loading];
-    NSURLSessionDataTask * operation = [[QQNetManager Instance].sessionManager POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        for (UIImage *image in Images) {
+    NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        for (UIImage *image in images) {
             NSData * data = [QQTool imageData:image];
             [formData appendPartWithFileData:data name:fileMark
-                                    fileName:[NSString stringWithFormat:@"%@.png",[NSDate GetNowDate:@"YYYYMMDDHHmmSSS"]]
+                                    fileName:[NSString stringWithFormat:@"%@.png",[NSDate GetNowDate:@"YYYYMMddHHmmSSS"]]
                                     mimeType:@"image/jpeg"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        Progress(uploadProgress);
+        progress(uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handleResponseObject:responseObject cacheType:ignore key:nil Controller:controller Success:success failure:False];
+        [self handleResponseObject:responseObject cacheType:ignore key:nil Controller:controller Success:success failure:failed];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self handleResponseObject:error Controller:controller failure:False];
+        [self handleResponseObject:error Controller:controller failure:failed];
     }];
     return operation;
 }
@@ -157,6 +165,43 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible =isNetworkEnable;/*  网络指示器的状态： 有网络 ： 开  没有网络： 关  */
     });
     return isNetworkEnable;
+}
+- (AFHTTPSessionManager *)sessionManager
+{
+    if (!_sessionManager) {
+        _sessionManager = [AFHTTPSessionManager manager];
+        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        //        [manager setSecurityPolicy:self.customSecurityPolicy];//是否开启ssl验证
+        //设置请求头
+        //        [manager.requestSerializer setValue:[WSLUtil strRelay:obj] forHTTPHeaderField:[WSLUtil strRelay:key]];
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];//@"application/x-javascript"
+    }
+    return _sessionManager;
+}
+
+//设置证书的时候 后台验证
+- (AFSecurityPolicy*)customSecurityPolicy
+{
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    return securityPolicy;
+}
+- (AFHTTPRequestSerializer<AFURLRequestSerialization> *)requestJsonSerializer
+{
+    if (!_requestJsonSerializer) {
+        _requestJsonSerializer = [AFJSONRequestSerializer serializer];
+        _requestJsonSerializer.timeoutInterval = 30.f;
+    }
+    return _requestJsonSerializer;
+}
+- (AFHTTPRequestSerializer<AFURLRequestSerialization> *)requestKeyVSerializer
+{
+    if (!_requestKeyVSerializer) {
+        _requestKeyVSerializer = [AFHTTPRequestSerializer serializer];
+        _requestKeyVSerializer.timeoutInterval = 30.f;
+    }
+    return _requestKeyVSerializer;
 }
 @end
 

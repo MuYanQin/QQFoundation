@@ -11,10 +11,10 @@
 //显示网络请求的view
 #import "MCMonitorView.h"
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
-@class QQsession,AFHTTPSessionManager;
+@class QQsession;
 static NSString *const successCode = @"200";//配置正确返回的code码
+
 @interface QQNetManager : NSObject
-@property (nonatomic , strong) AFHTTPSessionManager * sessionManager;
 @property (nonatomic , strong) MCMonitorView * monitorView;
 
 /**
@@ -47,29 +47,42 @@ static NSString *const successCode = @"200";//配置正确返回的code码
  @param url 请求的网址
  @param parameters 请求拼接的参数
  @param controller 请求所在的界面
- @param Success 成功的回调
- @param False 失败的回调
+ @param successs 成功的回调
+ @param failed 失败的回调
  */
 - (void)RTSGetWith:(NSString *)url
-        Parameters:(NSDictionary *)parameters
-              From:(UIViewController *)controller
-          Successs:(void(^)(id responseObject))Success
-             False:(void (^)(NSError * error))False;
+        parameters:(NSDictionary *)parameters
+              from:(UIViewController *)controller
+          successs:(void(^)(id responseObject))successs
+             failed:(void (^)(NSError * error))failed;
 
 /**
  普通的Post请求
-
  @param url 请求的网址
  @param parameters 请求拼接的参数
  @param controller 请求的界面
- @param Success 成功的回调
- @param False 失败的回调
+ @param successs 成功的回调
+ @param failed 失败的回调
  */
 -(void)RTSPostWith:(NSString *)url
-        Parameters:(NSDictionary *)parameters
-              From:(UIViewController *)controller
-          Successs:(void(^)(id responseObject))Success
-             False:(void (^)(NSError * error))False;
+        parameters:(NSDictionary *)parameters
+              from:(UIViewController *)controller
+          successs:(void(^)(id responseObject))successs
+             failed:(void (^)(NSError * error))failed;
+
+/**
+ Json提交的的Post请求
+ @param url 请求的网址
+ @param parameters 请求拼接的参数
+ @param controller 请求的界面
+ @param successs 成功的回调
+ @param failed 失败的回调
+ */
+-(void)RTSPostJsonWith:(NSString *)url
+        parameters:(NSDictionary *)parameters
+              from:(UIViewController *)controller
+          successs:(void(^)(id responseObject))successs
+             failed:(void (^)(NSError * error))failed;
 
 /**
  带缓存的get请求 （一些不变的网址请求）
@@ -77,14 +90,14 @@ static NSString *const successCode = @"200";//配置正确返回的code码
  @param url 请求的网址
  @param parameters 请求拼接的参数
  @param controller 请求的界面
- @param Success 成功的回调
- @param False 失败的回调
+ @param successs 成功的回调
+ @param failed 失败的回调
  */
 - (void)RTSGetCacheWith:(NSString *)url
-             Parameters:(NSDictionary *)parameters
-                   From:(UIViewController *)controller
-               Successs:(void(^)(id responseObject))Success
-                  False:(void (^)(NSError * error))False;
+             parameters:(NSDictionary *)parameters
+                   from:(UIViewController *)controller
+               successs:(void(^)(id responseObject))successs
+                  failed:(void (^)(NSError * error))failed;
 
 
 /**
@@ -92,21 +105,21 @@ static NSString *const successCode = @"200";//配置正确返回的code码
 
  @param url 请求网址
  @param parameters 请求的参数
- @param Images 图片字典的数组 格式@[@{@"imageName":image}] key:图片名称。 value 图片对象
+ @param images 图片字典的数组
  @param controller 请求的界面
  @param fileMark 后台接受图片的字段。为空的话 就用图片的名称
- @param Progress 上传的进度回调
- @param Success 成功的回调
- @param False 失败的回调
+ @param progress 上传的进度回调
+ @param success 成功的回调
+ @param failed 失败的回调
  */
 - (void)RTSUploadWith:(NSString *)url
-           Dictionary:(NSDictionary *)parameters
-         MutableArray:(NSMutableArray *)Images
-                 From:(UIViewController *)controller
+           parameters:(NSDictionary *)parameters
+         imageArray:(NSMutableArray *)images
+                 from:(UIViewController *)controller
                  fileMark:(NSString *)fileMark
-             Progress:(void (^)(NSProgress *uploadProgress))Progress
-              Success:(void(^)( id responseObject))Success
-                False:(void(^)(NSError *error))False;
+             progress:(void (^)(NSProgress *uploadProgress))progress
+              success:(void(^)( id responseObject))success
+                failed:(void(^)(NSError *error))failed;
 
 
 - (void)insertQQConnection:(QQsession *)hc;///<插入对象

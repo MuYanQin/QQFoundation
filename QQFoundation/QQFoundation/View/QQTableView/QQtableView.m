@@ -112,14 +112,14 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 {
     
 #warning 这里替换成自己的网络请求方法就好了 
-    [[QQNetManager Instance]RTSGetWith:_requestUrl Parameters:paramters From:_TempController Successs:^(id responseObject) {
+    [[QQNetManager Instance]RTSGetWith:_requestUrl parameters:paramters from:_TempController successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
             [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
         }
         _hasNetError = NO;
         [self EndRefrseh];
-    } False:^(NSError *error) {
+    } failed:^(NSError *error) {
         _hasNetError = YES;
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
             [self.RequestDelegate QQtableView:self requestFailed:error];

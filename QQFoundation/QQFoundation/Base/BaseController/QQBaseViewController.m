@@ -46,35 +46,35 @@
 }
 #pragma mark - 数据请求的众多方法
 - (void)RequestGetWith:(NSString *)url Parameters:(NSDictionary *)parameters{
-    [[QQNetManager Instance] RTSGetWith:url Parameters:parameters From:self Successs:^(id responseObject) {
+    [[QQNetManager Instance] RTSGetWith:url parameters:parameters from:self successs:^(id responseObject) {
         [self getTempResponseObject:responseObject TagURL:url];
-    } False:^(NSError *error) {
+    } failed:^(NSError *error) {
         [self getTempError:error TagURL:url];
     }];
 }
 - (void)RequestGetCacheWith:(NSString *)url Parameters:(NSDictionary *)parameters
 {
-    [[QQNetManager Instance]RTSGetCacheWith:url Parameters:parameters From:self Successs:^(id responseObject) {
+    [[QQNetManager Instance] RTSGetWith:url parameters:parameters from:self successs:^(id responseObject) {
         [self getTempResponseObject:responseObject TagURL:url];
-    } False:^(NSError *error) {
+    } failed:^(NSError *error) {
         [self getTempError:error TagURL:url];
     }];
 }
 - (void)RequestPostWith:(NSString *)url Parameters:(NSDictionary *)parameters
 {
-    [[QQNetManager Instance]RTSPostWith:url Parameters:parameters From:self Successs:^(id responseObject) {
+    [[QQNetManager Instance]RTSPostWith:url parameters:parameters from:self successs:^(id responseObject) {
         [self getTempResponseObject:responseObject TagURL:url];
-    } False:^(NSError *error) {
+    } failed:^(NSError *error) {
         [self getTempError:error TagURL:url];
     }];
 }
 - (void)RequestUpdateWith:(NSString *)url Parameters:(NSDictionary *)parameters Images:(NSMutableArray *)images
 {
-    [[QQNetManager Instance]RTSUploadWith:url Dictionary:parameters MutableArray:images From:self fileMark:@"" Progress:^(NSProgress *uploadProgress) {
+    [[QQNetManager Instance]RTSUploadWith:url parameters:parameters imageArray:images from:self fileMark:@"" progress:^(NSProgress *uploadProgress) {
         
-    } Success:^(id responseObject) {
+    } success:^(id responseObject) {
         
-    } False:^(NSError *error) {
+    } failed:^(NSError *error) {
         
     }];
 }

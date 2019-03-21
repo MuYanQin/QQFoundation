@@ -12,10 +12,13 @@ typedef NS_ENUM (NSInteger,QQSessionType){
     post = 0,
     get
 };
-
 typedef NS_ENUM (NSInteger,CacheType){
     ignore = 0,
     localData
+};
+typedef NS_ENUM (NSInteger,CommiteType){
+    keyV = 0,
+    json
 };
 @interface QQsession : NSObject
 @property (copy, nonatomic) NSString *urlStr;///<记录当前下载的URl
@@ -24,19 +27,20 @@ typedef NS_ENUM (NSInteger,CacheType){
 @property (nonatomic , copy) NSString * controllerName;//记录某次下载所在界面的名称
 
 - (NSURLSessionDataTask *)TXDWith:(NSString *)url
-                            Param:(NSDictionary *)param
+                            param:(NSDictionary *)param
                              from:(UIViewController *)controller
                           txdType:(QQSessionType)txdType
-                          cacheType:(CacheType)cacheType
+                        cacheType:(CacheType)cacheType
+                      commiteType:(CommiteType)commiteType
                           success:(void(^)(id responseObject))success
-                            False:(void(^)(NSError *error))False;
+                            failed:(void(^)(NSError *error))failed;
 
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
-                                       Dic:(NSDictionary *)dic
-                              MutableArray:(NSMutableArray *)Images
+                                       dic:(NSDictionary *)dic
+                              imageArray:(NSMutableArray *)images
                                       from:(UIViewController *)controller
                                   fileMark:(NSString *)fileMark
-                                  Progress:(void (^)(NSProgress *uploadProgress))Progress
+                                  progress:(void (^)(NSProgress *uploadProgress))progress
                                    success:(void(^)(id responseObject))success
-                                     False:(void(^)(NSError *error))False;
+                                     failed:(void(^)(NSError *error))failed;
 @end
