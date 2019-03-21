@@ -21,10 +21,11 @@
 @property (nonatomic , strong) MCItem * lastItem;
 @property (nonatomic , strong) UIView  * lineView;
 @property (nonatomic , assign) CGFloat  titleScrollHeight;
-@property (nonatomic , assign) BOOL  isClick;
-//记录外面传进来的RGB的值
+
+//记录外面传进来的RGB的值 
 @property (nonatomic , assign) CGFloat  defaultR,defaultG,defaultB,defaultA,selectedR,selectedG,selectedB,selectedA;
 @property (nonatomic , strong) UIColor *netxColor ;
+@property (nonatomic , assign) BOOL  isClick;
 @end
 
 static const NSInteger itemTag = 100;

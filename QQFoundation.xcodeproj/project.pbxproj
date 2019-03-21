@@ -10,11 +10,13 @@
 		0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */; };
 		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
-		4B1ADA572141361700EEADCE /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA522141361700EEADCE /* MCPickerHeaderView.m */; };
-		4B1ADA582141361700EEADCE /* MCPickerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA532141361700EEADCE /* MCPickerListView.m */; };
-		4B1ADA592141361700EEADCE /* MCPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA542141361700EEADCE /* MCPickerView.m */; };
-		4B1ADA5A2141361700EEADCE /* MCPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA552141361700EEADCE /* MCPickerModel.m */; };
-		4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */; };
+		4B1C2B63222E28B50007EB9B /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5B222E28B50007EB9B /* addr.json */; };
+		4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */; };
+		4B1C2B65222E28B50007EB9B /* MCPickerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5E222E28B50007EB9B /* MCPickerListView.m */; };
+		4B1C2B66222E28B50007EB9B /* MCPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5F222E28B50007EB9B /* MCPickerView.m */; };
+		4B1C2B67222E28B50007EB9B /* MCClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B60222E28B50007EB9B /* MCClose@2x.png */; };
+		4B1C2B68222E28B50007EB9B /* MCPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B61222E28B50007EB9B /* MCPickerModel.m */; };
+		4B1C2B69222E28B50007EB9B /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B62222E28B50007EB9B /* MyCollectionViewCell.m */; };
 		4B1C576F21B93E3E000AFCF1 /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C576D21B93E3E000AFCF1 /* UIScrollView+Touch.m */; };
 		4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */; };
 		4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F10C7211C384500B09B80 /* MCUserInfo.m */; };
@@ -37,7 +39,6 @@
 		4B4D5A70211B2B40007FDED8 /* MCTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D5A6F211B2B40007FDED8 /* MCTextFieldCell.m */; };
 		4B4D5A73211B2B5E007FDED8 /* MCLableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D5A72211B2B5E007FDED8 /* MCLableCell.m */; };
 		4B5BEF8320ECA6B4000BB2E2 /* MCFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */; };
-		4B7663A6214A452A0073F7D8 /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7663A5214A452A0073F7D8 /* addr.json */; };
 		4B7663A9214A46550073F7D8 /* MCPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7663A8214A46550073F7D8 /* MCPickerViewController.m */; };
 		4B772AA621E347FB009D1805 /* MCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B772AA021E347FB009D1805 /* MCSearchViewController.m */; };
 		4B772AA721E347FB009D1805 /* MCSearchCleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B772AA121E347FB009D1805 /* MCSearchCleanCell.m */; };
@@ -63,12 +64,11 @@
 		4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2921121EF0F04008530AE /* ArtileImageCell.m */; };
 		4BC2921C21EF1178008530AE /* MCDEleteItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */; };
 		4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921B21EF1178008530AE /* SelectImage@2x.png */; };
-		4BCB67CA2142457E0094E664 /* MCClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCB67C92142457E0094E664 /* MCClose@2x.png */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A7F2152707E0063164A /* MCPageViewViewController.m */; };
 		4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A83215270E40063164A /* MCPageViewSub1ViewController.m */; };
 		4BE30A87215270F30063164A /* MCPageViewSub2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */; };
-		4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */; };
+		4BE6CD10224333E80048217F /* NSObject+MB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE6CD0F224333E80048217F /* NSObject+MB.m */; };
 		4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79920EB45020076E090 /* MCDetectionView.m */; };
 		4BFBC6E421E837D800012B96 /* MCHoveringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBC6E321E837D800012B96 /* MCHoveringView.m */; };
 		5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */; };
@@ -196,16 +196,18 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QQFoundation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.release.xcconfig"; sourceTree = "<group>"; };
-		4B1ADA4D2141361700EEADCE /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
-		4B1ADA4E2141361700EEADCE /* MCPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerView.h; sourceTree = "<group>"; };
-		4B1ADA4F2141361700EEADCE /* MCPickerListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerListView.h; sourceTree = "<group>"; };
-		4B1ADA502141361700EEADCE /* MCPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerModel.h; sourceTree = "<group>"; };
-		4B1ADA512141361700EEADCE /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
-		4B1ADA522141361700EEADCE /* MCPickerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerHeaderView.m; sourceTree = "<group>"; };
-		4B1ADA532141361700EEADCE /* MCPickerListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerListView.m; sourceTree = "<group>"; };
-		4B1ADA542141361700EEADCE /* MCPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerView.m; sourceTree = "<group>"; };
-		4B1ADA552141361700EEADCE /* MCPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerModel.m; sourceTree = "<group>"; };
-		4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
+		4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
+		4B1C2B58222E28B50007EB9B /* MCPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerView.h; sourceTree = "<group>"; };
+		4B1C2B59222E28B50007EB9B /* MCPickerListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerListView.h; sourceTree = "<group>"; };
+		4B1C2B5A222E28B50007EB9B /* MCPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerModel.h; sourceTree = "<group>"; };
+		4B1C2B5B222E28B50007EB9B /* addr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addr.json; sourceTree = "<group>"; };
+		4B1C2B5C222E28B50007EB9B /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerHeaderView.m; sourceTree = "<group>"; };
+		4B1C2B5E222E28B50007EB9B /* MCPickerListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerListView.m; sourceTree = "<group>"; };
+		4B1C2B5F222E28B50007EB9B /* MCPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerView.m; sourceTree = "<group>"; };
+		4B1C2B60222E28B50007EB9B /* MCClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCClose@2x.png"; sourceTree = "<group>"; };
+		4B1C2B61222E28B50007EB9B /* MCPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPickerModel.m; sourceTree = "<group>"; };
+		4B1C2B62222E28B50007EB9B /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
 		4B1C576D21B93E3E000AFCF1 /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
 		4B1C576E21B93E3E000AFCF1 /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
 		4B1F107F211C303700B09B80 /* MCVerificationCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCVerificationCodeView.h; sourceTree = "<group>"; };
@@ -250,7 +252,6 @@
 		4B4D5A72211B2B5E007FDED8 /* MCLableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCLableCell.m; sourceTree = "<group>"; };
 		4B5BEF8120ECA6B3000BB2E2 /* MCFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCFactory.h; sourceTree = "<group>"; };
 		4B5BEF8220ECA6B3000BB2E2 /* MCFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFactory.m; sourceTree = "<group>"; };
-		4B7663A5214A452A0073F7D8 /* addr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addr.json; sourceTree = "<group>"; };
 		4B7663A7214A46550073F7D8 /* MCPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPickerViewController.h; sourceTree = "<group>"; };
 		4B7663A8214A46550073F7D8 /* MCPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPickerViewController.m; sourceTree = "<group>"; };
 		4B772AA021E347FB009D1805 /* MCSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSearchViewController.m; sourceTree = "<group>"; };
@@ -288,7 +289,6 @@
 		4BC2921121EF0F04008530AE /* ArtileImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtileImageCell.m; sourceTree = "<group>"; };
 		4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCDEleteItem@2x.png"; sourceTree = "<group>"; };
 		4BC2921B21EF1178008530AE /* SelectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectImage@2x.png"; sourceTree = "<group>"; };
-		4BCB67C92142457E0094E664 /* MCClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCClose@2x.png"; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
 		4BDC83D920E120F600F13C46 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -298,8 +298,8 @@
 		4BE30A83215270E40063164A /* MCPageViewSub1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub1ViewController.m; sourceTree = "<group>"; };
 		4BE30A85215270F30063164A /* MCPageViewSub2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageViewSub2ViewController.h; sourceTree = "<group>"; };
 		4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub2ViewController.m; sourceTree = "<group>"; };
-		4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MBProgress.h"; sourceTree = "<group>"; };
-		4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBProgress.m"; sourceTree = "<group>"; };
+		4BE6CD0E224333E80048217F /* NSObject+MB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MB.h"; sourceTree = "<group>"; };
+		4BE6CD0F224333E80048217F /* NSObject+MB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MB.m"; sourceTree = "<group>"; };
 		4BFAB79820EB45020076E090 /* MCDetectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetectionView.h; sourceTree = "<group>"; };
 		4BFAB79920EB45020076E090 /* MCDetectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetectionView.m; sourceTree = "<group>"; };
 		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
@@ -526,21 +526,21 @@
 			path = QQTableViewManager;
 			sourceTree = "<group>";
 		};
-		4B1ADA4C2141361700EEADCE /* MCPicker */ = {
+		4B1C2B56222E28B50007EB9B /* MCPicker */ = {
 			isa = PBXGroup;
 			children = (
-				4B7663A5214A452A0073F7D8 /* addr.json */,
-				4B1ADA4E2141361700EEADCE /* MCPickerView.h */,
-				4B1ADA542141361700EEADCE /* MCPickerView.m */,
-				4B1ADA4F2141361700EEADCE /* MCPickerListView.h */,
-				4B1ADA532141361700EEADCE /* MCPickerListView.m */,
-				4B1ADA4D2141361700EEADCE /* MCPickerHeaderView.h */,
-				4B1ADA522141361700EEADCE /* MCPickerHeaderView.m */,
-				4B1ADA502141361700EEADCE /* MCPickerModel.h */,
-				4B1ADA552141361700EEADCE /* MCPickerModel.m */,
-				4B1ADA512141361700EEADCE /* MyCollectionViewCell.h */,
-				4B1ADA562141361700EEADCE /* MyCollectionViewCell.m */,
-				4BCB67C92142457E0094E664 /* MCClose@2x.png */,
+				4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */,
+				4B1C2B58222E28B50007EB9B /* MCPickerView.h */,
+				4B1C2B59222E28B50007EB9B /* MCPickerListView.h */,
+				4B1C2B5A222E28B50007EB9B /* MCPickerModel.h */,
+				4B1C2B5B222E28B50007EB9B /* addr.json */,
+				4B1C2B5C222E28B50007EB9B /* MyCollectionViewCell.h */,
+				4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */,
+				4B1C2B5E222E28B50007EB9B /* MCPickerListView.m */,
+				4B1C2B5F222E28B50007EB9B /* MCPickerView.m */,
+				4B1C2B60222E28B50007EB9B /* MCClose@2x.png */,
+				4B1C2B61222E28B50007EB9B /* MCPickerModel.m */,
+				4B1C2B62222E28B50007EB9B /* MyCollectionViewCell.m */,
 			);
 			path = MCPicker;
 			sourceTree = "<group>";
@@ -722,6 +722,7 @@
 		4BA4E12D2227B7B6003DDF5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B1C2B56222E28B50007EB9B /* MCPicker */,
 				4BA4E12F2227BA6A003DDF5C /* MCPopView */,
 				52D8D1741F4D77EF00EA413B /* QQSingleImagePicker */,
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
@@ -730,7 +731,6 @@
 				ACE02634201766FE00A387DC /* QQAlertController */,
 				4BFBC6E121E837AC00012B96 /* MCHovering */,
 				4B1F107E211C301600B09B80 /* MCVerificationCodeView */,
-				4B1ADA4C2141361700EEADCE /* MCPicker */,
 				4B46A1862165D31F001B560A /* MCPageView */,
 				4B772A9F21E347FB009D1805 /* MCSearch */,
 			);
@@ -1118,8 +1118,8 @@
 			children = (
 				52D8D16C1F4D77EF00EA413B /* MBProgressHUD.h */,
 				52D8D16D1F4D77EF00EA413B /* MBProgressHUD.m */,
-				4BE607C320DBCB8300C95BF9 /* UIView+MBProgress.h */,
-				4BE607C420DBCB8300C95BF9 /* UIView+MBProgress.m */,
+				4BE6CD0E224333E80048217F /* NSObject+MB.h */,
+				4BE6CD0F224333E80048217F /* NSObject+MB.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1360,19 +1360,19 @@
 			files = (
 				4B772AAC21E34821009D1805 /* hr_search@2x.png in Resources */,
 				4BBBFC9721194CD9003EC96B /* bing.caf in Resources */,
-				4BCB67CA2142457E0094E664 /* MCClose@2x.png in Resources */,
-				4B7663A6214A452A0073F7D8 /* addr.json in Resources */,
 				4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */,
 				4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */,
 				AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */,
 				5274E9F61F8F4AC80018E93C /* barbuttonicon_back@2x.png in Resources */,
 				52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */,
 				4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */,
+				4B1C2B63222E28B50007EB9B /* addr.json in Resources */,
 				4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */,
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
 				52C1155E1F4EC5CE005471CB /* MJRefresh.bundle in Resources */,
 				4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */,
 				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
+				4B1C2B67222E28B50007EB9B /* MCClose@2x.png in Resources */,
 				4BC2921C21EF1178008530AE /* MCDEleteItem@2x.png in Resources */,
 				52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */,
 				52D8D1171F4D775500EA413B /* Main.storyboard in Resources */,
@@ -1438,7 +1438,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B4D5A6C211B293F007FDED8 /* MCSearchTViewController.m in Sources */,
-				4B1ADA5A2141361700EEADCE /* MCPickerModel.m in Sources */,
 				52C1154F1F4EC5CE005471CB /* AFURLSessionManager.m in Sources */,
 				ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */,
 				52C1156F1F4EC5CE005471CB /* SDWebImageManager.m in Sources */,
@@ -1464,6 +1463,7 @@
 				52C1155C1F4EC5CE005471CB /* MJRefreshNormalHeader.m in Sources */,
 				4B1C576F21B93E3E000AFCF1 /* UIScrollView+Touch.m in Sources */,
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
+				4BE6CD10224333E80048217F /* NSObject+MB.m in Sources */,
 				4B4D5A69211B2932007FDED8 /* MCAuthorViewController.m in Sources */,
 				52C115701F4EC5CE005471CB /* SDWebImagePrefetcher.m in Sources */,
 				52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */,
@@ -1476,6 +1476,7 @@
 				4B772AA821E347FB009D1805 /* MCSearchCell.m in Sources */,
 				52C1156D1F4EC5CE005471CB /* SDWebImageDownloader.m in Sources */,
 				52C1154A1F4EC5CE005471CB /* AFHTTPSessionManager.m in Sources */,
+				4B1C2B66222E28B50007EB9B /* MCPickerView.m in Sources */,
 				4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */,
 				4B94392321C110CC00F34743 /* MCPageViewSub3ViewController.m in Sources */,
 				52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */,
@@ -1483,12 +1484,13 @@
 				52C115721F4EC5CE005471CB /* UIImage+GIF.m in Sources */,
 				52C115741F4EC5CE005471CB /* UIImage+WebP.m in Sources */,
 				AC10A805206B90B600FF937D /* UINavigationBar+QQSpeace.m in Sources */,
+				4B1C2B65222E28B50007EB9B /* MCPickerListView.m in Sources */,
 				4B4D5A73211B2B5E007FDED8 /* MCLableCell.m in Sources */,
 				4B2F3FF322269F6F00528272 /* NSDate+QQCalculate.m in Sources */,
 				52C1155B1F4EC5CE005471CB /* MJRefreshGifHeader.m in Sources */,
+				4B1C2B69222E28B50007EB9B /* MyCollectionViewCell.m in Sources */,
 				52C115601F4EC5CE005471CB /* NSBundle+MJRefresh.m in Sources */,
 				52C1155A1F4EC5CE005471CB /* MJRefreshBackStateFooter.m in Sources */,
-				4BE607C520DBCB8300C95BF9 /* UIView+MBProgress.m in Sources */,
 				4B43A86020DB72EF00422438 /* UIView+MCPopView.m in Sources */,
 				4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */,
 				52C115631F4EC5CE005471CB /* UIView+MJExtension.m in Sources */,
@@ -1500,17 +1502,16 @@
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
-				4B1ADA5B2141361700EEADCE /* MyCollectionViewCell.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
 				4B7663A9214A46550073F7D8 /* MCPickerViewController.m in Sources */,
 				4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */,
 				4B4D5A63211B2910007FDED8 /* MCRewardViewController.m in Sources */,
+				4B1C2B68222E28B50007EB9B /* MCPickerModel.m in Sources */,
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,
 				4BFBC6E421E837D800012B96 /* MCHoveringView.m in Sources */,
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
-				4B1ADA592141361700EEADCE /* MCPickerView.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */,
@@ -1537,7 +1538,6 @@
 				52C1154D1F4EC5CE005471CB /* AFURLRequestSerialization.m in Sources */,
 				5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */,
 				4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */,
-				4B1ADA582141361700EEADCE /* MCPickerListView.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
@@ -1547,8 +1547,8 @@
 				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
-				4B1ADA572141361700EEADCE /* MCPickerHeaderView.m in Sources */,
 				4BA5A34521708DB200299613 /* MCWebViewViewController.m in Sources */,
+				4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */,
 				4B772AA721E347FB009D1805 /* MCSearchCleanCell.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,
 				4B772AA621E347FB009D1805 /* MCSearchViewController.m in Sources */,

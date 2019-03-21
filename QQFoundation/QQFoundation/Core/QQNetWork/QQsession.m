@@ -8,7 +8,7 @@
 
 #import "QQsession.h"
 #import "AFNetworking.h"
-#import "UIView+MBProgress.h"
+#import "NSObject+MB.h"
 #import "QQTool.h"
 #import "QQNetManager.h"
 #import "NSDate+QQCalculate.h"
@@ -33,7 +33,7 @@
     }
     NSURLSessionDataTask * operation;
     [[QQNetManager Instance] insertQQConnection:self];
-    [controller.view loading];
+    [self loading];
     switch (txdType) {
         case get:
         {
@@ -73,7 +73,7 @@
 {
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
     NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [controller.view loading];
+    [self loading];
     NSURLSessionDataTask * operation = [[QQNetManager Instance].sessionManager POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in Images) {
             NSData * data = [QQTool imageData:image];
@@ -104,12 +104,12 @@
         }
         successBlock(responseObject);
     }else{
-        [controller.view message:[QQTool strRelay:responseObject[@"msg"]]  HiddenAfterDelay:2];
+        [self message:[QQTool strRelay:responseObject[@"msg"]]];
         NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[@"msg"]], NSLocalizedDescriptionKey,nil];
         NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:[responseObject[@"code"] integerValue] userInfo:userInfo1];
         failureBlock(error);
     }
-    [controller.view hiddenHUD];
+    [self hiddenHUD];
 
     [self doneRequest:controller];
 }
@@ -120,12 +120,12 @@
     }
 //主动退出怎么才能不显示失败的提示 -999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
-        [controller.view message:@"请求超时，请重试！" HiddenAfterDelay:2];
+        [self message:@"请求超时，请重试！"];
     }else  if (error.code == -999) {//-999是请求被取消
     }else{
         failureBlock(error);
     }
-    [controller.view hiddenHUD];
+    [self hiddenHUD];
     [self doneRequest:controller];
 }
 - (void)doneRequest:(UIViewController *)controller

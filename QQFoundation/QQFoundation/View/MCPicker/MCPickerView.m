@@ -89,6 +89,7 @@ static NSInteger const PickerViewHeight = 350;//
     self.headerDataArray  = [self.headerDataArray subarrayWithRange:NSMakeRange(0, MCPickerListView.tag)].mutableCopy;
     [self.headerDataArray addObject:value.name];
     [self.headerDataArray addObject:@"请选择"];
+    
     NSMutableArray<MCPickerModel *> * array;
     if ([self.delegate respondsToSelector:@selector(MCPickerView:didSelcetedTier:selcetedValue:)]) {
         array =  [self.delegate MCPickerView:self didSelcetedTier:MCPickerListView.tag selcetedValue:value];
