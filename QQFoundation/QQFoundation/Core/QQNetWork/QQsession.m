@@ -12,6 +12,8 @@
 #import "QQTool.h"
 #import "QQNetManager.h"
 #import "NSDate+QQCalculate.h"
+static NSString * const timeKey = @"time";
+static NSString * const dataKey = @"data";
 @interface QQsession ()
 @property (nonatomic , strong) AFHTTPSessionManager * sessionManager;
 @property (nonatomic , strong) AFHTTPRequestSerializer <AFURLRequestSerialization> * requestJsonSerializer;
@@ -20,36 +22,40 @@
 
 @implementation QQsession
 
-- (NSURLSessionDataTask *)TXDWith:(NSString *)url param:(NSDictionary *)param from:(UIViewController *)controller txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType commiteType:(CommiteType)commiteType success:(void (^)(id))success failed:(void (^)(NSError *))failed
+- (NSURLSessionDataTask *)TXDWith:(NSString *)url param:(NSDictionary *)param txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType commiteType:(CommiteType)commiteType success:(void (^)(id))success failed:(void (^)(NSError *))failed
 {
-//判断缓存
+    //判断缓存
     if (cacheType == localData) {
-        NSDictionary *dic  = [[QQNetManager Instance].dataCache objectForKey:self.urlStr];
-        double preTime = [dic[@"time"] boolValue];
+        NSDictionary *dic  = [[QQNetManager Instance].dataCache objectForKey:self.cacheKey];
+        double preTime = [dic[timeKey] boolValue];
         double nowtime = (long)[[NSDate date] timeIntervalSince1970];
         if ((nowtime - preTime)>60) {
-            [[QQNetManager Instance].dataCache removeObjectForKey:self.urlStr];
+            [[QQNetManager Instance].dataCache removeObjectForKey:self.cacheKey];
         }else{
-            success(dic[@"data"]);
+            success(dic[dataKey]);
             return nil;
         }
     }
+    //判断提交数据方式
     if (commiteType == keyV) {
         self.sessionManager.requestSerializer = self.requestKeyVSerializer;
     }else{
         self.sessionManager.requestSerializer = self.requestJsonSerializer;
     }
+    url = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
+
     NSURLSessionDataTask * operation;
     [[QQNetManager Instance] insertQQConnection:self];
     [self loading];
+    //请求方式
     switch (txdType) {
         case get:
         {
             operation = [self.sessionManager GET:url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:failed];
+                [self handleResponseObject:responseObject cacheType:cacheType Success:success failure:failed];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [self handleResponseObject:error Controller:controller failure:failed];
+                [self handleResponseObject:error failure:failed];
             }];
             break;
         }
@@ -57,9 +63,9 @@
         {
             [self.sessionManager POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleResponseObject:responseObject cacheType:cacheType key:self.urlStr Controller:controller Success:success failure:failed];
+                [self handleResponseObject:responseObject cacheType:cacheType Success:success failure:failed];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [self handleResponseObject:error Controller:controller failure:failed];
+                [self handleResponseObject:error failure:failed];
             }];
             break;
         }
@@ -73,16 +79,14 @@
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
                                        dic:(NSDictionary *)dic
                               imageArray:(NSMutableArray *)images
-                                      from:(UIViewController *)controller
                                   fileMark:(NSString *)fileMark
                                   progress:(void (^)(NSProgress *uploadProgress))progress
                                    success:(void(^)(id responseObject))success
                                      failed:(void(^)(NSError *error))failed
 {
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
-    NSMutableDictionary *TrueDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [self loading];
-    NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:TrueDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in images) {
             NSData * data = [QQTool imageData:image];
             [formData appendPartWithFileData:data name:fileMark
@@ -92,23 +96,22 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         progress(uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handleResponseObject:responseObject cacheType:ignore key:nil Controller:controller Success:success failure:failed];
+        [self handleResponseObject:responseObject cacheType:ignore Success:success failure:failed];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self handleResponseObject:error Controller:controller failure:failed];
+        [self handleResponseObject:error failure:failed];
     }];
     return operation;
 }
 #pragma mark - 统一处理下载返回的数据
-- (void)handleResponseObject:(id)responseObject  cacheType:(CacheType)cacheType key:(NSString *)key Controller:(UIViewController *)controller Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
+- (void)handleResponseObject:(id)responseObject  cacheType:(CacheType)cacheType Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
 {
     if ([QQNetManager Instance].isMonitor) {
         [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
-        
     }
     if ([responseObject[@"code"] isEqualToString:successCode]) {
         if (cacheType == localData) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
-            [[QQNetManager Instance].dataCache setObject:@{@"data":responseObject,@"time":@(time)} forKey:key];
+            [[QQNetManager Instance].dataCache setObject:@{dataKey:responseObject,timeKey:@(time)} forKey:self.cacheKey];
         }
         successBlock(responseObject);
     }else{
@@ -118,53 +121,23 @@
         failureBlock(error);
     }
     [self hiddenHUD];
-
-    [self doneRequest:controller];
+    //请求结束 从字典里删除本次请求
+    [[QQNetManager Instance] deleteQQConnection:self];
 }
-- (void)handleResponseObject:(NSError *)error  Controller:(UIViewController *)controller failure:(void(^)(NSError *error))failureBlock
+- (void)handleResponseObject:(NSError *)error failure:(void(^)(NSError *error))failureBlock
 {
     if ([QQNetManager Instance].isMonitor) {
         [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:error};
     }
-//主动退出怎么才能不显示失败的提示 -999就是取消此次下载
+    //-999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [self message:@"请求超时，请重试！"];
     }else  if (error.code == -999) {//-999是请求被取消
-    }else{
-        failureBlock(error);
     }
+    failureBlock(error);
     [self hiddenHUD];
-    [self doneRequest:controller];
-}
-- (void)doneRequest:(UIViewController *)controller
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible =NO;//请求失败关闭小菊花
-    [[QQNetManager Instance] deleteQQConnection:self];//请求结束 从字典里删除本次请求
-}
-#pragma mark  网络判断
--(BOOL)requestBeforeJudgeConnect
-{
-    struct sockaddr zeroAddress;
-    bzero(&zeroAddress, sizeof(zeroAddress));
-    zeroAddress.sa_len = sizeof(zeroAddress);
-    zeroAddress.sa_family = AF_INET;
-    SCNetworkReachabilityRef defaultRouteReachability =
-    SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);
-    SCNetworkReachabilityFlags flags;
-    BOOL didRetrieveFlags =
-    SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
-    CFRelease(defaultRouteReachability);
-    if (!didRetrieveFlags) {
-        NSLog(@"Error. Count not recover network reachability flags\n");
-        return NO;
-    }
-    BOOL isReachable = flags & kSCNetworkFlagsReachable;
-    BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
-    BOOL isNetworkEnable  =(isReachable && !needsConnection) ? YES : NO;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible =isNetworkEnable;/*  网络指示器的状态： 有网络 ： 开  没有网络： 关  */
-    });
-    return isNetworkEnable;
+    //请求结束 从字典里删除本次请求
+    [[QQNetManager Instance] deleteQQConnection:self];
 }
 - (AFHTTPSessionManager *)sessionManager
 {

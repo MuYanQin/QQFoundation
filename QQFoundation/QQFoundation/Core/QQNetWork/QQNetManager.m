@@ -13,8 +13,10 @@
 #import "AFNetworking.h"
 
 @interface QQNetManager()
-@property (nonatomic , strong) NSMutableDictionary * dataDic;///<纪录下载的url
-@property (nonatomic , strong) NSMutableArray * controllerRequest;///<纪录页面的请求
+/**纪录当前正在请求的url*/
+@property (nonatomic , strong) NSMutableDictionary * dataDic;
+/**纪录页面的请求*/
+@property (nonatomic , strong) NSMutableArray * controllerRequest;
 @end
 @implementation QQNetManager
 {
@@ -74,7 +76,7 @@
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:param];
         session.controllerName = NSStringFromClass([controller class]);
-        [session TXDWith:url param:param from:controller txdType:txdType cacheType:cacheType commiteType:commiteType success:success failed:failed];
+        [session TXDWith:url param:param txdType:txdType cacheType:cacheType commiteType:commiteType success:success failed:failed];
     }
 }
 
@@ -92,22 +94,22 @@
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:parameters];
-        [session TXDUploadWithUrl:url dic:parameters imageArray:images from:controller fileMark:fileMark progress:progress success:success failed:failed];
+        [session TXDUploadWithUrl:url dic:parameters imageArray:images fileMark:fileMark progress:progress success:success failed:failed];
     }
 }
 
 //为了防止单个网络请求多次请求 例如刷新
 - (void)insertQQConnection:(QQsession *)hc
 {
-    if (!hc.urlStr)return;
-    [_dataDic setObject:hc forKey:hc.urlStr];
+    if (!hc.cacheKey)return;
+    [_dataDic setObject:hc forKey:hc.cacheKey];
     if (hc.controllerName.length >0) {
         [_controllerRequest addObject:hc];
     }
 }
 - (void)deleteQQConnection:(QQsession *)hc
 {
-    [_dataDic removeObjectForKey:hc.urlStr];
+    [_dataDic removeObjectForKey:hc.cacheKey];
     [_controllerRequest removeObject:hc];
 }
 //控制器消失的时候取消下载
