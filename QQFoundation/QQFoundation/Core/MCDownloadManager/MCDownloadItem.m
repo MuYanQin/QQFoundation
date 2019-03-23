@@ -10,27 +10,6 @@
 #import <objc/runtime.h>
 @implementation MCDownloadItem
 #pragma mark - NSCoding
-//- (void)encodeWithCoder:(NSCoder *)aCoder
-//{
-//    [aCoder encodeObject:@(self.loadStatus) forKey:NSStringFromSelector(@selector(loadStatus))];
-//    [aCoder encodeObject:self.downloadString forKey:NSStringFromSelector(@selector(downloadString))];
-//    [aCoder encodeObject:self.savePath forKey:NSStringFromSelector(@selector(savePath))];
-//    [aCoder encodeObject:self.resumeData forKey:NSStringFromSelector(@selector(resumeData))];
-//
-//
-//}
-//
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super init];
-//    if (self) {
-//        self.downloadString = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(downloadString))];
-//        self.savePath = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(savePath))];
-//        self.loadStatus = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(loadStatus))] unsignedIntegerValue];
-//        self.resumeData = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(resumeData))];
-//    }
-//    return self;
-//}
 ///  解档
 - (instancetype)initWithCoder:(NSCoder *)coder
 {

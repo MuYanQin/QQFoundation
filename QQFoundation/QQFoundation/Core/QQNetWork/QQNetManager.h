@@ -15,6 +15,7 @@
 static NSString *const successCode = @"200";//配置正确返回的code码
 
 @interface QQNetManager : NSObject
+/**监控数据请求的View*/
 @property (nonatomic , strong) MCMonitorView * monitorView;
 
 /**
@@ -37,7 +38,7 @@ static NSString *const successCode = @"200";//配置正确返回的code码
 /**
  缓存时间。秒为单位  默认60S
  */
-@property (nonatomic , assign) NSInteger  cacheMin;
+@property (nonatomic , assign) NSInteger  cacheSec;
 
 + (instancetype)Instance;
 

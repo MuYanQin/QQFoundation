@@ -27,9 +27,9 @@ static NSString * const dataKey = @"data";
     //判断缓存
     if (cacheType == localData) {
         NSDictionary *dic  = [[QQNetManager Instance].dataCache objectForKey:self.cacheKey];
-        double preTime = [dic[timeKey] boolValue];
+        double preTime = [dic[timeKey] doubleValue];
         double nowtime = (long)[[NSDate date] timeIntervalSince1970];
-        if ((nowtime - preTime)>60) {
+        if ((nowtime - preTime)>[QQNetManager Instance].cacheSec) {
             [[QQNetManager Instance].dataCache removeObjectForKey:self.cacheKey];
         }else{
             success(dic[dataKey]);

@@ -30,6 +30,7 @@
         _controllerRequest = [NSMutableArray array];
         _dataCache = [[NSCache alloc]init];
         _dataCache.totalCostLimit = 3 * 1024 * 1024;
+        _cacheSec = 60;
     }
     return self;
 }

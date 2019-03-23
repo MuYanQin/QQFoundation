@@ -17,7 +17,7 @@ typedef void(^BGCompletedHandler)();
 @property (nonatomic , strong) NSMutableDictionary * taskMuDic;
 @property (nonatomic , copy) BGCompletedHandler   CompletedHandler;
 @end
-static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation.ConfigurationIdentifier";
+static  NSString * const MCConfigurationIdentifier = @"com.QQFoundation.ConfigurationIdentifier";
 
 @implementation MCDownloadManager
 + (instancetype)defaultManager
@@ -71,7 +71,6 @@ static  NSString * const MCConfigurationIdentifier = @"shanjin.QQFoundation.Conf
     }else if(item.loadStatus == MCDownloadLoading){
         item = [[MCDownloadItem alloc]init];
         return item;
-        
     }else{
         item = [[MCDownloadItem alloc]init];
     }
@@ -197,7 +196,6 @@ didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask
 
 }
 //将一个后台session作废完成后的回调，用来切换是否允许使用蜂窝煤网络，重新创建session
-
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error {
     NSLog(@"%s",__func__);
     NSLog(@"didBecomeInvalidWithError");
@@ -346,7 +344,7 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
 {
     if (!_Configuration) {
         _Configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:MCConfigurationIdentifier];
-        _Configuration.allowsCellularAccess = NO;
+        _Configuration.allowsCellularAccess = YES;
     }
     return _Configuration;
 }
