@@ -11,6 +11,7 @@
 @interface MCPickerHeaderView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic , strong) UICollectionView * collectionView;
 @property (nonatomic , strong) UIView * animationline;
+@property (nonatomic , assign) BOOL  isRealodData;
 @end
 @implementation MCPickerHeaderView
 
@@ -29,9 +30,9 @@
     line.alpha = 0.7;
     [self addSubview:line];
     
-    self.animationline = [[UIView alloc]init];
+    self.animationline = [[UIView alloc]initWithFrame:CGRectMake(0, self.collectionView.frame.size.height - 1, 0, 1)];
     self.animationline.backgroundColor = [UIColor redColor];
-    [line addSubview:self.animationline];
+    [self.collectionView addSubview:self.animationline];
 }
 - (UICollectionView *)collectionView
 {
@@ -54,20 +55,21 @@
 {
     MyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCollectionViewCell" forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor whiteColor];
     cell.tLb.text = self.dataArray[indexPath.row];
     if (self.isLastRed && (indexPath.row ==  self.dataArray.count -1)) {
-        CGRect cellRect = [self.collectionView convertRect:cell.frame toView:self.collectionView];
-        CGRect tt = [self.collectionView convertRect:cellRect toView:self];
-        tt.size.height = 1;
-        [UIView animateWithDuration:0.5 animations:^{
-            self.animationline.frame = tt;
-        }];
         cell.tLb.textColor = [UIColor redColor];
     }else{
         cell.tLb.textColor = [UIColor blackColor];
     }
-
+    if (self.isRealodData) {
+        CGRect tt = cell.frame;
+        tt.origin.y = tt.size.height - 1;
+        tt.size.height = 1;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.animationline.frame = tt;
+        }];
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];
+    }
     return cell;
 }
 
@@ -98,9 +100,11 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 }
 - (void)setAnimationLineAnimation:(NSIndexPath *)indexpath
 {
-    MyCollectionViewCell *c = (MyCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexpath];
-    CGRect cellRect = [self.collectionView convertRect:c.frame toView:self.collectionView];
-    CGRect tt = [self.collectionView convertRect:cellRect toView:self];
+    self.isRealodData = NO;
+    [self.collectionView scrollToItemAtIndexPath:indexpath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];
+    MyCollectionViewCell *cell = (MyCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexpath];
+    CGRect tt = cell.frame;
+    tt.origin.y = tt.size.height - 1;
     tt.size.height = 1;
     [UIView animateWithDuration:0.5 animations:^{
         self.animationline.frame = tt;
@@ -109,6 +113,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 - (void)setDataArray:(NSArray *)dataArray
 {
     _dataArray = dataArray;
+    self.isRealodData = YES;
     [self.collectionView reloadData];
 }
 @end
