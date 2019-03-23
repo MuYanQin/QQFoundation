@@ -22,7 +22,7 @@ static NSString * const dataKey = @"data";
 
 @implementation QQsession
 
-- (NSURLSessionDataTask *)TXDWith:(NSString *)url param:(NSDictionary *)param txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType commiteType:(CommiteType)commiteType success:(void (^)(id))success failed:(void (^)(NSError *))failed
+- (NSURLSessionDataTask *)TXDWith:(NSString *)url param:(NSDictionary *)param  txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType commiteType:(CommiteType)commiteType success:(void (^)(id))success failed:(void (^)(NSError *))failed
 {
     //判断缓存
     if (cacheType == localData) {
@@ -46,7 +46,9 @@ static NSString * const dataKey = @"data";
 
     NSURLSessionDataTask * operation;
     [[QQNetManager Instance] insertQQConnection:self];
-    [self loading];
+    if (self.showMb) {
+        [self loading];
+    }
     //请求方式
     switch (txdType) {
         case get:
@@ -85,7 +87,9 @@ static NSString * const dataKey = @"data";
                                      failed:(void(^)(NSError *error))failed
 {
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
-    [self loading];
+    if (self.showMb) {
+        [self loading];
+    }
     NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in images) {
             NSData * data = [QQTool imageData:image];

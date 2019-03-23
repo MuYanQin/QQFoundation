@@ -75,7 +75,10 @@
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:param];
-        session.controllerName = NSStringFromClass([controller class]);
+        session.showMb = controller?YES:NO;
+        if (controller) {
+            session.controllerName = NSStringFromClass([controller class]);
+        }
         [session TXDWith:url param:param txdType:txdType cacheType:cacheType commiteType:commiteType success:success failed:failed];
     }
 }
@@ -94,6 +97,7 @@
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:parameters];
+        session.showMb = controller?YES:NO;
         [session TXDUploadWithUrl:url dic:parameters imageArray:images fileMark:fileMark progress:progress success:success failed:failed];
     }
 }
