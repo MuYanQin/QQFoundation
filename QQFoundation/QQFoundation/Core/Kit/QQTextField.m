@@ -43,7 +43,8 @@
 
 {
     if (self.openPriceCheck) {
-        NSString * str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+        NSMutableString *str = [[NSMutableString alloc]initWithString:textField.text];
+        [str insertString:string atIndex:range.location];
         //匹配以0开头的数字
         NSPredicate * predicate0 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0][0-9]+$"];
         //匹配两位小数、整数

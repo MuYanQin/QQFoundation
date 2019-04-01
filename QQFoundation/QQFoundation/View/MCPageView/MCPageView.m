@@ -46,8 +46,6 @@ static const NSInteger  minTitleButtonWitdh = 60;
         _titleScrollHeight = 50;
         //初始化横线的宽度是title的一半
         _lineWitdhScale = 0.5;
-        //        self.defaultTitleFont = [UIFont systemFontOfSize:14];
-        //        self.selectTitleFont = [UIFont systemFontOfSize:14];
         self.isClick = NO;
         [self addSubview:self.titleScroll];
         [self.titleScroll addSubview:self.lineView];
@@ -483,4 +481,3 @@ static const NSInteger  minTitleButtonWitdh = 60;
 }
 
 @end
-

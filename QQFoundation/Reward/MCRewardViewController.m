@@ -20,7 +20,7 @@
 #import "MCSearchTViewController.h"
 #import "MCMineViewController.h"
 @interface MCRewardViewController ()<MCHoveringListViewDelegate>
-
+@property (nonatomic , strong) UIView * headerView;
 @end
 @implementation MCRewardViewController
 {
@@ -36,9 +36,18 @@
     Author  = [MCAuthorViewController new];
     mine = [MCMineViewController new];
     
+    self.headerView =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    self.headerView.backgroundColor = [UIColor purpleColor];
+    
+    
     MCHoveringView *hovering = [[MCHoveringView alloc]initWithFrame:CGRectMake(0, 64, KScreenWidth, KScreenHeight - 64) deleaget:self];
-    hovering.isMidRefresh = YES;
+    hovering.isMidRefresh = NO;
     [self.view addSubview:hovering];
+    
+    hovering.pageView.selectTitleFont = [UIFont systemFontOfSize:16];
+    hovering.pageView.defaultTitleFont = [UIFont systemFontOfSize:16];
+    hovering.pageView.defaultTitleColor = [UIColor redColor];
+    hovering.pageView.selectTitleColor = [UIColor purpleColor];
 }
 - (NSArray<UIScrollView *> *)listView
 {
@@ -46,7 +55,7 @@
 }
 - (UIView *)headView
 {
-    return    [[UIView alloc]initWithFrame:CGRectMake(0, 0, 90, 200)];
+    return self.headerView;
 }
 - (NSArray<UIViewController *> *)listCtroller
 {
