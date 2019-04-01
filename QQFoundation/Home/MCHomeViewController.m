@@ -50,12 +50,21 @@
     MCLableItem *lableItem = [[MCLableItem alloc]init];
     lableItem.leftText = @"视图弹出";
     lableItem.rightText = @"点击弹出视图";
-    lableItem.allowSlide = YES;
-    lableItem.slideTextArray = @[@"喜欢",@"收藏"];
     lableItem.selcetCellHandler = ^(id item) {
 
     };
     [items addObject:lableItem];
+    
+    MCLableItem *slide = [[MCLableItem alloc]init];
+    slide.leftText = @"侧滑我";
+    slide.rightText = @"侧滑";
+    slide.allowSlide = YES;
+    slide.slideTextArray = @[@"喜欢",@"收藏"];
+    slide.slideColorArray = @[[UIColor redColor],[UIColor blueColor]];
+    slide.selcetCellHandler = ^(id item) {
+        
+    };
+    [items addObject:slide];
     
     
     MCLableItem *contentView = [[MCLableItem alloc]init];

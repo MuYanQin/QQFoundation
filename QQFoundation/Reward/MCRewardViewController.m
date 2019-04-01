@@ -33,6 +33,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"案例使用2";
     search= [MCSearchTViewController new];
+    search.BaseQQTableView.height = search.BaseQQTableView.height - MCBottomDistance - 50;
     Author  = [MCAuthorViewController new];
     mine = [MCMineViewController new];
     
@@ -40,7 +41,7 @@
     self.headerView.backgroundColor = [UIColor purpleColor];
     
     
-    MCHoveringView *hovering = [[MCHoveringView alloc]initWithFrame:CGRectMake(0, 64, KScreenWidth, KScreenHeight - 64) deleaget:self];
+    MCHoveringView *hovering = [[MCHoveringView alloc]initWithFrame:CGRectMake(0, 64, KScreenWidth, KScreenHeight - 64 ) deleaget:self];
     hovering.isMidRefresh = NO;
     [self.view addSubview:hovering];
     

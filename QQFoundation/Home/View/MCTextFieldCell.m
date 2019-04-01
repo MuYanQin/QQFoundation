@@ -7,6 +7,8 @@
 //
 
 #import "MCTextFieldCell.h"
+#import "UILabel+MCChained.h"
+#import "QQTextField.h"
 @implementation MCTextFieldItem
 - (instancetype)init
 {
@@ -21,14 +23,18 @@
 - (void)cellDidLoad
 {
     [super cellDidLoad];
-//    self.LeftLb = getLabel(getFontRegular(15), @"", getColorWithHex(@"2c2c2c"), left);
+    self.LeftLb = [UILabel new];
+    self.LeftLb.Qfont(15).Qtext(@"").QtextColor(getColorWithHex(@"2c2c2c")).Qalignment(Qleft);
     [self.LeftLb sizeToFit];
     [self.contentView addSubview:self.LeftLb];
     
-//    self.TextField = getTextField(getFontRegular(15), getColorWithHex(@"2c2c2c"), right);
-//    self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
-//    self.TextField.maxLength = 8;
-//    self.TextField.openPriceCheck = YES;
+    self.TextField = [[QQTextField alloc]init];
+    self.TextField.font = [UIFont systemFontOfSize:15 weight:(UIFontWeightRegular)];
+    self.TextField.textColor = getColorWithHex(@"2c2c2c");
+    self.TextField.textAlignment  = NSTextAlignmentRight;
+    self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.TextField.maxLength = 8;
+    self.TextField.openPriceCheck = YES;
     [self.contentView addSubview:self.TextField];
     
     UIView *line = getView(getColorWithHex(@"f8f8f8"));
