@@ -71,10 +71,7 @@ static const NSInteger  minTitleButtonWitdh = 60;
 {
     UIViewController *childVC = self.contentCtrollers[indexPath.item];
     childVC.view.frame = cell.contentView.bounds;
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    if (![cell.contentView.subviews containsObject:childVC.view]) {
-        [cell.contentView addSubview:childVC.view];
-    }
+    [cell.contentView addSubview:childVC.view];
 }
 //将要加载头尾视图时调用的方法
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath

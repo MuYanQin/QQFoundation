@@ -52,14 +52,17 @@
     return self.registeredClasses[key];
 }
 #pragma mark - UITableViewDelegate
+/**返回几个section*/
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+/**每个section返回几个cell*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.items.count;
 }
+/**注册cell*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewItem * item = self.items[indexPath.row];
@@ -78,21 +81,25 @@
     cell.detailTextLabel.text = nil;
     return cell;
 }
+/**cell将要显示*/
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewCell * qCell = (QQTableViewCell *)cell;
     [qCell cellWillAppear];
 }
+/**cell显示完成-》cell隐藏*/
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewCell * qCell = (QQTableViewCell *)cell;
     [qCell cellDidDisappear];
 }
+/**返回cell的高度*/
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewItem *item = self.items[indexPath.row];
     return item.CellHeight;
 }
+/**cell点击事件*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -103,10 +110,12 @@
             actionItem.selcetCellHandler(item);
     }
 }
+/**返回是否可以编辑*/
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     QQTableViewItem *item = self.items[indexPath.row];
     return item.allowSlide;
 }
+/**UITableViewRowAction的点击事件*/
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         id item = self.items[indexPath.row];
@@ -115,11 +124,13 @@
             actionItem.slideCellHandler(item);
     }
 }
+/**默认的单个按钮 返回文字*/
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = self.items[indexPath.row];
     QQTableViewItem *actionItem = (QQTableViewItem *)item;
     return actionItem.slideText ? actionItem.slideText: @"删除";
 }
+/**配合MCHovering的滑动处理*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (self.TableView.scrollViewDidScroll) {
@@ -127,29 +138,24 @@
     }
     
 }
-//- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSMutableArray  *btnArray = [NSMutableArray array];
-//
-//    // 添加一个删除按钮
-//    UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-//
-//    }];
-//    // 设置背景颜色
-//    deleteRowAction.backgroundColor = [UIColor redColor];
-//
-//    // 添加一个编辑按钮
-//    UITableViewRowAction *editRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-//
-//    }];
-//    // 设置背景颜色
-//    editRowAction.backgroundColor = [UIColor redColor];
-//
-//    // 将按钮们加入数组
-//    [btnArray addObject:deleteRowAction];
-//    [btnArray addObject:editRowAction];
-//
-//    return btnArray;
-//}
+/**自定义返回文字、背景色*/
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+   __block NSMutableArray  *btnArray = [NSMutableArray array];
+
+    QQTableViewItem *item = (QQTableViewItem *)self.items[indexPath.row];
+
+    if (item.slideTextArray && item.slideTextArray.count >0) {
+        [item.slideTextArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            // 添加一个按钮
+            UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:obj handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+            }];
+            // 设置背景颜色
+            action.backgroundColor = item.slideColorArray[idx];
+            [btnArray addObject:action];
+        }];
+    }
+    return btnArray;
+}
 - (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray
 {
     [self.items removeAllObjects];
