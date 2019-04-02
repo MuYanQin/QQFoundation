@@ -19,15 +19,19 @@
 @property (nonatomic , strong) UIColor * bgColor;
 /**是否允许策侧滑。默认NO*/
 @property (nonatomic, assign) BOOL allowSlide;
-/**设置单个侧滑。默认是删除*/
+
+/**
+//设置单个侧滑。默认是删除
 @property (nonatomic, copy  ) NSString *slideText;
+*/
+
 /**设置多个策划按钮*/
 @property (nonatomic , strong) NSArray * slideTextArray;
-/**设置多个策划按钮背景颜色*/
+/**设置多个策划按钮背景颜色 默认红色*/
 @property (nonatomic , strong) NSArray * slideColorArray;
 
 @property (nonatomic, copy  ) void(^selcetCellHandler)(id item);
-@property (nonatomic, copy  ) void(^slideCellHandler)(id item);
+@property (nonatomic, copy  ) void(^slideCellHandler)(id item , NSInteger index);
 
 - (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation;
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation;

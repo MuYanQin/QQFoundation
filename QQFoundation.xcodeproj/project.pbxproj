@@ -1330,6 +1330,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1759,7 +1760,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/leadu/QQFoundation/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1782,7 +1783,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/leadu/QQFoundation/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";

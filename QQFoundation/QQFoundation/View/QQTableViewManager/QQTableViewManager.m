@@ -110,26 +110,6 @@
             actionItem.selcetCellHandler(item);
     }
 }
-/**返回是否可以编辑*/
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    QQTableViewItem *item = self.items[indexPath.row];
-    return item.allowSlide;
-}
-/**UITableViewRowAction的点击事件*/
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        id item = self.items[indexPath.row];
-        QQTableViewItem *actionItem = (QQTableViewItem *)item;
-        if (actionItem.slideCellHandler)
-            actionItem.slideCellHandler(item);
-    }
-}
-/**默认的单个按钮 返回文字*/
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id item = self.items[indexPath.row];
-    QQTableViewItem *actionItem = (QQTableViewItem *)item;
-    return actionItem.slideText ? actionItem.slideText: @"删除";
-}
 /**配合MCHovering的滑动处理*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -138,24 +118,46 @@
     }
     
 }
-/**自定义返回文字、背景色*/
+
+/**返回是否可以编辑*/
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    QQTableViewItem *item = self.items[indexPath.row];
+    return item.allowSlide;
+}
+
+/**使用editActionsForRowAtIndexPath自定义后。下面的方法就失效了*/
+///**UITableViewRowAction的点击事件 ios系统d8.1 8.2 版本不实现此方法 不能侧滑*/
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//}
+
+///**默认的单个按钮 返回文字*/
+//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    id item = self.items[indexPath.row];
+//    QQTableViewItem *actionItem = (QQTableViewItem *)item;
+//    return actionItem.slideText ? actionItem.slideText: @"删除";
+//}
+
+/**自定义策划按钮个数 不久之后将会被代替 iOS11 出来了信息API*/
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-   __block NSMutableArray  *btnArray = [NSMutableArray array];
+    __block NSMutableArray  *btnArray = [NSMutableArray array];
 
     QQTableViewItem *item = (QQTableViewItem *)self.items[indexPath.row];
-
     if (item.slideTextArray && item.slideTextArray.count >0) {
         [item.slideTextArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             // 添加一个按钮
             UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:obj handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                if (item.slideCellHandler)
+                    item.slideCellHandler(item,[item.slideTextArray indexOfObject:action.title]);
             }];
             // 设置背景颜色
-            action.backgroundColor = item.slideColorArray[idx];
+            action.backgroundColor = item.slideColorArray[idx]?item.slideColorArray[idx]:[UIColor redColor];
             [btnArray addObject:action];
         }];
     }
     return btnArray;
 }
+
 - (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray
 {
     [self.items removeAllObjects];
