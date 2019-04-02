@@ -138,7 +138,7 @@
 //    return actionItem.slideText ? actionItem.slideText: @"删除";
 //}
 
-/**自定义策划按钮个数 不久之后将会被代替 iOS11 出来了信息API*/
+/**自定义策划按钮个数 不久之后将会被代替 iOS11 出来了新的API*/
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     __block NSMutableArray  *btnArray = [NSMutableArray array];
 

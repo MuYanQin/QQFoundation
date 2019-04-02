@@ -10,10 +10,6 @@
 
 @interface MCEmptyItem : QQTableViewItem
 - (instancetype)initWithHeight:(CGFloat)height;
-@property (nonatomic , assign) BOOL  hasLine;
-@property (nonatomic , assign) CGFloat  leftMargin;
-@property (nonatomic , assign) CGFloat  rightMargin;
-@property (nonatomic , strong) UIColor * lineColor;
 @end
 @interface MCEmptyCell : QQTableViewCell
 @property (nonatomic , strong) MCEmptyItem * item;

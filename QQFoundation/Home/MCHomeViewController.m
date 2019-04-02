@@ -63,9 +63,6 @@
     MCLableItem *slide = [[MCLableItem alloc]init];
     slide.leftText = @"侧滑我";
     slide.rightText = @"侧滑";
-//    slide.allowSlide = YES;
-//    slide.slideTextArray = @[@"喜欢",@"收藏"];
-//    slide.slideColorArray = @[[UIColor redColor],[UIColor blueColor]];
     slide.selcetCellHandler = ^(id item) {
         
     };
