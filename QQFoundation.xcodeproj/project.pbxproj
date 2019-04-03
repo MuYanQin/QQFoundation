@@ -20,6 +20,7 @@
 		4B1C576F21B93E3E000AFCF1 /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C576D21B93E3E000AFCF1 /* UIScrollView+Touch.m */; };
 		4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */; };
 		4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F10C7211C384500B09B80 /* MCUserInfo.m */; };
+		4B27344C22544ECE008B81B4 /* MCHealthManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27344A22544ECD008B81B4 /* MCHealthManage.m */; };
 		4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */; };
 		4B27C3B721300E6E008FBE2C /* UITabBar+MCBigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */; };
 		4B2F3FF322269F6F00528272 /* NSDate+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */; };
@@ -214,6 +215,8 @@
 		4B1F1080211C303700B09B80 /* MCVerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerificationCodeView.m; sourceTree = "<group>"; };
 		4B1F10C6211C384500B09B80 /* MCUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCUserInfo.h; sourceTree = "<group>"; };
 		4B1F10C7211C384500B09B80 /* MCUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCUserInfo.m; sourceTree = "<group>"; };
+		4B27344A22544ECD008B81B4 /* MCHealthManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCHealthManage.m; sourceTree = "<group>"; };
+		4B27344B22544ECD008B81B4 /* MCHealthManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCHealthManage.h; sourceTree = "<group>"; };
 		4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_launch@2x.png"; sourceTree = "<group>"; };
 		4B27C3B521300E6E008FBE2C /* UITabBar+MCBigItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+MCBigItem.h"; sourceTree = "<group>"; };
 		4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+MCBigItem.m"; sourceTree = "<group>"; };
@@ -563,6 +566,15 @@
 			path = BaseUserInfo;
 			sourceTree = "<group>";
 		};
+		4B27344922544ECD008B81B4 /* MCHealthManage */ = {
+			isa = PBXGroup;
+			children = (
+				4B27344B22544ECD008B81B4 /* MCHealthManage.h */,
+				4B27344A22544ECD008B81B4 /* MCHealthManage.m */,
+			);
+			path = MCHealthManage;
+			sourceTree = "<group>";
+		};
 		4B46A1862165D31F001B560A /* MCPageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +719,7 @@
 		4BA4E12C2227B730003DDF5C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4B27344922544ECD008B81B4 /* MCHealthManage */,
 				4BA4E1302227BAE4003DDF5C /* AttributedString */,
 				4BA4E12E2227B8E0003DDF5C /* Kit */,
 				4BA4E12B2227B56A003DDF5C /* MCChained */,
@@ -1445,6 +1458,7 @@
 				4B2F3FFC22269F8500528272 /* UILabel+MCChained.m in Sources */,
 				52C115761F4EC5CE005471CB /* UIImageView+WebCache.m in Sources */,
 				52ACF7201F51282500CFA470 /* QQScanVC.m in Sources */,
+				4B27344C22544ECE008B81B4 /* MCHealthManage.m in Sources */,
 				52C115541F4EC5CE005471CB /* MJRefreshHeader.m in Sources */,
 				ACF4B0641FEE546200668126 /* QQNavigationController.m in Sources */,
 				4B2F3FFD22269F8500528272 /* UIButton+MCChained.m in Sources */,
