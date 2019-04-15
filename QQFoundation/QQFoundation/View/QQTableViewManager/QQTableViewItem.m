@@ -12,7 +12,6 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.CellHeight = 44;
         self.allowSlide = NO;
     }
     return self;

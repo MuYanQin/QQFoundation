@@ -79,15 +79,18 @@
     }
     cell.item = item;
     cell.detailTextLabel.text = nil;
+    [cell cellWillAppear];
+    if (item.CellHeight <=0) {
+        item.CellHeight = [cell autoCellHeight];
+    }
     return cell;
 }
 /**cell将要显示*/
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    QQTableViewCell * qCell = (QQTableViewCell *)cell;
-    [qCell cellWillAppear];
+
 }
-/**cell显示完成-》cell隐藏*/
+/**cell显示完成->cell隐藏*/
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewCell * qCell = (QQTableViewCell *)cell;
@@ -97,7 +100,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QQTableViewItem *item = self.items[indexPath.row];
-    return item.CellHeight;
+    return (item.CellHeight>0)?item.CellHeight:44;
 }
 /**cell点击事件*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +119,6 @@
     if (self.TableView.scrollViewDidScroll) {
         self.TableView.scrollViewDidScroll(scrollView);
     }
-    
 }
 
 /**返回是否可以编辑*/

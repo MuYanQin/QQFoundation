@@ -15,4 +15,8 @@
 - (void)cellDidLoad;
 - (void)cellWillAppear;
 - (void)cellDidDisappear;
+- (CGFloat)autoCellHeight;
+
+- (void)setHighlighted:(BOOL)highlighted;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 @end

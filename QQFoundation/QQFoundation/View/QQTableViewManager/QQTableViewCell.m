@@ -20,14 +20,15 @@
 - (void)cellDidDisappear{
     
 }
-
+- (CGFloat)autoCellHeight{
+    return self.item.CellHeight;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
-- (void)setHighlighted:(BOOL)highlighted
-{
-    
+- (void)setHighlighted:(BOOL)highlighted{
+    [super setHighlighted:highlighted];
 }
 @end
