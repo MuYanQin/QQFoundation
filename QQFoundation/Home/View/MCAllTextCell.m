@@ -37,6 +37,12 @@
     [super cellWillAppear];
     self.textLb.text = self.item.text;
 }
+
+/**
+ 重写父类的方法 返回cell的高度
+
+ @return 高度
+ */
 - (CGFloat)autoCellHeight
 {
     CGFloat height = 0;

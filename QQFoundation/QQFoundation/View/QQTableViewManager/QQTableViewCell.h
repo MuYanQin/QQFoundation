@@ -12,9 +12,26 @@
 @property (nonatomic, strong) QQTableViewItem *item;
 
 
+/**
+ cell加载的方法
+ */
 - (void)cellDidLoad;
+
+/**
+ cell将要出现 这里添加数据
+ */
 - (void)cellWillAppear;
+
+/**
+ cell将要出屏幕
+ */
 - (void)cellDidDisappear;
+
+/**
+ 自适应高度 子类重写即可
+
+ @return cel的高度
+ */
 - (CGFloat)autoCellHeight;
 
 - (void)setHighlighted:(BOOL)highlighted;
