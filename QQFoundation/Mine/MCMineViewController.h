@@ -9,5 +9,6 @@
 #import "QQBaseViewController.h"
 
 @interface MCMineViewController : QQBaseViewController
+@property (nonatomic , assign) BOOL  fromHovering;
 
 @end

@@ -8,7 +8,8 @@
 
 #import "NSObject+MB.h"
 #import <objc/runtime.h>
-
+#import "QQAppDefine.h"
+#import "UIView+QQFrame.h"
 static char HUDKEY_BE;
 static NSInteger const DELAYTIME = 2.0;
 static NSInteger const HUDWIDTH = 80;

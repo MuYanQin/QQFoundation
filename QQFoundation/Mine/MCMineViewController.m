@@ -19,7 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
-    self.BaseQQTableView.top = 0;
+    if (self.fromHovering) {
+        self.BaseQQTableView.top = 0;
+    }else{
+        self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
+    }
     for (int i = 0; i<=10; i++) {
         MCSearchItem *item = [[MCSearchItem alloc]init];
         item.text = [NSString stringWithFormat:@"mine=%d",i];

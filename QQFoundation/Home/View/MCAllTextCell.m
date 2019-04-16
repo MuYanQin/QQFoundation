@@ -23,7 +23,6 @@
 {
     [super cellDidLoad];
     self.textLb = [[UILabel alloc]init];
-    self.textLb.font = [UIFont systemFontOfSize:14];
     self.textLb.numberOfLines = 0;
     [self.contentView addSubview:self.textLb];
     
@@ -35,6 +34,7 @@
 - (void)cellWillAppear
 {
     [super cellWillAppear];
+    self.textLb.font = self.item.font;
     self.textLb.text = self.item.text;
 }
 

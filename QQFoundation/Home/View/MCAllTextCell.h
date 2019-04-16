@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface MCAllTextItem : QQTableViewItem
 @property (nonatomic , copy) NSString * text;
+@property (nonatomic , strong) UIFont *font;
 @end
 
 @interface MCAllTextCell : QQTableViewCell

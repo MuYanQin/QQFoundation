@@ -9,5 +9,5 @@
 #import "QQBaseViewController.h"
 
 @interface MCAuthorViewController : QQBaseViewController
-
+@property (nonatomic , assign) BOOL  fromHovering;
 @end

@@ -108,7 +108,7 @@
 - (QQtableView *)BaseQQTableView
 {
     if (!_BaseQQTableView) {
-        _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 - 44)];
+        _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance)];
         _BaseQQTableView.RequestDelegate = self;
         _BaseQQTableView.estimatedRowHeight = 0;
     }

@@ -21,6 +21,9 @@
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
     self.BaseQQTableView.isHasHeaderRefresh = NO;
+    if (self.fromHovering) {
+        self.BaseQQTableView.top = 0;
+    }
     self.BaseQQTableView.top = 0;
     for (int i = 0; i<=100; i++) {
         MCSearchItem *item = [[MCSearchItem alloc]init];
