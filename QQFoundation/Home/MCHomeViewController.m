@@ -82,8 +82,12 @@
     MCLableItem *slide = [[MCLableItem alloc]init];
     slide.leftText = @"侧滑我";
     slide.rightText = @"侧滑";
-    slide.selcetCellHandler = ^(id item) {
-        
+    slide.allowSlide = YES;
+    NSArray *texta = @[@"删除",@"收藏"];
+    slide.slideTextArray =texta ;
+    slide.slideColorArray = @[[UIColor redColor],[UIColor blueColor]];
+    slide.slideCellHandler = ^(id item, NSInteger index) {
+        NSLog(@"===点了%@",texta[index]);
     };
     [items addObject:slide];
     
@@ -91,10 +95,8 @@
     MCLableItem *contentView = [[MCLableItem alloc]init];
     contentView.leftText = @"侧滑视图";
     contentView.rightText = @"";
-    contentView.selcetCellHandler = ^(id item) {
-        [self.navigationController pushViewController: [MCMineViewController new] animated:YES];
-    };
-    [items addObject:contentView];
+
+//    [items addObject:contentView];
     
     MCLableItem *alertView = [[MCLableItem alloc]init];
     alertView.leftText = @"自定义alertView";
