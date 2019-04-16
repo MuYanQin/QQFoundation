@@ -1074,6 +1074,7 @@
 				4B4D5A5D211B28CD007FDED8 /* Mine */,
 				52D8D10F1F4D775500EA413B /* AppDelegate.h */,
 				52D8D1101F4D775500EA413B /* AppDelegate.m */,
+				4BDC83D920E120F600F13C46 /* PrefixHeader.pch */,
 				4B8D23D220E0DA46005F6047 /* MCGCDStudy */,
 				5274E9F51F8F4A930018E93C /* barbuttonicon_back@2x.png */,
 				523DF3C51F8DBDE6000C1A51 /* Podfile */,
@@ -1098,7 +1099,6 @@
 			isa = PBXGroup;
 			children = (
 				52D8D14F1F4D77EF00EA413B /* QQKit.h */,
-				4BDC83D920E120F600F13C46 /* PrefixHeader.pch */,
 				52D8D1241F4D77EE00EA413B /* Base */,
 				4BA4E12D2227B7B6003DDF5C /* View */,
 				4BA4E12C2227B730003DDF5C /* Core */,
@@ -1778,7 +1778,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/leaduadmin/QQFoundation/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/leaduadmin/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1801,7 +1801,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/leaduadmin/QQFoundation/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/leaduadmin/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
