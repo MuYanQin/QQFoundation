@@ -12,6 +12,7 @@
 #import <MJExtension.h>
 #import "NSObject+MB.h"
 #import "MCPushMediator.h"
+#import "UIView+MCPopView.h"
 @interface MCPickerViewController ()<MCPickerViewDelegate>
 @property (nonatomic , strong) MCPickerView *picker ;
 @property (nonatomic , strong) NSMutableArray * pro;
@@ -56,17 +57,12 @@
 }
 - (void)click2One
 {
-    [self message:@"测试展示"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loading];
-    });
-
-    return;
     self.picker  =[[MCPickerView alloc]initWithFrame:self.view.bounds];
     self.picker.delegate = self;
     self.picker.titleText = @"选择区域";
     self.picker.dataArray = self.pro;
     [self.view addSubview:self.picker];
+//    [self.picker showType:(viewShowTypeBounceInFromBottom) dissType:(viewDissTypeBounceOutFromBottom) positionType:(viewPositionTypeBottom) dismissOnBackgroundTouch:NO];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

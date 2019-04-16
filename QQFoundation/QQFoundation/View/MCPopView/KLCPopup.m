@@ -24,7 +24,7 @@
 
 #import "KLCPopup.h"
 #define MCStatueBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
-#define MCBotDistance ((MCStatueBarHeight>44) ? 34.0 : 0)
+#define MCBotDistance ((MCStatueBarHeight>20) ? 34.0 : 0)
 static NSInteger const kAnimationOptionCurveIOS7 = (7 << 16);
 
 KLCPopupLayout KLCPopupLayoutMake(KLCPopupHorizontalLayout horizontal, KLCPopupVerticalLayout vertical)

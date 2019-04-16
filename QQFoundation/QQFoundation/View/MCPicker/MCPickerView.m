@@ -46,7 +46,7 @@ static NSInteger const PickerViewHeight = 350;//
     BGView.alpha = 0.5;
     [self addSubview:BGView];
     
-    UIView *ContentView = [[UIView alloc]initWithFrame:CGRectMake(0, self.frame.size.height - 350, self.frame.size.width, 350)];
+    UIView *ContentView = [[UIView alloc]initWithFrame:CGRectMake(0, self.frame.size.height - 350 - MCBottomDistance, self.frame.size.width, 350)];
     ContentView.backgroundColor = [UIColor whiteColor];
     [self addSubview:ContentView];
 
