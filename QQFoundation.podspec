@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "QQFoundation"
-s.version      = "1.0"
+s.version      = "0.1.0"
 s.summary      = "自己使用方便"
 
 s.homepage     = "https://github.com/MuYanQin/QQFoundation"
@@ -22,8 +22,8 @@ s.dependency 'SDWebImage'
 #s.dependency 'YYCache'
 s.dependency 'FLAnimatedImage'
 
-s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag => "1.0"}
-
+s.source       = { :git => "https://github.com/MuYanQin/QQFoundation.git", :tag => "0.1.0"}
+s.frameworks = "Foundation", "UIKit"
 s.source_files  = 'QQFoundation/QQFoundation'
 s.public_header_files = 'QQFoundation/QQFoundation/QQKit.h'
 
@@ -100,43 +100,43 @@ s.subspec 'Core' do |ss|
 
 
     ss.subspec 'AttributedString' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/AttributedString/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/AttributedString/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'Kit' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/Kit/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/Kit/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'MCChained' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/MCChained/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/MCChained/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'MCFactory' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/MCFactory/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/MCFactory/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'MCPushMediator' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/MCPushMediator/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/MCPushMediator/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'MCDownloadManager' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/MCDownloadManager/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/MCDownloadManager/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'QQSQLManager' do |sss|
-    sss.source_files = 'QQFoundation/QQFoundation/View/QQSQLManager/**/*.{h,m,c,mm}'
+    sss.source_files = 'QQFoundation/QQFoundation/Core/QQSQLManager/**/*.{h,m,c,mm}'
     end
 
     ss.subspec 'QQNetWork' do |sss|
         sss.subspec 'MCMonitorView' do |ssss|
-        ssss.source_files = 'QQFoundation/QQFoundation/View/MCMonitorView/**/*.{h,m,c,mm}'
+        ssss.source_files = 'QQFoundation/QQFoundation/Core/QQNetWork/MCMonitorView/**/*.{h,m,c,mm}'
         end
 
         sss.subspec 'MBProgressHUD' do |ssss|
-        ssss.source_files = 'QQFoundation/QQFoundation/View/MBProgressHUD/**/*.{h,m,c,mm}'
+        ssss.source_files = 'QQFoundation/QQFoundation/Core/QQNetWork/MBProgressHUD/**/*.{h,m,c,mm}'
         end
 
-        sss.source_files = 'QQFoundation/QQFoundation/View/QQNetWork/**/*.{h,m,c,mm}'
+        sss.source_files = 'QQFoundation/QQFoundation/Core/QQNetWork/**/*.{h,m,c,mm}'
 
     end
 
