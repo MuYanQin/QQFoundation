@@ -8,13 +8,14 @@
 
 #ifndef QQKit_h
 #define QQKit_h
+/*************************以下文件是所有项目的头文件 按需获取减少无用的导入***********************************/
 ///***********************************************************************************
 /// Base
 ///***********************************************************************************
 
 #import "QQNavigationController.h"
 #import "QQTabBarController.h"
-#import "BaseViewController.h"
+#import "QQBaseViewController.h"
 #import "QQBaseURL.h"
 #import "QQAppDefine.h"
 #import "MCUserInfo.h"//用户的信息
@@ -55,7 +56,7 @@
 #import "MCFactory.h"//工程模式工具
 #import "MCPushMediator.h"//push界面的中介者 解耦合->复杂的push关系
 #import "MCDownloadManager.h"//下载管理类 ->半成品
-#import "QQSqlHelper.h"//sql工具
+//#import "QQSqlHelper.h"//sql工具
 #import "QQNetManager.h"/// 封装的AF下载工具  返回取消、同一接口多次请求返回（无响应）
 #import "NSObject+MB.h"
 
