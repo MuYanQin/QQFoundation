@@ -8,15 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "QQTableViewSection.h"
 @class QQTableViewManager;
 @interface QQTableViewItem : NSObject
-/**cel的高度 默认44*/
-@property (nonatomic, assign) CGFloat CellHeight;
 @property (nonatomic, weak  ) QQTableViewManager *tableViewManager;
+@property (nonatomic , strong) QQTableViewSection *section;
 /**所处的位置*/
 @property (nonatomic, strong) NSIndexPath *indexPath;
 /**cell的背景颜色*/
 @property (nonatomic , strong) UIColor * bgColor;
+/**cel的高度 默认44*/
+@property (nonatomic, assign) CGFloat CellHeight;
+/**扩展的一个属性字符串0*/
+@property (nonatomic, copy) NSString *extendedStr;
+/**扩展的一个属性字符串1*/
+@property (nonatomic, copy) NSString *extendedStr1;
+/**储存正则表达式的属性*/
+@property (nonatomic, copy) NSString *regular;
+
 /**是否允许策侧滑。默认NO*/
 @property (nonatomic, assign) BOOL allowSlide;
 

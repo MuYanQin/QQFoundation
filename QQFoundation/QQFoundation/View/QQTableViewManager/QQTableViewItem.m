@@ -17,16 +17,16 @@
     return self;
 }
 - (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation{
-    [self.tableViewManager.TableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    [self.tableViewManager.tableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
 
 }
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation{
     NSInteger row = self.indexPath.row;
-    [self.tableViewManager.items removeObjectAtIndex:row];
-    [self.tableViewManager.TableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:animation];
+    [self.section removeItemAtIndex:row];
+    [self.tableViewManager.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:self.section.index]] withRowAnimation:animation];
 }
 - (NSIndexPath *)indexPath
 {
-    return [NSIndexPath indexPathForRow:[self.tableViewManager.items indexOfObject:self] inSection:0];
+    return [NSIndexPath indexPathForRow:[self.section.items indexOfObject:self] inSection:self.section.index];
 }
 @end

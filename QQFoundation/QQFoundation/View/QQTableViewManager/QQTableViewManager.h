@@ -9,14 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "QQtableView.h"
-@class QQTableViewItem;
+@class QQTableViewItem,QQTableViewSection;
+
 @protocol RETableViewManagerDelegate <UITableViewDelegate>
 
 @end
 @interface QQTableViewManager : NSObject<UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) QQtableView *TableView;
-@property (strong, nonatomic) NSMutableArray *items;
+@property (strong, nonatomic) QQtableView *tableView;
+@property (strong, readonly ,nonatomic) NSMutableArray *allItems;
+@property (nonatomic , strong) NSMutableArray *sections;
 @property (strong, readwrite, nonatomic) NSMutableDictionary *registeredClasses;
 
 
@@ -32,43 +34,32 @@
 /**
  刷新视图
 
- @param otherArray 数据源
+ @param sectionArray 数据源
  */
-- (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray;
+- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray*)sectionArray;
 
 
 /**
+ 刷新某个section
+
+ @param section section
+ */
+- (void)replaceSectionWithSection:(QQTableViewSection *)section;
+/**
  添加数据
 
- @param objects 数据源
+ @param sections 数据源
  */
-- (void)addItems:(NSArray *)objects;
+- (void)addSection:(NSMutableArray<QQTableViewSection *> *)sections;
 
 
 /**
  插入一条数据
 
- @param Item 数据
+ @param section 数据
  @param index 插入的位置
  */
-- (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index;
-
-/**
- 根据Item删除一条数据。推荐使用
-
- @param item 要删除的数据
- */
-- (void)deleteItemWithItem:(QQTableViewItem *)item;
-
-
-/**
- 根据下标删除一个Item 注意：一旦数据源变动下标对应就会变动 一定要保证下标的准确性 推荐使用 deleteItemWithItem：
- 如果需要和deleteItemWithItem配合使用的话 一定要放在 deleteItemWithItem前调用
- 请谨慎使用 切记！切记！切记！
- @param index 下标
- */
-- (void)deleteItemWithIndex:(NSInteger )index;
-
+- (void)insertSection:(QQTableViewSection *)section index:(NSInteger)index;
 
 /**
  主动刷新视图

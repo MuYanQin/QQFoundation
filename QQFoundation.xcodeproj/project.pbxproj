@@ -10,6 +10,7 @@
 		0153EDF420B65DC10041CFC4 /* QQTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */; };
 		0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */; };
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
+		420022812266C6DB00C39BE3 /* QQTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 420022802266C6DB00C39BE3 /* QQTableViewSection.m */; };
 		4212647A22641877008CB619 /* MCAllTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4212647922641877008CB619 /* MCAllTextCell.m */; };
 		4B1C2B63222E28B50007EB9B /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5B222E28B50007EB9B /* addr.json */; };
 		4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */; };
@@ -198,6 +199,8 @@
 		0153EDF920B66B710041CFC4 /* QQTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
 		37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QQFoundation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3356B77FD09272F75057BE /* Pods-QQFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.release.xcconfig"; sourceTree = "<group>"; };
+		4200227F2266C6DA00C39BE3 /* QQTableViewSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewSection.h; sourceTree = "<group>"; };
+		420022802266C6DB00C39BE3 /* QQTableViewSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewSection.m; sourceTree = "<group>"; };
 		4212647822641877008CB619 /* MCAllTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAllTextCell.h; sourceTree = "<group>"; };
 		4212647922641877008CB619 /* MCAllTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAllTextCell.m; sourceTree = "<group>"; };
 		4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
@@ -516,6 +519,8 @@
 			children = (
 				0153EDF220B65DC10041CFC4 /* QQTableViewManager.h */,
 				0153EDF320B65DC10041CFC4 /* QQTableViewManager.m */,
+				4200227F2266C6DA00C39BE3 /* QQTableViewSection.h */,
+				420022802266C6DB00C39BE3 /* QQTableViewSection.m */,
 				0153EDF520B66B5F0041CFC4 /* QQTableViewItem.h */,
 				0153EDF620B66B5F0041CFC4 /* QQTableViewItem.m */,
 				0153EDF820B66B710041CFC4 /* QQTableViewCell.h */,
@@ -1531,6 +1536,7 @@
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,
 				4BFBC6E421E837D800012B96 /* MCHoveringView.m in Sources */,
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
+				420022812266C6DB00C39BE3 /* QQTableViewSection.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,

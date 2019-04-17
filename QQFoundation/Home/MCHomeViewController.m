@@ -38,33 +38,38 @@
 }
 - (void)iniUI
 {
-    NSMutableArray *items = [NSMutableArray array];
-    
     QQWeakSelf;
-    MCEmptyItem *empty = [[MCEmptyItem alloc]initWithHeight:10];
-    empty.bgColor = getColorWithHex(@"f8f8f8");
-    [items addObject:empty];
+    QQTableViewSection *section = [QQTableViewSection section];
+    section.indexTitle = @"A";
+    section.sectionTitle = @"A";
+    section.sectionHeight = 20;
+    QQTableViewSection *section1 = [QQTableViewSection section];
+    section1.indexTitle = @"B";
+    section1.sectionHeight = 20;
+    section1.sectionTitle = @"B";
+    
     
     MCTextFieldItem *TextFieldItem = [[MCTextFieldItem alloc]init];
     TextFieldItem.leftText = @"商品价格";
     TextFieldItem.placeholderText = @"输入价格";
-    [items addObject:TextFieldItem];
+    [section addItem:TextFieldItem];
     
+    //自适应文字高度
     MCAllTextItem *text = [[MCAllTextItem alloc]init];
     text.font = [UIFont systemFontOfSize:14 weight:(UIFontWeightBold)];
     text.text = @"在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！";
-    [items addObject:text];
+    [section addItem:text];
     
     MCEmptyItem *empty1 = [[MCEmptyItem alloc]initWithHeight:10];
     empty1.bgColor = getColorWithHex(@"f8f8f8");
-    [items addObject:empty1];
+    [section addItem:empty1];
     /**
-     详细的姿势用高度参见文件中的autoCellHeight方法
+     自适应文字高度 详细的使用  参见文件中的autoCellHeight方法
      */
     MCAllTextItem *text1 = [[MCAllTextItem alloc]init];
     text1.font = [UIFont systemFontOfSize:18 weight:(UIFontWeightRegular)];
     text1.text = @"在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！";
-    [items addObject:text1];
+    [section addItem:text1];
     
     MCLableItem *lableItem = [[MCLableItem alloc]init];
     lableItem.leftText = @"视图弹出";
@@ -75,9 +80,9 @@
 
     };
     lableItem.slideCellHandler = ^(id item, NSInteger index) {
-        NSLog(@"====%ld",index);
+        NSLog(@"====%ld",(long)index);
     };
-    [items addObject:lableItem];
+    [section addItem:lableItem];
     
     MCLableItem *slide = [[MCLableItem alloc]init];
     slide.leftText = @"侧滑我";
@@ -89,7 +94,7 @@
     slide.slideCellHandler = ^(id item, NSInteger index) {
         NSLog(@"===点了%@",texta[index]);
     };
-    [items addObject:slide];
+    [section addItem:slide];
     
     
     MCLableItem *contentView = [[MCLableItem alloc]init];
@@ -104,7 +109,7 @@
     alertView.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:alertView];
+    [section addItem:alertView];
     
     
     MCLableItem *QRCode = [[MCLableItem alloc]init];
@@ -113,7 +118,7 @@
     QRCode.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:QRCode];
+    [section addItem:QRCode];
     
     MCLableItem *FMDB = [[MCLableItem alloc]init];
     FMDB.leftText = @"数据库操作集";
@@ -121,7 +126,7 @@
     FMDB.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:FMDB];
+    [section addItem:FMDB];
     
     MCLableItem *download = [[MCLableItem alloc]init];
     download.leftText = @"NSURLSession下载工具";
@@ -129,7 +134,7 @@
     download.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:download];
+    [section addItem:download];
     
     MCLableItem *netWork = [[MCLableItem alloc]init];
     netWork.leftText = @"网络请求工具";
@@ -137,7 +142,7 @@
     netWork.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:netWork];
+    [section addItem:netWork];
     
     MCLableItem *tableView = [[MCLableItem alloc]init];
     tableView.leftText = @"QQTableView使用";
@@ -145,7 +150,7 @@
     tableView.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:tableView];
+    [section addItem:tableView];
     
     
     MCLableItem *button = [[MCLableItem alloc]init];
@@ -154,7 +159,7 @@
     button.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:button];
+    [section addItem:button];
     
     MCLableItem *QQDateFormatter = [[MCLableItem alloc]init];
     QQDateFormatter.leftText = @"QQDateFormatter缓存";
@@ -162,7 +167,7 @@
     QQDateFormatter.selcetCellHandler = ^(id item) {
         
     };
-    [items addObject:QQDateFormatter];
+    [section addItem:QQDateFormatter];
     
     
     MCLableItem *mcpickerView = [[MCLableItem alloc]init];
@@ -175,7 +180,7 @@
         };
         [weakSelf.navigationController pushViewController:PickerView animated:YES];
     };
-    [items addObject:mcpickerView];
+    [section1 addItem:mcpickerView];
     
     
     MCLableItem *PageView = [[MCLableItem alloc]init];
@@ -184,13 +189,13 @@
     PageView.selcetCellHandler = ^(id item) {
         [weakSelf.navigationController pushViewController:[MCPageViewViewController new] animated:YES];
     };
-    [items addObject:PageView];
+    [section1 addItem:PageView];
     
     MCEmptyItem *empty2 = [[MCEmptyItem alloc]initWithHeight:40];
     empty2.bgColor = getColorWithHex(@"f8f8f8");
-    [items addObject:empty2];
+    [section1 addItem:empty2];
     
-    [self.tabManager replaceSectionsWithSectionsFromArray:items];
+    [self.tabManager replaceSectionsWithSectionsFromArray:@[section,section1]];
 }
 - (void)getrequest{
 

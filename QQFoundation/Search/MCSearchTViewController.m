@@ -25,11 +25,13 @@
         self.BaseQQTableView.top = 0;
     }
     self.BaseQQTableView.top = 0;
+    QQTableViewSection *sec = [QQTableViewSection section];
     for (int i = 0; i<=100; i++) {
         MCSearchItem *item = [[MCSearchItem alloc]init];
         item.text = [NSString stringWithFormat:@"Search=%d",i];
-        [self.BaseMutableArray addObject:item];
+        [sec addItem:item];
     }
+    [self.BaseMutableArray addObject:sec];
     [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
 }
 - (void)didReceiveMemoryWarning {

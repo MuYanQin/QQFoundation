@@ -13,9 +13,9 @@
 - (id)initWithTableView:(UITableView *)tableView 
 {
     if (self = [super init]) {
-        self.TableView = tableView;
-        self.TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.items = [NSMutableArray array];
+        self.tableView = tableView;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.sections = [NSMutableArray array];
         self.registeredClasses = [NSMutableDictionary dictionary];
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -39,7 +39,7 @@
         bundle = [NSBundle mainBundle];
     
     if ([bundle pathForResource:identifier ofType:@"nib"]) {
-        [self.TableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellReuseIdentifier:objectClass];
+        [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellReuseIdentifier:objectClass];
     }
 }
 //MARK:重写字典的写入方法
@@ -51,21 +51,32 @@
 {
     return self.registeredClasses[key];
 }
+
+- (NSMutableArray *)allItems
+{
+    __block NSMutableArray *itemArray = [NSMutableArray array];
+    [self.sections enumerateObjectsUsingBlock:^(NSArray * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [itemArray addObjectsFromArray:obj];
+    }];
+    return itemArray;
+}
 #pragma mark - UITableViewDelegate
 /**返回几个section*/
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.sections.count;
 }
 /**每个section返回几个cell*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.items.count;
+    QQTableViewSection *tsection = self.sections[section];
+    return [tsection.items count];
 }
 /**注册cell*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    QQTableViewItem * item = self.items[indexPath.row];
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
     item.tableViewManager = self;    
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
@@ -99,14 +110,16 @@
 /**返回cell的高度*/
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    QQTableViewItem *item = self.items[indexPath.row];
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
     return (item.CellHeight>0)?item.CellHeight:44;
 }
 /**cell点击事件*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    id item = self.items[indexPath.row];
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
     if ([item respondsToSelector:@selector(selcetCellHandler)]) {
         QQTableViewItem *actionItem = (QQTableViewItem *)item;
         if (actionItem.selcetCellHandler)
@@ -116,14 +129,15 @@
 /**配合MCHovering的滑动处理*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (self.TableView.scrollViewDidScroll) {
-        self.TableView.scrollViewDidScroll(scrollView);
+    if (self.tableView.scrollViewDidScroll) {
+        self.tableView.scrollViewDidScroll(scrollView);
     }
 }
 
 /**返回是否可以编辑*/
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    QQTableViewItem *item = self.items[indexPath.row];
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
     return item.allowSlide;
 }
 
@@ -140,11 +154,11 @@
 //    return actionItem.slideText ? actionItem.slideText: @"删除";
 //}
 
-/**自定义策划按钮个数 不久之后将会被代替 iOS11 出来了新的API*/
+/**自定义侧滑按钮个数 不久之后将会被代替 iOS11 出来了新的API*/
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     __block NSMutableArray  *btnArray = [NSMutableArray array];
-
-    QQTableViewItem *item = (QQTableViewItem *)self.items[indexPath.row];
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
     if (item.slideTextArray && item.slideTextArray.count >0) {
         [item.slideTextArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             // 添加一个按钮
@@ -159,38 +173,119 @@
     }
     return btnArray;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (self.sections.count <= section) {
+        return 0;
+    }
+    QQTableViewSection *sec  = self.sections[section];
 
-- (void)replaceSectionsWithSectionsFromArray:(NSArray *)otherArray
-{
-    [self.items removeAllObjects];
-    [self.items addObjectsFromArray:otherArray];
-    [self.TableView reloadData];
+    if (sec.sectionHeight >0) {
+        return sec.sectionHeight;
+    }
+    if (sec.sectionView) {
+        return sec.sectionView.frame.size.height;
+    }
+    if (sec.sectionTitle.length>0) {
+        CGFloat headerHeight = 0;
+        CGFloat headerWidth = CGRectGetWidth(CGRectIntegral(tableView.bounds)) - 40.0f; // 40 = 20pt horizontal padding on each side
+        
+        CGSize headerRect = CGSizeMake(headerWidth, 0);
+        
+        CGRect headerFrame = [sec.sectionTitle boundingRectWithSize:headerRect
+                                                               options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                                            attributes:@{ NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline] }
+                                                               context:nil];
+        
+        headerHeight = headerFrame.size.height;
+        
+        return headerHeight + 20.0f;
+    }
+    return 0;
 }
-- (void)addItems:(NSArray *)objects
+
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    [self.items addObjectsFromArray:objects];
-    [self.TableView reloadData];
+    if (self.sections.count <= section) {
+        return nil;
+    }
+    QQTableViewSection *sec = self.sections[section];
+    return sec.sectionView;
 }
-- (void)insertItem:(QQTableViewItem *)Item Index:(NSInteger)index
+
+#pragma mark---tableView索引相关设置----
+//添加TableView头视图标题
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    [self.items insertObject:Item atIndex:index];
-    [self.TableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    if (self.sections.count <= section) {
+        return nil;
+    }
+    QQTableViewSection *sec = self.sections[section];
+    return sec.sectionTitle;
 }
-- (void)deleteItemWithItem:(QQTableViewItem *)item
+
+//添加索引栏标题数组
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    NSInteger index = [self.items indexOfObject:item];
-    [self.items removeObject:item];
-    NSIndexPath *toDelete = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.TableView deleteRowsAtIndexPaths:@[toDelete] withRowAnimation:UITableViewRowAnimationNone];
+    NSMutableArray *titles;
+    for (QQTableViewSection *section in self.sections) {
+        if (section.indexTitle) {
+            titles = [NSMutableArray array];
+            break;
+        }
+    }
+    if (titles) {
+        for (QQTableViewSection *section in self.sections) {
+            [titles addObject:section.indexTitle ? section.indexTitle : @""];
+        }
+    }
+    
+    return titles;
 }
-- (void)deleteItemWithIndex:(NSInteger )index
+
+
+//点击索引栏标题时执行
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    //这里是为了指定索引index对应的是哪个section的，默认的话直接返回index就好。其他需要定制的就针对性处理
+//    if ([title isEqualToString:UITableViewIndexSearch])
+//    {
+//        [tableView setContentOffset:CGPointZero animated:NO];//tabview移至顶部
+//        return NSNotFound;
+//    }
+//    else
+//    {
+//        return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index] - 1; // -1 添加了搜索标识
+//    }
+//}
+- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray*)sectionArray
 {
-    [self.items removeObjectAtIndex:index];
-    NSIndexPath *toDelete = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.TableView deleteRowsAtIndexPaths:@[toDelete] withRowAnimation:UITableViewRowAnimationNone];
+    [self.sections removeAllObjects];
+    for (QQTableViewSection *section in sectionArray)
+        section.tableViewManager = self;
+    [self.sections addObjectsFromArray:sectionArray];
+    [self.tableView reloadData];
+}
+- (void)replaceSectionWithSection:(QQTableViewSection *)section
+{
+    section.tableViewManager = self;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:section.index] withRowAnimation:(UITableViewRowAnimationNone)];
+}
+- (void)addSection:(NSMutableArray<QQTableViewSection *> *)sections;
+{
+    for (QQTableViewSection *section in sections)
+        section.tableViewManager = self;
+    [self.sections addObjectsFromArray:sections];
+}
+
+- (void)insertSection:(QQTableViewSection *)section index:(NSInteger)index;
+{
+    section.tableViewManager = self;
+    [self.sections insertObject:section atIndex:index];
 }
 - (void)reloadData
 {
-    [self.TableView reloadData];
+    [self.tableView reloadData];
 }
 @end

@@ -25,11 +25,14 @@
         self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     }
     
+    QQTableViewSection *sec = [QQTableViewSection section];
+
     for (int i = 0; i<=10; i++) {
         MCSearchItem *item = [[MCSearchItem alloc]init];
         item.text = [NSString stringWithFormat:@"Author=%d",i];
-        [self.BaseMutableArray addObject:item];
+        [sec addItem:item];
     }
+    [self.BaseMutableArray addObject:sec];
     [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
 }
 
