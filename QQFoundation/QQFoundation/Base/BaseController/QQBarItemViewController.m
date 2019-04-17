@@ -27,6 +27,7 @@
     [leftCustomButton.heightAnchor constraintEqualToConstant:20].active = YES;
     [leftCustomButton addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
     [leftCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    [leftCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateSelected];
     UIBarButtonItem * leftButtonItem =[[UIBarButtonItem alloc] initWithCustomView:leftCustomButton];
     self.navigationItem.rightBarButtonItem = leftButtonItem;
 }
@@ -39,7 +40,6 @@
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
     [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
-    
     [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightitem;
 }
@@ -52,6 +52,7 @@
     UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:tintColor,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
     [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateSelected];
     self.navigationItem.rightBarButtonItem = rightitem;
 }
 
@@ -62,6 +63,7 @@
     UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:str style:(UIBarButtonItemStyleDone) target:self action:sel];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:tintColor,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
     [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateSelected];
     self.navigationItem.rightBarButtonItem = rightitem;
 }
 

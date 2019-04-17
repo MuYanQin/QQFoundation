@@ -74,8 +74,6 @@
     MCLableItem *lableItem = [[MCLableItem alloc]init];
     lableItem.leftText = @"视图弹出";
     lableItem.rightText = @"点击弹出视图";
-    lableItem.allowSlide = YES;
-    lableItem.slideTextArray = @[@"删除",@"喜欢",@"收藏"];
     lableItem.selcetCellHandler = ^(id item) {
 
     };
