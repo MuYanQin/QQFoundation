@@ -26,6 +26,9 @@
 /**储存正则表达式的属性*/
 @property (nonatomic, copy) NSString *regular;
 
+/** 是否是必须项目*/
+@property (nonatomic , assign) BOOL  isMust;
+
 /**是否允许策侧滑。默认NO*/
 @property (nonatomic, assign) BOOL allowSlide;
 

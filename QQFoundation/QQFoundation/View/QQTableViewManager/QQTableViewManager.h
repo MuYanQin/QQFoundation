@@ -15,8 +15,8 @@
 
 @end
 @interface QQTableViewManager : NSObject<UITableViewDelegate,UITableViewDataSource>
-
 @property (strong, nonatomic) QQtableView *tableView;
+
 @property (strong, readonly ,nonatomic) NSMutableArray *allItems;
 @property (nonatomic , strong) NSMutableArray *sections;
 @property (strong, readwrite, nonatomic) NSMutableDictionary *registeredClasses;
