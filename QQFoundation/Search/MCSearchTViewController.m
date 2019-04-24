@@ -32,7 +32,7 @@
         [sec addItem:item];
     }
     [self.BaseMutableArray addObject:sec];
-    [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
+    [self.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

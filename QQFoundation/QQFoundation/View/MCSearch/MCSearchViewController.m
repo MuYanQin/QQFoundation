@@ -112,11 +112,11 @@ static NSString *const keyU = @"searchHistory";
             [weakSelf.history removeAllObjects];
             [[NSUserDefaults standardUserDefaults]setObject:weakSelf.history forKey:keyU];
             [weakSelf.BaseMutableArray removeAllObjects];
-            [weakSelf.tabManager replaceSectionsWithSectionsFromArray:weakSelf.BaseMutableArray];
+            [weakSelf.tabManager replaceWithSectionsFromArray:weakSelf.BaseMutableArray];
         };
         [weakSelf.BaseMutableArray addObject:item];
     }
-    [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
+    [self.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
 - (void)cancel
 {

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "QQtableView.h"
+#define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 9_0, instead)
+
 @class QQTableViewItem,QQTableViewSection;
 
 @protocol RETableViewManagerDelegate <UITableViewDelegate>
@@ -36,7 +38,10 @@
 
  @param sectionArray 数据源
  */
-- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray*)sectionArray;
+- (void)replaceWithSectionsFromArray:(NSMutableArray*)sectionArray;
+
+
+- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray *)itemArray Deprecated("兼容就框架的方法 推荐使用`replaceWithSectionsFromArray` 使用更灵活");
 
 
 /**

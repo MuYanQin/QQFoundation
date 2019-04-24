@@ -259,12 +259,25 @@
 //        return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index] - 1; // -1 添加了搜索标识
 //    }
 //}
-- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray*)sectionArray
+- (void)replaceWithSectionsFromArray:(NSMutableArray*)sectionArray
 {
     [self.sections removeAllObjects];
     for (QQTableViewSection *section in sectionArray)
         section.tableViewManager = self;
     [self.sections addObjectsFromArray:sectionArray];
+    [self.tableView reloadData];
+}
+- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray *)itemArray
+{
+    [self.sections removeAllObjects];
+    
+    QQTableViewSection *section  = [QQTableViewSection section];
+    section.tableViewManager = self;
+    for (QQTableViewItem *item in itemArray) {
+        item.section = section;
+        [section addItem:item];
+    }
+    [self.sections addObject:section];
     [self.tableView reloadData];
 }
 - (void)replaceSectionWithSection:(QQTableViewSection *)section
