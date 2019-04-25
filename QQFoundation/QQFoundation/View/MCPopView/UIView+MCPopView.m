@@ -17,8 +17,10 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
     KLCPopupLayout  PopupLayout;
     if (positionType == viewPositionTypeCenter) {
         PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter,KLCPopupVerticalLayoutCenter);
-    }else {
+    }else if (positionType == viewPositionTypeBottom) {
         PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter,KLCPopupVerticalLayoutBottom);
+    }else {
+        PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutLeft,KLCPopupVerticalLayoutCenter);
     }
     KLCPopupShowType PopupShowType;
     if (showType == viewShowTypeFadeIn) {
@@ -35,8 +37,10 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
         PopupShowType = KLCPopupShowTypeSlideInFromBottom;
     }else if (showType == viewShowTypeBounceInFromTop){
         PopupShowType = KLCPopupShowTypeBounceInFromTop;
-    }else {
+    }else if (showType == viewShowTypeBounceInFromBottom){
         PopupShowType = KLCPopupShowTypeBounceInFromBottom;
+    }else{
+        PopupShowType = KLCPopupShowTypeSlideInFromLeft;
     }
     KLCPopupDismissType  PopupDismissType;
     if (dissType == viewDissTypeFadeOut) {
@@ -53,8 +57,10 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
         PopupDismissType = KLCPopupDismissTypeSlideOutToBottom;
     }else if (dissType == viewDissTypeBounceOutFromTop){
         PopupDismissType = KLCPopupDismissTypeBounceOutToTop;
-    }else {
+    }else if(dissType == viewDissTypeBounceOutFromBottom){
         PopupDismissType = KLCPopupDismissTypeBounceOutToBottom;
+    }else{
+        PopupDismissType = KLCPopupDismissTypeSlideOutToLeft;
     }
     KLCPopup* popup = [KLCPopup popupWithContentView:self
                                             showType:PopupShowType

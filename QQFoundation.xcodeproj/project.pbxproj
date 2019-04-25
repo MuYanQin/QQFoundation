@@ -12,6 +12,7 @@
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
 		420022812266C6DB00C39BE3 /* QQTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 420022802266C6DB00C39BE3 /* QQTableViewSection.m */; };
 		4212647A22641877008CB619 /* MCAllTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4212647922641877008CB619 /* MCAllTextCell.m */; };
+		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
 		4B1C2B63222E28B50007EB9B /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5B222E28B50007EB9B /* addr.json */; };
 		4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */; };
 		4B1C2B65222E28B50007EB9B /* MCPickerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5E222E28B50007EB9B /* MCPickerListView.m */; };
@@ -203,6 +204,8 @@
 		420022802266C6DB00C39BE3 /* QQTableViewSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewSection.m; sourceTree = "<group>"; };
 		4212647822641877008CB619 /* MCAllTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAllTextCell.h; sourceTree = "<group>"; };
 		4212647922641877008CB619 /* MCAllTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAllTextCell.m; sourceTree = "<group>"; };
+		42CEE6E22271835C00B75359 /* MCPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPopViewController.h; sourceTree = "<group>"; };
+		42CEE6E32271835C00B75359 /* MCPopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPopViewController.m; sourceTree = "<group>"; };
 		4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
 		4B1C2B58222E28B50007EB9B /* MCPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerView.h; sourceTree = "<group>"; };
 		4B1C2B59222E28B50007EB9B /* MCPickerListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerListView.h; sourceTree = "<group>"; };
@@ -537,6 +540,15 @@
 			path = QQTableViewManager;
 			sourceTree = "<group>";
 		};
+		42CEE6E12271834300B75359 /* PopViewController */ = {
+			isa = PBXGroup;
+			children = (
+				42CEE6E22271835C00B75359 /* MCPopViewController.h */,
+				42CEE6E32271835C00B75359 /* MCPopViewController.m */,
+			);
+			path = PopViewController;
+			sourceTree = "<group>";
+		};
 		4B1C2B56222E28B50007EB9B /* MCPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +623,7 @@
 		4B4D5A59211B2864007FDED8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				42CEE6E12271834300B75359 /* PopViewController */,
 				4BE30A81215270AE0063164A /* PageViewController */,
 				4B4D5A6D211B2B1A007FDED8 /* View */,
 				4B4D5A5E211B28FF007FDED8 /* MCHomeViewController.h */,
@@ -1513,6 +1526,7 @@
 				4B4D5A73211B2B5E007FDED8 /* MCLableCell.m in Sources */,
 				4B2F3FF322269F6F00528272 /* NSDate+QQCalculate.m in Sources */,
 				52C1155B1F4EC5CE005471CB /* MJRefreshGifHeader.m in Sources */,
+				42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */,
 				4B1C2B69222E28B50007EB9B /* MyCollectionViewCell.m in Sources */,
 				52C115601F4EC5CE005471CB /* NSBundle+MJRefresh.m in Sources */,
 				52C1155A1F4EC5CE005471CB /* MJRefreshBackStateFooter.m in Sources */,

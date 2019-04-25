@@ -17,6 +17,7 @@
 #import "MCPickerViewController.h"
 #import "MCPageViewViewController.h"
 #import "MCPushMediator.h"
+#import "MCPopViewController.h"
 @interface MCHomeViewController ()
 
 @end
@@ -83,7 +84,7 @@
     lableItem.leftText = @"视图弹出";
     lableItem.rightText = @"点击弹出视图";
     lableItem.selcetCellHandler = ^(id item) {
-
+        [weakSelf.navigationController pushViewController:[MCPopViewController new] animated:YES];
     };
     lableItem.slideCellHandler = ^(id item, NSInteger index) {
         NSLog(@"====%ld",(long)index);

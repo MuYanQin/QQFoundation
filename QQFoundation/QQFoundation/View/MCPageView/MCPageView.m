@@ -260,6 +260,16 @@ static const NSInteger itemTag = 100;
     }];
 }
 
+- (void)setMarginToLfet:(CGFloat)marginToLfet
+{
+    _marginToLfet = marginToLfet;
+    self.titleScroll.frame = CGRectMake(_marginToLfet, _marginToRight, KScreenWidth  - _marginToRight - _marginToLfet, self.titleScrollHeight);
+}
+- (void)setMarginToRight:(CGFloat)marginToRight
+{
+    _marginToRight = marginToRight;
+    self.titleScroll.frame = CGRectMake(_marginToLfet, _marginToRight, KScreenWidth  - _marginToRight - _marginToLfet, self.titleScrollHeight);
+}
 /**设置选中title字体*/
 - (void)setSelectTitleFont:(UIFont *)selectTitleFont
 {

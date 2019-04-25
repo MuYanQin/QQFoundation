@@ -32,16 +32,16 @@
 //        }
 //    }
     [controllers addObject:[MCPageViewSub1ViewController new]];
-    [titles addObject:@"我的世界"];
+    [titles addObject:@"社会"];
 
     [controllers addObject:[MCPageViewSub2ViewController new]];
-    [titles addObject:@"我的世界"];
+    [titles addObject:@"军事"];
     [controllers addObject:[MCPageViewSub3ViewController new]];
-    [titles addObject:@"我的世界"];
+    [titles addObject:@"娱乐"];
 
     
     self.PageView = [[MCPageView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight - MCBottomDistance) titles:titles controllers:controllers];
-//    self.PageView.titleButtonWidth = 60;
+    self.PageView.titleButtonWidth = 60;
     self.PageView.lineWitdhScale = 0.3;
     self.PageView.lineColor = [UIColor purpleColor];
     self.PageView.selectTitleFont = [UIFont systemFontOfSize:16];
