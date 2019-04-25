@@ -145,8 +145,6 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         button.bounds = CGRectMake(0, 0, 70, 30);
-        button.backgroundColor = [UIColor purpleColor];
-        button.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
         button.titleLabel.font = [UIFont systemFontOfSize:15];
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
