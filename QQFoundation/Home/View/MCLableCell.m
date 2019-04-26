@@ -50,7 +50,7 @@
     }];
     
     [self.rightLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-35);
+        make.right.equalTo(self).offset(-55);
         make.centerY.equalTo(self.mas_centerY);
     }];
     
