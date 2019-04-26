@@ -552,18 +552,18 @@
 		4B1C2B56222E28B50007EB9B /* MCPicker */ = {
 			isa = PBXGroup;
 			children = (
+				4B1C2B58222E28B50007EB9B /* MCPickerView.h */,
+				4B1C2B5F222E28B50007EB9B /* MCPickerView.m */,
 				4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */,
 				4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */,
-				4B1C2B58222E28B50007EB9B /* MCPickerView.h */,
-				4B1C2B5B222E28B50007EB9B /* addr.json */,
 				4B1C2B59222E28B50007EB9B /* MCPickerListView.h */,
 				4B1C2B5E222E28B50007EB9B /* MCPickerListView.m */,
-				4B1C2B5F222E28B50007EB9B /* MCPickerView.m */,
-				4B1C2B60222E28B50007EB9B /* MCClose@2x.png */,
 				4B1C2B5A222E28B50007EB9B /* MCPickerModel.h */,
 				4B1C2B61222E28B50007EB9B /* MCPickerModel.m */,
 				4B1C2B5C222E28B50007EB9B /* MyCollectionViewCell.h */,
 				4B1C2B62222E28B50007EB9B /* MyCollectionViewCell.m */,
+				4B1C2B60222E28B50007EB9B /* MCClose@2x.png */,
+				4B1C2B5B222E28B50007EB9B /* addr.json */,
 			);
 			path = MCPicker;
 			sourceTree = "<group>";

@@ -142,12 +142,15 @@ static NSInteger const PickerViewHeight = 350;//
     [self.ScrollView addSubview:ListView];
     self.ScrollView.contentSize = CGSizeMake(self.frame.size.width *self.dataArrays.count, 0);
     [self.ScrollView setContentOffset:CGPointMake((self.frame.size.width *(self.dataArrays.count - 1)),0) animated:YES];
-    [self.listViewArray enumerateObjectsUsingBlock:^(MCPickerListView * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSArray *tempArray = self.listViewArray.copy;
+    [tempArray enumerateObjectsUsingBlock:^(MCPickerListView * obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx >= self.dataArrays.count-1) {
             [obj removeFromSuperview];
+            [self.listViewArray removeObject:obj];
         }
     }];
     [self.listViewArray addObject:ListView];
+    
 }
 - (void)hiddenClick
 {
