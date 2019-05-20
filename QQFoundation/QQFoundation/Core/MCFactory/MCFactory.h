@@ -18,6 +18,10 @@ UIColor * getColorWithAlpha(CGFloat red,CGFloat gree, CGFloat blue,CGFloat alpha
 
 UIColor * getColorWithHex(NSString *hex);
 
+NSString * getHexWithColor(UIColor *color);
+
+NSArray  * getRGBWithColor(UIColor *color);
+
 UIImage * getColorImage(UIColor *color);
 
 //获取字体
