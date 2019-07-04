@@ -32,4 +32,12 @@ static char const BIG;
     }
     return view;
 }
+- (NSArray<UITabBarItem *> *)items {
+    return @[];
+}
+// 重写，空实现
+- (void)setItems:(NSArray<UITabBarItem *> *)items {
+}
+- (void)setItems:(NSArray<UITabBarItem *> *)items animated:(BOOL)animated {
+}
 @end

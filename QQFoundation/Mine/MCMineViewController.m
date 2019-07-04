@@ -8,7 +8,7 @@
 
 #import "MCMineViewController.h"
 #import "MCSearchCell.h"
-
+#import "ACPView.h"
 @interface MCMineViewController ()
 
 @end
@@ -18,6 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    ACPView *ac = [[ACPView alloc]initWithFrame:CGRectMake(0, 100, KScreenWidth, 55)];
+    ac.dataArr = @[@"0",@"0.04",@"0.08",@"0.12",@"0.15"];
+    ac.proText = @"甲醛HCHO（PPM）";
+    ac.rightText = @"0.03 哈哈哈";
+    ac.shuzhi = 0.03;
+    [self.view addSubview:ac];
+    
+    /***
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
     if (self.fromHovering) {
         self.BaseQQTableView.top = 0;
@@ -27,6 +38,7 @@
     [self.BaseQQTableView setUpWithUrl:@"" Parameters:@{@"page":@"1",@"name":@"ahah"} formController:self];
     
     [self.BaseQQTableView setUpWithUrl:@"" Parameters:@{@"name":@"ahah"} formController:self];
+     */
 }
 - (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error
 {
