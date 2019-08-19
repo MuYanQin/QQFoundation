@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger,viewShowType) {
     viewShowTypeSlideInFromTop,
     viewShowTypeSlideInFromBottom,
     viewShowTypeSlideInFromLeft,
+    viewShowTypeSlideInFromRight,
     viewShowTypeBounceIn,//类似放大进入 后面有弹黄效果
     viewShowTypeBounceInFromTop,
     viewShowTypeBounceInFromBottom,
@@ -27,6 +28,7 @@ typedef NS_ENUM(NSInteger,viewDissType) {
     viewDissTypeSlideOutFromTop,
     viewDissTypeSlideOutFromBottom,
     viewDissTypeSlideOutFromLeft,
+    viewDissTypeSlideOutFromRight,
     viewDissTypeBounceOut,//类似缩小出 开始有放大效果
     viewDissTypeBounceOutFromTop,
     viewDissTypeBounceOutFromBottom,
@@ -35,7 +37,8 @@ typedef NS_ENUM(NSInteger,viewDissType) {
 typedef NS_ENUM(NSInteger,viewPositionType) {
     viewPositionTypeCenter = 0,
     viewPositionTypeBottom =1,
-    viewPositionTypeLeft
+    viewPositionTypeLeft = 2,
+    viewPositionTypeRight
 };
 @interface UIView (MCPopView)
 

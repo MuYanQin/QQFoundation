@@ -19,6 +19,8 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
         PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter,KLCPopupVerticalLayoutCenter);
     }else if (positionType == viewPositionTypeBottom) {
         PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter,KLCPopupVerticalLayoutBottom);
+    }else if (positionType == viewPositionTypeRight) {
+        PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutRight,KLCPopupVerticalLayoutCenter);
     }else {
         PopupLayout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutLeft,KLCPopupVerticalLayoutCenter);
     }
@@ -39,9 +41,12 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
         PopupShowType = KLCPopupShowTypeBounceInFromTop;
     }else if (showType == viewShowTypeBounceInFromBottom){
         PopupShowType = KLCPopupShowTypeBounceInFromBottom;
+    }else if (showType == viewShowTypeSlideInFromRight){
+        PopupShowType = KLCPopupShowTypeBounceInFromRight;
     }else{
         PopupShowType = KLCPopupShowTypeSlideInFromLeft;
     }
+    
     KLCPopupDismissType  PopupDismissType;
     if (dissType == viewDissTypeFadeOut) {
         PopupDismissType = KLCPopupDismissTypeFadeOut;
@@ -59,6 +64,8 @@ dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
         PopupDismissType = KLCPopupDismissTypeBounceOutToTop;
     }else if(dissType == viewDissTypeBounceOutFromBottom){
         PopupDismissType = KLCPopupDismissTypeBounceOutToBottom;
+    }else if (dissType ==viewDissTypeSlideOutFromRight){
+        PopupDismissType = KLCPopupDismissTypeSlideOutToRight;
     }else{
         PopupDismissType = KLCPopupDismissTypeSlideOutToLeft;
     }
