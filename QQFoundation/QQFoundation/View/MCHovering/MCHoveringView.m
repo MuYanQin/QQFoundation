@@ -8,13 +8,14 @@
 
 #import "MCHoveringView.h"
 #import "QQtableView.h"
-
-
+#import "MJRefresh.h"
 @interface MCHoveringView ()<UIScrollViewDelegate,MCPageViewDelegate>
 
 @property (nonatomic , assign) CGFloat  headHeight;
-/**x是否悬停了*/
+/**是否悬停了*/
 @property (nonatomic , assign) BOOL  isHover;
+/**是否时下拉了手还没送往上滑*/
+@property (nonatomic , assign) BOOL  isDragN0Release;
 
 @property (nonatomic , strong) QQtableView * visibleScrollView;
 @end
@@ -72,50 +73,77 @@
 {
     if (scrollView == self.scrollView) {
         /**设置headView的位置*/
-        //偏移量大于等于某个值悬停
-        if (self.scrollView.contentOffset.y >= self.headHeight) {
+        //向上滑动偏移量大于等于某个值悬停
+        if (self.scrollView.contentOffset.y >= self.headHeight || self.isHover ) {
             self.scrollView.contentOffset = CGPointMake(0, self.headHeight);
             self.isHover = YES;
-        }else{
-            if (self.isHover) {
-                self.scrollView.contentOffset = CGPointMake(0, self.headHeight);
-            }
         }
-
-        if (self.isMidRefresh && self.visibleScrollView.contentOffset.y<=0 && scrollView.contentOffset.y <=0) {
-            self.scrollView.contentOffset = CGPointZero;
+        
+        if (self.isMidRefresh) {
+            if (self.visibleScrollView.contentOffset.y<=0 && scrollView.contentOffset.y <=0) {
+                self.scrollView.contentOffset = CGPointZero;
+            }else{
+                [self changeTabContentOffsetToZero:YES];
+            }
         }else{
-            /**设置下面列表的位置*/
-            if (self.scrollView.contentOffset.y < self.headHeight) {
-                if (!self.isHover) {
-                    //列表的便宜度都设置为零
-                    NSArray<UIScrollView *> *tem  = [self.delegate listView];
-                    for (UIScrollView *subS in tem) {
-                        subS.contentOffset = CGPointZero;
-                    }
+            [self changeTabContentOffsetToZero:NO];
+        }
+    }
+}
+- (void)changeTabContentOffsetToZero:(BOOL)midRefresh{
+    
+    if (self.isDragN0Release && midRefresh) {
+        self.scrollView.contentOffset = CGPointZero;
+    }
+    /**设置下面列表的位置*/
+    if (self.scrollView.contentOffset.y < self.headHeight) {
+        if (!self.isHover) {
+            //列表的便宜度都设置为零
+            NSArray<UIScrollView *> *tem  = [self.delegate listView];
+            for (UIScrollView *subS in tem) {
+                if (!self.isDragN0Release && midRefresh) {
+                    subS.contentOffset = CGPointZero;
                 }
             }
         }
     }
+
 }
 - (void)tableViewDidScroll:(UIScrollView *)scrollView
 {
 
-    if (self.isMidRefresh && scrollView.contentOffset.y <0 && !self.isHover  && self.scrollView.contentOffset.y<=0) {
-        self.scrollView.contentOffset = CGPointZero;
+    if(self.isMidRefresh){
+        if (scrollView.contentOffset.y <0 && !self.isHover  && self.scrollView.contentOffset.y<=0) {
+            self.scrollView.contentOffset = CGPointZero;
+            if (scrollView.contentOffset.y<-2) {
+                self.isDragN0Release = YES;
+            }
+        }else{
+            if (scrollView.contentOffset.y >=0) {
+                self.isDragN0Release = NO;
+            }
+            if (!self.isHover && !self.isDragN0Release) {
+                self.visibleScrollView.contentOffset = CGPointZero;
+            }
+            if (scrollView.contentOffset.y <=0 ) {
+                self.isHover = NO;
+            }else{
+                if (!self.isDragN0Release) {
+                    self.isHover = YES;
+                }
+            }
+        }
     }else{
         if (!self.isHover) {
             self.visibleScrollView.contentOffset = CGPointZero;
         }
         if (scrollView.contentOffset.y <=0) {
             self.isHover = NO;
-            scrollView.contentOffset = CGPointZero;
         }else{
             self.isHover = YES;
         }
     }
 }
-
 - (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index
 {
     self.visibleScrollView =(QQtableView *)[self.delegate listView][Index];

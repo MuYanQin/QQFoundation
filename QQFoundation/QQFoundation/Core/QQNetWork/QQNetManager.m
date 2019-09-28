@@ -56,7 +56,7 @@
 }
 -(void)RTSPostJsonWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void(^)(id responseObject))successs failed:(void (^)(NSError * error))failed
 {
-    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:ignore commiteType:json success:successs failed:failed];
+    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:post cacheType:ignore commiteType:json success:successs failed:failed];
 }
 - (void)RTSGetCacheWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
 {

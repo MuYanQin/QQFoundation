@@ -60,6 +60,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeItemAtIndex:(NSInteger)index;
 
 /**
+ 全部删除 
+ */
+- (void)removeAllItem;
+
+/**
  插入在某个下标
  
  @param index 下标

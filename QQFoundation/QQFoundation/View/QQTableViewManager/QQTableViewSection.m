@@ -50,6 +50,9 @@
 {
     [self.mutiItems removeObjectAtIndex:index];
 }
+- (void)removeAllItem{
+    [self.mutiItems removeAllObjects];
+}
 - (void)insertItem:(QQTableViewItem *)item  atIndex:(NSInteger)index
 {
     item.section = self;
