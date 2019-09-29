@@ -284,6 +284,9 @@
 {
     section.tableViewManager = self;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:section.index] withRowAnimation:(UITableViewRowAnimationNone)];
+    if (section.items.count>0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section.index] atScrollPosition:(UITableViewScrollPositionTop) animated:YES];
+    }
 }
 - (void)addSection:(NSMutableArray<QQTableViewSection *> *)sections;
 {
