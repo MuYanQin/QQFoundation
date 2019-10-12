@@ -69,8 +69,12 @@
 /**每个section返回几个cell*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    QQTableViewSection *tsection = self.sections[section];
-    return [tsection.items count];
+    NSInteger count = 0;
+    if (self.sections.count>0) {
+        QQTableViewSection *tsection = self.sections[section];
+        count = [tsection.items count];
+    }
+    return count;
 }
 /**注册cell*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
