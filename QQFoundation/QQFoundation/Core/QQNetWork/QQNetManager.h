@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 //显示网络请求的view
 #import "MCMonitorView.h"
+#import "QQsession.h"
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
 @class QQsession;
 static NSString *const successCode = @"200";//配置正确返回的code码
@@ -96,6 +97,7 @@ static NSString *const successCode = @"200";//配置正确返回的code码
  */
 - (void)RTSGetCacheWith:(NSString *)url
              parameters:(NSDictionary *)parameters
+                  cache:(CacheType)cache
                    from:(UIViewController *)controller
                successs:(void(^)(id responseObject))successs
                   failed:(void (^)(NSError * error))failed;

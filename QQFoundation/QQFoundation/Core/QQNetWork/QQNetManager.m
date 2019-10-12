@@ -58,9 +58,9 @@
 {
     [self filtrationTxdWithUrl:url param:parameters from:controller txdType:post cacheType:ignore commiteType:json success:successs failed:failed];
 }
-- (void)RTSGetCacheWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
+- (void)RTSGetCacheWith:(NSString *)url parameters:(NSDictionary *)parameters cache:(CacheType)cache from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
 {
-    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:localData commiteType:keyV success:successs failed:failed];
+    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:cache commiteType:keyV success:successs failed:failed];
 }
 - (void)filtrationTxdWithUrl:(NSString *)url
                        param:(NSDictionary *)param

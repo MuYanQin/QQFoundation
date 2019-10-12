@@ -93,6 +93,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     for (NSInteger section = 0; section < sections; section++) {
         items += [self numberOfRowsInSection:section];
     }
+    if (sections>1) {
+        items += sections;
+    }
     return items;
 }
 

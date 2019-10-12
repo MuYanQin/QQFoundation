@@ -25,7 +25,7 @@ static NSString * const dataKey = @"data";
 - (NSURLSessionDataTask *)TXDWith:(NSString *)url param:(NSDictionary *)param  txdType:(QQSessionType)txdType cacheType:(CacheType)cacheType commiteType:(CommiteType)commiteType success:(void (^)(id))success failed:(void (^)(NSError *))failed
 {
     //判断缓存
-    if (cacheType == localData) {
+    if (cacheType == memoryCaceh) {
         NSDictionary *dic  = [[QQNetManager Instance].dataCache objectForKey:self.cacheKey];
         double preTime = [dic[timeKey] doubleValue];
         double nowtime = (long)[[NSDate date] timeIntervalSince1970];
@@ -33,6 +33,12 @@ static NSString * const dataKey = @"data";
             [[QQNetManager Instance].dataCache removeObjectForKey:self.cacheKey];
         }else{
             success(dic[dataKey]);
+            return nil;
+        }
+    }else if (cacheType == diskCache){
+        id value =  [[NSUserDefaults standardUserDefaults] objectForKey:self.cacheKey];
+        if (value) {
+            success(value);
             return nil;
         }
     }
@@ -113,9 +119,11 @@ static NSString * const dataKey = @"data";
         [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
     }
     if ([responseObject[@"code"] isEqualToString:successCode]) {
-        if (cacheType == localData) {
+        if (cacheType == memoryCaceh) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
             [[QQNetManager Instance].dataCache setObject:@{dataKey:responseObject,timeKey:@(time)} forKey:self.cacheKey];
+        }else if (cacheType == diskCache){
+            [[NSUserDefaults standardUserDefaults]setObject:responseObject forKey:self.cacheKey];
         }
         successBlock(responseObject);
     }else{

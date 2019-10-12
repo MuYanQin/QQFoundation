@@ -40,7 +40,7 @@
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
     [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
-    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateSelected];
     self.navigationItem.rightBarButtonItem = rightitem;
 }
 

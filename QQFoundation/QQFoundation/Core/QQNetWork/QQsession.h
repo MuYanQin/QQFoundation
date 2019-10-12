@@ -16,7 +16,8 @@ typedef NS_ENUM (NSInteger,QQSessionType){
 /**缓存模式*/
 typedef NS_ENUM (NSInteger,CacheType){
     ignore = 0,
-    localData
+    diskCache,//磁盘缓存
+    memoryCaceh//本地
 };
 /**提交数据格式*/
 typedef NS_ENUM (NSInteger,CommiteType){
