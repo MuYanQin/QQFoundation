@@ -365,18 +365,20 @@ static const NSInteger itemTag = 100;
         self.titleScroll.contentSize = CGSizeMake(kwidth, self.titleViewHeight);
     }
     __weak __typeof(&*self)weakSelf = self;
+    [weakSelf.titleScroll.constraints enumerateObjectsWithOptions: NSEnumerationReverse usingBlock: ^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.firstAttribute == NSLayoutAttributeLeft ) {
+            obj.active = NO;
+        }
+    }];
     [self.itemArray enumerateObjectsUsingBlock:^(MCItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
         [item.constraints enumerateObjectsWithOptions: NSEnumerationReverse usingBlock: ^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (obj.firstAttribute == NSLayoutAttributeWidth ) {
                 obj.active = NO;
             }
         }];
-        [weakSelf.titleScroll.constraints enumerateObjectsWithOptions: NSEnumerationReverse usingBlock: ^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (obj.firstAttribute == NSLayoutAttributeLeft ) {
-                obj.active = NO;
-            }
-        }];
+        
         [item addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:weakSelf.titleButtonWidth]];
+        
         [weakSelf.titleScroll addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:weakSelf.titleScroll attribute:NSLayoutAttributeLeft multiplier:1 constant:idx *weakSelf.titleButtonWidth]];
     }];
     

@@ -15,7 +15,7 @@
 /**是否悬停了*/
 @property (nonatomic , assign) BOOL  isHover;
 /**是否时下拉了手还没送往上滑*/
-@property (nonatomic , assign) BOOL  isDragN0Release;
+@property (nonatomic , assign) BOOL  isDragNORelease;
 
 @property (nonatomic , strong) QQtableView * visibleScrollView;
 @end
@@ -92,7 +92,7 @@
 }
 - (void)changeTabContentOffsetToZero:(BOOL)midRefresh{
     
-    if (self.isDragN0Release && midRefresh) {
+    if (self.isDragNORelease && midRefresh) {
         self.scrollView.contentOffset = CGPointZero;
     }
     /**设置下面列表的位置*/
@@ -101,7 +101,7 @@
             //列表的便宜度都设置为零
             NSArray<UIScrollView *> *tem  = [self.delegate listView];
             for (UIScrollView *subS in tem) {
-                if (!self.isDragN0Release && midRefresh) {
+                if (!self.isDragNORelease && midRefresh) {
                     subS.contentOffset = CGPointZero;
                 }
             }
@@ -116,19 +116,19 @@
         if (scrollView.contentOffset.y <0 && !self.isHover  && self.scrollView.contentOffset.y<=0) {
             self.scrollView.contentOffset = CGPointZero;
             if (scrollView.contentOffset.y<-2) {
-                self.isDragN0Release = YES;
+                self.isDragNORelease = YES;
             }
         }else{
             if (scrollView.contentOffset.y >=0) {
-                self.isDragN0Release = NO;
+                self.isDragNORelease = NO;
             }
-            if (!self.isHover && !self.isDragN0Release) {
+            if (!self.isHover && !self.isDragNORelease) {
                 self.visibleScrollView.contentOffset = CGPointZero;
             }
             if (scrollView.contentOffset.y <=0 ) {
                 self.isHover = NO;
             }else{
-                if (!self.isDragN0Release) {
+                if (!self.isDragNORelease) {
                     self.isHover = YES;
                 }
             }
