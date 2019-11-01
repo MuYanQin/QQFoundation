@@ -387,6 +387,16 @@ static const NSInteger itemTag = 100;
     self.lineView.frame = lineRect;
     [self scrollToItemCenter:self.lastItem];
 }
+// 为了解决与scroll的手势冲突
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]
+        && [otherGestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]){
+        return NO;
+    }else{
+        return  YES;
+    }
+}
 - (UIView *)lineView
 {
     if (!_lineView) {

@@ -63,11 +63,13 @@ static NSInteger const HUDWIDTH = 80;
 - (void)loadingWith:(NSString *)message{
     MBProgressHUD * hud = self.hud;
     hud.userInteractionEnabled = YES;
-//    hud.offset = CGPointMake(0, 0);
+
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.detailsLabel.text = message;
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
+    hud.bezelView.color = [UIColor blackColor];// 背景框的颜色
+    hud.contentColor = [UIColor whiteColor];
+    //hud.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
     hud.minSize = CGSizeMake(HUDWIDTH, HUDWIDTH);
     [hud showAnimated:YES];
 }

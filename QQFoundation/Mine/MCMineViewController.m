@@ -8,7 +8,7 @@
 
 #import "MCMineViewController.h"
 #import "MCSearchCell.h"
-#import "ACPView.h"
+#import "NSObject+MB.h"
 @interface MCMineViewController ()
 
 @end
@@ -19,14 +19,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    btn.frame = CGRectMake(100, 100, 100, 40);
+    btn.backgroundColor = [UIColor redColor];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:btn];
     
-    ACPView *ac = [[ACPView alloc]initWithFrame:CGRectMake(0, 100, KScreenWidth, 55)];
-    ac.dataArr = @[@"0",@"0.04",@"0.08",@"0.12",@"0.15"];
-    ac.proText = @"甲醛HCHO（PPM）";
-    ac.rightText = @"0.03 哈哈哈";
-    ac.shuzhi = 0.03;
-    [self.view addSubview:ac];
+    
+    UIButton *btn1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    btn1.frame = CGRectMake(100, 200, 100, 40);
+    btn1.backgroundColor = [UIColor purpleColor];
+    [btn1 addTarget:self action:@selector(btnClick1) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:btn1];
     
     /***
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
@@ -39,6 +43,18 @@
     
     [self.BaseQQTableView setUpWithUrl:@"" Parameters:@{@"name":@"ahah"} formController:self];
      */
+}
+- (void)btnClick
+{
+    //[self message:@"123"];
+    [self message:@"123" after:1];
+}
+- (void)btnClick1
+{
+    [self loadingWith:@"加载中。。。"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self message:@"123"];
+    });
 }
 - (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error
 {
