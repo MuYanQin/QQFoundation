@@ -58,15 +58,20 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 
 - (void)initTableView{
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
-
     if (@available(iOS 11.0, *)) {
         self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    self.footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,  self.width, CGFLOAT_MIN)];
+    [self setTableFooterView:self.footerView];
+    
+    self.sectionFooterHeight = 0;
+    self.sectionHeaderHeight = 0;
+    self.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,  self.width, CGFLOAT_MIN)];
+    
     self.estimatedRowHeight  = 0;
     self.estimatedSectionFooterHeight  = 0;
     self.estimatedSectionFooterHeight = 0;
-    self.footerView = [UIView new];
-    [self setTableFooterView:self.footerView];
+    
     _hasNetError = NO;
     self.canResponseMutiGesture = NO;
 }

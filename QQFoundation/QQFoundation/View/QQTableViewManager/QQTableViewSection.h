@@ -25,13 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  An array of section items (rows).
  */
+@property (nonatomic , strong) QQTableViewSecItem *item;
+
 @property (strong, readonly, nonatomic) NSMutableArray *items;
 
 @property (nonatomic , assign) CGFloat  sectionHeight;
 @property (nonatomic , copy) NSString * sectionTitle;
 @property (nonatomic , copy) NSString * indexTitle;
 
-@property (nonatomic , strong) QQTableViewSecItem *secItem;
 /**
  实例化
 

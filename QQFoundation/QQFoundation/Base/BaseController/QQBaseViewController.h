@@ -13,6 +13,7 @@
 @interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,QQtableViewRequestDelegate>
 @property (copy, nonatomic)NSString *GlobalId;///<每个界面 预留的字符串
 @property (nonatomic,strong) id Info;
+@property (nonatomic,assign) BOOL buildGroupTab;
 /**
  *  举个栗子QQController的Nav要透明  就设置QQController的BaseNavBarColor为clearColor
  QQController 用如下代码设置Nav透明   [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];

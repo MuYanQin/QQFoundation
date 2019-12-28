@@ -17,22 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.buildGroupTab = YES;
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
     self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     if (self.fromHovering) {
         self.BaseQQTableView.top = 0;
-    }else{
-        self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     }
-    
-    for (int j = 0; j<5; j++) {
+    for (int j = 0; j<6; j++) {
         QQTableViewSection *section = [QQTableViewSection section];
         MCAuthorSecItem *secItem = [[MCAuthorSecItem alloc]init];
         secItem.text = [NSString stringWithFormat:@"这是第%d个SecView",j];
-        section.secItem = secItem;
-        section.sectionHeight = 50;
-        for (int i = 0; i<=10; i++) {
+        section.item = secItem;
+        if (j%2==0) {
+            section.sectionHeight = 100;
+        }else{
+            section.sectionHeight = 50;
+        }
+        
+        for (int i = 0; i<=11; i++) {
             MCSearchItem *item = [[MCSearchItem alloc]init];
             item.text = [NSString stringWithFormat:@"Author=%d",i];
             item.selcetCellHandler = ^(MCSearchItem * item) {

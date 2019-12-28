@@ -108,11 +108,14 @@
 - (QQtableView *)BaseQQTableView
 {
     if (!_BaseQQTableView) {
-        _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance)];
+        if (self.buildGroupTab) {
+            _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance) style:(UITableViewStyleGrouped)];
+            _BaseQQTableView.backgroundColor = [UIColor purpleColor];
+            
+        }else{
+            _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance) style:(UITableViewStylePlain)];
+        }
         _BaseQQTableView.RequestDelegate = self;
-        _BaseQQTableView.estimatedRowHeight = 0;
-        _BaseQQTableView.estimatedSectionHeaderHeight = 0;
-        _BaseQQTableView.estimatedSectionFooterHeight = 0;
     }
     return _BaseQQTableView;
 }

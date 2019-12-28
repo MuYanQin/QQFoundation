@@ -210,11 +210,12 @@
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (self.sections.count <= section) {
+    QQTableViewSection *sec = self.sections[section];
+
+    if (!sec.item) {
         return nil;
     }
-    QQTableViewSection *sec = self.sections[section];
-    NSString *identifier = NSStringFromClass(sec.secItem.class);
+    NSString *identifier = NSStringFromClass(sec.item.class);
     NSString *secViewS = [NSString stringWithFormat:@"%@%@",[identifier substringToIndex:identifier.length - 4],@"View"];
     Class cellClass = NSClassFromString(secViewS);
     QQTableViewSecView *secView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(cellClass)];
@@ -222,10 +223,9 @@
         secView = [[cellClass alloc]initWithReuseIdentifier:NSStringFromClass(cellClass)];
         [secView secViewDidLoad];
     }
-    secView.item = sec.secItem;
+    secView.item = sec.item;
     return secView;
 }
-
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
     if ([view isKindOfClass:[QQTableViewSecView class]]) {
