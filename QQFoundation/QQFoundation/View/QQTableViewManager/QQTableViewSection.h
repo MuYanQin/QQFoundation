@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
 NS_ASSUME_NONNULL_BEGIN
 @class QQTableViewManager;
 @class QQTableViewItem;
+@class QQTableViewSecView;
+@class QQTableViewSecItem;
 @interface QQTableViewSection : NSObject
 /**
  The table view manager of this section.
@@ -30,9 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy) NSString * sectionTitle;
 @property (nonatomic , copy) NSString * indexTitle;
 
-@property (nonatomic , strong) UIView *sectionView;
-
-
+@property (nonatomic , strong) QQTableViewSecItem *secItem;
 /**
  实例化
 

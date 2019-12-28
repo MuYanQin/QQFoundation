@@ -8,6 +8,7 @@
 
 #import "MCAuthorViewController.h"
 #import "MCSearchCell.h"
+#import "MCAuthorSecView.h"
 @interface MCAuthorViewController ()
 
 @end
@@ -25,18 +26,25 @@
         self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     }
     
-
-    for (int i = 0; i<=10; i++) {
-        MCSearchItem *item = [[MCSearchItem alloc]init];
-        item.text = [NSString stringWithFormat:@"Author=%d",i];
-        item.selcetCellHandler = ^(MCSearchItem * item) {
-            NSLog(@"%@",item.indexPath);
-        };
-        item.allowSlide = YES;
-        item.slideTextArray = @[@"删除"];
-        [self.BaseMutableArray addObject:item];
+    for (int j = 0; j<5; j++) {
+        QQTableViewSection *section = [QQTableViewSection section];
+        MCAuthorSecItem *secItem = [[MCAuthorSecItem alloc]init];
+        secItem.text = [NSString stringWithFormat:@"这是第%d个SecView",j];
+        section.secItem = secItem;
+        section.sectionHeight = 50;
+        for (int i = 0; i<=10; i++) {
+            MCSearchItem *item = [[MCSearchItem alloc]init];
+            item.text = [NSString stringWithFormat:@"Author=%d",i];
+            item.selcetCellHandler = ^(MCSearchItem * item) {
+                NSLog(@"%@",item.indexPath);
+            };
+            item.allowSlide = YES;
+            item.slideTextArray = @[@"删除"];
+            [section addItem:item];
+        }
+        [self.BaseMutableArray addObject:section];
     }
-    [self.tabManager replaceSectionsWithSectionsFromArray:self.BaseMutableArray];
+    [self.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
 
 - (void)didReceiveMemoryWarning {

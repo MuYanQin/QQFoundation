@@ -41,7 +41,7 @@
 - (void)replaceWithSectionsFromArray:(NSMutableArray*)sectionArray;
 
 
-- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray *)itemArray Deprecated("兼容就框架的方法 推荐使用`replaceWithSectionsFromArray` 使用更灵活");
+- (void)replaceSectionsWithSectionsFromArray:(NSMutableArray *)itemArray Deprecated("兼容旧框架的方法 推荐使用`replaceWithSectionsFromArray` 使用更灵活");
 
 
 /**

@@ -8,6 +8,8 @@ pod 'JPush'
 pod 'Masonry'
 pod 'MJExtension'
 pod 'TZImagePickerController'
+#pod 'YYKit', '~> 1.0.9'
+
 #pod 'Charts'
 #pod 'ChartsRealm'
 #    pod 'QQFoundation', :git => "https://github.com/MuYanQin/QQFoundation.git"

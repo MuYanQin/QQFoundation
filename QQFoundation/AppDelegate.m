@@ -33,6 +33,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+#if DEBUG
+    // for iOS
+    [[NSBundle  bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
+    // for tvOS
+    [[NSBundle  bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle"] load];
+    // for masOS
+    [[NSBundle  bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle"] load];
+#endif
     self.window.rootViewController = self.TabBar;
     [self.window makeKeyAndVisible];
     NSDictionary *dic = @{@"searchText":@"月"};

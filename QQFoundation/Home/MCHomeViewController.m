@@ -18,12 +18,16 @@
 #import "MCPageViewViewController.h"
 #import "MCPushMediator.h"
 #import "MCPopViewController.h"
+#import "MMCommentInputView.h"
 @interface MCHomeViewController ()
+@property (nonatomic , strong) MMCommentInputView *commentInputView;
 
 @end
 
 @implementation MCHomeViewController
-
+{
+    MCTextFieldItem *TextFieldItem;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -37,6 +41,10 @@
     [self iniUI];
     [self getrequest];
     
+}
+- (void)injected
+{
+    [self viewDidLoad];
 }
 - (void)iniUI
 {
@@ -58,7 +66,7 @@
     section1.sectionTitle = @"B";
     
     
-    MCTextFieldItem *TextFieldItem = [[MCTextFieldItem alloc]init];
+    TextFieldItem = [[MCTextFieldItem alloc]init];
     TextFieldItem.leftText = @"商品价格";
     TextFieldItem.placeholderText = @"输入价格";
     [sectio0 addItem:TextFieldItem];
@@ -172,7 +180,7 @@
     QQDateFormatter.leftText = @"QQDateFormatter缓存";
     QQDateFormatter.rightText = @"";
     QQDateFormatter.selcetCellHandler = ^(id item) {
-        
+        [self.commentInputView show];
     };
     [section addItem:QQDateFormatter];
     
@@ -208,6 +216,21 @@
 
     
 
+}
+- (MMCommentInputView *)commentInputView
+{
+    if (!_commentInputView) {
+        _commentInputView = [[MMCommentInputView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        
+        [_commentInputView setMMCompleteInputTextBlock:^(NSString *commentText) { // 完成文本输入
+//            [wSelf addComment:commentText];
+        }];
+        [_commentInputView setMMContainerWillChangeFrameBlock:^(CGFloat keyboardHeight) { // 输入框监听
+//            wSelf.keyboardHeight = keyboardHeight;
+//            [wSelf scrollForComment];
+        }];
+    }
+    return _commentInputView;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

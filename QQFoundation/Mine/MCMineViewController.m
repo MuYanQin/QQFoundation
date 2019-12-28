@@ -28,7 +28,7 @@
     
     UIButton *btn1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     btn1.frame = CGRectMake(100, 200, 100, 40);
-    btn1.backgroundColor = [UIColor purpleColor];
+    btn1.backgroundColor = [UIColor redColor];
     [btn1 addTarget:self action:@selector(btnClick1) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:btn1];
     
@@ -47,7 +47,7 @@
 - (void)btnClick
 {
     //[self message:@"123"];
-    [self message:@"123" after:1];
+
 }
 - (void)btnClick1
 {

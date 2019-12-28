@@ -9,6 +9,7 @@
 #import "QQTableViewManager.h"
 #import "QQTableViewItem.h"
 #import "QQTableViewCell.h"
+#import "QQTableViewSecView.h"
 @implementation QQTableViewManager
 - (id)initWithTableView:(UITableView *)tableView 
 {
@@ -187,9 +188,7 @@
     if (sec.sectionHeight >0) {
         return sec.sectionHeight;
     }
-    if (sec.sectionView) {
-        return sec.sectionView.frame.size.height;
-    }
+
     if (sec.sectionTitle.length>0) {
         CGFloat headerHeight = 0;
         CGFloat headerWidth = CGRectGetWidth(CGRectIntegral(tableView.bounds)) - 40.0f; // 40 = 20pt horizontal padding on each side
@@ -215,7 +214,33 @@
         return nil;
     }
     QQTableViewSection *sec = self.sections[section];
-    return sec.sectionView;
+    NSString *identifier = NSStringFromClass(sec.secItem.class);
+    NSString *secViewS = [NSString stringWithFormat:@"%@%@",[identifier substringToIndex:identifier.length - 4],@"View"];
+    Class cellClass = NSClassFromString(secViewS);
+    QQTableViewSecView *secView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(cellClass)];
+    if (!secView) {
+        secView = [[cellClass alloc]initWithReuseIdentifier:NSStringFromClass(cellClass)];
+        [secView secViewDidLoad];
+    }
+    secView.item = sec.secItem;
+    return secView;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if ([view isKindOfClass:[QQTableViewSecView class]]) {
+        QQTableViewSecView *secView = (QQTableViewSecView *) view;
+        [secView secViewWillAppear];
+    }
+    
+}
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if ([view isKindOfClass:[QQTableViewSecView class]]) {
+        QQTableViewSecView *secView = (QQTableViewSecView *) view;
+        [secView secViewDidDisappear];
+    }
+    
 }
 
 #pragma mark---tableView索引相关设置----
