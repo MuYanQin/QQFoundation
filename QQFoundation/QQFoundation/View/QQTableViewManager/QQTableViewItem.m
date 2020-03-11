@@ -18,13 +18,18 @@
     return self;
 }
 - (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation{
-    [self.tableViewManager.tableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
-
+    [UIView performWithoutAnimation:^{
+        [self.tableViewManager.tableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+    }];
 }
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation{
     NSInteger row = self.indexPath.row;
     [self.section removeItemAtIndex:row];
-    [self.tableViewManager.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:self.section.index]] withRowAnimation:animation];
+    
+    [UIView performWithoutAnimation:^{
+        [self.tableViewManager.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:self.section.index]] withRowAnimation:animation];
+    }];
+    
 }
 - (NSIndexPath *)indexPath
 {

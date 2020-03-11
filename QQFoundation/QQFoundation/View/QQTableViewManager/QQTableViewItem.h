@@ -38,12 +38,18 @@
 */
 
 /**设置多个策划按钮*/
-@property (nonatomic , strong) NSArray * slideTextArray;
+@property (nonatomic , strong) NSArray * trailingTArray;
 /**设置多个策划按钮背景颜色 默认红色*/
-@property (nonatomic , strong) NSArray * slideColorArray;
+@property (nonatomic , strong) NSArray * trailingCArray;
+
+/**设置多个策划按钮*/
+@property (nonatomic , strong) NSArray * leadingTArray;
+/**设置多个策划按钮背景颜色 默认红色*/
+@property (nonatomic , strong) NSArray * leadingCArray;
 
 @property (nonatomic, copy  ) void(^selcetCellHandler)(id item);
-@property (nonatomic, copy  ) void(^slideCellHandler)(id item , NSInteger index);
+@property (nonatomic, copy  ) void(^trailingSwipeHandler)(id item , NSInteger index);
+@property (nonatomic, copy  ) void(^leadingSwipeHandler)(id item , NSInteger index);
 
 - (void)reloadRowWithAnimation:(UITableViewRowAnimation)animation;
 - (void)deleteRowWithAnimation:(UITableViewRowAnimation)animation;

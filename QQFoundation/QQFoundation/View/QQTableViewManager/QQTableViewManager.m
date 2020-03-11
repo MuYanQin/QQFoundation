@@ -9,7 +9,7 @@
 #import "QQTableViewManager.h"
 #import "QQTableViewItem.h"
 #import "QQTableViewCell.h"
-#import "QQTableViewSecView.h"
+#import "QQTableViewSecView.h"  
 @implementation QQTableViewManager
 - (id)initWithTableView:(UITableView *)tableView 
 {
@@ -43,7 +43,7 @@
         [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellReuseIdentifier:objectClass];
     }
 }
-//MARK:重写字典的写入方法
+//MARK:重写字典的写入方法  自定义下标
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key
 {
     [self registerClass:(NSString *)key forCellWithReuseIdentifier:obj];
@@ -159,20 +159,59 @@
 //    return actionItem.slideText ? actionItem.slideText: @"删除";
 //}
 
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
+API_AVAILABLE(ios(11.0)){
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
+    return  [self configAction:item.trailingTArray colorArray:item.trailingCArray item:item trailing:YES];
+}
+- (nullable UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath API_AVAILABLE(ios(11.0)){
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
+    return  [self configAction:item.leadingTArray colorArray:item.leadingCArray item:item trailing:NO];
+}
+- (UISwipeActionsConfiguration *)configAction:(NSArray *)textArray colorArray:(NSArray *)colorArray item:(QQTableViewItem *)item trailing:(BOOL)trailing
+API_AVAILABLE(ios(11.0)){
+    __block NSMutableArray *actions = [NSMutableArray array];
+    [textArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIContextualAction *act = [UIContextualAction contextualActionWithStyle:(UIContextualActionStyleNormal) title:obj handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+            if (trailing) {
+                if (item.trailingSwipeHandler) {
+                    item.trailingSwipeHandler(item, idx);
+                }
+            }else{
+                if (item.leadingSwipeHandler) {
+                    item.leadingSwipeHandler(item, idx);
+                }
+            }
+            completionHandler(YES);
+        }];
+        if (colorArray.count > idx) {
+            act.backgroundColor = colorArray[idx];
+        }else{
+            act.backgroundColor = [UIColor redColor];
+        }
+        [actions addObject:act];
+    }];
+
+    UISwipeActionsConfiguration *config = [UISwipeActionsConfiguration configurationWithActions:actions];
+    return config;
+}
+
 /**自定义侧滑按钮个数 不久之后将会被代替 iOS11 出来了新的API*/
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     __block NSMutableArray  *btnArray = [NSMutableArray array];
     QQTableViewSection *section = self.sections[indexPath.section];
     QQTableViewItem * item = section.items[indexPath.row];
-    if (item.slideTextArray && item.slideTextArray.count >0) {
-        [item.slideTextArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    if (item.trailingTArray && item.trailingCArray.count >0) {
+        [item.trailingTArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             // 添加一个按钮
             UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:obj handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                if (item.slideCellHandler)
-                    item.slideCellHandler(item,[item.slideTextArray indexOfObject:action.title]);
+                if (item.trailingSwipeHandler)
+                    item.trailingSwipeHandler(item,[item.trailingTArray indexOfObject:action.title]);
             }];
             // 设置背景颜色
-            action.backgroundColor = item.slideColorArray[idx]?item.slideColorArray[idx]:[UIColor redColor];
+            action.backgroundColor = item.trailingCArray[idx]?item.trailingCArray[idx]:[UIColor redColor];
             [btnArray addObject:action];
         }];
     }
@@ -257,19 +296,12 @@
 //添加索引栏标题数组
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    NSMutableArray *titles;
+    NSMutableArray *titles = [NSMutableArray array];
     for (QQTableViewSection *section in self.sections) {
         if (section.indexTitle) {
-            titles = [NSMutableArray array];
-            break;
+            [titles addObject:section.indexTitle ];
         }
     }
-    if (titles) {
-        for (QQTableViewSection *section in self.sections) {
-            [titles addObject:section.indexTitle ? section.indexTitle : @""];
-        }
-    }
-    
     return titles;
 }
 

@@ -13,9 +13,6 @@
 
 @class QQTableViewItem,QQTableViewSection;
 
-@protocol RETableViewManagerDelegate <UITableViewDelegate>
-
-@end
 @interface QQTableViewManager : NSObject<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) QQtableView *tableView;
 
