@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QQTableViewSecItem : NSObject
-
+@property (nonatomic , assign) CGFloat  secHeight;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -85,7 +85,7 @@
     item.tableViewManager = self;    
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
-    NSString *cellIdentifier = [NSString stringWithFormat:@"QQTableViewManager_%@", [item class]];
+    NSString *cellIdentifier = [NSString stringWithFormat:@"%@", [item class]];
     Class cellClass = self.registeredClasses[item.class];
     
     QQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -224,24 +224,15 @@ API_AVAILABLE(ios(11.0)){
     }
     QQTableViewSection *sec  = self.sections[section];
 
+    if (sec.item.secHeight >0) {
+        return sec.item.secHeight;
+    }
     if (sec.sectionHeight >0) {
         return sec.sectionHeight;
     }
 
     if (sec.sectionTitle.length>0) {
-        CGFloat headerHeight = 0;
-        CGFloat headerWidth = CGRectGetWidth(CGRectIntegral(tableView.bounds)) - 40.0f; // 40 = 20pt horizontal padding on each side
-        
-        CGSize headerRect = CGSizeMake(headerWidth, 0);
-        
-        CGRect headerFrame = [sec.sectionTitle boundingRectWithSize:headerRect
-                                                               options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                                            attributes:@{ NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline] }
-                                                               context:nil];
-        
-        headerHeight = headerFrame.size.height;
-        
-        return headerHeight + 20.0f;
+        return 30;
     }
     return 0;
 }

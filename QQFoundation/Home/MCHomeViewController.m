@@ -94,7 +94,7 @@
     lableItem.selcetCellHandler = ^(id item) {
         [weakSelf.navigationController pushViewController:[MCPopViewController new] animated:YES];
     };
-    lableItem.slideCellHandler = ^(id item, NSInteger index) {
+    lableItem.trailingSwipeHandler = ^(id item, NSInteger index) {
         NSLog(@"====%ld",(long)index);
     };
     [section addItem:lableItem];
@@ -104,9 +104,9 @@
     slide.rightText = @"侧滑";
     slide.allowSlide = YES;
     NSArray *texta = @[@"删除",@"收藏"];
-    slide.slideTextArray =texta ;
-    slide.slideColorArray = @[[UIColor redColor],[UIColor blueColor]];
-    slide.slideCellHandler = ^(id item, NSInteger index) {
+    slide.trailingTArray =texta ;
+    slide.trailingCArray = @[[UIColor redColor],[UIColor blueColor]];
+    slide.trailingSwipeHandler = ^(id item, NSInteger index) {
         NSLog(@"===点了%@",texta[index]);
     };
     [section addItem:slide];

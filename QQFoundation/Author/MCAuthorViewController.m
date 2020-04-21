@@ -42,7 +42,7 @@
                 NSLog(@"%@",item.indexPath);
             };
             item.allowSlide = YES;
-            item.slideTextArray = @[@"删除"];
+            item.trailingTArray = @[@"删除"];
             [section addItem:item];
         }
         [self.BaseMutableArray addObject:section];
