@@ -33,11 +33,12 @@
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.delegate = self;
     }
-    self.view.backgroundColor = [UIColor whiteColor];
+    
    //设置透明度  相差64像素  YES会有蒙层
     //YES (0,0)->(0,0)  NO(0.64) - >(0,0)
     self.navigationBar.translucent = YES;
-    self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
+//    self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
+    self.navigationBar.barTintColor = [UIColor redColor];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){
@@ -54,7 +55,9 @@
     }
     //nav下面的横线消失
     self.navigationBar.shadowImage = [UIImage new];
+    //iOS 10 设置backBarButtonItem颜色
     
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 /**
@@ -139,15 +142,15 @@
     
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
-        UIButton *button = [[UIButton alloc] init];
-        [button setImage:[UIImage imageNamed:@"barbuttonicon_back"] forState:UIControlStateNormal];
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        button.bounds = CGRectMake(0, 0, 70, 30);
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
-        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
+
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    textAttrs[NSFontAttributeName] = getFontRegular(14);
+    [backItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+    [backItem setTintColor:[UIColor whiteColor]];
+    [self.childViewControllers firstObject].navigationItem.backBarButtonItem = backItem;
     [super pushViewController:viewController animated:animated];
 }
 

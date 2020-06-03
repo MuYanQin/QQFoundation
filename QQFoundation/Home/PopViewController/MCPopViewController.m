@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"视图弹出";
-    
+    [self nav_RightItemWithStr:@"保存" Selector:nil];
     self.popView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];
     self.popView.backgroundColor = [UIColor purpleColor];
     

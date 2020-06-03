@@ -83,6 +83,12 @@ static NSString * const dataKey = @"data";
     self.SessionTask = operation;
     return operation;
 }
+- (void)extracted:(NSData *)data fileMark:(NSString *)fileMark formData:(id<AFMultipartFormData> _Nonnull)formData {
+    [formData appendPartWithFileData:data name:fileMark
+                            fileName:[NSString stringWithFormat:@"%@.png",[NSDate GetNowDate:@"YYYYMMddHHmmSSS"]]
+                            mimeType:@"image/jpeg"];
+}
+
 //upload files
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
                                        dic:(NSDictionary *)dic
@@ -99,9 +105,7 @@ static NSString * const dataKey = @"data";
     NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in images) {
             NSData * data = [QQTool imageData:image];
-            [formData appendPartWithFileData:data name:fileMark
-                                    fileName:[NSString stringWithFormat:@"%@.png",[NSDate GetNowDate:@"YYYYMMddHHmmSSS"]]
-                                    mimeType:@"image/jpeg"];
+            [self extracted:data fileMark:fileMark formData:formData];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         progress(uploadProgress);

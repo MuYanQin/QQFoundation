@@ -11,3 +11,4 @@
 @interface QQNavigationController : UINavigationController
 @property (nonatomic,assign) BOOL forbidSlider;//是否禁止滑动
 @end
+
