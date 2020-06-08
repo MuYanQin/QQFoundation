@@ -21,6 +21,7 @@
 		42784C2E248DD622001CDB81 /* QQCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C2D248DD622001CDB81 /* QQCollectionViewItem.m */; };
 		42784C31248DD911001CDB81 /* MCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C30248DD911001CDB81 /* MCCollectionViewController.m */; };
 		42784C35248DD940001CDB81 /* MCTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C34248DD940001CDB81 /* MCTestCell.m */; };
+		429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429C3C4A248E0B3D00B4771F /* QQCollectionView.m */; };
 		42A997702324E52000F20344 /* NSString+encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A9976F2324E52000F20344 /* NSString+encrypt.m */; };
 		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
 		42EB64D623ADC53C001236A7 /* MMCommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EB64D523ADC53C001236A7 /* MMCommentInputView.m */; };
@@ -230,6 +231,8 @@
 		42784C30248DD911001CDB81 /* MCCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCollectionViewController.m; sourceTree = "<group>"; };
 		42784C33248DD940001CDB81 /* MCTestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTestCell.h; sourceTree = "<group>"; };
 		42784C34248DD940001CDB81 /* MCTestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTestCell.m; sourceTree = "<group>"; };
+		429C3C49248E0B3D00B4771F /* QQCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionView.h; sourceTree = "<group>"; };
+		429C3C4A248E0B3D00B4771F /* QQCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQCollectionView.m; sourceTree = "<group>"; };
 		42A9976E2324E52000F20344 /* NSString+encrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+encrypt.h"; sourceTree = "<group>"; };
 		42A9976F2324E52000F20344 /* NSString+encrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+encrypt.m"; sourceTree = "<group>"; };
 		42CEE6E22271835C00B75359 /* MCPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPopViewController.h; sourceTree = "<group>"; };
@@ -589,6 +592,8 @@
 				42784C2A248DD605001CDB81 /* QQCollectionViewCell.m */,
 				42784C2C248DD622001CDB81 /* QQCollectionViewItem.h */,
 				42784C2D248DD622001CDB81 /* QQCollectionViewItem.m */,
+				429C3C49248E0B3D00B4771F /* QQCollectionView.h */,
+				429C3C4A248E0B3D00B4771F /* QQCollectionView.m */,
 			);
 			path = QQCollectionView;
 			sourceTree = "<group>";
@@ -1661,6 +1666,7 @@
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
 				4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */,
 				4B2F3FF422269F6F00528272 /* NSString+QQCalculate.m in Sources */,
+				429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */,
 				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,

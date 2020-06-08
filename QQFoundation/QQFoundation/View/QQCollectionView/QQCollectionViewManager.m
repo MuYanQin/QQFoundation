@@ -17,7 +17,7 @@
 
 @implementation QQCollectionViewManager
 
-- (id)initWithCollectionView:(UICollectionView *)collectionView
+- (id)initWithCollectionView:(QQCollectionView *)collectionView
 {
     if (self = [super init]) {
         self.collectionView = collectionView;

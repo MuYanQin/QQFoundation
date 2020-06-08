@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+#import "QQCollectionView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QQCollectionViewManager : NSObject<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic , strong) UICollectionView *collectionView;
+@property (nonatomic , strong) QQCollectionView *collectionView;
 
 /**
  实例化方法 需要将 QQCollectionViewManager设置为全局变量 不然delegetez  = nil
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param collectionView 被管理的视图
  @return QQCollectionViewManager
  */
-- (id)initWithCollectionView:(UICollectionView *)collectionView ;
+- (id)initWithCollectionView:(QQCollectionView *)collectionView ;
 
 
 - (void)reloadCollectionViewWithItems:(NSMutableArray *)itemArray;

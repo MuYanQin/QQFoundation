@@ -9,6 +9,7 @@
 #import "MCCollectionViewController.h"
 #import "QQCollectionViewManager.h"
 #import "MCTestCell.h"
+#import "QQCollectionView.h"
 @interface MCCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic , strong) QQCollectionViewManager *manager;
 @end
@@ -21,7 +22,7 @@
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc]init];
     layout.itemSize = CGSizeMake((KScreenWidth - 45)/2, 100);
     layout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
-    UICollectionView *collection =  [[UICollectionView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight) collectionViewLayout:layout];
+    QQCollectionView *collection =  [[QQCollectionView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight) collectionViewLayout:layout];
 
     collection.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collection];
