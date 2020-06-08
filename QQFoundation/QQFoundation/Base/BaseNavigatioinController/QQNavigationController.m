@@ -37,8 +37,7 @@
    //设置透明度  相差64像素  YES会有蒙层
     //YES (0,0)->(0,0)  NO(0.64) - >(0,0)
     self.navigationBar.translucent = YES;
-//    self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
-    self.navigationBar.barTintColor = [UIColor redColor];
+    self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){

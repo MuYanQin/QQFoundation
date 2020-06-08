@@ -22,8 +22,8 @@
 
 
 /**
- 实例化方法  目前仅支持创建一个Section
-
+ 实例化方法 
+QQTableViewManager设置为全局变量 不然delegetez  = nil
  @param tableView 被管理的视图
  @return QQTableViewManager
  */

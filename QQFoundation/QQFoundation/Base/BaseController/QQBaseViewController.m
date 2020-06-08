@@ -25,8 +25,8 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     //这里的色值与 Nav的色值相同
-    self.BaseNavBarColor = self.navigationController.view.backgroundColor;
-    [self.view addSubview:self.navBar];
+//    self.BaseNavBarColor = self.navigationController.view.backgroundColor;
+//    [self.view addSubview:self.navBar];
 }
 //nav透明的使用
 #pragma mark -- Setter & Getter
@@ -40,9 +40,9 @@
 }
 - (void)setBaseNavBarColor:(UIColor *)BaseNavBarColor
 {
-    self.navBar.backgroundColor = BaseNavBarColor;
-    self.navBar.alpha = 1.0;
-    [self.view bringSubviewToFront:self.navBar];
+//    self.navBar.backgroundColor = BaseNavBarColor;
+//    self.navBar.alpha = 1.0;
+//    [self.view bringSubviewToFront:self.navBar];
 }
 #pragma mark - 数据请求的众多方法
 - (void)RequestGetWith:(NSString *)url Parameters:(NSDictionary *)parameters{

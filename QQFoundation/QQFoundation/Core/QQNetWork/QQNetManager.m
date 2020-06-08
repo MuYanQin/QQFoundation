@@ -120,31 +120,29 @@
 //控制器消失的时候取消下载
 - (void)deleteConnectionVC:(UIViewController *)delvc
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [lock lock];
-        //循环的时候不能移除元素 所以借用一个中间变量
-        NSMutableArray *tempArr = [NSMutableArray arrayWithArray:_controllerRequest];
-        //有的三方滑动视图  或者自己的写的segment都会用到addchildviewcontroller：
-        NSMutableArray *VCArray = [NSMutableArray arrayWithArray:delvc.childViewControllers];
-        //把父控制器加进来
-        [VCArray addObject:delvc];
+    [lock lock];
+    //循环的时候不能移除元素 所以借用一个中间变量
+    NSMutableArray *tempArr = [NSMutableArray arrayWithArray:_controllerRequest];
+    //有的三方滑动视图  或者自己的写的segment都会用到addchildviewcontroller：
+    NSMutableArray *VCArray = [NSMutableArray arrayWithArray:delvc.childViewControllers];
+    //把父控制器加进来
+    [VCArray addObject:delvc];
 
-        //这里主要还是根据入库的控制器来写不是一定的  根据个人需要
-        for (UIViewController *VC in VCArray) {
-            @autoreleasepool {
-                NSString *VCName = NSStringFromClass([VC class]);
-                for (QQsession *session in tempArr) {///<在存储请求的数据里找对应的界面
-                    @autoreleasepool {
-                        if ([session.controllerName isEqualToString: VCName]) {
-                            [self deleteQQConnection:session];
-                            [session.SessionTask cancel];
-                        }
+    //这里主要还是根据入库的控制器来写不是一定的  根据个人需要
+    for (UIViewController *VC in VCArray) {
+        @autoreleasepool {
+            NSString *VCName = NSStringFromClass([VC class]);
+            for (QQsession *session in tempArr) {///<在存储请求的数据里找对应的界面
+                @autoreleasepool {
+                    if ([session.controllerName isEqualToString: VCName]) {
+                        [self deleteQQConnection:session];
+                        [session.SessionTask cancel];
                     }
                 }
             }
         }
-        [lock unlock];
-    });
+    }
+    [lock unlock];
 }
 - (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters
 {

@@ -19,6 +19,7 @@
 #import "MCPushMediator.h"
 #import "MCPopViewController.h"
 #import "MMCommentInputView.h"
+#import "MCCollectionViewController.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) MMCommentInputView *commentInputView;
 
@@ -98,6 +99,14 @@
         NSLog(@"====%ld",(long)index);
     };
     [section addItem:lableItem];
+    
+    MCLableItem *collention = [[MCLableItem alloc]init];
+    collention.leftText = @"CollectionView管理";
+    collention.selcetCellHandler = ^(id item) {
+        [weakSelf.navigationController pushViewController:[MCCollectionViewController new] animated:YES];
+    };
+    [section addItem:collention];
+    
     
     MCLableItem *slide = [[MCLableItem alloc]init];
     slide.leftText = @"侧滑我";

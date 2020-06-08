@@ -10,6 +10,7 @@
 #import "MCPickerListView.h"
 #import "MCPickerHeaderView.h"
 #import "MCPickerModel.h"
+#import <MJExtension.h>
 static NSInteger const headerHeight = 30;//headerView的高度
 static NSInteger const ScrollViewY = 70;//ScrollViewY Y坐标起始位
 static NSInteger const PickerViewHeight = 350;//
@@ -21,6 +22,7 @@ static NSInteger const PickerViewHeight = 350;//
 @property (nonatomic , strong) NSMutableArray * headerDataArray;//装有title的数组
 @property (nonatomic , strong) NSMutableArray * listViewArray;//装有listView的数组
 @property (nonatomic , strong) NSMutableArray * dataArrays;//装有数据数组的数组
+@property (nonatomic , strong) NSMutableArray * modelArrays;
 @end
 @implementation MCPickerView
 
@@ -31,6 +33,7 @@ static NSInteger const PickerViewHeight = 350;//
         self.headerDataArray = [NSMutableArray array];
         self.listViewArray = [NSMutableArray array];
         self.dataArrays = [NSMutableArray array];
+        self.modelArrays = [NSMutableArray array];
         [self initForm];
     }
     return self;
@@ -87,6 +90,8 @@ static NSInteger const PickerViewHeight = 350;//
 {
     self.dataArrays  = [self.dataArrays subarrayWithRange:NSMakeRange(0, MCPickerListView.tag + 1)].mutableCopy;
     self.headerDataArray  = [self.headerDataArray subarrayWithRange:NSMakeRange(0, MCPickerListView.tag)].mutableCopy;
+    self.modelArrays = [self.modelArrays subarrayWithRange:NSMakeRange(0, MCPickerListView.tag)].mutableCopy;
+    [self.modelArrays addObject:value];
     [self.headerDataArray addObject:value.name];
     [self.headerDataArray addObject:@"请选择"];
     
@@ -102,7 +107,7 @@ static NSInteger const PickerViewHeight = 350;//
         [self hiddenClick];
     }
     if (array.count ==0 && [self.delegate respondsToSelector:@selector(MCPickerView:completeArray:completeStr:)]) {
-        [self.delegate MCPickerView:self completeArray:self.headerDataArray completeStr:[self.headerDataArray componentsJoinedByString:@""]];
+        [self.delegate MCPickerView:self completeArray:self.modelArrays completeStr:[self.headerDataArray componentsJoinedByString:@""]];
     }
     self.header.dataArray = self.headerDataArray;
 }
@@ -123,12 +128,21 @@ static NSInteger const PickerViewHeight = 350;//
 {
     self.TitleLb.text = titleText;
 }
-- (void)setData:(NSArray<MCPickerModel *> *)dataArray selectText:(NSString *)Text
+- (void)setData:(NSArray<MCPickerModel *> *)dataArray  selectModel:(MCPickerModel *)model
 {
-    [self.headerDataArray addObject:Text];
-    [self.headerDataArray removeObject:@"请选择"];
-    self.header.dataArray = self.headerDataArray;
-    [self manageDataArray:dataArray selectText:Text];
+    if(!dataArray || dataArray.count <=0 ){
+        return;
+    }
+    NSString *str = @"";
+    if (model) {
+        [self.headerDataArray addObject:model.name];
+        [self.headerDataArray removeObject:@"请选择"];
+        self.header.dataArray = self.headerDataArray;
+        [self.modelArrays addObject:model];
+        str = model.name;
+    }
+
+    [self manageDataArray:dataArray selectText:str];
 }
 - (void)manageDataArray:(NSArray *)dataArray  selectText:(NSString *)Text
 {
@@ -159,5 +173,9 @@ static NSInteger const PickerViewHeight = 350;//
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
+}
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [newSuperview endEditing:YES];
 }
 @end

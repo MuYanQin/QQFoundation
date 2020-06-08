@@ -11,5 +11,5 @@
 @interface MCPickerModel : NSObject
 @property (nonatomic , copy) NSString * pid;
 @property (nonatomic , copy) NSString * name;
-@property (nonatomic , copy) NSArray * child;
+@property (nonatomic , copy) NSArray<MCPickerModel *> * child;
 @end

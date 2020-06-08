@@ -12,7 +12,7 @@
 @protocol MCPickerViewDelegate<NSObject>
 
 /**
- 点击Cell的回调  返回下一个视图需要的数据数组 
+ 点击Cell的回调  返回下一个视图需要的数据数组
  @param MCPickerView MCPickerView description
  @param tier 点击的第几层
  @param value 点击那一列的数据
@@ -49,11 +49,9 @@
 /**
  适用于有默认选择地址的时候。要一次性给全数据
  如：
- [setData:proArray selectText:@"安徽省"];
- [setData:cityArray selectText:@"合肥市"];
- [setData:areaArray selectText:@"瑶海区"];
  @param dataArray 数据源
- @param Text 默认选择的字符串
+ @param model 已有的model
  */
-- (void)setData:(NSArray<MCPickerModel *> *)dataArray  selectText:(NSString *)Text;
+- (void)setData:(NSArray<MCPickerModel *> *)dataArray  selectModel:(MCPickerModel *)model;
+
 @end
