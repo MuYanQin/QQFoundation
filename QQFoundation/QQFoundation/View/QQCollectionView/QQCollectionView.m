@@ -8,7 +8,6 @@
 
 #import "QQCollectionView.h"
 #import "MJRefresh.h"
-
 @implementation QQCollectionView
 
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
@@ -39,5 +38,9 @@
         return;
     }
 
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return self.canResponseMutiGesture;
 }
 @end

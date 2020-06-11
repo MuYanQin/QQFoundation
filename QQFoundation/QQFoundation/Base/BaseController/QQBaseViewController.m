@@ -10,9 +10,11 @@
 #import "QQAppDefine.h"
 #import "MJRefresh.h"
 #import "QQNetManager.h"
-
+#import "MCFactory.h"
+#import "UILabel+MCChained.h"
 @interface QQBaseViewController ()
-@property (nonatomic,strong)UIView *navBar;
+@property (nonatomic , strong) QQButton *backButton;
+@property (nonatomic , strong) UILabel *titleLb;
 @end
 
 @implementation QQBaseViewController
@@ -24,85 +26,49 @@
     if (VERSION <11) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    //这里的色值与 Nav的色值相同
-//    self.BaseNavBarColor = self.navigationController.view.backgroundColor;
-//    [self.view addSubview:self.navBar];
 }
-//nav透明的使用
-#pragma mark -- Setter & Getter
+//MARK:滑动消失隐藏
 - (UIView *)navBar {
     if (_navBar == nil) {
         _navBar = [[UIView alloc] init];
-        _navBar.frame = CGRectMake(0, 0, self.view.bounds.size.width, 64);
-        _navBar.alpha = 0.0;
+        _navBar.frame = CGRectMake(0, 0, self.view.bounds.size.width, MCNavHeight);
+        _navBar.backgroundColor = [UIColor clearColor];
+        _backButton = [QQButton buttonWithType:(UIButtonTypeCustom)];
+        _backButton.QbgClolor([UIColor whiteColor]).QcornerRadius(18).Qtarget(self, @selector(backClick));
+        [self.navBar addSubview:_backButton];
+        
+        
+        UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"left_back"]];
+        [_backButton addSubview:img];
+        
+        [_backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.navBar).offset(8);
+            make.centerY.equalTo(self.navBar).offset(11);
+            make.size.mas_equalTo(CGSizeMake(36, 36));
+        }];
+        
+        [img mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.centerY.equalTo(_backButton);
+            make.size.mas_equalTo(CGSizeMake(30, 30));
+        }];
+        _titleLb = [UILabel getLabel].Qfont(18).Qtext(self.title).QtextColor([UIColor clearColor]);
+        [_navBar addSubview:_titleLb];
+        
+        [_titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(_backButton);
+            make.centerX.equalTo(_navBar);
+        }];
+        
     }
     return _navBar;
 }
-- (void)setBaseNavBarColor:(UIColor *)BaseNavBarColor
-{
-//    self.navBar.backgroundColor = BaseNavBarColor;
-//    self.navBar.alpha = 1.0;
-//    [self.view bringSubviewToFront:self.navBar];
+- (void)backClick{
+    [self.navigationController popViewControllerAnimated: YES];
 }
-#pragma mark - 数据请求的众多方法
-- (void)RequestGetWith:(NSString *)url Parameters:(NSDictionary *)parameters{
-    [[QQNetManager Instance] RTSGetWith:url parameters:parameters from:self successs:^(id responseObject) {
-        [self getTempResponseObject:responseObject TagURL:url];
-    } failed:^(NSError *error) {
-        [self getTempError:error TagURL:url];
-    }];
-}
-- (void)RequestGetCacheWith:(NSString *)url Parameters:(NSDictionary *)parameters
-{
-    [[QQNetManager Instance] RTSGetWith:url parameters:parameters from:self successs:^(id responseObject) {
-        [self getTempResponseObject:responseObject TagURL:url];
-    } failed:^(NSError *error) {
-        [self getTempError:error TagURL:url];
-    }];
-}
-- (void)RequestPostWith:(NSString *)url Parameters:(NSDictionary *)parameters
-{
-    [[QQNetManager Instance]RTSPostWith:url parameters:parameters from:self successs:^(id responseObject) {
-        [self getTempResponseObject:responseObject TagURL:url];
-    } failed:^(NSError *error) {
-        [self getTempError:error TagURL:url];
-    }];
-}
-- (void)RequestUpdateWith:(NSString *)url Parameters:(NSDictionary *)parameters Images:(NSMutableArray *)images
-{
-    [[QQNetManager Instance]RTSUploadWith:url parameters:parameters imageArray:images from:self fileMark:@"" progress:^(NSProgress *uploadProgress) {
-        
-    } success:^(id responseObject) {
-        
-    } failed:^(NSError *error) {
-        
-    }];
-}
-
-#pragma mark - 数据请求之后的中间方法
-
-/**
- 中间函数  直接用getError：TagURl： 会被重写的
- */
-- (void)getTempError:(NSError *)error TagURL:(NSString *)URL{
-    
-    //    error.code == -1009;///<offline 断网
-    [self getError:error TagURL:URL];
-    
-}
-- (void)getTempResponseObject:(id)response TagURL:(NSString *)URL {
-    
-    //这里要判断是不是为空
-    [self getResponseObject:response TagURL:URL];
-}
-
-#pragma mark - 最终获取到数据的内容
-
-- (void)getResponseObject:(id)response TagURL:(NSString *)URL {
-    
-}
-- (void)getError:(NSError *)err TagURL:(NSString *)URL {
-
+- (void)navAlpha:(CGFloat)alpha{
+    self.navBar.backgroundColor = [self.navigationController.navigationBar.barTintColor colorWithAlphaComponent:alpha];
+    self.backButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:(1-alpha)];
+    self.titleLb.textColor = [[UIColor blackColor] colorWithAlphaComponent:alpha];
 }
 #pragma mark - 基类里面的一些属性
 - (QQtableView *)BaseQQTableView
@@ -135,12 +101,16 @@
     }
     return _BaseMutableArray;
 }
-#pragma mark - 基类的下拉刷新方法
 /**
  *  修改状态颜色 需要在自定义的nav里同时修改
  */
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    if (@available(iOS 13.0, *)) {
+        return UIStatusBarStyleDarkContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
+    
 }
 @end

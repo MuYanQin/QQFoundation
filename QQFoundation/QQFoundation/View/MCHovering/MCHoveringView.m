@@ -8,6 +8,7 @@
 
 #import "MCHoveringView.h"
 #import "QQtableView.h"
+#import "QQCollectionView.h"
 #import "MJRefresh.h"
 @interface MCHoveringView ()<UIScrollViewDelegate,MCPageViewDelegate>
 
@@ -17,12 +18,13 @@
 /**是否时下拉了手还没送往上滑*/
 @property (nonatomic , assign) BOOL  isDragNORelease;
 
-@property (nonatomic , strong) QQtableView * visibleScrollView;
+@property (nonatomic , strong) UIScrollView * visibleScrollView;
 @end
 
 @implementation MCHoveringView
 - (instancetype)initWithFrame:(CGRect)frame deleaget:(id<MCHoveringListViewDelegate>)delegate
 {
+
     self =  [self initWithFrame:frame];
     self.delegate = delegate;
     self.isHover = NO;
@@ -34,11 +36,8 @@
     
     [self.scrollView addSubview:self.pageView];
     self.visibleScrollView = (QQtableView * )[self.delegate listView][0];
-    self.visibleScrollView.canResponseMutiGesture = YES;
-    __weak typeof(self)weakSelf = self;
-    self.visibleScrollView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
-        [weakSelf tableViewDidScroll:scrollView];
-    };
+    [self visibleScrollViewScroll];
+
     return self;
 }
 - (instancetype)initWithFrame:(CGRect)frame
@@ -59,12 +58,14 @@
 -(UIScrollView *)scrollView
 {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.width, self.height)];
         _scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height + self.headHeight);
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.delegate = self;
-        
+        if (@available(iOS 11.0, *)) {
+            _scrollView.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
+        }
     }
     return _scrollView;
 }
@@ -146,12 +147,24 @@
 }
 - (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index
 {
-    self.visibleScrollView =(QQtableView *)[self.delegate listView][Index];
-    self.visibleScrollView.canResponseMutiGesture = YES;
-    __weak typeof(self)weakSelf = self;
-    self.visibleScrollView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
-        [weakSelf tableViewDidScroll:scrollView];
-    };
+    self.visibleScrollView =[self.delegate listView][Index];
+    [self visibleScrollViewScroll];
 }
-
+- (void) visibleScrollViewScroll {
+    if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {
+        QQtableView *tablView = (QQtableView *)self.visibleScrollView;
+        tablView.canResponseMutiGesture = YES;
+        __weak typeof(self)weakSelf = self;
+        tablView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
+            [weakSelf tableViewDidScroll:scrollView];
+        };
+    }else{
+        QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
+        conllectionView.canResponseMutiGesture = YES;
+        __weak typeof(self)weakSelf = self;
+        conllectionView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
+            [weakSelf tableViewDidScroll:scrollView];
+        };
+    }
+}
 @end

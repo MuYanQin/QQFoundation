@@ -10,8 +10,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QQCollectionView : UICollectionView
+@interface QQCollectionView : UICollectionView<UIGestureRecognizerDelegate>
+
+//配合MCHoveringView使用的属性/
+//**获取tableView偏移量的Block*/
+@property (nonatomic , copy) void(^scrollViewDidScroll)(UIScrollView * scrollView);
+
+//配合MCHoveringView使用的属性/
+/**是否同时响应多个手势 默认NO*/
+@property (nonatomic , assign) BOOL  canResponseMutiGesture;
+
 @property (nonatomic , copy) NSString * requestUrl;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

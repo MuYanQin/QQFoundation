@@ -9,7 +9,6 @@
 #import "QQCollectionViewManager.h"
 #import "QQCollectionViewItem.h"
 #import "QQCollectionViewCell.h"
-#import "MCTestCell.h"
 @interface QQCollectionViewManager ()
 @property (strong, readwrite, nonatomic) NSMutableDictionary *registeredClasses;
 @property (nonatomic , strong) NSMutableArray *dataArray;
@@ -63,6 +62,14 @@
     
     
 }
+/**配合MCHovering的滑动处理*/
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.collectionView.scrollViewDidScroll) {
+        self.collectionView.scrollViewDidScroll(scrollView);
+    }
+}
+
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -77,7 +84,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     QQCollectionViewItem *item = self.dataArray[indexPath.row];
     QQCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([item class]) forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor yellowColor];
     cell.item = item;
     [cell cellWillAppear];
     return cell;

@@ -101,6 +101,18 @@
             [[QQNetManager Instance] deleteConnectionVC:tempVC];
         }
     }];
+    
+    if ([self.hiddenDelegate respondsToSelector:@selector(needHiddenNav)] && viewController == [self.hiddenDelegate needHiddenNav]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else{
+        if ([navigationController isKindOfClass:[UIImagePickerController class]]) {
+            return;
+        }
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        
+        self.hiddenDelegate = nil;
+    }
+    
 }
 
 //配合修改状态栏颜色
