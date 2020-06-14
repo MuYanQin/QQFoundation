@@ -28,6 +28,7 @@ static NSInteger const HUDWIDTH = 80;
         hud.top = MCNavHeight;//记载loading回偏移
         hud.offset = CGPointMake(0, -MCNavHeight);
         hud.removeFromSuperViewOnHide = YES;
+        hud.bezelView.color = [UIColor blackColor];// 背景框的颜色
         [self setHud:hud];//保证只有一个HUD
     }
     return hud;
