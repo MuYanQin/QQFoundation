@@ -20,6 +20,8 @@
 #import "MCPopViewController.h"
 #import "MMCommentInputView.h"
 #import "MCCollectionViewController.h"
+#import "MCNavHiddenViewController.h"
+#import "MCNavBackEventViewController.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) MMCommentInputView *commentInputView;
 
@@ -40,8 +42,6 @@
     self.BaseQQTableView.isHasHeaderRefresh = NO;
     self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     [self iniUI];
-    [self getrequest];
-    
 }
 - (void)injected
 {
@@ -50,22 +50,11 @@
 - (void)iniUI
 {
     QQWeakSelf;
-    
+     //MARK:第一个Section
     QQTableViewSection *sectio0 = [QQTableViewSection section];
     sectio0.indexTitle = @"热门";
     sectio0.sectionHeight = 20;
     sectio0.sectionTitle = @"热门";
-    
-    
-    QQTableViewSection *section = [QQTableViewSection section];
-    section.indexTitle = @"A";
-    section.sectionTitle = @"A";
-    section.sectionHeight = 20;
-    QQTableViewSection *section1 = [QQTableViewSection section];
-    section1.indexTitle = @"B";
-    section1.sectionHeight = 20;
-    section1.sectionTitle = @"B";
-    
     
     TextFieldItem = [[MCTextFieldItem alloc]init];
     TextFieldItem.leftText = @"商品价格";
@@ -78,9 +67,13 @@
     text.text = @"在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！";
     [sectio0 addItem:text];
     
-    MCEmptyItem *empty1 = [[MCEmptyItem alloc]initWithHeight:10];
-    empty1.bgColor = getColorWithHex(@"f8f8f8");
-    [section addItem:empty1];
+    //MARK:第二个Section
+    QQTableViewSection *section = [QQTableViewSection section];
+    section.indexTitle = @"A";
+    section.sectionTitle = @"A";
+    section.sectionHeight = 20;
+    
+
     /**
      自适应文字高度 详细的使用  参见文件中的autoCellHeight方法
      */
@@ -88,6 +81,29 @@
     text1.font = [UIFont systemFontOfSize:18 weight:(UIFontWeightRegular)];
     text1.text = @"在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！";
     [section addItem:text1];
+    
+    MCEmptyItem *empty1 = [[MCEmptyItem alloc]initWithHeight:10];
+    empty1.bgColor = getColorWithHex(@"f8f8f8");
+    [section addItem:empty1];
+    
+    
+    MCLableItem *navHidden = [[MCLableItem alloc]init];
+    navHidden.leftText = @"导航栏隐藏";
+    navHidden.rightText = @"点击查看案例";
+    navHidden.selcetCellHandler = ^(id item) {
+        [weakSelf.navigationController pushViewController:[MCNavHiddenViewController new] animated:YES];
+    };
+    [section addItem:navHidden];
+    
+    
+    MCLableItem *navClick = [[MCLableItem alloc]init];
+    navClick.leftText = @"导航栏返回事件获取";
+    navClick.rightText = @"点击查看案例";
+    navClick.selcetCellHandler = ^(id item) {
+        [weakSelf.navigationController pushViewController:[MCNavBackEventViewController new] animated:YES];
+    };
+    [section addItem:navClick];
+    
     
     MCLableItem *lableItem = [[MCLableItem alloc]init];
     lableItem.leftText = @"视图弹出";
@@ -193,6 +209,12 @@
     };
     [section addItem:QQDateFormatter];
     
+    //MARK:第三个Section
+    QQTableViewSection *section1 = [QQTableViewSection section];
+    section1.indexTitle = @"B";
+    section1.sectionHeight = 20;
+    section1.sectionTitle = @"B";
+    
     
     MCLableItem *mcpickerView = [[MCLableItem alloc]init];
     mcpickerView.leftText = @"MCPickerView使用";
@@ -221,11 +243,7 @@
     
     [self.tabManager replaceWithSectionsFromArray:@[sectio0,section,section1]];
 }
-- (void)getrequest{
 
-    
-
-}
 - (MMCommentInputView *)commentInputView
 {
     if (!_commentInputView) {

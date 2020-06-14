@@ -13,6 +13,9 @@
 		420022812266C6DB00C39BE3 /* QQTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 420022802266C6DB00C39BE3 /* QQTableViewSection.m */; };
 		4212647A22641877008CB619 /* MCAllTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4212647922641877008CB619 /* MCAllTextCell.m */; };
 		4223CC9124962418000C1B10 /* MCCollectionAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4223CC9024962417000C1B10 /* MCCollectionAddViewController.m */; };
+		4223CC9A2496278E000C1B10 /* MCNavHiddenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4223CC992496278E000C1B10 /* MCNavHiddenViewController.m */; };
+		4223CC9D249627B2000C1B10 /* MCNavShadeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4223CC9C249627B2000C1B10 /* MCNavShadeViewController.m */; };
+		4226BD0624963D3900B2FCFF /* MCNavBackEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4226BD0524963D3900B2FCFF /* MCNavBackEventViewController.m */; };
 		424DADAC23B7435800FBD5C9 /* QQTableViewSecItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADAB23B7435800FBD5C9 /* QQTableViewSecItem.m */; };
 		424DADAF23B7439400FBD5C9 /* QQTableViewSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADAE23B7439400FBD5C9 /* QQTableViewSecView.m */; };
 		424DADB423B74C9F00FBD5C9 /* MCAuthorSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADB323B74C9F00FBD5C9 /* MCAuthorSecView.m */; };
@@ -217,6 +220,12 @@
 		4212647922641877008CB619 /* MCAllTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAllTextCell.m; sourceTree = "<group>"; };
 		4223CC8F24962417000C1B10 /* MCCollectionAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCCollectionAddViewController.h; sourceTree = "<group>"; };
 		4223CC9024962417000C1B10 /* MCCollectionAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCollectionAddViewController.m; sourceTree = "<group>"; };
+		4223CC982496278E000C1B10 /* MCNavHiddenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCNavHiddenViewController.h; sourceTree = "<group>"; };
+		4223CC992496278E000C1B10 /* MCNavHiddenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCNavHiddenViewController.m; sourceTree = "<group>"; };
+		4223CC9B249627B2000C1B10 /* MCNavShadeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCNavShadeViewController.h; sourceTree = "<group>"; };
+		4223CC9C249627B2000C1B10 /* MCNavShadeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCNavShadeViewController.m; sourceTree = "<group>"; };
+		4226BD0424963D3900B2FCFF /* MCNavBackEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCNavBackEventViewController.h; sourceTree = "<group>"; };
+		4226BD0524963D3900B2FCFF /* MCNavBackEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCNavBackEventViewController.m; sourceTree = "<group>"; };
 		424DADAA23B7435800FBD5C9 /* QQTableViewSecItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewSecItem.h; sourceTree = "<group>"; };
 		424DADAB23B7435800FBD5C9 /* QQTableViewSecItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewSecItem.m; sourceTree = "<group>"; };
 		424DADAD23B7439400FBD5C9 /* QQTableViewSecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewSecView.h; sourceTree = "<group>"; };
@@ -577,6 +586,53 @@
 			path = QQTableViewManager;
 			sourceTree = "<group>";
 		};
+		4223CC95249626A4000C1B10 /* MCPickerView使用 */ = {
+			isa = PBXGroup;
+			children = (
+				4B7663A7214A46550073F7D8 /* MCPickerViewController.h */,
+				4B7663A8214A46550073F7D8 /* MCPickerViewController.m */,
+			);
+			path = "MCPickerView使用";
+			sourceTree = "<group>";
+		};
+		4223CC96249626C2000C1B10 /* 评论view */ = {
+			isa = PBXGroup;
+			children = (
+				42EB64D423ADC53C001236A7 /* MMCommentInputView.h */,
+				42EB64D523ADC53C001236A7 /* MMCommentInputView.m */,
+			);
+			path = "评论view";
+			sourceTree = "<group>";
+		};
+		4223CC972496275F000C1B10 /* 导航栏隐藏 */ = {
+			isa = PBXGroup;
+			children = (
+				4223CC982496278E000C1B10 /* MCNavHiddenViewController.h */,
+				4223CC992496278E000C1B10 /* MCNavHiddenViewController.m */,
+				4223CC9B249627B2000C1B10 /* MCNavShadeViewController.h */,
+				4223CC9C249627B2000C1B10 /* MCNavShadeViewController.m */,
+			);
+			path = "导航栏隐藏";
+			sourceTree = "<group>";
+		};
+		4226BD0324963D1700B2FCFF /* 导航栏返回事件拦截 */ = {
+			isa = PBXGroup;
+			children = (
+				4226BD0424963D3900B2FCFF /* MCNavBackEventViewController.h */,
+				4226BD0524963D3900B2FCFF /* MCNavBackEventViewController.m */,
+			);
+			path = "导航栏返回事件拦截";
+			sourceTree = "<group>";
+		};
+		4226BD082496446400B2FCFF /* QQCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				429C3C49248E0B3D00B4771F /* QQCollectionView.h */,
+				429C3C4A248E0B3D00B4771F /* QQCollectionView.m */,
+			);
+			path = QQCollectionView;
+			sourceTree = "<group>";
+		};
 		424DADB123B74C7700FBD5C9 /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,7 +642,7 @@
 			path = views;
 			sourceTree = "<group>";
 		};
-		42784C22248DD2C6001CDB81 /* QQCollectionView */ = {
+		42784C22248DD2C6001CDB81 /* QQCollectionViewManager */ = {
 			isa = PBXGroup;
 			children = (
 				42784C23248DD357001CDB81 /* QQCollectionViewManager.h */,
@@ -595,10 +651,8 @@
 				42784C2A248DD605001CDB81 /* QQCollectionViewCell.m */,
 				42784C2C248DD622001CDB81 /* QQCollectionViewItem.h */,
 				42784C2D248DD622001CDB81 /* QQCollectionViewItem.m */,
-				429C3C49248E0B3D00B4771F /* QQCollectionView.h */,
-				429C3C4A248E0B3D00B4771F /* QQCollectionView.m */,
 			);
-			path = QQCollectionView;
+			path = QQCollectionViewManager;
 			sourceTree = "<group>";
 		};
 		42784C32248DD921001CDB81 /* CollectionView管理 */ = {
@@ -614,13 +668,13 @@
 			path = "CollectionView管理";
 			sourceTree = "<group>";
 		};
-		42CEE6E12271834300B75359 /* PopViewController */ = {
+		42CEE6E12271834300B75359 /* 视图弹出 */ = {
 			isa = PBXGroup;
 			children = (
 				42CEE6E22271835C00B75359 /* MCPopViewController.h */,
 				42CEE6E32271835C00B75359 /* MCPopViewController.m */,
 			);
-			path = PopViewController;
+			path = "视图弹出";
 			sourceTree = "<group>";
 		};
 		4B1C2B56222E28B50007EB9B /* MCPicker */ = {
@@ -697,16 +751,16 @@
 		4B4D5A59211B2864007FDED8 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				4226BD0324963D1700B2FCFF /* 导航栏返回事件拦截 */,
+				4223CC972496275F000C1B10 /* 导航栏隐藏 */,
+				4223CC96249626C2000C1B10 /* 评论view */,
+				4223CC95249626A4000C1B10 /* MCPickerView使用 */,
 				42784C32248DD921001CDB81 /* CollectionView管理 */,
-				42CEE6E12271834300B75359 /* PopViewController */,
-				4BE30A81215270AE0063164A /* PageViewController */,
-				4B4D5A6D211B2B1A007FDED8 /* View */,
+				42CEE6E12271834300B75359 /* 视图弹出 */,
+				4BE30A81215270AE0063164A /* PageView使用 */,
+				4B4D5A6D211B2B1A007FDED8 /* 基础cell类型 */,
 				4B4D5A5E211B28FF007FDED8 /* MCHomeViewController.h */,
 				4B4D5A5F211B28FF007FDED8 /* MCHomeViewController.m */,
-				4B7663A7214A46550073F7D8 /* MCPickerViewController.h */,
-				4B7663A8214A46550073F7D8 /* MCPickerViewController.m */,
-				42EB64D423ADC53C001236A7 /* MMCommentInputView.h */,
-				42EB64D523ADC53C001236A7 /* MMCommentInputView.m */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -748,7 +802,7 @@
 			path = "我的";
 			sourceTree = "<group>";
 		};
-		4B4D5A6D211B2B1A007FDED8 /* View */ = {
+		4B4D5A6D211B2B1A007FDED8 /* 基础cell类型 */ = {
 			isa = PBXGroup;
 			children = (
 				4B4D5A6E211B2B40007FDED8 /* MCTextFieldCell.h */,
@@ -758,7 +812,7 @@
 				4212647822641877008CB619 /* MCAllTextCell.h */,
 				4212647922641877008CB619 /* MCAllTextCell.m */,
 			);
-			path = View;
+			path = "基础cell类型";
 			sourceTree = "<group>";
 		};
 		4B5BEF8020ECA691000BB2E2 /* MCFactory */ = {
@@ -836,13 +890,14 @@
 		4BA4E12D2227B7B6003DDF5C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				42784C22248DD2C6001CDB81 /* QQCollectionView */,
+				4226BD082496446400B2FCFF /* QQCollectionView */,
+				42784C22248DD2C6001CDB81 /* QQCollectionViewManager */,
+				52D8D1791F4D77EF00EA413B /* QQTableView */,
+				0153EDF020B65D610041CFC4 /* QQTableViewManager */,
 				4B1C2B56222E28B50007EB9B /* MCPicker */,
 				4BA4E12F2227BA6A003DDF5C /* MCPopView */,
 				52D8D1741F4D77EF00EA413B /* QQSingleImagePicker */,
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
-				52D8D1791F4D77EF00EA413B /* QQTableView */,
-				0153EDF020B65D610041CFC4 /* QQTableViewManager */,
 				ACE02634201766FE00A387DC /* QQAlertController */,
 				4BFBC6E121E837AC00012B96 /* MCHovering */,
 				4B1F107E211C301600B09B80 /* MCVerificationCodeView */,
@@ -920,7 +975,7 @@
 			path = MCMonitorView;
 			sourceTree = "<group>";
 		};
-		4BE30A81215270AE0063164A /* PageViewController */ = {
+		4BE30A81215270AE0063164A /* PageView使用 */ = {
 			isa = PBXGroup;
 			children = (
 				4BE30A7E2152707E0063164A /* MCPageViewViewController.h */,
@@ -932,7 +987,7 @@
 				4B94392121C110CC00F34743 /* MCPageViewSub3ViewController.h */,
 				4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */,
 			);
-			path = PageViewController;
+			path = "PageView使用";
 			sourceTree = "<group>";
 		};
 		4BFBC6E121E837AC00012B96 /* MCHovering */ = {
@@ -1570,6 +1625,7 @@
 				AC781ACF1FF51E3700863F4C /* QQSqlHelper.m in Sources */,
 				AC781ACB1FF51D2C00863F4C /* FMResultSet.m in Sources */,
 				0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */,
+				4223CC9D249627B2000C1B10 /* MCNavShadeViewController.m in Sources */,
 				52C1154B1F4EC5CE005471CB /* AFNetworkReachabilityManager.m in Sources */,
 				52C1155F1F4EC5CE005471CB /* MJRefreshConst.m in Sources */,
 				AC781AC91FF51D2C00863F4C /* FMDatabase.m in Sources */,
@@ -1583,6 +1639,8 @@
 				52C1156E1F4EC5CE005471CB /* SDWebImageDownloaderOperation.m in Sources */,
 				4BE6CD10224333E80048217F /* NSObject+MB.m in Sources */,
 				4B4D5A69211B2932007FDED8 /* MCAuthorViewController.m in Sources */,
+				4223CC9A2496278E000C1B10 /* MCNavHiddenViewController.m in Sources */,
+				4226BD0624963D3900B2FCFF /* MCNavBackEventViewController.m in Sources */,
 				52C115701F4EC5CE005471CB /* SDWebImagePrefetcher.m in Sources */,
 				52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */,
 				52D8D19F1F4D77EF00EA413B /* QQTextView.m in Sources */,

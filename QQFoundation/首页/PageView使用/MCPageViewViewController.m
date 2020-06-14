@@ -23,14 +23,6 @@
     // Do any additional setup after loading the view.
     NSMutableArray *titles = [NSMutableArray array];
     NSMutableArray *controllers = [NSMutableArray array];
-    
-//    for (int i = 0; i<8; i++) {
-//        if (i%2 == 0) {
-//            [controllers addObject:[MCPageViewSub1ViewController new]];
-//        }else{
-//            [controllers addObject:[MCPageViewSub2ViewController new]];
-//        }
-//    }
     [controllers addObject:[MCPageViewSub1ViewController new]];
     [titles addObject:@"社会"];
 

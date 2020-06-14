@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"collectionView管理";
     [self nav_RightItemWithStr:@"新建" Selector:@selector(addnv)];
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc]init];
     layout.itemSize = CGSizeMake((KScreenWidth - 45)/2, 100);

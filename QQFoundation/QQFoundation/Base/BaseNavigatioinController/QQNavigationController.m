@@ -196,7 +196,7 @@
     textAttrs[NSFontAttributeName] = getFontRegular(14);
     [backItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [backItem setTintColor:[UIColor whiteColor]];
-    [self.childViewControllers firstObject].navigationItem.backBarButtonItem = backItem;
+    viewController.navigationItem.backBarButtonItem = backItem;
     [super pushViewController:viewController animated:animated];
 }
 

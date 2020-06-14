@@ -32,7 +32,6 @@
     self.TextField.font = [UIFont systemFontOfSize:15 weight:(UIFontWeightRegular)];
     self.TextField.textColor = getColorWithHex(@"2c2c2c");
     self.TextField.textAlignment  = NSTextAlignmentRight;
-    self.TextField.backgroundColor = [UIColor redColor];
     self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.TextField.maxLength = 8;
     self.TextField.errorText = @"文本长度不得超过8字符";
