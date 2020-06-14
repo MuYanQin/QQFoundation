@@ -10,7 +10,8 @@
 #import "QQCollectionViewManager.h"
 #import "MCTestCell.h"
 #import "QQCollectionView.h"
-@interface MCCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,QQNavigationControllerDelegate>
+#import "MCCollectionAddViewController.h"
+@interface MCCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic , strong) QQCollectionViewManager *manager;
 @end
 
@@ -20,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self nav_RightItemWithStr:@"新建" Selector:@selector(addnv)];
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc]init];
     layout.itemSize = CGSizeMake((KScreenWidth - 45)/2, 100);
     layout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
@@ -63,9 +66,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    ((QQNavigationController *)self.navigationController).navDelegate = self;
 }
-
+- (void)addnv
+{
+    [self.navigationController pushViewController:[MCCollectionAddViewController new] animated:YES];
+}
 /*
 #pragma mark - Navigation
 

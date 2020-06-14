@@ -12,14 +12,23 @@
 @protocol QQTabBarControllerDelegate <NSObject>
 
 @optional
+
+/// 获取中间凸起b按钮的点击事件
 - (void)clickBigItem;
 
+/// 获取按钮的点击事件
+/// @param tab tab
+/// @param index 下标
 - (void)QQTabBarController:(QQTabBarController *)tab didSelectdIndex:(NSInteger)index;
 
 @end
 
 @interface QQTabBarController : UITabBarController
 
+
+/// 实例化方法
+/// @param items item的数据
+/// @param navClass UINavigationController 的class
 - (instancetype)initTabWithItems:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass;
 
 /**代理*/

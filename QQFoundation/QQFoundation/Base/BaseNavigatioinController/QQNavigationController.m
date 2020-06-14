@@ -10,7 +10,7 @@
 #import "QQNetManager.h"
 #import "MCFactory.h"
 #import "AppDelegate.h"
-@interface QQNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
+@interface QQNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate,UINavigationBarDelegate>
 {
     UIViewController *tempVC;///<栈顶的控制器
 }
@@ -91,7 +91,7 @@
         }
     }];
     ///设置隐藏 nav 如果遵循代理且viewController 同一个就隐藏
-    if ([self.navDelegate respondsToSelector:@selector(needHiddenNav)] && viewController == [self.navDelegate needHiddenNav]) {
+    if ([self.navHiddenDelegate respondsToSelector:@selector(needHiddenNav)] && viewController == [self.navHiddenDelegate needHiddenNav]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
     }else{
         ///如果出来的是图片选择的 则不做处理
@@ -100,21 +100,56 @@
         }
         [navigationController setNavigationBarHidden:NO animated:YES];
         ///及时将代理设置为空 否则代理存在 但是界面pop之后会引起空指针
-        self.navDelegate = nil;
+        self.navHiddenDelegate = nil;
     }
     
 }
 #pragma mark - UINavigationBarDelegate
+
 //是否能pop到上一个界面
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
+    /**
+     手势返回时候打印
+     po navigationBar.items
+     <__NSArrayI 0x2834f62a0>(
+     <UINavigationItem: 0x117e05520> title='案例使用1' backBarButtonItem=0x117d8e290,
+     <UINavigationItem: 0x117e8abd0>
+     )
+     
+     po self.viewControllers
+     <__NSSingleObjectArrayI 0x2836b4b10>(
+     <MCHomeViewController: 0x117e0dc90>
+     )
+     
+     点击返回按钮打印
+     po self.viewControllers
+     <__NSArrayI 0x280a5ec80>(
+     <MCHomeViewController: 0x1037103c0>,
+     <MCCollectionViewController: 0x103870f10>
+     )
+     */
+    if([self.viewControllers count] < [navigationBar.items count]) {
+        return YES;
+    }
     //响应代理 栈顶VC相同 则返回NO
-    if ([self.navDelegate respondsToSelector:@selector(backItemClickEvent)]) {
-        if(self.topViewController == [self.navDelegate backItemClickEvent] ){
-            [self.navDelegate backItemClickEvent];
+    if ([self.navBackDelegate respondsToSelector:@selector(backItemClickEvent)]) {
+        if(self.topViewController == [self.navBackDelegate backItemClickEvent] ){
+            [self.navBackDelegate backItemClickEvent];
             return NO;
         }
     }
+  if( ([[[UIDevice currentDevice] systemVersion] doubleValue] <13.0)) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self popViewControllerAnimated:YES];
+        });
+    }
+    
     return YES;
+}
+
+- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(nonnull UINavigationItem *)item
+{
+    self.navBackDelegate = nil;
 }
 //MARK: 重载 popTo 方法
 - (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -131,7 +166,6 @@
         //返回调用此方法取消请求  如果是请求完成则从数组中去除本子请求
         [[QQNetManager Instance] deleteConnectionVC:self.viewControllers.lastObject];
         //界面pop将代理置空
-        self.navDelegate = nil;
         return [super popViewControllerAnimated:animated];
     } else {
         //        [self enqueuePopViewController:nil animate:animated];
@@ -151,8 +185,7 @@
     }
     self.isSwitching = YES; // 2. 否则修改状态
     //界面push将代理置空
-    self.navDelegate = nil;
-
+    self.navBackDelegate = nil;
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
     }

@@ -12,6 +12,7 @@
 		0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0153EDF920B66B710041CFC4 /* QQTableViewCell.m */; };
 		420022812266C6DB00C39BE3 /* QQTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 420022802266C6DB00C39BE3 /* QQTableViewSection.m */; };
 		4212647A22641877008CB619 /* MCAllTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4212647922641877008CB619 /* MCAllTextCell.m */; };
+		4223CC9124962418000C1B10 /* MCCollectionAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4223CC9024962417000C1B10 /* MCCollectionAddViewController.m */; };
 		424DADAC23B7435800FBD5C9 /* QQTableViewSecItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADAB23B7435800FBD5C9 /* QQTableViewSecItem.m */; };
 		424DADAF23B7439400FBD5C9 /* QQTableViewSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADAE23B7439400FBD5C9 /* QQTableViewSecView.m */; };
 		424DADB423B74C9F00FBD5C9 /* MCAuthorSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADB323B74C9F00FBD5C9 /* MCAuthorSecView.m */; };
@@ -214,6 +215,8 @@
 		420022802266C6DB00C39BE3 /* QQTableViewSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewSection.m; sourceTree = "<group>"; };
 		4212647822641877008CB619 /* MCAllTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAllTextCell.h; sourceTree = "<group>"; };
 		4212647922641877008CB619 /* MCAllTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAllTextCell.m; sourceTree = "<group>"; };
+		4223CC8F24962417000C1B10 /* MCCollectionAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCCollectionAddViewController.h; sourceTree = "<group>"; };
+		4223CC9024962417000C1B10 /* MCCollectionAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCollectionAddViewController.m; sourceTree = "<group>"; };
 		424DADAA23B7435800FBD5C9 /* QQTableViewSecItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewSecItem.h; sourceTree = "<group>"; };
 		424DADAB23B7435800FBD5C9 /* QQTableViewSecItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQTableViewSecItem.m; sourceTree = "<group>"; };
 		424DADAD23B7439400FBD5C9 /* QQTableViewSecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQTableViewSecView.h; sourceTree = "<group>"; };
@@ -605,6 +608,8 @@
 				42784C30248DD911001CDB81 /* MCCollectionViewController.m */,
 				42784C33248DD940001CDB81 /* MCTestCell.h */,
 				42784C34248DD940001CDB81 /* MCTestCell.m */,
+				4223CC8F24962417000C1B10 /* MCCollectionAddViewController.h */,
+				4223CC9024962417000C1B10 /* MCCollectionAddViewController.m */,
 			);
 			path = "CollectionView管理";
 			sourceTree = "<group>";
@@ -689,7 +694,7 @@
 			path = MCServerExtension;
 			sourceTree = "<group>";
 		};
-		4B4D5A59211B2864007FDED8 /* Home */ = {
+		4B4D5A59211B2864007FDED8 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
 				42784C32248DD921001CDB81 /* CollectionView管理 */,
@@ -703,44 +708,44 @@
 				42EB64D423ADC53C001236A7 /* MMCommentInputView.h */,
 				42EB64D523ADC53C001236A7 /* MMCommentInputView.m */,
 			);
-			path = Home;
+			path = "首页";
 			sourceTree = "<group>";
 		};
-		4B4D5A5A211B2884007FDED8 /* Reward */ = {
+		4B4D5A5A211B2884007FDED8 /* 赏金 */ = {
 			isa = PBXGroup;
 			children = (
 				4B4D5A61211B2910007FDED8 /* MCRewardViewController.h */,
 				4B4D5A62211B2910007FDED8 /* MCRewardViewController.m */,
 			);
-			path = Reward;
+			path = "赏金";
 			sourceTree = "<group>";
 		};
-		4B4D5A5B211B28B2007FDED8 /* Search */ = {
+		4B4D5A5B211B28B2007FDED8 /* 搜索 */ = {
 			isa = PBXGroup;
 			children = (
 				4B4D5A6A211B293F007FDED8 /* MCSearchTViewController.h */,
 				4B4D5A6B211B293F007FDED8 /* MCSearchTViewController.m */,
 			);
-			path = Search;
+			path = "搜索";
 			sourceTree = "<group>";
 		};
-		4B4D5A5C211B28C1007FDED8 /* Author */ = {
+		4B4D5A5C211B28C1007FDED8 /* 实名 */ = {
 			isa = PBXGroup;
 			children = (
 				424DADB123B74C7700FBD5C9 /* views */,
 				4B4D5A67211B2932007FDED8 /* MCAuthorViewController.h */,
 				4B4D5A68211B2932007FDED8 /* MCAuthorViewController.m */,
 			);
-			path = Author;
+			path = "实名";
 			sourceTree = "<group>";
 		};
-		4B4D5A5D211B28CD007FDED8 /* Mine */ = {
+		4B4D5A5D211B28CD007FDED8 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
 				4B4D5A64211B2923007FDED8 /* MCMineViewController.h */,
 				4B4D5A65211B2923007FDED8 /* MCMineViewController.m */,
 			);
-			path = Mine;
+			path = "我的";
 			sourceTree = "<group>";
 		};
 		4B4D5A6D211B2B1A007FDED8 /* View */ = {
@@ -1161,11 +1166,11 @@
 				52C114E51F4EC5CE005471CB /* MJRefresh */,
 				52C115141F4EC5CE005471CB /* SDWebImage */,
 				52D8D1231F4D77EE00EA413B /* QQFoundation */,
-				4B4D5A59211B2864007FDED8 /* Home */,
-				4B4D5A5A211B2884007FDED8 /* Reward */,
-				4B4D5A5B211B28B2007FDED8 /* Search */,
-				4B4D5A5C211B28C1007FDED8 /* Author */,
-				4B4D5A5D211B28CD007FDED8 /* Mine */,
+				4B4D5A59211B2864007FDED8 /* 首页 */,
+				4B4D5A5A211B2884007FDED8 /* 赏金 */,
+				4B4D5A5B211B28B2007FDED8 /* 搜索 */,
+				4B4D5A5C211B28C1007FDED8 /* 实名 */,
+				4B4D5A5D211B28CD007FDED8 /* 我的 */,
 				52D8D10F1F4D775500EA413B /* AppDelegate.h */,
 				52D8D1101F4D775500EA413B /* AppDelegate.m */,
 				4BDC83D920E120F600F13C46 /* PrefixHeader.pch */,
@@ -1662,6 +1667,7 @@
 				4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */,
 				52C115561F4EC5CE005471CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				52D8D1991F4D77EF00EA413B /* QQButton.m in Sources */,
+				4223CC9124962418000C1B10 /* MCCollectionAddViewController.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
 				4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */,

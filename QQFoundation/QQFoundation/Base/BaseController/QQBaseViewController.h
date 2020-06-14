@@ -11,7 +11,7 @@
 #import "QQTableViewManager.h"
 #import "QQNavigationController.h"
 @class QQNetManager;
-@interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,QQtableViewRequestDelegate,QQNavigationControllerDelegate>
+@interface QQBaseViewController : QQBarItemViewController<UIGestureRecognizerDelegate,QQtableViewRequestDelegate>
 
 
 /// 自定义的nav懒加载，使用时先添加到视图上。此nav是界面滑动，动态改变nav颜色及返回按钮

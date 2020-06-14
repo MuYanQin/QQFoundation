@@ -16,7 +16,9 @@
 @property (nonatomic , strong) UIImage * selectedImg;
 /**下标文字*/
 @property (nonatomic , copy) NSString * text;
-/**controller*/
+/**
+ 点击按钮需要显示的viewController 如仅仅需要点击事件 则可不给予赋值
+ */
 @property (nonatomic , strong) UIViewController  *vc;
 
 /**文字与图片的距离*/
