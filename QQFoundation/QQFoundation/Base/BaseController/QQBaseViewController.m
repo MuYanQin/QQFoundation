@@ -26,8 +26,10 @@
     if (VERSION <11) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    
 }
 //MARK:滑动消失隐藏
+///图片 坐标此处修改
 - (UIView *)navBar {
     if (_navBar == nil) {
         _navBar = [[UIView alloc] init];
@@ -62,9 +64,12 @@
     }
     return _navBar;
 }
+//MARK:自定义nav后返回的点击事件
 - (void)backClick{
     [self.navigationController popViewControllerAnimated: YES];
 }
+//MARK:动态改变nav、返回按钮、title文字显示
+///这里可以修改显示的颜色
 - (void)navAlpha:(CGFloat)alpha{
     self.navBar.backgroundColor = [self.navigationController.navigationBar.barTintColor colorWithAlphaComponent:alpha];
     self.backButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:(1-alpha)];
@@ -74,13 +79,7 @@
 - (QQtableView *)BaseQQTableView
 {
     if (!_BaseQQTableView) {
-        if (self.buildGroupTab) {
-            _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance) style:(UITableViewStyleGrouped)];
-            _BaseQQTableView.backgroundColor = [UIColor purpleColor];
-            
-        }else{
-            _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance) style:(UITableViewStylePlain)];
-        }
+        _BaseQQTableView = [[QQtableView alloc]initWithFrame:CGRectMake(0, MCNavHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - MCNavHeight - MCBottomDistance) style:(UITableViewStylePlain)];
         _BaseQQTableView.RequestDelegate = self;
     }
     return _BaseQQTableView;
@@ -101,9 +100,7 @@
     }
     return _BaseMutableArray;
 }
-/**
- *  修改状态颜色 需要在自定义的nav里同时修改
- */
+//MARK: 修改状态颜色 需要在自定义的nav 实现 childViewControllerForStatusBarStyle配合使用
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     if (@available(iOS 13.0, *)) {

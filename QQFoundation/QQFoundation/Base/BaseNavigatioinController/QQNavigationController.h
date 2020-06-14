@@ -8,17 +8,36 @@
 
 #import <UIKit/UIKit.h>
 
+
 @protocol QQNavigationControllerDelegate <NSObject>
 
 @optional
 
-/// 返回需要隐藏nav的vc
+/**
+ 隐藏nav
+ 在viewWillApear中添加代理
+ @return 隐藏nav 的viewController
+*/
 - (UIViewController *)needHiddenNav;
 
+
+/**
+ 获取返回的点击事件
+ 使用时viewController 在viewWillAppear中添加代理
+ @return 获取点击事件的viewController
+*/
+- (UIViewController *)backItemClickEvent;
+
 @end
+
+
 @interface QQNavigationController : UINavigationController
-@property (nonatomic,assign) BOOL forbidSlider;//是否禁止滑动
-@property (nonatomic , assign) id<QQNavigationControllerDelegate>  hiddenDelegate;
+
+/**是否禁止滑动*/
+@property (nonatomic,assign) BOOL forbidSlider;///<是否禁止滑动
+
+/// 代理
+@property (nonatomic , assign) id<QQNavigationControllerDelegate>  navDelegate;
 
 @end
 

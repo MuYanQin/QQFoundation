@@ -10,11 +10,12 @@
 #import "QQCollectionViewManager.h"
 #import "MCTestCell.h"
 #import "QQCollectionView.h"
-@interface MCCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MCCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,QQNavigationControllerDelegate>
 @property (nonatomic , strong) QQCollectionViewManager *manager;
 @end
 
 @implementation MCCollectionViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +27,7 @@
 
     collection.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collection];
+    
     
     self.manager = [[QQCollectionViewManager alloc]initWithCollectionView:collection];
     self.manager[@"MCTestItem"] = @"MCTestCell";
@@ -52,10 +54,18 @@
     return 2;
 }
 
+
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MCTestCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"23" forIndexPath:indexPath];
     return cell;
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    ((QQNavigationController *)self.navigationController).navDelegate = self;
+}
+
 /*
 #pragma mark - Navigation
 

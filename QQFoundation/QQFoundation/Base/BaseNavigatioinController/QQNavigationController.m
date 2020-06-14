@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 @interface QQNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 {
-    UIViewController *tempVC;///栈顶的控制器
+    UIViewController *tempVC;///<栈顶的控制器
 }
 
 /**
@@ -47,15 +47,10 @@
         self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
         //设置状态栏的不隐藏
         self.modalPresentationCapturesStatusBarAppearance = NO;
-       /* [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
-                                          forBarPosition:UIBarPositionTop
-                                              barMetrics:UIBarMetricsDefault];*/
-        //设置navi透明需要translucent = yes,设置图片，barMetrics（更改类型得到不同的效果）
     }
     //nav下面的横线消失
     self.navigationBar.shadowImage = [UIImage new];
     //iOS 10 设置backBarButtonItem颜色
-    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
@@ -65,14 +60,8 @@
  - (nullable UIViewController *)popViewControllerAnimated:(BOOL)animated; // Returns the popped controller.
 答：：：因为如果你是pop Animated设置为Yes的时候 界面返回了back走了  但是因为动画还没有结束所以返回的是nil
  */
-- (void)back
-{
-    [self popViewControllerAnimated:YES];
-}
 
 #pragma mark - UINavigationControllerDelegate
-#warning 这里可以设置返回手势的开关
-//推送的视图将要出现时将侧滑返回设置为真
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated
@@ -101,24 +90,33 @@
             [[QQNetManager Instance] deleteConnectionVC:tempVC];
         }
     }];
-    
-    if ([self.hiddenDelegate respondsToSelector:@selector(needHiddenNav)] && viewController == [self.hiddenDelegate needHiddenNav]) {
+    ///设置隐藏 nav 如果遵循代理且viewController 同一个就隐藏
+    if ([self.navDelegate respondsToSelector:@selector(needHiddenNav)] && viewController == [self.navDelegate needHiddenNav]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
     }else{
+        ///如果出来的是图片选择的 则不做处理
         if ([navigationController isKindOfClass:[UIImagePickerController class]]) {
             return;
         }
         [navigationController setNavigationBarHidden:NO animated:YES];
-        
-        self.hiddenDelegate = nil;
+        ///及时将代理设置为空 否则代理存在 但是界面pop之后会引起空指针
+        self.navDelegate = nil;
     }
     
 }
-
-//配合修改状态栏颜色
-- (UIViewController *)childViewControllerForStatusBarStyle{
-    return self.topViewController;
+#pragma mark - UINavigationBarDelegate
+//是否能pop到上一个界面
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
+    //响应代理 栈顶VC相同 则返回NO
+    if ([self.navDelegate respondsToSelector:@selector(backItemClickEvent)]) {
+        if(self.topViewController == [self.navDelegate backItemClickEvent] ){
+            [self.navDelegate backItemClickEvent];
+            return NO;
+        }
+    }
+    return YES;
 }
+//MARK: 重载 popTo 方法
 - (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (!self.isSwitching) {
         return [super popToViewController:viewController animated:animated];
@@ -126,12 +124,14 @@
         return nil;
     }
 }
-
+//MARK: 重载 pop 方法
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
 
     if (!self.isSwitching) {
         //返回调用此方法取消请求  如果是请求完成则从数组中去除本子请求
         [[QQNetManager Instance] deleteConnectionVC:self.viewControllers.lastObject];
+        //界面pop将代理置空
+        self.navDelegate = nil;
         return [super popViewControllerAnimated:animated];
     } else {
         //        [self enqueuePopViewController:nil animate:animated];
@@ -139,7 +139,7 @@
     }
 }
 
-// 重载 push 方法
+//MARK: 重载 push 方法
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     //防止在push的过程中触发返回的时间导致崩溃
@@ -150,7 +150,9 @@
         return; // 1. 如果是动画，并且正在切换，直接忽略
     }
     self.isSwitching = YES; // 2. 否则修改状态
-    
+    //界面push将代理置空
+    self.navDelegate = nil;
+
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
     }
@@ -165,15 +167,19 @@
     [super pushViewController:viewController animated:animated];
 }
 
-// 为了解决与scroll的手势冲突
+//MARK:-- 为了解决与scroll的手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]
         && [otherGestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]){
-        return NO;
+        return YES;
     }else{
-        return  YES;
+        return NO;
     }
+}
+//MARK:-- 配合修改状态栏颜色
+- (UIViewController *)childViewControllerForStatusBarStyle{
+    return self.topViewController;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
