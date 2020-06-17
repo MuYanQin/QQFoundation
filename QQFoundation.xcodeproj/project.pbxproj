@@ -890,6 +890,7 @@
 		4BA4E12D2227B7B6003DDF5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B46A1862165D31F001B560A /* MCPageView */,
 				4BFBC6E121E837AC00012B96 /* MCHovering */,
 				4226BD082496446400B2FCFF /* QQCollectionView */,
 				42784C22248DD2C6001CDB81 /* QQCollectionViewManager */,
@@ -901,7 +902,6 @@
 				52ACF71D1F5127FC00CFA470 /* QQScanQRCode */,
 				ACE02634201766FE00A387DC /* QQAlertController */,
 				4B1F107E211C301600B09B80 /* MCVerificationCodeView */,
-				4B46A1862165D31F001B560A /* MCPageView */,
 				4B772A9F21E347FB009D1805 /* MCSearch */,
 			);
 			path = View;

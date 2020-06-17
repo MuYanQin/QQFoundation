@@ -15,7 +15,7 @@
 @property (nonatomic , assign) CGFloat  headHeight;
 /**是否悬停了*/
 @property (nonatomic , assign) BOOL  isHover;
-/**是否时下拉了手还没送往上滑*/
+/**是否时下拉了手还没松往上滑*/
 @property (nonatomic , assign) BOOL  isDragNORelease;
 
 @property (nonatomic , strong) UIScrollView * visibleScrollView;
@@ -114,6 +114,7 @@
 {
 
     if(self.isMidRefresh){
+        //中部有刷新
         if (scrollView.contentOffset.y <0 && !self.isHover  && self.scrollView.contentOffset.y<=0) {
             self.scrollView.contentOffset = CGPointZero;
             if (scrollView.contentOffset.y<-2) {
@@ -135,6 +136,7 @@
             }
         }
     }else{
+        //顶部有刷新
         if (!self.isHover) {
             self.visibleScrollView.contentOffset = CGPointZero;
         }
@@ -149,6 +151,24 @@
 {
     self.visibleScrollView =[self.delegate listView][Index];
     [self visibleScrollViewScroll];
+}
+- (void)startGestureRecognizer
+{
+    [self changeGesture:NO];
+}
+- (void)endGestureRecognizer
+{
+    [self changeGesture:YES];
+}
+- (void)changeGesture:(BOOL)can{
+    if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {
+        QQtableView *tablView = (QQtableView *)self.visibleScrollView;
+        tablView.canResponseMutiGesture = can;
+
+    }else{
+        QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
+        conllectionView.canResponseMutiGesture = can;
+    }
 }
 - (void) visibleScrollViewScroll {
     if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {

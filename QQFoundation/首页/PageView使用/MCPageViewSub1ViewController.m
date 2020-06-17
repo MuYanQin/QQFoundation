@@ -7,25 +7,27 @@
 //
 
 #import "MCPageViewSub1ViewController.h"
+#import "MCSearchCell.h"
 
 @interface MCPageViewSub1ViewController ()
 
 @end
 
 @implementation MCPageViewSub1ViewController
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
+    self.BaseQQTableView.isHasHeaderRefresh = NO;
+    self.BaseQQTableView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - MCNavHeight);
+    QQTableViewSection *sec = [QQTableViewSection section];
+    for (int i = 0; i<=100; i++) {
+        MCSearchItem *item = [[MCSearchItem alloc]init];
+        item.text = [NSString stringWithFormat:@"Search=%d",i];
+        [sec addItem:item];
+    }
+    [self.BaseMutableArray addObject:sec];
+    [self.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
 
 /*

@@ -10,6 +10,10 @@
 @class MCPageView;
 @protocol MCPageViewDelegate <NSObject>
 - (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index;
+
+- (void)startGestureRecognizer;
+
+- (void)endGestureRecognizer;
 @end
 
 @interface MCPageView : UIView

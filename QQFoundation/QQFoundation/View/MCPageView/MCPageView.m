@@ -12,7 +12,7 @@
 #define kheight        [UIScreen mainScreen].bounds.size.height
 #define itemDefaultColor [UIColor colorWithRed:220/255.0f green:220/255.0f blue:220/255.0f alpha:1]
 static CGFloat const scale = 0.3;
-@interface MCPageView ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
+@interface MCPageView ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic , strong) NSArray * contentCtrollers;
 @property (nonatomic , strong) NSArray * contentTitles;
 @property (nonatomic , strong) UIScrollView * titleScroll;
@@ -84,7 +84,22 @@ static const NSInteger itemTag = 100;
     return CGSizeMake(kwidth, self.height -self.titleScroll.bottom);
 }
 #pragma mark - UIScrollViewDelegate
+// 滑动视图，当手指离开屏幕那一霎那，调用该方法。一次有效滑动，只执行一次。
+// decelerate,指代，当我们手指离开那一瞬后，视图是否还将继续向前滚动（一段距离），经过测试，decelerate=YES
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if ([self.delegate respondsToSelector:@selector(endGestureRecognizer)]) {
+        [self.delegate endGestureRecognizer];
+    }
+    NSLog(@"collectionView 手指松开");
 
+}
+// 当开始滚动视图时，执行该方法。一次有效滑动（开始滑动，滑动一小段距离，只要手指不松开，只算一次滑动），只执行一次。
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"collectionView 开始滑动");
+    if ([self.delegate respondsToSelector:@selector(startGestureRecognizer)]) {
+        [self.delegate startGestureRecognizer];
+    }
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == self.contentCollection) {
@@ -386,16 +401,6 @@ static const NSInteger itemTag = 100;
     lineRect.size.width = _titleButtonWidth*_lineWitdhScale;
     self.lineView.frame = lineRect;
     [self scrollToItemCenter:self.lastItem];
-}
-// 为了解决与scroll的手势冲突
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]
-        && [otherGestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]){
-        return NO;
-    }else{
-        return  YES;
-    }
 }
 - (UIView *)lineView
 {

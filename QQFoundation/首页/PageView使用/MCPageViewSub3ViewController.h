@@ -6,11 +6,11 @@
 //  Copyright © 2018年 慕纯. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "QQBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MCPageViewSub3ViewController : UIViewController
+@interface MCPageViewSub3ViewController : QQBaseViewController
 
 @end
 
