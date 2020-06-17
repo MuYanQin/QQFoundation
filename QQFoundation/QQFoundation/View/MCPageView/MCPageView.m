@@ -256,9 +256,10 @@ static const NSInteger itemTag = 100;
 - (void)menuScrollToCenter:(NSInteger)index{
     
     MCItem *Button = self.itemArray[index];
-    CGFloat left = Button.center.x - kwidth / 2.0;
+    CGFloat titleScroWidth = kwidth- self.marginToLfet - self.marginToRight;
+    CGFloat left = Button.center.x -  titleScroWidth / 2.0;
     left = left <= 0 ? 0 : left;
-    CGFloat maxLeft = _titleButtonWidth * self.contentTitles.count - kwidth;
+    CGFloat maxLeft = _titleButtonWidth * self.contentTitles.count - titleScroWidth;
     if (maxLeft <=0) {
         maxLeft = 0;
     }
@@ -284,12 +285,15 @@ static const NSInteger itemTag = 100;
 - (void)setMarginToLfet:(CGFloat)marginToLfet
 {
     _marginToLfet = marginToLfet;
-    self.titleScroll.frame = CGRectMake(_marginToLfet, 0, KScreenWidth  - _marginToRight - _marginToLfet, self.titleViewHeight);
+    CGFloat width =  KScreenWidth  - _marginToRight - _marginToLfet;
+    self.titleScroll.frame = CGRectMake(_marginToLfet, 0,width, self.titleViewHeight);
 }
 - (void)setMarginToRight:(CGFloat)marginToRight
 {
     _marginToRight = marginToRight;
-    self.titleScroll.frame = CGRectMake(_marginToLfet, 0, KScreenWidth  - _marginToRight - _marginToLfet, self.titleViewHeight);
+    CGFloat width =  KScreenWidth  - _marginToRight - _marginToLfet;
+    self.titleScroll.frame = CGRectMake(_marginToLfet, 0, width, self.titleViewHeight);
+    self.titleScroll.contentSize  = CGSizeMake(self.titleButtonWidth*self.contentTitles.count, self.titleViewHeight);
 }
 /**设置选中title字体*/
 - (void)setSelectTitleFont:(UIFont *)selectTitleFont
