@@ -10,7 +10,6 @@
 #import "UIView+QQFrame.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
-#define itemDefaultColor [UIColor colorWithRed:220/255.0f green:220/255.0f blue:220/255.0f alpha:1]
 @interface MCPageView ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic , strong) NSArray * contentCtrollers;
 @property (nonatomic , strong) NSArray * contentTitles;
@@ -39,7 +38,7 @@ static const NSInteger itemTag = 100;
         _contentCtrollers = [NSArray arrayWithArray:controllers];
         self.itemArray = [NSMutableArray array];
         _titleButtonWidth = (self.frame.size.width)/titles.count;
-        _defaultTitleColor = itemDefaultColor;
+        _defaultTitleColor = getColorWithHex(@"333333");
         _selectTitleColor = [UIColor blackColor];
         _defaultTitleFont = [UIFont systemFontOfSize:14];
         _selectTitleFont = [UIFont systemFontOfSize:14];
@@ -90,12 +89,9 @@ static const NSInteger itemTag = 100;
     if ([self.delegate respondsToSelector:@selector(endGestureRecognizer)]) {
         [self.delegate endGestureRecognizer];
     }
-    NSLog(@"collectionView 手指松开");
-
 }
 // 当开始滚动视图时，执行该方法。一次有效滑动（开始滑动，滑动一小段距离，只要手指不松开，只算一次滑动），只执行一次。
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    NSLog(@"collectionView 开始滑动");
     if ([self.delegate respondsToSelector:@selector(startGestureRecognizer)]) {
         [self.delegate startGestureRecognizer];
     }
@@ -458,15 +454,16 @@ static const NSInteger itemTag = 100;
                 MCItem *item = [[MCItem alloc]init];
                 [item setTranslatesAutoresizingMaskIntoConstraints:NO];
                 item.tag = idx + itemTag;
-                [item setTitleColor:itemDefaultColor forState:UIControlStateNormal];
+                [item setTitleColor:self.defaultTitleColor forState:UIControlStateNormal];
                 [item setTitle:obj forState:UIControlStateNormal];
-                [item.titleLabel setFont:[UIFont systemFontOfSize:14]];
+                [item.titleLabel setFont:self.defaultTitleFont];
                 [item addTarget:weakSelf action:@selector(selectItem:) forControlEvents:UIControlEventTouchUpInside];
                 item.titleLabel.textAlignment = NSTextAlignmentCenter;
                 if (idx ==0) {
                     weakSelf.lastItem = item;
                     item.transform = CGAffineTransformMakeScale(1+_fontScale,1+_fontScale);
-                    [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [item setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
+                    [item.titleLabel setFont:self.selectTitleFont];
                 }
                 [weakSelf.itemArray addObject:item];
                 [weakSelf.titleScroll addSubview:item];
