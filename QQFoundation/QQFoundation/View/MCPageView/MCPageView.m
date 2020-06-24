@@ -11,7 +11,6 @@
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
 #define itemDefaultColor [UIColor colorWithRed:220/255.0f green:220/255.0f blue:220/255.0f alpha:1]
-static CGFloat const scale = 0.3;
 @interface MCPageView ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic , strong) NSArray * contentCtrollers;
 @property (nonatomic , strong) NSArray * contentTitles;
@@ -46,6 +45,7 @@ static const NSInteger itemTag = 100;
         _selectTitleFont = [UIFont systemFontOfSize:14];
         //titleView 的初始化高度
         _titleViewHeight = 50;
+        _fontScale = 0.2;
         //初始化横线的宽度是title的一半
         _lineWitdhScale = 0.5;
         self.isClick = NO;
@@ -149,18 +149,18 @@ static const NSInteger itemTag = 100;
     if (isleft) {
         if (lastItem) {
             [lastItem setTitleColor:self.netxColor forState:UIControlStateNormal];
-            lastItem.transform = CGAffineTransformMakeScale(1 + (scale *percent),1 + (scale *percent));
+            lastItem.transform = CGAffineTransformMakeScale(1 + (_fontScale *percent),1 + (_fontScale *percent));
         }
         [nextItem setTitleColor:lastColor forState:UIControlStateNormal];
-        nextItem.transform = CGAffineTransformMakeScale(1 + (1-percent)*scale,1 + (1-percent)*scale);
+        nextItem.transform = CGAffineTransformMakeScale(1 + (1-percent)*_fontScale,1 + (1-percent)*_fontScale);
     }else{
         if (lastItem) {
             [lastItem setTitleColor:lastColor forState:UIControlStateNormal];
-            lastItem.transform = CGAffineTransformMakeScale((1+ scale) - (scale * percent),(1+ scale) - (scale * percent));
+            lastItem.transform = CGAffineTransformMakeScale((1+ _fontScale) - (_fontScale * percent),(1+ _fontScale) - (_fontScale * percent));
         }
         [nextItem setTitleColor:self.netxColor forState:UIControlStateNormal];
         /* 在原来的基础上缩放（只缩放一次） */
-        nextItem.transform = CGAffineTransformMakeScale(1 + percent *scale,1 + percent *scale);
+        nextItem.transform = CGAffineTransformMakeScale(1 + percent *_fontScale,1 + percent *_fontScale);
     }
 }
 - (void)getfontSize
@@ -238,7 +238,7 @@ static const NSInteger itemTag = 100;
         self.lastItem.transform = CGAffineTransformMakeScale(1,1);
         
     }
-    Item.transform = CGAffineTransformMakeScale(1+ scale,1+ scale);
+    Item.transform = CGAffineTransformMakeScale(1+ _fontScale,1+ _fontScale);
     
     self.lastIndex = index;
     self.lastItem = Item;
@@ -293,7 +293,6 @@ static const NSInteger itemTag = 100;
     _marginToRight = marginToRight;
     CGFloat width =  KScreenWidth  - _marginToRight - _marginToLfet;
     self.titleScroll.frame = CGRectMake(_marginToLfet, 0, width, self.titleViewHeight);
-    self.titleScroll.contentSize  = CGSizeMake(self.titleButtonWidth*self.contentTitles.count, self.titleViewHeight);
 }
 /**设置选中title字体*/
 - (void)setSelectTitleFont:(UIFont *)selectTitleFont
@@ -466,7 +465,7 @@ static const NSInteger itemTag = 100;
                 item.titleLabel.textAlignment = NSTextAlignmentCenter;
                 if (idx ==0) {
                     weakSelf.lastItem = item;
-                    item.transform = CGAffineTransformMakeScale(1+scale,1+scale);
+                    item.transform = CGAffineTransformMakeScale(1+_fontScale,1+_fontScale);
                     [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 }
                 [weakSelf.itemArray addObject:item];

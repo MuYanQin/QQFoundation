@@ -45,6 +45,7 @@
     [self.PageView setBadgeWithIndex:1 badge:58];
     [self.PageView setBadgeWithIndex:5 badge:-1];
     [self.PageView setBadgeWithIndex:2 badge:1000];
+    [self.PageView selectIndex:1];
     [self.view addSubview:self.PageView];
 }
 

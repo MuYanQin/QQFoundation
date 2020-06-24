@@ -79,6 +79,11 @@
 
 
 /**
+ 可选 设置选中时候字体当大的倍数 0～1 默认0.2
+*/
+@property (nonatomic , assign) CGFloat  fontScale;
+
+/**
  可选 设置角标的数据
  个数须与item个数相同
  设置角标  0 消失  大于零展示 小于0 圆圈
