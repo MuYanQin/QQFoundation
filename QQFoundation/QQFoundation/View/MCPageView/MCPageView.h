@@ -116,10 +116,23 @@
  
  @param frame frame
  @param titles titleS数组
- @param controllers jiemian数组
+ @param controllers controller数组
  @return 实例
  */
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  controllers:(NSArray *)controllers;
+
+
+
+/**
+ 必选 实例化方法
+ 
+ @param frame frame
+ @param titles titleS数组
+ @param views view数组
+ @return 实例
+ */
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  views:(NSArray *)views;
+
 @end
 
 

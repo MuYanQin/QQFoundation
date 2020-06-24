@@ -32,12 +32,22 @@ static const NSInteger itemTag = 100;
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles controllers:(NSArray *)controllers
 {
+    self.contentTitles = [NSArray arrayWithArray:titles];
+    _contentCtrollers = [NSArray arrayWithArray:controllers];
+    _titleButtonWidth = (self.frame.size.width)/titles.count;
     
+    return [self initWithFrame:frame];
+}
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  views:(NSArray *)views{
+    self.contentTitles = [NSArray arrayWithArray:titles];
+    _contentCtrollers = [NSArray arrayWithArray:views];
+    _titleButtonWidth = (self.frame.size.width)/titles.count;
+    return [self initWithFrame:frame];
+}
+-  (instancetype)initWithFrame:(CGRect)frame
+{
     if (self = [super initWithFrame:frame]) {
-        self.contentTitles = [NSArray arrayWithArray:titles];
-        _contentCtrollers = [NSArray arrayWithArray:controllers];
         self.itemArray = [NSMutableArray array];
-        _titleButtonWidth = (self.frame.size.width)/titles.count;
         _defaultTitleColor = getColorWithHex(@"333333");
         _selectTitleColor = [UIColor blackColor];
         _defaultTitleFont = [UIFont systemFontOfSize:14];
@@ -51,7 +61,6 @@ static const NSInteger itemTag = 100;
         [self addSubview:self.titleScroll];
         [self addSubview:self.contentCollection];
         [self.titleScroll addSubview:self.lineView];
-        
     }
     return self;
 }
@@ -70,9 +79,17 @@ static const NSInteger itemTag = 100;
 //将要加载某个Item时调用的方法
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *childVC = self.contentCtrollers[indexPath.item];
-    childVC.view.frame = cell.contentView.bounds;
-    [cell.contentView addSubview:childVC.view];
+    if ([self.contentCtrollers[indexPath.item] isKindOfClass:[UIViewController class]]) {
+        UIViewController *childVC = self.contentCtrollers[indexPath.item];
+        childVC.navigationController
+        childVC.view.frame = cell.contentView.bounds;
+        [cell.contentView addSubview:childVC.view];
+    }else{
+        UIView *childV = self.contentCtrollers[indexPath.item];
+        childV.frame = cell.contentView.bounds;
+        [cell.contentView addSubview:childV];
+    }
+    
 }
 //将要加载头尾视图时调用的方法
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
@@ -121,6 +138,7 @@ static const NSInteger itemTag = 100;
         }
     }
 }
+//MARK: 设置动画
 - (void)animationItem:(BOOL)isleft percent:(CGFloat)percent index:(NSInteger)index{
     MCItem *nextItem = nil;
     MCItem *lastItem = nil;
@@ -158,10 +176,6 @@ static const NSInteger itemTag = 100;
         /* 在原来的基础上缩放（只缩放一次） */
         nextItem.transform = CGAffineTransformMakeScale(1 + percent *_fontScale,1 + percent *_fontScale);
     }
-}
-- (void)getfontSize
-{
-    
 }
 - (void)getColorRGB:(UIColor *)color isSelected:(BOOL)isSelected
 
