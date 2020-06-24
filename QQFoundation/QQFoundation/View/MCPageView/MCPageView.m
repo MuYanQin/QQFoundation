@@ -32,38 +32,40 @@ static const NSInteger itemTag = 100;
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles controllers:(NSArray *)controllers
 {
-    self.contentTitles = [NSArray arrayWithArray:titles];
-    _contentCtrollers = [NSArray arrayWithArray:controllers];
-    _titleButtonWidth = (self.frame.size.width)/titles.count;
-    
-    return [self initWithFrame:frame];
-}
-- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  views:(NSArray *)views{
-    self.contentTitles = [NSArray arrayWithArray:titles];
-    _contentCtrollers = [NSArray arrayWithArray:views];
-    _titleButtonWidth = (self.frame.size.width)/titles.count;
-    return [self initWithFrame:frame];
-}
--  (instancetype)initWithFrame:(CGRect)frame
-{
     if (self = [super initWithFrame:frame]) {
-        self.itemArray = [NSMutableArray array];
-        _defaultTitleColor = getColorWithHex(@"333333");
-        _selectTitleColor = [UIColor blackColor];
-        _defaultTitleFont = [UIFont systemFontOfSize:14];
-        _selectTitleFont = [UIFont systemFontOfSize:14];
-        //titleView 的初始化高度
-        _titleViewHeight = 50;
-        _fontScale = 0.2;
-        //初始化横线的宽度是title的一半
-        _lineWitdhScale = 0.5;
-        self.isClick = NO;
-        [self addSubview:self.titleScroll];
-        [self addSubview:self.contentCollection];
-        [self.titleScroll addSubview:self.lineView];
+        self.contentTitles = [NSArray arrayWithArray:titles];
+        _contentCtrollers = [NSArray arrayWithArray:controllers];
+        _titleButtonWidth = (self.frame.size.width)/titles.count;
+        [self buidParamAndUI];
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles  views:(NSArray *)views{
+    if (self = [super initWithFrame:frame]) {
+        self.contentTitles = [NSArray arrayWithArray:titles];
+        _contentCtrollers = [NSArray arrayWithArray:views];
+        _titleButtonWidth = (self.frame.size.width)/titles.count;
+        [self buidParamAndUI];
+    }
+    return self;
+}
+- (void)buidParamAndUI{
+    self.itemArray = [NSMutableArray array];
+    _defaultTitleColor = getColorWithHex(@"333333");
+    _selectTitleColor = [UIColor blackColor];
+    _defaultTitleFont = [UIFont systemFontOfSize:14];
+    _selectTitleFont = [UIFont systemFontOfSize:14];
+    //titleView 的初始化高度
+    _titleViewHeight = 50;
+    _fontScale = 0.2;
+    //初始化横线的宽度是title的一半
+    _lineWitdhScale = 0.5;
+    self.isClick = NO;
+    [self addSubview:self.titleScroll];
+    [self addSubview:self.contentCollection];
+    [self.titleScroll addSubview:self.lineView];
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -81,7 +83,6 @@ static const NSInteger itemTag = 100;
 {
     if ([self.contentCtrollers[indexPath.item] isKindOfClass:[UIViewController class]]) {
         UIViewController *childVC = self.contentCtrollers[indexPath.item];
-        childVC.navigationController
         childVC.view.frame = cell.contentView.bounds;
         [cell.contentView addSubview:childVC.view];
     }else{
