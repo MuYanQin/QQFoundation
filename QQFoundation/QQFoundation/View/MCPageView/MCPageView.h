@@ -60,6 +60,10 @@
  */
 @property (nonatomic , strong) UIColor * lineColor;
 
+/**
+可选 item下  横线的高度 默认 1
+*/
+@property (nonatomic , assign) CGFloat  lineHeight;
 
 /**
  可选 item下 横线的宽度相对于item宽度的比例。0～1 默认0.5

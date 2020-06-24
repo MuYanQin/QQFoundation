@@ -331,6 +331,14 @@ static const NSInteger itemTag = 100;
     _lineColor = lineColor;
     self.lineView.backgroundColor = lineColor;
 }
+- (void)setLineHeight:(CGFloat)lineHeight
+{
+    _lineHeight  = lineHeight;
+    CGRect rect =  self.lineView.frame;
+    rect.origin.y = self.titleViewHeight  - lineHeight;
+    rect.size.height = lineHeight;
+    self.lineView.frame = rect;
+}
 /**设置横下相对于titleBtn款低的比例*/
 - (void)setLineWitdhScale:(CGFloat)lineWitdhScale
 {
@@ -358,9 +366,6 @@ static const NSInteger itemTag = 100;
 - (void)layoutSubviews
 {
     self.titleScroll.frame = CGRectMake(_marginToLfet, 0, KScreenWidth  - _marginToRight - _marginToLfet, self.titleViewHeight);
-    CGRect rect = self.lineView.frame;
-    rect.origin.y = self.titleViewHeight - 1;
-    self.lineView.frame = rect;
     self.contentCollection.frame =  CGRectMake(0, self.titleScroll.bottom, kwidth, self.height - self.titleScroll.bottom);
 }
 /**设置选中titlebtn的宽度*/
