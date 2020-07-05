@@ -24,6 +24,9 @@
     if (self.fromHovering) {
         self.BaseQQTableView.top = 0;
     }
+    QQTableViewSection *section = [QQTableViewSection section];
+    [self.BaseMutableArray addObject:section];
+    /*
     for (int j = 0; j<6; j++) {
         QQTableViewSection *section = [QQTableViewSection section];
         MCAuthorSecItem *secItem = [[MCAuthorSecItem alloc]init];
@@ -47,6 +50,7 @@
         }
         [self.BaseMutableArray addObject:section];
     }
+     */
     [self.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
 

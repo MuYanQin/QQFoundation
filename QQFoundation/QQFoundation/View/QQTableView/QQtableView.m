@@ -79,6 +79,12 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 - (void)mc_reloadData
 {
     [self mc_reloadData];
+    //空的直接返回出去不做任何处理
+    NSInteger sections = [self numberOfSections];
+    if (sections == 0) {
+        return;
+    }
+    
     if (self.getTotal == 0 && _hasNetError) {
         //这里是网络出错的数据为空
         self.tableFooterView = self.emptyView;
@@ -93,14 +99,31 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 - (NSInteger)getTotal
 {
     NSInteger sections = 0;
+    //获取secton的数量
     sections = [self numberOfSections];
     NSInteger items = 0;
+    BOOL hasHeadOrFooterView = NO;
+    //获取cell的总数量
     for (NSInteger section = 0; section < sections; section++) {
+        //获取每个section的cell数量
         items += [self numberOfRowsInSection:section];
+        //获取section的headerView 或者footerView 的高度 判断是否添加了view
+        CGRect headRect = [self rectForHeaderInSection:section];
+        CGRect footerRect = [self rectForFooterInSection:section];
+        if (headRect.size.height > 1 || footerRect.size.height > 1) {
+            //存在headView 或者footerView
+            hasHeadOrFooterView = YES;
+        }
     }
-    if (sections>1) {
+    /**
+     这里的判断是因为 在controller中默认会添加一个sectio。当section中的cell为空时
+     也要展示空白页面
+     如果存在headView 或者footerView 则需要加上section的个数
+    */
+    if (hasHeadOrFooterView || sections >1){
         items += sections;
     }
+
     return items;
 }
 
@@ -205,6 +228,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         _emptyView = [[EmptyView alloc]init];
         _emptyView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - self.tableHeaderView.frame.size.height);
         _emptyView.backgroundColor = [UIColor colorWithRed:245/255.0f green:248/255.0f blue:250/255.0f alpha:1];
+        _emptyView.imageName = @"noList";
     }
     return _emptyView;
 }
