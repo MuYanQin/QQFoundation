@@ -112,7 +112,7 @@
 - (void)selectIndex:(NSInteger)index;
 
 /**
- 必选 实例化方法
+ 必选 使用Controller实例化方法
  
  @param frame frame
  @param titles titleS数组
@@ -124,7 +124,7 @@
 
 
 /**
- 必选 实例化方法
+ 必选 使用View实例化方法
  
  @param frame frame
  @param titles titleS数组

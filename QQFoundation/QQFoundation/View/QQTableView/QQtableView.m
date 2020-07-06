@@ -116,9 +116,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         }
     }
     /**
-     这里的判断是因为 在controller中默认会添加一个sectio。当section中的cell为空时
+     1、这里的判断是因为 在controller中默认会添加一个sectio。当section中的cell为空时
      也要展示空白页面
-     如果存在headView 或者footerView 则需要加上section的个数
+     2、如果存在headView 或者footerView 则需要加上section的个数
     */
     if (hasHeadOrFooterView || sections >1){
         items += sections;
