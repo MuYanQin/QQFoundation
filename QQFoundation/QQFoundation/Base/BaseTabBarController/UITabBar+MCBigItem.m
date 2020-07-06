@@ -32,11 +32,5 @@ static char const BIG;
     }
     return view;
 }
-//重写setsetItems 方法 使tabbar无法写入 自身的item
-- (NSArray<UITabBarItem *> *)items {
-    return @[];
-}
-- (void)setItems:(NSArray<UITabBarItem *> *)items animated:(BOOL)animated{}
-- (void)setItems:(NSArray<UITabBarItem *> *)items{}
 @end
 

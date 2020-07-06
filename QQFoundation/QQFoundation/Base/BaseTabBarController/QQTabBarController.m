@@ -11,6 +11,7 @@
 #import "MCFactory.h"
 #import "MCTabBarItem.h"
 #import "UITabBar+MCBigItem.h"
+#import "QYTabBar.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 static const NSInteger ButtonTag = 100;
 
@@ -18,6 +19,8 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 @interface QQTabBarController ()
 @property (nonatomic,strong) MCTabBarItem *lastItem;
 @property (nonatomic,strong) NSArray *itemsArray;
+@property (nonatomic , strong) QYTabBar *tab;
+
 @end
 
 @implementation QQTabBarController
@@ -35,37 +38,29 @@ static const NSInteger tabbarHeight = 80;//自定义TabBar的高度
 - (instancetype)initTabWithItems:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass;
 {
     if (self = [super init]) {
-        self.itemsArray = items;
-        [self initVC:items navClass:navClass];
-        [self createVc:items];
         //去除tab的横线
 //        [self.tabBar setBackgroundImage:[UIImage new]];
 //        [self.tabBar setShadowImage:[UIImage new]];
+        self.tab = [[QYTabBar alloc]init];
+        self.tab.frame = self.tabBar.bounds;
+        // UITabBarController子类
+        [self setValue: self.tab forKey:@"tabBar"];
+        self.itemsArray = items;
+        [self initVC:items navClass:navClass];
+        [self createVc:items];
     }
     return self;
-}
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    //去除系统的UITabBarButton
-    Class class = NSClassFromString(@"UITabBarButton");
-    for (UIView *btn in self.tabBar.subviews) {
-        //遍历系统tabbar的子控件
-        if ([btn isKindOfClass:class]) {
-            [btn removeFromSuperview];
-        }
-    }
 }
 /**
  改变tabbar的高度
  */
-- (void)viewWillLayoutSubviews{
+//- (void)viewWillLayoutSubviews{
     //这里设置高度  默认就是系统的高度
 //    CGRect tabFrame = self.tabBar.frame;
 //    tabFrame.size.height = tabbarHeight;
 //    tabFrame.origin.y = self.view.frame.size.height - tabbarHeight;
 //    self.tabBar.frame = tabFrame;
-}
+//}
 - (void)initVC:(NSArray<MCTabBarItem *> *)items navClass:(Class)navClass{
     NSMutableArray *vcs = [NSMutableArray array];
     for (MCTabBarItem *item in items) {

@@ -25,6 +25,7 @@
 		42784C2E248DD622001CDB81 /* QQCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C2D248DD622001CDB81 /* QQCollectionViewItem.m */; };
 		42784C31248DD911001CDB81 /* MCCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C30248DD911001CDB81 /* MCCollectionViewController.m */; };
 		42784C35248DD940001CDB81 /* MCTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C34248DD940001CDB81 /* MCTestCell.m */; };
+		42852FD424B1865900B5142F /* QYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42852FD324B1865900B5142F /* QYTabBar.m */; };
 		429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429C3C4A248E0B3D00B4771F /* QQCollectionView.m */; };
 		42A997702324E52000F20344 /* NSString+encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A9976F2324E52000F20344 /* NSString+encrypt.m */; };
 		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
@@ -243,6 +244,8 @@
 		42784C30248DD911001CDB81 /* MCCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCollectionViewController.m; sourceTree = "<group>"; };
 		42784C33248DD940001CDB81 /* MCTestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTestCell.h; sourceTree = "<group>"; };
 		42784C34248DD940001CDB81 /* MCTestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTestCell.m; sourceTree = "<group>"; };
+		42852FD224B1865900B5142F /* QYTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYTabBar.h; sourceTree = "<group>"; };
+		42852FD324B1865900B5142F /* QYTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYTabBar.m; sourceTree = "<group>"; };
 		429C3C49248E0B3D00B4771F /* QQCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionView.h; sourceTree = "<group>"; };
 		429C3C4A248E0B3D00B4771F /* QQCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQCollectionView.m; sourceTree = "<group>"; };
 		42A9976E2324E52000F20344 /* NSString+encrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+encrypt.h"; sourceTree = "<group>"; };
@@ -1411,6 +1414,8 @@
 				4B27C3B521300E6E008FBE2C /* UITabBar+MCBigItem.h */,
 				4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */,
 				4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */,
+				42852FD224B1865900B5142F /* QYTabBar.h */,
+				42852FD324B1865900B5142F /* QYTabBar.m */,
 			);
 			path = BaseTabBarController;
 			sourceTree = "<group>";
@@ -1624,6 +1629,7 @@
 				52C115551F4EC5CE005471CB /* MJRefreshAutoGifFooter.m in Sources */,
 				AC781ACF1FF51E3700863F4C /* QQSqlHelper.m in Sources */,
 				AC781ACB1FF51D2C00863F4C /* FMResultSet.m in Sources */,
+				42852FD424B1865900B5142F /* QYTabBar.m in Sources */,
 				0153EDFA20B66B710041CFC4 /* QQTableViewCell.m in Sources */,
 				4223CC9D249627B2000C1B10 /* MCNavShadeViewController.m in Sources */,
 				52C1154B1F4EC5CE005471CB /* AFNetworkReachabilityManager.m in Sources */,
