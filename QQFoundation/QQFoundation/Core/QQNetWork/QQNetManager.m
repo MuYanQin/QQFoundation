@@ -76,10 +76,7 @@
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:param];
-        session.showMb = controller?YES:NO;
-        if (controller) {
-            session.controllerName = NSStringFromClass([controller class]);
-        }
+        session.controller = controller;
         [session TXDWith:url param:param txdType:txdType cacheType:cacheType commiteType:commiteType success:success failed:failed];
     }
 }
@@ -98,7 +95,6 @@
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url parameters:parameters];
-        session.showMb = controller?YES:NO;
         [session TXDUploadWithUrl:url dic:parameters imageArray:images fileMark:fileMark progress:progress success:success failed:failed];
     }
 }
@@ -108,7 +104,8 @@
 {
     if (!hc.cacheKey)return;
     [_dataDic setObject:hc forKey:hc.cacheKey];
-    if (hc.controllerName.length >0) {
+    NSString *className =  NSStringFromClass([hc.controller class]);
+    if (className.length >0) {
         [_controllerRequest addObject:hc];
     }
 }
@@ -134,7 +131,8 @@
             NSString *VCName = NSStringFromClass([VC class]);
             for (QQsession *session in tempArr) {///<在存储请求的数据里找对应的界面
                 @autoreleasepool {
-                    if ([session.controllerName isEqualToString: VCName]) {
+                    NSString *className =  NSStringFromClass([session.controller class]);
+                    if ([className isEqualToString: VCName]) {
                         [self deleteQQConnection:session];
                         [session.SessionTask cancel];
                     }

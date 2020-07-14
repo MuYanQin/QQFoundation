@@ -52,7 +52,7 @@ static NSString * const dataKey = @"data";
 
     NSURLSessionDataTask * operation;
     [[QQNetManager Instance] insertQQConnection:self];
-    if (self.showMb) {
+    if (self.controller) {
         [self loading];
     }
     //请求方式
@@ -99,7 +99,7 @@ static NSString * const dataKey = @"data";
                                      failed:(void(^)(NSError *error))failed
 {
     NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
-    if (self.showMb) {
+    if (self.controller) {
         [self loading];
     }
     NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -123,6 +123,7 @@ static NSString * const dataKey = @"data";
         [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
     }
     if ([responseObject[@"code"] isEqualToString:successCode]) {
+        [self hiddenHUD];
         if (cacheType == memoryCaceh) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
             [[QQNetManager Instance].dataCache setObject:@{dataKey:responseObject,timeKey:@(time)} forKey:self.cacheKey];
@@ -136,7 +137,6 @@ static NSString * const dataKey = @"data";
         NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:[responseObject[@"code"] integerValue] userInfo:userInfo1];
         failureBlock(error);
     }
-    [self hiddenHUD];
     //请求结束 从字典里删除本次请求
     [[QQNetManager Instance] deleteQQConnection:self];
 }
@@ -149,9 +149,12 @@ static NSString * const dataKey = @"data";
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [self message:@"请求超时，请重试！"];
     }else  if (error.code == -999) {//-999是请求被取消
+        [self hiddenHUD];
+    }else{
+        [self hiddenHUD];
     }
     failureBlock(error);
-    [self hiddenHUD];
+    
     //请求结束 从字典里删除本次请求
     [[QQNetManager Instance] deleteQQConnection:self];
 }

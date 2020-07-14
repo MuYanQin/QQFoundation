@@ -25,16 +25,15 @@ typedef NS_ENUM (NSInteger,CommiteType){
     json
 };
 @interface QQsession : NSObject
-/**是否展示MB*/
-@property (nonatomic , assign) BOOL  showMb;
+
 /**记录当前请求的的URL*/
 @property (copy, nonatomic) NSString *urlStr;
 /**记录当前请求的URL  MD5加密后的*/
 @property (copy, nonatomic) NSString *cacheKey;
 /**记录请求的任务*/
 @property (nonatomic , strong) NSURLSessionDataTask * SessionTask;
-/**记录请求所在界面的名称*/
-@property (nonatomic , copy) NSString * controllerName;
+/**记录请求所在界面*/
+@property (nonatomic , weak) UIViewController * controller;
 
 
 /**
