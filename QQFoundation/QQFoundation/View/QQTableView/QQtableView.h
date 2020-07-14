@@ -69,10 +69,18 @@
 @property (nonatomic , strong) NSMutableDictionary * requestParam;
 
 
+/// 开始刷新 可在这里修改请求的参数
+@property (nonatomic , copy) void(^begainRefresh)(BOOL headRefresh,QQtableView *tableView);
+
+/// 结束刷新
+@property (nonatomic , copy) void(^endRefresh)(BOOL headRefresh,QQtableView *tableView);
+
 /**
  刷新 无下拉动作
  */
 - (void)requestData;
+
+
 
 
 /**

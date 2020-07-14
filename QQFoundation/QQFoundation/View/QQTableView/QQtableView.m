@@ -149,13 +149,14 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
             [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
         }
         _hasNetError = NO;
-        [self EndRefrseh];
+        [self endRefrseh:isPullDown];
+
     } failed:^(NSError *error) {
         _hasNetError = YES;
         if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
             [self.RequestDelegate QQtableView:self requestFailed:error];
         }
-        [self EndRefrseh];
+        [self endRefrseh:isPullDown];
         if (!isPullDown) {
             [self changeIndexWithStatus:3];
         }
@@ -177,6 +178,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         [self.mj_header endRefreshing];
         return;
     }
+    if (self.begainRefresh) {
+        self.begainRefresh(YES, self);
+    }
     if ([_requestParam.allKeys containsObject:pageIndex]) {
         [self changeIndexWithStatus:1];
     }
@@ -185,6 +189,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 
 - (void)footerRefresh
 {
+    if (self.begainRefresh) {
+        self.begainRefresh(NO, self);
+    }
     [self changeIndexWithStatus:2];
     [self SetUpNetWorkParamters:_requestParam isPullDown:NO];
 }
@@ -202,10 +209,13 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     [_requestParam setObject:[NSNumber numberWithInteger:_pageNumber] forKey:pageIndex];
 }
 
-- (void)EndRefrseh
+- (void)endRefrseh:(BOOL)isPullDown
 {
     [self.mj_footer endRefreshing];
     [self.mj_header endRefreshing];
+    if (self.endRefresh) {
+        self.endRefresh(isPullDown, self);
+    }
 }
 
 - (void)setRequestParam:(NSDictionary *)requestParam
