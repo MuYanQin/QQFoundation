@@ -65,6 +65,9 @@
     MCAllTextItem *text = [[MCAllTextItem alloc]init];
     text.font = [UIFont systemFontOfSize:14 weight:(UIFontWeightBold)];
     text.text = @"在总书记讲话精神的指引下，一年间海南省推出一系列重要举措，优化营商环境、支持人才引进、加强科技创新，坚持以制度创新为抓手，推动海南自贸区高标准、高质量建设，涌现出许多有亮点有特色的典型案例，央视网带您一图了解！";
+    text.selcetCellHandler = ^(MCAllTextItem * item) {
+        [item reloadRowWithAnimation:(UITableViewRowAnimationNone)];
+    };
     [sectio0 addItem:text];
     
     //MARK:第二个Section

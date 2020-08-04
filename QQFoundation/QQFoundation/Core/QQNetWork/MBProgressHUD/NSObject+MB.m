@@ -93,8 +93,9 @@ static NSInteger const HUDWIDTH = 80;
 
 /**隐藏*/
 - (void)hiddenHUD{
-    if (self.hud) {
-        [self.hud hideAnimated:YES];
+    MBProgressHUD * hud =  objc_getAssociatedObject(self, &HUDKEY_BE);
+    if (hud) {
+        [hud hideAnimated:YES];
     }
 }
 - (void)hudWasHidden:(MBProgressHUD *)hud
