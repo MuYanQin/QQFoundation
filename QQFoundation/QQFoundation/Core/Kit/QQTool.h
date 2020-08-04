@@ -80,12 +80,9 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector);
 
  @param content 需要复制的内容
  */
-+ (void)SystemPaste:(NSString *)content;
++ (void)systemPaste:(NSString *)content;
 
-/*
- 返回100k以内大小的图片
- */
-+(NSData *)imageData:(UIImage *)myimage;
+
 
 
 @end

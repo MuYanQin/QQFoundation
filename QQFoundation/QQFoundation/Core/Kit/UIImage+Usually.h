@@ -12,7 +12,7 @@
 /**
  获取灰色的图片
  */
-+ (UIImage*)getGrayImage:(UIImage*)sourceImage;
++ (UIImage*)grayImage:(UIImage*)sourceImage;
 
 /**
  传入字符串获取二维码
@@ -21,7 +21,7 @@
 
  @return 二维码
  */
-+ (UIImage *)SetQrcodeImageWithString:(NSString *)string;
++ (UIImage *)qrcodeImageWithString:(NSString *)string;
 
 /**
  *  @brief  通过路径加载图片 图片一定不能在Assets中
@@ -34,4 +34,18 @@
 
 //圆角切割
 - (UIImage *)QQ_getCornerRadius:(CGFloat)cornerRadius;
+
+/*
+ 返回100k以内大小的图片
+ */
++(NSData *)imageData:(UIImage *)myimage;
+
+@end
+
+@interface UIImage (Luban_iOS_Extension_h)
+
++ (NSData *)lubanCompressImage:(UIImage *)image;
++ (NSData *)lubanCompressImage:(UIImage *)image withMask:(NSString *)maskName;
++ (NSData *)lubanCompressImage:(UIImage *)image withCustomImage:(NSString *)imageName;
+
 @end

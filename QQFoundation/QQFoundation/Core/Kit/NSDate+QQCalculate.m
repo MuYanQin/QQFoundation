@@ -23,7 +23,7 @@
         return 28;
     return 29;
 }
-+ (NSString *)TodayIsTheWeekday{
++ (NSString *)todayIsTheWeekday{
     //3.获取当前日期星期几
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSArray *weekdays = [NSArray arrayWithObjects:@"星期日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
@@ -41,15 +41,22 @@
     return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:[self date]].length;
 }
 //NSDate转NSString
-+ (NSString *)stringFromDate:(NSDate *)date Formate:(NSString *)formate
++ (NSString *)relayDate:(NSDate *)date formate:(NSString *)formate
 {
     NSDateFormatter *dateFormatter = [[QQDateFormatter ShareIntance] getDateFormatter:formate];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+}
+//NSString转NSString
++ (NSString *)relayDateStr:(NSString *)dateStr formate:(NSString *)formate{
+    NSDateFormatter *dateFormatter = [[QQDateFormatter ShareIntance] getDateFormatter:formate];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormatter dateFromString:dateStr];
     [dateFormatter setDateFormat:formate];
     NSString *destDateString = [dateFormatter stringFromDate:date];
     return destDateString;
 }
-
-+ (NSString *)GetNowDate:(NSString *)Formatter;
++ (NSString *)nowDate:(NSString *)Formatter;
 {
     NSDateFormatter  *dateformatter = [[QQDateFormatter ShareIntance] getDateFormatter:Formatter];
     NSDate *datenow = [NSDate date];
@@ -60,7 +67,7 @@
 /*
  转换时间戳
  */
-+ (NSString *)ConvertTimestampWith:(NSString *)Timestamp Formate:(NSString *)formate;
++ (NSString *)relayTimestampWith:(NSString *)Timestamp formate:(NSString *)formate
 {
     NSTimeInterval interval=[Timestamp doubleValue] / 1000.0;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
@@ -69,12 +76,12 @@
     return timestr;
 }
 
-+ (NSString *)GetTimeInterval:(NSInteger)space from:(NSDate *)date Formate:(NSString *)formate Calendar:(QQCalendarType)Calendar
++ (NSString *)timeInterval:(NSInteger)space from:(NSDate *)date formate:(NSString *)formate calendar:(QQCalendarType)calendar
 
 {
     
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    switch (Calendar) {
+    switch (calendar) {
         case QQCalendarday:
         {
             [comps setDay:space];
@@ -101,7 +108,7 @@
     NSDateFormatter *dateFormatter= [[QQDateFormatter ShareIntance] getDateFormatter:formate];//创建一个日期格式化器
     return [dateFormatter stringFromDate:mDate];
 }
-+ (NSString *)getHowSecondsAgo:(NSString *)time
++ (NSString *)howSecondsAgo:(NSString *)time
 {
     CGFloat temp = 0;
     NSString *result;
@@ -137,7 +144,7 @@
     else{
         temp = temp/12;
         if (bret) {
-            result = [NSDate ConvertTimestampWith:time Formate:@"MM/dd  HH:mm"];
+            result = [NSDate relayTimestampWith:time formate:@"MM/dd  HH:mm"];
         }else{
             NSDateFormatter *formatter = [[QQDateFormatter ShareIntance] getDateFormatter:@"MM/dd HH:mm"];//;
             result = [formatter stringFromDate:data3];

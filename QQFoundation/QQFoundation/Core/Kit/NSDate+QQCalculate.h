@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
 
  @return 周几
  */
-+ (NSString *)TodayIsTheWeekday;
++ (NSString *)todayIsTheWeekday;
 /**
  计算这个月有多少天
 
@@ -46,7 +46,15 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
  @param formate 时间格式
  @return 字符串
  */
-+ (NSString *)stringFromDate:(NSDate *)date Formate:(NSString *)formate;
++ (NSString *)relayDate:(NSDate *)date formate:(NSString *)formate;
+/**
+ NSDate转NSString
+
+ @param dateStr s时间字符串
+ @param formate 时间格式
+ @return 字符串
+ */
++ (NSString *)relayDateStr:(NSString *)dateStr formate:(NSString *)formate;
 /**
  *  返回当前时间
  *
@@ -54,7 +62,7 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
  *
  *  @return 时间字符串
  */
-+ (NSString *)GetNowDate:(NSString *)Formatter;
++ (NSString *)nowDate:(NSString *)Formatter;
 
 /**
  时间戳转换为时间字符串
@@ -63,7 +71,7 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
  @param formate   时间格式 YYYY-MM-dd  HH:mm:ss:sss
  @return 返回格式化后的时间
  */
-+ (NSString *)ConvertTimestampWith:(NSString *)Timestamp Formate:(NSString *)formate;
++ (NSString *)relayTimestampWith:(NSString *)Timestamp formate:(NSString *)formate;
 
 /**
  得到距离何时  多久之后或者多久之前   正：是之后   负：之前
@@ -73,7 +81,7 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
  @param formate 时间格式
  @return 返回时间字符串
  */
-+ (NSString *)GetTimeInterval:(NSInteger)space from:(NSDate *)date Formate:(NSString *)formate Calendar:(QQCalendarType)Calendar;
++ (NSString *)timeInterval:(NSInteger)space from:(NSDate *)date formate:(NSString *)formate calendar:(QQCalendarType)calendar;
 
 
 /**
@@ -82,7 +90,7 @@ typedef NS_ENUM(NSInteger,QQCalendarType){
  @param time 时间
  @return 格式化字符串
  */
-+ (NSString *)getHowSecondsAgo:(NSString *)time;
++ (NSString *)howSecondsAgo:(NSString *)time;
 
 @end
 

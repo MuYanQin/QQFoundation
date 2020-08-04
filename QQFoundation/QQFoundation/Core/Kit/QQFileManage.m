@@ -11,24 +11,24 @@
 @implementation QQFileManage
 
 
-+ (NSString *)GetAppHomePath
++ (NSString *)appHomePath
 {
     NSString *dirHome=NSHomeDirectory();
     return dirHome;
 }
-+ (NSString *)GetDocumentsPath
++ (NSString *)documentsPath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
-+ (NSString *)GetCachesPath
++ (NSString *)cachesPath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachesDir = [paths objectAtIndex:0];
     return cachesDir;
 }
-+ (NSArray *)GetContentUrlWith:(NSString *)path
++ (NSArray *)contentUrlWith:(NSString *)path
 {
     if ([QQTool isBlank:path]) {
         NSLog(@"%s--路径不能为空 ",__FUNCTION__);
@@ -61,7 +61,7 @@
     }
     return bret;
 }
-+(void)CreateFolderWithPath:(NSString *)path FolderName:(NSString *)name Success:(void (^)(NSString*, NSError *))result{
++ (void)createFolderWithPath:(NSString *)path folderName:(NSString *)name  success:(void(^)(NSString * Path,NSError *error))result{
     if ([QQTool isBlank:path] | [QQTool isBlank:name]) {
         NSLog(@"%s--路径不能为空 ",__FUNCTION__);
         return;

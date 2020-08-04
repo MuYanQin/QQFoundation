@@ -15,7 +15,7 @@
 
  @return 返回系统版本号
  */
-+ (CGFloat)GetSystemVersion;
++ (CGFloat)systemVersion;
 
 /**
  获取app名称

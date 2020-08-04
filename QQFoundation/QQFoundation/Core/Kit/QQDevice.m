@@ -9,7 +9,7 @@
 #import "QQDevice.h"
 
 @implementation QQDevice
-+ (CGFloat)GetSystemVersion
++ (CGFloat)systemVersion
 {
     return [[[UIDevice currentDevice] systemVersion] floatValue];
 }

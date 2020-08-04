@@ -320,7 +320,7 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
     return _taskMuDic;
 }
 - (NSString *)getUserInfoFile {
-    NSString * path = [[QQFileManage GetCachesPath] stringByAppendingPathComponent:@"user.data"];
+    NSString * path = [[QQFileManage cachesPath] stringByAppendingPathComponent:@"user.data"];
     return path;
 }
 - (void)saveDownloadStatus {
@@ -328,11 +328,11 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
 }
 - (NSString *)CahePath
 {
-    __block NSString *CahePath = [NSString stringWithFormat:@"%@%@",[QQFileManage GetCachesPath],@"/MCDownload"];
+    __block NSString *CahePath = [NSString stringWithFormat:@"%@%@",[QQFileManage cachesPath],@"/MCDownload"];
     if ([QQFileManage isContainAtPath:CahePath]) {
         return CahePath;
     }else{
-        [QQFileManage CreateFolderWithPath:[QQFileManage GetCachesPath] FolderName:@"MCDownload" Success:^(NSString *Path, NSError *error) {
+        [QQFileManage createFolderWithPath:[QQFileManage cachesPath] folderName:@"MCDownload" success:^(NSString *Path, NSError *error) {
             if (!error) {
                 CahePath = Path;
             }

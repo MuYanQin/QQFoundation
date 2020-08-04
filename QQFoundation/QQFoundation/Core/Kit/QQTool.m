@@ -145,7 +145,7 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
  
  @param content 需要复制的内容
  */
-+ (void)SystemPaste:(NSString *)content{
++ (void)systemPaste:(NSString *)content{
     if ([self isBlank:content]) {
         NSLog(@"粘贴内容不能为空！");
         return;
@@ -154,50 +154,6 @@ void QQ_methodSwizzle(Class cls, SEL originalSelector, SEL swizzledSelector) {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = content;
     NSLog(@"\r\n====>输入框内容为:%@\r\n====>剪切板内容为:%@",content,pasteboard.string);
-}
-/*
- 返回100k以内大小的图片
- */
-+(NSData *)imageData:(UIImage *)myimage
-{
-        // Compress by quality
-    NSInteger maxLength = 150*1024;
-    CGFloat compression = 1;
-    NSData *data = UIImageJPEGRepresentation(myimage, compression);
-    //NSLog(@"Before compressing quality, image size = %ld KB",data.length/1024);
-    if (data.length < maxLength) return data;
-    CGFloat max = 1;
-    CGFloat min = 0;
-    for (int i = 0; i < 6; ++i) {
-        compression = (max + min) / 2;
-        //NSLog(@"Compression = %.1f", compression);
-        //NSLog(@"In compressing quality loop, image size = %ld KB", data.length / 1024);
-        if (data.length < maxLength * 0.9) {
-            min = compression;
-        } else if (data.length > maxLength) {
-            max = compression;
-        } else {
-            break;
-        }
-    }
-    //NSLog(@"After compressing quality, image size = %ld KB", data.length / 1024);
-    if (data.length < maxLength) return data;
-    UIImage *resultImage = [UIImage imageWithData:data];
-    // Compress by size
-    NSUInteger lastDataLength = 0;
-    while (data.length > maxLength && data.length != lastDataLength) {
-        lastDataLength = data.length;
-        CGFloat ratio = (CGFloat)maxLength / data.length;
-        //NSLog(@"Ratio = %.1f", ratio);
-        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
-                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
-        UIGraphicsBeginImageContext(size);
-        [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
-        resultImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        data = UIImageJPEGRepresentation(resultImage, compression);
-    }
-    return data;
 }
 
 @end
