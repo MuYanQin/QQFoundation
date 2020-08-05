@@ -21,7 +21,7 @@
     
 }
 - (CGFloat)autoCellHeight{
-    return self.item.CellHeight;
+    return self.item.cellHeight;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

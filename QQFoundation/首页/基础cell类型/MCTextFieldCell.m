@@ -13,7 +13,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.CellHeight = 50;
+        self.cellHeight = 50;
     }
     return self;
 }

@@ -13,7 +13,7 @@
 {
     if (self = [super init]) {
         self.allowSlide = NO;
-        self.CellHeight = 0;
+        self.cellHeight = 0;
     }
     return self;
 }

@@ -17,7 +17,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.CellHeight = 100;
+        self.cellHeight = 100;
         self.selectedAssets = [NSMutableArray array];
         self.selectedPhotos = [NSMutableArray array];
         self.defaultPhotos = [NSMutableArray array];
@@ -157,7 +157,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     if (self.item.selectImage) {
         self.item.selectImage(self.item,self.item.selectedPhotos);
     }
-    self.item.CellHeight = ((int)self.item.selectedPhotos.count/4)*90 + 100;
+    self.item.cellHeight = ((int)self.item.selectedPhotos.count/4)*90 + 100;
     [self.item reloadRowWithAnimation:(UITableViewRowAnimationNone)];
 }
 - (void)configCollectionView {

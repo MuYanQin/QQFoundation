@@ -33,6 +33,7 @@
 		42A997702324E52000F20344 /* NSString+encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A9976F2324E52000F20344 /* NSString+encrypt.m */; };
 		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
 		42DCB13324DADF3B0017B953 /* QYSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */; };
+		42DCB13624DAE1760017B953 /* QYEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DCB13524DAE1760017B953 /* QYEmptyCell.m */; };
 		42EB64D623ADC53C001236A7 /* MMCommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EB64D523ADC53C001236A7 /* MMCommentInputView.m */; };
 		4B1C2B63222E28B50007EB9B /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5B222E28B50007EB9B /* addr.json */; };
 		4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */; };
@@ -73,7 +74,6 @@
 		4B8B19EF20CFE86100B77A9D /* MCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19EE20CFE86100B77A9D /* MCDownloadManager.m */; };
 		4B8B19F220CFED9200B77A9D /* MCDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */; };
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
-		4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */; };
 		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
 		4B94392321C110CC00F34743 /* MCPageViewSub3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */; };
 		4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A33E21707B7900299613 /* MCMonitorView.m */; };
@@ -260,6 +260,8 @@
 		42CEE6E32271835C00B75359 /* MCPopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPopViewController.m; sourceTree = "<group>"; };
 		42DCB13124DADF3B0017B953 /* QYSelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYSelectImageCell.h; sourceTree = "<group>"; };
 		42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYSelectImageCell.m; sourceTree = "<group>"; };
+		42DCB13424DAE1760017B953 /* QYEmptyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYEmptyCell.h; sourceTree = "<group>"; };
+		42DCB13524DAE1760017B953 /* QYEmptyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYEmptyCell.m; sourceTree = "<group>"; };
 		42EB64D423ADC53C001236A7 /* MMCommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCommentInputView.h; sourceTree = "<group>"; };
 		42EB64D523ADC53C001236A7 /* MMCommentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCommentInputView.m; sourceTree = "<group>"; };
 		4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
@@ -336,8 +338,6 @@
 		4B8B19F120CFED9200B77A9D /* MCDownloadItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDownloadItem.m; sourceTree = "<group>"; };
 		4B8D23C420E087DE005F6047 /* MCPushMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPushMediator.h; sourceTree = "<group>"; };
 		4B8D23C520E087DE005F6047 /* MCPushMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPushMediator.m; sourceTree = "<group>"; };
-		4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCEmptyCell.h; sourceTree = "<group>"; };
-		4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCEmptyCell.m; sourceTree = "<group>"; };
 		4B8D23D220E0DA46005F6047 /* MCGCDStudy */ = {isa = PBXFileReference; lastKnownFileType = text; path = MCGCDStudy; sourceTree = "<group>"; };
 		4B94392121C110CC00F34743 /* MCPageViewSub3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageViewSub3ViewController.h; sourceTree = "<group>"; };
 		4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub3ViewController.m; sourceTree = "<group>"; };
@@ -573,8 +573,8 @@
 				426FA33524DAB34D00DD04EB /* deleteImg@2x.png */,
 				42DCB13124DADF3B0017B953 /* QYSelectImageCell.h */,
 				42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */,
-				4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */,
-				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
+				42DCB13424DAE1760017B953 /* QYEmptyCell.h */,
+				42DCB13524DAE1760017B953 /* QYEmptyCell.m */,
 				0153EDF820B66B710041CFC4 /* QQTableViewCell.h */,
 				0153EDF920B66B710041CFC4 /* QQTableViewCell.m */,
 				0153EDF520B66B5F0041CFC4 /* QQTableViewItem.h */,
@@ -1725,7 +1725,6 @@
 				52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */,
 				42784C2B248DD605001CDB81 /* QQCollectionViewCell.m in Sources */,
 				52C115581F4EC5CE005471CB /* MJRefreshBackGifFooter.m in Sources */,
-				4B8D23CD20E0BCEF005F6047 /* MCEmptyCell.m in Sources */,
 				4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
@@ -1741,6 +1740,7 @@
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
 				4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */,
 				4B2F3FF422269F6F00528272 /* NSString+QQCalculate.m in Sources */,
+				42DCB13624DAE1760017B953 /* QYEmptyCell.m in Sources */,
 				429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */,
 				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,

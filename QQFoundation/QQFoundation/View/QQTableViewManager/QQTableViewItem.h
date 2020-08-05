@@ -18,7 +18,7 @@
 /**cell的背景颜色*/
 @property (nonatomic , strong) UIColor * bgColor;
 /**cel的高度 默认44*/
-@property (nonatomic, assign) CGFloat CellHeight;
+@property (nonatomic, assign) CGFloat cellHeight;
 /**扩展的一个属性字符串0*/
 @property (nonatomic, copy) NSString *extendedStr;
 /**扩展的一个属性字符串1*/

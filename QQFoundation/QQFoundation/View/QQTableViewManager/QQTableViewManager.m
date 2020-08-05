@@ -96,8 +96,8 @@
     cell.item = item;
     cell.detailTextLabel.text = nil;
     [cell cellWillAppear];
-    if (item.CellHeight <=0) {
-        item.CellHeight = [cell autoCellHeight];
+    if (item.cellHeight <=0) {
+        item.cellHeight = [cell autoCellHeight];
     }
     return cell;
 }
@@ -117,7 +117,7 @@
 {
     QQTableViewSection *section = self.sections[indexPath.section];
     QQTableViewItem * item = section.items[indexPath.row];
-    return (item.CellHeight>0)?item.CellHeight:44;
+    return (item.cellHeight>0)?item.cellHeight:44;
 }
 /**cell点击事件*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
