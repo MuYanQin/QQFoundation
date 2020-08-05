@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)showSelectStyle;
 
-@property (nonatomic , copy) NSArray* (^selectImges)(NSArray *images,NSArray *assets);
+@property (nonatomic , copy) void(^selectImges)(NSArray *images,NSArray *assets);
 @end
 
 NS_ASSUME_NONNULL_END

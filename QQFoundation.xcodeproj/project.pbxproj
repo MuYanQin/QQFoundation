@@ -85,7 +85,7 @@
 		4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
 		4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC962119499C003EC96B /* 456.m4a */; };
 		4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */; };
-		4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921B21EF1178008530AE /* SelectImage@2x.png */; };
+		4BC2921D21EF1178008530AE /* selectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921B21EF1178008530AE /* selectImage@2x.png */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A7F2152707E0063164A /* MCPageViewViewController.m */; };
 		4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A83215270E40063164A /* MCPageViewSub1ViewController.m */; };
@@ -351,7 +351,7 @@
 		4BBBFC962119499C003EC96B /* 456.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.m4a; sourceTree = "<group>"; };
 		4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSelectImageCell.h; sourceTree = "<group>"; };
 		4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSelectImageCell.m; sourceTree = "<group>"; };
-		4BC2921B21EF1178008530AE /* SelectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectImage@2x.png"; sourceTree = "<group>"; };
+		4BC2921B21EF1178008530AE /* selectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectImage@2x.png"; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
 		4BDC83D920E120F600F13C46 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -587,7 +587,7 @@
 				420022802266C6DB00C39BE3 /* QQTableViewSection.m */,
 				424DADAD23B7439400FBD5C9 /* QQTableViewSecView.h */,
 				424DADAE23B7439400FBD5C9 /* QQTableViewSecView.m */,
-				4BC2921B21EF1178008530AE /* SelectImage@2x.png */,
+				4BC2921B21EF1178008530AE /* selectImage@2x.png */,
 			);
 			path = QQTableViewManager;
 			sourceTree = "<group>";
@@ -1552,7 +1552,7 @@
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
 				52C1155E1F4EC5CE005471CB /* MJRefresh.bundle in Resources */,
 				4257A9BB24877AFE00B848E0 /* barbuttonicon_back@2x.png in Resources */,
-				4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */,
+				4BC2921D21EF1178008530AE /* selectImage@2x.png in Resources */,
 				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
 				4B1C2B67222E28B50007EB9B /* MCClose@2x.png in Resources */,
 				52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */,

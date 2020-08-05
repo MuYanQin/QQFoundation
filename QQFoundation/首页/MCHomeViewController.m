@@ -248,7 +248,7 @@
     [section1 addItem:empty2];
     
     HRSelectImageItem *imgItem = [[HRSelectImageItem alloc]init];
-    imgItem.maxImage = 4;
+    imgItem.maxImage = 14;
     [section1 addItem:imgItem];
     
     [self.tabManager replaceWithSectionsFromArray:@[sectio0,section,section1]];

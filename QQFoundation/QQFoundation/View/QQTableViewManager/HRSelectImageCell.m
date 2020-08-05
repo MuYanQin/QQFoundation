@@ -11,7 +11,6 @@
 #import "UIView+QQFrame.h"
 @interface HRSelectImageItem ()
 @property (nonatomic , strong) NSMutableArray * selectedAssets;
-@property (nonatomic , strong) NSMutableArray * selectedPhotos;
 
 @end
 @implementation HRSelectImageItem
@@ -22,6 +21,7 @@
         self.selectedAssets = [NSMutableArray array];
         self.selectedPhotos = [NSMutableArray array];
         self.defaultPhotos = [NSMutableArray array];
+        self.detail = NO;
     }
     return self;
 }
@@ -30,9 +30,25 @@
     _defaultPhotos = defaultPhotos;
     [self.selectedPhotos addObjectsFromArray:self.defaultPhotos];
 }
-- (NSMutableArray *)selectedImages
+- (NSMutableArray *)selectedimages
 {
-    return self.selectedPhotos;
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (id object in self.selectedPhotos) {
+        if ([object isKindOfClass:[UIImage class]]) {
+            [tempArray addObject:object];
+        }
+    }
+    return tempArray;
+}
+- (NSMutableArray *)surplusURL
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (id object in self.selectedPhotos) {
+        if (![object isKindOfClass:[UIImage class]]) {
+            [tempArray addObject:object];
+        }
+    }
+    return tempArray;
 }
 @end
 
@@ -60,7 +76,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (self.item.maxImage == self.item.selectedPhotos.count) {
+    if (self.item.maxImage == self.item.selectedPhotos.count || self.item.detail) {
         return self.item.selectedPhotos.count;
     }else{
         return self.item.selectedPhotos.count + 1;
@@ -69,30 +85,15 @@
 - ( UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ArtileImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ArtileImageCell" forIndexPath:indexPath];
-    
     cell.backgroundColor = [UIColor whiteColor];
     if (self.item.maxImage == self.item.selectedPhotos.count) {
-        id value = self.item.selectedPhotos[indexPath.row];
-        if ([value isKindOfClass:[UIImage class]]) {
-            cell.imageView.image = self.item.selectedPhotos[indexPath.row];
-        }else if ([value isKindOfClass:[NSString class]]){
-            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:value] placeholderImage:nil];
-        }
-        
-        cell.button.hidden = NO;
+        [self showImgInCell:cell indexPath:indexPath];
     }else{
         if (indexPath.row == self.item.selectedPhotos.count) {
-            cell.imageView.image = [UIImage imageNamed:@"SelectImage"];
+            cell.imageView.image = [UIImage imageNamed:@"selectImage"];
             cell.button.hidden = YES;
         }else{
-            id value = self.item.selectedPhotos[indexPath.row];
-            if ([value isKindOfClass:[UIImage class]]) {
-                cell.imageView.image = self.item.selectedPhotos[indexPath.row];
-            }else if ([value isKindOfClass:[NSString class]]){
-                [cell.imageView sd_setImageWithURL:[NSURL URLWithString:value] placeholderImage:nil];
-            }
-    
-            cell.button.hidden = NO;
+            [self showImgInCell:cell indexPath:indexPath];
         }
     }
     cell.button.QInfo(@(indexPath.row));
@@ -102,75 +103,33 @@
     };
     return cell;
 }
-
+- (void)showImgInCell:(ArtileImageCell *)cell indexPath:(NSIndexPath *)indexPath{
+    id value = self.item.selectedPhotos[indexPath.row];
+    if ([value isKindOfClass:[UIImage class]]) {
+        cell.imageView.image = self.item.selectedPhotos[indexPath.row];
+    }else if ([value isKindOfClass:[NSString class]]){
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:value] placeholderImage:nil];
+    }
+    cell.button.hidden = NO;
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.item.maxImage == self.item.selectedPhotos.count) {
-        
+    if (self.item.maxImage != self.item.selectedPhotos.count && indexPath.row == self.item.selectedPhotos.count ) {
+        QQWeakSelf
+        self.imgPikerTool = [[CCTZImgPickerTool alloc]init];
+        self.imgPikerTool.selectedAssets = weakSelf.item.selectedAssets;
+        self.imgPikerTool.maxCount = self.item.maxImage;
+        self.imgPikerTool.selectImges = ^(NSArray * _Nonnull images, NSArray * _Nonnull assets) {
+            weakSelf.item.selectedPhotos = [NSMutableArray arrayWithArray:weakSelf.item.defaultPhotos];
+            [weakSelf.item.selectedPhotos addObjectsFromArray:images];
+            weakSelf.item.selectedAssets = [NSMutableArray arrayWithArray:assets];
+            [weakSelf imgCountChange];
+        };
+        [self.imgPikerTool showSelectStyle];
     }else{
-        if (indexPath.row == self.item.selectedPhotos.count) {//添加图片
-            QQWeakSelf
-            self.imgPikerTool = [[CCTZImgPickerTool alloc]init];
-            self.imgPikerTool.selectedAssets = weakSelf.item.selectedAssets;
-            self.imgPikerTool.selectImges = ^(NSArray * _Nonnull images, NSArray * _Nonnull assets) {
-                weakSelf.item.selectedPhotos = [NSMutableArray arrayWithArray:weakSelf.item.defaultPhotos];
-                [weakSelf.item.selectedPhotos addObjectsFromArray:images];
-                weakSelf.item.selectedAssets = [NSMutableArray arrayWithArray:assets];
-                if (weakSelf.item.selectImage) {
-                    weakSelf.item.selectImage(weakSelf.item,weakSelf.item.selectedPhotos);
-                }
-                [weakSelf.collectionView reloadData];
-                
-                return weakSelf.item.selectedAssets;
-            };
-            [self.imgPikerTool showSelectStyle];
-        }else{//预览图片
-            
-        }
+        //预览图片
     }
-}
-
-- (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    TZImagePickerController *tzImagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-    [tzImagePickerVc showProgressHUD];
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    // save photo and get asset / 保存图片，获取到asset
-    [[TZImageManager manager] savePhotoWithImage:image location:nil completion:^(PHAsset *asset, NSError *error){
-        [tzImagePickerVc hideProgressHUD];
-        if (error) {
-            NSLog(@"图片保存失败 %@",error);
-        } else {
-            [self refreshCollectionViewWithAddedAsset:asset image:image];
-        }
-    }];
     
-}
-- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
-    self.item.selectedPhotos = [NSMutableArray arrayWithArray:self.item.defaultPhotos];
-    [self.item.selectedPhotos addObjectsFromArray:photos];
-    self.item.selectedAssets = [NSMutableArray arrayWithArray:assets];
-    
-    
-    if (self.item.selectImage) {
-        self.item.selectImage(self.item,self.item.selectedPhotos);
-    }
-    [_collectionView reloadData];
-}
-- (void)refreshCollectionViewWithAddedAsset:(PHAsset *)asset image:(UIImage *)image {
-    [self.item.selectedAssets addObject:asset];
-    [self.item.selectedPhotos addObject:image];
-    
-    
-    if (self.item.selectImage) {
-        self.item.selectImage(self.item,self.item.selectedPhotos);
-    }
-    [_collectionView reloadData];
-}
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    if ([picker isKindOfClass:[UIImagePickerController class]]) {
-        [picker dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -185,21 +144,22 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 }
 - (void)deleteImage:(NSInteger )index
 {
-    
     id value = self.item.selectedPhotos[index];
-    
     if ([self.item.defaultPhotos containsObject:value]) {
         [self.item.defaultPhotos removeObject:value];
     }else{//不存在就是从图册中选择的
         NSInteger row = index - self.item.defaultPhotos.count;
         [self.item.selectedAssets removeObjectAtIndex:row];
     }
-    
     [self.item.selectedPhotos removeObjectAtIndex:index];
+    [self imgCountChange];
+}
+- (void)imgCountChange{
     if (self.item.selectImage) {
         self.item.selectImage(self.item,self.item.selectedPhotos);
     }
-    [_collectionView reloadData];
+    self.item.CellHeight = ((int)self.item.selectedPhotos.count/4)*90 + 100;
+    [self.item reloadRowWithAnimation:(UITableViewRowAnimationNone)];
 }
 - (void)configCollectionView {
     // 如不需要长按排序效果，将LxGridViewFlowLayout类改成UICollectionViewFlowLayout即可
@@ -240,8 +200,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.equalTo(self);
     }];
-    
-    
     self.button = [QQButton buttonWithType:UIButtonTypeCustom];
     self.button.QimageSize(CGSizeMake(15, 15)).QtextPosition(Tright);
     [self.button setImage:[UIImage imageNamed:@"deleteImg"] forState:UIControlStateNormal];

@@ -13,10 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HRSelectImageItem : QQTableViewItem
 @property (nonatomic , assign) NSInteger  maxImage;
 
-/**以选择的的图片 包含默认显示的数组*/
-@property (nonatomic , strong,readonly) NSMutableArray * selectedImages;
+/**已选择的的图片 包含UIImage/NSString*/
+@property (nonatomic , strong) NSMutableArray * selectedPhotos;
 
-/**默认显示的数组 uiimage/nsstring*/
+/**获取选择的图片 只包含UIImage对象*/
+@property (nonatomic , strong, readonly) NSMutableArray * selectedimages;
+
+/**获取defaultPhotos数组里面除了UIImage对象的其他数据*/
+@property (nonatomic , strong, readonly) NSMutableArray * surplusURL;
+
+@property (nonatomic , assign) BOOL  detail;///<是否是详情页 默认否
+/**默认显示的数组 UIImage/NSString*/
 @property (nonatomic , strong) NSMutableArray * defaultPhotos;
 
 /***selectedPhotos 发生变化就执行的Block*/
