@@ -10,6 +10,7 @@
 #import "MCTextFieldCell.h"
 #import "MCEmptyCell.h"
 #import "MCLableCell.h"
+#import "HRSelectImageCell.h"
 #import "MCAllTextCell.h"
 #import "UIView+QQFrame.h"
 #import "QQNetManager.h"
@@ -39,6 +40,8 @@
     self.tabManager[@"MCEmptyItem"] = @"MCEmptyCell";
     self.tabManager[@"MCLableItem"] = @"MCLableCell";
     self.tabManager[@"MCAllTextItem"] = @"MCAllTextCell";
+    self.tabManager[@"HRSelectImageItem"] = @"HRSelectImageCell";
+    
     self.BaseQQTableView.isHasHeaderRefresh = NO;
     self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     [self iniUI];
@@ -243,6 +246,10 @@
     MCEmptyItem *empty2 = [[MCEmptyItem alloc]initWithHeight:40];
     empty2.bgColor = getColorWithHex(@"f8f8f8");
     [section1 addItem:empty2];
+    
+    HRSelectImageItem *imgItem = [[HRSelectImageItem alloc]init];
+    imgItem.maxImage = 4;
+    [section1 addItem:imgItem];
     
     [self.tabManager replaceWithSectionsFromArray:@[sectio0,section,section1]];
 }

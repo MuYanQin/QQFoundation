@@ -10,7 +10,6 @@
 
 @interface CCTZImgPickerTool ()
 @property (nonatomic, strong) UIImagePickerController *imagePickerVc;
-@property (nonatomic , strong) NSMutableArray *selectedAssets;
 @end
 
 @implementation CCTZImgPickerTool
@@ -45,9 +44,9 @@
 
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:self.maxCount columnNumber:4 delegate:self pushPhotoPickerVc:YES];
     // imagePickerVc.navigationBar.translucent = NO;
-    imagePickerVc.naviBgColor = MainColor;
-    imagePickerVc.naviTitleColor =  getColorWithHex(@"333333");
-    imagePickerVc.barItemTextColor =  getColorWithHex(@"333333");
+    //imagePickerVc.naviBgColor = MainColor;
+    //imagePickerVc.naviTitleColor =  getColorWithHex(@"333333");
+    //imagePickerVc.barItemTextColor =  getColorWithHex(@"333333");
     imagePickerVc.statusBarStyle = UIStatusBarStyleDefault;
 #pragma mark - 五类个性化设置，这些参数都可以不传，此时会走默认设置
     imagePickerVc.isSelectOriginalPhoto = NO;
@@ -146,7 +145,7 @@
         } else {
             //获取图片
             if (self.selectImges) {
-                self.selectImges(@[image]);
+                self.selectImges(@[image],@[]);
             }
         }
     }];
@@ -156,7 +155,7 @@
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
     [self.selectedAssets addObjectsFromArray:assets];
     if (self.selectImges) {
-        self.selectImges(photos);
+        self.selectImges(photos,assets);
     }
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

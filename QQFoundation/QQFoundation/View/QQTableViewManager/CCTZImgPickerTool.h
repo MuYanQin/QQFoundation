@@ -21,9 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , assign) NSInteger  maxCount;///<最大可选择几张
 @property (nonatomic , assign) BOOL  allowCrop;///<是否允许裁剪
 @property (nonatomic , assign) CGRect  cropRect;///<裁剪框的尺寸
+
+
+@property (nonatomic , strong) NSMutableArray * selectedAssets;
+
 - (void)showSelectStyle;
 
-@property (nonatomic , copy) void(^selectImges)(NSArray *images);
+@property (nonatomic , copy) NSArray* (^selectImges)(NSArray *images,NSArray *assets);
 @end
 
 NS_ASSUME_NONNULL_END

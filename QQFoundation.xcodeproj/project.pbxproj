@@ -21,6 +21,8 @@
 		424DADB423B74C9F00FBD5C9 /* MCAuthorSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADB323B74C9F00FBD5C9 /* MCAuthorSecView.m */; };
 		4257A9BB24877AFE00B848E0 /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257A9BA24877AFE00B848E0 /* barbuttonicon_back@2x.png */; };
 		426FA33424DA4EFA00DD04EB /* QYBadgeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 426FA33324DA4EFA00DD04EB /* QYBadgeLabel.m */; };
+		426FA33624DAB34E00DD04EB /* deleteImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426FA33524DAB34D00DD04EB /* deleteImg@2x.png */; };
+		426FA33924DAB7AB00DD04EB /* CCTZImgPickerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 426FA33824DAB7AB00DD04EB /* CCTZImgPickerTool.m */; };
 		42784C25248DD357001CDB81 /* QQCollectionViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C24248DD357001CDB81 /* QQCollectionViewManager.m */; };
 		42784C2B248DD605001CDB81 /* QQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C2A248DD605001CDB81 /* QQCollectionViewCell.m */; };
 		42784C2E248DD622001CDB81 /* QQCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C2D248DD622001CDB81 /* QQCollectionViewItem.m */; };
@@ -29,7 +31,6 @@
 		42852FD424B1865900B5142F /* QYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42852FD324B1865900B5142F /* QYTabBar.m */; };
 		429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429C3C4A248E0B3D00B4771F /* QQCollectionView.m */; };
 		42A997702324E52000F20344 /* NSString+encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A9976F2324E52000F20344 /* NSString+encrypt.m */; };
-		42AE027524BD86A00082B040 /* CCTZImgPickerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AE027324BD869F0082B040 /* CCTZImgPickerTool.m */; };
 		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
 		42EB64D623ADC53C001236A7 /* MMCommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EB64D523ADC53C001236A7 /* MMCommentInputView.m */; };
 		4B1C2B63222E28B50007EB9B /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5B222E28B50007EB9B /* addr.json */; };
@@ -84,8 +85,6 @@
 		4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
 		4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC962119499C003EC96B /* 456.m4a */; };
 		4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */; };
-		4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2921121EF0F04008530AE /* ArtileImageCell.m */; };
-		4BC2921C21EF1178008530AE /* MCDEleteItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */; };
 		4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921B21EF1178008530AE /* SelectImage@2x.png */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A7F2152707E0063164A /* MCPageViewViewController.m */; };
@@ -238,6 +237,9 @@
 		4257A9BA24877AFE00B848E0 /* barbuttonicon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonicon_back@2x.png"; sourceTree = "<group>"; };
 		426FA33224DA4EFA00DD04EB /* QYBadgeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYBadgeLabel.h; sourceTree = "<group>"; };
 		426FA33324DA4EFA00DD04EB /* QYBadgeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYBadgeLabel.m; sourceTree = "<group>"; };
+		426FA33524DAB34D00DD04EB /* deleteImg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deleteImg@2x.png"; sourceTree = "<group>"; };
+		426FA33724DAB7AB00DD04EB /* CCTZImgPickerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTZImgPickerTool.h; sourceTree = "<group>"; };
+		426FA33824DAB7AB00DD04EB /* CCTZImgPickerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTZImgPickerTool.m; sourceTree = "<group>"; };
 		42784C23248DD357001CDB81 /* QQCollectionViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionViewManager.h; sourceTree = "<group>"; };
 		42784C24248DD357001CDB81 /* QQCollectionViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQCollectionViewManager.m; sourceTree = "<group>"; };
 		42784C29248DD605001CDB81 /* QQCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionViewCell.h; sourceTree = "<group>"; };
@@ -254,8 +256,6 @@
 		429C3C4A248E0B3D00B4771F /* QQCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQCollectionView.m; sourceTree = "<group>"; };
 		42A9976E2324E52000F20344 /* NSString+encrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+encrypt.h"; sourceTree = "<group>"; };
 		42A9976F2324E52000F20344 /* NSString+encrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+encrypt.m"; sourceTree = "<group>"; };
-		42AE027324BD869F0082B040 /* CCTZImgPickerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCTZImgPickerTool.m; path = ../../../../../crosscountry/crosscountry/QQFoundation/View/scrollViewManager/QQTableViewManager/CCTZImgPickerTool.m; sourceTree = "<group>"; };
-		42AE027424BD869F0082B040 /* CCTZImgPickerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTZImgPickerTool.h; path = ../../../../../crosscountry/crosscountry/QQFoundation/View/scrollViewManager/QQTableViewManager/CCTZImgPickerTool.h; sourceTree = "<group>"; };
 		42CEE6E22271835C00B75359 /* MCPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPopViewController.h; sourceTree = "<group>"; };
 		42CEE6E32271835C00B75359 /* MCPopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPopViewController.m; sourceTree = "<group>"; };
 		42EB64D423ADC53C001236A7 /* MMCommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCommentInputView.h; sourceTree = "<group>"; };
@@ -351,9 +351,6 @@
 		4BBBFC962119499C003EC96B /* 456.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.m4a; sourceTree = "<group>"; };
 		4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSelectImageCell.h; sourceTree = "<group>"; };
 		4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSelectImageCell.m; sourceTree = "<group>"; };
-		4BC2921021EF0F04008530AE /* ArtileImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtileImageCell.h; sourceTree = "<group>"; };
-		4BC2921121EF0F04008530AE /* ArtileImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtileImageCell.m; sourceTree = "<group>"; };
-		4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MCDEleteItem@2x.png"; sourceTree = "<group>"; };
 		4BC2921B21EF1178008530AE /* SelectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelectImage@2x.png"; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
@@ -571,13 +568,11 @@
 		0153EDF020B65D610041CFC4 /* QQTableViewManager */ = {
 			isa = PBXGroup;
 			children = (
-				4BC2921021EF0F04008530AE /* ArtileImageCell.h */,
-				4BC2921121EF0F04008530AE /* ArtileImageCell.m */,
-				42AE027424BD869F0082B040 /* CCTZImgPickerTool.h */,
-				42AE027324BD869F0082B040 /* CCTZImgPickerTool.m */,
+				426FA33724DAB7AB00DD04EB /* CCTZImgPickerTool.h */,
+				426FA33824DAB7AB00DD04EB /* CCTZImgPickerTool.m */,
+				426FA33524DAB34D00DD04EB /* deleteImg@2x.png */,
 				4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */,
 				4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */,
-				4BC2921A21EF1178008530AE /* MCDEleteItem@2x.png */,
 				4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */,
 				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
 				0153EDF820B66B710041CFC4 /* QQTableViewCell.h */,
@@ -1551,6 +1546,7 @@
 				AC781AC61FF51D2C00863F4C /* LICENSE.txt in Resources */,
 				52D8D1971F4D77EF00EA413B /* multi_network_error_icon@2x.png in Resources */,
 				4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */,
+				426FA33624DAB34E00DD04EB /* deleteImg@2x.png in Resources */,
 				4B1C2B63222E28B50007EB9B /* addr.json in Resources */,
 				4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */,
 				52D8D11C1F4D775500EA413B /* LaunchScreen.storyboard in Resources */,
@@ -1559,7 +1555,6 @@
 				4BC2921D21EF1178008530AE /* SelectImage@2x.png in Resources */,
 				AC781AC51FF51D2C00863F4C /* README.markdown in Resources */,
 				4B1C2B67222E28B50007EB9B /* MCClose@2x.png in Resources */,
-				4BC2921C21EF1178008530AE /* MCDEleteItem@2x.png in Resources */,
 				52D8D1191F4D775500EA413B /* Assets.xcassets in Resources */,
 				52D8D1171F4D775500EA413B /* Main.storyboard in Resources */,
 				52D8D1961F4D77EF00EA413B /* icon_em_al.png in Resources */,
@@ -1674,7 +1669,7 @@
 				4B94392321C110CC00F34743 /* MCPageViewSub3ViewController.m in Sources */,
 				52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */,
 				52C115641F4EC5CE005471CB /* FLAnimatedImage.m in Sources */,
-				42AE027524BD86A00082B040 /* CCTZImgPickerTool.m in Sources */,
+				426FA33924DAB7AB00DD04EB /* CCTZImgPickerTool.m in Sources */,
 				52C115721F4EC5CE005471CB /* UIImage+GIF.m in Sources */,
 				52C115741F4EC5CE005471CB /* UIImage+WebP.m in Sources */,
 				4B1C2B65222E28B50007EB9B /* MCPickerListView.m in Sources */,
@@ -1703,7 +1698,6 @@
 				52D8D1111F4D775500EA413B /* AppDelegate.m in Sources */,
 				42784C2E248DD622001CDB81 /* QQCollectionViewItem.m in Sources */,
 				4B7663A9214A46550073F7D8 /* MCPickerViewController.m in Sources */,
-				4BC2921221EF0F04008530AE /* ArtileImageCell.m in Sources */,
 				4B4D5A63211B2910007FDED8 /* MCRewardViewController.m in Sources */,
 				4B1C2B68222E28B50007EB9B /* MCPickerModel.m in Sources */,
 				52C1156B1F4EC5CE005471CB /* SDWebImageCompat.m in Sources */,

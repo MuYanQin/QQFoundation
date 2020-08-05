@@ -29,6 +29,7 @@
 /** 是否是必须项目*/
 @property (nonatomic , assign) BOOL  isMust;
 
+
 /**是否允许策侧滑。默认NO*/
 @property (nonatomic, assign) BOOL allowSlide;
 

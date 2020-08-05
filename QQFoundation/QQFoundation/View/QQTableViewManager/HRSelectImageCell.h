@@ -7,13 +7,7 @@
 //
 
 #import "QQTableViewCell.h"
-#import <TZImageManager.h>
-#import <TZImagePickerController.h>
-#import <Photos/Photos.h>
-#import <TZVideoPlayerController.h>
-#import <TZPhotoPreviewController.h>
-#import <TZGifPhotoPreviewController.h>
-#import <MobileCoreServices/MobileCoreServices.h>
+#import "CCTZImgPickerTool.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HRSelectImageItem : QQTableViewItem
@@ -29,13 +23,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy) void(^selectImage)(HRSelectImageItem *ttitem,NSMutableArray * imageArray);
 @end
 
-@interface HRSelectImageCell : QQTableViewCell<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
+@interface HRSelectImageCell : QQTableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic , strong) HRSelectImageItem * item;
-
-@property (nonatomic, strong) UIImagePickerController *imagePickerVc;
+@property (nonatomic , strong) CCTZImgPickerTool *imgPikerTool;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic , strong) UICollectionViewFlowLayout * layout ;
 @property (nonatomic , strong) UIView * line;
+@end
+
+
+@interface ArtileImageCell : UICollectionViewCell
+@property (nonatomic , strong) QQButton * button;
+@property (nonatomic , strong) UIImageView * imageView;
+@property (nonatomic , copy)  void(^deleteImage)(NSInteger tag);
 @end
 
 NS_ASSUME_NONNULL_END
