@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QQTableViewSecView : UITableViewHeaderFooterView
-@property (nonatomic , strong) QQTableViewSecItem *item;
+@property (nonatomic , strong) QQTableViewSecItem *secItem;
 
 - (void)secViewDidLoad;
 

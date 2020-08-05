@@ -3,7 +3,7 @@
 //  QQUIKit
 //
 //  Created by ZhangQun on 2017/4/6.
-//  Copyright © 2017年 秦慕乔. All rights reserved.
+//  Copyright © 2017年 Yuan er. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

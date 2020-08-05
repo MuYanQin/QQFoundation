@@ -2,8 +2,8 @@
 //  QQNetManegr.m
 //  QQNetManager
 //
-//  Created by 秦慕乔 on 16/4/17.
-//  Copyright © 2016年 秦慕乔. All rights reserved.
+//  Created by Yuan er on 16/4/17.
+//  Copyright © 2016年 Yuan er. All rights reserved.
 //
 
 #import "QQNetManager.h"

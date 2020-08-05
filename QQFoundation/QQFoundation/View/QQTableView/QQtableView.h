@@ -2,21 +2,20 @@
 //  QQtableView.h
 //  QQNetManager
 //
-//  Created by 秦慕乔 on 16/4/19.
-//  Copyright © 2016年 秦慕乔. All rights reserved.
+//  Created by Yuan er on 16/4/19.
+//  Copyright © 2016年 Yuan er. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "MCHoveringView.h"
 @class QQtableView,EmptyView;
 @protocol QQtableViewRequestDelegate <NSObject>
 @optional
 /**
  返回请求到的数据
  @param QQtableView 返回自己
- @param PullDown   返回bool 表明  YES－－下拉刷新  NO －－－ 上拉记载
- @param SuccessData         返回的数据
+ @param pullDown   返回bool 表明  YES－－下拉刷新  NO －－－ 上拉记载
+ @param successData         返回的数据
  */
-- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)PullDown SuccessData:(id)SuccessData;
+- (void)QQtableView:(QQtableView *)QQtableView isPullDown:(BOOL)pullDown successData:(id)successData;
 
 /**
  返回网络错误的状态

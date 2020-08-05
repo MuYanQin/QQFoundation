@@ -25,7 +25,7 @@
     // Modify the notification content here...
     self.bestAttemptContent.title = [NSString stringWithFormat:@"%@ [modified]", self.bestAttemptContent.title];
     self.bestAttemptContent.title = @"测试Extension";
-    self.bestAttemptContent.body = @"秦慕乔";
+    self.bestAttemptContent.body = @"Yuan er";
     //此处也可由推送设置
     //官方说30s以内 https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/SupportingNotificationsinYourApp.html#//apple_ref/doc/uid/TP40008194-CH4-SW10
 //    self.bestAttemptContent.sound = [UNNotificationSound soundNamed:@"wechatMusic.mp3"];

@@ -2,8 +2,8 @@
 //  QQtableView.m
 //  QQNetManager
 //
-//  Created by 秦慕乔 on 16/4/19.
-//  Copyright © 2016年 秦慕乔. All rights reserved.
+//  Created by Yuan er on 16/4/19.
+//  Copyright © 2016年 Yuan er. All rights reserved.
 
 #import "QQtableView.h"
 #import "QQNetManager.h"
@@ -145,8 +145,8 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 #warning 这里替换成自己的网络请求方法就好了 
     [[QQNetManager Instance]RTSGetWith:_requestUrl parameters:paramters from:_TempController successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
-        if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:SuccessData:)]) {
-            [self.RequestDelegate QQtableView:self isPullDown:isPullDown SuccessData:responseObject];
+        if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:successData:)]) {
+            [self.RequestDelegate QQtableView:self isPullDown:isPullDown successData:responseObject];
         }
         _hasNetError = NO;
         [self endRefrseh:isPullDown];

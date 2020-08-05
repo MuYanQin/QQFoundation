@@ -3,7 +3,7 @@
 //  QQUIKit
 //
 //  Created by ZhangQun on 2017/4/18.
-//  Copyright © 2017年 秦慕乔. All rights reserved.
+//  Copyright © 2017年 Yuan er. All rights reserved.
 //
 
 #import "QQFileManage.h"

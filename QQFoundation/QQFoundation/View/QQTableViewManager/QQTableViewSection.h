@@ -17,17 +17,21 @@ NS_ASSUME_NONNULL_BEGIN
  The table view manager of this section.
  */
 @property (weak, readwrite, nonatomic) QQTableViewManager *tableViewManager;
+
 /**
  Section index in UITableView.
  */
 @property (assign, readonly, nonatomic) NSUInteger index;
 
 /**
- An array of section items (rows).
- */
-@property (nonatomic , strong) QQTableViewSecItem *item;
-
+An array of section items (rows).
+*/
 @property (strong, readonly, nonatomic) NSMutableArray *items;
+
+/**
+  data for sectionView
+*/
+@property (nonatomic , strong) QQTableViewSecItem *secItem;
 
 @property (nonatomic , assign) CGFloat  sectionHeight;
 @property (nonatomic , copy) NSString * sectionTitle;

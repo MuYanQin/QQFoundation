@@ -224,8 +224,8 @@ API_AVAILABLE(ios(11.0)){
     }
     QQTableViewSection *sec  = self.sections[section];
 
-    if (sec.item.secHeight >0) {
-        return sec.item.secHeight;
+    if (sec.secItem.secHeight >0) {
+        return sec.secItem.secHeight;
     }
     if (sec.sectionHeight >0) {
         return sec.sectionHeight;
@@ -242,10 +242,10 @@ API_AVAILABLE(ios(11.0)){
 {
     QQTableViewSection *sec = self.sections[section];
 
-    if (!sec.item) {
+    if (!sec.secItem) {
         return nil;
     }
-    NSString *identifier = NSStringFromClass(sec.item.class);
+    NSString *identifier = NSStringFromClass(sec.secItem.class);
     NSString *secViewS = [NSString stringWithFormat:@"%@%@",[identifier substringToIndex:identifier.length - 4],@"View"];
     Class cellClass = NSClassFromString(secViewS);
     QQTableViewSecView *secView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(cellClass)];
@@ -253,7 +253,7 @@ API_AVAILABLE(ios(11.0)){
         secView = [[cellClass alloc]initWithReuseIdentifier:NSStringFromClass(cellClass)];
         [secView secViewDidLoad];
     }
-    secView.item = sec.item;
+    secView.secItem = sec.secItem;
     return secView;
 }
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
