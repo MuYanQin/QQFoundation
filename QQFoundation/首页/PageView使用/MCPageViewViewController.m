@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self nav_RightItemWithStr:@"角标" Selector:@selector(badgeClick)];
     NSMutableArray *titles = [NSMutableArray array];
     NSMutableArray *controllers = [NSMutableArray array];
     [controllers addObject:[MCPageViewSub1ViewController new]];
@@ -43,14 +44,17 @@
     self.PageView.defaultTitleFont = [UIFont systemFontOfSize:16];
     self.PageView.defaultTitleColor = [UIColor redColor];
     self.PageView.selectTitleColor = [UIColor purpleColor];
-    [self.PageView setBadgeWithIndex:3 badge:0];
-    [self.PageView setBadgeWithIndex:1 badge:58];
-    [self.PageView setBadgeWithIndex:5 badge:-1];
-    [self.PageView setBadgeWithIndex:2 badge:1000];
     [self.PageView selectIndex:1];
     [self.view addSubview:self.PageView];
 }
-
+- (void)badgeClick
+{
+    [self.PageView setBadgeWithIndex:3 badge:0];
+    [self.PageView setBadgeWithIndex:0 badge:0];
+    [self.PageView setBadgeWithIndex:1 badge:58];
+    [self.PageView setBadgeWithIndex:5 badge:-1];
+    [self.PageView setBadgeWithIndex:2 badge:1000];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

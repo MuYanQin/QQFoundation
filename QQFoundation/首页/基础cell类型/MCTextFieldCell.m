@@ -34,7 +34,6 @@
     self.TextField.textAlignment  = NSTextAlignmentRight;
     self.TextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.TextField.maxLength = 8;
-    self.TextField.errorText = @"文本长度不得超过8字符";
     self.TextField.openPriceCheck = YES;
     [self.contentView addSubview:self.TextField];
     

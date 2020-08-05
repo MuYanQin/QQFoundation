@@ -8,6 +8,7 @@
 
 #import "MCPageView.h"
 #import "UIView+QQFrame.h"
+#import "QYBadgeLabel.h"
 #define kwidth          [UIScreen mainScreen].bounds.size.width
 #define kheight        [UIScreen mainScreen].bounds.size.height
 @interface MCPageView ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -501,57 +502,32 @@ static const NSInteger itemTag = 100;
 @end
 
 @interface MCItem()
-@property (nonatomic,strong) UILabel *badgeLb;
+@property (nonatomic,strong) QYBadgeLabel *badgeLb;
 
 @end
 @implementation MCItem
-{
-    CGRect originRect;
-}
+
 - (void)setBadge:(NSInteger)badge
 {
     _badge = badge;
-    NSString *badgeText = [NSString string];
-    if (badge > 99) {
-        badgeText = @"99+";
-    }else if(badge >0){
-        badgeText = [NSString stringWithFormat:@"%lu",(long)badge];
-    }else{
-        self.badgeLb.text = @"";
-    }
-    self.badgeLb.text = badgeText;
-    [self.badgeLb sizeToFit];
-    originRect = self.badgeLb.frame;
+    self.badgeLb.text = @(badge).stringValue;
 }
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    CGRect rect = originRect;
-    if (_badge < 0) {
-        rect.size.width = 10;
-        rect.size.height = 10;
-    }else if(_badge == 0){
-        rect.size.width = 0;
-    }else{
-        rect.size.width =  originRect.size.width + 5;
-    }
-    self.badgeLb.frame  = rect;
-    
     CGPoint point = self.badgeLb.center;
     point.x = self.frame.size.width/2 + (self.titleLabel.frame.size.width/2);
     point.y = self.frame.size.height/2 - self.titleLabel.frame.size.height/2 - 5;
     self.badgeLb.center = point;
-    self.badgeLb.layer.cornerRadius = self.badgeLb.frame.size.height/2;
 }
-- (UILabel *)badgeLb
+- (QYBadgeLabel *)badgeLb
 {
     if (!_badgeLb) {
-        _badgeLb = [[UILabel alloc]init];
+        _badgeLb = [[QYBadgeLabel alloc]init];
         _badgeLb.textColor = [UIColor whiteColor];
         _badgeLb.backgroundColor = [UIColor redColor];
         _badgeLb.font = [UIFont systemFontOfSize:10];
         _badgeLb.textAlignment = NSTextAlignmentCenter;
-        _badgeLb.layer.masksToBounds = YES;
         [self addSubview:_badgeLb];
     }
     return _badgeLb;

@@ -12,6 +12,7 @@
 #import "QQTool.h"
 #import "QQNetManager.h"
 #import "NSDate+QQCalculate.h"
+#import "UIImage+Usually.h"
 static NSString * const timeKey = @"time";
 static NSString * const dataKey = @"data";
 @interface QQsession ()
@@ -85,7 +86,7 @@ static NSString * const dataKey = @"data";
 }
 - (void)extracted:(NSData *)data fileMark:(NSString *)fileMark formData:(id<AFMultipartFormData> _Nonnull)formData {
     [formData appendPartWithFileData:data name:fileMark
-                            fileName:[NSString stringWithFormat:@"%@.png",[NSDate GetNowDate:@"YYYYMMddHHmmSSS"]]
+                            fileName:[NSString stringWithFormat:@"%@.png",[NSDate nowDate:@"YYYYMMddHHmmSSS"]]
                             mimeType:@"image/jpeg"];
 }
 
@@ -104,7 +105,7 @@ static NSString * const dataKey = @"data";
     }
     NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in images) {
-            NSData * data = [QQTool imageData:image];
+            NSData * data = [UIImage lubanCompressImage:image];
             [self extracted:data fileMark:fileMark formData:formData];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {

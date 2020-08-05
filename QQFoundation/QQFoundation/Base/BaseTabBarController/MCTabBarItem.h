@@ -33,10 +33,10 @@
 /**大Item的向上的偏移量 为负数 中间凸起的 isBigItem=YES生效*/
 @property (nonatomic , assign) CGFloat  offset;
 /**设置角标  0 就是一个红点  小于0 消失   大于999  显示999+*/
-@property (nonatomic,assign) NSInteger Badge;
+@property (nonatomic,assign) NSInteger badge;
 /**角标的背景颜色。默认红色*/
-@property (nonatomic,strong) UIColor *BadgeBackColor;
+@property (nonatomic,strong) UIColor *badgeBackColor;
 /**角标文字颜色。默认白色*/
-@property (nonatomic,strong) UIColor *BadgeTextColor;
+@property (nonatomic,strong) UIColor *badgeTextColor;
 
 @end

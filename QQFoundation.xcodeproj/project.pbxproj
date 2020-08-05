@@ -20,6 +20,7 @@
 		424DADAF23B7439400FBD5C9 /* QQTableViewSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADAE23B7439400FBD5C9 /* QQTableViewSecView.m */; };
 		424DADB423B74C9F00FBD5C9 /* MCAuthorSecView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424DADB323B74C9F00FBD5C9 /* MCAuthorSecView.m */; };
 		4257A9BB24877AFE00B848E0 /* barbuttonicon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4257A9BA24877AFE00B848E0 /* barbuttonicon_back@2x.png */; };
+		426FA33424DA4EFA00DD04EB /* QYBadgeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 426FA33324DA4EFA00DD04EB /* QYBadgeLabel.m */; };
 		42784C25248DD357001CDB81 /* QQCollectionViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C24248DD357001CDB81 /* QQCollectionViewManager.m */; };
 		42784C2B248DD605001CDB81 /* QQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C2A248DD605001CDB81 /* QQCollectionViewCell.m */; };
 		42784C2E248DD622001CDB81 /* QQCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C2D248DD622001CDB81 /* QQCollectionViewItem.m */; };
@@ -235,6 +236,8 @@
 		424DADB223B74C9F00FBD5C9 /* MCAuthorSecView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAuthorSecView.h; sourceTree = "<group>"; };
 		424DADB323B74C9F00FBD5C9 /* MCAuthorSecView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAuthorSecView.m; sourceTree = "<group>"; };
 		4257A9BA24877AFE00B848E0 /* barbuttonicon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonicon_back@2x.png"; sourceTree = "<group>"; };
+		426FA33224DA4EFA00DD04EB /* QYBadgeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYBadgeLabel.h; sourceTree = "<group>"; };
+		426FA33324DA4EFA00DD04EB /* QYBadgeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYBadgeLabel.m; sourceTree = "<group>"; };
 		42784C23248DD357001CDB81 /* QQCollectionViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionViewManager.h; sourceTree = "<group>"; };
 		42784C24248DD357001CDB81 /* QQCollectionViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQCollectionViewManager.m; sourceTree = "<group>"; };
 		42784C29248DD605001CDB81 /* QQCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionViewCell.h; sourceTree = "<group>"; };
@@ -942,6 +945,8 @@
 				52D8D1621F4D77EF00EA413B /* QQTextField.m */,
 				52D8D1631F4D77EF00EA413B /* QQTextView.h */,
 				52D8D1641F4D77EF00EA413B /* QQTextView.m */,
+				426FA33224DA4EFA00DD04EB /* QYBadgeLabel.h */,
+				426FA33324DA4EFA00DD04EB /* QYBadgeLabel.m */,
 				42A9976E2324E52000F20344 /* NSString+encrypt.h */,
 				42A9976F2324E52000F20344 /* NSString+encrypt.m */,
 			);
@@ -1759,6 +1764,7 @@
 				4212647A22641877008CB619 /* MCAllTextCell.m in Sources */,
 				52C115671F4EC5CE005471CB /* NSData+ImageContentType.m in Sources */,
 				52D8D1921F4D77EF00EA413B /* UIView+QQFrame.m in Sources */,
+				426FA33424DA4EFA00DD04EB /* QYBadgeLabel.m in Sources */,
 				52C115771F4EC5CE005471CB /* UIView+WebCache.m in Sources */,
 				4BE30A87215270F30063164A /* MCPageViewSub2ViewController.m in Sources */,
 				4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */,

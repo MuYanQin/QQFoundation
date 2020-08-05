@@ -9,12 +9,13 @@
 #import "MCTabBarItem.h"
 #import "UIView+QQFrame.h"
 #import "QQTool.h"
+#import "QYBadgeLabel.h"
 #define btnWidth self.bounds.size.width
 
 static const CGFloat imageHeight = 24;
 static const CGFloat imageWidth = imageHeight*1.14;
 @interface MCTabBarItem()
-@property (nonatomic,strong) UILabel *BadgeLb;
+@property (nonatomic,strong) QYBadgeLabel *badgeLb;
 
 @end
 @implementation MCTabBarItem
@@ -23,7 +24,7 @@ static const CGFloat imageWidth = imageHeight*1.14;
 {
     self = [super initWithFrame:frame];
     if (self != nil) {
-        _Badge = -1;
+        _badge = -1;
     }
     return self;
 }
@@ -47,41 +48,20 @@ static const CGFloat imageWidth = imageHeight*1.14;
         margin = 3;
     }
     self.titleLabel.frame = CGRectMake(0, self.imageView.bottom + margin, btnWidth, self.titleLabel.frame.size.height);
-    [self caculate:_Badge];
+    [self caculate:_badge];
 }
-- (void)setBadge:(NSInteger)Badge
+- (void)setBadge:(NSInteger)badge
 {
-    _Badge = Badge;
+    _badge = badge;
 }
 - (void)caculate:(NSInteger)count
 {
-    if(count < 0){
-        self.BadgeLb.hidden = YES;
-        return;
-    }
-    NSString *badge = nil;
-    if (count > 999) {
-        badge = @"999+";
-    }else{
-        badge = [NSString stringWithFormat:@"%lu",(long)count];
-    }
-    self.BadgeLb.text = badge;
-    [self.BadgeLb sizeToFit];
-    CGFloat badgeLbx = self.imageView.frame.origin.x +  self.imageView.frame.size.width - self.BadgeLb.frame.size.width/2;
+    self.badgeLb.text = @(count).stringValue;
+
+    CGFloat badgeLbx = self.imageView.frame.origin.x +  self.imageView.frame.size.width - self.badgeLb.frame.size.width/2;
     CGFloat badgeLby = self.imageView.frame.origin.y ;
-    if (count <=9) {
-        if (count ==0) {
-            self.BadgeLb.text = @"";
-            self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, 10, 10);
-        }else{
-            self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, 14, self.BadgeLb.frame.size.height);
-        }
-    }else{
-        self.BadgeLb.frame = CGRectMake(badgeLbx, badgeLby, self.BadgeLb.frame.size.width + 5, self.BadgeLb.frame.size.height);
-    }
-    self.BadgeLb.layer.cornerRadius = self.BadgeLb.frame.size.height/2;
-    self.BadgeLb.layer.masksToBounds = YES;
-    [self addSubview:self.BadgeLb];
+    self.badgeLb.origin = CGPointMake(badgeLbx, badgeLby);
+    [self addSubview:self.badgeLb];
     
 }
 /**
@@ -98,25 +78,25 @@ static const CGFloat imageWidth = imageHeight*1.14;
  [self.BackGroudImageview.layer addAnimation:animation forKey:@"frame"];//添加动画
  */
 
-- (void)setBadgeBackColor:(UIColor *)BadgeBackColor
+- (void)setBadgeBackColor:(UIColor *)badgeBackColor
 {
-    _BadgeBackColor = BadgeBackColor;
-    self.BadgeLb.backgroundColor = BadgeBackColor;
+    _badgeBackColor = badgeBackColor;
+    self.badgeLb.backgroundColor = badgeBackColor;
 }
-- (void)setBadgeTextColor:(UIColor *)BadgeTextColor
+- (void)setBadgeTextColor:(UIColor *)badgeTextColor
 {
-    _BadgeTextColor = BadgeTextColor;
-    self.BadgeLb.textColor = BadgeTextColor;
+    _badgeTextColor = badgeTextColor;
+    self.badgeLb.textColor = badgeTextColor;
 }
-- (UILabel *)BadgeLb
+- (QYBadgeLabel *)badgeLb
 {
-    if (!_BadgeLb) {
-        _BadgeLb = [[UILabel alloc]init];
-        _BadgeLb.textColor = [UIColor whiteColor];
-        _BadgeLb.backgroundColor = [UIColor redColor];
-        _BadgeLb.font = [UIFont systemFontOfSize:10];
-        _BadgeLb.textAlignment = NSTextAlignmentCenter;
+    if (!_badgeLb) {
+        _badgeLb = [[QYBadgeLabel alloc]init];
+        _badgeLb.textColor = [UIColor whiteColor];
+        _badgeLb.backgroundColor = [UIColor redColor];
+        _badgeLb.font = [UIFont systemFontOfSize:10];
+        _badgeLb.textAlignment = NSTextAlignmentCenter;
     }
-    return _BadgeLb;
+    return _badgeLb;
 }
 @end
