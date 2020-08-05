@@ -29,8 +29,8 @@
 @end
 
 @interface QQtableView : UITableView<UIGestureRecognizerDelegate>
-@property (assign,nonatomic) id<QQtableViewRequestDelegate> RequestDelegate;
-//配合MCHoveringView使用的属性/
+@property (assign,nonatomic) id<QQtableViewRequestDelegate> requestDelegate;
+//配合MCHoveringView使用的属性 在QQTableViewManager中被调用。MCHoveringView使用/
 //**获取tableView偏移量的Block*/
 @property (nonatomic , copy) void(^scrollViewDidScroll)(UIScrollView * scrollView);
 
@@ -39,7 +39,7 @@
 @property (nonatomic , assign) BOOL  canResponseMutiGesture;
 
 /*传递controller进来展示loadding状态只能是weak不会引用*/
-@property (weak, nonatomic)UIViewController *TempController;
+@property (weak, nonatomic)UIViewController *tempController;
 
 
 /**
@@ -50,7 +50,7 @@
 /**
  是否有头部刷新  默认YES
  */
-@property (nonatomic,assign) BOOL isHasHeaderRefresh;
+@property (nonatomic,assign) BOOL hasHeaderRefresh;
 
 /**
  获取总的Item
@@ -68,27 +68,23 @@
 @property (nonatomic , strong) NSMutableDictionary * requestParam;
 
 
-/// 开始刷新 可在这里修改请求的参数
+/**开始刷新 可在这里修改请求的参数*/
 @property (nonatomic , copy) void(^begainRefresh)(BOOL headRefresh,QQtableView *tableView);
 
-/// 结束刷新
+/**结束刷新*/
 @property (nonatomic , copy) void(^endRefresh)(BOOL headRefresh,QQtableView *tableView);
 
 /**
- 刷新 无下拉动作
+ 开始数据请求任务。需要设置requestParam、requestUrl 不可以下拉刷新
  */
 - (void)requestData;
 
-
-
-
 /**
- 开始下载任务  网络数据用此开始  本地数据则不用使用本方法
-
+ 开始数据请求任务 可以下拉刷新。如包含分页参数 亦可上拉
  @param url        请求的网址
- @param Parameters 携带的参数 （一定要把分页参数放在这里）
+ @param param 携带的参数 （一定要把分页参数放在这里）
  */
-- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler;
+- (void)networkStart:(NSString *)url param:(NSDictionary *)param formVc:(UIViewController *)vc;
 
 @end
 

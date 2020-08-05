@@ -84,7 +84,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     if (sections == 0) {
         return;
     }
-    
     if (self.getTotal == 0 && _hasNetError) {
         //这里是网络出错的数据为空
         self.tableFooterView = self.emptyView;
@@ -123,38 +122,37 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     if (hasHeadOrFooterView || sections >1){
         items += sections;
     }
-
     return items;
 }
 
-- (void)setUpWithUrl:(NSString *)url Parameters:(NSDictionary *)Parameters formController:(UIViewController *)controler
+- (void)networkStart:(NSString *)url param:(NSDictionary *)param formVc:(UIViewController *)vc
 {
     _requestUrl = url;
-    _TempController = controler;
-    _requestParam= Parameters.mutableCopy;
-    if ([Parameters.allKeys containsObject:pageIndex]) {
+    _tempController = vc;
+    _requestParam= param.mutableCopy;
+    if ([param.allKeys containsObject:pageIndex]) {
         self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
     }
-    [self.mj_header beginRefreshing];
+    [self requestData];
 }
 
 //**请求方法*/
-- (void)SetUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
+- (void)setUpNetWorkParam:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
     
 #warning 这里替换成自己的网络请求方法就好了 
-    [[QQNetManager Instance]RTSGetWith:_requestUrl parameters:paramters from:_TempController successs:^(id responseObject) {
+    [[QQNetManager Instance]RTSGetWith:_requestUrl parameters:paramters from:_tempController successs:^(id responseObject) {
         //不管有没有数据都应该抛出去
-        if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:isPullDown:successData:)]) {
-            [self.RequestDelegate QQtableView:self isPullDown:isPullDown successData:responseObject];
+        if ([self.requestDelegate respondsToSelector:@selector(QQtableView:isPullDown:successData:)]) {
+            [self.requestDelegate QQtableView:self isPullDown:isPullDown successData:responseObject];
         }
         _hasNetError = NO;
         [self endRefrseh:isPullDown];
 
     } failed:^(NSError *error) {
         _hasNetError = YES;
-        if ([self.RequestDelegate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
-            [self.RequestDelegate QQtableView:self requestFailed:error];
+        if ([self.requestDelegate respondsToSelector:@selector(QQtableView:requestFailed:)]) {
+            [self.requestDelegate QQtableView:self requestFailed:error];
         }
         [self endRefrseh:isPullDown];
         if (!isPullDown) {
@@ -162,15 +160,15 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         }
     }];
 }
-
-- (void)setIsHasHeaderRefresh:(BOOL)isHasHeaderRefresh
+- (void)setHasHeaderRefresh:(BOOL)hasHeaderRefresh
 {
-    if (!isHasHeaderRefresh) {
+    if (!hasHeaderRefresh) {
         self.mj_header = nil;
     }else{
         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
     }
 }
+
 - (void)requestData
 {
     if (_requestUrl.length ==0) {
@@ -184,7 +182,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     if ([_requestParam.allKeys containsObject:pageIndex]) {
         [self changeIndexWithStatus:1];
     }
-    [self SetUpNetWorkParamters:_requestParam isPullDown:YES];
+    [self setUpNetWorkParam:_requestParam isPullDown:YES];
 }
 
 - (void)footerRefresh
@@ -193,7 +191,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         self.begainRefresh(NO, self);
     }
     [self changeIndexWithStatus:2];
-    [self SetUpNetWorkParamters:_requestParam isPullDown:NO];
+    [self setUpNetWorkParam:_requestParam isPullDown:NO];
 }
 
 - (void)changeIndexWithStatus:(NSInteger)Status//1  下拉  2上拉  3减一
