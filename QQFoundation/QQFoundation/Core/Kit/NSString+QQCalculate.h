@@ -12,10 +12,6 @@
 @interface NSString (QQCalculate)
 
 /**
- * 是否为数字和字母
- */
-- (BOOL)IsNumbersAndChinese;
-/**
  * 是否为数字
  */
 - (BOOL)isNumbers;
@@ -39,7 +35,7 @@
  @param font 字体大小
  @return 高度
  */
-- (CGFloat)GetTextHeight:(CGFloat)width font:(CGFloat)font;
+- (CGFloat)textHeight:(CGFloat)width font:(CGFloat)font;
 /**
  计算字符串宽度
  
@@ -47,6 +43,6 @@
  @param font 字体大小
  @return 宽度
  */
-- (CGFloat)GetTextWidth:(CGFloat)height font:(CGFloat)font;
+- (CGFloat)textWidth:(CGFloat)height font:(CGFloat)font;
 
 @end

@@ -11,12 +11,6 @@
 @implementation NSString (QQCalculate)
 
 
-- (BOOL)IsNumbersAndChinese{
-    NSString *bankNum=@"^[A-Za-z0-9]+$";
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",bankNum];
-    BOOL isMatch = [pred evaluateWithObject:self];
-    return isMatch;
-}
 /**
  * 是否为数字
  */
@@ -40,7 +34,7 @@
 /*
  计算字符串高度
  */
-- (CGFloat)GetTextHeight:(CGFloat)width font:(CGFloat)font{
+- (CGFloat)textHeight:(CGFloat)width font:(CGFloat)font{
     CGFloat autoheight;
     
     autoheight =[self boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:font] } context:nil].size.height;
@@ -49,7 +43,7 @@
 /*
  计算字符串宽度
  */
-- (CGFloat)GetTextWidth:(CGFloat)height font:(CGFloat)font{
+- (CGFloat)textWidth:(CGFloat)height font:(CGFloat)font{
     CGFloat autowidth;
     
     autowidth =[self boundingRectWithSize:CGSizeMake(0, height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:font] } context:nil].size.width;

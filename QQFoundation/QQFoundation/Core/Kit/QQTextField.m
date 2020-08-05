@@ -29,25 +29,25 @@
 {
     _maxLength = NSUIntegerMax;
     self.delegate = self;
+    [self addTarget:self action:@selector(textDidChange:) forControlEvents:(UIControlEventEditingChanged)];
 }
-- (void)textDidChange:(QQTextField *)TextField
+- (void)textDidChange:(QQTextField *)textField
 {
-
+    if (self.textDidChange) {
+        self.textDidChange(textField.text);
+    }
+    
+    if (_maxLength != NSUIntegerMax) {
+        if (!textField.markedTextRange) {
+            if (textField.text.length >_maxLength) {
+                textField.text = [textField.text substringToIndex:_maxLength];
+            }
+        }
+    }
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 
 {
-    if (_maxLength != NSUIntegerMax) {
-        NSMutableString *str = [[NSMutableString alloc]initWithString:textField.text];
-        [str insertString:string atIndex:range.location];
-        if (!textField.markedTextRange) {
-            if (str.length >_maxLength) {
-//                [self showErrorText];
-                return NO;
-            }
-        }
-    }
-    
     if (self.openPriceCheck) {
         //放置移动光标输入的文字插入错误
         NSMutableString *str = [[NSMutableString alloc]initWithString:textField.text];
@@ -60,59 +60,6 @@
     }
 
     return YES;
-}
-/**
-- (void)setErrorText:(NSString *)errorText
-{
-    _errorText = errorText;
-    self.label.text = _errorText;
-}
-- (void)setTextAlignment:(NSTextAlignment)textAlignment
-{
-    [super setTextAlignment:textAlignment];
-    if (textAlignment == NSTextAlignmentLeft) {
-        [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(self);
-            make.height.mas_equalTo(10);
-            make.top.equalTo(self.mas_bottom);
-            make.left.equalTo(self.mas_left);
-        }];
-    }else if (textAlignment == NSTextAlignmentRight){
-        [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(self);
-            make.height.mas_equalTo(10);
-            make.top.equalTo(self.mas_bottom);
-            make.left.equalTo(self.mas_left);
-        }];
-    }
-}
-- (UILabel *)label
-{
-    if (!_label) {
-        _label = [[UILabel alloc]init];
-        _label.font = [UIFont systemFontOfSize:12 weight:(UIFontWeightRegular)];
-        _label.textColor = [UIColor redColor];
-        _label.hidden = YES;
-        [self addSubview:_label];
-
-
-    }
-    return _label;
-}
- */
-- (void)showErrorText
-{
-    if (!_label.isHidden) {
-        return;
-    }
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        _label.hidden = NO;
-    } completion:^(BOOL finished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            _label.hidden = YES;
-        });
-    }];
 }
 - (void)dealloc {
 }

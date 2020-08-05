@@ -10,11 +10,7 @@
 
 @interface QQTextField : UITextField <UITextFieldDelegate>
 
-/**
- 错误提示文字
- */
-@property (nonatomic , copy) NSString * errorText;
-
+@property (nonatomic , copy) void(^textDidChange)(NSString *text);
 /**
  最大限制文本长度, 默认为无穷大(即不限制).
  */
