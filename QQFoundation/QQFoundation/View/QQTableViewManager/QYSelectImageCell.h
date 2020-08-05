@@ -1,17 +1,19 @@
 //
-//  HRSelectImageCell.h
-//  handRent
+//  QYSelectImageCell.h
+//  QQFoundation
 //
-//  Created by qinmuqiao on 2019/1/2.
-//  Copyright © 2019年 MuYaQin. All rights reserved.
+//  Created by leaduMac on 2020/8/5.
+//  Copyright © 2020 Yuan er. All rights reserved.
 //
 
 #import "QQTableViewCell.h"
 #import "CCTZImgPickerTool.h"
-NS_ASSUME_NONNULL_BEGIN
 
-@interface HRSelectImageItem : QQTableViewItem
-@property (nonatomic , assign) NSInteger  maxImage;
+NS_ASSUME_NONNULL_BEGIN
+@interface QYSelectImageItem : QQTableViewItem
+@property (nonatomic , assign) NSInteger  maxImage;///<可选择图片的最大数目
+
+@property (nonatomic , assign) BOOL  detail;///<是否是详情页 默认否
 
 /**已选择的的图片 包含UIImage/NSString*/
 @property (nonatomic , strong) NSMutableArray * selectedPhotos;
@@ -22,24 +24,23 @@ NS_ASSUME_NONNULL_BEGIN
 /**获取defaultPhotos数组里面除了UIImage对象的其他数据*/
 @property (nonatomic , strong, readonly) NSMutableArray * surplusURL;
 
-@property (nonatomic , assign) BOOL  detail;///<是否是详情页 默认否
 /**默认显示的数组 UIImage/NSString*/
 @property (nonatomic , strong) NSMutableArray * defaultPhotos;
 
 /***selectedPhotos 发生变化就执行的Block*/
-@property (nonatomic , copy) void(^selectImage)(HRSelectImageItem *ttitem,NSMutableArray * imageArray);
+@property (nonatomic , copy) void(^selectImage)(QYSelectImageItem *ttitem,NSMutableArray * imageArray);
 @end
 
-@interface HRSelectImageCell : QQTableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>
-@property (nonatomic , strong) HRSelectImageItem * item;
+@interface QYSelectImageCell : QQTableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>
+@property (nonatomic , strong) QYSelectImageItem * item;
 @property (nonatomic , strong) CCTZImgPickerTool *imgPikerTool;
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic , strong) UICollectionView *collectionView;
 @property (nonatomic , strong) UICollectionViewFlowLayout * layout ;
 @property (nonatomic , strong) UIView * line;
+
 @end
 
-
-@interface ArtileImageCell : UICollectionViewCell
+@interface QYImageCell : UICollectionViewCell
 @property (nonatomic , strong) QQButton * button;
 @property (nonatomic , strong) UIImageView * imageView;
 @property (nonatomic , copy)  void(^deleteImage)(NSInteger tag);

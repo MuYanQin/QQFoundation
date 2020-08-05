@@ -32,6 +32,7 @@
 		429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429C3C4A248E0B3D00B4771F /* QQCollectionView.m */; };
 		42A997702324E52000F20344 /* NSString+encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A9976F2324E52000F20344 /* NSString+encrypt.m */; };
 		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
+		42DCB13324DADF3B0017B953 /* QYSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */; };
 		42EB64D623ADC53C001236A7 /* MMCommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EB64D523ADC53C001236A7 /* MMCommentInputView.m */; };
 		4B1C2B63222E28B50007EB9B /* addr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5B222E28B50007EB9B /* addr.json */; };
 		4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C2B5D222E28B50007EB9B /* MCPickerHeaderView.m */; };
@@ -84,7 +85,6 @@
 		4BBBFC9721194CD9003EC96B /* bing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC8E2119438C003EC96B /* bing.caf */; };
 		4BBBFC9821194CD9003EC96B /* bing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC9021194421003EC96B /* bing.mp3 */; };
 		4BBBFC9921194CD9003EC96B /* 456.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC962119499C003EC96B /* 456.m4a */; };
-		4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */; };
 		4BC2921D21EF1178008530AE /* selectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2921B21EF1178008530AE /* selectImage@2x.png */; };
 		4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */; };
 		4BE30A802152707E0063164A /* MCPageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A7F2152707E0063164A /* MCPageViewViewController.m */; };
@@ -258,6 +258,8 @@
 		42A9976F2324E52000F20344 /* NSString+encrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+encrypt.m"; sourceTree = "<group>"; };
 		42CEE6E22271835C00B75359 /* MCPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPopViewController.h; sourceTree = "<group>"; };
 		42CEE6E32271835C00B75359 /* MCPopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPopViewController.m; sourceTree = "<group>"; };
+		42DCB13124DADF3B0017B953 /* QYSelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYSelectImageCell.h; sourceTree = "<group>"; };
+		42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYSelectImageCell.m; sourceTree = "<group>"; };
 		42EB64D423ADC53C001236A7 /* MMCommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCommentInputView.h; sourceTree = "<group>"; };
 		42EB64D523ADC53C001236A7 /* MMCommentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCommentInputView.m; sourceTree = "<group>"; };
 		4B1C2B57222E28B50007EB9B /* MCPickerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPickerHeaderView.h; sourceTree = "<group>"; };
@@ -349,8 +351,6 @@
 		4BBBFC8E2119438C003EC96B /* bing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bing.caf; sourceTree = "<group>"; };
 		4BBBFC9021194421003EC96B /* bing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bing.mp3; sourceTree = "<group>"; };
 		4BBBFC962119499C003EC96B /* 456.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.m4a; sourceTree = "<group>"; };
-		4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSelectImageCell.h; sourceTree = "<group>"; };
-		4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSelectImageCell.m; sourceTree = "<group>"; };
 		4BC2921B21EF1178008530AE /* selectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectImage@2x.png"; sourceTree = "<group>"; };
 		4BCDD1F520CCAF7F000A6B30 /* MCPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		4BCDD1F620CCAF7F000A6B30 /* MCPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
@@ -571,8 +571,8 @@
 				426FA33724DAB7AB00DD04EB /* CCTZImgPickerTool.h */,
 				426FA33824DAB7AB00DD04EB /* CCTZImgPickerTool.m */,
 				426FA33524DAB34D00DD04EB /* deleteImg@2x.png */,
-				4BC2920A21EF0EAF008530AE /* HRSelectImageCell.h */,
-				4BC2920B21EF0EAF008530AE /* HRSelectImageCell.m */,
+				42DCB13124DADF3B0017B953 /* QYSelectImageCell.h */,
+				42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */,
 				4B8D23CB20E0BCEF005F6047 /* MCEmptyCell.h */,
 				4B8D23CC20E0BCEF005F6047 /* MCEmptyCell.m */,
 				0153EDF820B66B710041CFC4 /* QQTableViewCell.h */,
@@ -1481,7 +1481,7 @@
 		52D8D1011F4D775500EA413B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MC;
+				CLASSPREFIX = QY;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "慕纯";
 				TargetAttributes = {
@@ -1625,6 +1625,7 @@
 				4B2F3FFC22269F8500528272 /* UILabel+MCChained.m in Sources */,
 				52C115761F4EC5CE005471CB /* UIImageView+WebCache.m in Sources */,
 				52ACF7201F51282500CFA470 /* QQScanVC.m in Sources */,
+				42DCB13324DADF3B0017B953 /* QYSelectImageCell.m in Sources */,
 				42EB64D623ADC53C001236A7 /* MMCommentInputView.m in Sources */,
 				4B27344C22544ECE008B81B4 /* MCHealthManage.m in Sources */,
 				52C115541F4EC5CE005471CB /* MJRefreshHeader.m in Sources */,
@@ -1708,7 +1709,6 @@
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
-				4BC2920C21EF0EB0008530AE /* HRSelectImageCell.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */,
 				4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */,

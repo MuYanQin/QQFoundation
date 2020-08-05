@@ -3,7 +3,7 @@
 //  QQFoundation
 //
 //  Created by qinmuqiao on 2019/1/11.
-//  Copyright © 2019年 慕纯. All rights reserved.
+//  Copyright © 2019年 Yuan er. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , assign) CGRect  cropRect;///<裁剪框的尺寸
 
 
+/** 用于展示已选择的图片 assets类型*/
 @property (nonatomic , strong) NSMutableArray * selectedAssets;
 
 - (void)showSelectStyle;

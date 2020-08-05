@@ -3,14 +3,14 @@
 //  QQFoundation
 //
 //  Created by qinmuqiao on 2018/8/8.
-//  Copyright © 2018年 慕纯. All rights reserved.
+//  Copyright © 2018年 Yuan er. All rights reserved.
 //
 
 #import "MCHomeViewController.h"
 #import "MCTextFieldCell.h"
 #import "MCEmptyCell.h"
 #import "MCLableCell.h"
-#import "HRSelectImageCell.h"
+#import "QYSelectImageCell.h"
 #import "MCAllTextCell.h"
 #import "UIView+QQFrame.h"
 #import "QQNetManager.h"
@@ -40,7 +40,7 @@
     self.tabManager[@"MCEmptyItem"] = @"MCEmptyCell";
     self.tabManager[@"MCLableItem"] = @"MCLableCell";
     self.tabManager[@"MCAllTextItem"] = @"MCAllTextCell";
-    self.tabManager[@"HRSelectImageItem"] = @"HRSelectImageCell";
+    self.tabManager[@"QYSelectImageItem"] = @"QYSelectImageCell";
     
     self.BaseQQTableView.isHasHeaderRefresh = NO;
     self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
@@ -247,7 +247,7 @@
     empty2.bgColor = getColorWithHex(@"f8f8f8");
     [section1 addItem:empty2];
     
-    HRSelectImageItem *imgItem = [[HRSelectImageItem alloc]init];
+    QYSelectImageItem *imgItem = [[QYSelectImageItem alloc]init];
     imgItem.maxImage = 14;
     [section1 addItem:imgItem];
     

@@ -3,7 +3,7 @@
 //  QQFoundation
 //
 //  Created by leaduMac on 2019/12/28.
-//  Copyright © 2019 慕纯. All rights reserved.
+//  Copyright © 2019 Yuan er. All rights reserved.
 //
 
 #import "MCAuthorSecView.h"

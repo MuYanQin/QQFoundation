@@ -1,19 +1,19 @@
 //
-//  HRSelectImageCell.m
-//  handRent
+//  QYSelectImageCell.m
+//  QQFoundation
 //
-//  Created by qinmuqiao on 2019/1/2.
-//  Copyright © 2019年 MuYaQin. All rights reserved.
+//  Created by leaduMac on 2020/8/5.
+//  Copyright © 2020 Yuan er. All rights reserved.
 //
 
-#import "HRSelectImageCell.h"
+#import "QYSelectImageCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIView+QQFrame.h"
-@interface HRSelectImageItem ()
-@property (nonatomic , strong) NSMutableArray * selectedAssets;
 
+@interface QYSelectImageItem ()
+@property (nonatomic , strong) NSMutableArray * selectedAssets;
 @end
-@implementation HRSelectImageItem
+@implementation QYSelectImageItem
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -52,8 +52,7 @@
 }
 @end
 
-@implementation HRSelectImageCell
-
+@implementation QYSelectImageCell
 @synthesize item = _item;
 
 - (void)cellDidLoad
@@ -84,7 +83,7 @@
 }
 - ( UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ArtileImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ArtileImageCell" forIndexPath:indexPath];
+    QYImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QYImageCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     if (self.item.maxImage == self.item.selectedPhotos.count) {
         [self showImgInCell:cell indexPath:indexPath];
@@ -103,7 +102,7 @@
     };
     return cell;
 }
-- (void)showImgInCell:(ArtileImageCell *)cell indexPath:(NSIndexPath *)indexPath{
+- (void)showImgInCell:(QYImageCell *)cell indexPath:(NSIndexPath *)indexPath{
     id value = self.item.selectedPhotos[indexPath.row];
     if ([value isKindOfClass:[UIImage class]]) {
         cell.imageView.image = self.item.selectedPhotos[indexPath.row];
@@ -173,7 +172,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     _collectionView.scrollEnabled = NO;
 
     _collectionView.backgroundColor = [UIColor whiteColor];
-    [_collectionView registerClass:[ArtileImageCell class] forCellWithReuseIdentifier:@"ArtileImageCell"];
+    [_collectionView registerClass:[QYImageCell class] forCellWithReuseIdentifier:@"QYImageCell"];
     [self.contentView addSubview:self.collectionView];
     
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -184,7 +183,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 @end
 
 
-@implementation ArtileImageCell
+@implementation QYImageCell
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         //添加自己需要个子视图控件

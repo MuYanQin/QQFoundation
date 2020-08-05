@@ -3,7 +3,7 @@
 //  QQFoundation
 //
 //  Created by leaduadmin on 2019/4/15.
-//  Copyright © 2019 慕纯. All rights reserved.
+//  Copyright © 2019 Yuan er. All rights reserved.
 //
 
 #import "QQTableViewCell.h"
