@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
-    self.BaseQQTableView.isHasHeaderRefresh = NO;
+    self.BaseQQTableView.hasHeaderRefresh = NO;
     if (self.fromHovering) {
         self.BaseQQTableView.top = 0;
     }

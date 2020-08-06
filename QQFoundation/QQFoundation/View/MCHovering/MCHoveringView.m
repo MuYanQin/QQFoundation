@@ -110,6 +110,49 @@
     }
 
 }
+- (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)index
+{
+    self.visibleScrollView = [self.delegate listView][index];
+    [self visibleScrollViewScroll];
+    if ([self.delegate respondsToSelector:@selector(MCHoveringView:didSelectIndex:)]) {
+        [self.delegate MCHoveringView:self didSelectIndex:index];
+    }
+}
+- (void)startGestureRecognizer
+{
+    [self changeGesture:NO];
+}
+- (void)endGestureRecognizer
+{
+    [self changeGesture:YES];
+}
+- (void)changeGesture:(BOOL)can{
+    if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {
+        QQtableView *tablView = (QQtableView *)self.visibleScrollView;
+        tablView.canResponseMutiGesture = can;
+
+    }else{
+        QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
+        conllectionView.canResponseMutiGesture = can;
+    }
+}
+- (void) visibleScrollViewScroll {
+    if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {
+        QQtableView *tablView = (QQtableView *)self.visibleScrollView;
+        tablView.canResponseMutiGesture = YES;
+        __weak typeof(self)weakSelf = self;
+        tablView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
+            [weakSelf tableViewDidScroll:scrollView];
+        };
+    }else{
+        QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
+        conllectionView.canResponseMutiGesture = YES;
+        __weak typeof(self)weakSelf = self;
+        conllectionView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
+            [weakSelf tableViewDidScroll:scrollView];
+        };
+    }
+}
 - (void)tableViewDidScroll:(UIScrollView *)scrollView
 {
 
@@ -145,46 +188,6 @@
         }else{
             self.isHover = YES;
         }
-    }
-}
-- (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index
-{
-    self.visibleScrollView =[self.delegate listView][Index];
-    [self visibleScrollViewScroll];
-}
-- (void)startGestureRecognizer
-{
-    [self changeGesture:NO];
-}
-- (void)endGestureRecognizer
-{
-    [self changeGesture:YES];
-}
-- (void)changeGesture:(BOOL)can{
-    if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {
-        QQtableView *tablView = (QQtableView *)self.visibleScrollView;
-        tablView.canResponseMutiGesture = can;
-
-    }else{
-        QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
-        conllectionView.canResponseMutiGesture = can;
-    }
-}
-- (void) visibleScrollViewScroll {
-    if ([self.visibleScrollView isKindOfClass:[QQtableView class]]) {
-        QQtableView *tablView = (QQtableView *)self.visibleScrollView;
-        tablView.canResponseMutiGesture = YES;
-        __weak typeof(self)weakSelf = self;
-        tablView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
-            [weakSelf tableViewDidScroll:scrollView];
-        };
-    }else{
-        QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
-        conllectionView.canResponseMutiGesture = YES;
-        __weak typeof(self)weakSelf = self;
-        conllectionView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
-            [weakSelf tableViewDidScroll:scrollView];
-        };
     }
 }
 @end

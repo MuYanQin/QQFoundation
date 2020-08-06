@@ -22,12 +22,13 @@
 
 
 /**
- 实例化方法 
-QQTableViewManager设置为全局变量 不然delegetez  = nil
- @param tableView 被管理的视图
- @return QQTableViewManager
- */
-- (id)initWithTableView:(UITableView *)tableView ;
+实例化方法   不可将QQTableViewManager作为局部变量 不然delegate指向nil
+QQTableViewManager 作用是帮助viewContorller管理视图 实现代理方法。界面只要关心数据源即可
+UITableView的代理由 QQTableViewManager 实现 所以必须将QQTableViewManager作为成员变量
+@param tableView 被管理的视图
+@return QQTableViewManager
+*/
+- (instancetype)initWithTableView:(UITableView *)tableView ;
 
 
 /**

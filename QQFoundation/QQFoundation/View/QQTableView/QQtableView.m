@@ -57,13 +57,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 }
 
 - (void)initTableView{
-    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
     if (@available(iOS 11.0, *)) {
         self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-    self.footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,  self.width, CGFLOAT_MIN)];
-    [self setTableFooterView:self.footerView];
-    
     self.sectionFooterHeight = 0;
     self.sectionHeaderHeight = 0;
     self.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,  self.width, CGFLOAT_MIN)];
@@ -132,6 +128,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     _requestParam= param.mutableCopy;
     if ([param.allKeys containsObject:pageIndex]) {
         self.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
     }
     [self requestData];
 }
@@ -159,14 +156,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
             [self changeIndexWithStatus:3];
         }
     }];
-}
-- (void)setHasHeaderRefresh:(BOOL)hasHeaderRefresh
-{
-    if (!hasHeaderRefresh) {
-        self.mj_header = nil;
-    }else{
-        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
-    }
 }
 
 - (void)requestData
@@ -215,6 +204,14 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         self.endRefresh(isPullDown, self);
     }
 }
+- (void)setHasHeaderRefresh:(BOOL)hasHeaderRefresh
+{
+    if (!hasHeaderRefresh) {
+        self.mj_header = nil;
+    }else{
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    }
+}
 
 - (void)setRequestParam:(NSDictionary *)requestParam
 {
@@ -224,12 +221,6 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     }
     _requestParam = requestParam.mutableCopy;
 }
-
-- (void)setRequestUrl:(NSString *)requestUrl
-{
-    _requestUrl = requestUrl;
-}
-
 - (EmptyView *)emptyView
 {
     if (!_emptyView) {

@@ -42,7 +42,7 @@
     self.tabManager[@"MCAllTextItem"] = @"MCAllTextCell";
     self.tabManager[@"QYSelectImageItem"] = @"QYSelectImageCell";
     
-    self.BaseQQTableView.isHasHeaderRefresh = NO;
+    self.BaseQQTableView.hasHeaderRefresh = NO;
     self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     [self iniUI];
 }

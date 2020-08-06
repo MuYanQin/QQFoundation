@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 @class MCPageView;
 @protocol MCPageViewDelegate <NSObject>
-- (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)Index;
 
+/// 切换试图的回调
+/// @param MCPageView MCPageView
+/// @param index 选择的视图
+- (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)index;
+
+/// 手指开始接触视图
 - (void)startGestureRecognizer;
 
+/// 手指离开视图
 - (void)endGestureRecognizer;
 @end
 
@@ -127,7 +133,7 @@
  必选 使用View实例化方法
  
  @param frame frame
- @param titles titleS数组
+ @param titles title 数组
  @param views view数组
  @return 实例
  */

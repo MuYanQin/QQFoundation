@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param collectionView 被管理的视图
  @return QQCollectionViewManager
  */
-- (id)initWithCollectionView:(QQCollectionView *)collectionView ;
+- (instancetype)initWithCollectionView:(QQCollectionView *)collectionView ;
 
 
 /// 刷新视图的方法 同 [collectionView reload]

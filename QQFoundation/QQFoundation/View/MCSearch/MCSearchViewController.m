@@ -24,7 +24,7 @@ static NSString *const keyU = @"searchHistory";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initTitleView];
-    self.BaseQQTableView.isHasHeaderRefresh = NO;
+    self.BaseQQTableView.hasHeaderRefresh = NO;
     [self nav_RightItemWithStr:@"取消" Selector:@selector(cancel)];
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
     self.tabManager[@"MCSearchCleanItem"] = @"MCSearchCleanCell";

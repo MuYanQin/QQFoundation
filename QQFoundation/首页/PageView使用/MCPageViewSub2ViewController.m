@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
-    self.BaseQQTableView.isHasHeaderRefresh = NO;
+    self.BaseQQTableView.hasHeaderRefresh = NO;
     self.BaseQQTableView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - MCNavHeight);
     QQTableViewSection *sec = [QQTableViewSection section];
     for (int i = 0; i<=100; i++) {

@@ -11,7 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 /*
- 本篇是根据自己的框架情况高度集成的。
+ 本篇是根据自己的框架情况高度集成的。 适应QQTabelView/QQconllectionView
+ 
  本功能中用的tableView是自己封装好的 QQTableView 里面集成了一些刷新 、空白页、数据请求
  @property (nonatomic , copy) void(^scrollViewDidScroll)(UIScrollView * scrollView);
  是配合获取 偏移量的
@@ -25,25 +26,30 @@ NS_ASSUME_NONNULL_BEGIN
  2、tableView中shouldRecognizeSimultaneouslyWithGestureRecognizer方法返回YES 允许同时相应多个手势
  
  */
+@class MCHoveringView;
 @protocol MCHoveringListViewDelegate <NSObject>
 @required
-/**返回展示列表的tableView*/
+/// 返回展示列表的tableView/conllectionView
 - (NSArray<UIScrollView *> *)listView;
-//**必须设置的头部View*/
+
+/// 必须设置的headView
 - (UIView *)headView;
 
 //下面是配合使用MCPageView需要的俩个数据
 
-/**返回子列表所在的controller*/
+/// 返回子列表所在的controller
 - (NSArray<UIViewController *> *)listCtroller;
 
-/**返回子列表的title*/
+/// 返回子列表的title
 - (NSArray<NSString *> *)listTitle;
 
 
 @optional
 
-
+/// 切换试图的回调
+/// @param MCHoveringView MCHoveringView
+/// @param index 第一个视图
+- (void)MCHoveringView:(MCHoveringView *)MCHoveringView didSelectIndex:(NSInteger)index;
 
 @end
 
