@@ -23,6 +23,7 @@
 #import "MCCollectionViewController.h"
 #import "MCNavHiddenViewController.h"
 #import "MCNavBackEventViewController.h"
+#import "QYArticleEditViewController.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) MMCommentInputView *commentInputView;
 
@@ -242,6 +243,14 @@
         [weakSelf.navigationController pushViewController:[MCPageViewViewController new] animated:YES];
     };
     [section1 addItem:PageView];
+    
+    MCLableItem *article = [[MCLableItem alloc]init];
+    article.leftText = @"发布文章";
+    article.rightText = @"";
+    article.selcetCellHandler = ^(id item) {
+        [weakSelf.navigationController pushViewController:[QYArticleEditViewController new] animated:YES];
+    };
+    [section1 addItem:article];
     
     QYEmptyItem *empty2 = [[QYEmptyItem alloc]initWithHeight:40];
     empty2.bgColor = getColorWithHex(@"f8f8f8");

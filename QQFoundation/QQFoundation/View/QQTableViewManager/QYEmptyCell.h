@@ -3,7 +3,7 @@
 //  QQFoundation
 //
 //  Created by leaduMac on 2020/8/5.
-//  Copyright © 2020 慕纯. All rights reserved.
+//  Copyright © 2020 Yuan er. All rights reserved.
 //
 
 #import "QQTableViewCell.h"

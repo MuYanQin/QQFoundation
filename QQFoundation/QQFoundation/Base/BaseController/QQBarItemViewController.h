@@ -19,6 +19,7 @@
  */
 - (void)nav_RightItemWithStr:(NSString *)str Selector:(SEL)sel;
 
+- (void)nav_RightDraftWithArr:(NSArray *)strs Selector:(SEL)sel Selector1:(SEL)sel1;
 /**
  *  添加nav上右按钮，字符串, 字体颜色
  */

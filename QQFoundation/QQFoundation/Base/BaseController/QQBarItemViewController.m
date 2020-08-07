@@ -55,7 +55,21 @@
     [rightitem setTitleTextAttributes:dic forState:UIControlStateHighlighted];
     self.navigationItem.rightBarButtonItem = rightitem;
 }
-
+- (void)nav_RightDraftWithArr:(NSArray *)strs Selector:(SEL)sel Selector1:(SEL)sel1{
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithTitle:strs[0] style:(UIBarButtonItemStyleDone) target:self action:sel];
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:getColorWithHex(@"333333"),NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    [rightitem setTitleTextAttributes:dic forState:UIControlStateHighlighted];
+    
+    UIBarButtonItem *rightitem1 = [[UIBarButtonItem alloc] initWithTitle:strs[1] style:(UIBarButtonItemStyleDone) target:self action:sel1];
+    
+    NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:getColorWithHex(@"#855A09"),NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil];
+    [rightitem1 setTitleTextAttributes:dic1 forState:UIControlStateNormal];
+    [rightitem1 setTitleTextAttributes:dic1 forState:UIControlStateHighlighted];
+    
+    self.navigationItem.rightBarButtonItems = @[rightitem,rightitem1];
+}
 /**
  *  添加nav上右按钮，字符串, 字体颜色, 字体大小
  */
