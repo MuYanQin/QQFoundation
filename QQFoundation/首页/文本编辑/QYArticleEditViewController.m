@@ -11,7 +11,7 @@
 #import "QYEmptyCell.h"
 #import "QYArticleImgCell.h"
 #import "CCTZImgPickerTool.h"
-@interface QYArticleEditViewController ()
+@interface QYArticleEditViewController ()<QQTableViewManagerDelegate>
 @property (nonatomic , strong) CCTZImgPickerTool *imgTool;
 @property (nonatomic , strong) QQTableViewSection *section;
 @end
@@ -26,7 +26,9 @@
     self.tabManager[@"QYArticleTextItem"] = @"QYArticleTextCell";
     self.tabManager[@"QYEmptyItem"] = @"QYEmptyCell";
     self.tabManager[@"QYArticleImgItem"] = @"QYArticleImgCell";
-    
+    self.tabManager.delegate = self;
+    self.BaseQQTableView.editing = YES;
+
     self.title = @"发布文章";
     [self iniList];
 }
@@ -79,6 +81,11 @@
     [self.section addItem:text];
     [weakSelf.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSLog(@"%ld==%ld",(long)sourceIndexPath.row,(long)destinationIndexPath.row);
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];

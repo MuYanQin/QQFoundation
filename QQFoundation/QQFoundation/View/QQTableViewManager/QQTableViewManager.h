@@ -11,11 +11,21 @@
 #import "QQtableView.h"
 #define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 9_0, instead)
 
+@protocol QQTableViewManagerDelegate <NSObject>
+
+@optional
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
+
+@end
+
 @class QQTableViewItem,QQTableViewSection;
 
 @interface QQTableViewManager : NSObject<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) QQtableView *tableView;
 
+@property (nonatomic , assign) id<QQTableViewManagerDelegate>  delegate;
+@property (nonatomic , assign) BOOL  allowEditing;
 @property (strong, readonly ,nonatomic) NSMutableArray *allItems;
 @property (nonatomic , strong) NSMutableArray *sections;
 @property (strong, readwrite, nonatomic) NSMutableDictionary *registeredClasses;

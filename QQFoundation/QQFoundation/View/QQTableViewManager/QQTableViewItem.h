@@ -33,6 +33,9 @@
 /**是否允许策侧滑。默认NO*/
 @property (nonatomic, assign) BOOL allowSlide;
 
+/**是否可以拖动 默认否*/
+@property (nonatomic , assign) BOOL  canMove;
+
 /**
 //设置单个侧滑。默认是删除
 @property (nonatomic, copy  ) NSString *slideText;

@@ -13,6 +13,7 @@
 {
     if (self = [super init]) {
         self.allowSlide = NO;
+        self.canMove = NO;
         self.cellHeight = 0;
     }
     return self;
@@ -34,5 +35,12 @@
 - (NSIndexPath *)indexPath
 {
     return [NSIndexPath indexPathForRow:[self.section.items indexOfObject:self] inSection:self.section.index];
+}
+ - (void)setCanMove:(BOOL)canMove
+{
+    _canMove = canMove;
+    if (canMove) {
+        self.allowSlide = YES;
+    }
 }
 @end

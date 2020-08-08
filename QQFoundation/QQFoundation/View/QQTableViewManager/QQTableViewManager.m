@@ -61,6 +61,11 @@
     }];
     return itemArray;
 }
+- (void)setAllowEditing:(BOOL)allowEditing
+{
+    _allowEditing = allowEditing;
+    self.tableView.editing = allowEditing;
+}
 #pragma mark - UITableViewDelegate
 /**返回几个section*/
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -145,7 +150,10 @@
     QQTableViewItem * item = section.items[indexPath.row];
     return item.allowSlide;
 }
-
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleNone;
+}
 /**使用editActionsForRowAtIndexPath自定义后。下面的方法就失效了*/
 ///**UITableViewRowAction的点击事件 ios系统d8.1 8.2 版本不实现此方法 不能侧滑*/
 //- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -297,10 +305,14 @@ API_AVAILABLE(ios(11.0)){
 }
 // tableView 移动排序的代理方法
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
+    QQTableViewSection *section = self.sections[indexPath.section];
+    QQTableViewItem * item = section.items[indexPath.row];
+    return item.canMove;
 }
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    
+    if ([self.delegate respondsToSelector:@selector(tableView:moveRowAtIndexPath:toIndexPath:)]) {
+        [self.delegate tableView:tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
+    }
 }
 
 //点击索引栏标题时执行
