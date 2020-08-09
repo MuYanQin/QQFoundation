@@ -17,6 +17,7 @@
 @property (nonatomic , strong) NSMutableDictionary * dataDic;
 /**纪录页面的请求*/
 @property (nonatomic , strong) NSMutableArray * controllerRequest;
+
 @end
 @implementation QQNetManager
 {
@@ -34,33 +35,53 @@
     }
     return self;
 }
-+ (instancetype)Instance{
++ (instancetype)instance{
     static  QQNetManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[self alloc]init];
-        manager.isMonitor = YES;
     });
     return manager;
 }
-
-
-- (void)RTSGetWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void(^)(id responseObject))successs failed:(void (^)(NSError * error))failed;
+- (void)configNetwork:(NSString *)baseURL codeKey:(NSString *)codeKey successCode:(NSString *)successCode msgStr:(NSString *)msgKey
 {
-    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:ignore commiteType:keyV success:successs failed:failed];
+    self.baseURL = baseURL;
+    self.codeKey = codeKey;
+    self.successCode =successCode;
+    self.msgKey = msgKey;
 }
 
-- (void)RTSPostWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
+- (void)RTSGetWith:(NSString *)url param:(NSDictionary *)param from:(UIViewController *)controller success:(void(^)(id responseObject))success failed:(void (^)(NSError * error))failed;
 {
-    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:post cacheType:ignore commiteType:keyV success:successs failed:failed];
+    
+    [self filtrationTxdWithUrl:url param:param from:controller txdType:get cacheType:ignore commiteType:keyV images:nil fileMark:nil progress:nil success:success failed:failed];
 }
--(void)RTSPostJsonWith:(NSString *)url parameters:(NSDictionary *)parameters from:(UIViewController *)controller successs:(void(^)(id responseObject))successs failed:(void (^)(NSError * error))failed
+
+- (void)RTSPostWith:(NSString *)url param:(NSDictionary *)param from:(UIViewController *)controller success:(void (^)(id responseObject))success failed:(void (^)(NSError *))failed
 {
-    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:post cacheType:ignore commiteType:json success:successs failed:failed];
+    [self filtrationTxdWithUrl:url param:param from:controller txdType:post cacheType:ignore commiteType:keyV images:nil fileMark:nil progress:nil success:success failed:failed];
 }
-- (void)RTSGetCacheWith:(NSString *)url parameters:(NSDictionary *)parameters cache:(CacheType)cache from:(UIViewController *)controller successs:(void (^)(id responseObject))successs failed:(void (^)(NSError *))failed
+-(void)RTSPostJsonWith:(NSString *)url param:(NSDictionary *)param from:(UIViewController *)controller success:(void(^)(id responseObject))success failed:(void (^)(NSError * error))failed
 {
-    [self filtrationTxdWithUrl:url param:parameters from:controller txdType:get cacheType:cache commiteType:keyV success:successs failed:failed];
+    [self filtrationTxdWithUrl:url param:param from:controller txdType:post cacheType:ignore commiteType:json images:nil fileMark:nil progress:nil success:success failed:failed];
+}
+- (void)RTSGetCacheWith:(NSString *)url param:(NSDictionary *)param cache:(CacheType)cache from:(UIViewController *)controller success:(void (^)(id responseObject))success failed:(void (^)(NSError *))failed
+{
+    [self filtrationTxdWithUrl:url param:param from:controller txdType:get cacheType:cache commiteType:keyV images:nil fileMark:nil progress:nil success:success failed:failed];
+}
+
+- (void)RTSUploadWith:(NSString *)url
+           param:(NSDictionary *)param
+           images:(NSMutableArray *)images
+                 from:(UIViewController *)controller
+             fileMark:(NSString *)fileMark
+             progress:(void (^)(NSProgress *uploadProgress))progress
+              success:(void(^)( id responseObject))success
+               failed:(void(^)(NSError *error))failed
+{
+
+    [self filtrationTxdWithUrl:url param:param from:controller txdType:post cacheType:ignore commiteType:keyV images:images fileMark:fileMark progress:progress success:success failed:failed];
+    
 }
 - (void)filtrationTxdWithUrl:(NSString *)url
                        param:(NSDictionary *)param
@@ -68,37 +89,32 @@
                      txdType:(QQSessionType)txdType
                    cacheType:(CacheType)cacheType
                  commiteType:(CommiteType)commiteType
+                      images:(NSMutableArray *)images
+                    fileMark:(NSString *)fileMark
+                    progress:(void (^)(NSProgress *uploadProgress))progress
                      success:(void(^)(id responseObject))success
                        failed:(void(^)(NSError *error))failed
 {
-    QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:param]];
+    if (!self.baseURL || !self.codeKey || !self.msgKey || !self.successCode) {
+        NSString *errStr = [NSString stringWithFormat:@"请正确配置请求数据：baseURL=%@，codeKey=%@，msgKey=%@，successCode=%@",self.baseURL,self.codeKey,self.msgKey,self.successCode];
+        failed([self configSessionErrorCode:999999 desc:errStr]);
+        return;
+    }
+    QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url param:param]];
     if (!session) {
         session = [[QQsession alloc]init];
         session.urlStr = url;
-        session.cacheKey = [self cacheKeyWithURL:url parameters:param];
+        session.cacheKey = [self cacheKeyWithURL:url param:param];
         session.controller = controller;
-        [session TXDWith:url param:param txdType:txdType cacheType:cacheType commiteType:commiteType success:success failed:failed];
+        if (images.count >0) {
+            [session TXDUploadWithUrl:url dic:param images:images fileMark:fileMark progress:progress success:success failed:failed];
+        }else{
+            [session TXDWith:url param:param txdType:txdType cacheType:cacheType commiteType:commiteType    success:success failed:failed];
+        }
+    }else{
+        failed([self configSessionErrorCode:888888 desc:@"重复请求,已发起该请求!"]);
     }
 }
-
-- (void)RTSUploadWith:(NSString *)url
-           parameters:(NSDictionary *)parameters
-           imageArray:(NSMutableArray *)images
-                 from:(UIViewController *)controller
-             fileMark:(NSString *)fileMark
-             progress:(void (^)(NSProgress *uploadProgress))progress
-              success:(void(^)( id responseObject))success
-               failed:(void(^)(NSError *error))failed
-{
-    QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url parameters:parameters]];
-    if (!session) {
-        session = [[QQsession alloc]init];
-        session.urlStr = url;
-        session.cacheKey = [self cacheKeyWithURL:url parameters:parameters];
-        [session TXDUploadWithUrl:url dic:parameters imageArray:images fileMark:fileMark progress:progress success:success failed:failed];
-    }
-}
-
 //为了防止单个网络请求多次请求 例如刷新
 - (void)insertQQConnection:(QQsession *)hc
 {
@@ -142,13 +158,20 @@
     }
     [lock unlock];
 }
-- (NSString *)cacheKeyWithURL:(NSString *)URL parameters:(NSDictionary *)parameters
+- (NSError *)configSessionErrorCode:(NSInteger)code desc:(NSString *)desc
 {
-    if(!parameters){
-        return URL;
+    NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:desc], NSLocalizedDescriptionKey,nil];
+    NSError *error = [[NSError alloc]initWithDomain:@"errorCode" code:code userInfo:userInfo1];
+    return error;
+}
+
+- (NSString *)cacheKeyWithURL:(NSString *)URL param:(NSDictionary *)param
+{
+    if(!param){
+        return [self md5:URL];
     };
     // 将参数字典转换成字符串
-    NSData *stringData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+    NSData *stringData = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
     NSString *paraString = [[NSString alloc] initWithData:stringData encoding:NSUTF8StringEncoding];
     // 将URL与转换好的参数字符串拼接在一起,成为最终存储的KEY值
     NSString *cacheKey = [NSString stringWithFormat:@"%@%@",URL,paraString];
@@ -167,14 +190,6 @@
             result[12], result[13], result[14], result[15]
             ];
 }
-- (MCMonitorView *)monitorView
-{
-    if (!_monitorView) {
-        _monitorView = [[MCMonitorView alloc]initWithFrame:CGRectMake(KScreenWidth - 150, KScreenHeight - 200, 140, 100)];
-        _monitorView.Domains =self.Domains;
-        [[UIApplication sharedApplication].delegate.window addSubview:_monitorView];
-    }
-    return _monitorView;
-}
+
 
 @end

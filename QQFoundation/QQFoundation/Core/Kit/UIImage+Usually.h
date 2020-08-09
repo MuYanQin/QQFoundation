@@ -40,6 +40,10 @@
  */
 +(NSData *)imageData:(UIImage *)myimage;
 
+
+/// 根据本地路径获取视频的第一帧
+/// @param url 路径地址
++ (UIImage*)videoPreViewImage:(NSURL *)url;
 @end
 
 @interface UIImage (Luban_iOS_Extension_h)

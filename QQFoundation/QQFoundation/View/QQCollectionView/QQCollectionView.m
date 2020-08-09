@@ -80,7 +80,7 @@ static NSString * const pageIndex = @"pageNum";//获取第几页的根据自己�
 - (void)setUpNetWorkParamters:(NSDictionary *)paramters isPullDown:(BOOL)isPullDown
 {
     
-    [[QQNetManager Instance] RTSPostJsonWith:_requestUrl parameters:paramters from:_tempController successs:^(id responseObject) {
+    [[QQNetManager instance] RTSPostJsonWith:_requestUrl param:paramters from:_tempController success:^(id responseObject) {
         if ([self.requestDelegate respondsToSelector:@selector(QQCollectionView:isPullDown:successData:)]) {
             [self.requestDelegate QQCollectionView:self isPullDown:isPullDown successData:responseObject[@"data"]];
         }

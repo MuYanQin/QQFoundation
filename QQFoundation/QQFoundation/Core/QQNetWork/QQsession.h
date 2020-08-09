@@ -70,7 +70,7 @@ typedef NS_ENUM (NSInteger,CommiteType){
  */
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
                                        dic:(NSDictionary *)dic
-                              imageArray:(NSMutableArray *)images
+                                    images:(NSMutableArray *)images
                                   fileMark:(NSString *)fileMark
                                   progress:(void (^)(NSProgress *uploadProgress))progress
                                    success:(void(^)(id responseObject))success

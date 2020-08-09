@@ -34,7 +34,10 @@
 		42784C35248DD940001CDB81 /* MCTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42784C34248DD940001CDB81 /* MCTestCell.m */; };
 		42852FD424B1865900B5142F /* QYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42852FD324B1865900B5142F /* QYTabBar.m */; };
 		429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429C3C4A248E0B3D00B4771F /* QQCollectionView.m */; };
-		42A997702324E52000F20344 /* NSString+encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A9976F2324E52000F20344 /* NSString+encrypt.m */; };
+		42B7171224DECBD400C4F4AD /* deleteItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42B7171124DECBD400C4F4AD /* deleteItem@2x.png */; };
+		42B7171724DECC5700C4F4AD /* QYTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B7171324DECC5700C4F4AD /* QYTagView.m */; };
+		42B7171824DECC5700C4F4AD /* QYTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B7171524DECC5700C4F4AD /* QYTagItem.m */; };
+		42B7171B24DF9E3E00C4F4AD /* NSString+utile.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B7171A24DF9E3E00C4F4AD /* NSString+utile.m */; };
 		42CEE6E42271835C00B75359 /* MCPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE6E32271835C00B75359 /* MCPopViewController.m */; };
 		42DCB13324DADF3B0017B953 /* QYSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DCB13224DADF3B0017B953 /* QYSelectImageCell.m */; };
 		42DCB13624DAE1760017B953 /* QYEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DCB13524DAE1760017B953 /* QYEmptyCell.m */; };
@@ -53,7 +56,6 @@
 		4B27C3B0212FF80E008FBE2C /* tab_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B27C3AF212FF80E008FBE2C /* tab_launch@2x.png */; };
 		4B27C3B721300E6E008FBE2C /* UITabBar+MCBigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */; };
 		4B2F3FF322269F6F00528272 /* NSDate+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */; };
-		4B2F3FF422269F6F00528272 /* NSString+QQCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FF222269F6F00528272 /* NSString+QQCalculate.m */; };
 		4B2F3FFC22269F8500528272 /* UILabel+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FFA22269F8500528272 /* UILabel+MCChained.m */; };
 		4B2F3FFD22269F8500528272 /* UIButton+MCChained.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F3FFB22269F8500528272 /* UIButton+MCChained.m */; };
 		4B3D24ED20CA17F7002F8112 /* MCTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D24EC20CA17F7002F8112 /* MCTabBarItem.m */; };
@@ -80,8 +82,6 @@
 		4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D23C520E087DE005F6047 /* MCPushMediator.m */; };
 		4B8D23D320E0DA46005F6047 /* MCGCDStudy in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D23D220E0DA46005F6047 /* MCGCDStudy */; };
 		4B94392321C110CC00F34743 /* MCPageViewSub3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */; };
-		4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A33E21707B7900299613 /* MCMonitorView.m */; };
-		4BA5A34521708DB200299613 /* MCWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5A34321708DB200299613 /* MCWebViewViewController.m */; };
 		4BBBFC7F21192A19003EC96B /* wechatMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */; };
 		4BBBFC8021192D08003EC96B /* MCPlayerMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */; };
 		4BBBFC8F2119438C003EC96B /* bing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBBFC8E2119438C003EC96B /* bing.caf */; };
@@ -95,7 +95,6 @@
 		4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A83215270E40063164A /* MCPageViewSub1ViewController.m */; };
 		4BE30A87215270F30063164A /* MCPageViewSub2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */; };
 		4BE6CD10224333E80048217F /* NSObject+MB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE6CD0F224333E80048217F /* NSObject+MB.m */; };
-		4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAB79920EB45020076E090 /* MCDetectionView.m */; };
 		4BFBC6E421E837D800012B96 /* MCHoveringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBC6E321E837D800012B96 /* MCHoveringView.m */; };
 		5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4071F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m */; };
 		5295D40B1F4EBB6000C6B5F4 /* NSString+Manage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295D4091F4EBB6000C6B5F4 /* NSString+Manage.m */; };
@@ -266,8 +265,13 @@
 		42852FD324B1865900B5142F /* QYTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYTabBar.m; sourceTree = "<group>"; };
 		429C3C49248E0B3D00B4771F /* QQCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQCollectionView.h; sourceTree = "<group>"; };
 		429C3C4A248E0B3D00B4771F /* QQCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQCollectionView.m; sourceTree = "<group>"; };
-		42A9976E2324E52000F20344 /* NSString+encrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+encrypt.h"; sourceTree = "<group>"; };
-		42A9976F2324E52000F20344 /* NSString+encrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+encrypt.m"; sourceTree = "<group>"; };
+		42B7171124DECBD400C4F4AD /* deleteItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deleteItem@2x.png"; sourceTree = "<group>"; };
+		42B7171324DECC5700C4F4AD /* QYTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYTagView.m; sourceTree = "<group>"; };
+		42B7171424DECC5700C4F4AD /* QYTagItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYTagItem.h; sourceTree = "<group>"; };
+		42B7171524DECC5700C4F4AD /* QYTagItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYTagItem.m; sourceTree = "<group>"; };
+		42B7171624DECC5700C4F4AD /* QYTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYTagView.h; sourceTree = "<group>"; };
+		42B7171924DF9E3E00C4F4AD /* NSString+utile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+utile.h"; sourceTree = "<group>"; };
+		42B7171A24DF9E3E00C4F4AD /* NSString+utile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+utile.m"; sourceTree = "<group>"; };
 		42CEE6E22271835C00B75359 /* MCPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPopViewController.h; sourceTree = "<group>"; };
 		42CEE6E32271835C00B75359 /* MCPopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPopViewController.m; sourceTree = "<group>"; };
 		42DCB13124DADF3B0017B953 /* QYSelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYSelectImageCell.h; sourceTree = "<group>"; };
@@ -300,10 +304,8 @@
 		4B27C3B521300E6E008FBE2C /* UITabBar+MCBigItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+MCBigItem.h"; sourceTree = "<group>"; };
 		4B27C3B621300E6E008FBE2C /* UITabBar+MCBigItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+MCBigItem.m"; sourceTree = "<group>"; };
 		4B2F3FEE22269F6E00528272 /* MCChainedEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChainedEnums.h; sourceTree = "<group>"; };
-		4B2F3FEF22269F6E00528272 /* NSString+QQCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QQCalculate.h"; sourceTree = "<group>"; };
 		4B2F3FF022269F6E00528272 /* NSDate+QQCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+QQCalculate.h"; sourceTree = "<group>"; };
 		4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+QQCalculate.m"; sourceTree = "<group>"; };
-		4B2F3FF222269F6F00528272 /* NSString+QQCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QQCalculate.m"; sourceTree = "<group>"; };
 		4B2F3FF822269F8400528272 /* UIButton+MCChained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MCChained.h"; sourceTree = "<group>"; };
 		4B2F3FF922269F8400528272 /* UILabel+MCChained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MCChained.h"; sourceTree = "<group>"; };
 		4B2F3FFA22269F8500528272 /* UILabel+MCChained.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MCChained.m"; sourceTree = "<group>"; };
@@ -353,10 +355,6 @@
 		4B8D23D220E0DA46005F6047 /* MCGCDStudy */ = {isa = PBXFileReference; lastKnownFileType = text; path = MCGCDStudy; sourceTree = "<group>"; };
 		4B94392121C110CC00F34743 /* MCPageViewSub3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPageViewSub3ViewController.h; sourceTree = "<group>"; };
 		4B94392221C110CC00F34743 /* MCPageViewSub3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub3ViewController.m; sourceTree = "<group>"; };
-		4BA5A33D21707B7900299613 /* MCMonitorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMonitorView.h; sourceTree = "<group>"; };
-		4BA5A33E21707B7900299613 /* MCMonitorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCMonitorView.m; sourceTree = "<group>"; };
-		4BA5A34321708DB200299613 /* MCWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCWebViewViewController.m; sourceTree = "<group>"; };
-		4BA5A34421708DB200299613 /* MCWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCWebViewViewController.h; sourceTree = "<group>"; };
 		4BBBFC7B2119298E003EC96B /* MCPlayerMusic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPlayerMusic.h; sourceTree = "<group>"; };
 		4BBBFC7C2119298E003EC96B /* MCPlayerMusic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPlayerMusic.m; sourceTree = "<group>"; };
 		4BBBFC7E21192A19003EC96B /* wechatMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wechatMusic.mp3; sourceTree = "<group>"; };
@@ -375,8 +373,6 @@
 		4BE30A86215270F30063164A /* MCPageViewSub2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPageViewSub2ViewController.m; sourceTree = "<group>"; };
 		4BE6CD0E224333E80048217F /* NSObject+MB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MB.h"; sourceTree = "<group>"; };
 		4BE6CD0F224333E80048217F /* NSObject+MB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MB.m"; sourceTree = "<group>"; };
-		4BFAB79820EB45020076E090 /* MCDetectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCDetectionView.h; sourceTree = "<group>"; };
-		4BFAB79920EB45020076E090 /* MCDetectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCDetectionView.m; sourceTree = "<group>"; };
 		4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QQFoundation.entitlements; sourceTree = "<group>"; };
 		4BFBC6E221E837D800012B96 /* MCHoveringView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHoveringView.h; sourceTree = "<group>"; };
 		4BFBC6E321E837D800012B96 /* MCHoveringView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCHoveringView.m; sourceTree = "<group>"; };
@@ -701,6 +697,18 @@
 			path = "CollectionView管理";
 			sourceTree = "<group>";
 		};
+		42B7170A24DECBB700C4F4AD /* QYTagView */ = {
+			isa = PBXGroup;
+			children = (
+				42B7171424DECC5700C4F4AD /* QYTagItem.h */,
+				42B7171524DECC5700C4F4AD /* QYTagItem.m */,
+				42B7171624DECC5700C4F4AD /* QYTagView.h */,
+				42B7171324DECC5700C4F4AD /* QYTagView.m */,
+				42B7171124DECBD400C4F4AD /* deleteItem@2x.png */,
+			);
+			path = QYTagView;
+			sourceTree = "<group>";
+		};
 		42CEE6E12271834300B75359 /* 视图弹出 */ = {
 			isa = PBXGroup;
 			children = (
@@ -924,6 +932,7 @@
 		4BA4E12D2227B7B6003DDF5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				42B7170A24DECBB700C4F4AD /* QYTagView */,
 				4B46A1862165D31F001B560A /* MCPageView */,
 				4BFBC6E121E837AC00012B96 /* MCHovering */,
 				4226BD082496446400B2FCFF /* QQCollectionView */,
@@ -960,8 +969,8 @@
 				52D8D14A1F4D77EF00EA413B /* UIView+QQFrame.m */,
 				4B2F3FF022269F6E00528272 /* NSDate+QQCalculate.h */,
 				4B2F3FF122269F6F00528272 /* NSDate+QQCalculate.m */,
-				4B2F3FEF22269F6E00528272 /* NSString+QQCalculate.h */,
-				4B2F3FF222269F6F00528272 /* NSString+QQCalculate.m */,
+				42B7171924DF9E3E00C4F4AD /* NSString+utile.h */,
+				42B7171A24DF9E3E00C4F4AD /* NSString+utile.m */,
 				52D8D1571F4D77EF00EA413B /* QQButton.h */,
 				52D8D1581F4D77EF00EA413B /* QQButton.m */,
 				52D8D1611F4D77EF00EA413B /* QQTextField.h */,
@@ -970,8 +979,6 @@
 				52D8D1641F4D77EF00EA413B /* QQTextView.m */,
 				426FA33224DA4EFA00DD04EB /* QYBadgeLabel.h */,
 				426FA33324DA4EFA00DD04EB /* QYBadgeLabel.m */,
-				42A9976E2324E52000F20344 /* NSString+encrypt.h */,
-				42A9976F2324E52000F20344 /* NSString+encrypt.m */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -996,19 +1003,6 @@
 				5295D4091F4EBB6000C6B5F4 /* NSString+Manage.m */,
 			);
 			path = AttributedString;
-			sourceTree = "<group>";
-		};
-		4BA5A33C21707B0500299613 /* MCMonitorView */ = {
-			isa = PBXGroup;
-			children = (
-				4BA5A33D21707B7900299613 /* MCMonitorView.h */,
-				4BA5A33E21707B7900299613 /* MCMonitorView.m */,
-				4BFAB79820EB45020076E090 /* MCDetectionView.h */,
-				4BFAB79920EB45020076E090 /* MCDetectionView.m */,
-				4BA5A34421708DB200299613 /* MCWebViewViewController.h */,
-				4BA5A34321708DB200299613 /* MCWebViewViewController.m */,
-			);
-			path = MCMonitorView;
 			sourceTree = "<group>";
 		};
 		4BE30A81215270AE0063164A /* PageView使用 */ = {
@@ -1310,7 +1304,6 @@
 		52D8D1681F4D77EF00EA413B /* QQNetWork */ = {
 			isa = PBXGroup;
 			children = (
-				4BA5A33C21707B0500299613 /* MCMonitorView */,
 				52D8D1691F4D77EF00EA413B /* MBProgressHUD */,
 				52D8D1701F4D77EF00EA413B /* QQNetManager.h */,
 				52D8D1711F4D77EF00EA413B /* QQNetManager.m */,
@@ -1588,6 +1581,7 @@
 				52D8D1961F4D77EF00EA413B /* icon_em_al.png in Resources */,
 				4BBBFC7F21192A19003EC96B /* wechatMusic.mp3 in Resources */,
 				4B772AAA21E34815009D1805 /* HR_search_lay@2x.png in Resources */,
+				42B7171224DECBD400C4F4AD /* deleteItem@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1722,7 +1716,6 @@
 				AC781AC81FF51D2C00863F4C /* FMDatabaseAdditions.m in Sources */,
 				4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
-				42A997702324E52000F20344 /* NSString+encrypt.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
@@ -1741,7 +1734,6 @@
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
 				ACF4B0661FEE546200668126 /* QQTabBarController.m in Sources */,
 				4BE30A84215270E40063164A /* MCPageViewSub1ViewController.m in Sources */,
-				4BFAB79A20EB45020076E090 /* MCDetectionView.m in Sources */,
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
 				4203410924DCF5A000B4F31D /* QYArticleAccessoryView.m in Sources */,
 				4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */,
@@ -1769,21 +1761,19 @@
 				4223CC9124962418000C1B10 /* MCCollectionAddViewController.m in Sources */,
 				52C1156A1F4EC5CE005471CB /* SDImageCacheConfig.m in Sources */,
 				0153EDF720B66B5F0041CFC4 /* QQTableViewItem.m in Sources */,
-				4BA5A33F21707B7900299613 /* MCMonitorView.m in Sources */,
-				4B2F3FF422269F6F00528272 /* NSString+QQCalculate.m in Sources */,
 				42DCB13624DAE1760017B953 /* QYEmptyCell.m in Sources */,
 				429C3C4B248E0B3D00B4771F /* QQCollectionView.m in Sources */,
 				4203410C24DCF87F00B4F31D /* QYArticleTextCell.m in Sources */,
 				4B43A87020DB7B6500422438 /* KLCPopup.m in Sources */,
 				52C115511F4EC5CE005471CB /* MJRefreshBackFooter.m in Sources */,
 				ACE0263A2017695A00A387DC /* DefaultAnimation.m in Sources */,
-				4BA5A34521708DB200299613 /* MCWebViewViewController.m in Sources */,
 				4B1C2B64222E28B50007EB9B /* MCPickerHeaderView.m in Sources */,
 				4B772AA721E347FB009D1805 /* MCSearchCleanCell.m in Sources */,
 				52C115521F4EC5CE005471CB /* MJRefreshComponent.m in Sources */,
 				424DADAC23B7435800FBD5C9 /* QQTableViewSecItem.m in Sources */,
 				4B772AA621E347FB009D1805 /* MCSearchViewController.m in Sources */,
 				4B4D5A60211B28FF007FDED8 /* MCHomeViewController.m in Sources */,
+				42B7171B24DF9E3E00C4F4AD /* NSString+utile.m in Sources */,
 				52C115661F4EC5CE005471CB /* MKAnnotationView+WebCache.m in Sources */,
 				4B4D5A70211B2B40007FDED8 /* MCTextFieldCell.m in Sources */,
 				52C115691F4EC5CE005471CB /* SDImageCache.m in Sources */,
@@ -1793,7 +1783,9 @@
 				426FA33424DA4EFA00DD04EB /* QYBadgeLabel.m in Sources */,
 				52C115771F4EC5CE005471CB /* UIView+WebCache.m in Sources */,
 				4BE30A87215270F30063164A /* MCPageViewSub2ViewController.m in Sources */,
+				42B7171824DECC5700C4F4AD /* QYTagItem.m in Sources */,
 				4B1F10C8211C384500B09B80 /* MCUserInfo.m in Sources */,
+				42B7171724DECC5700C4F4AD /* QYTagView.m in Sources */,
 				52C1156C1F4EC5CE005471CB /* SDWebImageDecoder.m in Sources */,
 				ACE026372017672200A387DC /* QQAlertController.m in Sources */,
 			);

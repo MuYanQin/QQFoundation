@@ -27,11 +27,11 @@ static NSString * const dataKey = @"data";
 {
     //判断缓存
     if (cacheType == memoryCaceh) {
-        NSDictionary *dic  = [[QQNetManager Instance].dataCache objectForKey:self.cacheKey];
+        NSDictionary *dic  = [[QQNetManager instance].dataCache objectForKey:self.cacheKey];
         double preTime = [dic[timeKey] doubleValue];
         double nowtime = (long)[[NSDate date] timeIntervalSince1970];
-        if ((nowtime - preTime)>[QQNetManager Instance].cacheSec) {
-            [[QQNetManager Instance].dataCache removeObjectForKey:self.cacheKey];
+        if ((nowtime - preTime) > [QQNetManager instance].cacheSec) {
+            [[QQNetManager instance].dataCache removeObjectForKey:self.cacheKey];
         }else{
             success(dic[dataKey]);
             return nil;
@@ -52,7 +52,7 @@ static NSString * const dataKey = @"data";
     url = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
 
     NSURLSessionDataTask * operation;
-    [[QQNetManager Instance] insertQQConnection:self];
+    [[QQNetManager instance] insertQQConnection:self];
     if (self.controller) {
         [self loading];
     }
@@ -93,7 +93,7 @@ static NSString * const dataKey = @"data";
 //upload files
 - (NSURLSessionDataTask *)TXDUploadWithUrl:(NSString *)urlStr
                                        dic:(NSDictionary *)dic
-                              imageArray:(NSMutableArray *)images
+                                    images:(NSMutableArray *)images
                                   fileMark:(NSString *)fileMark
                                   progress:(void (^)(NSProgress *uploadProgress))progress
                                    success:(void(^)(id responseObject))success
@@ -120,32 +120,27 @@ static NSString * const dataKey = @"data";
 #pragma mark - 统一处理下载返回的数据
 - (void)handleResponseObject:(id)responseObject  cacheType:(CacheType)cacheType Success:(void(^)( id  _Nullable responseObject))successBlock  failure:(void(^)(NSError *error))failureBlock;
 {
-    if ([QQNetManager Instance].isMonitor) {
-        [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:responseObject};
-    }
-    if ([responseObject[@"code"] isEqualToString:successCode]) {
+    if ([responseObject[[QQNetManager instance].codeKey] isEqualToString:[QQNetManager instance].successCode]) {
         [self hiddenHUD];
         if (cacheType == memoryCaceh) {
             double time = (long)[[NSDate date] timeIntervalSince1970];
-            [[QQNetManager Instance].dataCache setObject:@{dataKey:responseObject,timeKey:@(time)} forKey:self.cacheKey];
+            [[QQNetManager instance].dataCache setObject:@{dataKey:responseObject,timeKey:@(time)} forKey:self.cacheKey];
         }else if (cacheType == diskCache){
             [[NSUserDefaults standardUserDefaults]setObject:responseObject forKey:self.cacheKey];
         }
         successBlock(responseObject);
     }else{
-        [self message:[QQTool strRelay:responseObject[@"msg"]]];
-        NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[@"msg"]], NSLocalizedDescriptionKey,nil];
-        NSError *error = [[NSError alloc]initWithDomain:@"QQSession" code:[responseObject[@"code"] integerValue] userInfo:userInfo1];
+        [self message:[QQTool strRelay:responseObject[[QQNetManager instance].msgKey]]];
+        NSDictionary *userInfo1 = [NSDictionary dictionaryWithObjectsAndKeys:[QQTool strRelay:responseObject[[QQNetManager instance].msgKey]], NSLocalizedDescriptionKey,nil];
+        NSError *error = [[NSError alloc]initWithDomain:@"errorCode" code:[responseObject[[QQNetManager instance].codeKey] integerValue] userInfo:userInfo1];
         failureBlock(error);
     }
     //请求结束 从字典里删除本次请求
-    [[QQNetManager Instance] deleteQQConnection:self];
+    [[QQNetManager instance] deleteQQConnection:self];
 }
 - (void)handleResponseObject:(NSError *)error failure:(void(^)(NSError *error))failureBlock
 {
-    if ([QQNetManager Instance].isMonitor) {
-        [QQNetManager Instance].monitorView.dataDic = @{self.urlStr:error};
-    }
+
     //-999就是取消此次下载
     if (error.code == -1001){///<请求超时不是错误不用返回错误
         [self message:@"请求超时，请重试！"];
@@ -157,7 +152,7 @@ static NSString * const dataKey = @"data";
     failureBlock(error);
     
     //请求结束 从字典里删除本次请求
-    [[QQNetManager Instance] deleteQQConnection:self];
+    [[QQNetManager instance] deleteQQConnection:self];
 }
 - (AFHTTPSessionManager *)sessionManager
 {

@@ -8,29 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-//显示网络请求的view
-#import "MCMonitorView.h"
 #import "QQsession.h"
-#define Deprecated(instead) NS_DEPRECATED_IOS(2_0, 5_0, instead)
 @class QQsession;
-static NSString *const successCode = @"200";//配置正确返回的code码
 
 @interface QQNetManager : NSObject
-/**监控数据请求的View*/
-@property (nonatomic , strong) MCMonitorView * monitorView;
 
-/**
- 是否打开监控 默认yes打开
- 在didFinishLaunchingWithOptions初始化一次即可
- */
-@property (nonatomic , assign) BOOL  isMonitor;
 
-/**
- 切换url功能的url数组。仅当isMonitor == yes 有意义
- 在didFinishLaunchingWithOptions初始化一次即可
- */
-@property (nonatomic , strong) NSArray * Domains;
+/**建议启动时 配置服务器成功返回状态码 例如：200、000000*/
+@property (nonatomic , copy) NSString * successCode;
 
+/**返回code的字段值*/
+@property (nonatomic , copy) NSString * codeKey;
+
+/**返回提示信息的字段值*/
+@property (nonatomic , copy) NSString * msgKey;
+
+/**基础域名*/
+@property (nonatomic , copy) NSString * baseURL;
 /**
  缓存数据 最大3M 超出会被清理
  */
@@ -41,65 +35,73 @@ static NSString *const successCode = @"200";//配置正确返回的code码
  */
 @property (nonatomic , assign) NSInteger  cacheSec;
 
-+ (instancetype)Instance;
++ (instancetype)instance;
+
+
+/// 配置网络请求参数
+/// @param baseURL 基础域名
+/// @param codeKey 返回code代码的key
+/// @param successCode 正确code 字符
+/// @param msgKey 提示信息key
+- (void)configNetwork:(NSString *)baseURL codeKey:(NSString *)codeKey successCode:(NSString *)successCode msgStr:(NSString *)msgKey;
 
 /**
  普通的get请求
 
  @param url 请求的网址
- @param parameters 请求拼接的参数
+ @param param 请求拼接的参数
  @param controller 请求所在的界面
- @param successs 成功的回调
+ @param success 成功的回调
  @param failed 失败的回调
  */
 - (void)RTSGetWith:(NSString *)url
-        parameters:(NSDictionary *)parameters
+             param:(NSDictionary *)param
               from:(UIViewController *)controller
-          successs:(void(^)(id responseObject))successs
+          success:(void(^)(id responseObject))success
              failed:(void (^)(NSError * error))failed;
 
 /**
  普通的Post请求
  @param url 请求的网址
- @param parameters 请求拼接的参数
+ @param param 请求拼接的参数
  @param controller 请求的界面
- @param successs 成功的回调
+ @param success 成功的回调
  @param failed 失败的回调
  */
 -(void)RTSPostWith:(NSString *)url
-        parameters:(NSDictionary *)parameters
+             param:(NSDictionary *)param
               from:(UIViewController *)controller
-          successs:(void(^)(id responseObject))successs
+          success:(void(^)(id responseObject))success
              failed:(void (^)(NSError * error))failed;
 
 /**
  Json提交的的Post请求
  @param url 请求的网址
- @param parameters 请求拼接的参数
+ @param param 请求拼接的参数
  @param controller 请求的界面
- @param successs 成功的回调
+ @param success 成功的回调
  @param failed 失败的回调
  */
 -(void)RTSPostJsonWith:(NSString *)url
-        parameters:(NSDictionary *)parameters
+                 param:(NSDictionary *)param
               from:(UIViewController *)controller
-          successs:(void(^)(id responseObject))successs
+          success:(void(^)(id responseObject))success
              failed:(void (^)(NSError * error))failed;
 
 /**
  带缓存的get请求 （一些不变的网址请求）
  
  @param url 请求的网址
- @param parameters 请求拼接的参数
+ @param param 请求拼接的参数
  @param controller 请求的界面
- @param successs 成功的回调
+ @param success 成功的回调
  @param failed 失败的回调
  */
 - (void)RTSGetCacheWith:(NSString *)url
-             parameters:(NSDictionary *)parameters
+                  param:(NSDictionary *)param
                   cache:(CacheType)cache
                    from:(UIViewController *)controller
-               successs:(void(^)(id responseObject))successs
+               success:(void(^)(id responseObject))success
                   failed:(void (^)(NSError * error))failed;
 
 
@@ -107,7 +109,7 @@ static NSString *const successCode = @"200";//配置正确返回的code码
  上传图片的使用
 
  @param url 请求网址
- @param parameters 请求的参数
+ @param param 请求的参数
  @param images 图片字典的数组
  @param controller 请求的界面
  @param fileMark 后台接受图片的字段。为空的话 就用图片的名称
@@ -116,10 +118,10 @@ static NSString *const successCode = @"200";//配置正确返回的code码
  @param failed 失败的回调
  */
 - (void)RTSUploadWith:(NSString *)url
-           parameters:(NSDictionary *)parameters
-         imageArray:(NSMutableArray *)images
+                param:(NSDictionary *)param
+               images:(NSMutableArray *)images
                  from:(UIViewController *)controller
-                 fileMark:(NSString *)fileMark
+             fileMark:(NSString *)fileMark
              progress:(void (^)(NSProgress *uploadProgress))progress
               success:(void(^)( id responseObject))success
                 failed:(void(^)(NSError *error))failed;

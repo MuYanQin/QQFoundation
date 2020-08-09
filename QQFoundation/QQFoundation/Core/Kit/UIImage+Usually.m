@@ -8,6 +8,7 @@
 
 #import "UIImage+Usually.h"
 #import <objc/runtime.h>
+#import <AVFoundation/AVFoundation.h>
 @implementation UIImage (Usually)
 /**
  获取灰色的图片
@@ -110,7 +111,21 @@
 }
 
 
-
+/// 根据本地路径获取视频的第一帧
+/// @param url 路径地址
++ (UIImage*)videoPreViewImage:(NSURL *)url;
+{
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+    NSError *error = nil;
+    CMTime actualTime;
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    return img;
+}
 
 
 

@@ -11,7 +11,7 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <objc/runtime.h>
-#import "NSString+QQCalculate.h"
+#import "NSString+utile.h"
 @implementation QQTool
 /**
  是不是空
@@ -41,7 +41,7 @@
     else if([str isKindOfClass:[NSNumber class]]){
         return [str stringValue];
     }
-    return [str TrimStringHAT];
+    return [str trimStringHAT];
 }
 
 + (NSString *)strRelayPrice:(id)str
@@ -55,7 +55,7 @@
     else if([str isKindOfClass:[NSNumber class]]){
         return [NSString stringWithFormat:@"%0.2f",[str doubleValue]];
     }
-    return [str TrimStringHAT];
+    return [str trimStringHAT];
 }
 /**
  * 是否为手机号码

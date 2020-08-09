@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MCDownloadManager.h"
-#import "MCDetectionView.h"
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
 #import "QQNetManager.h"
@@ -21,7 +20,7 @@
 #import "MCMineViewController.h"
 #import "QQNavigationController.h"
 #import "MCTabBarItem.h"
-#import "NSString+encrypt.h"
+#import "NSString+utile.h"
 #import "QQTool.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate,QQTabBarControllerDelegate>
 @property (nonatomic , strong) NSTimer * timer;
@@ -43,11 +42,6 @@
 #endif
     self.window.rootViewController = self.TabBar;
     [self.window makeKeyAndVisible];
-    NSDictionary *dic = @{@"searchText":@"月"};
-    NSString *text = [QQTool dictionaryToJson:dic];
-    NSString *base64 = text.base64;
-    NSString *md5 = base64.md5;
-    [QQNetManager Instance].Domains = @[@"http://222.73.56.13:9020",@"www.baodu.com",@"www.jd.com"];
     
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];

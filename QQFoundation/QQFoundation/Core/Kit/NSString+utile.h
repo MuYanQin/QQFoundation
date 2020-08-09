@@ -1,16 +1,17 @@
 //
-//  NSString+QQCalculate.h
-//  QQUIKit
+//  NSString+utile.h
+//  QQFoundation
 //
-//  Created by ZhangQun on 2017/4/14.
-//  Copyright © 2017年 Yuan er. All rights reserved.
+//  Created by leaduMac on 2020/8/9.
+//  Copyright © 2020 慕纯. All rights reserved.
 //
+
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
-@interface NSString (QQCalculate)
+NS_ASSUME_NONNULL_BEGIN
 
+@interface NSString (utile)
 /**
  * 是否为数字
  */
@@ -21,13 +22,19 @@
 
  @return string
  */
-- (NSString *)DeleteAllSpace;
+- (NSString *)deleteAllSpace;
 /**
  去除字符串首位的空格
 
  @return 去除空格口德字符串
  */
-- (NSString *)TrimStringHAT;
+- (NSString *)trimStringHAT;
+
+/// md5加密
+- (NSString *)md5;
+
+/// base64 加密
+- (NSString *)base64;
 /**
  计算字符串高度
 
@@ -44,5 +51,6 @@
  @return 宽度
  */
 - (CGFloat)textWidth:(CGFloat)height font:(CGFloat)font;
-
 @end
+
+NS_ASSUME_NONNULL_END
