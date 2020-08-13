@@ -130,6 +130,4 @@
 - (void)insertQQConnection:(QQsession *)hc;///<插入对象
 - (void)deleteQQConnection:(QQsession *)hc;///<删除对象
 
-//在返回的地方调用此方法取消下载
-- (void)deleteConnectionVC:(UIViewController *)vc;///<销毁控制器时取消下载
 @end

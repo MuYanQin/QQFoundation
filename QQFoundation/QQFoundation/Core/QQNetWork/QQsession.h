@@ -32,9 +32,8 @@ typedef NS_ENUM (NSInteger,CommiteType){
 @property (copy, nonatomic) NSString *cacheKey;
 /**记录请求的任务*/
 @property (nonatomic , strong) NSURLSessionDataTask * SessionTask;
-/**记录请求所在界面*/
-@property (nonatomic , weak) UIViewController * controller;
 
+@property (nonatomic , assign) BOOL  showHUD;
 
 /**
  数据请求

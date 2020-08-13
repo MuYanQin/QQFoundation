@@ -46,7 +46,7 @@
 }
 - (void)btnClick
 {
-    //[self message:@"123"];
+    [self message:@"123"];
 
 }
 - (void)btnClick1

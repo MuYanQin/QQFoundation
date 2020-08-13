@@ -15,9 +15,6 @@
 @interface QQNetManager()
 /**纪录当前正在请求的url*/
 @property (nonatomic , strong) NSMutableDictionary * dataDic;
-/**纪录页面的请求*/
-@property (nonatomic , strong) NSMutableArray * controllerRequest;
-
 @end
 @implementation QQNetManager
 {
@@ -28,7 +25,6 @@
 {
     if (self = [super init]) {
         _dataDic = [[NSMutableDictionary alloc]init];
-        _controllerRequest = [NSMutableArray array];
         _dataCache = [[NSCache alloc]init];
         _dataCache.totalCostLimit = 3 * 1024 * 1024;
         _cacheSec = 60;
@@ -100,16 +96,19 @@
         failed([self configSessionErrorCode:999999 desc:errStr]);
         return;
     }
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@",self.baseURL,url];
     QQsession *session= [_dataDic objectForKey:[self cacheKeyWithURL:url param:param]];
     if (!session) {
         session = [[QQsession alloc]init];
         session.urlStr = url;
         session.cacheKey = [self cacheKeyWithURL:url param:param];
-        session.controller = controller;
+        if (controller) {
+            session.showHUD = YES;
+        }
         if (images.count >0) {
-            [session TXDUploadWithUrl:url dic:param images:images fileMark:fileMark progress:progress success:success failed:failed];
+            [session TXDUploadWithUrl:requestURL dic:param images:images fileMark:fileMark progress:progress success:success failed:failed];
         }else{
-            [session TXDWith:url param:param txdType:txdType cacheType:cacheType commiteType:commiteType    success:success failed:failed];
+            [session TXDWith:requestURL param:param txdType:txdType cacheType:cacheType commiteType:commiteType    success:success failed:failed];
         }
     }else{
         failed([self configSessionErrorCode:888888 desc:@"重复请求,已发起该请求!"]);
@@ -120,43 +119,10 @@
 {
     if (!hc.cacheKey)return;
     [_dataDic setObject:hc forKey:hc.cacheKey];
-    NSString *className =  NSStringFromClass([hc.controller class]);
-    if (className.length >0) {
-        [_controllerRequest addObject:hc];
-    }
 }
 - (void)deleteQQConnection:(QQsession *)hc
 {
     [_dataDic removeObjectForKey:hc.cacheKey];
-    [_controllerRequest removeObject:hc];
-}
-//控制器消失的时候取消下载
-- (void)deleteConnectionVC:(UIViewController *)delvc
-{
-    [lock lock];
-    //循环的时候不能移除元素 所以借用一个中间变量
-    NSMutableArray *tempArr = [NSMutableArray arrayWithArray:_controllerRequest];
-    //有的三方滑动视图  或者自己的写的segment都会用到addchildviewcontroller：
-    NSMutableArray *VCArray = [NSMutableArray arrayWithArray:delvc.childViewControllers];
-    //把父控制器加进来
-    [VCArray addObject:delvc];
-
-    //这里主要还是根据入库的控制器来写不是一定的  根据个人需要
-    for (UIViewController *VC in VCArray) {
-        @autoreleasepool {
-            NSString *VCName = NSStringFromClass([VC class]);
-            for (QQsession *session in tempArr) {///<在存储请求的数据里找对应的界面
-                @autoreleasepool {
-                    NSString *className =  NSStringFromClass([session.controller class]);
-                    if ([className isEqualToString: VCName]) {
-                        [self deleteQQConnection:session];
-                        [session.SessionTask cancel];
-                    }
-                }
-            }
-        }
-    }
-    [lock unlock];
 }
 - (NSError *)configSessionErrorCode:(NSInteger)code desc:(NSString *)desc
 {

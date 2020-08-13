@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 /*是否Loading中*/
 - (BOOL)isLoading;
 
+- (UIViewController *)currentShowingVC;
+
 @end
 
 NS_ASSUME_NONNULL_END

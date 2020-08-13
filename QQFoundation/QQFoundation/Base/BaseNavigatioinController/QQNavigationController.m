@@ -86,8 +86,7 @@
     [tc notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         //手势返回  成功取消
         if (![context isCancelled]) {
-            //这里打印的是栈顶的VC   所以要tempVC中间过渡
-            [[QQNetManager instance] deleteConnectionVC:tempVC];
+            
         }
     }];
     ///设置隐藏 nav 如果遵循代理且viewController 同一个就隐藏
@@ -163,8 +162,8 @@
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
 
     if (!self.isSwitching) {
-        //返回调用此方法取消请求  如果是请求完成则从数组中去除本子请求
-        [[QQNetManager instance] deleteConnectionVC:self.viewControllers.lastObject];
+        
+        
         //界面pop将代理置空
         return [super popViewControllerAnimated:animated];
     } else {

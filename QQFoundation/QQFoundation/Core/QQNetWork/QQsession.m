@@ -49,11 +49,9 @@ static NSString * const dataKey = @"data";
     }else{
         self.sessionManager.requestSerializer = self.requestJsonSerializer;
     }
-    url = [NSString stringWithFormat:@"%@%@",QQBaseUrl,url];
-
     NSURLSessionDataTask * operation;
     [[QQNetManager instance] insertQQConnection:self];
-    if (self.controller) {
+    if (self.showHUD) {
         [self loading];
     }
     //请求方式
@@ -99,11 +97,10 @@ static NSString * const dataKey = @"data";
                                    success:(void(^)(id responseObject))success
                                      failed:(void(^)(NSError *error))failed
 {
-    NSString *TrueUrl = [NSString stringWithFormat:@"%@%@",QQBaseUrl,urlStr];
-    if (self.controller) {
+    if (self.showHUD) {
         [self loading];
     }
-    NSURLSessionDataTask * operation = [self.sessionManager POST:TrueUrl parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    NSURLSessionDataTask * operation = [self.sessionManager POST:urlStr parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in images) {
             NSData * data = [UIImage lubanCompressImage:image];
             [self extracted:data fileMark:fileMark formData:formData];
