@@ -12,12 +12,17 @@
 #import "MJRefresh.h"
 @interface MCHoveringView ()<UIScrollViewDelegate,MCPageViewDelegate>
 
+/**
+ 头部的高度既悬停的位置 默认取headView的高度
+ */
 @property (nonatomic , assign) CGFloat  headHeight;
 /**是否悬停了*/
 @property (nonatomic , assign) BOOL  isHover;
 /**是否时下拉了手还没松往上滑*/
 @property (nonatomic , assign) BOOL  isDragNORelease;
-
+/**
+ 当前展示view
+ */
 @property (nonatomic , strong) UIScrollView * visibleScrollView;
 @end
 
@@ -109,6 +114,11 @@
         }
     }
 
+}
+- (void)setScorllOffset:(CGFloat)scorllOffset
+{
+    _scorllOffset = scorllOffset;
+    self.headHeight = self.headHeight - scorllOffset;
 }
 - (void)MCPageView:(MCPageView *)MCPageView didSelectIndex:(NSInteger)index
 {

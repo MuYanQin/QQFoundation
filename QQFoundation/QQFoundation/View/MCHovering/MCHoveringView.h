@@ -56,14 +56,30 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MCHoveringView : UIView
 @property (nonatomic , assign) id <MCHoveringListViewDelegate>  delegate;
 - (instancetype)initWithFrame:(CGRect)frame deleaget:(id<MCHoveringListViewDelegate>)delegate;
-//**是否在视图中间刷新 默认NO*/
+/**
+ 是否在视图中间刷新 默认NO
+ */
 @property (nonatomic , assign) BOOL  isMidRefresh;
 
-//**整体的scrollView  用于添加刷新控件*/
+/**
+ 整体的scrollView  用于添加刷新控件
+ */
 @property (nonatomic , strong) UIScrollView * scrollView;
 
-//**分页View*/
+/**
+ 分页View
+ */
 @property (nonatomic , strong) MCPageView * pageView;
+
+/**
+ 滑动悬停的偏移距离 默认0  设置大于0
+ */
+@property (nonatomic , assign) CGFloat  scorllOffset;
+
+/**
+ 
+ */
+@property (nonatomic , assign) CGFloat  headViewHeight;
 
 @end
 
