@@ -54,19 +54,21 @@
 
 @implementation QYSelectImageCell
 @synthesize item = _item;
-
-- (void)cellDidLoad
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super cellDidLoad];
-    [self configCollectionView];
-    self.line = getView(getColorWithHex(@"eeeeee"));
-    [self.contentView addSubview:self.line];
-    
-    [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self);
-        make.height.mas_equalTo(1);
-    }];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self configCollectionView];
+        self.line = getView(getColorWithHex(@"eeeeee"));
+        [self.contentView addSubview:self.line];
+        
+        [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self);
+            make.height.mas_equalTo(1);
+        }];
+    }
+    return self;
 }
+
 - (void)cellWillAppear
 {
     [super cellWillAppear];

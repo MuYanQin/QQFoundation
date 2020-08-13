@@ -14,20 +14,21 @@
 @implementation QYArticleImgCell
 @synthesize item = _item;
 
-- (void)cellDidLoad
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super cellDidLoad];
-    self.imgView = [[UIImageView alloc]init];
-    [self addSubview:self.imgView];
-    
-    [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(5);
-        make.bottom.equalTo(self);
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
-    }];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.imgView = [[UIImageView alloc]init];
+        [self addSubview:self.imgView];
+        
+        [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self).offset(5);
+            make.bottom.equalTo(self);
+            make.left.equalTo(self).offset(15);
+            make.right.equalTo(self).offset(-15);
+        }];
+    }
+    return self;
 }
-
 - (void)cellWillAppear
 {
     [super cellWillAppear];

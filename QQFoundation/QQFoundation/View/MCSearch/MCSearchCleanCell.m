@@ -21,22 +21,24 @@
 @implementation MCSearchCleanCell
 
 @synthesize item = _item;
-
-- (void)cellDidLoad
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super cellDidLoad];
-    self.del = [QQButton buttonWithType:UIButtonTypeCustom];
-    self.del.Qtarget(self, @selector(closeC))
-    .QtextClolor(getColorWithHex(@"999999"))
-    .QfontWeight(13, QM);
-    [self addSubview:self.del];
-    
-    [self.del mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.centerY.equalTo(self);
-        make.height.mas_equalTo(30);
-        make.width.mas_equalTo(100);
-    }];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.del = [QQButton buttonWithType:UIButtonTypeCustom];
+        self.del.Qtarget(self, @selector(closeC))
+        .QtextClolor(getColorWithHex(@"999999"))
+        .QfontWeight(13, QM);
+        [self addSubview:self.del];
+        
+        [self.del mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.centerY.equalTo(self);
+            make.height.mas_equalTo(30);
+            make.width.mas_equalTo(100);
+        }];
+    }
+    return self;
 }
+
 - (void)cellWillAppear
 {
     [super cellWillAppear];

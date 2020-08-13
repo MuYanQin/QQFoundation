@@ -19,17 +19,20 @@
 @end
 @implementation MCAllTextCell
 @synthesize item = _item;
-- (void)cellDidLoad
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super cellDidLoad];
-    self.textLb = [[UILabel alloc]init];
-    self.textLb.numberOfLines = 0;
-    [self.contentView addSubview:self.textLb];
-    
-    [self.textLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self).offset(10);
-        make.bottom.right.equalTo(self).offset(-10);
-    }];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.textLb = [[UILabel alloc]init];
+        self.textLb.numberOfLines = 0;
+        [self.contentView addSubview:self.textLb];
+        
+        [self.textLb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.equalTo(self).offset(10);
+            make.bottom.right.equalTo(self).offset(-10);
+        }];
+    }
+    return self;
 }
 - (void)cellWillAppear
 {

@@ -28,8 +28,6 @@
 @property (nonatomic , assign) BOOL  allowEditing;
 @property (strong, readonly ,nonatomic) NSMutableArray *allItems;
 @property (nonatomic , strong) NSMutableArray *sections;
-@property (strong, readwrite, nonatomic) NSMutableDictionary *registeredClasses;
-
 
 /**
 实例化方法   不可将QQTableViewManager作为局部变量 不然delegate指向nil
@@ -80,7 +78,5 @@ UITableView的代理由 QQTableViewManager 实现 所以必须将QQTableViewMana
 - (void)reloadData;
 
 //MARK:以下方法重写字典方法
-- (id)objectAtKeyedSubscript:(id <NSCopying>)key;
-
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
 @end

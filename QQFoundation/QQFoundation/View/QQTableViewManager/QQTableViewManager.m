@@ -17,7 +17,6 @@
         self.tableView = tableView;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.sections = [NSMutableArray array];
-        self.registeredClasses = [NSMutableDictionary dictionary];
         tableView.delegate = self;
         tableView.dataSource = self;
     }
@@ -32,10 +31,9 @@
 {
     NSAssert(NSClassFromString(objectClass), ([NSString stringWithFormat:@"Item class '%@' does not exist.", objectClass]));
     NSAssert(NSClassFromString(identifier), ([NSString stringWithFormat:@"Cell class '%@' does not exist.", identifier]));
-    self.registeredClasses[(id <NSCopying>)NSClassFromString(objectClass)] = NSClassFromString(identifier);
-    
+    [self.tableView registerClass:NSClassFromString(identifier) forCellReuseIdentifier:objectClass];
     // Perform check if a XIB exists with the same name as the cell class
-    //
+    
     if (!bundle)
         bundle = [NSBundle mainBundle];
     
@@ -48,10 +46,7 @@
 {
     [self registerClass:(NSString *)key forCellWithReuseIdentifier:obj];
 }
-- (id)objectAtKeyedSubscript:(id <NSCopying>)key
-{
-    return self.registeredClasses[key];
-}
+
 
 - (NSMutableArray *)allItems
 {
@@ -88,16 +83,10 @@
     QQTableViewSection *section = self.sections[indexPath.section];
     QQTableViewItem * item = section.items[indexPath.row];
     item.tableViewManager = self;    
-    UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     
     NSString *cellIdentifier = [NSString stringWithFormat:@"%@", [item class]];
-    Class cellClass = self.registeredClasses[item.class];
-    
     QQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[cellClass alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
-        [cell cellDidLoad];
-    }
+    
     cell.item = item;
     cell.detailTextLabel.text = nil;
     [cell cellWillAppear];

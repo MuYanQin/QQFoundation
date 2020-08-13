@@ -25,10 +25,14 @@
 @implementation QYEmptyCell
 
 @synthesize item = _item;
-- (void)cellDidLoad
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super cellDidLoad];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+    }
+    return self;
 }
+
 - (void)cellWillAppear
 {
     [super cellWillAppear];

@@ -10,7 +10,13 @@
 @implementation QQTableViewCell
 
 - (void)cellDidLoad{
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return self;
 }
 - (void)cellWillAppear{
     if (self.item.bgColor) {

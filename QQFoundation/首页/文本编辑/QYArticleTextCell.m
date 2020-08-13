@@ -19,33 +19,37 @@
 @end
 @implementation QYArticleTextCell
 @synthesize item = _item;
-- (void)cellDidLoad
-{
-    [super cellDidLoad];
-    self.accessorV = [[QYArticleAccessoryView alloc]initWithFrame:CGRectMake(0, 0, 0, 40)];
-    QQWeakSelf
-    self.accessorV.clickIndex = ^(NSInteger index) {
-        if (weakSelf.item.selectImgBlock && index ==1) {
-            weakSelf.item.selectImgBlock();
-        }else if (weakSelf.item.addTextItemBlock && index ==0){
-            weakSelf.item.addTextItemBlock();
-        }
-    };
-    self.textView = [[QQTextView alloc]init];
-    self.textView.inputAccessoryView = self.accessorV;
-    self.textView.font = getFontRegular(14);
-    [self.textView scrollRangeToVisible:self.textView.selectedRange];
-    self.textView.delegate = self;
-    self.textView.placeholder = @"请输入文字";
-    [self addSubview:self.textView];
-    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(10);
-        make.bottom.equalTo(self).offset(-10);
 
-        make.left.equalTo(self).offset(15);
-        make.right.equalTo(self).offset(-15);
-    }];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.accessorV = [[QYArticleAccessoryView alloc]initWithFrame:CGRectMake(0, 0, 0, 40)];
+       QQWeakSelf
+       self.accessorV.clickIndex = ^(NSInteger index) {
+           if (weakSelf.item.selectImgBlock && index ==1) {
+               weakSelf.item.selectImgBlock();
+           }else if (weakSelf.item.addTextItemBlock && index ==0){
+               weakSelf.item.addTextItemBlock();
+           }
+       };
+       self.textView = [[QQTextView alloc]init];
+       self.textView.inputAccessoryView = self.accessorV;
+       self.textView.font = getFontRegular(14);
+       [self.textView scrollRangeToVisible:self.textView.selectedRange];
+       self.textView.delegate = self;
+       self.textView.placeholder = @"请输入文字";
+       [self addSubview:self.textView];
+       [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+           make.top.equalTo(self).offset(10);
+           make.bottom.equalTo(self).offset(-10);
+
+           make.left.equalTo(self).offset(15);
+           make.right.equalTo(self).offset(-15);
+       }];
+    }
+    return self;
 }
+
 - (void)textViewDidChange:(UITextView *)textView
 {
     self.item.text = textView.text;

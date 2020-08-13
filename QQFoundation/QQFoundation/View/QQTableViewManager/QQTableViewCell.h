@@ -11,12 +11,6 @@
 @interface QQTableViewCell : UITableViewCell
 @property (nonatomic, strong) QQTableViewItem *item;
 
-
-/**
- cell加载的方法
- */
-- (void)cellDidLoad;
-
 /**
  cell将要出现 这里添加数据
  */
