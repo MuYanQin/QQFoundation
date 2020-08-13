@@ -61,6 +61,7 @@ static const NSInteger itemTag = 100;
     _fontScale = 0.2;
     //初始化横线的宽度是title的一半
     _lineWitdhScale = 0.5;
+    _lineHeight = 1;
     self.isClick = NO;
     [self addSubview:self.titleScroll];
     [self addSubview:self.contentCollection];
@@ -86,6 +87,7 @@ static const NSInteger itemTag = 100;
         UIViewController *childVC = self.contentCtrollers[indexPath.item];
         childVC.view.frame = cell.contentView.bounds;
         [cell.contentView addSubview:childVC.view];
+        [self.viewController addChildViewController:childVC];
     }else{
         UIView *childV = self.contentCtrollers[indexPath.item];
         childV.frame = cell.contentView.bounds;
@@ -377,13 +379,14 @@ static const NSInteger itemTag = 100;
 - (void)setTitleViewHeight:(CGFloat)titleViewHeight
 {
     _titleViewHeight = titleViewHeight;
-    [self setNeedsLayout];
+    self.titleScroll.height = self.titleViewHeight;
+    //由于修改 UICollectionView 的frame会重置 contenOffset值 就会引起scrollViewDidScroll代理执行 会造成 设置初始下表不正确
+    //故 需要在调用 selectIndex 方法前设置此属性
+    self.contentCollection.top = self.titleScroll.bottom;
+    self.contentCollection.height = self.height - self.titleScroll.bottom;
+    self.lineView.top  = self.titleViewHeight - self.lineHeight;
 }
-- (void)layoutSubviews
-{
-    self.titleScroll.frame = CGRectMake(_marginToLfet, 0, KScreenWidth  - _marginToRight - _marginToLfet, self.titleViewHeight);
-    self.contentCollection.frame =  CGRectMake(0, self.titleScroll.bottom, kwidth, self.height - self.titleScroll.bottom);
-}
+
 /**设置选中titlebtn的宽度*/
 - (void)setTitleButtonWidth:(CGFloat)titleButtonWidth
 {
@@ -425,7 +428,7 @@ static const NSInteger itemTag = 100;
 - (UIView *)lineView
 {
     if (!_lineView) {
-        _lineView = [[UIView alloc]initWithFrame:CGRectMake(_titleButtonWidth/4, self.titleViewHeight - 1, _titleButtonWidth/2, 1)];
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake(_titleButtonWidth/4, self.titleViewHeight - 1, _titleButtonWidth/2, self.lineHeight)];
         _lineView.backgroundColor = self.selectTitleColor;
     }
     return _lineView;
@@ -489,7 +492,7 @@ static const NSInteger itemTag = 100;
                 [weakSelf.itemArray addObject:item];
                 [weakSelf.titleScroll addSubview:item];
                 
-                
+                [weakSelf.titleScroll addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:weakSelf.titleScroll attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
                 [weakSelf.titleScroll addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:weakSelf.titleScroll attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0]];
                 [weakSelf.titleScroll addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:weakSelf.titleScroll attribute:NSLayoutAttributeLeft multiplier:1 constant:idx *weakSelf.titleButtonWidth]];
                 

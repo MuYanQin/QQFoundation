@@ -31,7 +31,6 @@
     [titles addObject:@"军事"];
     [controllers addObject:[MCPageViewSub3ViewController new]];
     [titles addObject:@"娱乐"];
-
     
     self.PageView = [[MCPageView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight - MCBottomDistance) titles:titles controllers:controllers];
     //默认评分屏幕

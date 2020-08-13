@@ -83,8 +83,10 @@
 @property (nonatomic , assign) BOOL  canSlide;
 
 /**
- 可选 设置头部滑动部分的高度
- */
+可选 设置头部滑动部分的高度
+由于修改 UICollectionView 的frame会重置 contenOffset值 就会引起scrollViewDidScroll代理执行 会造成 设置初始下表不正确
+故 需要在调用 selectIndex 方法前设置此属性
+*/
 @property (nonatomic , assign) CGFloat  titleViewHeight;
 
 
@@ -111,10 +113,10 @@
 - (void)setBadgeWithIndex:(NSInteger)index  badge:(NSInteger)badge;
 
 /**
- 可选 手动选中某个iem
- 
- @param index item下标
- */
+可选 手动选中某个iem
+在 titleViewHeight 后使用此方法 原因见 titleViewHeight 属性说明
+@param index item下标
+*/
 - (void)selectIndex:(NSInteger)index;
 
 /**

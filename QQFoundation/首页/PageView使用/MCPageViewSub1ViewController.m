@@ -8,7 +8,7 @@
 
 #import "MCPageViewSub1ViewController.h"
 #import "MCSearchCell.h"
-
+#import "MCHomeViewController.h"
 @interface MCPageViewSub1ViewController ()
 
 @end
@@ -19,17 +19,29 @@
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
     self.BaseQQTableView.hasHeaderRefresh = NO;
-    self.BaseQQTableView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - MCNavHeight);
+    self.BaseQQTableView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - MCNavHeight - 50);
     QQTableViewSection *sec = [QQTableViewSection section];
     for (int i = 0; i<=100; i++) {
         MCSearchItem *item = [[MCSearchItem alloc]init];
+        item.selcetCellHandler = ^(id item) {
+            [self.navigationController pushViewController:[MCHomeViewController new] animated:YES];
+        };
         item.text = [NSString stringWithFormat:@"Search=%d",i];
         [sec addItem:item];
     }
     [self.BaseMutableArray addObject:sec];
     [self.tabManager replaceWithSectionsFromArray:self.BaseMutableArray];
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"123");
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"321");
+}
 /*
 #pragma mark - Navigation
 

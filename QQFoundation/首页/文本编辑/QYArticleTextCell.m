@@ -34,7 +34,7 @@
     self.textView = [[QQTextView alloc]init];
     self.textView.inputAccessoryView = self.accessorV;
     self.textView.font = getFontRegular(14);
-    [self.textView becomeFirstResponder];
+    [self.textView scrollRangeToVisible:self.textView.selectedRange];
     self.textView.delegate = self;
     self.textView.placeholder = @"请输入文字";
     [self addSubview:self.textView];
