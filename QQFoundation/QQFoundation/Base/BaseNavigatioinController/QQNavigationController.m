@@ -37,21 +37,32 @@
    //设置透明度  相差64像素  YES会有蒙层
     //YES (0,0)->(0,0)  NO(0.64) - >(0,0)
     self.navigationBar.translucent = YES;
-    self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
-    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
+    
+    
+    //ios15 之后开始添加
+    if (@available(iOS 13.0, *)) {
+         UINavigationBarAppearance *barApp = [UINavigationBarAppearance new];
+         barApp.backgroundColor = getColorWithAlpha(0, 122, 255, 1);
+         barApp.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil];
+         [[UINavigationBar appearance] setScrollEdgeAppearance:barApp];
+    }else{
+        self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
+        [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
 
+        //nav下面的横线消失
+        self.navigationBar.shadowImage = [UIImage new];
+        //iOS 10 设置backBarButtonItem颜色
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    }
+    
+    
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)){
         self.edgesForExtendedLayout = UIRectEdgeNone;//视图控制器，四条边不指定
-        
         //如应用中出现seachbar的跳动，视图位置出现问题，有可能是这里引起的
         self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
         //设置状态栏的不隐藏
         self.modalPresentationCapturesStatusBarAppearance = NO;
     }
-    //nav下面的横线消失
-    self.navigationBar.shadowImage = [UIImage new];
-    //iOS 10 设置backBarButtonItem颜色
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 /**
