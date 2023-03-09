@@ -1508,12 +1508,12 @@
 				TargetAttributes = {
 					4B4D16B820EB9D7F0058794C = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = 2VRQMS6TMZ;
+						DevelopmentTeam = X295BKU7Z7;
 						ProvisioningStyle = Automatic;
 					};
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 2VRQMS6TMZ;
+						DevelopmentTeam = X295BKU7Z7;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1838,7 +1838,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				DEVELOPMENT_TEAM = X295BKU7Z7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MCServerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -1867,7 +1867,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				DEVELOPMENT_TEAM = X295BKU7Z7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MCServerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -1980,9 +1980,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				DEVELOPMENT_TEAM = X295BKU7Z7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/leaduadmin/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/peanut/Documents/GitHub/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2003,9 +2003,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2VRQMS6TMZ;
+				DEVELOPMENT_TEAM = X295BKU7Z7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/leaduadmin/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/peanut/Documents/GitHub/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
