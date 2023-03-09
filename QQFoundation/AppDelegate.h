@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic , strong) QQTabBarController * TabBar;
+@property (nonatomic , strong) QQTabBarController * TabBar2;
+@property (nonatomic , strong) QQTabBarController * TabBa3;
+@property (nonatomic , strong) QQTabBarController * TabBar4;
+
 
 @end
 
