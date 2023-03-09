@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QQTabBarController.h"
-//测试 我不知道这次行不行2
+//测试 我不知道
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
