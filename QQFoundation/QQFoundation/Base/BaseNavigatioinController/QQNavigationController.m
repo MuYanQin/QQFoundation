@@ -102,7 +102,7 @@
         }
         [navigationController setNavigationBarHidden:NO animated:YES];
         ///及时将代理设置为空 否则代理存在 但是界面pop之后会引起空指针
-//        self.navHiddenDelegate = nil;
+        self.navHiddenDelegate = nil;
     }
     
 }
@@ -134,8 +134,8 @@
         return YES;
     }
     //响应代理 栈顶VC相同 则返回NO
-    if ([self.navBackDelegate respondsToSelector:@selector(backItemClickEvent)]) {
-        if(self.topViewController == [self.navBackDelegate backItemClickEvent] ){
+    if ([self.navBackDelegate respondsToSelector:@selector(needBackNav)]) {
+        if(self.topViewController == [self.navBackDelegate needBackNav] ){
             [self.navBackDelegate backItemClickEvent];
             return NO;
         }

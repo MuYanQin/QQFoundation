@@ -16,7 +16,9 @@
  使用时viewController 在viewWillAppear中添加代理
  @return 获取点击事件的viewController
 */
-- (UIViewController *)backItemClickEvent;
+- (void)backItemClickEvent;
+
+- (UIViewController *)needBackNav;
 
 @end
 

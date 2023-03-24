@@ -24,7 +24,10 @@
     [super viewWillAppear:animated];
     ((QQNavigationController *)self.navigationController).navBackDelegate = self;
 }
-- (UIViewController *)backItemClickEvent
+- (UIViewController *)needBackNav{
+    return self;
+}
+- (void)backItemClickEvent
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定返回嘛？" preferredStyle:(UIAlertControllerStyleAlert)];
     QQWeakSelf
@@ -35,7 +38,6 @@
     [alert addAction:cancel];
     [alert addAction:sure];
     [self presentViewController:alert animated:YES completion:nil];
-    return self;
 }
 /*
 #pragma mark - Navigation
