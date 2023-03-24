@@ -40,9 +40,9 @@
 @property (nonatomic,assign) BOOL forbidSlider;///<是否禁止滑动
 
 /// 代理
-@property (nonatomic , assign) id<QQNavigationNavHiddenDelegate>  navHiddenDelegate;
+@property (nonatomic , weak) id<QQNavigationNavHiddenDelegate>  navHiddenDelegate;
 
-@property (nonatomic , assign) id<QQNavigationNavBackDelegate>  navBackDelegate;
+@property (nonatomic , weak) id<QQNavigationNavBackDelegate>  navBackDelegate;
 
 @end
 

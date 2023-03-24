@@ -29,7 +29,7 @@
 @end
 
 @interface QQtableView : UITableView<UIGestureRecognizerDelegate>
-@property (assign,nonatomic) id<QQtableViewRequestDelegate> requestDelegate;
+@property (weak,nonatomic) id<QQtableViewRequestDelegate> requestDelegate;
 //配合MCHoveringView使用的属性 在QQTableViewManager中被调用。MCHoveringView使用/
 //**获取tableView偏移量的Block*/
 @property (nonatomic , copy) void(^scrollViewDidScroll)(UIScrollView * scrollView);

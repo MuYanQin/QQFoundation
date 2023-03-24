@@ -102,7 +102,7 @@
         }
         [navigationController setNavigationBarHidden:NO animated:YES];
         ///及时将代理设置为空 否则代理存在 但是界面pop之后会引起空指针
-        self.navHiddenDelegate = nil;
+//        self.navHiddenDelegate = nil;
     }
     
 }
