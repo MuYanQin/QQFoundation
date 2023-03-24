@@ -1508,12 +1508,12 @@
 				TargetAttributes = {
 					4B4D16B820EB9D7F0058794C = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = X295BKU7Z7;
+						DevelopmentTeam = L4674B5247;
 						ProvisioningStyle = Automatic;
 					};
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = X295BKU7Z7;
+						DevelopmentTeam = L4674B5247;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1838,12 +1838,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X295BKU7Z7;
+				DEVELOPMENT_TEAM = L4674B5247;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MCServerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation.MCServerExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa.MCServerExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1867,12 +1867,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X295BKU7Z7;
+				DEVELOPMENT_TEAM = L4674B5247;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MCServerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation.MCServerExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa.MCServerExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1980,13 +1980,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X295BKU7Z7;
+				DEVELOPMENT_TEAM = L4674B5247;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/peanut/Documents/GitHub/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/peanut/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -2003,13 +2003,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X295BKU7Z7;
+				DEVELOPMENT_TEAM = L4674B5247;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/peanut/Documents/GitHub/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/peanut/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
