@@ -22,14 +22,14 @@
  *  添加nav上右按钮，图片
  */
 - (void)nav_RightItemWithImg:(NSString *)imgName Selector:(SEL)sel{
-    UIButton *leftCustomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [leftCustomButton.widthAnchor constraintEqualToConstant:20].active = YES;
-    [leftCustomButton.heightAnchor constraintEqualToConstant:20].active = YES;
-    [leftCustomButton addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
-    [leftCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
-    [leftCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateHighlighted];
-    UIBarButtonItem * leftButtonItem =[[UIBarButtonItem alloc] initWithCustomView:leftCustomButton];
-    self.navigationItem.rightBarButtonItem = leftButtonItem;
+    UIButton *rightCustomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [rightCustomButton.widthAnchor constraintEqualToConstant:20].active = YES;
+    [rightCustomButton.heightAnchor constraintEqualToConstant:20].active = YES;
+    [rightCustomButton addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+    [rightCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    [rightCustomButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateHighlighted];
+    UIBarButtonItem * rightCustomItem =[[UIBarButtonItem alloc] initWithCustomView:rightCustomButton];
+    self.navigationItem.rightBarButtonItem = rightCustomItem;
 }
 
 /**
