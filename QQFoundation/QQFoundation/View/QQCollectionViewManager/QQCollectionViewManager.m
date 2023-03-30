@@ -36,14 +36,34 @@
     NSAssert(NSClassFromString(objectClass), ([NSString stringWithFormat:@"Item class '%@' does not exist.", objectClass]));
     NSAssert(NSClassFromString(identifier), ([NSString stringWithFormat:@"Cell class '%@' does not exist.", identifier]));
     
-    [self.collectionView registerClass:NSClassFromString(identifier) forCellWithReuseIdentifier:objectClass];
-
     if (!bundle)
         bundle = [NSBundle mainBundle];
     
-    if ([bundle pathForResource:identifier ofType:@"nib"]) {
-        [self.collectionView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellWithReuseIdentifier:objectClass];
+    if ([identifier hasSuffix:@"Cell"]){
+        if([bundle pathForResource:identifier ofType:@"nib"]){
+            [self.collectionView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellWithReuseIdentifier:objectClass];
+        }else{
+            [self.collectionView registerClass:NSClassFromString(identifier) forCellWithReuseIdentifier:objectClass];
+        }
+    }else{
+        if([bundle pathForResource:identifier ofType:@"nib"]){
+            if ([identifier containsString:@"footer"] || [identifier containsString:@"Footer"]){
+    
+                [self.collectionView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:objectClass];
+            }else{
+                //注册头视图
+                [self.collectionView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:objectClass];
+            }
+        }else{
+            if ([identifier containsString:@"footer"] || [identifier containsString:@"Footer"]){
+                [self.collectionView registerClass:NSClassFromString(identifier) forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:objectClass];
+            }else{
+                //注册头视图
+                [self.collectionView registerClass:NSClassFromString(identifier) forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:objectClass];
+            }
+        }
     }
+
 }
 //MARK:重写字典的写入方法  自定义下标
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key

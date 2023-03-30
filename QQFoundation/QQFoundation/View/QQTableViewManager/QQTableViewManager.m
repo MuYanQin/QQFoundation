@@ -31,15 +31,25 @@
 {
     NSAssert(NSClassFromString(objectClass), ([NSString stringWithFormat:@"Item class '%@' does not exist.", objectClass]));
     NSAssert(NSClassFromString(identifier), ([NSString stringWithFormat:@"Cell class '%@' does not exist.", identifier]));
-    [self.tableView registerClass:NSClassFromString(identifier) forCellReuseIdentifier:objectClass];
-    // Perform check if a XIB exists with the same name as the cell class
     
     if (!bundle)
         bundle = [NSBundle mainBundle];
     
-    if ([bundle pathForResource:identifier ofType:@"nib"]) {
-        [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellReuseIdentifier:objectClass];
+    if ([identifier hasSuffix:@"Cell"]){
+        if([bundle pathForResource:identifier ofType:@"nib"]){
+            [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forCellReuseIdentifier:objectClass];
+        }else{
+            [self.tableView registerClass:NSClassFromString(identifier) forCellReuseIdentifier:objectClass];
+
+        }
+    }else{
+        if([bundle pathForResource:identifier ofType:@"nib"]){
+            [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:bundle] forHeaderFooterViewReuseIdentifier:objectClass];
+        }else{
+            [self.tableView registerClass:NSClassFromString(identifier) forHeaderFooterViewReuseIdentifier:objectClass];
+        }
     }
+
 }
 //MARK:重写字典的写入方法  自定义下标
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key
