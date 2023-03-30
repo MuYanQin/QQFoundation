@@ -60,6 +60,9 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     if (@available(iOS 11.0, *)) {
         self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    if (@available(iOS 15.0, *)) {
+        self.sectionHeaderTopPadding = 0;
+    }
     self.sectionFooterHeight = 0;
     self.sectionHeaderHeight = 0;
     self.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,  self.width, CGFLOAT_MIN)];
