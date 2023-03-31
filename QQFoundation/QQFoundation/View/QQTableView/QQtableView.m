@@ -20,6 +20,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
 @property (nonatomic , strong) UIView *footerView;
 @end
 @implementation QQtableView
+/*
 + (void)load
 {
     Method originalMethod = class_getInstanceMethod(self, @selector(reloadData));
@@ -39,6 +40,7 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
+ */
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -74,7 +76,23 @@ static NSString * const pageIndex = @"pageIndex";//获取第几页的根据自�
     _hasNetError = NO;
     self.canResponseMutiGesture = NO;
 }
-
+- (void)reloadData{
+    [super reloadData];
+    //空的直接返回出去不做任何处理
+    NSInteger sections = [self numberOfSections];
+    if (sections == 0) {
+        return;
+    }
+    if (self.getTotal == 0 && _hasNetError) {
+        //这里是网络出错的数据为空
+        self.tableFooterView = self.emptyView;
+    }else if (self.getTotal == 0 ){
+        //就是数据为空
+        self.tableFooterView =  self.emptyView;
+    }else{
+        [self setTableFooterView:self.footerView];
+    }
+}
 - (void)mc_reloadData
 {
     [self mc_reloadData];
