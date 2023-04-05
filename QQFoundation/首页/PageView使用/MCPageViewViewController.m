@@ -43,7 +43,7 @@
     self.PageView.defaultTitleFont = [UIFont systemFontOfSize:16];
     self.PageView.defaultTitleColor = [UIColor redColor];
     self.PageView.selectTitleColor = [UIColor purpleColor];
-    [self.PageView selectIndex:1];
+    [self.PageView selectIndex:3];
     [self.view addSubview:self.PageView];
 }
 - (void)badgeClick

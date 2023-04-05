@@ -16,6 +16,7 @@
 @implementation MCPageViewSub1ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"viewDidLoad");
     // Do any additional setup after loading the view.
     self.tabManager[@"MCSearchItem"] = @"MCSearchCell";
     self.BaseQQTableView.hasHeaderRefresh = NO;
@@ -35,12 +36,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"123");
+    NSLog(@"viewWillAppear");
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"321");
+    NSLog(@"viewWillDisappear");
 }
 /*
 #pragma mark - Navigation

@@ -209,7 +209,7 @@ static const NSInteger itemTag = 100;
 }
 - (void)selectIndex:(NSInteger)index
 {
-    if (index <0 || index >self.contentCtrollers.count) {
+    if (index <0 || index >= self.contentCtrollers.count) {
         NSLog(@"滚动的位置大于条目数");
         return;
     }
