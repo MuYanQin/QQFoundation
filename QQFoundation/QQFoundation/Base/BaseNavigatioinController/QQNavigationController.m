@@ -44,7 +44,11 @@
          UINavigationBarAppearance *barApp = [UINavigationBarAppearance new];
          barApp.backgroundColor = getColorWithAlpha(0, 122, 255, 1);
          barApp.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil];
-         [[UINavigationBar appearance] setScrollEdgeAppearance:barApp];
+        
+        [barApp setBackIndicatorImage:[UIImage imageNamed:@"arrow-right-short"] transitionMaskImage:[UIImage imageNamed:@"arrow-right-short"]];
+        [[UINavigationBar appearance] setScrollEdgeAppearance:barApp];
+        [[UINavigationBar appearance] setStandardAppearance:barApp];
+
     }else{
         //导航颜色
         self.navigationBar.barTintColor = getColorWithAlpha(0, 122, 255, 1);
@@ -53,6 +57,10 @@
 
         //nav下面的横线消失
         self.navigationBar.shadowImage = [UIImage new];
+        
+        UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
+        navigationBarAppearance.backIndicatorImage = [UIImage imageNamed:@"arrow-right-short"];
+        navigationBarAppearance.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"arrow-right-short"];
     }
     
 }
@@ -191,15 +199,14 @@
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
     }
-
+    
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-    textAttrs[NSFontAttributeName] = getFontRegular(14);
-    [backItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     //返回按钮的颜色
     [backItem setTintColor:[UIColor yellowColor]];
     viewController.navigationItem.backBarButtonItem = backItem;
+    
+    
+//
     [super pushViewController:viewController animated:animated];
 }
 
