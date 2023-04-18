@@ -55,7 +55,7 @@
 }
 - (NSArray<UIScrollView *> *)listView
 {
-    return @[search.BaseQQTableView,Author.BaseQQTableView,mine.BaseQQTableView];
+    return @[search.BaseQQTableView,Author.BaseQQTableView,mine.view];
 }
 - (UIView *)headView
 {

@@ -77,13 +77,22 @@
 /**监听scrollView的偏移量*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    NSLog(@"====%f",scrollView.contentOffset.y);
     if (scrollView == self.scrollView) {
         /**设置headView的位置*/
         //向上滑动偏移量大于等于某个值悬停
-        if (self.scrollView.contentOffset.y >= self.headHeight || self.isHover ) {
-            self.scrollView.contentOffset = CGPointMake(0, self.headHeight);
-            self.isHover = YES;
+        if ((![self.visibleScrollView isKindOfClass:[QQtableView class]] & ![self.visibleScrollView isKindOfClass:[QQCollectionView class]])){
+            if (self.scrollView.contentOffset.y >= self.headHeight) {
+                self.scrollView.contentOffset = CGPointMake(0, self.headHeight);
+                self.isHover = YES;
+            }
+        }else{
+            if (self.scrollView.contentOffset.y >= self.headHeight || self.isHover ) {
+                self.scrollView.contentOffset = CGPointMake(0, self.headHeight);
+                self.isHover = YES;
+            }
         }
+
         
         if (self.isMidRefresh) {
             if (self.visibleScrollView.contentOffset.y<=0 && scrollView.contentOffset.y <=0) {
@@ -141,7 +150,7 @@
         QQtableView *tablView = (QQtableView *)self.visibleScrollView;
         tablView.canResponseMutiGesture = can;
 
-    }else{
+    }else if ([self.visibleScrollView isKindOfClass:[QQCollectionView class]]){
         QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
         conllectionView.canResponseMutiGesture = can;
     }
@@ -154,7 +163,7 @@
         tablView.scrollViewDidScroll = ^(UIScrollView *scrollView) {
             [weakSelf tableViewDidScroll:scrollView];
         };
-    }else{
+    }else  if ([self.visibleScrollView isKindOfClass:[QQCollectionView class]]){
         QQCollectionView *conllectionView = (QQCollectionView *)self.visibleScrollView;
         conllectionView.canResponseMutiGesture = YES;
         __weak typeof(self)weakSelf = self;
