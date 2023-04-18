@@ -386,7 +386,13 @@ static const NSInteger itemTag = 100;
     self.contentCollection.height = self.height - self.titleScroll.bottom;
     self.lineView.top  = self.titleViewHeight - self.lineHeight;
 }
+- (void)setPageViewHeight:(CGFloat)pageViewHeight
+{
+    _pageViewHeight = pageViewHeight;
+    self.height = pageViewHeight;
+    self.contentCollection.height = self.height - self.titleScroll.bottom;
 
+}
 /**设置选中titlebtn的宽度*/
 - (void)setTitleButtonWidth:(CGFloat)titleButtonWidth
 {

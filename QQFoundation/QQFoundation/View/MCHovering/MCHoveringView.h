@@ -76,11 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic , assign) CGFloat  scorllOffset;
 
-/**
- 
- */
-@property (nonatomic , assign) CGFloat  headViewHeight;
-
 @end
 
 NS_ASSUME_NONNULL_END

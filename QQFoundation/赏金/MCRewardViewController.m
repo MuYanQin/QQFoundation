@@ -34,7 +34,7 @@
     self.navigationItem.title = @"案例使用2";
     search= [MCSearchTViewController new];
     Author.fromHovering = YES;
-    search.BaseQQTableView.height = search.BaseQQTableView.height - MCTabbarHeight - 50;
+    search.BaseQQTableView.height = search.BaseQQTableView.height - MCTabbarHeight - 50 - 100;
     Author  = [MCAuthorViewController new];
     Author.fromHovering = YES;
     mine = [MCMineViewController new];
@@ -46,6 +46,7 @@
     
     MCHoveringView *hovering = [[MCHoveringView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight - MCBottomDistance - MCTabbarHeight) deleaget:self];
     hovering.isMidRefresh = YES;
+    hovering.scorllOffset = 100;
     [self.view addSubview:hovering];
     
     hovering.pageView.selectTitleFont = [UIFont systemFontOfSize:16];

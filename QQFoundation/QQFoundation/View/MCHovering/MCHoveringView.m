@@ -77,7 +77,6 @@
 /**监听scrollView的偏移量*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"====%f",scrollView.contentOffset.y);
     if (scrollView == self.scrollView) {
         /**设置headView的位置*/
         //向上滑动偏移量大于等于某个值悬停
@@ -116,7 +115,7 @@
             //列表的便宜度都设置为零
             NSArray<UIScrollView *> *tem  = [self.delegate listView];
             for (UIScrollView *subS in tem) {
-                if (!self.isDragNORelease && midRefresh &&  [subS isKindOfClass:[UIScrollView class]]) {
+                if ([subS isKindOfClass:[UIScrollView class]] && !self.isDragNORelease && midRefresh) {
                     subS.contentOffset = CGPointZero;
                 }
             }

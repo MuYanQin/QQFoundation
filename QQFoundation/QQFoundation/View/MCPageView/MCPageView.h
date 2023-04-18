@@ -90,6 +90,9 @@
 @property (nonatomic , assign) CGFloat  titleViewHeight;
 
 
+/// 有些时候可能会调整pageView的高度
+@property (nonatomic , assign) CGFloat  pageViewHeight;
+
 /**
  可选 设置选中时候字体当大的倍数 0～1 默认0.2
 */
