@@ -95,7 +95,7 @@
 
         
         if (self.isMidRefresh) {
-            if (self.visibleScrollView.contentOffset.y<=0 && scrollView.contentOffset.y <=0) {
+            if ([self.visibleScrollView isKindOfClass:[UIScrollView class]] && self.visibleScrollView.contentOffset.y<=0 && scrollView.contentOffset.y <=0) {
                 self.scrollView.contentOffset = CGPointZero;
             }else{
                 [self changeTabContentOffsetToZero:YES];
@@ -116,7 +116,7 @@
             //列表的便宜度都设置为零
             NSArray<UIScrollView *> *tem  = [self.delegate listView];
             for (UIScrollView *subS in tem) {
-                if (!self.isDragNORelease && midRefresh) {
+                if (!self.isDragNORelease && midRefresh &&  [subS isKindOfClass:[UIScrollView class]]) {
                     subS.contentOffset = CGPointZero;
                 }
             }

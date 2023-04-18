@@ -45,7 +45,7 @@
     
     
     MCHoveringView *hovering = [[MCHoveringView alloc]initWithFrame:CGRectMake(0, MCNavHeight, KScreenWidth, KScreenHeight - MCNavHeight - MCBottomDistance - MCTabbarHeight) deleaget:self];
-    hovering.isMidRefresh = NO;
+    hovering.isMidRefresh = YES;
     [self.view addSubview:hovering];
     
     hovering.pageView.selectTitleFont = [UIFont systemFontOfSize:16];
