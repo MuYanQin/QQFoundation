@@ -9,7 +9,8 @@
 #import "MCMineViewController.h"
 #import "MCSearchCell.h"
 #import "NSObject+MB.h"
-@interface MCMineViewController ()
+#import "QQImagePicker.h"
+@interface MCMineViewController ()<QQImagePickerDelegate>
 
 @end
 
@@ -46,15 +47,16 @@
 }
 - (void)btnClick
 {
-    [self message:@"123"];
-
+    QQImagePicker * im = [QQImagePicker ShareInstance];
+    [im initwithCropRect:CGRectMake(50, 200, KScreenWidth - 100, 200) ChoosePicType:(QQChoosePicLibray)];
+    im.delegate = self;
 }
 - (void)btnClick1
 {
-    [self loadingWith:@"加载中。。。"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self message:@"123"];
-    });
+//    [self loadingWith:@"加载中。。。"];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self message:@"123"];
+//    });
 }
 - (void)QQtableView:(QQtableView *)QQtableView requestFailed:(NSError *)error
 {

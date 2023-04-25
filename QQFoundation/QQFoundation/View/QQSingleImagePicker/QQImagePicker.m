@@ -42,6 +42,7 @@
     }else{
         self.ImagePickerController.sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
     }
+    self.ImagePickerController.modalPresentationStyle =  UIModalPresentationFullScreen;
     self.CropRect = CropRect;
     [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:self.ImagePickerController animated:YES completion:nil];
 }
@@ -89,8 +90,9 @@
         //popToRootViewControllerAnimated原因是 如果选择的是gif会经过系统的裁剪框 返回上一个界面系统的裁剪框取消点击不了
 //        [QQCropperViewController.navigationController popViewControllerAnimated:YES];
         [QQCropperViewController.navigationController popToRootViewControllerAnimated:YES];
-
     }
+    [self.ImagePickerController setNavigationBarHidden:YES];
+    [self.ImagePickerController setNavigationBarHidden:YES animated:NO];
 }
 - (void)QQCropperViewController:(QQCropperViewController *)QQCropperViewController didFinishedImage:(UIImage *)CropImage
 {
