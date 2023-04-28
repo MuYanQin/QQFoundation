@@ -24,6 +24,7 @@
 #import "MCNavHiddenViewController.h"
 #import "MCNavBackEventViewController.h"
 #import "QYArticleEditViewController.h"
+#import "QQScanVC.h"
 @interface MCHomeViewController ()
 @property (nonatomic , strong) MMCommentInputView *commentInputView;
 
@@ -163,7 +164,7 @@
     QRCode.leftText = @"二维码生成、扫描";
     QRCode.rightText = @"";
     QRCode.selcetCellHandler = ^(id item) {
-        
+        [self.navigationController pushViewController:[[QQScanVC alloc]init] animated:YES];
     };
     [section addItem:QRCode];
     
