@@ -25,6 +25,8 @@
 #import "MCNavBackEventViewController.h"
 #import "QYArticleEditViewController.h"
 #import "QQScanVC.h"
+#import "UIView+MJExtension.h"
+#import <MJExtension.h>
 @interface MCHomeViewController ()
 @property (nonatomic , strong) MMCommentInputView *commentInputView;
 
@@ -47,6 +49,40 @@
     self.BaseQQTableView.hasHeaderRefresh = NO;
     self.BaseQQTableView.height = self.BaseQQTableView.height - MCTabbarHeight;
     [self iniUI];
+    
+    NSMutableArray * array = [NSMutableArray array];
+    for(int i = 0 ; i < 10000 ; i++){
+        [array addObject:@(i)];
+    }
+    
+    CFTimeInterval startTime = CACurrentMediaTime();
+
+    for (int i = 0; i < array.count; i ++) {
+        [MCTextFieldItem mj_objectWithKeyValues:@{@"leftText":@"123"}];
+    }
+    
+    CFTimeInterval endTime = CACurrentMediaTime();
+    CFTimeInterval elapsedTime = endTime - startTime;
+    NSLog(@"函数执行时间：%f 秒", elapsedTime);
+    
+    CFTimeInterval startTime1 = CACurrentMediaTime();
+
+    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [MCTextFieldItem mj_objectWithKeyValues:@{@"leftText":@"123"}];
+    }];
+    CFTimeInterval endTime1 = CACurrentMediaTime();
+    CFTimeInterval elapsedTime1 = endTime1 - startTime1;
+    NSLog(@"函数执行时间：%f 秒", elapsedTime1);
+    
+    CFTimeInterval startTime2 = CACurrentMediaTime();
+
+    for (id t in array) {
+        [MCTextFieldItem mj_objectWithKeyValues:@{@"leftText":@"123"}];
+
+    }
+    CFTimeInterval endTime2 = CACurrentMediaTime();
+    CFTimeInterval elapsedTime2 = endTime2 - startTime2;
+    NSLog(@"函数执行时间：%f 秒", elapsedTime2);
 }
 - (void)injected
 {

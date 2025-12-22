@@ -168,6 +168,13 @@
 		52D8D1A71F4D77EF00EA413B /* QQImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1781F4D77EF00EA413B /* QQImagePicker.m */; };
 		52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D17B1F4D77EF00EA413B /* QQtableView.m */; };
 		52D8D1AA1F4D77EF00EA413B /* QQTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D8D1801F4D77EF00EA413B /* QQTool.m */; };
+		6E9B6AF92CEEB72A00DDEE3F /* CPCLCameraTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9B6AF32CEEB72700DDEE3F /* CPCLCameraTool.m */; };
+		6E9B6AFA2CEEB72A00DDEE3F /* CPCLLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9B6AF42CEEB72800DDEE3F /* CPCLLocationTool.m */; };
+		6E9B6AFB2CEEB72A00DDEE3F /* CPCLRecorderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9B6AF62CEEB72900DDEE3F /* CPCLRecorderTool.m */; };
+		6E9B6AFE2CEEBF6100DDEE3F /* CPCLSaveFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9B6AFD2CEEBF6100DDEE3F /* CPCLSaveFileTool.m */; };
+		6ED5E8CF2CEF0415001E0C0D /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E8C82CEF0415001E0C0D /* HSSessionModel.m */; };
+		6ED5E8D02CEF0415001E0C0D /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E8CA2CEF0415001E0C0D /* NSString+Hash.m */; };
+		6ED5E8D12CEF0415001E0C0D /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E8CE2CEF0415001E0C0D /* HSDownloadManager.m */; };
 		97C408A2534C1BE9962DC787 /* libPods-QQFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EC3F5AC3087B884EE9BB47 /* libPods-QQFoundation.a */; };
 		AC5EC654201887030030EBC6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */; };
 		AC781AC51FF51D2C00863F4C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = AC781AB61FF51D2C00863F4C /* README.markdown */; };
@@ -519,6 +526,21 @@
 		52D8D17B1F4D77EF00EA413B /* QQtableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQtableView.m; sourceTree = "<group>"; };
 		52D8D17F1F4D77EF00EA413B /* QQTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTool.h; sourceTree = "<group>"; };
 		52D8D1801F4D77EF00EA413B /* QQTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTool.m; sourceTree = "<group>"; };
+		6E9B6AF32CEEB72700DDEE3F /* CPCLCameraTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLCameraTool.m; sourceTree = "<group>"; };
+		6E9B6AF42CEEB72800DDEE3F /* CPCLLocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLLocationTool.m; sourceTree = "<group>"; };
+		6E9B6AF52CEEB72900DDEE3F /* CPCLLocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLLocationTool.h; sourceTree = "<group>"; };
+		6E9B6AF62CEEB72900DDEE3F /* CPCLRecorderTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPCLRecorderTool.m; sourceTree = "<group>"; };
+		6E9B6AF72CEEB72900DDEE3F /* CPCLRecorderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLRecorderTool.h; sourceTree = "<group>"; };
+		6E9B6AF82CEEB72900DDEE3F /* CPCLCameraTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPCLCameraTool.h; sourceTree = "<group>"; };
+		6E9B6AFC2CEEBF6100DDEE3F /* CPCLSaveFileTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPCLSaveFileTool.h; sourceTree = "<group>"; };
+		6E9B6AFD2CEEBF6100DDEE3F /* CPCLSaveFileTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPCLSaveFileTool.m; sourceTree = "<group>"; };
+		6E9B6AFF2CEEC07900DDEE3F /* 气球.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "气球.caf"; sourceTree = "<group>"; };
+		6ED5E8C82CEF0415001E0C0D /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
+		6ED5E8CA2CEF0415001E0C0D /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		6ED5E8CB2CEF0415001E0C0D /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		6ED5E8CC2CEF0415001E0C0D /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
+		6ED5E8CD2CEF0415001E0C0D /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
+		6ED5E8CE2CEF0415001E0C0D /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
 		985D015E9F38546EB6DE4F7D /* Pods-QQFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQFoundation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QQFoundation/Pods-QQFoundation.debug.xcconfig"; sourceTree = "<group>"; };
 		AC5EC652201887030030EBC6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		AC5EC653201887030030EBC6 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
@@ -838,6 +860,7 @@
 		4B4D5A5D211B28CD007FDED8 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				6E9B6AFF2CEEC07900DDEE3F /* 气球.caf */,
 				4B4D5A64211B2923007FDED8 /* MCMineViewController.h */,
 				4B4D5A65211B2923007FDED8 /* MCMineViewController.m */,
 			);
@@ -916,6 +939,14 @@
 		4BA4E12C2227B730003DDF5C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6E9B6AF82CEEB72900DDEE3F /* CPCLCameraTool.h */,
+				6E9B6AF32CEEB72700DDEE3F /* CPCLCameraTool.m */,
+				6E9B6AF52CEEB72900DDEE3F /* CPCLLocationTool.h */,
+				6E9B6AF42CEEB72800DDEE3F /* CPCLLocationTool.m */,
+				6E9B6AF72CEEB72900DDEE3F /* CPCLRecorderTool.h */,
+				6E9B6AF62CEEB72900DDEE3F /* CPCLRecorderTool.m */,
+				6E9B6AFC2CEEBF6100DDEE3F /* CPCLSaveFileTool.h */,
+				6E9B6AFD2CEEBF6100DDEE3F /* CPCLSaveFileTool.m */,
 				4B27344922544ECD008B81B4 /* MCHealthManage */,
 				4BA4E1302227BAE4003DDF5C /* AttributedString */,
 				4BA4E12E2227B8E0003DDF5C /* Kit */,
@@ -1246,6 +1277,7 @@
 			isa = PBXGroup;
 			children = (
 				4BFAB79F20EB64D50076E090 /* QQFoundation.entitlements */,
+				6ED5E8C72CEF0415001E0C0D /* HSDownloadManager */,
 				AC781AB51FF51D2C00863F4C /* FMDB */,
 				52C114D71F4EC5CE005471CB /* AFNetworking */,
 				52C114E51F4EC5CE005471CB /* MJRefresh */,
@@ -1342,6 +1374,27 @@
 				52D8D17B1F4D77EF00EA413B /* QQtableView.m */,
 			);
 			path = QQTableView;
+			sourceTree = "<group>";
+		};
+		6ED5E8C72CEF0415001E0C0D /* HSDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				6ED5E8C92CEF0415001E0C0D /* MD5 */,
+				6ED5E8CC2CEF0415001E0C0D /* HSDownloadManager.h */,
+				6ED5E8CE2CEF0415001E0C0D /* HSDownloadManager.m */,
+				6ED5E8CD2CEF0415001E0C0D /* HSSessionModel.h */,
+				6ED5E8C82CEF0415001E0C0D /* HSSessionModel.m */,
+			);
+			path = HSDownloadManager;
+			sourceTree = "<group>";
+		};
+		6ED5E8C92CEF0415001E0C0D /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				6ED5E8CA2CEF0415001E0C0D /* NSString+Hash.m */,
+				6ED5E8CB2CEF0415001E0C0D /* NSString+Hash.h */,
+			);
+			path = MD5;
 			sourceTree = "<group>";
 		};
 		AC781AB51FF51D2C00863F4C /* FMDB */ = {
@@ -1508,12 +1561,12 @@
 				TargetAttributes = {
 					4B4D16B820EB9D7F0058794C = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = L4674B5247;
+						DevelopmentTeam = V52TFM3H5T;
 						ProvisioningStyle = Automatic;
 					};
 					52D8D1081F4D775500EA413B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = L4674B5247;
+						DevelopmentTeam = V52TFM3H5T;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1641,8 +1694,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4203410F24DD078100B4F31D /* QYArticleImgCell.m in Sources */,
+				6ED5E8D12CEF0415001E0C0D /* HSDownloadManager.m in Sources */,
 				4B4D5A6C211B293F007FDED8 /* MCSearchTViewController.m in Sources */,
 				52C1154F1F4EC5CE005471CB /* AFURLSessionManager.m in Sources */,
+				6ED5E8CF2CEF0415001E0C0D /* HSSessionModel.m in Sources */,
 				ACF4B0621FEE546200668126 /* QQBarItemViewController.m in Sources */,
 				52C1156F1F4EC5CE005471CB /* SDWebImageManager.m in Sources */,
 				4B2F3FFC22269F8500528272 /* UILabel+MCChained.m in Sources */,
@@ -1716,6 +1771,7 @@
 				AC781AC81FF51D2C00863F4C /* FMDatabaseAdditions.m in Sources */,
 				4BCDD1F720CCAF7F000A6B30 /* MCPageView.m in Sources */,
 				5295D40A1F4EBB6000C6B5F4 /* NSMutableAttributedString+Manage.m in Sources */,
+				6E9B6AFE2CEEBF6100DDEE3F /* CPCLSaveFileTool.m in Sources */,
 				52D8D1A81F4D77EF00EA413B /* QQtableView.m in Sources */,
 				ACF4B0631FEE546200668126 /* QQBaseViewController.m in Sources */,
 				52D8D1A61F4D77EF00EA413B /* QQCropperViewController.m in Sources */,
@@ -1729,6 +1785,7 @@
 				42784C35248DD940001CDB81 /* MCTestCell.m in Sources */,
 				52C115751F4EC5CE005471CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				420022812266C6DB00C39BE3 /* QQTableViewSection.m in Sources */,
+				6ED5E8D02CEF0415001E0C0D /* NSString+Hash.m in Sources */,
 				52C115731F4EC5CE005471CB /* UIImage+MultiFormat.m in Sources */,
 				AC781ACA1FF51D2C00863F4C /* FMDatabasePool.m in Sources */,
 				AC781AC71FF51D2C00863F4C /* FMDatabaseQueue.m in Sources */,
@@ -1737,6 +1794,7 @@
 				52C115711F4EC5CE005471CB /* UIButton+WebCache.m in Sources */,
 				4203410924DCF5A000B4F31D /* QYArticleAccessoryView.m in Sources */,
 				4B8D23C620E087DE005F6047 /* MCPushMediator.m in Sources */,
+				6E9B6AFB2CEEB72A00DDEE3F /* CPCLRecorderTool.m in Sources */,
 				52C115681F4EC5CE005471CB /* NSImage+WebCache.m in Sources */,
 				52C115621F4EC5CE005471CB /* UIScrollView+MJRefresh.m in Sources */,
 				52C1154C1F4EC5CE005471CB /* AFSecurityPolicy.m in Sources */,
@@ -1744,11 +1802,13 @@
 				52D8D19A1F4D77EF00EA413B /* QQDevice.m in Sources */,
 				42784C25248DD357001CDB81 /* QQCollectionViewManager.m in Sources */,
 				52C115531F4EC5CE005471CB /* MJRefreshFooter.m in Sources */,
+				6E9B6AFA2CEEB72A00DDEE3F /* CPCLLocationTool.m in Sources */,
 				52D8D18E1F4D77EF00EA413B /* UIImage+Usually.m in Sources */,
 				52C115781F4EC5CE005471CB /* UIView+WebCacheOperation.m in Sources */,
 				42784C2B248DD605001CDB81 /* QQCollectionViewCell.m in Sources */,
 				52C115581F4EC5CE005471CB /* MJRefreshBackGifFooter.m in Sources */,
 				4B1F1081211C303700B09B80 /* MCVerificationCodeView.m in Sources */,
+				6E9B6AF92CEEB72A00DDEE3F /* CPCLCameraTool.m in Sources */,
 				52D8D1A51F4D77EF00EA413B /* QQsession.m in Sources */,
 				52D8D10E1F4D775500EA413B /* main.m in Sources */,
 				52D8D1A21F4D77EF00EA413B /* MBProgressHUD.m in Sources */,
@@ -1838,12 +1898,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4674B5247;
+				DEVELOPMENT_TEAM = V52TFM3H5T;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MCServerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa.MCServerExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundationonon.MCServerExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1867,12 +1927,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4674B5247;
+				DEVELOPMENT_TEAM = V52TFM3H5T;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MCServerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa.MCServerExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundationonon.MCServerExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1980,13 +2040,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4674B5247;
+				DEVELOPMENT_TEAM = V52TFM3H5T;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/chuanglian/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/peanut/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 12;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundationonon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -2003,13 +2064,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4674B5247;
+				DEVELOPMENT_TEAM = V52TFM3H5T;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/chuanglian/QQFoundation/QQFoundation/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/peanut/QQFoundation/QQFoundation/PrefixHeader.pch;
 				INFOPLIST_FILE = QQFoundation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundatioa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanjin.QQFoundationonon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

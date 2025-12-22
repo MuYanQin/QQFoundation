@@ -33,15 +33,16 @@
            }
        };
        self.textView = [[QQTextView alloc]init];
+        self.textView.backgroundColor = [UIColor redColor];
        self.textView.inputAccessoryView = self.accessorV;
        self.textView.font = getFontRegular(14);
        [self.textView scrollRangeToVisible:self.textView.selectedRange];
        self.textView.delegate = self;
        self.textView.placeholder = @"请输入文字";
-       [self addSubview:self.textView];
+       [self.contentView addSubview:self.textView];
        [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.top.equalTo(self).offset(10);
-           make.bottom.equalTo(self).offset(-10);
+           make.top.equalTo(self).offset(0);
+           make.bottom.equalTo(self).offset(0);
 
            make.left.equalTo(self).offset(15);
            make.right.equalTo(self).offset(-15);
